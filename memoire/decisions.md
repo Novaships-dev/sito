@@ -31,6 +31,9 @@ l'échange d'origine.
 | sept. 2026 | « **Pas de Git LFS**, j'en ai décidé ainsi. » Les images lourdes ne vont donc pas dans Git. |
 | 2 oct. 2026 | Un dépôt dédié à l'app, avec **tout ce qui a été fait ces deux ou trois dernières semaines réuni dessus**. « Il ne faut rien oublier. » |
 | 2 oct. 2026 | « Il va falloir créer un repo et une base pour ça. » Le choix de **Supabase** vient de Claude ; Fabrice a répondu « oui » à l'ensemble du plan sans le trancher séparément. À lui confirmer avant de créer quoi que ce soit de payant. |
+| 2 oct. 2026 | **Supabase confirmé** : « Oui Supabase, j'ai le MCP. » « La base Supabase doit être **solide** pour être tranquille et penser à la suite. » |
+| 2 oct. 2026 | « AgentShield et auto-conseil doivent être **supprimés**, je ne les utilise plus. » (projets Supabase, en pause ; suppression à faire par Fabrice dans le tableau de bord) |
+| 2 oct. 2026 | Ordre de travail : barre d'appel, puis prix, puis unicité au département, puis base. « Le meilleur pour toi. » |
 
 ## Le produit
 
@@ -45,6 +48,9 @@ l'échange d'origine.
 | 23 sept. 2026 | « C'est une application, **le site s'adapte aux images ajoutées**, c'est fait exprès pour ça, c'est du code. » La façon technique de le faire reste à choisir par Claude (voir `app/README.md`). |
 | 23 sept. 2026 | « Il va falloir faire **tous les métiers, et à 100 %**. » |
 | 23 sept. 2026 | « Les archétypes doivent être **tous utilisés**, c'est débile d'en avoir que un. » |
+| 2 oct. 2026 | **Le téléphone** : pas de recherche du numéro sur la fiche Google ; « c'est mieux de laisser l'artisan choisir ». Tant qu'il ne l'a pas donné dans l'app, le site montre un emplacement désigné. |
+| 2 oct. 2026 | **Les prix** : « Ce n'est pas le générateur qui décide, c'est l'artisan qui coche une case pour activer ça ou pas, et ensuite ajouter ses tarifs, c'est tout. » « Certains artisans n'auront pas forcément envie d'afficher leurs prix, c'est à prendre en compte dans l'app et les sites. » **Remplace** la règle « un ordre de prix figure sur la page » de `rules/web/client.md`. |
+| 2 oct. 2026, soir | **L'estimateur revient, calculé sur les tarifs de l'artisan** (« Oui », contre la recommandation de Claude d'attendre). |
 
 ## L'unicité des sites
 
@@ -53,10 +59,15 @@ l'échange d'origine.
 | 23 sept. 2026 | « Le problème c'est que les 3 sites se ressemblent complètement. » / « Mon app ne doit pas faire les mêmes sites pour chaque artisan. » |
 | 24 sept. 2026 | « Pour les points 2, 3, 4, 5, 6 : **tout doit être différent**, c'est aussi simple que ça, et ça pour chaque métier, chaque site généré. » Les points en question : photos, structure, textes, nuancier, prix, comparateur. |
 
-Les **chiffres des prix** restent les mêmes d'un site à l'autre parce que ce
-sont des faits sourcés ; seules leur présence, leur place et leur présentation
-changent. C'est une limite posée par la règle « rien n'est inventé », pas une
-exception à sa décision. À lui confirmer.
+| 2 oct. 2026 | « Différent dans **commune et département**, très important. » |
+| 2 oct. 2026, soir | Taille visée : **100 sites** d'un même métier différents dans un même département (« Oui 100 »). |
+| 2 oct. 2026, soir | Photos à grande échelle : « **Chaque métier a des images différentes.** » Réponse à la proposition de Claude (une dizaine de photos de façade et de paires avant / après par métier, et le partage de la banque accepté au-delà pour les sites de prospection) : la banque grandit métier par métier. |
+| 2 oct. 2026, soir | Textes à grande échelle : « Si tu recommandes, ok » : les réserves de phrases s'agrandissent par fragments combinés. |
+| 2 oct. 2026, nuit | Intitulés de section : « Oui ça peut se répéter, c'est pas un problème je pense. » Le contrôle U3 ne les compte plus. |
+
+Les **prix** : remplacé le 2 octobre. Ce ne sont plus des prix du marché
+sourcés et identiques d'un site à l'autre, ce sont **les tarifs de l'artisan**,
+affichés seulement s'il coche la case (voir « Le produit »).
 
 ## Les images
 
@@ -66,7 +77,8 @@ exception à sa décision. À lui confirmer.
 | 15 sept. 2026 | « Il va falloir une banque d'images, d'assets, d'animations pour chaque métier, pour donner quelque chose au client sans qu'il ait mis ses images. » |
 | 15 sept. 2026 | « Je peux toutes les faire générer par IA avec ChatGPT, c'est même mieux. […] Il va falloir la liste des métiers et la liste exacte de ce qu'il faut générer comme images par métier : matière, geste, ambiance, signes et autres. » |
 | 15 sept. 2026 | « Je génère des images avant/après **pour présenter le site à l'artisan**, et s'il s'abonne et prend le site, **il devra mettre les siennes**. » |
-| 15 sept. 2026 | « Pas obligé d'expliquer d'où vient l'image, c'est un site, l'artisan et le client s'en foutent. » **En tension avec la règle actuelle** : les sites de démonstration portent une mention « Exemple » visible et le générateur refuse de publier des photos d'illustration. À trancher avec lui, voir `maintenant.md`. |
+| 15 sept. 2026 | « Pas obligé d'expliquer d'où vient l'image, c'est un site, l'artisan et le client s'en foutent. » Tranché le 2 octobre, ligne suivante. |
+| 2 oct. 2026 | « Oui, ça reste des exemples le temps que l'artisan ajoute les siennes. » La mention « Exemple » reste sur les images de la banque jusqu'à ce que l'artisan mette ses photos. |
 | 15 sept. 2026 | 32 images par métier, avec des prompts ChatGPT « le top du top, précis à fond ». |
 | 23 sept. 2026 | « Les images sont utiles » : les images générées doivent **réellement servir** dans les sites. |
 | sept. 2026 | Plaques sur les images : retirer les plaques d'immatriculation, garder les numéros de rue. |

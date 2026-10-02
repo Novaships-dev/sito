@@ -44,15 +44,14 @@ export function candidats(sources) {
 
 // Tire une main. `pris` liste les mains des voisins : meme metier, meme commune.
 // Un choix deja pris par un voisin n est repris que s il ne reste rien d autre.
+import { moinsPris } from './graine.mjs';
+
 export function distribuer(g, sources, pris = []) {
   const c = candidats(sources);
-  const dejaPris = (rang) => pris.map(m => m && m[rang]).filter(Boolean);
+  // ce que les voisins ont pris a ce rang, avec leur poids (commune : 5)
+  const dejaPris = (rang) => pris.filter(m => m && m[rang]).map(m => ({ valeur: m[rang], poids: m.poids || 1 }));
 
-  const tirer = (liste, rang) => {
-    if (!liste.length) return null;
-    const libres = liste.filter(x => !dejaPris(rang).includes(x));
-    return g.choisir(libres.length ? libres : liste);
-  };
+  const tirer = (liste, rang) => liste.length ? moinsPris(g, liste, dejaPris(rang)) : null;
 
   const hero = tirer(c.hero, 'hero');
   const chantier = tirer(c.chantier, 'chantier');
@@ -64,10 +63,7 @@ export function distribuer(g, sources, pris = []) {
   // meme, et le controle d unicite le verra.
   const p1 = tirer(c.paires, 'paire1');
   const restantes = c.paires.filter(x => x !== p1);
-  const p2 = restantes.length
-    ? g.choisir(restantes.filter(x => !dejaPris('paire2').includes(x)).length
-        ? restantes.filter(x => !dejaPris('paire2').includes(x)) : restantes)
-    : null;
+  const p2 = restantes.length ? moinsPris(g, restantes, dejaPris('paire2')) : null;
 
   return { hero, chantier, geste, detail, paire1: p1, paire2: p2 };
 }

@@ -7,6 +7,8 @@ import * as nuancier from './sections/nuancier.mjs';
 import * as prix from './sections/prix.mjs';
 import * as avis from './sections/avis.mjs';
 import * as comparateurV from './sections/comparateur.mjs';
+import { declarer, CONTEXTES } from './charte.mjs';
+import * as appel from './sections/appel.mjs';
 
 export function feuille(p, pal, archetype = 'panneau', ch) {
   const acc = pal.accent || pal.bleu;
@@ -14,28 +16,11 @@ export function feuille(p, pal, archetype = 'panneau', ch) {
 ${ch.polices.faces}
 :root{
   /* palette prélevée : ${pal.accentSource ? '--accent échantillonné dans images/' + pal.accentSource : 'aucun accent chaud trouvé'} */
-  --encre:${pal.encre};--chaux:${pal.chaux};--gris:${pal.gris};--gris-fonce:${pal.grisFonce};
-  --papier:${pal.papier};--bleu:${pal.bleu};--accent:${acc};
+  /* famille : ${ch.famille.nom}, sol ${ch.sol}, voir generateur/charte.mjs */
+  ${declarer(pal)}
+  --bleu:${pal.bleu};
   --marge:clamp(20px,${p.marge}vw,${p.margeMax}px);
-  /* Jetons du socle partage (arrivee, atmosphere, nuancier, estimateur).
-     Ils doivent exister sous les quatre archetypes, sinon le premier ecran
-     d ambiance tombe sur ses valeurs de repli et perd sa profondeur. */
-  --nuit:${pal.nuit || pal.encre};
   --m:var(--marge);
-  --voile-1:${pal.voile1};
-  --voile-2:${pal.voile2};
-  --voile-3:${pal.voile3};
-  --sur-accent:${pal.surAccent};
-  --sous-texte:${pal.sousTexte};
-  --dit:${pal.dit};
-  --dit-fort:${pal.ditFort};
-  --ombre-texte:${pal.ombreTexte};
-  --lueur-1:${pal.lueur1};
-  --lueur-2:${pal.lueur2};
-  --rai-1:${pal.rai1};
-  --rai-2:${pal.rai2};
-  --bouton-fond:${pal.boutonFond};
-  --pastille-fond:${pal.pastilleFond};
   --fil:${ch.geo.filet} solid var(--voile-2);
   --rayon:${ch.geo.rayon};
   --sortie:cubic-bezier(.2,.7,.2,1);
@@ -44,7 +29,7 @@ ${ch.polices.faces}
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;overscroll-behavior-x:none}
-body{background:var(--papier);color:var(--encre);font-family:var(--texte-police);
+body{${CONTEXTES.papier};background:var(--papier);color:var(--t);font-family:var(--texte-police);
   font-size:clamp(15px,1.05vw,17px);line-height:${p.interligne};font-synthesis-weight:none}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
@@ -57,27 +42,27 @@ a{color:inherit}
 .grand{font-family:var(--titre-police);font-weight:700;
   font-size:clamp(28px,${(p.titreVw * 0.66).toFixed(2)}vw,${Math.round(p.titreMax * 0.66)}px);line-height:.98;letter-spacing:-.018em}
 .moyen{font-family:var(--titre-police);font-weight:700;font-size:clamp(21px,2.4vw,34px);line-height:1.04}
-.note{font-size:clamp(11px,.82vw,13px);line-height:1.55;color:var(--gris)}
+.note{font-size:clamp(11px,.82vw,13px);line-height:1.55;color:var(--t2)}
 .ouverture .panneau .note{font-size:clamp(13px,1vw,16px);max-width:${p.panneau === 100 ? '48' : '34'}ch}
 .marqueur{position:absolute;${p.marqueurCote}:var(--marge);bottom:var(--marge);background:rgba(0,0,0,.82);
   color:#fff;padding:8px 13px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
 .rubrique{padding:clamp(56px,${p.respiration}vw,${p.respirationMax}px) var(--marge)}
 .rubrique>.tete{max-width:${p.colonne}rem;margin-bottom:clamp(28px,3.6vw,56px);display:grid;gap:.9rem}
-.rubrique>.tete .enseigne{color:var(--gris-fonce)}
+.rubrique>.tete .enseigne{color:var(--t2)}
 
 /* ouverture */
 .ouverture{position:relative;display:grid;min-height:min(${p.hauteurOuverture}svh,1000px);
   grid-template-columns:${p.panneauADroite ? `minmax(0,${100 - p.panneau}%) minmax(0,${p.panneau}%)` : `minmax(0,${p.panneau}%) minmax(0,${100 - p.panneau}%)`}}
-.ouverture .panneau{background:var(--encre);color:var(--chaux);padding:var(--marge);
+.ouverture .panneau{${CONTEXTES.sol};background:var(--encre);color:var(--t);padding:var(--marge);
   display:flex;flex-direction:column;justify-content:space-between;gap:${p.panneau === 100 ? '4.5rem' : '2.4rem'};
   ${p.panneau === 100 ? 'min-height:min(' + p.hauteurOuverture + 'svh,760px);' : ''}
-  ${p.panneauADroite ? 'order:2;border-left' : 'border-right'}:1px solid rgba(226,231,233,.4)}
-.ouverture .panneau .enseigne{color:var(--gris)}
-.ouverture h1{color:var(--chaux)}
+  ${p.panneauADroite ? 'order:2;border-left' : 'border-right'}:1px solid var(--voile-2)}
+.ouverture .panneau .enseigne{color:var(--t2)}
+.ouverture h1{color:var(--t)}
 .ouverture .visuel{position:relative;overflow:hidden;background:var(--encre);${p.panneauADroite ? 'order:1' : ''}}
 .ouverture .visuel img{width:100%;height:100%;min-height:100%;object-fit:cover;object-position:${p.cadrage}% 50%}
 .ouverture.elevation{grid-template-columns:1fr;grid-template-rows:auto auto;min-height:0}
-.ouverture.elevation .panneau{border-right:0;border-bottom:1px solid rgba(226,231,233,.4);order:1}
+.ouverture.elevation .panneau{border-right:0;border-bottom:1px solid var(--voile-2);order:1}
 .ouverture.elevation .visuel{order:2;height:clamp(240px,44svh,540px)}
 .trait-accent{position:absolute;${p.panneauADroite ? 'right' : 'left'}:-1px;top:0;width:2px;height:${p.traitHauteur}%;background:var(--accent)}
 
@@ -89,12 +74,12 @@ a{color:inherit}
 .coupure .pastille{position:absolute;top:14px;padding:7px 12px;font-size:12px;font-weight:600;
   letter-spacing:.14em;text-transform:uppercase}
 .coupure .pastille.av{left:14px;background:rgba(0,0,0,.82);color:#fff}
-.coupure .pastille.ap{right:14px;background:var(--accent);color:#171717}
+.coupure .pastille.ap{right:14px;background:var(--accent);color:var(--sur-accent)}
 .coupure .socle{display:grid;grid-template-columns:var(--coupure) 1fr}
-.coupure .gauche{background:var(--encre);color:var(--chaux);padding:var(--marge) var(--marge) calc(var(--marge)*1.4)}
-.coupure .droite{background:var(--accent);color:#1a1a1a;padding:var(--marge) var(--marge) calc(var(--marge)*1.4)}
+.coupure .gauche{${CONTEXTES.sol};background:var(--encre);color:var(--t);padding:var(--marge) var(--marge) calc(var(--marge)*1.4)}
+.coupure .droite{${CONTEXTES.accent};background:var(--accent);color:var(--t);padding:var(--marge) var(--marge) calc(var(--marge)*1.4)}
 .coupure .socle .moyen{margin-bottom:.7rem}
-.coupure .socle p.d{font-size:clamp(13px,.95vw,15px);max-width:36ch;opacity:.88}
+.coupure .socle p.d{font-size:clamp(13px,.95vw,15px);max-width:36ch;color:var(--t2)}
 
 /* comparateur */
 .comparateur{margin:0 0 clamp(28px,3.4vw,56px)}
@@ -122,7 +107,7 @@ a{color:inherit}
   width:30px;height:54px;background:var(--chaux);box-shadow:0 0 0 1px rgba(0,0,0,.45);
   display:block}
 .cadre .prise::before,.cadre .prise::after{content:"";position:absolute;top:16px;bottom:16px;
-  width:1px;background:var(--gris-fonce)}
+  width:1px;background:color-mix(in oklab, var(--nuit) 60%, var(--chaux))}
 .cadre .prise::before{left:11px}
 .cadre .prise::after{right:11px}
 .cadre .etiquette{position:absolute;top:14px;padding:6px 11px;font-size:11px;font-weight:600;
@@ -144,21 +129,21 @@ a{color:inherit}
 .glissiere::-moz-range-thumb{width:2px;height:46px;border:0}
 .glissiere:focus-visible ~ .couture .prise{box-shadow:0 0 0 3px var(--bleu), 0 0 0 5px var(--chaux)}
 .mention-illustration{margin-top:10px;padding:10px 13px;border-left:3px solid var(--accent);
-  background:rgba(0,0,0,.06);font-weight:600}
+  background:color-mix(in oklab, var(--t) 6%, transparent);color:var(--t);font-weight:600}
 .legende{margin-top:.8rem}
 .comparateur.large .legende{padding-inline:var(--marge)}
 
 /* gestes */
-.travail{background:${p.gestesSurAccent ? 'var(--accent)' : 'var(--encre)'};
-  color:${p.gestesSurAccent ? '#181818' : 'var(--chaux)'};padding:clamp(56px,${p.respiration}vw,${p.respirationMax}px) var(--marge)}
-.travail .enseigne{color:${p.gestesSurAccent ? 'rgba(24,24,24,.7)' : 'var(--gris)'}}
+.travail{${p.gestesSurAccent ? CONTEXTES.accent : CONTEXTES.sol};background:${p.gestesSurAccent ? 'var(--accent)' : 'var(--encre)'};
+  color:var(--t);padding:clamp(56px,${p.respiration}vw,${p.respirationMax}px) var(--marge)}
+.travail .enseigne{color:var(--t2)}
 .travail h2{margin:.6rem 0 clamp(32px,4vw,64px)}
 .geste{display:grid;grid-template-columns:minmax(0,${p.colonneTerme}%) minmax(0,1fr);gap:clamp(14px,3vw,48px);
-  padding:clamp(18px,2.2vw,30px) 0;border-top:1px solid ${p.gestesSurAccent ? 'rgba(24,24,24,.28)' : 'rgba(226,231,233,.22)'}}
-.geste:last-of-type{border-bottom:1px solid ${p.gestesSurAccent ? 'rgba(24,24,24,.28)' : 'rgba(226,231,233,.22)'}}
+  padding:clamp(18px,2.2vw,30px) 0;border-top:1px solid color-mix(in oklab, var(--t) 26%, transparent)}
+.geste:last-of-type{border-bottom:1px solid color-mix(in oklab, var(--t) 26%, transparent)}
 .geste dt{font-family:var(--titre-police);font-weight:700;font-size:clamp(20px,2.1vw,30px);line-height:1.02}
-.geste dd{color:${p.gestesSurAccent ? 'rgba(24,24,24,.86)' : '#AEBCC4'};max-width:52ch}
-.geste .chiffre{color:${p.gestesSurAccent ? 'rgba(24,24,24,.6)' : 'var(--accent)'};font-size:12px;font-weight:600;
+.geste dd{color:var(--t2);max-width:52ch}
+.geste .chiffre{color:var(--ta);font-size:12px;font-weight:600;
   letter-spacing:.16em;display:block;margin-bottom:.5rem}
 
 /* chantier */
@@ -170,18 +155,18 @@ a{color:inherit}
 .chantier .haut img{aspect-ratio:3/4}
 
 /* verifiable */
-.verifiable{background:var(--chaux);padding:clamp(56px,${p.respiration}vw,${p.respirationMax}px) var(--marge)}
+.verifiable{${CONTEXTES.papier};background:var(--papier-2);color:var(--t);padding:clamp(56px,${p.respiration}vw,${p.respirationMax}px) var(--marge)}
 .faits{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;max-width:70rem}
-.faits th,.faits td{text-align:left;padding:.85rem 1rem .85rem 0;border-bottom:1px solid rgba(0,0,0,.16);vertical-align:top}
-.faits th{font-weight:600;font-size:clamp(12px,.86vw,14px);color:var(--gris-fonce);width:34%}
+.faits th,.faits td{text-align:left;padding:.85rem 1rem .85rem 0;border-bottom:1px solid color-mix(in oklab, var(--t) 16%, transparent);vertical-align:top}
+.faits th{font-weight:600;font-size:clamp(12px,.86vw,14px);color:var(--t2);width:34%}
 .faits td{font-size:clamp(14px,1vw,16px)}
-.faits td.vide{color:var(--gris-fonce)}
+.faits td.vide{color:var(--t2)}
 
 /* contact */
 .contact{padding:clamp(56px,${p.respiration}vw,${p.respirationMax}px) var(--marge)}
-.creux{border:1px solid rgba(0,0,0,.2);padding:clamp(22px,3vw,40px);max-width:44rem}
-.creux .enseigne{color:var(--gris-fonce);margin-bottom:.8rem}
-footer{background:var(--encre);color:var(--gris);padding:clamp(32px,4vw,60px) var(--marge);
+.creux{border:1px solid color-mix(in oklab, var(--t) 22%, transparent);padding:clamp(22px,3vw,40px);max-width:44rem}
+.creux .enseigne{color:var(--t2);margin-bottom:.8rem}
+footer{${CONTEXTES.sol};background:var(--encre);color:var(--t2);padding:clamp(32px,4vw,60px) var(--marge);
   display:flex;flex-wrap:wrap;gap:1.2rem 3rem;justify-content:space-between;align-items:flex-end}
 
 @media (max-width:900px){
@@ -202,7 +187,7 @@ footer{background:var(--encre);color:var(--gris);padding:clamp(32px,4vw,60px) va
   .coupure .cliche img{aspect-ratio:4/3}
   .coupure .fil{left:var(--coupure-tel)}
   .coupure .socle{grid-template-columns:1fr}
-  .coupure .gauche{border-top:4px solid rgba(226,231,233,.9)}
+  .coupure .gauche{border-top:4px solid var(--voile-2)}
   .coupure .droite{border-top:4px solid var(--accent)}
   .chantier,.chantier .pile,.chantier .haut{grid-template-columns:1fr;order:initial}
   .geste{grid-template-columns:1fr;gap:.5rem}
@@ -217,5 +202,6 @@ ${nuancier.feuille()}
 ${prix.feuille()}
 ${avis.feuille()}
 ${comparateurV.feuille()}
+${appel.feuille()}
 `;
 }

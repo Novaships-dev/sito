@@ -163,6 +163,18 @@ function structure(texte, fichier) {
       break;
     }
   }
+  // T1 : un lien d appel compose un vrai numero, ou il n existe pas. Le
+  // 2 octobre 2026, l archetype matiere livrait « tel: » vide depuis le debut.
+  for (const m of texte.matchAll(/href\s*=\s*["'](tel:[^"']*)["']/gi)) {
+    if (!/^tel:\+33[1-9]\d{8}$/.test(m[1])) c.push({ fichier, num: 'T1', gravite: 'bloquant',
+      libelle: 'lien d appel qui ne compose rien', detail: m[1] || 'tel: vide',
+      remede: 'tel:+33 suivi de neuf chiffres, ou un emplacement sans lien ; voir generateur/sections/appel.mjs' });
+  }
+  // T2 : une page entiere offre un moyen d appeler, ou son emplacement.
+  if (/<body/i.test(texte) && !/data-appel=["'](numero|attente)["']/.test(texte)) c.push({ fichier, num: 'T2',
+    gravite: 'bloquant', libelle: 'aucun moyen d appeler l entreprise', detail: 'ni numero ni emplacement',
+    remede: 'rules/web/client.md : le numero est atteignable au pouce en permanence' });
+
   const h1 = (texte.match(/<h1\b/gi) || []).length;
   if (/<html|<body/i.test(texte) && h1 !== 1) {
     c.push({ fichier, num: 'A6', gravite: 'bloquant', libelle: 'nombre de h1 incorrect',

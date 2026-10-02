@@ -1,3 +1,4 @@
+import { CONTEXTES } from '../charte.mjs';
 // Premier ecran d ambiance, commun aux quatre archetypes.
 //
 // Ce qui manquait a nos pages face aux meilleurs sites : de l air. Une lumiere
@@ -24,7 +25,7 @@ export function feuille(p, archetype = 'matiere') {
    la hauteur depend du nom de l entreprise et ne peut donc pas etre ecrite en
    dur. */
 .premier-ecran{display:contents}
-.atmo{position:relative;height:100svh;min-height:560px;overflow:hidden;isolation:isolate;
+.atmo{${CONTEXTES.sol};position:relative;height:100svh;min-height:560px;overflow:hidden;isolation:isolate;
   background:var(--nuit, var(--encre));display:flex;flex-direction:column;justify-content:center;
   padding:clamp(86px,9vh,120px) var(--m, var(--marge)) clamp(56px,7vh,86px)}
 .atmo .aura{position:absolute;inset:-30%;z-index:0;pointer-events:none;
@@ -76,7 +77,7 @@ export function feuille(p, archetype = 'matiere') {
   margin-bottom:22px;transform-origin:left;animation:tirer 1.1s var(--sortie, ease) .5s both}
 .atmo h1{font-family:var(--titre-police, "Display", sans-serif);font-weight:500;
   font-size:clamp(${p.titreAtmoTel}px, 2.4vw, ${p.titreAtmo}px);line-height:1.15;
-  letter-spacing:-.02em;color:var(--chaux);text-wrap:balance}
+  letter-spacing:-.02em;color:var(--t);text-wrap:balance}
 .atmo .sous{margin-top:18px;font-size:clamp(14px,1.1vw,16px);line-height:1.6;
   color:var(--sous-texte);max-width:38ch}
 .atmo .photo{position:relative;overflow:hidden;border-radius:2px;margin:0;
@@ -90,7 +91,7 @@ export function feuille(p, archetype = 'matiere') {
 .atmo .cadre .indice{left:auto;right:14px}
 .atmo .photo .bascule{margin-top:10px;display:flex;gap:8px;justify-content:center}
 .atmo .photo .vers{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
-  color:var(--chaux);background:var(--bouton-fond);border:1px solid var(--voile-2);
+  color:var(--t);background:var(--bouton-fond);border:1px solid var(--voile-2);
   border-radius:99px;padding:9px 15px;min-height:44px;cursor:pointer;
   transition:background .25s var(--sortie, ease), color .25s var(--sortie, ease)}
 .atmo .photo .vers:hover{background:var(--accent);color:var(--sur-accent)}
@@ -110,7 +111,7 @@ export function feuille(p, archetype = 'matiere') {
    la page parlait du metier, pas de l artisan. */
 .atmo .nom-atmo{font-family:var(--titre-police, "Display", sans-serif);font-weight:700;
   font-size:clamp(15px,1.25vw,19px);letter-spacing:.14em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:7px}
+  color:var(--ta);margin-bottom:7px}
 .atmo .bas{margin-top:clamp(20px,3.4vh,44px);display:flex;justify-content:space-between;
   align-items:center;gap:16px;flex-wrap:wrap;
   /* le mot geant passe derriere : sans ce voile les etiquettes se lisent
@@ -156,7 +157,7 @@ ${disposition(v, p)}
    l ecran paraissait decale. Le titre se mesure en svh, pas en vw, parce que
    c est la hauteur qui manque, jamais la largeur. */
 @media (max-width:900px){
-  .premier-ecran{display:flex;flex-direction:column;min-height:calc(100svh - 52px)}
+  .premier-ecran{display:flex;flex-direction:column;min-height:calc(100svh - var(--barre-h, 66px))}
   .premier-ecran .etat{flex:0 0 auto}
   .atmo{height:auto;flex:1 1 auto;min-height:0;padding:20px 18px 16px;
     justify-content:flex-start;gap:0;overflow:hidden}
@@ -196,7 +197,7 @@ ${disposition(v, p)}
    Sur un ecran court, le premier ecran se laisse depasser et se fait defiler :
    mieux vaut cent pixels de trop que des blocs qui se recouvrent. */
 @media (max-width:900px) and (min-height:800px){
-  .premier-ecran{height:calc(100svh - 52px);overflow:hidden}
+  .premier-ecran{height:calc(100svh - var(--barre-h, 66px));overflow:hidden}
 }`;
 }
 
@@ -212,6 +213,9 @@ function disposition(v, p) {
 .atmo .bas{justify-content:flex-start;gap:clamp(20px,5vw,72px)}`;
 
   if (v === 'pile') return `
+/* Le haut de ces deux compositions laisse la place de la pastille d etat, bouton
+   d appel compris : 18 px de marge et 52 px de pastille. Avec 66 px, le nom de
+   l entreprise passait dessous, constate le 2 octobre 2026. Controle O15. */
 /* pile : tout est centre, la photo tient toute la largeur sous le titre, et le
    mot geant se cale a droite. Une planche, pas deux colonnes.
    La composition empilee demande plus de hauteur qu un ecran sur un portable :
@@ -219,7 +223,7 @@ function disposition(v, p) {
    passe SOUS le suivant et le recouvre : le nuancier se posait sur les boutons
    du comparateur, qui devenaient incliquables. Constate le 23 septembre 2026.
    Cent pixels de trop valent mieux que deux blocs qui se recouvrent. */
-.atmo{justify-content:flex-start;padding-top:clamp(66px,7vh,88px);padding-bottom:clamp(40px,5vh,64px);
+.atmo{justify-content:flex-start;padding-top:clamp(96px,10vh,120px);padding-bottom:clamp(40px,5vh,64px);
   height:auto;min-height:100svh}
 .atmo .haut{margin-bottom:clamp(16px,2.4vh,30px)}
 .atmo .corps-atmo{grid-template-columns:minmax(0,1fr);gap:clamp(20px,2.6vw,38px);
@@ -241,7 +245,7 @@ function disposition(v, p) {
    nuancier se range a droite. Le mot geant sort par la gauche.
    Meme raison que la pile : la hauteur se laisse depasser plutot que de
    faire se recouvrir deux blocs. */
-.atmo{justify-content:flex-start;padding-top:clamp(64px,6.6vh,84px);padding-bottom:clamp(40px,5vh,64px);
+.atmo{justify-content:flex-start;padding-top:clamp(96px,10vh,120px);padding-bottom:clamp(40px,5vh,64px);
   height:auto;min-height:100svh}
 .atmo .haut{margin-bottom:clamp(16px,2.4vh,30px)}
 .atmo .corps-atmo{grid-template-columns:minmax(0,1fr);gap:clamp(18px,2.2vw,32px)}
@@ -305,7 +309,7 @@ ${teintes.map((x, i) => `      <button type="button" class="teinte${i === 0 ? ' 
 ${nuancier}
   <div class="bas">
     <p class="dit scene-1 d5">${e.commune ? ech(e.commune) : 'Chantier'}${e.anneeCreation ? `, entreprise établie en ${e.anneeCreation}` : ''}</p>
-    <p class="dit scene-1 d5">Défiler <span class="fleche">↓</span></p>
+    <p class="dit scene-1 d5">Défiler <span class="fleche" aria-hidden="true">↓</span></p>
   </div>
 
 ${mot ? `  <span class="marque" data-mot="${ech(mot.toUpperCase())}" aria-hidden="true">${ech(mot.toUpperCase())}</span>` : ''}

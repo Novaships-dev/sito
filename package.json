@@ -12,6 +12,7 @@
     "depot": "node scripts/verifier-depot.mjs .",
     "textes": "node scripts/verifier-textes.mjs .",
     "demo": "node scripts/fabriquer-demo.mjs",
-    "unicite": "node scripts/verifier-unicite.mjs sites"
+    "unicite": "node scripts/verifier-unicite.mjs sites",
+    "capacite": "node scripts/capacite-unicite.mjs"
   }
 }

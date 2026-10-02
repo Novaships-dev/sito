@@ -12,8 +12,7 @@ cent fois et qu'elle existera encore l'an prochain.
 
 Il appelle quand il voit un chantier qui ressemble au sien, dans sa ville. Des
 gens, des visages, un camion avec un nom dessus. Un numéro visible sans
-chercher. Un ordre de prix, même large. La preuve que quelqu'un viendra
-regarder avant de promettre.
+chercher. La preuve que quelqu'un viendra regarder avant de promettre.
 
 Il ferme l'onglet devant une image de banque qu'il a déjà croisée ailleurs, un
 site identique aux quarante autres, une page sans adresse, un formulaire à la
@@ -35,18 +34,21 @@ il peut le montrer à sa femme et à son meilleur client sans avoir honte. Quand
 après, avec de quoi le manipuler. Le nom, la ville, l'ancienneté et le bouton
 d'appel par-dessus, d'un seul coup d'œil.
 
-**Un ordre de prix figure sur la page.** Pas un devis, pas un formulaire : des
-fourchettes par poste, avec ce qui les fait varier, et les sources nommées et
-datées. Sans prix, le propriétaire ne sait pas s'il parle à une entreprise pour
-lui, et il appelle ailleurs.
+**Les prix sont ceux de l'artisan, et seulement s'il le veut.** Décision de
+Fabrice, 2 octobre 2026 : « c'est l'artisan qui coche une case pour activer ça
+ou pas, et ensuite ajouter ses tarifs, c'est tout ». Certains ne veulent pas
+afficher de prix. Sans la case cochée, la page n'a pas de section prix, et elle
+doit rester complète sans elle. Avec, elle montre ses tarifs à lui, jamais des
+moyennes du marché. Remplace la règle « un ordre de prix figure sur la page ».
 
 **Le numéro est atteignable au pouce en permanence.** Une barre d'appel fixe en
 bas sur téléphone. Tant que l'artisan n'a pas donné son numéro, l'emplacement
 est visible et désigné, pas un trou gris.
 
 **Rien sur l'entreprise n'est inventé.** Les faits viennent de Sirene, les
-prix de sources nommées, les photographies portent la mention d'exemple. Un
-chiffre sans source ne monte pas sur la page.
+prix et le numéro de l'artisan lui-même, les photographies de la banque portent
+la mention d'exemple jusqu'à ce qu'il mette les siennes. Un chiffre sans source
+ne monte pas sur la page.
 
 ## Le test
 

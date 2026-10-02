@@ -1,3 +1,4 @@
+import { CONTEXTES } from '../charte.mjs';
 // Arrivee sur la page, commune aux quatre archetypes.
 //
 // Quatre choses qui ne dependent d aucune composition : l ecran d entree, la
@@ -76,21 +77,37 @@ body.anime:not(.prete) .scene-1{animation-play-state:paused}
 /* ---------------------------------------------------------------- pastille
    Ce que les meilleurs font et que personne ne fait dans le batiment :
    dire en haut de page que la boite tourne. Ici, uniquement des faits publics. */
-.etat{position:relative;z-index:8;display:flex;flex-wrap:wrap;align-items:center;
+.etat{${CONTEXTES.sol};position:relative;z-index:8;display:flex;flex-wrap:wrap;align-items:center;
   gap:8px;padding:12px var(--m, var(--marge));border-bottom:var(--fil, 1px solid rgba(255,255,255,.14));background:var(--nuit, var(--encre))}
 .etat.flottante{position:absolute;top:18px;left:var(--m, var(--marge));right:var(--m, var(--marge));z-index:12;
   padding:8px 10px;border:1px solid var(--voile-2);border-bottom:1px solid var(--voile-2);
   border-radius:${ch.geo.jeton};background:var(--pastille-fond)}
 .jeton{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;
   border:1px solid transparent;border-radius:${ch.geo.jeton};
-  font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gris);
+  font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--t2);
   transition:border-color .3s var(--sortie, ease), color .3s var(--sortie, ease)}
-.jeton:hover{border-color:var(--accent);color:var(--chaux)}
+.jeton:hover{border-color:var(--accent);color:var(--t)}
 .jeton .point{width:6px;height:6px;background:var(--accent);border-radius:50%}
-.jeton b{color:var(--chaux);font-weight:600}
+.jeton b{color:var(--t);font-weight:600}
 .etat .droite{margin-left:auto;display:flex;gap:8px;align-items:center}
+.etat .gauche{display:flex;flex-wrap:wrap;gap:8px;align-items:center;min-width:0}
+/* La pastille flottante tient sur UNE ligne, toujours : le premier ecran ne
+   reserve que la place d une ligne au-dessus du nom. Les jetons de gauche qui
+   ne tiennent pas passent sur une deuxieme ligne, que la hauteur fixe cache
+   en entier : ils disparaissent au lieu d etre coupes. Le nom, premier, se
+   raccourcit en dernier recours. Le 2 octobre 2026, un numero de telephone et
+   un nom long faisaient passer la pastille sur deux lignes, par-dessus le nom
+   de l entreprise. Controle O15. */
+@media (min-width:901px){
+  .etat.flottante{flex-wrap:nowrap}
+  .etat.flottante .gauche{flex:1 1 auto;height:32px;overflow:hidden}
+  .etat.flottante .gauche .jeton{height:32px}
+  .etat.flottante .gauche .jeton:first-child{flex-shrink:1;min-width:0;max-width:100%;
+    overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+  .etat.flottante .droite{flex:0 0 auto}
+}
 .jeton.lien{text-decoration:none;min-height:34px}
-.jeton.lien:hover{border-color:var(--accent);color:var(--chaux)}
+.jeton.lien:hover{border-color:var(--accent);color:var(--t)}
 
 /* Le bloc telephone vient en dernier : a specificite egale, c est la derniere
    declaration qui gagne. Ecrit plus haut, le plancher de 12 px etait ecrase par
@@ -121,18 +138,23 @@ export function calques({ e, ech }) {
 // La pastille d etat. Rien qui ne soit un fait public : nom, commune, annee de
 // creation, SIREN. L heure sur place est calculee par le script.
 // `page2` ajoute le lien vers la seconde page quand l archetype en produit une.
-export function pastille({ e, ech, page2 = null }) {
+export function pastille({ e, ech, page2 = null, appel = '' }) {
   const jeton = (contenu, point) =>
     `<span class="jeton">${point ? '<span class="point"></span>' : ''}${contenu}</span>`;
   const second = (x) => jeton(x).replace('class="jeton"', 'class="jeton second-plan"');
+  // Deux groupes : a gauche ce qui peut disparaitre faute de place, a droite
+  // ce qui reste toujours (deuxieme page, appel). Voir la feuille, O15.
   return `<div class="etat flottante scene-1">
+  <span class="gauche">
   ${jeton(`<b>${ech(e.nomLisible)}</b>`, true)}
   ${e.commune ? jeton(ech(e.commune)) : ''}
   ${e.anneeCreation ? second(`Établie en <b>${e.anneeCreation}</b>`) : ''}
   ${second(`<span class="heure">00:00</span> sur place`)}
+  ${second(`SIREN <b>${e.sirenLisible}</b>`)}
+  </span>
   <span class="droite">
     ${page2 ? `<a class="jeton lien" href="${page2.href}">${ech(page2.texte)}</a>` : ''}
-    ${second(`SIREN <b>${e.sirenLisible}</b>`)}
+    ${appel}
   </span>
 </div>`;
 }

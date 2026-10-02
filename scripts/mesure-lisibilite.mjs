@@ -15,7 +15,7 @@ import { chromium } from 'playwright';
 import { PNG } from 'pngjs';
 import { readFileSync } from 'node:fs';
 
-let b=null; for (const o of [{channel:'chrome'},{},{channel:'msedge'}]) { try { b = await chromium.launch(o); break; } catch {} }
+let b=null; for (const o of [...(process.env.SITO_CHROMIUM ? [{ executablePath: process.env.SITO_CHROMIUM }] : []), {channel:'chrome'},{},{channel:'msedge'}]) { try { b = await chromium.launch(o); break; } catch {} }
 const fichier = process.argv[2] || '/tmp/site.html';
 const large = process.argv[3] === 'tel' ? 390 : 1440;
 const p = await b.newPage({ viewport:{width:large,height:900}, deviceScaleFactor:1,

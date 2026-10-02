@@ -8,6 +8,7 @@
 
 import { existsSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+import { mesurer as mesurerContraste } from './contraste-rendu.mjs';
 
 const cible = process.argv[2];
 if (!cible) { console.error('usage: node scripts/verifier-mobile.mjs <chemin>'); process.exit(2); }
@@ -27,13 +28,18 @@ if (!chromium) { console.log('playwright absent, controle mobile non execute. np
 const FORMATS = [
   { nom: 'telephone courant', l: 390, h: 844 },
   { nom: 'petit telephone', l: 360, h: 740 },
+  { nom: 'grand telephone', l: 430, h: 932 },
 ];
 
 // Planchers, voir rules/web/composition.md, section « Le telephone ».
 const M = { titre: 40, titrePart: 0.14, titreLarge: 0.86, imagePart: 0.22, texte: 12, doigt: 44, poidsPremier: 420_000 };
 
 let navigateur = null;
-for (const opts of [{ channel: 'chrome' }, {}, { channel: 'msedge' }]) {
+// SITO_CHROMIUM : un navigateur deja installe, quand Playwright n a pas
+// telecharge le sien (espace de travail de Claude). Sur Windows, Chrome suffit.
+const essais = [{ channel: 'chrome' }, {}, { channel: 'msedge' }];
+if (process.env.SITO_CHROMIUM) essais.unshift({ executablePath: process.env.SITO_CHROMIUM });
+for (const opts of essais) {
   try { navigateur = await chromium.launch(opts); break; } catch { /* suivant */ }
 }
 if (!navigateur) { console.log('aucun navigateur utilisable, controle mobile non execute.'); process.exit(3); }
@@ -125,6 +131,12 @@ for (const f of FORMATS) {
     'sur telephone l image passe au-dessus du titre');
   dire('M4', d.plusPetit >= M.texte, 'texte sous le plancher de lisibilite',
     d.plusPetit + ' px, « ' + d.plusPetitTexte + ' »', 'rien sous ' + M.texte + ' px sur telephone');
+  // M12 : chaque texte se lit sur ce qui est reellement derriere lui.
+  const ct = await page.evaluate(mesurerContraste, 5);
+  dire('M12', ct.total === 0, 'texte illisible sur son fond',
+    ct.total + ' texte(s) sous le seuil : '
+      + ct.fautes.map(x => x.ou + ' « ' + x.texte + ' » ' + x.ratio + ':1').join(' ; '),
+    'chaque surface a ses couleurs de texte, voir generateur/charte.mjs, CONTEXTES');
   dire('M5', d.petitsControles === 0, 'cible tactile trop petite',
     d.petitsControles + ' controle(s) sous ' + M.doigt + ' px', 'un doigt fait 44 px');
   // M7 et M8 : un comparateur peut avoir la bonne taille et ne pas fonctionner
@@ -255,6 +267,49 @@ for (const f of FORMATS) {
   } catch (err) {
     dire('M7', false, 'le comparateur n a pas pu etre essaye au doigt',
       String(err.message).split('\n')[0], 'la page recharge ou casse pendant le glissement');
+  }
+
+  // M13 : la barre d appel tient en bas de l ecran du debut a la fin de la
+  // page, rien ne la recouvre, et elle ne cache pas la fin du contenu.
+  {
+    const positions = ['haut', 'milieu', 'bas'];
+    const fautes = [];
+    for (const ou of positions) {
+      await page.evaluate((ou) => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        window.scrollTo({ top: ou === 'haut' ? 0 : ou === 'milieu' ? max / 2 : max, behavior: 'instant' });
+      }, ou);
+      await page.waitForTimeout(250);
+      const r = await page.evaluate(() => {
+        const vh = window.innerHeight;
+        const b = document.querySelector('.barre-appel');
+        if (!b || getComputedStyle(b).display === 'none') return 'aucune barre d appel';
+        const rb = b.getBoundingClientRect();
+        if (Math.abs(rb.bottom - vh) > 2) return 'la barre n est pas collee en bas (' + Math.round(rb.bottom) + ' pour ' + vh + ')';
+        const a = b.querySelector('[data-appel]');
+        if (!a) return 'barre sans bouton ni emplacement';
+        const ra = a.getBoundingClientRect();
+        if (Math.min(ra.width, ra.height) < 44) return 'bouton d appel de ' + Math.round(ra.height) + ' px';
+        const href = a.getAttribute('href');
+        if (href !== null && !/^tel:\+33[1-9]\d{8}$/.test(href)) return 'lien d appel faux : ' + href;
+        if (!a.textContent.trim()) return 'bouton d appel muet';
+        const dessus = document.elementFromPoint(ra.left + ra.width / 2, ra.top + ra.height / 2);
+        if (!dessus || !b.contains(dessus)) return 'la barre est recouverte par ' + (dessus ? dessus.className || dessus.tagName : 'rien');
+        return '';
+      });
+      if (r) fautes.push(ou + ' : ' + r);
+    }
+    // en bas de page, la derniere ligne du pied de page passe au-dessus de la barre
+    const cache = await page.evaluate(() => {
+      const b = document.querySelector('.barre-appel');
+      const pied = document.querySelector('footer') || document.body.lastElementChild;
+      if (!b || !pied) return '';
+      const yb = b.getBoundingClientRect().top, yp = pied.getBoundingClientRect().bottom;
+      return yp > yb + 1 ? 'la fin de la page passe sous la barre (' + Math.round(yp - yb) + ' px)' : '';
+    });
+    if (cache) fautes.push(cache);
+    dire('M13', fautes.length === 0, 'la barre d appel ne tient pas', fautes.join(' ; '),
+      'rules/web/client.md : une barre d appel fixe en bas sur telephone');
   }
 
   if (f.l === 390) dire('M6', octets <= M.poidsPremier, 'premier ecran trop lourd sur telephone',

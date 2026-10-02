@@ -1,8 +1,9 @@
 # L'app de l'artisan
 
-**État au 2 octobre 2026 : rien n'est construit.** Ce dossier recevra le code de
-l'app. Ce fichier dit ce qu'elle doit faire, d'où vient chaque exigence, et ce
-qui reste à décider.
+**État au 2 octobre 2026 : la base existe, l'app non.** La base Supabase est
+créée et ses droits sont essayés (`supabase/README.md`). Ce dossier recevra le
+code de l'app. Ce fichier dit ce qu'elle doit faire, d'où vient chaque
+exigence, et ce qui reste à décider.
 
 ---
 
@@ -87,25 +88,31 @@ Le site reste un site statique : rapide, bien référencé, et vérifié avant
 chaque mise en ligne. C'est ce que le générateur sait déjà faire ; il manque
 le déclenchement depuis l'app et la mise en ligne.
 
-## La base, proposition
+## La base
 
-À confirmer par Fabrice avant création (voir `memoire/maintenant.md`).
+Créée le 2 octobre 2026, Supabase confirmé par Fabrice. Tables, droits,
+stockage et essais : `supabase/README.md`.
 
-| Table | Ce qu'elle garde |
-|---|---|
-| `entreprises` | SIREN, données Sirene, téléphone, courriel, horaires (ce que Sirene ne donne pas) |
-| `sites` | l'entreprise, le métier, l'archétype, **la charte figée**, la main de photos, la structure, l'adresse en ligne. Remplace `generateur/registre.json` et sert au contrôle d'unicité |
-| `photos` | le site, le rôle (hero, avant, après, geste…), le chantier, l'origine (`illustration` ou `entreprise`), le chemin dans le stockage |
-| `chantiers` | le site, la commune, la date, les paires avant / après, le texte de la page |
-| `avis` | les avis Google rattachés, et le chantier concerné s'il y en a un |
-| `statistiques` | visites, appels, demandes, par jour et par page |
+Ce que l'artisan règle lui-même dans l'app, décidé par Fabrice le 2 octobre :
 
-Les images de la banque (480 à venir, plus les 32 du ravalement) vont dans le
-**stockage** de la base, pas dans Git.
+- **son numéro de téléphone** (`profils.telephone`) : sans lui, le site montre
+  un emplacement, pas un faux bouton ;
+- **afficher ses prix ou non** (`profils.prix_affiches`), puis **ses tarifs**
+  (`tarifs`) : sans la case cochée, pas de section prix. Avec au moins un tarif
+  au m², la page ajoute un estimateur qui calcule sur ses seuls tarifs ;
+- **ses photos avant / après** (`chantiers`, `photos`) : les images de la banque
+  restent marquées « Exemple » jusqu'à ce qu'il mette les siennes.
+
+Les fourchettes de prix du marché qui restent dans le fichier métier peuvent
+servir à lui proposer des noms de postes ; elles ne montent plus sur son site.
+
+Les images de la banque (480 à venir, plus les 32 du ravalement) vont dans
+l'espace de stockage `banque`, pas dans Git.
 
 ## Ce qui est déjà prêt côté site
 
 Le générateur et ses cinq vérificateurs, dans ce dépôt. Les sections avis
-(`generateur/sections/avis.mjs`) et prix existent sur les quatre archétypes ;
+(`generateur/sections/avis.mjs`), tarifs (`generateur/sections/prix.mjs`) et
+appel (`generateur/sections/appel.mjs`) existent sur les quatre archétypes ;
 la section avis affiche aujourd'hui des emplacements vides et honnêtes, que
 l'app remplira avec les vrais avis Google.

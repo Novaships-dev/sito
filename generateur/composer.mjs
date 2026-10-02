@@ -11,11 +11,10 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, copyFi
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
-import { graine } from './graine.mjs';
 import { preleverPalette } from './palette.mjs';
 import { trouverCoupure } from './couture.mjs';
 import { normaliser } from './sirene.mjs';
-import { composerTextes, phrases as phrasesTextes } from './textes.mjs';
+import { phrases as phrasesTextes, intitules as intitulesTextes } from './textes.mjs';
 import { feuille } from './style.mjs';
 import { zoneMatiere } from './zone-matiere.mjs';
 import * as arrivee from './sections/arrivee.mjs';
@@ -23,9 +22,11 @@ import * as atmosphere from './sections/atmosphere.mjs';
 import * as prixSection from './sections/prix.mjs';
 import * as avisSection from './sections/avis.mjs';
 import * as comparateurVariante from './sections/comparateur.mjs';
-import { tirer as tirerCharte, jetons as jetonsCharte } from './charte.mjs';
-import { distribuer as distribuerPhotos, roles as rolesPhotos, manquants as manquantsPhotos } from './main-photos.mjs';
+import { jetons as jetonsCharte, oklchVersHex } from './charte.mjs';
+import { tirerSite, voisinsDe, departement } from './tirage.mjs';
+import { roles as rolesPhotos, manquants as manquantsPhotos } from './main-photos.mjs';
 import * as matiere from './archetypes/matiere.mjs';
+import * as appel from './sections/appel.mjs';
 
 const ici = dirname(fileURLToPath(import.meta.url));
 const arg = (nom, defaut) => {
@@ -34,77 +35,7 @@ const arg = (nom, defaut) => {
 };
 
 const VERSION = '1.1';
-const ARCHETYPES = ['matiere', 'panneau', 'planche', 'elevation'];
 const TAILLES = { grand: [600, 900, 1200, 1400], bandeau: [800, 1200, 1600] };
-
-// -------------------------------------------------------------- parametrage
-function parametrer(g, archetype) {
-  const p = {
-    archetype,
-    marge: +g.entre(4.0, 5.0).toFixed(2),
-    margeMax: g.entier(56, 76),
-    interligne: +g.entre(1.55, 1.68).toFixed(2),
-    interlettre: +g.entre(0.16, 0.24).toFixed(2),
-    titreMin: g.entier(32, 38),
-    titreVw: +g.entre(5.6, 7.2).toFixed(2),
-    titreMax: 0,
-    titreInter: +g.entre(0.92, 0.99).toFixed(2),
-    panneau: g.entier(36, 45),
-    panneauADroite: g.suivant() < 0.5,
-    cadrage: g.entier(45, 70),
-    traitHauteur: g.entier(14, 30),
-    marqueurCote: g.suivant() < 0.5 ? 'right' : 'left',
-    respiration: +g.entre(6.2, 8.0).toFixed(2),
-    respirationMax: g.entier(74, 96),
-    respirationResserre: +(g.entre(4.4, 5.6)).toFixed(2),
-    colonne: g.entier(30, 38),
-    largeurDecale: g.entier(52, 68),
-    gestesSurAccent: g.suivant() < 0.34,
-    colonneTerme: g.entier(28, 38),
-    chantierInverse: g.suivant() < 0.5,
-    hauteurOuverture: g.entier(86, 94),
-    ordre: g.suivant() < 0.5 ? ['coupure', 'comparateurs'] : ['comparateurs', 'coupure'],
-    comparateurLarge: g.suivant() < 0.5 ? 0 : 1,
-    nbGestes: g.entier(4, 6),
-    ratioCoupure: '1448/752',
-    ratioTel: 4 / 3,
-    ratioMatiere: g.suivant() < 0.5 ? '2/1' : '21/9',
-    motVw: g.entier(14, 17),
-    motVwTel: g.entier(24, 28),
-    motZoom: g.entier(134, 152),
-    motMax: g.entier(150, 190),
-    ratioOuverture: g.suivant() < 0.5 ? '16/9' : '3/2',
-    ratioOuvertureTel: g.suivant() < 0.5 ? '4/3' : '1/1',
-    // atmosphere : chaque entreprise recoit sa lumiere, son angle de rai,
-    // sa colonne et son mot geant. Deux SIREN n ont pas la meme respiration.
-    souffle: g.entier(14, 21),
-    angleRai: g.entier(96, 112),
-    marqueVw: +g.entre(11, 13.5).toFixed(1),
-    colonneAtmo: +g.entre(0.82, 1.12).toFixed(2),
-    ratioAtmo: g.suivant() < 0.5 ? '4/5' : '3/4',
-    titreAtmo: g.entier(32, 38),
-    titreAtmoTel: g.entier(40, 46),
-  };
-  if (archetype === 'planche') { p.panneau = g.entier(50, 58); p.hauteurOuverture = g.entier(78, 88); }
-  if (archetype === 'elevation') { p.panneau = 100; p.hauteurOuverture = g.entier(52, 64); }
-  // Le titre se calibre sur la largeur reellement disponible dans le panneau,
-  // sinon un grand corps dans une colonne etroite hache la phrase.
-  const facteur = archetype === 'elevation' ? 0.085 : 0.185;
-  const alea = g.entre(0.92, 1.08);
-  const calcul = (largeur) => Math.round(Math.min(132, (1440 * (largeur / 100) - 2 * p.margeMax) * facteur * alea));
-  // C1 de composition.md : le rapport d echelle doit rester au moins de 8, et la
-  // plus petite taille declaree est de 10 px. Un panneau trop etroit ne peut pas
-  // porter un titre assez grand : on elargit le panneau plutot que de descendre
-  // sous le plancher.
-  const PLANCHER = 10 * 8;
-  while (calcul(p.panneau) < PLANCHER && p.panneau < 54) p.panneau += 1;
-  p.titreMax = Math.max(PLANCHER, calcul(p.panneau));
-  p.titreVw = +(p.titreMax / 14.4 * g.entre(0.9, 1.05)).toFixed(2);
-  // M1 : sur un telephone de 390 px, la formule en vw retombe sous 30 px et le
-  // titre disparait. Le plancher mobile est fixe a part, entre 42 et 52 px.
-  p.titreMobile = g.entier(42, 52);
-  return p;
-}
 
 // -------------------------------------------------------------- images
 async function encoder(source, sortie, role, tailles) {
@@ -253,11 +184,13 @@ function verifiable(t, e, illustration) {
 </section>`;
 }
 
-function contact(t) {
+function contact(t, e, tel) {
   return `<section class="contact" aria-labelledby="t-contact">
   <div class="tete"><p class="enseigne">Prendre contact</p><h2 id="t-contact" class="grand">${echapper(t.rub.contact)}</h2></div>
-  <div class="creux"><p class="enseigne">Emplacement à remplir</p>
-    <p>Téléphone, adresse électronique et horaires de l’entreprise viennent ici. Ils ne figurent pas dans les sources publiques, et cette page n’en invente aucun.</p></div>
+  <div class="creux"><p class="enseigne">${tel ? 'Téléphone' : 'Emplacement à remplir'}</p>
+    ${appel.enGrand({ tel })}
+    ${tel ? '' : '<p>Le numéro de l’entreprise s’affiche ici et dans la barre d’appel dès qu’elle l’a donné. Il ne figure dans aucune source publique, et cette page n’en invente aucun.</p>'}
+    ${e.adresse ? `<p class="note">${echapper(e.adresse)}</p>` : ''}</div>
 </section>`;
 }
 
@@ -277,34 +210,38 @@ async function fabriquer(opts) {
   const base = JSON.parse(readFileSync(join(ici, 'metiers', opts.metier + '.json'), 'utf8'));
   const brut = JSON.parse(readFileSync(opts.donnees, 'utf8'));
   const e = normaliser(brut);
-  const g = graine(e.siren + '|' + opts.metier);
+  e.departement = departement(e.codePostal);
+  // Le numero vient de l artisan (champ « telephone », rempli par l app). Un
+  // numero donne mais faux arrete tout : voir sections/appel.mjs.
+  let tel;
+  try { tel = appel.telephone(brut.telephone); }
+  catch (err) { console.error('Refus : ' + err.message); process.exit(2); }
+  // Les tarifs : affiches seulement si l artisan a coche la case et les a
+  // saisis (champ « prix », rempli par l app). Voir sections/prix.mjs.
+  let tf;
+  try { tf = prixSection.tarifs(brut.prix); }
+  catch (err) { console.error('Refus : ' + err.message); process.exit(2); }
 
-  // registre : eviter le doublon de composition dans la meme ville et le meme metier
-  const cheminRegistre = join(ici, 'registre.json');
+  // Le registre : les sites deja fabriques. Leurs voisins (meme metier, meme
+  // departement, la commune comptant cinq fois plus) ne doivent pas leur
+  // ressembler. --registre : un banc d essai ecrit dans son propre registre.
+  const cheminRegistre = opts.registre || join(ici, 'registre.json');
   const registre = existsSync(cheminRegistre) ? JSON.parse(readFileSync(cheminRegistre, 'utf8')) : { sites: [] };
-  const voisins = registre.sites.filter(s => s.metier === opts.metier && s.commune === e.commune && s.siren !== e.siren);
-  const pris = new Set(voisins.map(s => s.archetype));
-  const libres = ARCHETYPES.filter(a => !pris.has(a));
-  const archetype = (libres.length ? g.choisir(libres) : g.choisir(ARCHETYPES));
-  const p = parametrer(g, archetype);
-  const t = composerTextes(base, g, p, voisins.flatMap(s => s.phrases || [s.titre]).filter(Boolean));
+  const voisins = voisinsDe(registre.sites, { siren: e.siren, metier: opts.metier,
+    commune: e.commune, departement: e.departement });
 
-  // La charte : famille de couleurs, sol, polices, geometrie, mot geant.
-  // (la page 2 n est produite que par l archetype matiere ; ailleurs on la
-  // retire de la charte plus bas, pour ne pas compter une difference fictive)
-  // La rotation des sept familles est la regle de palettes.md : jamais la
-  // famille d un voisin. Sans elle, trois ravaleurs de Marseille sortaient
-  // avec le meme accent, le meme fond et les memes polices, et seule la
-  // grille changeait. Voir generateur/charte.mjs.
-  const ch = tirerCharte(g, {
-    familles: voisins.map(s => s.famille).filter(Boolean),
-    polices: voisins.map(s => s.polices).filter(Boolean),
-    mots: voisins.map(s => s.mot).filter(Boolean),
-    structures: voisins.map(s => s.structureDetail).filter(Boolean),
-    comparateurs: voisins.map(s => s.comparateur).filter(Boolean),
-  });
+  // Les photos se lisent avant le tirage : la main en depend.
+  const sources = {};
+  for (const f of readdirSync(opts.images)) {
+    const m = f.match(/^([a-z0-9-]+)\.(png|jpe?g|webp|avif)$/i);
+    if (m) sources[m[1]] = join(opts.images, f);
+  }
+  const trous = manquantsPhotos(sources);
+  if (trous.length) { console.error('Photos manquantes : ' + trous.join(', ')); process.exit(2); }
 
-  if (archetype !== 'matiere') ch.structure.page2 = false;
+  // Tout ce qui decide de l apparence du site : voir generateur/tirage.mjs.
+  const { archetype, p, t, ap, ch, main, ouverture: roleOuverture, fiche, essai } =
+    tirerSite({ siren: e.siren, metier: opts.metier, base, sources, voisins, e, prix: !!tf });
   // Un dossier de sortie reutilise garde l ancienne deuxieme page si celle-ci
   // n est plus produite : le lien disparait mais la page reste en ligne.
   if (existsSync(join(opts.sortie, 'le-travail.html')) && !ch.structure.page2)
@@ -314,11 +251,6 @@ async function fabriquer(opts) {
   for (const f of ch.polices.fichiers)
     copyFileSync(join(ici, 'polices', f), join(opts.sortie, 'polices', f));
 
-  const sources = {};
-  for (const f of readdirSync(opts.images)) {
-    const m = f.match(/^([a-z0-9-]+)\.(png|jpe?g|webp|avif)$/i);
-    if (m) sources[m[1]] = join(opts.images, f);
-  }
   // Un dossier de photos qui ne sont pas celles de l entreprise porte un
   // fichier marqueur. Il suit la page jusqu au bout : mention visible, balise
   // dans l en-tete, et refus de fabriquer une page de publication.
@@ -330,9 +262,6 @@ async function fabriquer(opts) {
   }
   // La main de photos : chaque entreprise recoit un jeu different, tire de la
   // graine et evitant celui des voisins. Voir generateur/main-photos.mjs.
-  const trous = manquantsPhotos(sources);
-  if (trous.length) { console.error('Photos manquantes : ' + trous.join(', ')); process.exit(2); }
-  const main = distribuerPhotos(g, sources, voisins.map(s => s.main).filter(Boolean));
   const table = rolesPhotos(main);
 
   const dossierImages = join(opts.sortie, 'images');
@@ -349,14 +278,17 @@ async function fabriquer(opts) {
   // la palette vient de la famille tiree par la charte, de sorte que deux
   // artisans qui partagent les memes photos de demonstration ne partagent pas
   // pour autant le meme site.
-  const pal = { ...prelevee, ...jetonsCharte(ch, prelevee.accent) };
+  // Les contrastes se calculent sur la couleur reellement affichee : l archetype
+  // matiere montre l accent en oklch adouci, les trois autres tel que preleve.
+  const accentAffiche = archetype === 'matiere' && prelevee.accentOklch
+    ? oklchVersHex(prelevee.accentOklch) : prelevee.accent;
+  const pal = { ...prelevee, ...jetonsCharte(ch, accentAffiche) };
   const cp = await trouverCoupure(sources[table.hero]);
   const fraction = cp.fiable ? cp.fraction : 0.5;
 
   const largeVisuel = p.panneauADroite ? `${100 - p.panneau}vw` : `${100 - p.panneau}vw`;
   const im = {
-    ouverture: (() => { const r = g.suivant() < 0.62 ? 'geste' : 'detail';
-      return jeu(r, enc[r], `(max-width:900px) 100vw, ${largeVisuel}`, 1400); })(),
+    ouverture: jeu(roleOuverture, enc[roleOuverture], `(max-width:900px) 100vw, ${largeVisuel}`, 1400),
     hero: jeu('hero', enc.hero, '100vw', 1200),
     avant01: jeu('avant-01', enc['avant-01'], '100vw', 1200),
     apres01: jeu('apres-01', enc['apres-01'], '100vw', 1200),
@@ -378,7 +310,7 @@ async function fabriquer(opts) {
 
   if (archetype === 'matiere') {
     im.avantOuverture = jeu('avant-01', enc['avant-01'], '100vw', 1400);
-    corps = matiere.corps({ e, t, im, img, p, base, fraction, fractionTel, illustration, ch,
+    corps = matiere.corps({ e, t, im, img, p, base, fraction, fractionTel, illustration, ch, tel, ap, tf,
       mot: motGeant(ch, base, e) });
     style = matiere.feuille(p, pal, ch);
   } else {
@@ -398,19 +330,20 @@ async function fabriquer(opts) {
       comparateurs: comparateurs(p, t, im),
       travail: gestes(t),
       chantier: chantier(t, im),
-      prix: prixSection.bloc({ base, ech: echapper, estimateur: ch.structure.estimateur, titre: t.rub.prix }),
+      prix: prixSection.bloc({ tarifs: tf, ech: echapper, titre: t.rub.prix, estimation: base.estimateur }),
       avis: avisSection.bloc(),
       verifiable: verifiable(t, e, illustration),
-      contact: contact(t),
+      contact: contact(t, e, tel),
     };
     corps = [
       arrivee.calques({ e, ech: echapper }),
       '<div class="premier-ecran">',
-      arrivee.pastille({ e, ech: echapper }),
+      arrivee.pastille({ e, ech: echapper, appel: appel.lien({ tel, ap, seulNumero: true }) }),
       atmosphere.bloc({ e, t, base, im, ech: echapper, comparateur, mot, ans, alt, ch }),
       '</div>',
       ...ch.structure.ordre.map(k => bloc[k]).filter(Boolean),
       bloc.comparateurs,
+      appel.barre({ e, tel, ap }),
     ].join('\n\n');
     style = feuille(p, pal, archetype, ch);
   }
@@ -662,7 +595,7 @@ ${corps}
     var mot = pt.querySelector('.mot');
     function survol(e){
       var el = e.target && e.target.closest
-        ? e.target.closest('.cadre, .tel, .vers, .opt, .teinte, .second, a[href], button, input')
+        ? e.target.closest('.cadre, .appel, .vers, .opt, .teinte, .second, a[href], button, input')
         : null;
       if (!el) { pt.classList.remove('sur', 'dit'); if (mot) mot.textContent = ''; return; }
       pt.classList.add('sur');
@@ -672,7 +605,7 @@ ${corps}
     }
 
     // aimant sur le bouton d appel
-    document.querySelectorAll('.tel').forEach(function(b){
+    document.querySelectorAll('a.appel').forEach(function(b){
       b.addEventListener('pointermove', function(e){
         var r = b.getBoundingClientRect();
         var dx = (e.clientX - (r.left + r.width / 2)) * 0.18;
@@ -810,90 +743,69 @@ ${corps}
   }
 
   // ------------------------------------------------------------ estimateur
+  // Les chiffres sont ceux de l artisan, portes par les boutons : un tarif a
+  // la surface se multiplie, un forfait s ajoute. Rien d autre n entre dans le
+  // calcul. Voir generateur/sections/prix.mjs.
   var est = document.getElementById('estim');
   if (est) {
-    var lu = function(n){ return parseFloat(est.getAttribute('data-' + n)); };
-    // Les reglages se decouvrent dans le balisage : l estimateur d un plombier
-    // n a pas les memes que celui d un ravaleur, et le script ne les connait
-    // pas d avance. Voir generateur/sections/prix.mjs.
-    var champs = { surface: parseFloat(est.getAttribute('data-defaut') || '120') };
-    var groupes = est.querySelectorAll('[data-groupe]');
-    for (var q0 = 0; q0 < groupes.length; q0++) {
-      var gr = groupes[q0].getAttribute('data-groupe');
-      if (champs[gr] === undefined) champs[gr] = 1;
-      if (groupes[q0].classList.contains('actif')) champs[gr] = parseFloat(groupes[q0].getAttribute('data-valeur'));
-    }
+    var surface = parseFloat(est.getAttribute('data-defaut') || '100');
     var sorties = {};
     var liste = est.querySelectorAll('[data-sortie]');
     for (var q = 0; q < liste.length; q++) sorties[liste[q].getAttribute('data-sortie')] = liste[q];
+    var aHaut = est.querySelector('.a-haut');
     var rempli = est.querySelector('.rempli');
+    var opts = est.querySelectorAll('.opt');
     var anim = {};
-
-    function espace(n){
+    var espace = function(n){
       var s = String(Math.round(n)), out = '';
       for (var i = 0; i < s.length; i++) {
-        if (i > 0 && (s.length - i) % 3 === 0) out += '\u202F';
+        if (i > 0 && (s.length - i) % 3 === 0) out += ' ';
         out += s[i];
       }
       return out;
-    }
-
-    function versChiffre(cle, valeur){
+    };
+    var doux = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var versChiffre = function(cle, valeur){
       var el = sorties[cle]; if (!el) return;
       var depart = anim[cle] === undefined ? valeur : anim[cle];
-      var t0 = performance.now(), duree = 420;
-      var doux = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (doux) { anim[cle] = valeur; el.textContent = espace(valeur); return; }
-      function pas(t){
-        var a = Math.min(1, (t - t0) / duree);
+      var t0 = performance.now();
+      (function pas(t){
+        var a = Math.min(1, ((t || performance.now()) - t0) / 420);
         var e = 1 - Math.pow(1 - a, 3);
-        var v = depart + (valeur - depart) * e;
-        el.textContent = espace(v);
+        el.textContent = espace(depart + (valeur - depart) * e);
         if (a < 1) requestAnimationFrame(pas); else anim[cle] = valeur;
+      })();
+    };
+    var calculer = function(){
+      var bas = 0, haut = 0;
+      for (var k = 0; k < opts.length; k++) {
+        var o = opts[k];
+        if (!o.classList.contains('actif')) continue;
+        var f = o.getAttribute('data-type') === 'surface' ? surface : 1;
+        bas += parseFloat(o.getAttribute('data-bas')) * f;
+        haut += parseFloat(o.getAttribute('data-haut')) * f;
       }
-      requestAnimationFrame(pas);
-    }
-
-    function calculer(){
-      var s = champs.surface;
-      // Les deux sources donnent 5 000 a 10 000 EUR pour 100 m2 d enduit complet,
-      // echafaudage compris, soit 50 a 100 EUR le m2. On part de la, et on module.
-      var mult = 1;
-      for (var k in champs) if (k !== 'surface') mult *= champs[k];
-      var bas = lu('total-bas') * mult;
-      var haut = lu('total-haut') * mult;
-      var tb = Math.round(s * bas / 100) * 100;
-      var th = Math.round(s * haut / 100) * 100;
-      versChiffre('bas', tb);
-      versChiffre('haut', th);
-      if (sorties.surface) sorties.surface.textContent = s;
-      if (rempli) {
-        var part = Math.max(0.08, Math.min(1, th / 40000));
-        rempli.style.transform = 'scaleX(' + part.toFixed(3) + ')';
-      }
-    }
-
+      bas = Math.round(bas / 10) * 10; haut = Math.round(haut / 10) * 10;
+      versChiffre('bas', bas);
+      versChiffre('haut', haut);
+      if (aHaut) { if (haut === bas) aHaut.setAttribute('hidden', ''); else aHaut.removeAttribute('hidden'); }
+      if (sorties.surface) sorties.surface.textContent = surface;
+      if (rempli) rempli.style.transform = 'scaleX(' + Math.max(0.08, Math.min(1, haut / 40000)).toFixed(3) + ')';
+    };
     var curseur = est.querySelector('[data-champ=surface]');
-    if (curseur) curseur.addEventListener('input', function(){
-      champs.surface = parseFloat(curseur.value); calculer();
-    });
-    var opts = est.querySelectorAll('.opt');
-    for (var o = 0; o < opts.length; o++) (function(b){
+    if (curseur) curseur.addEventListener('input', function(){ surface = parseFloat(curseur.value); calculer(); });
+    for (var o2 = 0; o2 < opts.length; o2++) (function(b){
       b.addEventListener('click', function(){
-        var g = b.getAttribute('data-groupe');
-        var freres = est.querySelectorAll('.opt[data-groupe="' + g + '"]');
-        for (var k = 0; k < freres.length; k++) {
-          freres[k].classList.remove('actif');
-          freres[k].setAttribute('aria-pressed', 'false');
-        }
-        b.classList.add('actif'); b.setAttribute('aria-pressed', 'true');
-        champs[g] = parseFloat(b.getAttribute('data-valeur'));
+        var actif = !b.classList.contains('actif');
+        b.classList.toggle('actif', actif);
+        b.setAttribute('aria-pressed', actif ? 'true' : 'false');
         calculer();
       });
-    })(opts[o]);
-
+    })(opts[o2]);
     calculer();
   }
+
 })();
 </script>
 </body>
@@ -902,7 +814,7 @@ ${corps}
   writeFileSync(join(opts.sortie, 'index.html'), comparateurVariante.appliquer(html, ch.comparateur), 'utf8');
 
   if (archetype === 'matiere' && ch.structure.page2 && matiere.corpsTravail) {
-    const corps2 = matiere.corpsTravail({ e, t, im, img, p, base, illustration,
+    const corps2 = matiere.corpsTravail({ e, t, im, img, p, base, illustration, tel, ap,
       mot: motGeant(ch, base, e) });
     const html2 = html
       .replace(/<title>[^<]*<\/title>/, `<title>${echapper(e.nomLisible)}, le travail en détail</title>`)
@@ -915,20 +827,16 @@ ${corps}
     titre: t.titre,
     charte: { famille: ch.famille.cle, familleNom: ch.famille.nom, sol: ch.sol,
       polices: ch.polices.cle, geometrie: ch.geo.cle, mot: ch.mot,
-      structure: ch.structure, teintes: ch.teintes, comparateur: ch.comparateur },
-    main, photos: table, phrases: phrasesTextes(t),
+      structure: ch.structure, teintes: ch.teintes, comparateur: ch.comparateur, appel: ap },
+    telephone: tel ? tel.lisible : null,
+    main, photos: table, phrases: phrasesTextes(t, { archetype, prix: ch.structure.prix }),
+    intitules: intitulesTextes(t, { archetype, prix: ch.structure.prix }),
     coupure: { fraction, ecart: +cp.ecart.toFixed(1), fiable: cp.fiable },
     parametres: p, produitLe: new Date().toISOString().slice(0, 10),
   }, null, 2), 'utf8');
 
   registre.sites = registre.sites.filter(s => s.siren !== e.siren);
-  registre.sites.push({ siren: e.siren, nom: e.denomination, commune: e.commune, metier: opts.metier,
-    archetype, accent: pal.accent, titre: t.titre, main,
-    photos: Object.values(rolesPhotos(main)).join(','),
-    structure: ch.structure.ordre.join('>'), structureDetail: ch.structure, comparateur: ch.comparateur,
-    phrases: phrasesTextes(t),
-    famille: ch.famille.cle, sol: ch.sol, polices: ch.polices.cle, geometrie: ch.geo.cle, mot: ch.mot,
-    produitLe: new Date().toISOString().slice(0, 10) });
+  registre.sites.push({ ...fiche, accent: pal.accent, produitLe: new Date().toISOString().slice(0, 10) });
   writeFileSync(cheminRegistre, JSON.stringify(registre, null, 2), 'utf8');
 
   console.log(`${e.denomination} (${e.siren}) -> ${opts.sortie}`);
@@ -936,6 +844,7 @@ ${corps}
   console.log(`  accent ${pal.accent} preleve dans ${pal.accentSource}, coupure a ${(fraction * 100).toFixed(1)}%`);
   console.log(`  ordre ${p.ordre.join(' puis ')}, ${p.nbGestes} gestes, gestes sur accent : ${p.gestesSurAccent ? 'oui' : 'non'}`);
   console.log(`  photos ${Object.entries(table).map(([k, v]) => v).join(', ')}`);
+  if (essai) console.log(`  tirage ${essai + 1} : les precedents ressemblaient trop a un voisin`);
   console.log(`  charte ${ch.famille.cle} (${ch.famille.nom}), sol ${ch.sol}, polices ${ch.polices.cle}, geometrie ${ch.geo.cle}, mot geant ${ch.mot}`);
 }
 
@@ -945,4 +854,5 @@ fabriquer({
   images: arg('images'),
   sortie: arg('sortie'),
   donnees: arg('donnees'),
+  registre: arg('registre'),
 });

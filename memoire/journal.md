@@ -182,3 +182,60 @@ des conversations et des fichiers.
 Trouvé en relisant les règles : les archétypes `panneau`, `planche` et
 `elevation` n'ont **aucune barre d'appel**, ce que `rules/web/client.md`
 impose. Aucun vérificateur ne le voyait. Noté en tête de `maintenant.md`.
+
+## 2 octobre 2026, soir
+
+Le dépôt est sur GitHub (`Novaships-dev/sito`, commit `dfe10cc`, poussé par
+`CREER_SITO.bat`). Fabrice a répondu aux questions : téléphone donné par
+l'artisan, prix cochés par l'artisan avec ses tarifs, mention « Exemple »
+jusqu'à ses photos, unicité dans la commune ET le département, Supabase
+« solide ». Ordre laissé à Claude : appel, prix, unicité, base.
+
+- **Couleurs.** En lisant le code avant d'écrire la barre d'appel, trouvé une
+  encre transparente dans la famille « luxe froid ». Mesuré dans le navigateur :
+  102 textes illisibles sur les trois sites de démonstration. Système de
+  couleurs refait (couleurs de texte calculées par surface), contrôle de
+  contraste rendu ajouté (O13, M12). Zéro texte sous le seuil.
+- **Appel.** Module commun aux quatre archétypes, numéro validé, emplacement
+  « Votre numéro ici » sans numéro, jamais de lien vide. T1, T2, O14, M13.
+- **Prix.** Plus de prix du marché ni d'estimateur sur les pages. Section
+  « Les tarifs de l'entreprise » seulement si l'artisan coche et saisit ses
+  tarifs. `rules/web/client.md` mise à jour.
+- **Unicité.** Voisins = même métier, même département, la commune comptant
+  cinq fois plus. Tirage sorti dans `generateur/tirage.mjs`, choix « la moins
+  prise » au lieu de « au hasard quand tout est pris ». Capacité mesurée :
+  trois sites. Les réserves sont à agrandir ; voir `maintenant.md`.
+- **Base.** Projet Supabase `sito` (Paris, gratuit), 12 tables, sécurité par
+  ligne partout, deux espaces d'images, 16 métiers. Droits essayés avec deux
+  artisans fictifs : onze essais conformes. Voir `supabase/README.md`.
+- Troisième taille de téléphone (430 × 932) ajoutée au vérificateur mobile.
+- Vu sur capture, pas par un contrôle : la pastille du haut, agrandie par le
+  bouton d'appel, touchait le nom de l'entreprise sur deux compositions.
+  Corrigé, et O15 ajouté pour que ça ne repose plus sur l'œil.
+
+## 2 octobre 2026, nuit
+
+Fabrice : 100 sites par métier et par département, « chaque métier a des
+images différentes », textes agrandis « si tu recommandes », estimateur à
+refaire sur ses tarifs.
+
+- **Estimateur** refait sur les tarifs de l'artisan. Calcul vérifié dans un
+  navigateur, dans quatre cas, au centime.
+- **Textes du ravalement** : 110 titres écrits un par un ; chapô, état avant
+  et après en énumérations recomposées ; gestes en « comment » plus
+  « pourquoi », cent textes par geste ; légendes, invitations, précisions
+  combinées ; quinze intitulés par rubrique. Les 532 morceaux passent le
+  vérificateur de textes.
+- **Comparateur** : 120 formes. **Retirage** quand un site ressemble trop à
+  un voisin. **Couleurs, polices, géométrie et mot géant** tirés ensemble.
+- **Images** : plan porté à 54 par métier (864 au total), 22 prompts de plus
+  pour le ravalement.
+- **Mesure** à 100 sites, avec les images prévues : 1 paire trop proche sur
+  4 950, aucun titre, texte long ni comparateur identique, même façade sur 9 %
+  des paires. Reste : les intitulés de section, question posée à Fabrice.
+- Les règles d'unicité passent de `scripts/` à `generateur/unicite.mjs` : le
+  tirage s'en sert aussi.
+- Fabrice : les intitulés de section peuvent se répéter. U3 ne les compte
+  plus. Mesure à 100 sites : aucun défaut, dans le département comme dans une
+  seule commune. Vérifié que U3 attrape toujours une vraie phrase commune.
+

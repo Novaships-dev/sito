@@ -20,9 +20,10 @@ chantiers : le site s'enrichit tout seul.
 | `generateur/` | le moteur qui fabrique les sites. Voir `generateur/LISEZMOI.md` |
 | `scripts/` | les cinq vérificateurs, et les outils autour |
 | `rules/` | les règles que chaque site doit tenir : composition, mouvement, photos, client, design interdit… |
-| `banque/` | la liste des 512 images à produire (32 par métier) et les prompts ChatGPT |
+| `banque/` | la liste des 864 images à produire (54 par métier) et les prompts ChatGPT |
 | `donnees/` | les données Sirene des entreprises de démonstration |
 | `app/` | l'app de l'artisan : ce qu'elle doit faire. Pas encore de code |
+| `supabase/` | la base : migrations, essai des droits. Voir `supabase/README.md` |
 | `skills/` | les procédures de l'agent : rédaction, audit de design, prospection Sirene, veille |
 | `docs/` | le cahier des charges (non validé), l'étude Framer, l'historique |
 | `lanceurs/` | les fichiers à double-cliquer sous Windows |
@@ -57,9 +58,17 @@ Un site n'est fini que si les cinq sont à zéro.
 | `verifier-site.mjs` | le plancher de la page : contraste, polices, poids, textes, photos marquées… |
 | `verifier-ordinateur.mjs` | la page à la souris et au clavier, dans un vrai navigateur |
 | `verifier-mobile.mjs` | la page au doigt, sur trois tailles de téléphone |
-| `verifier-unicite.mjs` | deux sites voisins ne se ressemblent pas |
+| `verifier-unicite.mjs` | deux sites voisins, même commune ou même département, ne se ressemblent pas |
 
 Chaque contrôle a été essayé au moins une fois sur une page cassée exprès.
+
+`capacite-unicite.mjs` n'est pas un vérificateur mais une mesure : combien de
+sites d'un même métier le générateur sait rendre différents dans un
+département. Résultat du 2 octobre 2026 : trois. Voir `memoire/maintenant.md`.
+
+Sur une machine où Playwright n'a pas téléchargé son navigateur, la variable
+`SITO_CHROMIUM` donne le chemin d'un Chromium déjà installé. Sous Windows,
+Chrome suffit et rien n'est à régler.
 
 ## Le dépôt `atelier`
 

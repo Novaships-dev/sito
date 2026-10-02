@@ -1,4 +1,4 @@
-# État au 2 octobre 2026
+# État au 2 octobre 2026, fin de journée
 
 À lire en premier, à chaque séance. Réécrit à la fin de chaque séance.
 
@@ -9,82 +9,106 @@
 **Le générateur de sites.** À partir d'un SIREN, d'un métier et d'un dossier
 de photos, il fabrique un site complet en environ une minute et demie.
 
-- **Quatre archétypes**, tous au même niveau depuis le 23 septembre :
-  `matiere`, `panneau`, `planche`, `elevation`. Chacun a l'écran d'ambiance,
-  le nuancier, les prix, les avis, le comparateur avant/après.
-- **Unicité tirée du SIREN** et des voisins (même métier, même commune) :
-  famille de couleurs parmi sept, sol clair ou nuit, polices parmi quatre
-  appariements, géométrie, mot géant, main de photos, présence et ordre des
-  sections, teintes du nuancier, forme du comparateur, phrases. Voir
-  `generateur/charte.mjs` et `generateur/main-photos.mjs`.
+- **Quatre archétypes**, au même niveau : `matiere`, `panneau`, `planche`,
+  `elevation`.
+- **Appeler l'entreprise** sur les quatre : barre fixe en bas sur téléphone,
+  bouton dans la pastille du haut sur ordinateur, numéro en grand dans la
+  section contact. Le numéro vient de l'artisan (champ `telephone`) ; sans lui,
+  un emplacement « Votre numéro ici », jamais un lien vide.
+- **Prix** : seulement si l'artisan coche la case et saisit ses tarifs (champ
+  `prix`). Les sites de prospection n'ont pas de section prix.
+- **Estimateur** : revenu sur décision de Fabrice, calculé avec les seuls
+  tarifs de l'artisan. Le visiteur règle sa surface et coche ses postes ; un
+  tarif au m² se multiplie, un forfait s'ajoute, un tarif au mètre ou à l'unité
+  reste hors calcul et la page le dit. Calcul vérifié dans un navigateur.
+- **Couleurs** : chaque surface a ses couleurs de texte, calculées pour tenir
+  4,6:1 sur les sept familles et les deux sols.
+- **Unicité** contre les voisins : même métier, même département, la commune
+  comptant cinq fois plus. Voir « Où en est l'unicité ».
 - **Cinq vérificateurs**, tous à zéro sur les trois sites de démonstration :
 
 | Script | Ce qu'il vérifie | Règles |
 |---|---|---|
 | `scripts/verifier-depot.mjs` | le dépôt est complet, rien ne manque | — |
-| `scripts/verifier-site.mjs` | le plancher de la page, sans navigateur | 22 (A, C, G, P, V) |
-| `scripts/verifier-ordinateur.mjs` | souris et clavier réels | O1 à O12 |
-| `scripts/verifier-mobile.mjs` | doigt réel, trois téléphones | M0 à M11 |
-| `scripts/verifier-unicite.mjs` | la distance entre deux sites voisins | U1 à U4 |
+| `scripts/verifier-site.mjs` | le plancher de la page, sans navigateur | 24, dont T1 et T2 (appel) |
+| `scripts/verifier-ordinateur.mjs` | souris et clavier réels | O1 à O15, dont O13 (contraste rendu), O14 (appel au premier écran), O15 (la pastille du haut ne touche aucun texte) |
+| `scripts/verifier-mobile.mjs` | doigt réel, trois téléphones (360, 390, 430 px) | M0 à M13, dont M12 (contraste rendu) et M13 (barre d'appel) |
+| `scripts/verifier-unicite.mjs` | la distance entre deux sites voisins, commune et département | U1 à U4 |
 
 **Les trois sites de démonstration** (ravalement, Marseille) :
 Sud Ravalement Façades `480423623`, Evora Ravalement `881767842`, Provence
-Ravalement Peinture `849891528`. Les données Sirene sont dans
-`donnees/entreprises-demo/`.
+Ravalement Peinture `849891528`. Données Sirene dans `donnees/entreprises-demo/`.
 
-**Les images du ravalement** : les 32 générées par Fabrice le 15 septembre,
-renommées et classées. La correspondance fichier ChatGPT → rôle est dans
-`banque/ravalement/provenance.md`.
+**La base Supabase** : projet `sito`, Paris, offre gratuite. Douze tables,
+sécurité par ligne partout, deux espaces d'images, seize métiers. Droits
+essayés avec deux artisans fictifs : conformes. Voir `supabase/README.md`.
+
+**Les images du ravalement** : les 32 générées par Fabrice le 15 septembre.
+Correspondance dans `banque/ravalement/provenance.md`.
+
+## Où en est l'unicité
+
+Objectif fixé par Fabrice le 2 octobre : **100 sites d'un même métier
+différents dans un même département**.
+
+Mesuré avec `node scripts/capacite-unicite.mjs --photos plan` (projection avec
+les 54 images prévues par métier), à 100 sites :
+
+| | Le 2 octobre au matin | Le 2 octobre, fin de journée |
+|---|---|---|
+| sites tous différents, sans aucun défaut | 3 | **100** |
+| paires de sites trop proches (U1) | 40 sur 4 950 | 0 |
+| même titre (U2) | 285 | 0 |
+| au moins une phrase commune (U3) | 4 488 paires | 0 |
+| même comparateur (U4) | 419 | 0 |
+| même façade coupée | 49 % des paires | 9 % (avec les nouvelles images) |
+| phrases partagées par deux sites (gestes, précisions) | non mesuré | 0,5 en moyenne, 5 au plus |
+
+Même résultat, 0 défaut, si les 100 sites sont tous dans la même commune.
+Avec les 17 photos d'aujourd'hui : 0 défaut aussi, mais une paire de sites sur
+deux montre la même façade coupée.
+
+Ce qui a changé : textes du ravalement réécrits par morceaux combinés
+(110 titres, des milliers d'énumérations, 100 textes par geste), comparateur à
+120 formes, couleurs, polices, géométrie et mot géant tirés ensemble, retirage
+quand un site ressemble trop à un voisin, 22 images de plus par métier au plan.
+Les intitulés de section (« Prendre contact. ») peuvent se répéter : décision
+de Fabrice, U3 ne les compte plus.
 
 ## Ce qui manque, par ordre d'importance
 
-1. **Aucun moyen d'appeler l'artisan.** Sur `matiere`, le bouton pointe vers
-   `tel:` vide. Sur les trois autres archétypes, **il n'y a même pas de barre
-   d'appel**, ce qui viole `rules/web/client.md` (« le numéro est atteignable
-   au pouce en permanence »). Aucun vérificateur ne l'attrape. Trouvé le
-   2 octobre en relisant les règles. Il faut un champ téléphone dans les
-   données de l'entreprise, la barre sur les quatre archétypes, et un contrôle.
+1. **Les 22 nouvelles images du ravalement** : hero 3 à 10, paires 04 à 10.
+   Prompts prêts dans `banque/prompts/ravalement.md` (images 33 à 54). Tant
+   qu'elles ne sont pas générées, une paire de sites sur deux montre la même
+   façade.
 2. **Un seul métier sur seize.** `generateur/metiers/` ne contient que
-   `ravalement.json`. Il faut les quinze autres : textes, prix sourcés,
-   teintes, réglages de l'estimateur.
-3. **Les images des quinze autres métiers** : 480 à générer par Fabrice. La
-   liste exacte est dans `banque/liste-images.md` ; les prompts ChatGPT
-   n'existent encore que pour le ravalement (`banque/prompts/ravalement.md`).
-4. **Les quinze images de la couche « banque » ne sont toujours pas
-   utilisées** par le générateur : matière 02 à 08, ambiance 01 à 05, signes
-   01 à 03. Le générateur se sert des 17 autres (hero, paires, chantiers,
-   gestes, détail). Fabrice a dit le 23 septembre que les images devaient
-   servir.
-5. **La deuxième page** (`le-travail.html`) n'existe que sur l'archétype
-   `matiere`.
+   `ravalement.json`. Chaque métier doit atteindre le même volume de textes que
+   le ravalement pour tenir 100 sites. Les codes APE du ravalement diffèrent
+   entre `ravalement.json` (cinq codes) et `plan-images.json` (trois) : à
+   aligner.
+3. **Les images des quinze autres métiers** : 54 chacun, 810 au total ; sujets
+   dans `banque/liste-images.md`, prompts seulement pour le ravalement.
+4. **Quinze images de la banque du ravalement inutilisées** : matière 02 à 08,
+   ambiance 01 à 05, signes 01 à 03.
+5. **La deuxième page** n'existe que sur l'archétype `matiere`.
 6. **Référencement absent** : pas de données structurées `LocalBusiness`, pas
-   d'aperçu de partage (Open Graph), pas de favicon, pas de `sitemap.xml` ni
-   de `robots.txt`.
+   d'aperçu de partage, pas de favicon, pas de `sitemap.xml` ni de `robots.txt`.
 7. **Aucun site en ligne.** Pas d'hébergement, pas de domaine.
 8. **Safari jamais testé.** Les vérificateurs tournent sous Chromium.
-9. **L'app n'existe pas.** Voir `app/README.md`.
+9. **L'app** : la base existe, rien d'autre (inscription, écrans, branchement du
+   générateur sur la table `sites`, demande d'accès à Google Business Profile).
 
 ## Questions ouvertes pour Fabrice
 
-1. **La mention « Exemple » sur les photos de démonstration.** Le 15 septembre
-   il a dit qu'il n'était « pas obligé d'expliquer d'où vient l'image ». Les
-   règles actuelles (`rules/web/photos.md`, `rules/common/ne-pas-fabriquer.md`)
-   imposent une mention visible et interdisent de publier ces photos. À
-   trancher.
-2. **Supabase** pour la base et le stockage des images : proposé par Claude,
-   pas encore confirmé séparément.
-3. **L'unicité par commune ou par département ?** Le générateur compare les
-   voisins de la même commune. Le cahier des charges parlait du département.
-4. **Les prix** restent identiques d'un site à l'autre parce que ce sont des
-   faits sourcés. Lui confirmer que c'est acceptable.
+1. **AgentShield et auto-conseil** (Supabase) : suppression à faire par
+   Fabrice dans le tableau de bord, une suppression étant définitive.
 
 ## Prochaine action
 
-1. Mettre ce dossier sur GitHub : dépôt vide et privé `Novaships-dev/sito`,
-   puis `CREER_SITO.bat` posé sur le Bureau le 2 octobre (il n'est pas dans le
-   dépôt). Si tu lis ce fichier depuis GitHub, c'est fait.
-2. Ensuite, le point 1 de « Ce qui manque » : pouvoir appeler l'artisan
-   depuis les quatre archétypes, avec son contrôle.
+Générer les 22 images du ravalement, les ranger dans
+`images/ravalement/sources/`, relancer `node scripts/capacite-unicite.mjs`
+sans `--photos plan` pour mesurer sur les vraies images, puis ouvrir le
+deuxième métier.
 
 ## Ne pas refaire
 
@@ -92,3 +116,5 @@ renommées et classées. La correspondance fichier ChatGPT → rôle est dans
 - Laisser du travail vivre seulement dans l'espace de Claude.
 - Construire sans avoir lu `memoire/` et `rules/web/`.
 - Déclarer un contrôle bon sans l'avoir vu attraper une copie cassée exprès.
+- Conclure sur trois sites de démonstration : mesurer à l'échelle du produit.
+- Écrire une phrase à combiner qui commence par un pronom.

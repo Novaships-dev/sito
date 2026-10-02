@@ -2,8 +2,9 @@
 
 Ce dossier contient **la liste** des images, pas les images.
 
-Les images pèsent environ 25 Mo par métier en JPEG (100 Mo en PNG d'origine),
-soit plus de 400 Mo pour les seize métiers. Fabrice a décidé de ne pas utiliser
+Les images pèsent environ 40 Mo par métier en JPEG (170 Mo en PNG d'origine),
+soit plus de 600 Mo pour les seize métiers. Estimation tirée des 32 images du
+ravalement (25 Mo en JPEG), portée à 54 images. Fabrice a décidé de ne pas utiliser
 Git LFS : elles ne vont donc pas dans Git. Elles vivent dans `images/` à la
 racine du dépôt, dossier ignoré par Git, et à terme dans le stockage de la base
 de l'app.
@@ -12,21 +13,25 @@ de l'app.
 
 | Fichier | Contenu |
 |---|---|
-| `liste-images.md` | les 512 images à produire, 32 par métier, avec nom de fichier, cadrage, largeur et sujet. Engendré par `node scripts/liste-images.mjs` depuis `generateur/banque/plan-images.json` |
+| `liste-images.md` | les 864 images à produire, 54 par métier, avec nom de fichier, cadrage, largeur et sujet. Engendré par `node scripts/liste-images.mjs` depuis `generateur/banque/plan-images.json` |
 | `liste-images.csv` | la même liste, à cocher dans un tableur (`node scripts/liste-images.mjs --csv`) |
-| `prompts/ravalement.md` | les 32 prompts ChatGPT du ravalement, prêts à coller. **Seul métier fait.** |
+| `prompts/ravalement.md` | les prompts ChatGPT du ravalement, prêts à coller : les 32 du 15 septembre et les 22 ajoutés le 2 octobre. **Seul métier fait.** |
 | `ravalement/provenance.md` | quel original ChatGPT est devenu quel fichier |
 
 La source de vérité est `generateur/banque/plan-images.json` : seize métiers,
 leurs codes APE, leur mot géant, leur matière, et le sujet exact de chacune des
-32 images.
+54 images.
 
-## Les 32 images d'un métier
+## Les 54 images d'un métier
+
+Passé de 32 à 54 le 2 octobre 2026, pour que 100 sites d'un même métier dans un
+même département ne montrent pas la même façade (décision de Fabrice : « chaque
+métier a des images différentes »).
 
 | Rôle | Nombre | Fichiers |
 |---|---|---|
-| hero | 2 | `hero.jpg`, `hero-variante-2.jpg` |
-| paires avant / après | 3 paires | `avant-01.jpg` / `apres-01.jpg`, `-02`, `-03` |
+| hero | 10 | `hero.jpg`, `hero-variante-2.jpg` à `hero-variante-10.jpg` |
+| paires avant / après | 10 paires | `avant-01.jpg` / `apres-01.jpg` à `avant-10.jpg` / `apres-10.jpg` |
 | chantier | 3 | `chantier.jpg`, `chantier-2.jpg`, `chantier-3.jpg` |
 | geste | 5 | `geste.jpg`, `geste-2.jpg` à `geste-5.jpg` |
 | matière | 8 | `detail-<matière>.jpg`, puis `matiere-02.jpg` à `matiere-08.jpg` |
@@ -37,7 +42,7 @@ leurs codes APE, leur mot géant, leur matière, et le sujet exact de chacune de
 
 ```
 images/<metier>/
-  sources/          les 17 fichiers que le générateur lit aujourd'hui
+  sources/          les fichiers que le générateur lit (39 une fois les 54 faites)
                     + un fichier vide SOURCE-ILLUSTRATION
   banque/matiere/   matiere-02 à 08
   banque/ambiance/  ambiance-01 à 05

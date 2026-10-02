@@ -1,3 +1,4 @@
+import { CONTEXTES } from '../charte.mjs';
 // Les avis, communs aux quatre archetypes.
 //
 // Aucun avis n est invente. Sur un site de prospection les emplacements sont
@@ -8,17 +9,17 @@
 export function feuille() {
   return `
 /* ---------------------------------------------------------------- avis */
-.avis{background:var(--nuit);color:var(--chaux);
+.avis{${CONTEXTES.sol};background:var(--nuit);color:var(--t);
   padding:clamp(56px,6vw,110px) var(--m, var(--marge))}
 .avis .tete-r{max-width:44rem;margin-bottom:clamp(24px,2.8vw,44px);display:grid;gap:.7rem}
-.avis .tete-r .enseigne{color:var(--accent)}
+.avis .tete-r .enseigne{color:var(--ta)}
 .avis .grille{display:grid;gap:1px;background:var(--voile-2);
   grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
 .avis .carte{background:var(--nuit);padding:clamp(20px,2.2vw,32px);display:grid;gap:.8rem;
   align-content:start;border-radius:var(--rayon, 0)}
-.avis .carte .enseigne{color:var(--gris)}
-.avis .carte p{color:var(--gris);font-size:14px}
-.avis .vide{color:var(--gris);border:1px dashed var(--voile-2);background:transparent}`;
+.avis .carte .enseigne{color:var(--t2)}
+.avis .carte p{color:var(--t2);font-size:14px}
+.avis .vide{color:var(--t2);border:1px dashed var(--voile-2);background:var(--nuit)}`;
 }
 
 export function bloc() {

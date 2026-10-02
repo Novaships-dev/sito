@@ -292,3 +292,175 @@ sources-ravalement/   hero, avant-01, apres-01, avant-02, apres-02,
                       chantier, geste, detail-enduit  (+ SOURCE-ILLUSTRATION)
 banque/ravalement/    tout le reste
 ```
+
+---
+
+# Les 22 images ajoutées le 2 octobre 2026
+
+Fabrice veut 100 sites de ravalement différents dans un même département.
+Avec 2 hero et 3 paires, une paire de sites sur deux montrait la même façade.
+Ces 22 images portent le métier à 10 hero et 10 paires. Même bloc de tête que
+plus haut, même méthode pour les paires : l'après d'abord, puis la
+dégradation de cette image même.
+
+Chaque hero garde une coupure verticale franche entre la partie en travaux et
+la partie finie : le générateur la mesure. Les bâtiments changent d'un hero à
+l'autre : villa, mas, immeuble, pavillon, maison de village. C'est ce qui rend
+deux sites voisins différents.
+
+## Huit hero de plus
+
+### 33. `hero-variante-3.jpg`, 16/9, 1600 px
+
+> Villa provençale à un étage, toit de tuiles canal, photographiée de face,
+> objectif 35 mm, depuis le portail. **Moitié gauche** : enduit ancien grisâtre,
+> fissures fines sous les fenêtres, traces de ruissellement. **Moitié droite** :
+> enduit taloché neuf, teinte ocre clair, appuis nets. La coupure tombe
+> exactement sur la descente d'eau verticale. Fin d'après-midi, lumière rasante
+> venant de la gauche. Format 16/9.
+
+### 34. `hero-variante-4.jpg`, 16/9, 1600 px
+
+> Maison de village en pierre calcaire, deux niveaux, rue en pente, vue de face,
+> objectif 50 mm. **Moitié gauche** : joints creusés, pierres nues, restes
+> d'enduit en lambeaux. **Moitié droite** : enduit à pierre vue à la chaux,
+> joints pleins, teinte beige. La coupure suit verticalement le chaînage d'angle
+> en pierres de taille. Lumière rasante de fin de journée. Format 16/9.
+
+### 35. `hero-variante-5.jpg`, 16/9, 1600 px
+
+> Immeuble de ville de cinq niveaux, balcons en ferronnerie, centre de
+> Marseille, vu depuis le trottoir opposé, objectif 35 mm. **Moitié gauche** :
+> façade noircie par la pollution et le ruissellement. **Moitié droite** :
+> enduit clair repris jusqu'à la corniche, ferronneries repeintes en noir. La
+> coupure tombe verticalement entre deux colonnes de fenêtres. Fin
+> d'après-midi. Format 16/9.
+
+### 36. `hero-variante-6.jpg`, 16/9, 1600 px
+
+> Pavillon des années 1970 avec garage accolé, jardin devant, vu de face,
+> objectif 35 mm. **Moitié gauche** : crépi grisâtre avec traces vertes en pied
+> de mur. **Moitié droite** : enduit gratté fin blanc cassé, soubassement net.
+> La coupure tombe sur l'arête entre la maison et le garage. Lumière douce de
+> fin de journée. Format 16/9.
+
+### 37. `hero-variante-7.jpg`, 16/9, 1600 px
+
+> Mas provençal en pierre, volets bois, vu de face dans la campagne, objectif
+> 50 mm. **Moitié gauche** : vieil enduit tombé par plaques, pierre visible.
+> **Moitié droite** : enduit à la chaux couleur sable, lisse et régulier. La
+> coupure suit verticalement l'encadrement en pierre de la porte d'entrée.
+> Lumière rasante dorée. Format 16/9.
+
+### 38. `hero-variante-8.jpg`, 16/9, 1600 px
+
+> Façade d'angle à l'intersection de deux rues, immeuble de trois niveaux, vue
+> depuis le carrefour, objectif 35 mm. **Moitié gauche** : sous échafaudage
+> avec bâches blanches. **Moitié droite** : terminée, enduit teinte rose pâle,
+> volets gris. La coupure tombe exactement sur l'angle du bâtiment. Fin
+> d'après-midi. Format 16/9.
+
+### 39. `hero-variante-9.jpg`, 16/9, 1600 px
+
+> Immeuble des années 1960 de quatre étages, fenêtres en bandes, vu de face,
+> objectif 35 mm. **Moitié gauche** : béton taché, épaufrures aux nez de
+> balcon, armatures visibles par endroits. **Moitié droite** : enduit lisse
+> gris clair, nez de balcon repris. La coupure suit un joint de dilatation
+> vertical. Lumière de fin de journée. Format 16/9.
+
+### 40. `hero-variante-10.jpg`, 16/9, 1600 px
+
+> Bastide à volets verts, deux niveaux, platanes devant, vue de face, objectif
+> 50 mm. **Moitié gauche** : peinture écaillée sur l'enduit, taches d'humidité.
+> **Moitié droite** : enduit neuf jaune paille, encadrements de fenêtres blancs.
+> La coupure tombe sur la descente d'eau verticale. Lumière filtrée par les
+> arbres. Format 16/9.
+
+## Sept paires de plus
+
+Pour chacune : d'abord `apres-NN`, puis `avant-NN` en modifiant **cette image
+même** (« Reprends exactement cette image, même bâtiment, même cadrage, même
+focale, même lumière ; change uniquement l'état de la façade : … ; rien d'autre
+ne bouge, au pixel près »).
+
+### 41. `apres-04.jpg`, 4/3, 1400 px, *en premier*
+
+> Villa à toit de tuiles, façade vue de face depuis le jardin, objectif 50 mm,
+> la façade remplit le cadre. Enduit taloché ocre neuf, appuis de fenêtre
+> repris, volets bois clairs. Fin d'après-midi. Format 4/3.
+
+### 42. `avant-04.jpg`, *modification*
+
+> État à donner : enduit grisâtre, fissures fines sous chaque fenêtre, traces
+> de ruissellement sous les appuis, volets délavés.
+
+### 43. `apres-05.jpg`, 4/3, 1400 px, *en premier*
+
+> Immeuble de trois étages, vue de face depuis le trottoir, objectif 35 mm.
+> Soubassement repris, enduit gratté beige jusqu'en pied de mur, porte d'entrée
+> en bois. Fin d'après-midi. Format 4/3.
+
+### 44. `avant-05.jpg`, *modification*
+
+> État à donner : enduit qui tombe par plaques en pied de mur, mousse verte en
+> soubassement, salissures sombres.
+
+### 45. `apres-06.jpg`, 4/3, 1400 px, *en premier*
+
+> Maison de village en pierre, deux niveaux, vue de face, objectif 50 mm.
+> Enduit à pierre vue à la chaux, joints pleins, teinte beige. Lumière rasante.
+> Format 4/3.
+
+### 46. `avant-06.jpg`, *modification*
+
+> État à donner : joints creusés, enduit partiel en lambeaux, pierres nues,
+> salissures sous la génoise.
+
+### 47. `apres-07.jpg`, 4/3, 1400 px, *en premier*
+
+> Pavillon de plain-pied, façade vue de face, objectif 35 mm. Enduit gratté fin
+> blanc cassé, menuiseries blanches, pied de mur propre. Format 4/3.
+
+### 48. `avant-07.jpg`, *modification*
+
+> État à donner : crépi tyrolien sale, fissures autour des menuiseries,
+> coulures grises sous les appuis.
+
+### 49. `apres-08.jpg`, 4/3, 1400 px, *en premier*
+
+> Façade sur cour intérieure d'un immeuble ancien, trois niveaux, objectif
+> 35 mm. Enduit neuf clair, descentes d'eau neuves bien fixées. Lumière
+> indirecte de fin de journée. Format 4/3.
+
+### 50. `avant-08.jpg`, *modification*
+
+> État à donner : descentes d'eau rouillées et mal fixées, coulures noires le
+> long des descentes, enduit taché.
+
+### 51. `apres-09.jpg`, 4/3, 1400 px, *en premier*
+
+> Corniche et bandeau mouluré d'un immeuble ancien, cadrage serré sur le haut
+> de façade, objectif 50 mm, vu d'en bas. Moulures reprises nettes, bandeau
+> protégé, enduit clair. Lumière rasante. Format 4/3.
+
+### 52. `avant-09.jpg`, *modification*
+
+> État à donner : moulures érodées et noircies, morceaux manquants, traînées
+> sombres sous le bandeau.
+
+### 53. `apres-10.jpg`, 4/3, 1400 px, *en premier*
+
+> Mur de clôture enduit le long d'une rue, avec chapeau en tuiles, objectif
+> 50 mm, le mur remplit le cadre. Enduit repris, chapeau refait. Format 4/3.
+
+### 54. `avant-10.jpg`, *modification*
+
+> État à donner : enduit fissuré, chapeau cassé avec tuiles manquantes,
+> mousses et salissures vertes.
+
+## Où les ranger
+
+Les 22 vont dans `images/ravalement/sources/`, à côté des 17 premières : le
+générateur les trouve par leur nom, sans rien changer d'autre. Vérifier pour
+chaque paire que l'avant et l'après se superposent, et pour chaque hero que la
+coupure est verticale et franche.

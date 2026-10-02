@@ -19,136 +19,652 @@
     "Le bon enduit est celui que le mur laisse respirer.",
     "Avant la couleur, il y a tout ce qu’on ne verra plus.",
     "Une façade propre se lit de la rue. Une façade saine se lit à l’ongle.",
-    "Le ravalement, c’est d’abord savoir ce qu’il faut enlever.",
+    "Le ravalement commence par ce qu’il faut enlever.",
     "Une fissure rebouchée sans être ouverte revient l’hiver suivant.",
     "La teinte se choisit en regardant la rue, pas le nuancier seul.",
     "Ce qu’on gratte aujourd’hui, on ne le reprend pas dans cinq ans.",
-    "Un mur ancien demande un enduit qui le comprend."
+    "Un mur ancien demande un enduit qui le comprend.",
+    "Un enduit qui sonne creux finit toujours par tomber.",
+    "L’eau entre par les appuis bien avant d’entrer par le mur.",
+    "Une façade bien faite se reconnaît à ses angles.",
+    "Le marteau dit où purger. Le reste du devis en découle.",
+    "Un mur en pierre respire. Un enduit ciment l’en empêche.",
+    "Les coulures noires sous les fenêtres viennent d’un appui mal repris.",
+    "Un bon ravalement commence par un mur qu’on a laissé sécher.",
+    "Une teinte se juge en plein jour, sur un mètre carré de mur.",
+    "Plus la purge est franche, plus l’enduit tient longtemps.",
+    "Sous un enduit qui cloque, il y a presque toujours de l’eau.",
+    "Le soubassement prend l’eau de la pluie et celle du sol.",
+    "Une fissure en escalier suit les joints. Elle dit que le mur bouge.",
+    "Ce qui se voit de la rue tient à ce qui se fait à vingt centimètres.",
+    "Gratté ou taloché, le choix se fait sur le mur, pas sur une photo.",
+    "La chaux laisse sortir l’humidité que le ciment enferme.",
+    "Un échafaudage bien monté, c’est une façade traitée jusqu’en haut.",
+    "Le pignon prend la pluie de face. Il se traite en premier.",
+    "Une façade nettoyée montre enfin ce qu’il faut réparer.",
+    "Un appui sans goutte d’eau salit la façade en dessous.",
+    "Les reprises au mastic ressortent toujours sous un enduit neuf.",
+    "Une façade se ravale tous les dix à quinze ans, pas tous les trois.",
+    "Le grain d’un enduit se règle au moment où on le gratte.",
+    "Un enduit trop dur sur un mur tendre finit par se fendre.",
+    "Quand la peinture s’écaille, c’est souvent le support qui pousse.",
+    "Une corniche abîmée laisse couler l’eau sur toute la hauteur.",
+    "On ne choisit pas un enduit au catalogue. Le mur le choisit.",
+    "Les angles prennent les chocs. Ils se reprennent avec un profilé.",
+    "Un ravalement réussi ne se remarque pas dans la rue. Il s’y accorde.",
+    "La façade la plus exposée à la pluie se fatigue la première.",
+    "Un joint ouvert est une porte pour l’eau.",
+    "Ce qui fait durer un enduit, c’est une épaisseur régulière.",
+    "Trois couches bien séchées valent mieux qu’une couche épaisse.",
+    "Gobetis, corps d’enduit, finition : trois couches, trois temps de séchage.",
+    "Un mur humide en pied ne se cache pas sous un enduit.",
+    "Une déclaration en mairie précède souvent le premier coup de marteau.",
+    "En secteur protégé, la teinte se prend dans le nuancier de la commune.",
+    "Une façade sale n’est pas forcément une façade malade.",
+    "Un monocouche se projette en une seule couche, et ne pardonne pas un mauvais support.",
+    "Le temps de séchage fait partie du chantier, pas du retard.",
+    "Un mur qui farine sous le doigt ne retient plus rien.",
+    "Les fissures fines se rebouchent. Les fissures qui bougent se pontent.",
+    "La lumière rasante du soir montre chaque défaut de planéité.",
+    "Une façade ancienne a ses reprises. On les traite une par une.",
+    "Sur un mur fissuré en profondeur, on regarde la structure avant l’enduit.",
+    "L’enduit protège le mur. La peinture protège l’enduit.",
+    "Un ravalement mal préparé se voit au bout de deux hivers.",
+    "Une façade se lave à basse pression quand l’enduit est fatigué.",
+    "Le gel entre dans les fissures et les agrandit chaque hiver.",
+    "Les rives de toit décident de l’état du haut de la façade.",
+    "Un bandeau mal protégé dessine une ligne noire sur toute la façade.",
+    "Une façade qui respire sèche plus vite après la pluie.",
+    "Tout se joue dans la préparation : nettoyage, purge, rebouchage.",
+    "Le choix du grain change la façon dont la façade vieillit.",
+    "Un gratté fin garde l’aspect propre plus longtemps qu’un lisse.",
+    "Ce que la rue retient d’une façade, c’est sa couleur et ses lignes.",
+    "Une façade en pierre se rejointoie avant de se protéger.",
+    "Les descentes d’eau mal fixées laissent des traces sur le neuf.",
+    "Un mur qui a pris l’eau longtemps doit sécher avant d’être enduit.",
+    "Une teinte trop blanche se salit vite, une teinte trop sombre chauffe le mur.",
+    "Un enduit coloré dans la masse ne s’écaille pas comme une peinture.",
+    "Chaque mètre carré purgé est un mètre carré qui ne bougera plus.",
+    "Le ravalement protège le mur autant qu’il l’embellit.",
+    "Une façade se pense depuis le pied jusqu’à la rive.",
+    "Les traces vertes en pied de mur signalent une humidité qui remonte.",
+    "Un mur sain se reconnaît au son du marteau.",
+    "Une façade reprise par morceaux se voit toujours en lumière rasante.",
+    "Une façade se travaille par pans entiers, sans arrêt au milieu.",
+    "La qualité d’un ravalement se mesure deux hivers après.",
+    "Une fissure au-dessus d’une fenêtre vient souvent du linteau.",
+    "Un enduit qui adhère mal se décolle par plaques, jamais d’un coup.",
+    "Les cloques sous la peinture disent que l’eau ne sort plus.",
+    "Un bon enduit se pose sur un mur propre, sain et humidifié.",
+    "Ni gel, ni plein soleil, ni pluie : l’enduit a ses jours.",
+    "Un enduit posé par temps de gel ne prend jamais correctement.",
+    "En plein soleil, l’enduit sèche trop vite et se fissure.",
+    "Le prix d’un ravalement dépend d’abord de ce qu’il faut purger.",
+    "Les moulures se reprennent à la main, une par une.",
+    "Une façade se termine par ses détails : appuis, tableaux, bandeaux.",
+    "Un mur mal préparé fait payer deux fois le même enduit.",
+    "L’enduit neuf ne cache rien. Il montre le travail fait dessous.",
+    "La couleur d’origine se retrouve souvent sous trois couches de peinture.",
+    "Un ravalement en copropriété se vote, se prépare, puis se planifie.",
+    "Sur une rue passante, l’échafaudage protège les passants autant que la façade.",
+    "Le soubassement s’enduit avec un mortier plus résistant que le reste.",
+    "On ouvre une fissure pour la refermer pour de bon.",
+    "Un mur qui sèche mal garde les traces de pluie pendant des jours.",
+    "La planéité d’un enduit se contrôle à la règle, pas à l’œil.",
+    "Un ravalement bien fait se voit surtout à ce qu’on ne remarque plus.",
+    "Le haut de la façade s’abîme le premier, sous les rives et les corniches.",
+    "Les sels qui blanchissent un mur viennent de l’eau qui le traverse.",
+    "Un enduit à la chaux durcit lentement, et longtemps.",
+    "Une façade reprise à l’identique garde le caractère de la rue.",
+    "Ce qui dure sur une façade, c’est ce qu’on a laissé sécher.",
+    "Une façade claire révèle chaque coulure. Les appuis doivent être parfaits.",
+    "Le mortier de reprise doit être moins dur que la pierre qu’il répare."
   ],
-  "chapos": [
-    "Enduit gratté ou taloché, reprise de fissures, nettoyage de support.",
-    "Purge, réparation du support, enduit de finition, traitement des fissures.",
-    "Nettoyage, purge, pontage des fissures, enduit gratté ou taloché.",
-    "Diagnostic du support, purge des parties creuses, enduit adapté au mur.",
-    "Nettoyage basse pression, reprise des fissures, enduit à la chaux ou monocouche.",
-    "Échafaudage, protections, reprise du support, finition grattée ou talochée.",
-    "Ouverture et pontage des fissures, reprise des appuis, enduit de parement.",
-    "Purge, reprise des angles, enduit de finition, teinte accordée à la rue."
-  ],
+  "chapos": {
+    "etapes": [
+      [
+        "échafaudage et protections",
+        "montage de l’échafaudage, bâchage des menuiseries",
+        "protection des abords et des menuiseries"
+      ],
+      [
+        "nettoyage basse pression",
+        "nettoyage du support",
+        "lavage complet de la façade",
+        "décapage des anciennes peintures"
+      ],
+      [
+        "sondage au marteau",
+        "purge des parties creuses",
+        "diagnostic du support",
+        "purge jusqu’au sain"
+      ],
+      [
+        "ouverture et pontage des fissures",
+        "traitement des fissures",
+        "pontage armé des fissures actives",
+        "rebouchage du faïençage"
+      ],
+      [
+        "reprise des appuis et des rives",
+        "reprise des angles",
+        "traitement des points singuliers",
+        "reprise des corniches et bandeaux",
+        "rejointoiement des pierres"
+      ],
+      [
+        "enduit gratté ou taloché",
+        "enduit à la chaux",
+        "enduit monocouche",
+        "enduit de parement",
+        "enduit adapté au mur",
+        "enduit traditionnel en trois couches"
+      ],
+      [
+        "finition grattée fin",
+        "finition talochée",
+        "teinte accordée à la rue",
+        "teinte choisie sur le mur",
+        "teinte d’origine retrouvée"
+      ]
+    ],
+    "nombre": [
+      4,
+      5
+    ],
+    "toujours": [
+      5
+    ]
+  },
   "gestes": [
     {
       "terme": "Nettoyage de support",
-      "textes": [
-        "Basse pression sur un enduit fatigué, haute pression seulement sur un support sain. Le choix se fait au marteau, pas au catalogue.",
-        "On lave pour voir, pas pour nettoyer. Ce que le jet décolle serait tombé de toute façon, mieux vaut le savoir avant l’enduit.",
-        "On lave d’abord pour voir le mur tel qu’il est : la salissure cache souvent les fissures."
-      ]
+      "textes": {
+        "combiner": [
+          [
+            "Basse pression sur un enduit fatigué, haute pression seulement sur un support sain.",
+            "On lave d’abord pour voir le mur tel qu’il est.",
+            "Le lavage se fait de haut en bas, pan par pan.",
+            "Les mousses et les lichens se traitent avant le lavage, pas après.",
+            "L’eau du lavage est recueillie au pied du mur, les menuiseries sont bâchées.",
+            "Sur une peinture qui s’écaille, le lavage devient un décapage.",
+            "Le jet reste à distance de l’enduit pour ne pas le creuser.",
+            "Un traitement contre les mousses agit plusieurs jours avant qu’on rince.",
+            "Le nettoyage s’arrête à ce que le mur supporte.",
+            "Les pierres tendres se lavent à l’eau froide, sans pression forte."
+          ],
+          [
+            "Le choix se fait au marteau, pas au catalogue.",
+            "Ce que le jet décolle serait tombé de toute façon.",
+            "La salissure cache souvent les fissures.",
+            "Un mur propre montre enfin ce qu’il faut réparer.",
+            "Un enduit neuf n’adhère pas sur un support sale.",
+            "Le mur doit ensuite sécher avant la suite.",
+            "Le lavage dit vraiment ce que coûtera le chantier.",
+            "Un lavage trop fort abîme ce qu’on voulait garder.",
+            "Les traces qui restent après lavage sont des défauts du support, pas de la saleté.",
+            "Sans cette étape, l’enduit neuf se salit par en dessous."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
     },
     {
       "terme": "Purge et reprise",
-      "textes": [
-        "On sonde, on abat ce qui sonne creux, on répare au mortier avant tout habillage. Un enduit posé sur une purge non faite se redécollera au même endroit.",
-        "Le sondage au marteau décide de la surface à purger. C’est le poste qui fait varier un devis du simple au double, et c’est le seul qu’on ne peut pas deviner d’en bas.",
-        "Ce qui sonne creux sous le marteau tombe. On reprend à partir du sain, jamais par-dessus."
-      ]
+      "textes": {
+        "combiner": [
+          [
+            "On sonde au marteau, on abat ce qui sonne creux.",
+            "Ce qui sonne creux sous le marteau tombe, jusqu’au sain.",
+            "Les parties décollées sont purgées, puis reprises au mortier.",
+            "Le sondage se fait sur toute la surface, mètre par mètre.",
+            "Les zones creuses sont marquées à la craie avant d’être purgées.",
+            "On purge au marteau et au burin, jamais à la machine sur un mur ancien.",
+            "La reprise se fait en couches, chaque couche sèche avant la suivante.",
+            "Le mortier de reprise est choisi pour le mur : chaux sur l’ancien, ciment sur le béton.",
+            "Les pierres déchaussées sont recalées avant tout enduit.",
+            "Les trous de purge sont humidifiés avant d’être rebouchés."
+          ],
+          [
+            "Un enduit posé sur une purge non faite se redécollera au même endroit.",
+            "La purge est le poste qui fait varier un devis du simple au double.",
+            "La purge est le seul poste qu’on ne peut pas deviner d’en bas.",
+            "On reprend à partir du sain, jamais par-dessus.",
+            "Ce qu’on laisse en place décide de la durée du ravalement.",
+            "Une purge incomplète se lit deux hivers plus tard, en cloques.",
+            "Le mur réparé doit être plan avant de recevoir l’enduit.",
+            "Le temps passé à purger ne se voit pas, mais il se garde.",
+            "Le reste du chantier repose sur la purge.",
+            "Un support sain est la seule garantie qu’un enduit tienne."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
     },
     {
       "terme": "Traitement des fissures",
-      "textes": [
-        "Ouverture en V, pontage armé pour les fissures actives, simple rebouchage pour le faïençage. Confondre les deux fait revenir la fissure en un hiver.",
-        "Une fissure fine et ramifiée est un défaut d’enduit. Une fissure franche qui traverse est un mouvement de structure : elle se ponte, ou elle se rouvre.",
-        "Une fissure s’ouvre en V, se nettoie, se ponte avec une armature. Rebouchée en surface, elle revient."
-      ]
+      "textes": {
+        "combiner": [
+          [
+            "Une fissure s’ouvre en V, se nettoie, se ponte avec une armature.",
+            "Ouverture en V, pontage armé pour les fissures actives, rebouchage pour le faïençage.",
+            "Les fissures fines et ramifiées sont des défauts d’enduit, rebouchées en surface.",
+            "Les fissures franches qui traversent reçoivent un pontage avec une toile d’armature.",
+            "Chaque fissure est ouverte à la disqueuse sur sa longueur.",
+            "Le pontage déborde de part et d’autre de la fissure.",
+            "Une fissure au-dessus d’une ouverture se traite avec le linteau.",
+            "Les fissures en escalier suivent les joints et se reprennent joint par joint.",
+            "Le mastic de rebouchage reste souple pour suivre les mouvements du mur.",
+            "Une fissure qui bouge encore se surveille avant d’être pontée."
+          ],
+          [
+            "Confondre faïençage et fissure active fait revenir la fissure en un hiver.",
+            "Rebouchée en surface seulement, une fissure revient.",
+            "Une fissure franche est un mouvement de structure : elle se ponte, ou elle se rouvre.",
+            "Une fissure est le premier chemin de l’eau dans le mur.",
+            "Le gel agrandit chaque hiver une fissure laissée ouverte.",
+            "Une fissure bien traitée disparaît sous l’enduit et n’en ressort plus.",
+            "L’armature répartit l’effort au lieu de le laisser au même endroit.",
+            "La forme d’une fissure dit d’où vient le mouvement.",
+            "Une fissure mal traitée se voit à travers l’enduit neuf.",
+            "Le diagnostic décide du traitement, pas l’inverse."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
     },
     {
       "terme": "Enduit gratté",
-      "textes": [
-        "Application en deux passes, puis grattage à la lame quand la prise est suffisante. Le grain dépend de la granulométrie et du moment où l’on gratte.",
-        "Le gratté pardonne les petits défauts de planéité et vieillit bien en ville. Il se salit moins vite qu’un fini lisse.",
-        "Le gratté se travaille quand l’enduit a pris juste ce qu’il faut. Trop tôt il colle, trop tard il arrache."
-      ]
+      "textes": {
+        "combiner": [
+          [
+            "Application en deux passes, puis grattage à la lame quand la prise est suffisante.",
+            "Le gratté se travaille quand l’enduit a pris juste ce qu’il faut.",
+            "L’enduit est dressé à la règle, puis gratté le lendemain ou le jour même selon la météo.",
+            "Le grattage se fait au gratton, en mouvements circulaires réguliers.",
+            "Le grain dépend de la granulométrie et du moment où l’on gratte.",
+            "Une façade grattée se travaille d’un seul tenant, angle à angle.",
+            "Le gratté fin se fait avec un enduit à petit grain, le gratté gros avec un grain plus fort.",
+            "L’épaisseur reste régulière pour que le grain soit le même partout.",
+            "Les bords et les angles sont grattés à la main, au plus près.",
+            "Le grattage enlève la peau de l’enduit et ouvre sa texture."
+          ],
+          [
+            "Gratté trop tôt, l’enduit colle ; trop tard, il arrache.",
+            "Le gratté pardonne les petits défauts de planéité et vieillit bien en ville.",
+            "Le gratté se salit moins vite qu’un fini lisse.",
+            "Le gratté est la finition la plus courante sur les façades de ville.",
+            "Le grain du gratté casse la lumière et cache les petites irrégularités.",
+            "Un gratté régulier se reconnaît à vingt centimètres.",
+            "La pluie glisse sur le grain sans laisser de coulures marquées.",
+            "Le résultat change selon l’heure du grattage : on ne s’arrête pas au milieu d’un pan.",
+            "Le grain choisi se voit sur un échantillon avant de se voir sur la façade.",
+            "Le gratté se reprend mal : il se fait bien du premier coup."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
     },
     {
       "terme": "Enduit taloché",
-      "textes": [
-        "Serré à la taloche pour un fini plus fermé. Il marque davantage les reprises, donc il se travaille par pans entiers, sans arrêt au milieu d’une façade.",
-        "Fini plus lisse, plus contemporain, plus exigeant : la moindre reprise se voit en lumière rasante.",
-        "La taloche serre la matière et ferme le grain. La finition est plus lisse, la lumière la révèle davantage."
-      ]
+      "textes": {
+        "combiner": [
+          [
+            "Serré à la taloche pour un fini plus fermé.",
+            "La taloche serre la matière et ferme le grain.",
+            "L’enduit est taloché en mouvements circulaires, sans appuyer par endroits.",
+            "Le talochage se fait sur un enduit encore frais, pan par pan.",
+            "Le taloché fin s’obtient avec une taloche éponge, le taloché plus marqué avec une taloche plastique.",
+            "Les angles et les tableaux sont dressés avant le talochage.",
+            "Chaque pan est taloché sans interruption, d’une rive à l’autre.",
+            "L’enduit est appliqué, dressé, puis taloché quand il commence à tirer.",
+            "Le geste reste le même sur toute la façade pour garder un aspect uniforme.",
+            "Le taloché demande un support parfaitement plan avant la finition."
+          ],
+          [
+            "Le taloché marque davantage les reprises : il se travaille sans s’arrêter au milieu d’un mur.",
+            "La moindre reprise se voit en lumière rasante.",
+            "La finition est plus lisse, la lumière la révèle davantage.",
+            "Le rendu est plus contemporain qu’un gratté.",
+            "Le taloché est la finition la plus exigeante pour celui qui la pose.",
+            "Sur une maison ancienne, le taloché rappelle les enduits faits à la main.",
+            "Une façade talochée se salit plus vite qu’une façade grattée.",
+            "Un défaut de planéité ne se cache pas sous un taloché.",
+            "Le résultat dépend du geste plus que du produit.",
+            "Bien fait, le taloché donne une façade calme, sans reflet."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
     },
     {
       "terme": "Points singuliers",
-      "textes": [
-        "Appuis de fenêtre, bandeaux, corniches, descentes. C’est par là que l’eau rentre, et c’est là que le ravalement se juge deux ans après.",
-        "Les rejingots et les larmiers font le ruissellement. Mal traités, ils dessinent des coulures noires sous chaque appui.",
-        "Appuis, tableaux, angles, rives : c’est là que l’eau entre, c’est là qu’on passe le plus de temps."
-      ]
+      "textes": {
+        "combiner": [
+          [
+            "Appuis de fenêtre, bandeaux, corniches, descentes : chaque détail est repris à part.",
+            "Les rejingots et les larmiers sont refaits sous chaque appui.",
+            "Appuis, tableaux, angles, rives : on y passe le plus de temps.",
+            "Les angles reçoivent un profilé avant l’enduit.",
+            "Les appuis fendus sont repris au mortier, avec une pente vers l’extérieur.",
+            "Les corniches sont nettoyées, réparées et protégées sur le dessus.",
+            "Les descentes d’eau sont déposées, puis refixées après l’enduit.",
+            "Les tableaux de fenêtres sont dressés à la règle, au plus près des menuiseries.",
+            "Les bandeaux reçoivent une protection qui renvoie l’eau loin du mur.",
+            "Le pied de façade est repris avec un enduit plus résistant."
+          ],
+          [
+            "L’eau entre par les détails, et le ravalement s’y juge deux ans après.",
+            "Des appuis mal traités dessinent des coulures noires sur la façade.",
+            "Les détails sont l’endroit où l’eau entre.",
+            "Une façade se juge à ses détails autant qu’à ses grands pans.",
+            "Un appui mal refait salit la façade neuve dès la première pluie.",
+            "Les détails sont ce que l’œil regarde en premier.",
+            "Un détail oublié se lit comme une tache sur le neuf.",
+            "Le temps passé sur les détails ne se voit pas, et c’est le but.",
+            "Les reprises se voient d’abord autour des détails, en lumière rasante.",
+            "Ce travail fait durer tout le reste."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
     },
     {
       "terme": "Échafaudage et protection",
-      "textes": [
-        "Montage, filet, bâchage des menuiseries, protection du sol. Le temps passé à protéger est du temps qu’on ne passe pas à nettoyer.",
-        "L’emprise sur le trottoir se déclare en mairie. Le délai d’autorisation fait partie du planning, pas des imprévus.",
-        "Menuiseries, sols et végétation sont protégés avant la première passe. Le chantier se rend propre."
-      ]
+      "textes": {
+        "combiner": [
+          [
+            "Montage, filet, bâchage des menuiseries, protection du sol.",
+            "L’emprise sur le trottoir se déclare en mairie.",
+            "Menuiseries, sols et végétation sont protégés avant la première passe.",
+            "L’échafaudage est monté à distance du mur pour laisser travailler les angles.",
+            "Un filet couvre toute la façade pendant la purge.",
+            "Les plantations au pied du mur sont protégées ou déplacées avant le montage.",
+            "Les fenêtres sont bâchées, les seuils et les sols couverts.",
+            "L’échafaudage est ancré au mur et contrôlé avant chaque journée.",
+            "Le passage des piétons est maintenu sous l’échafaudage quand la rue l’impose.",
+            "Les gouttières et les descentes sont protégées pendant les travaux."
+          ],
+          [
+            "Le temps passé à protéger est du temps qu’on ne passe pas à nettoyer.",
+            "Le délai d’autorisation fait partie du planning, pas des imprévus.",
+            "Le chantier se rend propre.",
+            "Un échafaudage complet permet de traiter la façade jusqu’en haut, au même soin.",
+            "Les poussières de purge restent sur le chantier, pas chez les voisins.",
+            "La sécurité de la rue fait partie du travail.",
+            "Un bon montage se voit au résultat des angles et des rives.",
+            "On ne rattrape pas des projections sur une menuiserie mal protégée.",
+            "Sans accès sûr, le haut de la façade est toujours moins bien fait.",
+            "L’échafaudage est le premier poste du devis, et le dernier démonté."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
     },
     {
       "terme": "Choix de la teinte",
-      "textes": [
-        "En secteur réglementé, la teinte se prend dans le nuancier local. Ailleurs, elle se choisit sur la façade et par temps couvert, jamais sur un écran.",
-        "Une teinte paraît toujours plus claire en petit échantillon qu’en pleine façade. On juge sur une surface d’essai d’au moins un mètre carré.",
-        "On compare les échantillons sur le mur, à différentes heures. Une teinte change avec la lumière du quartier."
-      ]
+      "textes": {
+        "combiner": [
+          [
+            "En secteur réglementé, la teinte se prend dans le nuancier local.",
+            "On compare les échantillons sur le mur, à différentes heures.",
+            "La teinte se choisit sur la façade et par temps couvert, jamais sur un écran.",
+            "On juge sur une surface d’essai d’au moins un mètre carré.",
+            "Les échantillons sont posés côte à côte sur le mur même.",
+            "La teinte tient compte des façades voisines et de la couleur des volets.",
+            "Les enduits colorés dans la masse gardent leur teinte sans peinture.",
+            "Une teinte d’origine se retrouve parfois sous les anciennes couches.",
+            "Le choix se fait en lumière du jour, devant la façade.",
+            "La mairie valide la teinte quand la commune l’impose."
+          ],
+          [
+            "Une teinte change avec la lumière du quartier.",
+            "Une teinte paraît toujours plus claire en petit échantillon qu’en pleine façade.",
+            "Une teinte trop sombre chauffe le mur, une teinte trop claire montre chaque coulure.",
+            "La rue entière doit pouvoir accueillir la couleur choisie.",
+            "Sur un écran, aucune couleur n’est juste.",
+            "La bonne teinte est celle qu’on oublie dans la rue.",
+            "Le grain de l’enduit change aussi la couleur perçue.",
+            "Une couleur se juge à distance, pas le nez sur l’échantillon.",
+            "Ce choix engage la façade pour dix ans ou plus.",
+            "Le nuancier de la page donne une idée, le mur donne la réponse."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
     }
   ],
   "coupure": {
-    "avant": [
-      "Enduit d’origine soufflé par endroits, fissures suivies, salissures de ruissellement sous les appuis.",
-      "Support fatigué, cloques à la sous-face, faïençage général et reprises anciennes visibles.",
-      "Enduit faïencé, fissures en escalier aux angles, traces d’eau sous les rives.",
-      "Parties creuses au marteau, joints ouverts, salissures noires en pied de mur.",
-      "Peinture écaillée sur ancien enduit, fissures reprises au mastic qui ressortent."
-    ],
-    "apres": [
-      "Support purgé et réparé, enduit gratté fin, teinte choisie dans la gamme des façades voisines.",
-      "Parement neuf sur support assaini, points singuliers repris, ruissellement maîtrisé.",
-      "Fissures ouvertes et pontées, enduit neuf, appuis et rives refaits.",
-      "Mur purgé jusqu’au sain, enduit respirant, finition régulière sur toute la hauteur.",
-      "Support stabilisé, teinte accordée aux voisines, points d’eau traités."
-    ]
+    "avant": {
+      "etapes": [
+        [
+          "enduit d’origine soufflé par endroits",
+          "enduit faïencé",
+          "support fatigué",
+          "enduit qui farine sous le doigt",
+          "parties creuses au marteau",
+          "peinture écaillée sur ancien enduit",
+          "enduit décollé par plaques",
+          "cloques à la sous-face"
+        ],
+        [
+          "fissures suivies",
+          "fissures en escalier aux angles",
+          "faïençage général",
+          "fissures reprises au mastic qui ressortent",
+          "fissure ouverte au-dessus d’une fenêtre",
+          "fissures fines en réseau",
+          "joints ouverts"
+        ],
+        [
+          "salissures de ruissellement sous les appuis",
+          "traces d’eau sous les rives",
+          "salissures noires en pied de mur",
+          "coulures sous les bandeaux",
+          "mousses en soubassement",
+          "traces vertes en pied de mur",
+          "efflorescences blanches"
+        ],
+        [
+          "reprises anciennes visibles",
+          "angles épaufrés",
+          "appuis fendus",
+          "corniche abîmée",
+          "descentes d’eau mal fixées",
+          "moulures érodées"
+        ]
+      ],
+      "nombre": [
+        3,
+        3
+      ]
+    },
+    "apres": {
+      "etapes": [
+        [
+          "support purgé et réparé",
+          "mur purgé jusqu’au sain",
+          "support stabilisé",
+          "parties creuses reprises au mortier",
+          "support assaini"
+        ],
+        [
+          "fissures ouvertes et pontées",
+          "faïençage rebouché",
+          "fissures traitées une par une",
+          "joints refaits"
+        ],
+        [
+          "enduit gratté fin",
+          "parement neuf",
+          "enduit neuf",
+          "enduit respirant",
+          "enduit à la chaux",
+          "finition régulière sur toute la hauteur",
+          "enduit taloché"
+        ],
+        [
+          "points singuliers repris",
+          "appuis et rives refaits",
+          "angles redressés",
+          "corniche reprise",
+          "points d’eau traités",
+          "ruissellement maîtrisé"
+        ],
+        [
+          "teinte choisie dans la gamme des façades voisines",
+          "teinte accordée aux voisines",
+          "teinte d’origine retrouvée",
+          "teinte choisie sur le mur"
+        ]
+      ],
+      "nombre": [
+        3,
+        4
+      ],
+      "toujours": [
+        2
+      ]
+    }
   },
   "legendes": {
-    "comparateurs": [
-      "Façade complète, reprise du support et enduit gratté.",
-      "Angle de façade, fissure ouverte, pontage puis enduit.",
-      "Pignon repris, joints refaits, enduit taloché.",
-      "Façade sur rue, purge complète et enduit à la chaux.",
-      "Soubassement assaini, enduit respirant, appuis repris.",
-      "Maison de ville, fissures pontées, teinte d’origine retrouvée."
-    ],
-    "invitation": [
-      "Déplacez la couture.",
-      "Attrapez la couture et faites-la glisser.",
-      "Faites glisser pour voir le mur avant et après.",
-      "Comparez les deux états de la même façade.",
-      "Passez de l’avant à l’après d’un geste."
-    ],
-    "precision": [
-      "Les deux prises de vue sont faites au même endroit, au même cadrage, dans la même lumière.",
-      "Même point de vue, même focale, même heure. Rien d’autre ne change que la façade.",
-      "La photo avant et la photo après sont prises du même endroit.",
-      "Seule la façade change d’une image à l’autre.",
-      "Même cadrage, même lumière : la différence vient du chantier."
-    ]
+    "comparateurs": {
+      "combiner": [
+        [
+          "Façade complète",
+          "Angle de façade",
+          "Pignon",
+          "Façade sur rue",
+          "Soubassement",
+          "Maison de ville",
+          "Façade sur cour",
+          "Immeuble de deux étages",
+          "Façade arrière",
+          "Mur de clôture",
+          "Villa",
+          "Maison de village"
+        ],
+        [
+          "reprise du support",
+          "fissure ouverte et pontée",
+          "joints refaits",
+          "purge complète",
+          "appuis repris",
+          "fissures pontées",
+          "parties creuses purgées",
+          "corniche reprise",
+          "angles redressés",
+          "faïençage rebouché"
+        ],
+        [
+          "enduit gratté",
+          "enduit taloché",
+          "enduit à la chaux",
+          "enduit respirant",
+          "teinte d’origine retrouvée",
+          "finition grattée fin",
+          "teinte accordée à la rue",
+          "enduit monocouche"
+        ]
+      ],
+      "joints": [
+        ", ",
+        ", "
+      ],
+      "fin": "."
+    },
+    "invitation": {
+      "combiner": [
+        [
+          "Faites glisser la couture",
+          "Déplacez la séparation",
+          "Touchez la photo",
+          "Glissez le trait",
+          "Attrapez la couture",
+          "Faites glisser le curseur",
+          "Déplacez le trait",
+          "Passez le doigt sur la photo"
+        ],
+        [
+          "pour comparer l’avant et l’après.",
+          "pour voir le mur avant les travaux.",
+          "pour passer d’un état à l’autre.",
+          "pour voir ce que le chantier a changé.",
+          "pour retrouver la façade d’origine.",
+          "pour voir le mur avant la reprise.",
+          "pour comparer les deux états de la façade.",
+          "pour voir la façade avant et après.",
+          "pour mesurer le travail fait.",
+          "pour voir la différence."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    },
+    "precision": {
+      "combiner": [
+        [
+          "Même point de vue, même cadrage.",
+          "Les deux photos sont prises du même endroit.",
+          "Même angle, même distance.",
+          "Les deux images ont le même cadrage.",
+          "Même endroit, même objectif.",
+          "Le point de vue ne bouge pas d’une photo à l’autre.",
+          "Même hauteur, même focale.",
+          "Les deux prises de vue se superposent exactement.",
+          "Le cadrage est identique avant et après."
+        ],
+        [
+          "Seule la façade change.",
+          "La différence vient du chantier.",
+          "Rien d’autre ne change que le mur.",
+          "Ce qui change, c’est le travail fait.",
+          "Le reste de la rue est identique.",
+          "Seul l’enduit a changé.",
+          "Ce que l’on voit changer, c’est le travail.",
+          "Tout le reste est à sa place.",
+          "Le mur est le seul à avoir changé."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    }
   },
   "rubriques": {
     "gestes": [
-      "Cinq gestes, pas un seul.",
-      "Ce que recouvre le mot ravalement.",
       "Le détail des postes.",
+      "Ce que recouvre le mot ravalement.",
       "Ce qui se fait sur le mur.",
       "Les étapes, dans l’ordre.",
-      "Le travail, poste par poste."
+      "Le travail, poste par poste.",
+      "Les gestes du chantier.",
+      "Du nettoyage à la finition.",
+      "Ce que comprend un ravalement.",
+      "Étape par étape.",
+      "Le chantier, dans l’ordre.",
+      "Ce qui se passe sur l’échafaudage.",
+      "Le travail du mur.",
+      "Les postes du ravalement.",
+      "Le chantier en détail.",
+      "Ce que l’on fait, et pourquoi."
     ],
     "chantier": [
       "Le chantier.",
@@ -156,7 +672,16 @@
       "En cours de travaux.",
       "Pendant les travaux.",
       "Le mur en cours de reprise.",
-      "Sur place, au fil du chantier."
+      "Sur place, au fil du chantier.",
+      "Au pied du mur.",
+      "Le chantier, de près.",
+      "Pendant la reprise.",
+      "Sur la façade.",
+      "Au travail.",
+      "Le chantier en cours.",
+      "De près, sur le mur.",
+      "Entre deux passes.",
+      "Le geste et l’outil."
     ],
     "verifiable": [
       "Ce qui se vérifie.",
@@ -164,7 +689,16 @@
       "Ce que disent les registres.",
       "Ce qui est public.",
       "Les informations officielles.",
-      "Vérifiable par tous."
+      "Vérifiable par tous.",
+      "Les données officielles.",
+      "Ce que dit la base Sirene.",
+      "L’entreprise, en chiffres publics.",
+      "Les faits, sources à l’appui.",
+      "Ce que chacun peut vérifier.",
+      "Les registres publics.",
+      "L’identité de l’entreprise.",
+      "Sources publiques.",
+      "Ce qui est inscrit au registre."
     ],
     "contact": [
       "Parler du chantier.",
@@ -172,15 +706,33 @@
       "Faire venir quelqu’un.",
       "Demander une visite.",
       "Parler de votre façade.",
-      "Prendre rendez-vous."
+      "Prendre rendez-vous.",
+      "Montrer votre façade.",
+      "Une visite avant tout chiffre.",
+      "Parler de votre mur.",
+      "Faire regarder la façade.",
+      "Joindre l’entreprise.",
+      "Un appel suffit.",
+      "Fixer une visite.",
+      "Parler de votre projet.",
+      "Demander un passage."
     ],
     "prix": [
-      "Ce que ça coûte, à peu près.",
-      "Les ordres de grandeur.",
+      "Ce que ça coûte.",
+      "Les tarifs, poste par poste.",
       "Avant de demander un devis.",
-      "Combien, en gros.",
-      "Les prix publics du métier.",
-      "Ce que disent les fourchettes."
+      "Combien ça coûte.",
+      "Les prix pratiqués.",
+      "Le prix de chaque poste.",
+      "Les tarifs de l’entreprise.",
+      "Ce que coûte chaque poste.",
+      "Les prix, sans détour.",
+      "Combien, poste par poste.",
+      "Les tarifs affichés.",
+      "Ce que l’entreprise facture.",
+      "Les prix du chantier.",
+      "Le coût des postes.",
+      "Tarifs et postes."
     ]
   },
   "roles": {
@@ -214,7 +766,31 @@
     "Un gratté fin se salit moins vite qu’un lisse, et vieillit mieux en ville.",
     "Un enduit à la chaux laisse sortir l’humidité du mur au lieu de l’enfermer.",
     "La matière se règle à la main : épaisseur, temps de prise, geste de la lame.",
-    "Le même enduit ne donne pas le même grain selon l’heure où on le gratte."
+    "Le même enduit ne donne pas le même grain selon l’heure où on le gratte.",
+    "Le grain d’un enduit casse la lumière et cache les petites irrégularités.",
+    "Sur le mur, la matière compte plus que la couleur.",
+    "Un enduit bien serré ne laisse aucune prise à l’eau.",
+    "Le sable choisit le grain, la lame choisit la texture.",
+    "La chaux prend lentement, et c’est ce qui la rend souple.",
+    "Un enduit monocouche donne un grain régulier, en une seule couche.",
+    "De près, on voit si l’enduit a été gratté au bon moment.",
+    "Chaque grain de sable reste visible quand la lame passe au bon moment.",
+    "Le fini taloché ferme la matière, le gratté l’ouvre.",
+    "La texture se juge en lumière rasante, en fin de journée.",
+    "L’enduit garde la trace de la main qui l’a posé.",
+    "Un grain régulier sur toute la façade, c’est le signe d’un travail sans reprise.",
+    "La matière vieillit avec le mur, sans se décoller de lui.",
+    "Une épaisseur régulière fait un grain régulier.",
+    "Le grain fin ou gros se choisit sur échantillon, jamais sur catalogue.",
+    "La surface respire par ses pores, pas par ses fissures.",
+    "Un enduit de qualité se reconnaît au toucher.",
+    "La lumière glisse sur un taloché, elle accroche sur un gratté.",
+    "La matière de la façade se choisit pour durer, pas pour briller.",
+    "Un enduit coloré dans la masse garde sa teinte jusqu’au cœur.",
+    "Le même mur peut recevoir dix textures. Une seule lui va.",
+    "La pierre et la chaux vieillissent ensemble, au même rythme.",
+    "La matière se pose en couches, chacune à son temps de séchage.",
+    "De la rue on voit la couleur. À dix centimètres, on voit le métier."
   ],
   "prix": {
     "note": "Ordres de grandeur nationaux, relevés le 11 septembre 2026. Ce ne sont pas les prix de l'entreprise et ce n'est pas un devis.",
@@ -343,47 +919,6 @@
       "pas": 10,
       "defaut": 120,
       "aria": "Surface de façade en mètres carrés"
-    },
-    "choix": [
-      {
-        "cle": "etat",
-        "legende": "État du support",
-        "options": [
-          [
-            "Bon",
-            0.85
-          ],
-          [
-            "Moyen",
-            1
-          ],
-          [
-            "Dégradé",
-            1.25
-          ]
-        ],
-        "defaut": 1
-      },
-      {
-        "cle": "finition",
-        "legende": "Finition",
-        "options": [
-          [
-            "Gratté",
-            1
-          ],
-          [
-            "Taloché",
-            1.05
-          ],
-          [
-            "Monocouche",
-            0.85
-          ]
-        ],
-        "defaut": 0
-      }
-    ],
-    "portee": "Ordre de grandeur, échafaudage compris"
+    }
   }
 }

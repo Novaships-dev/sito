@@ -8,6 +8,7 @@
 //   node scripts/verifier-ordinateur.mjs <dossier ou fichier.html>
 import { existsSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+import { mesurer as mesurerContraste } from './contraste-rendu.mjs';
 
 const arg = process.argv[2];
 if (!arg) { console.error('usage: node scripts/verifier-ordinateur.mjs <chemin>'); process.exit(2); }
@@ -23,7 +24,11 @@ for (const source of ['playwright', 'playwright-core', process.env.ATELIER_PLAYW
 if (!chromium) { console.log('playwright absent, controle ordinateur non execute. npm install playwright'); process.exit(3); }
 
 let navigateur = null;
-for (const opts of [{ channel: 'chrome' }, {}, { channel: 'msedge' }]) {
+// SITO_CHROMIUM : un navigateur deja installe, quand Playwright n a pas
+// telecharge le sien (espace de travail de Claude). Sur Windows, Chrome suffit.
+const essais = [{ channel: 'chrome' }, {}, { channel: 'msedge' }];
+if (process.env.SITO_CHROMIUM) essais.unshift({ executablePath: process.env.SITO_CHROMIUM });
+for (const opts of essais) {
   try { navigateur = await chromium.launch(opts); break; } catch { /* suivant */ }
 }
 if (!navigateur) { console.log('aucun navigateur utilisable, controle ordinateur non execute.'); process.exit(3); }
@@ -157,6 +162,55 @@ for (const e of ECRANS) {
     dire('O9', avant !== apres, 'l estimateur ne recalcule pas',
       'meme montant avant et apres : ' + (apres || 'vide'), 'voir mouvement.md, V4');
   }
+
+  // O14 : sur le premier ecran, sans defiler, on voit comment appeler.
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+  await page.waitForTimeout(300);
+  const ap = await page.evaluate(() => {
+    const vh = window.innerHeight, vw = window.innerWidth;
+    for (const el of document.querySelectorAll('[data-appel]')) {
+      const r = el.getBoundingClientRect(), st = getComputedStyle(el);
+      if (st.display === 'none' || st.visibility !== 'visible' || r.width < 1) continue;
+      if (r.top < 0 || r.bottom > vh || r.left < 0 || r.right > vw) continue;
+      const dessus = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+      if (!dessus || !(el === dessus || el.contains(dessus))) continue;
+      const href = el.getAttribute('href');
+      return { ok: true, lien: href, bon: href === null || /^tel:\+33[1-9]\d{8}$/.test(href) };
+    }
+    return { ok: false };
+  });
+  dire('O14', ap.ok && ap.bon, 'aucun moyen d appeler sur le premier ecran',
+    ap.ok ? 'lien ' + ap.lien : 'ni bouton ni emplacement visible sans defiler',
+    'le bouton d appel est dans la pastille du haut, voir generateur/sections/appel.mjs');
+
+  // O15 : la pastille du haut flotte sur le premier ecran ; elle ne touche
+  // aucun texte. Le 2 octobre 2026, le bouton d appel l a grandie de quelques
+  // pixels et elle est venue coller le nom de l entreprise sur deux
+  // compositions, sans qu aucun controle le voie.
+  const chevauche = await page.evaluate(() => {
+    const p = document.querySelector('.etat.flottante');
+    if (!p || getComputedStyle(p).position !== 'absolute') return [];
+    const rp = p.getBoundingClientRect(), marge = 4;
+    const out = [];
+    for (const el of document.querySelectorAll('.atmo h1, .atmo p, .atmo .nom-atmo, .atmo .dit, .atmo .nuancier, .atmo .photo')) {
+      if (p.contains(el) || el.closest('[aria-hidden="true"]')) continue;
+      const r = el.getBoundingClientRect();
+      if (r.width < 1 || r.height < 1) continue;
+      if (r.left < rp.right && r.right > rp.left && r.top < rp.bottom + marge && r.bottom > rp.top - marge)
+        out.push((el.className || el.tagName).toString().slice(0, 30) + ' a ' + Math.round(r.top - rp.bottom) + ' px');
+    }
+    return out;
+  });
+  dire('O15', chevauche.length === 0, 'la pastille du haut touche un texte',
+    chevauche.join(', '), 'le premier ecran laisse sous la pastille la place de sa hauteur reelle');
+
+  // O13 : chaque texte se lit sur ce qui est reellement derriere lui.
+  // Mesure dans le navigateur, apres l arrivee : voir contraste-rendu.mjs.
+  const ct = await page.evaluate(mesurerContraste, 5);
+  dire('O13', ct.total === 0, 'texte illisible sur son fond',
+    ct.total + ' texte(s) sous le seuil sur ' + ct.mesures + ' mesure(s) : '
+      + ct.fautes.map(f => f.ou + ' « ' + f.texte + ' » ' + f.ratio + ':1').join(' ; '),
+    'chaque surface a ses couleurs de texte, voir generateur/charte.mjs, CONTEXTES');
 
   // O10 : aucune erreur de script
   dire('O10', erreurs.length === 0, 'erreur de script', erreurs.join(' | ').slice(0, 160),
