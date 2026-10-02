@@ -1,0 +1,1005 @@
+{
+ "version": 1,
+ "produitLe": "2026-09-15",
+ "metiers": [
+  {
+   "cle": "ravalement",
+   "nom": "Ravalement de façade",
+   "codes": [
+    "43.34Z",
+    "43.33Z",
+    "43.99C"
+   ],
+   "mot": "Ravalement",
+   "matiere_nom": "enduit",
+   "detail": "detail-enduit",
+   "hero": [
+    "immeuble de trois niveaux, moitié gauche sous échafaudage et filet, moitié droite enduit sable terminé, coupure sur la descente d'eau",
+    "maison de ville, moitié gauche support piqué et gris, moitié droite enduit gratté neuf, coupure sur l'angle du mur"
+   ],
+   "paires": [
+    [
+     "maison de ville deux niveaux, volets bleus, enduit cloqué, fissures suivies, coulures sous les appuis",
+     "la même maison, même cadrage, enduit gratté sable, appuis nettoyés"
+    ],
+    [
+     "immeuble d'angle quatre niveaux, balcons en ferronnerie, enduit noirci par le ruissellement",
+     "le même immeuble, enduit repris, ferronneries dégagées"
+    ],
+    [
+     "mur pignon aveugle, fissures en escalier, salissures vertes",
+     "le même pignon, monocouche teinté, fissures traitées"
+    ]
+   ],
+   "chantier": [
+    "échafaudage monté sur une façade de rue étroite, bâche, trottoir protégé",
+    "pied d'échafaudage, seaux, sacs de mortier empilés, règle d'aluminium appuyée",
+    "façade en cours, moitié piquée moitié enduite, vue du trottoir d'en face"
+   ],
+   "geste": [
+    "taloche chargée d'enduit appliquée contre le mur, main et avant-bras",
+    "lame qui gratte l'enduit encore frais, poussière fine qui tombe",
+    "règle d'aluminium tirée à deux mains sur l'enduit",
+    "brosse qui humidifie le support avant reprise",
+    "lance de machine à projeter tenue à bout de bras, projection en cours"
+   ],
+   "matiere": [
+    "enduit gratté fin en lumière rasante",
+    "taloché serré, grain fermé",
+    "lissé à la chaux, léger nuancé",
+    "monocouche projeté, grain irrégulier",
+    "fissure ouverte en V avant reprise",
+    "joint de pierre repris au mortier de chaux",
+    "arête d'angle neuve, baguette invisible",
+    "raccord entre ancien et neuf, limite visible"
+   ],
+   "ambiance": [
+    "rue étroite au soleil de fin de journée, échafaudage en silhouette",
+    "outils posés au pied du mur, ombre longue",
+    "façade terminée vue en contre-plongée contre le ciel",
+    "filet de chantier en contre-jour",
+    "gouttière et descente d'eau neuves contre l'enduit"
+   ],
+   "signes": [
+    "texture d'enduit à plat, plein cadre",
+    "trame de filet de chantier",
+    "poussière d'enduit dans un rai de lumière"
+   ]
+  },
+  {
+   "cle": "peinture",
+   "nom": "Peinture intérieure",
+   "codes": [
+    "43.34Z"
+   ],
+   "mot": "Peinture",
+   "matiere_nom": "mur fini",
+   "detail": "detail-peinture",
+   "hero": [
+    "grande pièce, moitié gauche en travaux (bâches, sous-couche, ruban), moitié droite finie, coupure sur l'angle du mur",
+    "couloir, moitié gauche papier arraché et plâtre nu, moitié droite peint en blanc cassé"
+   ],
+   "paires": [
+    [
+     "salon aux murs marqués, traces de meubles, fissures capillaires, plinthes jaunies",
+     "le même salon, murs unis, plinthes nettes"
+    ],
+    [
+     "cage d'escalier sombre, peinture écaillée sur la rampe et les murs",
+     "la même cage, murs clairs, rampe reprise"
+    ],
+    [
+     "chambre avec papier peint daté, décollé aux angles",
+     "la même chambre peinte, angles nets"
+    ]
+   ],
+   "chantier": [
+    "pièce entièrement bâchée, escabeau ouvert, pots alignés le long du mur",
+    "ruban de masquage en place sur plinthes et encadrements, avant première passe",
+    "bac à peinture, rouleau chargé, manche télescopique appuyé"
+   ],
+   "geste": [
+    "rouleau qui dépose la peinture, bande fraîche et nette",
+    "pinceau en coupe d'angle le long d'une plinthe",
+    "spatule qui reboucha une fissure à l'enduit",
+    "cale à poncer sur un rebouchage sec, poussière fine",
+    "ruban de masquage tiré d'un geste continu"
+   ],
+   "matiere": [
+    "grain de rouleau en lumière rasante",
+    "mur laqué satiné, reflet doux",
+    "bande de finition à l'angle de deux teintes",
+    "plinthe peinte, arête nette contre le sol",
+    "enduit de rebouchage poncé, tache claire",
+    "papier peint décollé montrant le plâtre",
+    "boiserie laquée, veinage encore lisible",
+    "nuancier de teintes tenu contre le mur"
+   ],
+   "ambiance": [
+    "pièce vide et bâchée, lumière de fenêtre",
+    "pots et outils rangés en fin de journée",
+    "escabeau en silhouette contre un mur frais",
+    "reflet de fenêtre sur un mur satiné",
+    "porte fraîchement peinte, entrouverte"
+   ],
+   "signes": [
+    "aplat de teinte plein cadre",
+    "texture de rouleau à plat",
+    "grain de toile de bâche"
+   ]
+  },
+  {
+   "cle": "maconnerie",
+   "nom": "Maçonnerie générale",
+   "codes": [
+    "43.99C",
+    "43.91B"
+   ],
+   "mot": "Maçonnerie",
+   "matiere_nom": "pierre et joint",
+   "detail": "detail-pierre",
+   "hero": [
+    "mur de pierre, moitié gauche déjointoyée et étayée, moitié droite rejointoyée au mortier de chaux",
+    "extension en parpaings, moitié gauche brute, moitié droite enduite"
+   ],
+   "paires": [
+    [
+     "muret de clôture dégradé, pierres descellées, joints tombés",
+     "le même muret remonté et rejointoyé"
+    ],
+    [
+     "mur porteur avant ouverture, tracé au crayon pour la découpe",
+     "le même mur avec ouverture créée, linteau posé, tableaux nets"
+    ],
+    [
+     "dalle de terrasse fissurée et affaissée",
+     "la même surface, dalle neuve talochée"
+    ]
+   ],
+   "chantier": [
+    "montage de parpaings au cordeau, bétonnière en fond",
+    "banches en place, ferraillage en attente, étais",
+    "fondations ouvertes, tranchée nette, semelle ferraillée"
+   ],
+   "geste": [
+    "truelle qui charge le joint entre deux pierres",
+    "fil à plomb tenu contre l'angle d'un mur",
+    "niveau à bulle posé sur une rangée de parpaings",
+    "règle de maçon tirée sur une dalle fraîche",
+    "massette et burin sur une pierre à retailler"
+   ],
+   "matiere": [
+    "joint frais beurré entre deux pierres",
+    "pierre taillée, arête vive",
+    "parpaing monté, joint régulier",
+    "béton lissé à l'hélicoptère",
+    "ferraillage en attente, fers croisés",
+    "linteau béton posé sur ses appuis",
+    "chaînage d'angle coffré",
+    "dalle talochée en cours de prise"
+   ],
+   "ambiance": [
+    "chantier au petit matin, tas de sable et de gravier",
+    "mur monté à mi-hauteur en fin de journée",
+    "bétonnière en rotation, poussière",
+    "échafaudage bas et brouette",
+    "outils de maçon posés sur un parpaing"
+   ],
+   "signes": [
+    "texture de béton brut",
+    "trame de parpaings",
+    "grain de sable de rivière"
+   ]
+  },
+  {
+   "cle": "couverture",
+   "nom": "Couverture et zinguerie",
+   "codes": [
+    "43.91B",
+    "43.91A"
+   ],
+   "mot": "Toiture",
+   "matiere_nom": "tuile et zinc",
+   "detail": "detail-zinc",
+   "hero": [
+    "toiture en tuiles canal, moitié gauche déposée montrant liteaux et écran, moitié droite recouverte",
+    "toit à deux pans, moitié gauche mousse et tuiles cassées, moitié droite neuve"
+   ],
+   "paires": [
+    [
+     "toiture couverte de mousse, tuiles glissées et cassées, faîtage descellé",
+     "la même toiture nettoyée et recouverte, faîtage scellé"
+    ],
+    [
+     "gouttière percée et déformée, rive abîmée",
+     "la même gouttière en zinc neuf, rive refaite"
+    ],
+    [
+     "souche de cheminée fissurée, solin ouvert",
+     "la même souche reprise, solin zinc neuf"
+    ]
+   ],
+   "chantier": [
+    "échafaudage de toit et filet de sécurité, palette de tuiles montée",
+    "liteaux et écran sous-toiture posés sur la moitié d'un pan",
+    "monte-matériaux appuyé contre la façade, tuiles en attente"
+   ],
+   "geste": [
+    "mains qui posent une tuile canal sur le liteau",
+    "fer à souder sur une jonction de zinc, goutte d'étain",
+    "cisaille qui découpe une feuille de zinc",
+    "plieuse à main sur une bande de zinc",
+    "mains qui scellent une tuile faîtière au mortier"
+   ],
+   "matiere": [
+    "tuile canal neuve, courbe et ombre",
+    "tuile ancienne couverte de mousse",
+    "zinc plié, arête nette",
+    "soudure à l'étain sur zinc",
+    "faîtage scellé au mortier",
+    "liteau et écran sous-toiture",
+    "solin encastré dans la maçonnerie",
+    "chéneau en zinc, eau claire au fond"
+   ],
+   "ambiance": [
+    "ligne de faîtage contre un ciel de fin de journée",
+    "toit vu depuis l'échelle, tuiles en perspective",
+    "palettes de tuiles montées sur le toit",
+    "gouttière neuve contre la façade",
+    "vue plongeante sur les toits d'un village"
+   ],
+   "signes": [
+    "trame de tuiles plein cadre",
+    "texture de zinc patiné",
+    "grain d'ardoise"
+   ]
+  },
+  {
+   "cle": "menuiserie",
+   "nom": "Menuiserie et fenêtres",
+   "codes": [
+    "43.32A",
+    "43.32B"
+   ],
+   "mot": "Menuiserie",
+   "matiere_nom": "bois et joint",
+   "detail": "detail-bois",
+   "hero": [
+    "façade, moitié gauche anciennes fenêtres bois grises, moitié droite fenêtres neuves posées",
+    "atelier, moitié gauche bois brut empilé, moitié droite ouvrants finis alignés"
+   ],
+   "paires": [
+    [
+     "fenêtre ancienne simple vitrage, peinture écaillée, mastic tombé",
+     "la même baie avec fenêtre neuve posée"
+    ],
+    [
+     "porte d'entrée fatiguée, seuil usé",
+     "la même porte remplacée, seuil aluminium neuf"
+    ],
+    [
+     "volets bois décolorés et déformés",
+     "les mêmes volets refaits, lasure fraîche"
+    ]
+   ],
+   "chantier": [
+    "dépose en cours, ancien dormant sorti, protection au sol",
+    "calage et réglage d'un dormant neuf, niveau posé",
+    "fenêtres neuves alignées contre un mur, emballage retiré"
+   ],
+   "geste": [
+    "mains qui vissent une patte de fixation dans le tableau",
+    "pistolet à mastic qui tire un joint de pose",
+    "rabot qui prend un copeau sur un chant de bois",
+    "mains qui règlent une paumelle à la clé",
+    "mètre et crayon sur un chant, trait de coupe"
+   ],
+   "matiere": [
+    "chêne huilé, veinage serré",
+    "pin lasuré, nœud visible",
+    "aluminium laqué, arête nette",
+    "PVC blanc, soudure d'angle",
+    "joint de pose entre dormant et maçonnerie",
+    "paumelle en place, vis alignées",
+    "vitrage feuilleté vu en tranche",
+    "seuil aluminium, rupture de pont thermique"
+   ],
+   "ambiance": [
+    "atelier avec établi et copeaux",
+    "ouvrants finis alignés contre un mur",
+    "pièce vue à travers une fenêtre neuve",
+    "protection au sol et outils rangés",
+    "lumière du matin sur un dormant posé"
+   ],
+   "signes": [
+    "veinage de bois plein cadre",
+    "texture d'aluminium brossé",
+    "trame de vitrage et reflet"
+   ]
+  },
+  {
+   "cle": "carrelage",
+   "nom": "Carrelage et faïence",
+   "codes": [
+    "43.33Z"
+   ],
+   "mot": "Carrelage",
+   "matiere_nom": "joint et coupe",
+   "detail": "detail-joint",
+   "hero": [
+    "sol de pièce, moitié gauche chape nue avec plots de colle, moitié droite carrelée et jointoyée",
+    "mur de salle d'eau, moitié gauche support nu, moitié droite faïence posée"
+   ],
+   "paires": [
+    [
+     "salle de bains datée, faïence fendue, joints noircis",
+     "la même salle de bains refaite"
+    ],
+    [
+     "terrasse aux carreaux descellés, mousse dans les joints",
+     "la même terrasse recarrelée, joints nets"
+    ],
+    [
+     "cuisine au sol usé et taché",
+     "la même cuisine, grès cérame posé"
+    ]
+   ],
+   "chantier": [
+    "carreaux empilés, croisillons, seau de colle et peigne",
+    "niveau laser allumé dans une pièce en travaux",
+    "carrelette et carreau en cours de coupe sur tréteaux"
+   ],
+   "geste": [
+    "peigne à colle tiré sur la chape, sillons réguliers",
+    "mains qui posent un carreau et le font coulisser",
+    "croisillon glissé entre deux carreaux",
+    "raclette qui pousse le joint en diagonale",
+    "éponge qui nettoie le voile de ciment"
+   ],
+   "matiere": [
+    "grès cérame, surface mate",
+    "faïence blanche brillante",
+    "joint gris fraîchement tiré",
+    "coupe d'angle à 45 degrés",
+    "plinthe carrelée, arête nette",
+    "mosaïque de petits carreaux",
+    "colle peignée avant pose",
+    "seuil de douche à l'italienne"
+   ],
+   "ambiance": [
+    "pièce en cours, carreaux empilés",
+    "niveau laser dans la pénombre",
+    "salle d'eau finie en lumière rasante",
+    "outils posés sur un carreau",
+    "reflet de fenêtre sur un sol neuf"
+   ],
+   "signes": [
+    "trame de carrelage plein cadre",
+    "texture de joint",
+    "grain de grès cérame"
+   ]
+  },
+  {
+   "cle": "platrerie",
+   "nom": "Plâtrerie et cloisons",
+   "codes": [
+    "43.31Z"
+   ],
+   "mot": "Plâtrerie",
+   "matiere_nom": "bande et angle",
+   "detail": "detail-bande",
+   "hero": [
+    "pièce, moitié gauche ossature métallique nue, moitié droite plaques posées et bandes enduites",
+    "plafond, moitié gauche rails apparents, moitié droite fini blanc"
+   ],
+   "paires": [
+    [
+     "cloison ancienne fissurée, plâtre gonflé",
+     "la même cloison refaite, surface plane"
+    ],
+    [
+     "plafond taché et fissuré",
+     "le même plafond refait, bandes invisibles"
+    ],
+    [
+     "angle de mur épaufré",
+     "le même angle repris, arête droite"
+    ]
+   ],
+   "chantier": [
+    "ossature métallique montée, rails et montants alignés",
+    "plaques stockées à plat, visseuse posée dessus",
+    "pièce en cours, bandes en train de sécher"
+   ],
+   "geste": [
+    "couteau à enduire qui tire une bande sur un joint",
+    "visseuse qui pose une vis affleurante",
+    "cutter qui coupe une plaque le long d'une règle",
+    "cale à poncer sur un joint sec",
+    "mains qui posent une bande armée dans l'enduit frais"
+   ],
+   "matiere": [
+    "bande enduite, joint invisible",
+    "angle droit avec baguette",
+    "vis affleurante dans la plaque",
+    "découpe nette dans une plaque",
+    "isolant glissé entre montants",
+    "rail au sol, fixation visible",
+    "enduit de finition tiré fin",
+    "plaque hydrofuge vue en tranche"
+   ],
+   "ambiance": [
+    "ossature à contre-jour",
+    "pièce blanche prête à peindre",
+    "poussière de ponçage dans la lumière",
+    "plaques empilées contre un mur",
+    "échafaudage roulant sous un plafond"
+   ],
+   "signes": [
+    "texture de plaque de plâtre",
+    "trame de rails",
+    "poussière fine en suspension"
+   ]
+  },
+  {
+   "cle": "isolation",
+   "nom": "Isolation extérieure",
+   "codes": [
+    "43.29A"
+   ],
+   "mot": "Isolation",
+   "matiere_nom": "panneau et sous-enduit",
+   "detail": "detail-isolant",
+   "hero": [
+    "façade, moitié gauche panneaux isolants posés et chevillés, moitié droite finie enduite",
+    "pignon, moitié gauche mur nu, moitié droite isolé et enduit"
+   ],
+   "paires": [
+    [
+     "maison aux murs nus, enduit ancien fatigué",
+     "la même maison isolée par l'extérieur, enduit neuf"
+    ],
+    [
+     "tableau de fenêtre sans isolation",
+     "le même tableau traité, retour d'isolant posé"
+    ],
+    [
+     "soubassement dégradé",
+     "le même soubassement isolé et enduit"
+    ]
+   ],
+   "chantier": [
+    "panneaux isolants empilés au pied de l'échafaudage",
+    "façade à mi-parcours, panneaux posés en quinconce",
+    "treillis de fibre de verre déroulé sur le sous-enduit"
+   ],
+   "geste": [
+    "mains qui chevillent un panneau isolant",
+    "couteau qui marque et coupe un panneau",
+    "taloche qui applique le sous-enduit sur le treillis",
+    "mains qui déroulent le treillis et le noient dans l'enduit",
+    "règle qui vérifie la planéité des panneaux"
+   ],
+   "matiere": [
+    "panneau de polystyrène vu en tranche",
+    "laine de roche, fibres visibles",
+    "treillis noyé dans le sous-enduit",
+    "cheville à frapper en place",
+    "retour d'isolant au tableau de fenêtre",
+    "profilé de départ en bas de mur",
+    "sous-enduit frais, grain gris",
+    "enduit de finition sur isolant"
+   ],
+   "ambiance": [
+    "façade à mi-chantier, panneaux et enduit",
+    "échafaudage bâché en fin de journée",
+    "panneaux empilés et sanglés",
+    "mur isolé vu en lumière rasante",
+    "angle de maison traité, arête nette"
+   ],
+   "signes": [
+    "texture de polystyrène",
+    "trame de treillis",
+    "grain de sous-enduit"
+   ]
+  },
+  {
+   "cle": "electricite",
+   "nom": "Électricité",
+   "codes": [
+    "43.21A"
+   ],
+   "mot": "Électricité",
+   "matiere_nom": "tableau et cuivre",
+   "detail": "detail-tableau",
+   "hero": [
+    "local technique, moitié gauche vieux tableau à fusibles, moitié droite tableau neuf modulaire",
+    "mur, moitié gauche saignées ouvertes et gaines, moitié droite fini"
+   ],
+   "paires": [
+    [
+     "tableau électrique ancien, fusibles porcelaine, fils en désordre",
+     "le même emplacement, tableau modulaire neuf, repérage en place"
+    ],
+    [
+     "prise pendante et fils apparents",
+     "le même mur, appareillage encastré et net"
+    ],
+    [
+     "coffret extérieur rouillé",
+     "le même coffret remplacé, étiquetage neuf"
+    ]
+   ],
+   "chantier": [
+    "saignées ouvertes dans le mur, gaines en attente",
+    "tableau en cours de câblage, peignes posés, fils peignés",
+    "touret de câble et outils sur un établi de chantier"
+   ],
+   "geste": [
+    "mains qui dénudent un fil à la pince",
+    "tournevis qui serre une borne de disjoncteur",
+    "mains qui peignent les fils dans le tableau",
+    "aiguille qui tire un fil dans une gaine",
+    "multimètre tenu sur une borne, pointes en place"
+   ],
+   "matiere": [
+    "tableau câblé, peignes cuivre alignés",
+    "disjoncteurs en rang, manettes nettes",
+    "fils repérés et étiquetés",
+    "gaine annelée dans une saignée",
+    "boîte d'encastrement scellée",
+    "borne automatique vue de près",
+    "cuivre dénudé, brins serrés",
+    "coffret de communication rangé"
+   ],
+   "ambiance": [
+    "local technique en lumière crue",
+    "tableau ouvert vu de face, net",
+    "outils d'électricien posés en ordre",
+    "gaines qui sortent d'un mur nu",
+    "tableau fermé, façade blanche"
+   ],
+   "signes": [
+    "trame de peignes cuivre",
+    "texture de gaine annelée",
+    "grain de plastique de coffret"
+   ]
+  },
+  {
+   "cle": "plomberie",
+   "nom": "Plomberie et chauffage",
+   "codes": [
+    "43.22A",
+    "43.22B"
+   ],
+   "mot": "Plomberie",
+   "matiere_nom": "cuivre brasé",
+   "detail": "detail-cuivre",
+   "hero": [
+    "chaufferie, moitié gauche vieille chaudière et tuyaux rouillés, moitié droite installation neuve",
+    "mur technique, moitié gauche tuyaux anciens, moitié droite collecteur neuf"
+   ],
+   "paires": [
+    [
+     "vieille chaudière murale entartrée, raccords verdis",
+     "le même emplacement, équipement neuf posé"
+    ],
+    [
+     "salle d'eau aux tuyaux apparents, robinetterie calcaire",
+     "la même salle d'eau, alimentation encastrée, robinetterie neuve"
+    ],
+    [
+     "radiateur fonte rouillé sous une fenêtre",
+     "le même emplacement, radiateur neuf posé"
+    ]
+   ],
+   "chantier": [
+    "collecteur en cours de montage, nourrice et vannes",
+    "tubes cuivre coupés à longueur, posés sur tréteaux",
+    "unité extérieure de pompe à chaleur en cours de calage"
+   ],
+   "geste": [
+    "chalumeau qui braise un raccord cuivre",
+    "pince à sertir refermée sur un raccord multicouche",
+    "coupe-tube en rotation sur un cuivre",
+    "clé à molette sur un écrou de raccordement",
+    "mains qui purgent un radiateur, clé et chiffon"
+   ],
+   "matiere": [
+    "cuivre brasé, cordon régulier",
+    "collecteur et vannes alignées",
+    "multicouche serti, bague marquée",
+    "robinet thermostatique neuf",
+    "calorifuge posé sur un tube",
+    "filetage et téflon enroulé",
+    "tube PER en couronne",
+    "échangeur à plaques vu de près"
+   ],
+   "ambiance": [
+    "chaufferie propre et éclairée",
+    "tubes alignés contre un mur",
+    "unité extérieure sur ses plots",
+    "outils de plombier posés",
+    "vapeur légère devant une chaudière"
+   ],
+   "signes": [
+    "texture de cuivre poli",
+    "trame de tubes parallèles",
+    "grain de calorifuge"
+   ]
+  },
+  {
+   "cle": "metallerie",
+   "nom": "Serrurerie et portails",
+   "codes": [
+    "43.32B",
+    "25.11Z"
+   ],
+   "mot": "Métallerie",
+   "matiere_nom": "acier et soudure",
+   "detail": "detail-acier",
+   "hero": [
+    "atelier, moitié gauche acier brut et gabarit, moitié droite ouvrage peint fini",
+    "entrée de propriété, moitié gauche ancien portail rouillé, moitié droite portail neuf"
+   ],
+   "paires": [
+    [
+     "portail en fer rouillé et déformé, gonds descellés",
+     "le même accès, portail neuf posé"
+    ],
+    [
+     "garde-corps de balcon corrodé",
+     "le même garde-corps refait, thermolaqué"
+    ],
+    [
+     "grille de fenêtre piquée",
+     "la même grille remplacée"
+    ]
+   ],
+   "chantier": [
+    "atelier avec gabarit de montage, pièces en attente",
+    "portail posé sur tréteaux avant peinture",
+    "scellement des poteaux, niveau et étais"
+   ],
+   "geste": [
+    "poste à souder en action, arc et fumée légère, main gantée",
+    "meuleuse qui ébavure un cordon, gerbe d'étincelles",
+    "équerre et serre-joint sur un assemblage",
+    "mains qui percent un plat d'acier",
+    "pinceau qui applique une couche d'apprêt"
+   ],
+   "matiere": [
+    "acier brossé, grain de meulage",
+    "cordon de soudure régulier",
+    "thermolaquage noir mat",
+    "acier corten patiné",
+    "assemblage boulonné",
+    "charnière massive graissée",
+    "tube carré coupé net",
+    "apprêt gris sur acier nu"
+   ],
+   "ambiance": [
+    "atelier en contre-jour, étincelles",
+    "portail neuf devant un mur de pierre",
+    "établi et outils de métallier",
+    "pièces d'acier empilées",
+    "ombre d'une grille sur un mur"
+   ],
+   "signes": [
+    "texture d'acier brossé",
+    "trame de barreaux",
+    "grain de peinture martelée"
+   ]
+  },
+  {
+   "cle": "terrassement",
+   "nom": "Terrassement et VRD",
+   "codes": [
+    "43.12A"
+   ],
+   "mot": "Terrassement",
+   "matiere_nom": "grave et bordure",
+   "detail": "detail-grave",
+   "hero": [
+    "terrain, moitié gauche en terre remuée, moitié droite plateforme réglée et compactée",
+    "accès, moitié gauche chemin boueux, moitié droite enrobé posé"
+   ],
+   "paires": [
+    [
+     "terrain en pente, terre nue, ornières",
+     "le même terrain terrassé et nivelé"
+    ],
+    [
+     "allée défoncée et boueuse",
+     "la même allée en grave compactée et bordurée"
+    ],
+    [
+     "tranchée ouverte devant une maison",
+     "la même zone refermée et réglée"
+    ]
+   ],
+   "chantier": [
+    "pelle mécanique en action, godet chargé",
+    "tranchée ouverte, gaines posées sur lit de sable",
+    "plaque vibrante sur une couche de grave"
+   ],
+   "geste": [
+    "mains qui posent une bordure au cordeau",
+    "règle qui tire une couche de sable",
+    "niveau laser installé sur trépied",
+    "mains qui déroulent un géotextile",
+    "pelle qui règle un fond de forme"
+   ],
+   "matiere": [
+    "grave compactée, cailloux serrés",
+    "bordure béton posée",
+    "sable réglé, surface lisse",
+    "géotextile déroulé",
+    "enrobé chaud fraîchement posé",
+    "regard de visite scellé",
+    "drain et gravier en tranchée",
+    "terre végétale régalée"
+   ],
+   "ambiance": [
+    "chantier au lever du jour, engin à l'arrêt",
+    "tas de grave et de terre",
+    "tranchée rectiligne vue en longueur",
+    "plateforme réglée et vide",
+    "traces de chenilles dans la terre"
+   ],
+   "signes": [
+    "texture de grave",
+    "trame de bordures alignées",
+    "grain de sable et poussière"
+   ]
+  },
+  {
+   "cle": "etancheite",
+   "nom": "Étanchéité toiture-terrasse",
+   "codes": [
+    "43.99A"
+   ],
+   "mot": "Étanchéité",
+   "matiere_nom": "bitume soudé",
+   "detail": "detail-bitume",
+   "hero": [
+    "toiture-terrasse, moitié gauche ancienne membrane cloquée, moitié droite bitume neuf soudé",
+    "terrasse, moitié gauche support nu, moitié droite membrane posée et relevés faits"
+   ],
+   "paires": [
+    [
+     "toiture-terrasse fissurée, cloques et flaques stagnantes",
+     "la même terrasse refaite, surface nette"
+    ],
+    [
+     "relevé d'acrotère décollé",
+     "le même relevé refait, bande de solin posée"
+    ],
+    [
+     "évacuation bouchée et affaissée",
+     "la même évacuation reprise, platine neuve"
+    ]
+   ],
+   "chantier": [
+    "rouleaux de membrane en attente, chalumeau à proximité",
+    "terrasse en cours, moitié couverte, ligne de recouvrement",
+    "acrotère préparé, primaire appliqué"
+   ],
+   "geste": [
+    "chalumeau qui soude un lé de bitume, flamme et fondu",
+    "rouleau déroulé au pied, membrane qui se pose",
+    "mains qui marouflent un recouvrement",
+    "pinceau qui applique le primaire d'accrochage",
+    "cutter qui recoupe un lé le long d'un relevé"
+   ],
+   "matiere": [
+    "bitume soudé, cordon de fusion",
+    "recouvrement de deux lés",
+    "relevé d'acrotère terminé",
+    "platine d'évacuation posée",
+    "granulés minéraux en surface",
+    "primaire noir sur support béton",
+    "membrane soudée à l'air chaud",
+    "joint de dilatation traité"
+   ],
+   "ambiance": [
+    "terrasse vue à plat, lignes de lés",
+    "fumée légère au-dessus du chalumeau",
+    "rouleaux alignés contre l'acrotère",
+    "flaque d'eau claire sur membrane neuve",
+    "ciel bas au-dessus d'une terrasse"
+   ],
+   "signes": [
+    "texture de bitume granulé",
+    "trame de recouvrements",
+    "grain de membrane"
+   ]
+  },
+  {
+   "cle": "parquet",
+   "nom": "Parquet et sols souples",
+   "codes": [
+    "43.33Z"
+   ],
+   "mot": "Parquet",
+   "matiere_nom": "chêne huilé",
+   "detail": "detail-parquet",
+   "hero": [
+    "pièce, moitié gauche ancien sol déposé et ragréage, moitié droite parquet posé",
+    "couloir, moitié gauche revêtement usé, moitié droite sol souple neuf"
+   ],
+   "paires": [
+    [
+     "parquet ancien rayé, lames disjointes et grises",
+     "le même parquet poncé et huilé"
+    ],
+    [
+     "moquette tachée dans une chambre",
+     "la même chambre, parquet flottant posé"
+    ],
+    [
+     "sol souple décollé dans une cuisine",
+     "la même cuisine, sol neuf"
+    ]
+   ],
+   "chantier": [
+    "lames empilées en acclimatation, cales de dilatation",
+    "ragréage en cours, lisseur et seau",
+    "ponceuse à bande en pause sur un parquet à moitié poncé"
+   ],
+   "geste": [
+    "mains qui emboîtent deux lames",
+    "maillet et cale qui tassent une lame",
+    "ponceuse qui passe sur un parquet, poussière",
+    "pinceau qui applique l'huile, bois qui fonce",
+    "cutter qui coupe un sol souple le long d'une règle"
+   ],
+   "matiere": [
+    "chêne huilé, veinage chaud",
+    "lame poncée, arête vive",
+    "joint entre deux lames",
+    "sol souple à motif bois",
+    "plinthe et cale de dilatation",
+    "ragréage lissé, surface mate",
+    "seuil entre deux revêtements",
+    "parquet ancien avant ponçage"
+   ],
+   "ambiance": [
+    "pièce vide au sol neuf, lumière de fenêtre",
+    "lames empilées contre un mur",
+    "poussière de ponçage dans un rai de lumière",
+    "reflet de fenêtre sur parquet huilé",
+    "outils posés sur le sol fini"
+   ],
+   "signes": [
+    "texture de chêne plein cadre",
+    "trame de lames",
+    "grain de poussière de bois"
+   ]
+  },
+  {
+   "cle": "piscine",
+   "nom": "Piscine",
+   "codes": [
+    "43.99C"
+   ],
+   "mot": "Piscine",
+   "matiere_nom": "margelle et enduit",
+   "detail": "detail-margelle",
+   "hero": [
+    "bassin, moitié gauche en travaux (ferraillage, banches), moitié droite terminé et rempli",
+    "plage de piscine, moitié gauche dalle brute, moitié droite margelles posées"
+   ],
+   "paires": [
+    [
+     "bassin ancien, enduit taché, margelles descellées",
+     "le même bassin rénové, eau claire"
+    ],
+    [
+     "plage de piscine fissurée",
+     "la même plage refaite, margelles alignées"
+    ],
+    [
+     "local technique en désordre",
+     "le même local rangé, filtration neuve"
+    ]
+   ],
+   "chantier": [
+    "ferraillage du bassin avant coulage",
+    "banches en place, réservations visibles",
+    "local technique en cours, pompe et filtre posés"
+   ],
+   "geste": [
+    "mains qui posent une margelle au mortier",
+    "taloche qui applique l'enduit de bassin",
+    "mains qui règlent une vanne de filtration",
+    "niveau posé sur une margelle",
+    "brosse qui nettoie la ligne d'eau"
+   ],
+   "matiere": [
+    "margelle en pierre reconstituée",
+    "enduit de bassin lissé, teinte claire",
+    "ligne d'eau carrelée",
+    "escalier de bassin en béton",
+    "skimmer encastré",
+    "liner tendu, pli net",
+    "eau claire sur fond clair",
+    "plage en bois exotique"
+   ],
+   "ambiance": [
+    "bassin rempli au soleil de fin de journée",
+    "reflets sur l'eau au calme",
+    "local technique propre",
+    "chantier de bassin vu de haut",
+    "margelles empilées en attente"
+   ],
+   "signes": [
+    "texture d'eau en surface",
+    "trame de margelles",
+    "grain d'enduit de bassin"
+   ]
+  },
+  {
+   "cle": "paysagiste",
+   "nom": "Paysagiste",
+   "codes": [
+    "81.30Z"
+   ],
+   "mot": "Jardin",
+   "matiere_nom": "pavé et gazon",
+   "detail": "detail-pave",
+   "hero": [
+    "jardin, moitié gauche friche et terre nue, moitié droite aménagé et planté",
+    "allée, moitié gauche terre battue, moitié droite pavée"
+   ],
+   "paires": [
+    [
+     "jardin en friche, herbes hautes, clôture affaissée",
+     "le même jardin aménagé"
+    ],
+    [
+     "terrasse envahie de mousse",
+     "la même terrasse nettoyée et remise en état"
+    ],
+    [
+     "haie dépérie et irrégulière",
+     "la même haie retaillée ou replantée"
+    ]
+   ],
+   "chantier": [
+    "plants en godets alignés avant plantation, terre préparée",
+    "pavés empilés et sable de pose étalé",
+    "arrosage automatique en cours de pose, tuyaux en tranchée"
+   ],
+   "geste": [
+    "mains qui plantent un arbuste, terre autour des racines",
+    "taille-haie en action, coupe nette",
+    "maillet qui cale un pavé",
+    "râteau qui règle une terre fine",
+    "sécateur sur une branche"
+   ],
+   "matiere": [
+    "pavé engazonné, joint vert",
+    "gazon fraîchement tondu, bandes régulières",
+    "paillage d'écorce autour d'un pied",
+    "bordure de jardin posée",
+    "terre fine régalée",
+    "haie taillée, arête nette",
+    "dalle de terrasse sur plots",
+    "goutte-à-goutte au pied d'un arbuste"
+   ],
+   "ambiance": [
+    "jardin en fin de journée, lumière basse",
+    "outils posés sur l'herbe",
+    "allée pavée vue en perspective",
+    "arrosage en fonctionnement",
+    "tas de terre et brouette"
+   ],
+   "signes": [
+    "texture de gazon plein cadre",
+    "trame de pavés",
+    "grain de terre et paillage"
+   ]
+  }
+ ]
+}

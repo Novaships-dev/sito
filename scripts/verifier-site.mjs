@@ -1,0 +1,486 @@
+#!/usr/bin/env node
+// Verification deterministe d'une page construite, contre les regles d'atelier.
+// Usage : node scripts/verifier-site.mjs <chemin> [--json]
+// Sortie 1 si un constat bloquant est trouve, 0 sinon.
+//
+// Ce script dit NON. Il ne dit jamais quoi faire a la place au-dela du remede
+// ecrit dans le catalogue. La forme reste libre : voir rules/web/design-interdits.md,
+// section « test d'unicite ».
+
+import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { join, extname, basename } from 'node:path';
+
+const EXT = new Set(['.html', '.astro', '.jsx', '.tsx', '.vue', '.css', '.liquid']);
+const EXCLUS = ['node_modules', '.git', 'dist', 'build', 'docs', 'rules', 'references'];
+
+// ---------------------------------------------------------------- budgets
+const BUDGETS = { page: 1_500_000, css: 100_000, js: 300_000 };
+
+// ------------------------------------------------------- palette bannie F1
+const HEX_BANNIS = [
+  'f5f1ea','f7f5f1','fbf8f1','efeae0','ece6db','faf7f1','e8dfcb','f4f1ea',
+  'b08947','b6553a','9a2436','9c6e2a','bc7c3a','7d5621','d97757',
+  '1a1714','1a1814','1b1814',
+];
+
+// ---------------------------------------------------------------- le catalogue
+const REGLES = [
+  { num: '01', gravite: 'avertissement', libelle: 'degrade violet ou noir',
+    motif: /linear-gradient\([^)]*(#[89ab][0-9a-f]{2}[0-9a-f]{3}|purple|violet|indigo)/gi,
+    remede: 'aplat, ou photo' },
+
+  { num: '11', gravite: 'bloquant', libelle: 'verre liquide, backdrop-filter',
+    motif: /backdrop-filter\s*:/gi, remede: 'aplat' },
+
+  { num: '17', gravite: 'bloquant', libelle: 'police par defaut du modele',
+    motif: /(font-family|family=|fontFamily)[^;>"']{0,80}\b(Inter|Geist|Space Grotesk|Poppins|Montserrat|Fraunces|Instrument[_ ]Serif)\b/gi,
+    remede: 'Archivo, Public Sans, Libre Franklin, Bricolage Grotesque' },
+
+  { num: '20', gravite: 'bloquant', libelle: 'emoji dans un titre',
+    motif: /<h[1-4][^>]*>[^<]*[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, remede: 'retirer' },
+
+  { num: '26', gravite: 'bloquant', libelle: 'tiret cadratin',
+    motif: /—/g, remede: 'trait d union, ou reformuler' },
+
+  { num: '27', gravite: 'bloquant', libelle: 'palette beige laiton espresso, famille F1',
+    motif: new RegExp('#(' + HEX_BANNIS.join('|') + ')\\b', 'gi'),
+    remede: 'voir skills/_partage/references/palettes.md, sept familles de rotation' },
+
+  { num: '32', gravite: 'avertissement', libelle: 'bibliotheque d icones par defaut',
+    motif: /(lucide-react|lucide|@heroicons|heroicons)/gi,
+    remede: 'Phosphor, HugeIcons, Radix ou Tabler, une seule famille' },
+
+  { num: '33', gravite: 'avertissement', libelle: 'intitule en capitales espacees',
+    motif: /class="[^"]*(uppercase[^"]*tracking|tracking[^"]*uppercase)/gi,
+    remede: 'plafond : nombre de sections divise par trois' },
+
+  { num: '34', gravite: 'bloquant', libelle: 'point median separateur',
+    motif: /\s·\s/g, remede: 'virgule, ou retour a la ligne' },
+
+  { num: '37', gravite: 'avertissement', libelle: 'indice de defilement',
+    motif: /(scroll-indicator|animate-bounce|Defiler|Scroll down)/gi, remede: 'rien' },
+
+  { num: '45', gravite: 'bloquant', libelle: 'ecoute directe du scroll',
+    motif: /addEventListener\s*\(\s*['"]scroll['"]/g, remede: 'IntersectionObserver' },
+
+  { num: '49', gravite: 'avertissement', libelle: 'noir teinte a la place du noir',
+    motif: /#(0b0b0b|111111|0a0a0a|121212)\b/gi, remede: 'une couleur sombre choisie' },
+
+  { num: '50', gravite: 'avertissement', libelle: 'chasse fixe pour les etiquettes',
+    motif: /(font-mono|font-family[^;]*monospace)/gi, remede: 'la police du projet' },
+
+  // Plancher d accessibilite, rules/web/accessibilite.md
+  { num: 'A1', gravite: 'bloquant', libelle: 'hauteur d ecran figee',
+    motif: /(h-screen|height\s*:\s*100vh)/g, remede: 'min-height: 100dvh' },
+
+  { num: 'A2', gravite: 'bloquant', libelle: 'anneau de focus supprime',
+    motif: /outline\s*:\s*(none|0)/gi, remede: 'garder un focus visible' },
+
+  { num: 'A3', gravite: 'bloquant', libelle: 'zoom desactive',
+    motif: /user-scalable\s*=\s*no|maximum-scale\s*=\s*1/gi, remede: 'ne jamais bloquer le zoom' },
+
+  // Principe produit : aucune banque d images
+  { num: 'P1', gravite: 'bloquant', libelle: 'photo de banque d images',
+    motif: /(unsplash\.com|pexels\.com|pixabay\.com|shutterstock|istockphoto|stock\.adobe)/gi,
+    remede: 'les photos viennent de l artisan, ou emplacement declare vide' },
+
+  // Performance, rules/web/performance.md
+  { num: 'P2', gravite: 'avertissement', libelle: 'animation sur une propriete couteuse',
+    motif: /transition\s*:[^;]*\b(width|height|top|left|margin)\b/gi,
+    remede: 'transform et opacity uniquement' },
+];
+
+// ---------------------------------------------------------------- contraste
+const lum = (hex) => {
+  const n = hex.length === 3 ? hex.split('').map(c => c + c).join('') : hex;
+  const [r, g, b] = [0, 2, 4].map(i => parseInt(n.slice(i, i + 2), 16) / 255)
+    .map(v => v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4));
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+};
+const ratio = (a, b) => {
+  const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p);
+  return (x + 0.05) / (y + 0.05);
+};
+
+// oklch approche : la clarte L est proche de la luminance perceptuelle ; on
+// la convertit grossierement en luminance relative pour comparer avec le reste.
+const lumOklch = (L) => {
+  const y = Math.pow(Math.max(0, Math.min(1, L)), 3);
+  return y;
+};
+const litCouleur = (v) => {
+  const hx = v.match(/#([0-9a-f]{3,6})\b/i);
+  if (hx) return lum(hx[1]);
+  const ok = v.match(/oklch\(\s*([\d.]+)/i);
+  if (ok) return lumOklch(parseFloat(ok[1]));
+  return null;
+};
+
+// Paires color / background-color declarees dans un meme bloc de regle CSS.
+function contrastes(texte) {
+  const out = [];
+  const blocs = texte.match(/\{[^{}]*\}/g) || [];
+  for (const bloc of blocs) {
+    const c = bloc.match(/(?:^|[;{\s])color\s*:\s*(#[0-9a-f]{3,6}\b|oklch\([^)]*\))/i);
+    const f = bloc.match(/background(?:-color)?\s*:\s*(#[0-9a-f]{3,6}\b|oklch\([^)]*\))/i);
+    if (!c || !f) continue;
+    const lc = litCouleur(c[1]), lf = litCouleur(f[1]);
+    if (lc === null || lf === null) continue;
+    const [x, y] = [lc, lf].sort((a, b) => b - a);
+    const r = (x + 0.05) / (y + 0.05);
+    if (r < 4.5) out.push({ texte: c[1], fond: f[1], ratio: r.toFixed(2) });
+  }
+  return out;
+}
+
+// ---------------------------------------------------------------- structure
+function structure(texte, fichier) {
+  const c = [];
+  const imgs = texte.match(/<img\b[^>]*>/gi) || [];
+  const sansAlt = imgs.filter(t => !/\balt\s*=/i.test(t));
+  if (sansAlt.length) c.push({ fichier, num: 'A4', gravite: 'bloquant',
+    libelle: 'image sans attribut alt', detail: sansAlt.length + ' sur ' + imgs.length,
+    remede: 'alt descriptif, ou alt="" si decorative' });
+
+  // Image d exemple : marquage obligatoire, voir rules/web/photos.md
+  for (const t of imgs) {
+    const marquee = /data-exemple\s*=\s*["']oui["']/i.test(t);
+    const alt = (t.match(/\balt\s*=\s*["']([^"']*)["']/i) || [])[1] || '';
+    if (marquee && !/^Exemple/i.test(alt.trim())) {
+      c.push({ fichier, num: 'P4', gravite: 'bloquant',
+        libelle: 'image d exemple sans alt explicite',
+        detail: 'alt = "' + alt.slice(0, 40) + '"',
+        remede: 'l alt commence par Exemple, voir rules/web/photos.md' });
+    }
+  }
+
+  const niveaux = [...texte.matchAll(/<h([1-6])\b/gi)].map(m => +m[1]);
+  for (let i = 1; i < niveaux.length; i++) {
+    if (niveaux[i] - niveaux[i - 1] > 1) {
+      c.push({ fichier, num: 'A5', gravite: 'bloquant', libelle: 'niveau de titre saute',
+        detail: 'h' + niveaux[i - 1] + ' suivi de h' + niveaux[i],
+        remede: 'ne jamais sauter un niveau' });
+      break;
+    }
+  }
+  const h1 = (texte.match(/<h1\b/gi) || []).length;
+  if (/<html|<body/i.test(texte) && h1 !== 1) {
+    c.push({ fichier, num: 'A6', gravite: 'bloquant', libelle: 'nombre de h1 incorrect',
+      detail: h1 + ' trouve', remede: 'exactement un h1 par page' });
+  }
+  return c;
+}
+
+
+// ---------------------------------------------------------------- composition
+// rules/web/composition.md. Ne s applique qu a une page entiere.
+const enPx = (v) => {
+  const m = String(v).match(/^([\d.]+)(px|rem|em)$/);
+  if (!m) return null;
+  const n = parseFloat(m[1]);
+  return m[2] === 'px' ? n : n * 16;
+};
+function taillesTexte(texte) {
+  const out = [];
+  for (const m of texte.matchAll(/font-size\s*:\s*([^;}]+)/gi)) {
+    const v = m[1].trim();
+    const args = v.startsWith('clamp(') ? v.slice(6, -1).split(',') : [v];
+    for (const a of args) { const px = enPx(a.trim()); if (px) out.push(px); }
+  }
+  return out;
+}
+function variables(texte) {
+  const map = {};
+  for (const m of texte.matchAll(/(--[\w-]+)\s*:\s*(#[0-9a-f]{3,8})\b/gi)) map[m[1]] = m[2];
+  return map;
+}
+function fondsDeclares(texte) {
+  const vars = variables(texte);
+  const out = [];
+  for (const m of texte.matchAll(/background(?:-color)?\s*:\s*([^;}]+)/gi)) {
+    const v = m[1].trim();
+    let hex = (v.match(/#([0-9a-f]{3,6})\b/i) || [])[0];
+    if (!hex) { const nv = v.match(/var\((--[\w-]+)\)/); if (nv && vars[nv[1]]) hex = vars[nv[1]]; }
+    if (hex) out.push(hex.replace('#', ''));
+  }
+  return out;
+}
+const versHsl = (hex) => {
+  const n = hex.length === 3 ? hex.split('').map(c => c + c).join('') : hex.slice(0, 6);
+  const [r, g, b] = [0, 2, 4].map(i => parseInt(n.slice(i, i + 2), 16) / 255);
+  const mx = Math.max(r, g, b), mn = Math.min(r, g, b), l = (mx + mn) / 2, d = mx - mn;
+  if (!d) return { h: 0, s: 0, l };
+  const s = l > 0.5 ? d / (2 - mx - mn) : d / (mx + mn);
+  let h = mx === r ? (g - b) / d + (g < b ? 6 : 0) : mx === g ? (b - r) / d + 2 : (r - g) / d + 4;
+  return { h: h * 60, s, l };
+};
+// ---------------------------------------------------------------- vie
+// rules/web/mouvement.md, V1 a V6. Le mouvement se verifie sur ce qui peut
+// casser : un bloc qui reste invisible, un voile qui ne part pas, un decor
+// qui intercepte le doigt. Pas sur le gout.
+function bloc(texte, selecteur) {
+  const i = texte.indexOf(selecteur + '{');
+  if (i < 0) return null;
+  const j = texte.indexOf('}', i);
+  return j < 0 ? null : texte.slice(i + selecteur.length + 1, j);
+}
+function vie(texte, fichier) {
+  const c = [];
+  if (!/<html|<body/i.test(texte)) return c;
+  const plat = texte.replace(/\s*\n\s*/g, '');
+  const dire = (num, libelle, detail) => c.push({ fichier, num, gravite: 'bloquant',
+    libelle, detail, remede: 'voir rules/web/mouvement.md, ' + num });
+
+  // V1, une animation de defilement ne touche jamais la visibilite
+  for (const m of plat.matchAll(/\{([^{}]*animation-timeline[^{}]*)\}/g)) {
+    const corps = m[1];
+    const noms = [...corps.matchAll(/animation(?:-name)?\s*:\s*([a-z-]+)/gi)].map(x => x[1]);
+    for (const nom of noms) {
+      if (/^(none|linear|ease|both|forwards|infinite)$/i.test(nom)) continue;
+      const kf = plat.match(new RegExp('@keyframes\\s+' + nom + '\\s*\\{[\\s\\S]{0,400}?\\}\\s*\\}'));
+      if (kf && /opacity/i.test(kf[0]))
+        dire('V1', 'animation de defilement sur l opacite',
+          'la regle @keyframes ' + nom + ' change opacity');
+    }
+  }
+
+  // V2, le mouvement se coupe
+  if (/@keyframes/i.test(plat)) {
+    const mq = plat.match(/@media\s*\(prefers-reduced-motion:\s*reduce\)\s*\{([\s\S]{0,600})/i);
+    if (!mq) dire('V2', 'aucune coupure du mouvement',
+      'la page anime sans @media (prefers-reduced-motion: reduce)');
+    else if (!/animation\s*:\s*none/i.test(mq[1]))
+      dire('V2', 'coupure du mouvement incomplete',
+        'le bloc reduced-motion ne pose pas animation:none');
+  }
+
+  // V3, l ecran d entree a une sortie garantie
+  if (/class="entree"/i.test(texte)) {
+    const b = bloc(plat, '.entree');
+    if (!b || !/pointer-events:none/i.test(b))
+      dire('V3', 'voile d entree sensible au pointeur', '.entree sans pointer-events:none');
+    if (!b || !/animation:/i.test(b))
+      dire('V3', 'voile d entree sans sortie en CSS seul',
+        '.entree ne porte pas d animation de retrait : si le script casse, le voile reste');
+    const plafonds = [...plat.matchAll(/setTimeout\([^,]{1,40},\s*(\d{3,5})\s*\)/g)].map(m => +m[1]);
+    if (!plafonds.some(v => v > 0 && v <= 2500))
+      dire('V3', 'voile d entree sans plafond',
+        'aucun setTimeout de retrait sous 2500 ms');
+    const rm = plat.match(/@media\s*\(prefers-reduced-motion:\s*reduce\)\s*\{([\s\S]{0,600})/i);
+    if (!rm || !/\.entree\{[^}]*display:none/i.test(rm[1]))
+      dire('V3', 'voile d entree non neutralise en mouvement reduit',
+        'le bloc reduced-motion coupe les animations sans cacher .entree');
+  }
+
+  // V4, ce qui se manipule s atteint au clavier
+  for (const m of texte.matchAll(/<input[^>]*type="range"[^>]*>/gi))
+    if (!/aria-label=/i.test(m[0]))
+      dire('V4', 'glissiere sans intitule', m[0].slice(0, 70));
+  if (/class="cadre"/i.test(texte) && !/type="range"/i.test(texte))
+    dire('V4', 'comparateur sans controle natif',
+      'le cadre se manipule mais aucun input type=range ne l accompagne');
+  for (const m of texte.matchAll(/<div[^>]*role="(button|slider)"[^>]*>/gi))
+    dire('V4', 'controle simule', m[0].slice(0, 70) + ' : utiliser <button> ou <input>');
+
+  // V5, le decor ne bloque jamais
+  for (const m of texte.matchAll(/<canvas[^>]*>/gi)) {
+    if (!/aria-hidden="true"/i.test(m[0]))
+      dire('V5', 'canvas non masque aux lecteurs d ecran', m[0].slice(0, 70));
+    const cl = (m[0].match(/class="([^"]+)"/i) || [])[1];
+    const b = cl ? bloc(plat, '.' + cl.split(' ')[0]) : null;
+    if (!b || !/pointer-events:none/i.test(b))
+      dire('V5', 'canvas sensible au pointeur', (cl || 'canvas') + ' sans pointer-events:none');
+    // Un canvas qui remplace une photo doit garder la photo derriere lui.
+    // Un canvas purement decoratif, lui, ne cache rien : il se declare avec
+    // data-decor et n a rien a preserver. L exemption est etroite et ecrite.
+    const decor = /data-decor="oui"/i.test(m[0]);
+    const avant = texte.slice(Math.max(0, texte.indexOf(m[0]) - 1200), texte.indexOf(m[0]));
+    if (!decor && !/<img\b/i.test(avant))
+      dire('V5', 'canvas sans image dessous',
+        'si le contexte graphique echoue, il ne reste rien a voir');
+  }
+
+  // V6, le pointeur dessine ne remplace pas le vrai
+  if (/class="pointeur"/i.test(texte)) {
+    const b = bloc(plat, '.pointeur');
+    if (!b || !/pointer-events:none/i.test(b))
+      dire('V6', 'pointeur dessine sensible au pointeur', '.pointeur sans pointer-events:none');
+    // Deux fautes vues le 14 septembre 2026, chacune rend l anneau ridicule.
+    if (b && /transition:[^;}]*(transform|\ball\b)/i.test(b))
+      dire('V6', 'pointeur anime par une transition CSS',
+        'le script ecrit transform a chaque image : la transition le fait trainer derriere la fleche');
+    if (b && /(^|[;{])\s*scale:/i.test(b))
+      dire('V6', 'echelle et position sur le meme element',
+        '.pointeur porte scale et transform : la translation est multipliee par l echelle, l anneau part hors ecran');
+    if (!/@media\(pointer:coarse\)\{[^}]*\.pointeur\{[^}]*display:none/i.test(plat)
+      && !/@media\s*\(pointer:\s*coarse\)\s*\{[^}]*\.pointeur\s*\{[^}]*display:\s*none/i.test(plat))
+      dire('V6', 'pointeur dessine conserve au doigt',
+        'aucun @media (pointer:coarse) ne le retire');
+  }
+  if (/(^|[{;])\s*(\*|body|html)\s*\{[^}]*cursor:\s*none/i.test(plat))
+    dire('V6', 'curseur systeme masque sur toute la page',
+      'si le rendu s arrete, le visiteur ne voit plus ou il clique');
+
+  return c;
+}
+
+function composition(texte, fichier) {
+  const c = [];
+  if (!/<html|<body/i.test(texte)) return c;
+
+  // G1, methode.md : une page destinee a un artisan sort du generateur.
+  // Une maquette ecrite a la main n a pas cette signature, donc elle est
+  // refusee ici, quelle que soit sa qualite. C est le garde-fou, pas un avis.
+  if (!/name=["']atelier-generateur["']/i.test(texte)) {
+    c.push({ fichier, num: 'G1', gravite: 'bloquant',
+      libelle: 'page non produite par le generateur',
+      detail: 'signature atelier-generateur absente',
+      remede: 'passer par generateur/composer.mjs, voir rules/methode.md' });
+  }
+
+  // G2, ne-pas-fabriquer.md : une page batie sur des photos d illustration le
+  // dit, en clair, dans la page. Sans la mention, la page fait passer des
+  // images generees pour les chantiers de l entreprise.
+  if (/name=["']atelier-images["']\s+content=["']illustration["']/i.test(texte)
+      && !/images d.{1,3}illustration/i.test(texte.replace(/<style[\s\S]*?<\/style>/gi, ''))) {
+    c.push({ fichier, num: 'G2', gravite: 'bloquant',
+      libelle: 'photos d illustration sans mention',
+      detail: 'en-tete atelier-images=illustration, aucune mention visible dans la page',
+      remede: 'voir rules/common/ne-pas-fabriquer.md' });
+  }
+
+  // C1, amplitude typographique
+  const tailles = taillesTexte(texte);
+  if (tailles.length >= 3) {
+    const mx = Math.max(...tailles), mn = Math.min(...tailles), r = mx / mn;
+    if (r < 8) c.push({ fichier, num: 'C1', gravite: 'bloquant',
+      libelle: 'amplitude typographique insuffisante',
+      detail: Math.round(mn) + ' px a ' + Math.round(mx) + ' px, rapport ' + r.toFixed(1) + ' contre 8 exige',
+      remede: 'voir rules/web/composition.md, C1' });
+  }
+
+  // C2, amplitude lumineuse
+  const fonds = fondsDeclares(texte).map(h => ({ hex: h, l: lum(h) }));
+  if (fonds.length >= 2) {
+    const ls = fonds.map(f => f.l);
+    const ecart = Math.max(...ls) - Math.min(...ls);
+    if (ecart < 0.55) c.push({ fichier, num: 'C2', gravite: 'bloquant',
+      libelle: 'amplitude lumineuse insuffisante',
+      detail: 'ecart de luminance ' + ecart.toFixed(2) + ' contre 0,55 exige',
+      remede: 'une section pleine largeur sombre, voir composition.md, C2' });
+  }
+
+  // C3, le premier ecran affirme
+  const iH1 = texte.search(/<h1\b/i);
+  if (iH1 > -1) {
+    const avant = texte.slice(0, iH1);
+    if (/<table\b/i.test(avant)) c.push({ fichier, num: 'C3', gravite: 'bloquant',
+      libelle: 'tableau avant le titre', detail: 'un <table> precede le h1',
+      remede: 'les donnees viennent plus bas, voir composition.md, C3' });
+    const mention = avant.match(/(proposition de site|informations proviennent|mentions l[ée]gales)/i);
+    if (mention) c.push({ fichier, num: 'C3', gravite: 'bloquant',
+      libelle: 'mention legale avant le titre', detail: '"' + mention[0] + '"',
+      remede: 'la mention va en pied de page, voir composition.md, C3' });
+    const premiere = texte.slice(iH1).match(/<\/(section|header)>/i);
+    const bloc1 = premiere ? texte.slice(iH1, iH1 + premiere.index) : '';
+    if (/<table\b|<dl\b/i.test(bloc1)) c.push({ fichier, num: 'C3', gravite: 'bloquant',
+      libelle: 'liste de donnees sur le premier ecran',
+      detail: 'un <table> ou <dl> partage la section du h1',
+      remede: 'le premier ecran porte une image et une phrase' });
+  }
+
+  // 27b, palette prelevee : la famille chaude n est admise que declaree
+  const declaree = /palette\s+pr[ée]lev[ée]e/i.test(texte);
+  if (!declaree) {
+    const vus = new Set();
+    for (const m of texte.matchAll(/#([0-9a-f]{6})\b/gi)) {
+      const hex = m[1].toLowerCase();
+      if (vus.has(hex)) continue;
+      const { h, s, l } = versHsl(hex);
+      if (h >= 18 && h <= 52 && s >= 0.10 && s <= 0.50 && l >= 0.45 && l <= 0.88) {
+        vus.add(hex);
+        c.push({ fichier, num: '27b', gravite: 'bloquant',
+          libelle: 'famille chaude non declaree',
+          detail: '#' + hex + ' (teinte ' + Math.round(h) + ', saturation ' + s.toFixed(2) + ')',
+          remede: 'declarer en commentaire : palette prelevee, et nommer la photo source' });
+      }
+    }
+  }
+  return c;
+}
+
+// ---------------------------------------------------------------- parcours
+function fichiers(chemin) {
+  const s = statSync(chemin);
+  if (s.isFile()) return EXT.has(extname(chemin)) ? [chemin] : [];
+  return readdirSync(chemin).flatMap(n =>
+    EXCLUS.includes(n) || n.startsWith('.') ? [] : fichiers(join(chemin, n)));
+}
+
+const cible = process.argv[2];
+if (!cible) { console.error('usage: node verifier-site.mjs <chemin> [--json]'); process.exit(2); }
+
+const constats = [];
+for (const f of fichiers(cible)) {
+  const texte = readFileSync(f, 'utf8');
+  const octets = statSync(f).size;
+  const court = basename(f);
+
+  texte.split('\n').forEach((ligne, i) => {
+    if (ligne.includes('verif-ignore')) return;
+    for (const r of REGLES) {
+      r.motif.lastIndex = 0;
+      let m;
+      while ((m = r.motif.exec(ligne)) !== null) {
+        constats.push({ fichier: court, ligne: i + 1, num: r.num, gravite: r.gravite,
+          libelle: r.libelle, extrait: m[0].trim().slice(0, 60), remede: r.remede });
+      }
+    }
+  });
+
+  constats.push(...structure(texte, court));
+  constats.push(...composition(texte, court));
+  constats.push(...vie(texte, court));
+
+  for (const p of contrastes(texte)) {
+    constats.push({ fichier: court, num: 'A7', gravite: 'bloquant',
+      libelle: 'contraste sous 4,5:1',
+      detail: p.texte + ' sur ' + p.fond + ' = ' + p.ratio + ':1',
+      remede: 'plancher WCAG 2.2 AA, non negociable' });
+  }
+
+  const budget = extname(f) === '.css' ? BUDGETS.css : BUDGETS.page;
+  if (octets > budget) {
+    constats.push({ fichier: court, num: 'P3', gravite: 'avertissement',
+      libelle: 'budget de poids depasse',
+      detail: Math.round(octets / 1024) + ' Ko contre ' + Math.round(budget / 1024) + ' Ko',
+      remede: 'voir rules/web/performance.md' });
+  }
+}
+
+// ---------------------------------------------------------------- sortie
+if (process.argv.includes('--json')) {
+  console.log(JSON.stringify({ constats }, null, 2));
+} else if (constats.length === 0) {
+  console.log('Aucun constat. La page respecte le plancher verifiable.');
+} else {
+  const groupes = {};
+  for (const c of constats) (groupes[c.num] ??= []).push(c);
+  const ordre = Object.entries(groupes).sort((a, b) =>
+    (a[1][0].gravite === 'bloquant' ? 0 : 1) - (b[1][0].gravite === 'bloquant' ? 0 : 1));
+  for (const [num, liste] of ordre) {
+    const p = liste[0];
+    console.log('\n[' + p.gravite.toUpperCase() + '] ' + num + ' ' + p.libelle + ' (' + liste.length + ')');
+    console.log('  remede: ' + p.remede);
+    for (const c of liste.slice(0, 5)) {
+      const ou = c.ligne ? c.fichier + ':' + c.ligne : c.fichier;
+      console.log('  ' + ou + '  ' + (c.extrait ? '"' + c.extrait + '"' : c.detail));
+    }
+    if (liste.length > 5) console.log('  ... et ' + (liste.length - 5) + ' autres');
+  }
+  const bloquants = constats.filter(c => c.gravite === 'bloquant').length;
+  console.log('\n' + bloquants + ' bloquant(s), ' + (constats.length - bloquants) + ' avertissement(s).');
+  console.log('Le plancher se verifie. La forme reste libre : test d unicite dans design-interdits.md.');
+}
+
+process.exit(constats.some(c => c.gravite === 'bloquant') ? 1 : 0);

@@ -1,0 +1,17 @@
+{
+  "name": "sito",
+  "private": true,
+  "type": "module",
+  "description": "Sitô : le générateur de sites pour artisans du bâtiment, ses vérificateurs, et l'app de l'artisan",
+  "dependencies": {
+    "playwright": "^1.63.0",
+    "pngjs": "^7.0.0",
+    "sharp": "^0.34.0"
+  },
+  "scripts": {
+    "depot": "node scripts/verifier-depot.mjs .",
+    "textes": "node scripts/verifier-textes.mjs .",
+    "demo": "node scripts/fabriquer-demo.mjs",
+    "unicite": "node scripts/verifier-unicite.mjs sites"
+  }
+}

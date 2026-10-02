@@ -1,0 +1,26 @@
+# dependances
+node_modules/
+
+# secrets : jamais dans le depot
+.env
+.env.*
+!.env.example
+dotenv
+*.key
+
+# images : pas de Git LFS (decision de Fabrice). Elles vivent dans images/,
+# sur la machine, et a terme dans le stockage de la base.
+images/
+
+# sites fabriques : ils se refabriquent depuis le depot
+sites/
+flotte/
+sortie/
+
+# archives et journaux
+*.zip
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini
+.claude/settings.local.json

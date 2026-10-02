@@ -1,0 +1,206 @@
+{
+  "sites": [
+    {
+      "siren": "480423623",
+      "nom": "SUD RAVALEMENT FACADES",
+      "commune": "Marseille",
+      "metier": "ravalement",
+      "archetype": "matiere",
+      "accent": "#dca466",
+      "titre": "On ne refait pas une façade pour dix ans en trois jours.",
+      "main": {
+        "hero": "hero",
+        "chantier": "chantier",
+        "geste": "geste",
+        "detail": "detail-enduit",
+        "paire1": "03",
+        "paire2": "01"
+      },
+      "photos": "hero,chantier,geste,detail-enduit,avant-03,apres-03,avant-01,apres-01",
+      "structure": "ouverture>coupure>chantier>travail>prix>verifiable>contact",
+      "structureDetail": {
+        "ordre": [
+          "ouverture",
+          "coupure",
+          "chantier",
+          "travail",
+          "prix",
+          "verifiable",
+          "contact"
+        ],
+        "prix": true,
+        "avis": false,
+        "estimateur": true,
+        "page2": false,
+        "nuancierPlace": "comparateur"
+      },
+      "comparateur": {
+        "prise": "fil",
+        "etiquettes": "bas",
+        "indice": "Touchez pour comparer"
+      },
+      "phrases": [
+        "On ne refait pas une façade pour dix ans en trois jours.",
+        "Diagnostic du support, purge des parties creuses, enduit adapté au mur.",
+        "Enduit d’origine soufflé par endroits, fissures suivies, salissures de ruissellement sous les appuis.",
+        "Parement neuf sur support assaini, points singuliers repris, ruissellement maîtrisé.",
+        "Passez de l’avant à l’après d’un geste.",
+        "À dix centimètres, c’est le grain qui parle. Personne ne triche à cette distance.",
+        "La photo avant et la photo après sont prises du même endroit.",
+        "Façade complète, reprise du support et enduit gratté.",
+        "Pignon repris, joints refaits, enduit taloché.",
+        "Le gratté se travaille quand l’enduit a pris juste ce qu’il faut. Trop tôt il colle, trop tard il arrache.",
+        "Serré à la taloche pour un fini plus fermé. Il marque davantage les reprises, donc il se travaille par pans entiers, sans arrêt au milieu d’une façade.",
+        "Appuis de fenêtre, bandeaux, corniches, descentes. C’est par là que l’eau rentre, et c’est là que le ravalement se juge deux ans après.",
+        "Montage, filet, bâchage des menuiseries, protection du sol. Le temps passé à protéger est du temps qu’on ne passe pas à nettoyer.",
+        "Une teinte paraît toujours plus claire en petit échantillon qu’en pleine façade. On juge sur une surface d’essai d’au moins un mètre carré.",
+        "Ce que recouvre le mot ravalement.",
+        "Sur place, au fil du chantier.",
+        "Ce qui se vérifie.",
+        "Parler du chantier.",
+        "Les prix publics du métier."
+      ],
+      "famille": "noir-fauve",
+      "sol": "nuit",
+      "polices": "archivo-plein",
+      "geometrie": "adouci",
+      "mot": "metier",
+      "produitLe": "2026-10-02"
+    },
+    {
+      "siren": "849891528",
+      "nom": "PROVENCE RAVALEMENT PEINTURE",
+      "commune": "Marseille",
+      "metier": "ravalement",
+      "archetype": "planche",
+      "accent": "#b08c6f",
+      "titre": "Une fissure rebouchée sans être ouverte revient l’hiver suivant.",
+      "main": {
+        "hero": "hero",
+        "chantier": "chantier-2",
+        "geste": "geste-3",
+        "detail": "detail-enduit",
+        "paire1": "01",
+        "paire2": "02"
+      },
+      "photos": "hero,chantier-2,geste-3,detail-enduit,avant-01,apres-01,avant-02,apres-02",
+      "structure": "ouverture>coupure>prix>chantier>avis>travail>verifiable>contact",
+      "structureDetail": {
+        "ordre": [
+          "ouverture",
+          "coupure",
+          "prix",
+          "chantier",
+          "avis",
+          "travail",
+          "verifiable",
+          "contact"
+        ],
+        "prix": true,
+        "avis": true,
+        "estimateur": false,
+        "page2": false,
+        "nuancierPlace": "atmo"
+      },
+      "comparateur": {
+        "prise": "rond",
+        "etiquettes": "bas",
+        "indice": "Déplacez la séparation"
+      },
+      "phrases": [
+        "Une fissure rebouchée sans être ouverte revient l’hiver suivant.",
+        "Ouverture et pontage des fissures, reprise des appuis, enduit de parement.",
+        "Peinture écaillée sur ancien enduit, fissures reprises au mastic qui ressortent.",
+        "Support purgé et réparé, enduit gratté fin, teinte choisie dans la gamme des façades voisines.",
+        "Comparez les deux états de la même façade.",
+        "Un enduit à la chaux laisse sortir l’humidité du mur au lieu de l’enfermer.",
+        "Même point de vue, même focale, même heure. Rien d’autre ne change que la façade.",
+        "Soubassement assaini, enduit respirant, appuis repris.",
+        "Façade sur rue, purge complète et enduit à la chaux.",
+        "Ce qui sonne creux sous le marteau tombe. On reprend à partir du sain, jamais par-dessus.",
+        "Une fissure s’ouvre en V, se nettoie, se ponte avec une armature. Rebouchée en surface, elle revient.",
+        "Le gratté pardonne les petits défauts de planéité et vieillit bien en ville. Il se salit moins vite qu’un fini lisse.",
+        "Fini plus lisse, plus contemporain, plus exigeant : la moindre reprise se voit en lumière rasante.",
+        "Appuis, tableaux, angles, rives : c’est là que l’eau entre, c’est là qu’on passe le plus de temps.",
+        "Menuiseries, sols et végétation sont protégés avant la première passe. Le chantier se rend propre.",
+        "Les étapes, dans l’ordre.",
+        "Pendant les travaux.",
+        "Les faits publics.",
+        "Demander une visite.",
+        "Avant de demander un devis."
+      ],
+      "famille": "luxe-froid",
+      "sol": "nuit",
+      "polices": "bricolage",
+      "geometrie": "vif",
+      "mot": "aucun",
+      "produitLe": "2026-10-02"
+    },
+    {
+      "siren": "881767842",
+      "nom": "EVORA RAVALEMENT",
+      "commune": "Marseille",
+      "metier": "ravalement",
+      "archetype": "elevation",
+      "accent": "#b08c6f",
+      "titre": "Ce qu’on gratte aujourd’hui, on ne le reprend pas dans cinq ans.",
+      "main": {
+        "hero": "hero-variante-2",
+        "chantier": "chantier-3",
+        "geste": "geste-5",
+        "detail": "detail-enduit",
+        "paire1": "02",
+        "paire2": "03"
+      },
+      "photos": "hero-variante-2,chantier-3,geste-5,detail-enduit,avant-02,apres-02,avant-03,apres-03",
+      "structure": "coupure>ouverture>avis>chantier>travail>verifiable>contact",
+      "structureDetail": {
+        "ordre": [
+          "coupure",
+          "ouverture",
+          "avis",
+          "chantier",
+          "travail",
+          "verifiable",
+          "contact"
+        ],
+        "prix": false,
+        "avis": true,
+        "estimateur": false,
+        "page2": false,
+        "nuancierPlace": "comparateur"
+      },
+      "comparateur": {
+        "prise": "barre",
+        "etiquettes": "haut",
+        "indice": "Glissez ou touchez"
+      },
+      "phrases": [
+        "Ce qu’on gratte aujourd’hui, on ne le reprend pas dans cinq ans.",
+        "Enduit gratté ou taloché, reprise de fissures, nettoyage de support.",
+        "Enduit faïencé, fissures en escalier aux angles, traces d’eau sous les rives.",
+        "Support stabilisé, teinte accordée aux voisines, points d’eau traités.",
+        "Déplacez la couture.",
+        "Le grain se décide à la lame, au moment exact où l’enduit a pris.",
+        "Même cadrage, même lumière : la différence vient du chantier.",
+        "Angle de façade, fissure ouverte, pontage puis enduit.",
+        "Maison de ville, fissures pontées, teinte d’origine retrouvée.",
+        "Basse pression sur un enduit fatigué, haute pression seulement sur un support sain. Le choix se fait au marteau, pas au catalogue.",
+        "Le sondage au marteau décide de la surface à purger. C’est le poste qui fait varier un devis du simple au double, et c’est le seul qu’on ne peut pas deviner d’en bas.",
+        "Une fissure fine et ramifiée est un défaut d’enduit. Une fissure franche qui traverse est un mouvement de structure : elle se ponte, ou elle se rouvre.",
+        "Application en deux passes, puis grattage à la lame quand la prise est suffisante. Le grain dépend de la granulométrie et du moment où l’on gratte.",
+        "Le travail, poste par poste.",
+        "Sur l’échafaudage.",
+        "Les informations officielles.",
+        "Parler de votre façade.",
+        "Les ordres de grandeur."
+      ],
+      "famille": "mono-vif",
+      "sol": "papier",
+      "polices": "public-bricolage",
+      "geometrie": "adouci",
+      "mot": "enseigne",
+      "produitLe": "2026-10-02"
+    }
+  ]
+}

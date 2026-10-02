@@ -1,0 +1,25 @@
+#!/bin/sh
+# Refuse le commit si le plancher n est pas tenu. Voir rules/methode.md.
+# Installe par : git config core.hooksPath git-hooks
+racine=$(git rev-parse --show-toplevel)
+cd "$racine" || exit 1
+
+echo "sito, controle avant commit"
+
+node scripts/verifier-textes.mjs . || {
+  echo "REFUS : signatures textuelles. Voir rules/web/design-interdits.md."
+  exit 1
+}
+
+# toute page html ajoutee ou modifiee doit tenir le plancher
+pages=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.html$' || true)
+for p in $pages; do
+  [ -f "$p" ] || continue
+  node scripts/verifier-site.mjs "$p" || {
+    echo "REFUS : $p ne tient pas le plancher. Voir rules/web/composition.md."
+    exit 1
+  }
+done
+
+echo "controle passe"
+exit 0

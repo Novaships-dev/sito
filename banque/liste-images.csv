@@ -1,0 +1,513 @@
+fait;metier;n;fichier;rapport;largeur mini;sujet a demander
+[ ];Ravalement de façade;1;hero.jpg;16/9;1600;immeuble de trois niveaux, moitié gauche sous échafaudage et filet, moitié droite enduit sable terminé, coupure sur la descente d'eau
+[ ];Ravalement de façade;2;hero-variante-2.jpg;16/9;1600;maison de ville, moitié gauche support piqué et gris, moitié droite enduit gratté neuf, coupure sur l'angle du mur
+[ ];Ravalement de façade;3;avant-01.jpg;4/3;1400;maison de ville deux niveaux, volets bleus, enduit cloqué, fissures suivies, coulures sous les appuis
+[ ];Ravalement de façade;4;apres-01.jpg;4/3;1400;la même maison, même cadrage, enduit gratté sable, appuis nettoyés  [MEME bâtiment, MEME cadrage que avant-01]
+[ ];Ravalement de façade;5;avant-02.jpg;4/3;1400;immeuble d'angle quatre niveaux, balcons en ferronnerie, enduit noirci par le ruissellement
+[ ];Ravalement de façade;6;apres-02.jpg;4/3;1400;le même immeuble, enduit repris, ferronneries dégagées  [MEME bâtiment, MEME cadrage que avant-02]
+[ ];Ravalement de façade;7;avant-03.jpg;4/3;1400;mur pignon aveugle, fissures en escalier, salissures vertes
+[ ];Ravalement de façade;8;apres-03.jpg;4/3;1400;le même pignon, monocouche teinté, fissures traitées  [MEME bâtiment, MEME cadrage que avant-03]
+[ ];Ravalement de façade;9;chantier.jpg;4/3;1300;échafaudage monté sur une façade de rue étroite, bâche, trottoir protégé
+[ ];Ravalement de façade;10;chantier-2.jpg;4/3;1300;pied d'échafaudage, seaux, sacs de mortier empilés, règle d'aluminium appuyée
+[ ];Ravalement de façade;11;chantier-3.jpg;4/3;1300;façade en cours, moitié piquée moitié enduite, vue du trottoir d'en face
+[ ];Ravalement de façade;12;geste.jpg;4/3;1300;taloche chargée d'enduit appliquée contre le mur, main et avant-bras
+[ ];Ravalement de façade;13;geste-2.jpg;4/3;1300;lame qui gratte l'enduit encore frais, poussière fine qui tombe
+[ ];Ravalement de façade;14;geste-3.jpg;4/3;1300;règle d'aluminium tirée à deux mains sur l'enduit
+[ ];Ravalement de façade;15;geste-4.jpg;4/3;1300;brosse qui humidifie le support avant reprise
+[ ];Ravalement de façade;16;geste-5.jpg;4/3;1300;lance de machine à projeter tenue à bout de bras, projection en cours
+[ ];Ravalement de façade;17;detail-enduit.jpg;4/3;1400;enduit gratté fin en lumière rasante  [sert au mot geant, au WebGL et au prelevement de la palette]
+[ ];Ravalement de façade;18;matiere-02.jpg;4/3;1400;taloché serré, grain fermé
+[ ];Ravalement de façade;19;matiere-03.jpg;4/3;1400;lissé à la chaux, léger nuancé
+[ ];Ravalement de façade;20;matiere-04.jpg;4/3;1400;monocouche projeté, grain irrégulier
+[ ];Ravalement de façade;21;matiere-05.jpg;4/3;1400;fissure ouverte en V avant reprise
+[ ];Ravalement de façade;22;matiere-06.jpg;4/3;1400;joint de pierre repris au mortier de chaux
+[ ];Ravalement de façade;23;matiere-07.jpg;4/3;1400;arête d'angle neuve, baguette invisible
+[ ];Ravalement de façade;24;matiere-08.jpg;4/3;1400;raccord entre ancien et neuf, limite visible
+[ ];Ravalement de façade;25;ambiance-01.jpg;3/2;1600;rue étroite au soleil de fin de journée, échafaudage en silhouette
+[ ];Ravalement de façade;26;ambiance-02.jpg;3/2;1600;outils posés au pied du mur, ombre longue
+[ ];Ravalement de façade;27;ambiance-03.jpg;3/2;1600;façade terminée vue en contre-plongée contre le ciel
+[ ];Ravalement de façade;28;ambiance-04.jpg;3/2;1600;filet de chantier en contre-jour
+[ ];Ravalement de façade;29;ambiance-05.jpg;3/2;1600;gouttière et descente d'eau neuves contre l'enduit
+[ ];Ravalement de façade;30;signe-01.jpg;1/1;1400;texture d'enduit à plat, plein cadre
+[ ];Ravalement de façade;31;signe-02.jpg;1/1;1400;trame de filet de chantier
+[ ];Ravalement de façade;32;signe-03.jpg;1/1;1400;poussière d'enduit dans un rai de lumière
+[ ];Peinture intérieure;1;hero.jpg;16/9;1600;grande pièce, moitié gauche en travaux (bâches, sous-couche, ruban), moitié droite finie, coupure sur l'angle du mur
+[ ];Peinture intérieure;2;hero-variante-2.jpg;16/9;1600;couloir, moitié gauche papier arraché et plâtre nu, moitié droite peint en blanc cassé
+[ ];Peinture intérieure;3;avant-01.jpg;4/3;1400;salon aux murs marqués, traces de meubles, fissures capillaires, plinthes jaunies
+[ ];Peinture intérieure;4;apres-01.jpg;4/3;1400;le même salon, murs unis, plinthes nettes  [MEME bâtiment, MEME cadrage que avant-01]
+[ ];Peinture intérieure;5;avant-02.jpg;4/3;1400;cage d'escalier sombre, peinture écaillée sur la rampe et les murs
+[ ];Peinture intérieure;6;apres-02.jpg;4/3;1400;la même cage, murs clairs, rampe reprise  [MEME bâtiment, MEME cadrage que avant-02]
+[ ];Peinture intérieure;7;avant-03.jpg;4/3;1400;chambre avec papier peint daté, décollé aux angles
+[ ];Peinture intérieure;8;apres-03.jpg;4/3;1400;la même chambre peinte, angles nets  [MEME bâtiment, MEME cadrage que avant-03]
+[ ];Peinture intérieure;9;chantier.jpg;4/3;1300;pièce entièrement bâchée, escabeau ouvert, pots alignés le long du mur
+[ ];Peinture intérieure;10;chantier-2.jpg;4/3;1300;ruban de masquage en place sur plinthes et encadrements, avant première passe
+[ ];Peinture intérieure;11;chantier-3.jpg;4/3;1300;bac à peinture, rouleau chargé, manche télescopique appuyé
+[ ];Peinture intérieure;12;geste.jpg;4/3;1300;rouleau qui dépose la peinture, bande fraîche et nette
+[ ];Peinture intérieure;13;geste-2.jpg;4/3;1300;pinceau en coupe d'angle le long d'une plinthe
+[ ];Peinture intérieure;14;geste-3.jpg;4/3;1300;spatule qui reboucha une fissure à l'enduit
+[ ];Peinture intérieure;15;geste-4.jpg;4/3;1300;cale à poncer sur un rebouchage sec, poussière fine
+[ ];Peinture intérieure;16;geste-5.jpg;4/3;1300;ruban de masquage tiré d'un geste continu
+[ ];Peinture intérieure;17;detail-peinture.jpg;4/3;1400;grain de rouleau en lumière rasante  [sert au mot geant, au WebGL et au prelevement de la palette]
+[ ];Peinture intérieure;18;matiere-02.jpg;4/3;1400;mur laqué satiné, reflet doux
+[ ];Peinture intérieure;19;matiere-03.jpg;4/3;1400;bande de finition à l'angle de deux teintes
+[ ];Peinture intérieure;20;matiere-04.jpg;4/3;1400;plinthe peinte, arête nette contre le sol
+[ ];Peinture intérieure;21;matiere-05.jpg;4/3;1400;enduit de rebouchage poncé, tache claire
+[ ];Peinture intérieure;22;matiere-06.jpg;4/3;1400;papier peint décollé montrant le plâtre
+[ ];Peinture intérieure;23;matiere-07.jpg;4/3;1400;boiserie laquée, veinage encore lisible
+[ ];Peinture intérieure;24;matiere-08.jpg;4/3;1400;nuancier de teintes tenu contre le mur
+[ ];Peinture intérieure;25;ambiance-01.jpg;3/2;1600;pièce vide et bâchée, lumière de fenêtre
+[ ];Peinture intérieure;26;ambiance-02.jpg;3/2;1600;pots et outils rangés en fin de journée
+[ ];Peinture intérieure;27;ambiance-03.jpg;3/2;1600;escabeau en silhouette contre un mur frais
+[ ];Peinture intérieure;28;ambiance-04.jpg;3/2;1600;reflet de fenêtre sur un mur satiné
+[ ];Peinture intérieure;29;ambiance-05.jpg;3/2;1600;porte fraîchement peinte, entrouverte
+[ ];Peinture intérieure;30;signe-01.jpg;1/1;1400;aplat de teinte plein cadre
+[ ];Peinture intérieure;31;signe-02.jpg;1/1;1400;texture de rouleau à plat
+[ ];Peinture intérieure;32;signe-03.jpg;1/1;1400;grain de toile de bâche
+[ ];Maçonnerie générale;1;hero.jpg;16/9;1600;mur de pierre, moitié gauche déjointoyée et étayée, moitié droite rejointoyée au mortier de chaux
+[ ];Maçonnerie générale;2;hero-variante-2.jpg;16/9;1600;extension en parpaings, moitié gauche brute, moitié droite enduite
+[ ];Maçonnerie générale;3;avant-01.jpg;4/3;1400;muret de clôture dégradé, pierres descellées, joints tombés
+[ ];Maçonnerie générale;4;apres-01.jpg;4/3;1400;le même muret remonté et rejointoyé  [MEME bâtiment, MEME cadrage que avant-01]
+[ ];Maçonnerie générale;5;avant-02.jpg;4/3;1400;mur porteur avant ouverture, tracé au crayon pour la découpe
+[ ];Maçonnerie générale;6;apres-02.jpg;4/3;1400;le même mur avec ouverture créée, linteau posé, tableaux nets  [MEME bâtiment, MEME cadrage que avant-02]
+[ ];Maçonnerie générale;7;avant-03.jpg;4/3;1400;dalle de terrasse fissurée et affaissée
+[ ];Maçonnerie générale;8;apres-03.jpg;4/3;1400;la même surface, dalle neuve talochée  [MEME bâtiment, MEME cadrage que avant-03]
+[ ];Maçonnerie générale;9;chantier.jpg;4/3;1300;montage de parpaings au cordeau, bétonnière en fond
+[ ];Maçonnerie générale;10;chantier-2.jpg;4/3;1300;banches en place, ferraillage en attente, étais
+[ ];Maçonnerie générale;11;chantier-3.jpg;4/3;1300;fondations ouvertes, tranchée nette, semelle ferraillée
+[ ];Maçonnerie générale;12;geste.jpg;4/3;1300;truelle qui charge le joint entre deux pierres
+[ ];Maçonnerie générale;13;geste-2.jpg;4/3;1300;fil à plomb tenu contre l'angle d'un mur
+[ ];Maçonnerie générale;14;geste-3.jpg;4/3;1300;niveau à bulle posé sur une rangée de parpaings
+[ ];Maçonnerie générale;15;geste-4.jpg;4/3;1300;règle de maçon tirée sur une dalle fraîche
+[ ];Maçonnerie générale;16;geste-5.jpg;4/3;1300;massette et burin sur une pierre à retailler
+[ ];Maçonnerie générale;17;detail-pierre.jpg;4/3;1400;joint frais beurré entre deux pierres  [sert au mot geant, au WebGL et au prelevement de la palette]
+[ ];Maçonnerie générale;18;matiere-02.jpg;4/3;1400;pierre taillée, arête vive
+[ ];Maçonnerie générale;19;matiere-03.jpg;4/3;1400;parpaing monté, joint régulier
+[ ];Maçonnerie générale;20;matiere-04.jpg;4/3;1400;béton lissé à l'hélicoptère
+[ ];Maçonnerie générale;21;matiere-05.jpg;4/3;1400;ferraillage en attente, fers croisés
+[ ];Maçonnerie générale;22;matiere-06.jpg;4/3;1400;linteau béton posé sur ses appuis
+[ ];Maçonnerie générale;23;matiere-07.jpg;4/3;1400;chaînage d'angle coffré
+[ ];Maçonnerie générale;24;matiere-08.jpg;4/3;1400;dalle talochée en cours de prise
+[ ];Maçonnerie générale;25;ambiance-01.jpg;3/2;1600;chantier au petit matin, tas de sable et de gravier
+[ ];Maçonnerie générale;26;ambiance-02.jpg;3/2;1600;mur monté à mi-hauteur en fin de journée
+[ ];Maçonnerie générale;27;ambiance-03.jpg;3/2;1600;bétonnière en rotation, poussière
+[ ];Maçonnerie générale;28;ambiance-04.jpg;3/2;1600;échafaudage bas et brouette
+[ ];Maçonnerie générale;29;ambiance-05.jpg;3/2;1600;outils de maçon posés sur un parpaing
+[ ];Maçonnerie générale;30;signe-01.jpg;1/1;1400;texture de béton brut
+[ ];Maçonnerie générale;31;signe-02.jpg;1/1;1400;trame de parpaings
+[ ];Maçonnerie générale;32;signe-03.jpg;1/1;1400;grain de sable de rivière
+[ ];Couverture et zinguerie;1;hero.jpg;16/9;1600;toiture en tuiles canal, moitié gauche déposée montrant liteaux et écran, moitié droite recouverte
+[ ];Couverture et zinguerie;2;hero-variante-2.jpg;16/9;1600;toit à deux pans, moitié gauche mousse et tuiles cassées, moitié droite neuve
+[ ];Couverture et zinguerie;3;avant-01.jpg;4/3;1400;toiture couverte de mousse, tuiles glissées et cassées, faîtage descellé
+[ ];Couverture et zinguerie;4;apres-01.jpg;4/3;1400;la même toiture nettoyée et recouverte, faîtage scellé  [MEME bâtiment, MEME cadrage que avant-01]
+[ ];Couverture et zinguerie;5;avant-02.jpg;4/3;1400;gouttière percée et déformée, rive abîmée
+[ ];Couverture et zinguerie;6;apres-02.jpg;4/3;1400;la même gouttière en zinc neuf, rive refaite  [MEME bâtiment, MEME cadrage que avant-02]
+[ ];Couverture et zinguerie;7;avant-03.jpg;4/3;1400;souche de cheminée fissurée, solin ouvert
+[ ];Couverture et zinguerie;8;apres-03.jpg;4/3;1400;la même souche reprise, solin zinc neuf  [MEME bâtiment, MEME cadrage que avant-03]
+[ ];Couverture et zinguerie;9;chantier.jpg;4/3;1300;échafaudage de toit et filet de sécurité, palette de tuiles montée
+[ ];Couverture et zinguerie;10;chantier-2.jpg;4/3;1300;liteaux et écran sous-toiture posés sur la moitié d'un pan
+[ ];Couverture et zinguerie;11;chantier-3.jpg;4/3;1300;monte-matériaux appuyé contre la façade, tuiles en attente
+[ ];Couverture et zinguerie;12;geste.jpg;4/3;1300;mains qui posent une tuile canal sur le liteau
+[ ];Couverture et zinguerie;13;geste-2.jpg;4/3;1300;fer à souder sur une jonction de zinc, goutte d'étain
+[ ];Couverture et zinguerie;14;geste-3.jpg;4/3;1300;cisaille qui découpe une feuille de zinc
+[ ];Couverture et zinguerie;15;geste-4.jpg;4/3;1300;plieuse à main sur une bande de zinc
+[ ];Couverture et zinguerie;16;geste-5.jpg;4/3;1300;mains qui scellent une tuile faîtière au mortier
+[ ];Couverture et zinguerie;17;detail-zinc.jpg;4/3;1400;tuile canal neuve, courbe et ombre  [sert au mot geant, au WebGL et au prelevement de la palette]
+[ ];Couverture et zinguerie;18;matiere-02.jpg;4/3;1400;tuile ancienne couverte de mousse
+[ ];Couverture et zinguerie;19;matiere-03.jpg;4/3;1400;zinc plié, arête nette
+[ ];Couverture et zinguerie;20;matiere-04.jpg;4/3;1400;soudure à l'étain sur zinc
+[ ];Couverture et zinguerie;21;matiere-05.jpg;4/3;1400;faîtage scellé au mortier
+[ ];Couverture et zinguerie;22;matiere-06.jpg;4/3;1400;liteau et écran sous-toiture
+[ ];Couverture et zinguerie;23;matiere-07.jpg;4/3;1400;solin encastré dans la maçonnerie
+[ ];Couverture et zinguerie;24;matiere-08.jpg;4/3;1400;chéneau en zinc, eau claire au fond
+[ ];Couverture et zinguerie;25;ambiance-01.jpg;3/2;1600;ligne de faîtage contre un ciel de fin de journée
+[ ];Couverture et zinguerie;26;ambiance-02.jpg;3/2;1600;toit vu depuis l'échelle, tuiles en perspective
+[ ];Couverture et zinguerie;27;ambiance-03.jpg;3/2;1600;palettes de tuiles montées sur le toit
+[ ];Couverture et zinguerie;28;ambiance-04.jpg;3/2;1600;gouttière neuve contre la façade
+[ ];Couverture et zinguerie;29;ambiance-05.jpg;3/2;1600;vue plongeante sur les toits d'un village
+[ ];Couverture et zinguerie;30;signe-01.jpg;1/1;1400;trame de tuiles plein cadre
+[ ];Couverture et zinguerie;31;signe-02.jpg;1/1;1400;texture de zinc patiné
+[ ];Couverture et zinguerie;32;signe-03.jpg;1/1;1400;grain d'ardoise
+[ ];Menuiserie et fenêtres;1;hero.jpg;16/9;1600;façade, moitié gauche anciennes fenêtres bois grises, moitié droite fenêtres neuves posées
+[ ];Menuiserie et fenêtres;2;hero-variante-2.jpg;16/9;1600;atelier, moitié gauche bois brut empilé, moitié droite ouvrants finis alignés
+[ ];Menuiserie et fenêtres;3;avant-01.jpg;4/3;1400;fenêtre ancienne simple vitrage, peinture écaillée, mastic tombé
+[ ];Menuiserie et fenêtres;4;apres-01.jpg;4/3;1400;la même baie avec fenêtre neuve posée  [MEME bâtiment, MEME cadrage que avant-01]
+[ ];Menuiserie et fenêtres;5;avant-02.jpg;4/3;1400;porte d'entrée fatiguée, seuil usé
+[ ];Menuiserie et fenêtres;6;apres-02.jpg;4/3;1400;la même porte remplacée, seuil aluminium neuf  [MEME bâtiment, MEME cadrage que avant-02]
+[ ];Menuiserie et fenêtres;7;avant-03.jpg;4/3;1400;volets bois décolorés et déformés
+[ ];Menuiserie et fenêtres;8;apres-03.jpg;4/3;1400;les mêmes volets refaits, lasure fraîche  [MEME bâtiment, MEME cadrage que avant-03]
+[ ];Menuiserie et fenêtres;9;chantier.jpg;4/3;1300;dépose en cours, ancien dormant sorti, protection au sol
+[ ];Menuiserie et fenêtres;10;chantier-2.jpg;4/3;1300;calage et réglage d'un dormant neuf, niveau posé
+[ ];Menuiserie et fenêtres;11;chantier-3.jpg;4/3;1300;fenêtres neuves alignées contre un mur, emballage retiré
+[ ];Menuiserie et fenêtres;12;geste.jpg;4/3;1300;mains qui vissent une patte de fixation dans le tableau
+[ ];Menuiserie et fenêtres;13;geste-2.jpg;4/3;1300;pistolet à mastic qui tire un joint de pose
+[ ];Menuiserie et fenêtres;14;geste-3.jpg;4/3;1300;rabot qui prend un copeau sur un chant de bois
+[ ];Menuiserie et fenêtres;15;geste-4.jpg;4/3;1300;mains qui règlent une paumelle à la clé
+[ ];Menuiserie et fenêtres;16;geste-5.jpg;4/3;1300;mètre et crayon sur un chant, trait de coupe
+[ ];Menuiserie et fenêtres;17;detail-bois.jpg;4/3;1400;chêne huilé, veinage serré  [sert au mot geant, au WebGL et au prelevement de la palette]
+[ ];Menuiserie et fenêtres;18;matiere-02.jpg;4/3;1400;pin lasuré, nœud visible
+[ ];Menuiserie et fenêtres;19;matiere-03.jpg;4/3;1400;aluminium laqué, arête nette
+[ ];Menuiserie et fenêtres;20;matiere-04.jpg;4/3;1400;PVC blanc, soudure d'angle
+[ ];Menuiserie et fenêtres;21;matiere-05.jpg;4/3;1400;joint de pose entre dormant et maçonnerie
+[ ];Menuiserie et fenêtres;22;matiere-06.jpg;4/3;1400;paumelle en place, vis alignées
+[ ];Menuiserie et fenêtres;23;matiere-07.jpg;4/3;1400;vitrage feuilleté vu en tranche
+[ ];Menuiserie et fenêtres;24;matiere-08.jpg;4/3;1400;seuil aluminium, rupture de pont thermique
+[ ];Menuiserie et fenêtres;25;ambiance-01.jpg;3/2;1600;atelier avec établi et copeaux
+[ ];Menuiserie et fenêtres;26;ambiance-02.jpg;3/2;1600;ouvrants finis alignés contre un mur
+[ ];Menuiserie et fenêtres;27;ambiance-03.jpg;3/2;1600;pièce vue à travers une fenêtre neuve
+[ ];Menuiserie et fenêtres;28;ambiance-04.jpg;3/2;1600;protection au sol et outils rangés
+[ ];Menuiserie et fenêtres;29;ambiance-05.jpg;3/2;1600;lumière du matin sur un dormant posé
+[ ];Menuiserie et fenêtres;30;signe-01.jpg;1/1;1400;veinage de bois plein cadre
+[ ];Menuiserie et fenêtres;31;signe-02.jpg;1/1;1400;texture d'aluminium brossé
+[ ];Menuiserie et fenêtres;32;signe-03.jpg;1/1;1400;trame de vitrage et reflet
+[ ];Carrelage et faïence;1;hero.jpg;16/9;1600;sol de pièce, moitié gauche chape nue avec plots de colle, moitié droite carrelée et jointoyée
+[ ];Carrelage et faïence;2;hero-variante-2.jpg;16/9;1600;mur de salle d'eau, moitié gauche support nu, moitié droite faïence posée
+[ ];Carrelage et faïence;3;avant-01.jpg;4/3;1400;salle de bains datée, faïence fendue, joints noircis
+[ ];Carrelage et faïence;4;apres-01.jpg;4/3;1400;la même salle de bains refaite  [MEME bâtiment, MEME cadrage que avant-01]
+[ ];Carrelage et faïence;5;avant-02.jpg;4/3;1400;terrasse aux carreaux descellés, mousse dans les joints
+[ ];Carrelage et faïence;6;apres-02.jpg;4/3;1400;la même terrasse recarrelée, joints nets  [MEME bâtiment, MEME cadrage que avant-02]
+[ ];Carrelage et faïence;7;avant-03.jpg;4/3;1400;cuisine au sol usé et taché
+[ ];Carrelage et faïence;8;apres-03.jpg;4/3;1400;la même cuisine, grès cérame posé  [MEME bâtiment, MEME cadrage que avant-03]
+[ ];Carrelage et faïence;9;chantier.jpg;4/3;1300;carreaux empilés, croisillons, seau de colle et peigne
+[ ];Carrelage et faïence;10;chantier-2.jpg;4/3;1300;niveau laser allumé dans une pièce en travaux
+[ ];Carrelage et faïence;11;chantier-3.jpg;4/3;1300;carrelette et carreau en cours de coupe sur tréteaux
+[ ];Carrelage et faïence;12;geste.jpg;4/3;1300;peigne à colle tiré sur la chape, sillons réguliers
+[ ];Carrelage et faïence;13;geste-2.jpg;4/3;1300;mains qui posent un carreau et le font coulisser
+[ ];Carrelage et faïence;14;geste-3.jpg;4/3;1300;croisillon glissé entre deux carreaux
+[ ];Carrelage et faïence;15;geste-4.jpg;4/3;1300;raclette qui pousse le joint en diagonale
+[ ];Carrelage et faïence;16;geste-5.jpg;4/3;1300;éponge qui nettoie le voile de ciment
+[ ];Carrelage et faïence;17;detail-joint.jpg;4/3;1400;grès cérame, surface mate  [sert au mot geant, au WebGL et au prelevement de la palette]
+[ ];Carrelage et faïence;18;matiere-02.jpg;4/3;1400;faïence blanche brillante
+[ ];Carrelage et faïence;19;matiere-03.jpg;4/3;1400;joint gris fraîchement tiré
+[ ];Carrelage et faïence;20;matiere-04.jpg;4/3;1400;coupe d'angle à 45 degrés
+[ ];Carrelage et faïence;21;matiere-05.jpg;4/3;1400;plinthe carrelée, arête nette
+[ ];Carrelage et faïence;22;matiere-06.jpg;4/3;1400;mosaïque de petits carreaux
+[ ];Carrelage et faïence;23;matiere-07.jpg;4/3;1400;colle peignée avant pose
+[ ];Carrelage et faïence;24;matiere-08.jpg;4/3;1400;seuil de douche à l'italienne
+[ ];Carrelage et faïence;25;ambiance-01.jpg;3/2;1600;pièce en cours, carreaux empilés
+[ ];Carrelage et faïence;26;ambiance-02.jpg;3/2;1600;niveau laser dans la pénombre
+[ ];Carrelage et faïence;27;ambiance-03.jpg;3/2;1600;salle d'eau finie en lumière rasante
+[ ];Carrelage et faïence;28;ambiance-04.jpg;3/2;1600;outils posés sur un carreau
+[ ];Carrelage et faïence;29;ambiance-05.jpg;3/2;1600;reflet de fenêtre sur un sol neuf
+[ ];Carrelage et faïence;30;signe-01.jpg;1/1;1400;trame de carrelage plein cadre
+[ ];Carrelage et faïence;31;signe-02.jpg;1/1;1400;texture de joint
+[ ];Carrelage et faïence;32;signe-03.jpg;1/1;1400;grain de grès cérame
+[ ];Plâtrerie et cloisons;1;hero.jpg;16/9;1600;pièce, moitié gauche ossature métallique nue, moitié droite plaques posées et bandes enduites
+[ ];Plâtrerie et cloisons;2;hero-variante-2.jpg;16/9;1600;plafond, moitié gauche rails apparents, moitié droite fini blanc
+[ ];Plâtrerie et cloisons;3;avant-01.jpg;4/3;1400;cloison ancienne fissurée, plâtre gonflé
+[ ];Plâtrerie et cloisons;4;apres-01.jpg;4/3;1400;la même cloison refaite, surface plane  [MEME bâtiment, MEME cadrage que avant-01]
+[ ];Plâtrerie et cloisons;5;avant-02.jpg;4/3;1400;plafond taché et fissuré
+[ ];Plâtrerie et cloisons;6;apres-02.jpg;4/3;1400;le même plafond refait, bandes invisibles  [MEME bâtiment, MEME cadrage que avant-02]
+[ ];Plâtrerie et cloisons;7;avant-03.jpg;4/3;1400;angle de mur épaufré
+[ ];Plâtrerie et cloisons;8;apres-03.jpg;4/3;1400;le même angle repris, arête droite  [MEME bâtiment, MEME cadrage que avant-03]
+[ ];Plâtrerie et cloisons;9;chantier.jpg;4/3;1300;ossature métallique montée, rails et montants alignés
+[ ];Plâtrerie et cloisons;10;chantier-2.jpg;4/3;1300;plaques stockées à plat, visseuse posée dessus
+[ ];Plâtrerie et cloisons;11;chantier-3.jpg;4/3;1300;pièce en cours, bandes en train de sécher
+[ ];Plâtrerie et cloisons;12;geste.jpg;4/3;1300;couteau à enduire qui tire une bande sur un joint
+[ ];Plâtrerie et cloisons;13;geste-2.jpg;4/3;1300;visseuse qui pose une vis affleurante
+[ ];Plâtrerie et cloisons;14;geste-3.jpg;4/3;1300;cutter qui coupe une plaque le long d'une règle
+[ ];Plâtrerie et cloisons;15;geste-4.jpg;4/3;1300;cale à poncer sur un joint sec
+[ ];Plâtrerie et cloisons;16;geste-5.jpg;4/3;1300;mains qui posent une bande armée dans l'enduit frais
+[ ];Plâtrerie et cloisons;17;detail-bande.jpg;4/3;1400;bande enduite, joint invisible  [sert au mot geant, au WebGL et au prelevement de la palette]
+[ ];Plâtrerie et cloisons;18;matiere-02.jpg;4/3;1400;angle droit avec baguette
+[ ];Plâtrerie et cloisons;19;matiere-03.jpg;4/3;1400;vis affleurante dans la plaque
+[ ];Plâtrerie et cloisons;20;matiere-04.jpg;4/3;1400;découpe nette dans une plaque
+[ ];Plâtrerie et cloisons;21;matiere-05.jpg;4/3;1400;isolant glissé entre montants
+[ ];Plâtrerie et cloisons;22;matiere-06.jpg;4/3;1400;rail au sol, fixation visible
+[ ];Plâtrerie et cloisons;23;matiere-07.jpg;4/3;1400;enduit de finition tiré fin
+[ ];Plâtrerie et cloisons;24;matiere-08.jpg;4/3;1400;plaque hydrofuge vue en tranche
+[ ];Plâtrerie et cloisons;25;ambiance-01.jpg;3/2;1600;ossature à contre-jour
+[ ];Plâtrerie et cloisons;26;ambiance-02.jpg;3/2;1600;pièce blanche prête à peindre
+[ ];Plâtrerie et cloisons;27;ambiance-03.jpg;3/2;1600;poussière de ponçage dans la lumière
+[ ];Plâtrerie et cloisons;28;ambiance-04.jpg;3/2;1600;plaques empilées contre un mur
+[ ];Plâtrerie et cloisons;29;ambiance-05.jpg;3/2;1600;échafaudage roulant sous un plafond
+[ ];Plâtrerie et cloisons;30;signe-01.jpg;1/1;1400;texture de plaque de plâtre
+[ ];Plâtrerie et cloisons;31;signe-02.jpg;1/1;1400;trame de rails
+[ ];Plâtrerie et cloisons;32;signe-03.jpg;1/1;1400;poussière fine en suspension
+[ ];Isolation extérieure;1;hero.jpg;16/9;1600;façade, moitié gauche panneaux isolants posés et chevillés, moitié droite finie enduite
+[ ];Isolation extérieure;2;hero-variante-2.jpg;16/9;1600;pignon, moitié gauche mur nu, moitié droite isolé et enduit
+[ ];Isolation extérieure;3;avant-01.jpg;4/3;1400;maison aux murs nus, enduit ancien fatigué
+[ ];Isolation extérieure;4;apres-01.jpg;4/3;1400;la même maison isolée par l'extérieur, enduit neuf  [MEME bâtiment, MEME cadrage que avant-01]
+[ ];Isolation extérieure;5;avant-02.jpg;4/3;1400;tableau de fenêtre sans isolation
+[ ];Isolation extérieure;6;apres-02.jpg;4/3;1400;le même tableau traité, retour d'isolant posé  [MEME bâtiment, MEME cadrage que avant-02]
+[ ];Isolation extérieure;7;avant-03.jpg;4/3;1400;soubassement dégradé
+[ ];Isolation extérieure;8;apres-03.jpg;4/3;1400;le même soubassement isolé et enduit  [MEME bâtiment, MEME cadrage que avant-03]
+[ ];Isolation extérieure;9;chantier.jpg;4/3;1300;panneaux isolants empilés au pied de l'échafaudage
+[ ];Isolation extérieure;10;chantier-2.jpg;4/3;1300;façade à mi-parcours, panneaux posés en quinconce
+[ ];Isolation extérieure;11;chantier-3.jpg;4/3;1300;treillis de fibre de verre déroulé sur le sous-enduit
+[ ];Isolation extérieure;12;geste.jpg;4/3;1300;mains qui chevillent un panneau isolant
+[ ];Isolation extérieure;13;geste-2.jpg;4/3;1300;couteau qui marque et coupe un panneau
+[ ];Isolation extérieure;14;geste-3.jpg;4/3;1300;taloche qui applique le sous-enduit sur le treillis
+[ ];Isolation extérieure;15;geste-4.jpg;4/3;1300;mains qui déroulent le treillis et le noient dans l'enduit
+[ ];Isolation extérieure;16;geste-5.jpg;4/3;1300;règle qui vérifie la planéité des panneaux
+[ ];Isolation extérieure;17;detail-isolant.jpg;4/3;1400;panneau de polystyrène vu en tranche  [sert au mot geant, au WebGL et au prelevement de la palette]
+[ ];Isolation extérieure;18;matiere-02.jpg;4/3;1400;laine de roche, fibres visibles
+[ ];Isolation extérieure;19;matiere-03.jpg;4/3;1400;treillis noyé dans le sous-enduit
+[ ];Isolation extérieure;20;matiere-04.jpg;4/3;1400;cheville à frapper en place
+[ ];Isolation extérieure;21;matiere-05.jpg;4/3;1400;retour d'isolant au tableau de fenêtre
+[ ];Isolation extérieure;22;matiere-06.jpg;4/3;1400;profilé de départ en bas de mur
+[ ];Isolation extérieure;23;matiere-07.jpg;4/3;1400;sous-enduit frais, grain gris
+[ ];Isolation extérieure;24;matiere-08.jpg;4/3;1400;enduit de finition sur isolant
+[ ];Isolation extérieure;25;ambiance-01.jpg;3/2;1600;façade à mi-chantier, panneaux et enduit
+[ ];Isolation extérieure;26;ambiance-02.jpg;3/2;1600;échafaudage bâché en fin de journée
+[ ];Isolation extérieure;27;ambiance-03.jpg;3/2;1600;panneaux empilés et sanglés
+[ ];Isolation extérieure;28;ambiance-04.jpg;3/2;1600;mur isolé vu en lumière rasante
+[ ];Isolation extérieure;29;ambiance-05.jpg;3/2;1600;angle de maison traité, arête nette
+[ ];Isolation extérieure;30;signe-01.jpg;1/1;1400;texture de polystyrène
+[ ];Isolation extérieure;31;signe-02.jpg;1/1;1400;trame de treillis
+[ ];Isolation extérieure;32;signe-03.jpg;1/1;1400;grain de sous-enduit
+[ ];Électricité;1;hero.jpg;16/9;1600;local technique, moitié gauche vieux tableau à fusibles, moitié droite tableau neuf modulaire
+[ ];Électricité;2;hero-variante-2.jpg;16/9;1600;mur, moitié gauche saignées ouvertes et gaines, moitié droite fini
+[ ];Électricité;3;avant-01.jpg;4/3;1400;tableau électrique ancien, fusibles porcelaine, fils en désordre
+[ ];Électricité;4;apres-01.jpg;4/3;1400;le même emplacement, tableau modulaire neuf, repérage en place  [MEME bâtiment, MEME cadrage que avant-01]
+[ ];Électricité;5;avant-02.jpg;4/3;1400;prise pendante et fils apparents
+[ ];Électricité;6;apres-02.jpg;4/3;1400;le même mur, appareillage encastré et net  [MEME bâtiment, MEME cadrage que avant-02]
+[ ];Électricité;7;avant-03.jpg;4/3;1400;coffret extérieur rouillé
+[ ];Électricité;8;apres-03.jpg;4/3;1400;le même coffret remplacé, étiquetage neuf  [MEME bâtiment, MEME cadrage que avant-03]
+[ ];Électricité;9;chantier.jpg;4/3;1300;saignées ouvertes dans le mur, gaines en attente
+[ ];Électricité;10;chantier-2.jpg;4/3;1300;tableau en cours de câblage, peignes posés, fils peignés
+[ ];Électricité;11;chantier-3.jpg;4/3;1300;touret de câble et outils sur un établi de chantier
+[ ];Électricité;12;geste.jpg;4/3;1300;mains qui dénudent un fil à la pince
+[ ];Électricité;13;geste-2.jpg;4/3;1300;tournevis qui serre une borne de disjoncteur
+[ ];Électricité;14;geste-3.jpg;4/3;1300;mains qui peignent les fils dans le tableau
+[ ];Électricité;15;geste-4.jpg;4/3;1300;aiguille qui tire un fil dans une gaine
+[ ];Électricité;16;geste-5.jpg;4/3;1300;multimètre tenu sur une borne, pointes en place
+[ ];Électricité;17;detail-tableau.jpg;4/3;1400;tableau câblé, peignes cuivre alignés  [sert au mot geant, au WebGL et au prelevement de la palette]
+[ ];Électricité;18;matiere-02.jpg;4/3;1400;disjoncteurs en rang, manettes nettes
+[ ];Électricité;19;matiere-03.jpg;4/3;1400;fils repérés et étiquetés
+[ ];Électricité;20;matiere-04.jpg;4/3;1400;gaine annelée dans une saignée
+[ ];Électricité;21;matiere-05.jpg;4/3;1400;boîte d'encastrement scellée
+[ ];Électricité;22;matiere-06.jpg;4/3;1400;borne automatique vue de près
+[ ];Électricité;23;matiere-07.jpg;4/3;1400;cuivre dénudé, brins serrés
+[ ];Électricité;24;matiere-08.jpg;4/3;1400;coffret de communication rangé
+[ ];Électricité;25;ambiance-01.jpg;3/2;1600;local technique en lumière crue
+[ ];Électricité;26;ambiance-02.jpg;3/2;1600;tableau ouvert vu de face, net
+[ ];Électricité;27;ambiance-03.jpg;3/2;1600;outils d'électricien posés en ordre
+[ ];Électricité;28;ambiance-04.jpg;3/2;1600;gaines qui sortent d'un mur nu
+[ ];Électricité;29;ambiance-05.jpg;3/2;1600;tableau fermé, façade blanche
+[ ];Électricité;30;signe-01.jpg;1/1;1400;trame de peignes cuivre
+[ ];Électricité;31;signe-02.jpg;1/1;1400;texture de gaine annelée
+[ ];Électricité;32;signe-03.jpg;1/1;1400;grain de plastique de coffret
+[ ];Plomberie et chauffage;1;hero.jpg;16/9;1600;chaufferie, moitié gauche vieille chaudière et tuyaux rouillés, moitié droite installation neuve
+[ ];Plomberie et chauffage;2;hero-variante-2.jpg;16/9;1600;mur technique, moitié gauche tuyaux anciens, moitié droite collecteur neuf
+[ ];Plomberie et chauffage;3;avant-01.jpg;4/3;1400;vieille chaudière murale entartrée, raccords verdis
+[ ];Plomberie et chauffage;4;apres-01.jpg;4/3;1400;le même emplacement, équipement neuf posé  [MEME bâtiment, MEME cadrage que avant-01]
+[ ];Plomberie et chauffage;5;avant-02.jpg;4/3;1400;salle d'eau aux tuyaux apparents, robinetterie calcaire
+[ ];Plomberie et chauffage;6;apres-02.jpg;4/3;1400;la même salle d'eau, alimentation encastrée, robinetterie neuve  [MEME bâtiment, MEME cadrage que avant-02]
+[ ];Plomberie et chauffage;7;avant-03.jpg;4/3;1400;radiateur fonte rouillé sous une fenêtre
+[ ];Plomberie et chauffage;8;apres-03.jpg;4/3;1400;le même emplacement, radiateur neuf posé  [MEME bâtiment, MEME cadrage que avant-03]
+[ ];Plomberie et chauffage;9;chantier.jpg;4/3;1300;collecteur en cours de montage, nourrice et vannes
+[ ];Plomberie et chauffage;10;chantier-2.jpg;4/3;1300;tubes cuivre coupés à longueur, posés sur tréteaux
+[ ];Plomberie et chauffage;11;chantier-3.jpg;4/3;1300;unité extérieure de pompe à chaleur en cours de calage
+[ ];Plomberie et chauffage;12;geste.jpg;4/3;1300;chalumeau qui braise un raccord cuivre
+[ ];Plomberie et chauffage;13;geste-2.jpg;4/3;1300;pince à sertir refermée sur un raccord multicouche
+[ ];Plomberie et chauffage;14;geste-3.jpg;4/3;1300;coupe-tube en rotation sur un cuivre
+[ ];Plomberie et chauffage;15;geste-4.jpg;4/3;1300;clé à molette sur un écrou de raccordement
+[ ];Plomberie et chauffage;16;geste-5.jpg;4/3;1300;mains qui purgent un radiateur, clé et chiffon
+[ ];Plomberie et chauffage;17;detail-cuivre.jpg;4/3;1400;cuivre brasé, cordon régulier  [sert au mot geant, au WebGL et au prelevement de la palette]
+[ ];Plomberie et chauffage;18;matiere-02.jpg;4/3;1400;collecteur et vannes alignées
+[ ];Plomberie et chauffage;19;matiere-03.jpg;4/3;1400;multicouche serti, bague marquée
+[ ];Plomberie et chauffage;20;matiere-04.jpg;4/3;1400;robinet thermostatique neuf
+[ ];Plomberie et chauffage;21;matiere-05.jpg;4/3;1400;calorifuge posé sur un tube
+[ ];Plomberie et chauffage;22;matiere-06.jpg;4/3;1400;filetage et téflon enroulé
+[ ];Plomberie et chauffage;23;matiere-07.jpg;4/3;1400;tube PER en couronne
+[ ];Plomberie et chauffage;24;matiere-08.jpg;4/3;1400;échangeur à plaques vu de près
+[ ];Plomberie et chauffage;25;ambiance-01.jpg;3/2;1600;chaufferie propre et éclairée
+[ ];Plomberie et chauffage;26;ambiance-02.jpg;3/2;1600;tubes alignés contre un mur
+[ ];Plomberie et chauffage;27;ambiance-03.jpg;3/2;1600;unité extérieure sur ses plots
+[ ];Plomberie et chauffage;28;ambiance-04.jpg;3/2;1600;outils de plombier posés
+[ ];Plomberie et chauffage;29;ambiance-05.jpg;3/2;1600;vapeur légère devant une chaudière
+[ ];Plomberie et chauffage;30;signe-01.jpg;1/1;1400;texture de cuivre poli
+[ ];Plomberie et chauffage;31;signe-02.jpg;1/1;1400;trame de tubes parallèles
+[ ];Plomberie et chauffage;32;signe-03.jpg;1/1;1400;grain de calorifuge
+[ ];Serrurerie et portails;1;hero.jpg;16/9;1600;atelier, moitié gauche acier brut et gabarit, moitié droite ouvrage peint fini
+[ ];Serrurerie et portails;2;hero-variante-2.jpg;16/9;1600;entrée de propriété, moitié gauche ancien portail rouillé, moitié droite portail neuf
+[ ];Serrurerie et portails;3;avant-01.jpg;4/3;1400;portail en fer rouillé et déformé, gonds descellés
+[ ];Serrurerie et portails;4;apres-01.jpg;4/3;1400;le même accès, portail neuf posé  [MEME bâtiment, MEME cadrage que avant-01]
+[ ];Serrurerie et portails;5;avant-02.jpg;4/3;1400;garde-corps de balcon corrodé
+[ ];Serrurerie et portails;6;apres-02.jpg;4/3;1400;le même garde-corps refait, thermolaqué  [MEME bâtiment, MEME cadrage que avant-02]
+[ ];Serrurerie et portails;7;avant-03.jpg;4/3;1400;grille de fenêtre piquée
+[ ];Serrurerie et portails;8;apres-03.jpg;4/3;1400;la même grille remplacée  [MEME bâtiment, MEME cadrage que avant-03]
+[ ];Serrurerie et portails;9;chantier.jpg;4/3;1300;atelier avec gabarit de montage, pièces en attente
+[ ];Serrurerie et portails;10;chantier-2.jpg;4/3;1300;portail posé sur tréteaux avant peinture
+[ ];Serrurerie et portails;11;chantier-3.jpg;4/3;1300;scellement des poteaux, niveau et étais
+[ ];Serrurerie et portails;12;geste.jpg;4/3;1300;poste à souder en action, arc et fumée légère, main gantée
+[ ];Serrurerie et portails;13;geste-2.jpg;4/3;1300;meuleuse qui ébavure un cordon, gerbe d'étincelles
+[ ];Serrurerie et portails;14;geste-3.jpg;4/3;1300;équerre et serre-joint sur un assemblage
+[ ];Serrurerie et portails;15;geste-4.jpg;4/3;1300;mains qui percent un plat d'acier
+[ ];Serrurerie et portails;16;geste-5.jpg;4/3;1300;pinceau qui applique une couche d'apprêt
+[ ];Serrurerie et portails;17;detail-acier.jpg;4/3;1400;acier brossé, grain de meulage  [sert au mot geant, au WebGL et au prelevement de la palette]
+[ ];Serrurerie et portails;18;matiere-02.jpg;4/3;1400;cordon de soudure régulier
+[ ];Serrurerie et portails;19;matiere-03.jpg;4/3;1400;thermolaquage noir mat
+[ ];Serrurerie et portails;20;matiere-04.jpg;4/3;1400;acier corten patiné
+[ ];Serrurerie et portails;21;matiere-05.jpg;4/3;1400;assemblage boulonné
+[ ];Serrurerie et portails;22;matiere-06.jpg;4/3;1400;charnière massive graissée
+[ ];Serrurerie et portails;23;matiere-07.jpg;4/3;1400;tube carré coupé net
+[ ];Serrurerie et portails;24;matiere-08.jpg;4/3;1400;apprêt gris sur acier nu
+[ ];Serrurerie et portails;25;ambiance-01.jpg;3/2;1600;atelier en contre-jour, étincelles
+[ ];Serrurerie et portails;26;ambiance-02.jpg;3/2;1600;portail neuf devant un mur de pierre
+[ ];Serrurerie et portails;27;ambiance-03.jpg;3/2;1600;établi et outils de métallier
+[ ];Serrurerie et portails;28;ambiance-04.jpg;3/2;1600;pièces d'acier empilées
+[ ];Serrurerie et portails;29;ambiance-05.jpg;3/2;1600;ombre d'une grille sur un mur
+[ ];Serrurerie et portails;30;signe-01.jpg;1/1;1400;texture d'acier brossé
+[ ];Serrurerie et portails;31;signe-02.jpg;1/1;1400;trame de barreaux
+[ ];Serrurerie et portails;32;signe-03.jpg;1/1;1400;grain de peinture martelée
+[ ];Terrassement et VRD;1;hero.jpg;16/9;1600;terrain, moitié gauche en terre remuée, moitié droite plateforme réglée et compactée
+[ ];Terrassement et VRD;2;hero-variante-2.jpg;16/9;1600;accès, moitié gauche chemin boueux, moitié droite enrobé posé
+[ ];Terrassement et VRD;3;avant-01.jpg;4/3;1400;terrain en pente, terre nue, ornières
+[ ];Terrassement et VRD;4;apres-01.jpg;4/3;1400;le même terrain terrassé et nivelé  [MEME bâtiment, MEME cadrage que avant-01]
+[ ];Terrassement et VRD;5;avant-02.jpg;4/3;1400;allée défoncée et boueuse
+[ ];Terrassement et VRD;6;apres-02.jpg;4/3;1400;la même allée en grave compactée et bordurée  [MEME bâtiment, MEME cadrage que avant-02]
+[ ];Terrassement et VRD;7;avant-03.jpg;4/3;1400;tranchée ouverte devant une maison
+[ ];Terrassement et VRD;8;apres-03.jpg;4/3;1400;la même zone refermée et réglée  [MEME bâtiment, MEME cadrage que avant-03]
+[ ];Terrassement et VRD;9;chantier.jpg;4/3;1300;pelle mécanique en action, godet chargé
+[ ];Terrassement et VRD;10;chantier-2.jpg;4/3;1300;tranchée ouverte, gaines posées sur lit de sable
+[ ];Terrassement et VRD;11;chantier-3.jpg;4/3;1300;plaque vibrante sur une couche de grave
+[ ];Terrassement et VRD;12;geste.jpg;4/3;1300;mains qui posent une bordure au cordeau
+[ ];Terrassement et VRD;13;geste-2.jpg;4/3;1300;règle qui tire une couche de sable
+[ ];Terrassement et VRD;14;geste-3.jpg;4/3;1300;niveau laser installé sur trépied
+[ ];Terrassement et VRD;15;geste-4.jpg;4/3;1300;mains qui déroulent un géotextile
+[ ];Terrassement et VRD;16;geste-5.jpg;4/3;1300;pelle qui règle un fond de forme
+[ ];Terrassement et VRD;17;detail-grave.jpg;4/3;1400;grave compactée, cailloux serrés  [sert au mot geant, au WebGL et au prelevement de la palette]
+[ ];Terrassement et VRD;18;matiere-02.jpg;4/3;1400;bordure béton posée
+[ ];Terrassement et VRD;19;matiere-03.jpg;4/3;1400;sable réglé, surface lisse
+[ ];Terrassement et VRD;20;matiere-04.jpg;4/3;1400;géotextile déroulé
+[ ];Terrassement et VRD;21;matiere-05.jpg;4/3;1400;enrobé chaud fraîchement posé
+[ ];Terrassement et VRD;22;matiere-06.jpg;4/3;1400;regard de visite scellé
+[ ];Terrassement et VRD;23;matiere-07.jpg;4/3;1400;drain et gravier en tranchée
+[ ];Terrassement et VRD;24;matiere-08.jpg;4/3;1400;terre végétale régalée
+[ ];Terrassement et VRD;25;ambiance-01.jpg;3/2;1600;chantier au lever du jour, engin à l'arrêt
+[ ];Terrassement et VRD;26;ambiance-02.jpg;3/2;1600;tas de grave et de terre
+[ ];Terrassement et VRD;27;ambiance-03.jpg;3/2;1600;tranchée rectiligne vue en longueur
+[ ];Terrassement et VRD;28;ambiance-04.jpg;3/2;1600;plateforme réglée et vide
+[ ];Terrassement et VRD;29;ambiance-05.jpg;3/2;1600;traces de chenilles dans la terre
+[ ];Terrassement et VRD;30;signe-01.jpg;1/1;1400;texture de grave
+[ ];Terrassement et VRD;31;signe-02.jpg;1/1;1400;trame de bordures alignées
+[ ];Terrassement et VRD;32;signe-03.jpg;1/1;1400;grain de sable et poussière
+[ ];Étanchéité toiture-terrasse;1;hero.jpg;16/9;1600;toiture-terrasse, moitié gauche ancienne membrane cloquée, moitié droite bitume neuf soudé
+[ ];Étanchéité toiture-terrasse;2;hero-variante-2.jpg;16/9;1600;terrasse, moitié gauche support nu, moitié droite membrane posée et relevés faits
+[ ];Étanchéité toiture-terrasse;3;avant-01.jpg;4/3;1400;toiture-terrasse fissurée, cloques et flaques stagnantes
+[ ];Étanchéité toiture-terrasse;4;apres-01.jpg;4/3;1400;la même terrasse refaite, surface nette  [MEME bâtiment, MEME cadrage que avant-01]
+[ ];Étanchéité toiture-terrasse;5;avant-02.jpg;4/3;1400;relevé d'acrotère décollé
+[ ];Étanchéité toiture-terrasse;6;apres-02.jpg;4/3;1400;le même relevé refait, bande de solin posée  [MEME bâtiment, MEME cadrage que avant-02]
+[ ];Étanchéité toiture-terrasse;7;avant-03.jpg;4/3;1400;évacuation bouchée et affaissée
+[ ];Étanchéité toiture-terrasse;8;apres-03.jpg;4/3;1400;la même évacuation reprise, platine neuve  [MEME bâtiment, MEME cadrage que avant-03]
+[ ];Étanchéité toiture-terrasse;9;chantier.jpg;4/3;1300;rouleaux de membrane en attente, chalumeau à proximité
+[ ];Étanchéité toiture-terrasse;10;chantier-2.jpg;4/3;1300;terrasse en cours, moitié couverte, ligne de recouvrement
+[ ];Étanchéité toiture-terrasse;11;chantier-3.jpg;4/3;1300;acrotère préparé, primaire appliqué
+[ ];Étanchéité toiture-terrasse;12;geste.jpg;4/3;1300;chalumeau qui soude un lé de bitume, flamme et fondu
+[ ];Étanchéité toiture-terrasse;13;geste-2.jpg;4/3;1300;rouleau déroulé au pied, membrane qui se pose
+[ ];Étanchéité toiture-terrasse;14;geste-3.jpg;4/3;1300;mains qui marouflent un recouvrement
+[ ];Étanchéité toiture-terrasse;15;geste-4.jpg;4/3;1300;pinceau qui applique le primaire d'accrochage
+[ ];Étanchéité toiture-terrasse;16;geste-5.jpg;4/3;1300;cutter qui recoupe un lé le long d'un relevé
+[ ];Étanchéité toiture-terrasse;17;detail-bitume.jpg;4/3;1400;bitume soudé, cordon de fusion  [sert au mot geant, au WebGL et au prelevement de la palette]
+[ ];Étanchéité toiture-terrasse;18;matiere-02.jpg;4/3;1400;recouvrement de deux lés
+[ ];Étanchéité toiture-terrasse;19;matiere-03.jpg;4/3;1400;relevé d'acrotère terminé
+[ ];Étanchéité toiture-terrasse;20;matiere-04.jpg;4/3;1400;platine d'évacuation posée
+[ ];Étanchéité toiture-terrasse;21;matiere-05.jpg;4/3;1400;granulés minéraux en surface
+[ ];Étanchéité toiture-terrasse;22;matiere-06.jpg;4/3;1400;primaire noir sur support béton
+[ ];Étanchéité toiture-terrasse;23;matiere-07.jpg;4/3;1400;membrane soudée à l'air chaud
+[ ];Étanchéité toiture-terrasse;24;matiere-08.jpg;4/3;1400;joint de dilatation traité
+[ ];Étanchéité toiture-terrasse;25;ambiance-01.jpg;3/2;1600;terrasse vue à plat, lignes de lés
+[ ];Étanchéité toiture-terrasse;26;ambiance-02.jpg;3/2;1600;fumée légère au-dessus du chalumeau
+[ ];Étanchéité toiture-terrasse;27;ambiance-03.jpg;3/2;1600;rouleaux alignés contre l'acrotère
+[ ];Étanchéité toiture-terrasse;28;ambiance-04.jpg;3/2;1600;flaque d'eau claire sur membrane neuve
+[ ];Étanchéité toiture-terrasse;29;ambiance-05.jpg;3/2;1600;ciel bas au-dessus d'une terrasse
+[ ];Étanchéité toiture-terrasse;30;signe-01.jpg;1/1;1400;texture de bitume granulé
+[ ];Étanchéité toiture-terrasse;31;signe-02.jpg;1/1;1400;trame de recouvrements
+[ ];Étanchéité toiture-terrasse;32;signe-03.jpg;1/1;1400;grain de membrane
+[ ];Parquet et sols souples;1;hero.jpg;16/9;1600;pièce, moitié gauche ancien sol déposé et ragréage, moitié droite parquet posé
+[ ];Parquet et sols souples;2;hero-variante-2.jpg;16/9;1600;couloir, moitié gauche revêtement usé, moitié droite sol souple neuf
+[ ];Parquet et sols souples;3;avant-01.jpg;4/3;1400;parquet ancien rayé, lames disjointes et grises
+[ ];Parquet et sols souples;4;apres-01.jpg;4/3;1400;le même parquet poncé et huilé  [MEME bâtiment, MEME cadrage que avant-01]
+[ ];Parquet et sols souples;5;avant-02.jpg;4/3;1400;moquette tachée dans une chambre
+[ ];Parquet et sols souples;6;apres-02.jpg;4/3;1400;la même chambre, parquet flottant posé  [MEME bâtiment, MEME cadrage que avant-02]
+[ ];Parquet et sols souples;7;avant-03.jpg;4/3;1400;sol souple décollé dans une cuisine
+[ ];Parquet et sols souples;8;apres-03.jpg;4/3;1400;la même cuisine, sol neuf  [MEME bâtiment, MEME cadrage que avant-03]
+[ ];Parquet et sols souples;9;chantier.jpg;4/3;1300;lames empilées en acclimatation, cales de dilatation
+[ ];Parquet et sols souples;10;chantier-2.jpg;4/3;1300;ragréage en cours, lisseur et seau
+[ ];Parquet et sols souples;11;chantier-3.jpg;4/3;1300;ponceuse à bande en pause sur un parquet à moitié poncé
+[ ];Parquet et sols souples;12;geste.jpg;4/3;1300;mains qui emboîtent deux lames
+[ ];Parquet et sols souples;13;geste-2.jpg;4/3;1300;maillet et cale qui tassent une lame
+[ ];Parquet et sols souples;14;geste-3.jpg;4/3;1300;ponceuse qui passe sur un parquet, poussière
+[ ];Parquet et sols souples;15;geste-4.jpg;4/3;1300;pinceau qui applique l'huile, bois qui fonce
+[ ];Parquet et sols souples;16;geste-5.jpg;4/3;1300;cutter qui coupe un sol souple le long d'une règle
+[ ];Parquet et sols souples;17;detail-parquet.jpg;4/3;1400;chêne huilé, veinage chaud  [sert au mot geant, au WebGL et au prelevement de la palette]
+[ ];Parquet et sols souples;18;matiere-02.jpg;4/3;1400;lame poncée, arête vive
+[ ];Parquet et sols souples;19;matiere-03.jpg;4/3;1400;joint entre deux lames
+[ ];Parquet et sols souples;20;matiere-04.jpg;4/3;1400;sol souple à motif bois
+[ ];Parquet et sols souples;21;matiere-05.jpg;4/3;1400;plinthe et cale de dilatation
+[ ];Parquet et sols souples;22;matiere-06.jpg;4/3;1400;ragréage lissé, surface mate
+[ ];Parquet et sols souples;23;matiere-07.jpg;4/3;1400;seuil entre deux revêtements
+[ ];Parquet et sols souples;24;matiere-08.jpg;4/3;1400;parquet ancien avant ponçage
+[ ];Parquet et sols souples;25;ambiance-01.jpg;3/2;1600;pièce vide au sol neuf, lumière de fenêtre
+[ ];Parquet et sols souples;26;ambiance-02.jpg;3/2;1600;lames empilées contre un mur
+[ ];Parquet et sols souples;27;ambiance-03.jpg;3/2;1600;poussière de ponçage dans un rai de lumière
+[ ];Parquet et sols souples;28;ambiance-04.jpg;3/2;1600;reflet de fenêtre sur parquet huilé
+[ ];Parquet et sols souples;29;ambiance-05.jpg;3/2;1600;outils posés sur le sol fini
+[ ];Parquet et sols souples;30;signe-01.jpg;1/1;1400;texture de chêne plein cadre
+[ ];Parquet et sols souples;31;signe-02.jpg;1/1;1400;trame de lames
+[ ];Parquet et sols souples;32;signe-03.jpg;1/1;1400;grain de poussière de bois
+[ ];Piscine;1;hero.jpg;16/9;1600;bassin, moitié gauche en travaux (ferraillage, banches), moitié droite terminé et rempli
+[ ];Piscine;2;hero-variante-2.jpg;16/9;1600;plage de piscine, moitié gauche dalle brute, moitié droite margelles posées
+[ ];Piscine;3;avant-01.jpg;4/3;1400;bassin ancien, enduit taché, margelles descellées
+[ ];Piscine;4;apres-01.jpg;4/3;1400;le même bassin rénové, eau claire  [MEME bâtiment, MEME cadrage que avant-01]
+[ ];Piscine;5;avant-02.jpg;4/3;1400;plage de piscine fissurée
+[ ];Piscine;6;apres-02.jpg;4/3;1400;la même plage refaite, margelles alignées  [MEME bâtiment, MEME cadrage que avant-02]
+[ ];Piscine;7;avant-03.jpg;4/3;1400;local technique en désordre
+[ ];Piscine;8;apres-03.jpg;4/3;1400;le même local rangé, filtration neuve  [MEME bâtiment, MEME cadrage que avant-03]
+[ ];Piscine;9;chantier.jpg;4/3;1300;ferraillage du bassin avant coulage
+[ ];Piscine;10;chantier-2.jpg;4/3;1300;banches en place, réservations visibles
+[ ];Piscine;11;chantier-3.jpg;4/3;1300;local technique en cours, pompe et filtre posés
+[ ];Piscine;12;geste.jpg;4/3;1300;mains qui posent une margelle au mortier
+[ ];Piscine;13;geste-2.jpg;4/3;1300;taloche qui applique l'enduit de bassin
+[ ];Piscine;14;geste-3.jpg;4/3;1300;mains qui règlent une vanne de filtration
+[ ];Piscine;15;geste-4.jpg;4/3;1300;niveau posé sur une margelle
+[ ];Piscine;16;geste-5.jpg;4/3;1300;brosse qui nettoie la ligne d'eau
+[ ];Piscine;17;detail-margelle.jpg;4/3;1400;margelle en pierre reconstituée  [sert au mot geant, au WebGL et au prelevement de la palette]
+[ ];Piscine;18;matiere-02.jpg;4/3;1400;enduit de bassin lissé, teinte claire
+[ ];Piscine;19;matiere-03.jpg;4/3;1400;ligne d'eau carrelée
+[ ];Piscine;20;matiere-04.jpg;4/3;1400;escalier de bassin en béton
+[ ];Piscine;21;matiere-05.jpg;4/3;1400;skimmer encastré
+[ ];Piscine;22;matiere-06.jpg;4/3;1400;liner tendu, pli net
+[ ];Piscine;23;matiere-07.jpg;4/3;1400;eau claire sur fond clair
+[ ];Piscine;24;matiere-08.jpg;4/3;1400;plage en bois exotique
+[ ];Piscine;25;ambiance-01.jpg;3/2;1600;bassin rempli au soleil de fin de journée
+[ ];Piscine;26;ambiance-02.jpg;3/2;1600;reflets sur l'eau au calme
+[ ];Piscine;27;ambiance-03.jpg;3/2;1600;local technique propre
+[ ];Piscine;28;ambiance-04.jpg;3/2;1600;chantier de bassin vu de haut
+[ ];Piscine;29;ambiance-05.jpg;3/2;1600;margelles empilées en attente
+[ ];Piscine;30;signe-01.jpg;1/1;1400;texture d'eau en surface
+[ ];Piscine;31;signe-02.jpg;1/1;1400;trame de margelles
+[ ];Piscine;32;signe-03.jpg;1/1;1400;grain d'enduit de bassin
+[ ];Paysagiste;1;hero.jpg;16/9;1600;jardin, moitié gauche friche et terre nue, moitié droite aménagé et planté
+[ ];Paysagiste;2;hero-variante-2.jpg;16/9;1600;allée, moitié gauche terre battue, moitié droite pavée
+[ ];Paysagiste;3;avant-01.jpg;4/3;1400;jardin en friche, herbes hautes, clôture affaissée
+[ ];Paysagiste;4;apres-01.jpg;4/3;1400;le même jardin aménagé  [MEME bâtiment, MEME cadrage que avant-01]
+[ ];Paysagiste;5;avant-02.jpg;4/3;1400;terrasse envahie de mousse
+[ ];Paysagiste;6;apres-02.jpg;4/3;1400;la même terrasse nettoyée et remise en état  [MEME bâtiment, MEME cadrage que avant-02]
+[ ];Paysagiste;7;avant-03.jpg;4/3;1400;haie dépérie et irrégulière
+[ ];Paysagiste;8;apres-03.jpg;4/3;1400;la même haie retaillée ou replantée  [MEME bâtiment, MEME cadrage que avant-03]
+[ ];Paysagiste;9;chantier.jpg;4/3;1300;plants en godets alignés avant plantation, terre préparée
+[ ];Paysagiste;10;chantier-2.jpg;4/3;1300;pavés empilés et sable de pose étalé
+[ ];Paysagiste;11;chantier-3.jpg;4/3;1300;arrosage automatique en cours de pose, tuyaux en tranchée
+[ ];Paysagiste;12;geste.jpg;4/3;1300;mains qui plantent un arbuste, terre autour des racines
+[ ];Paysagiste;13;geste-2.jpg;4/3;1300;taille-haie en action, coupe nette
+[ ];Paysagiste;14;geste-3.jpg;4/3;1300;maillet qui cale un pavé
+[ ];Paysagiste;15;geste-4.jpg;4/3;1300;râteau qui règle une terre fine
+[ ];Paysagiste;16;geste-5.jpg;4/3;1300;sécateur sur une branche
+[ ];Paysagiste;17;detail-pave.jpg;4/3;1400;pavé engazonné, joint vert  [sert au mot geant, au WebGL et au prelevement de la palette]
+[ ];Paysagiste;18;matiere-02.jpg;4/3;1400;gazon fraîchement tondu, bandes régulières
+[ ];Paysagiste;19;matiere-03.jpg;4/3;1400;paillage d'écorce autour d'un pied
+[ ];Paysagiste;20;matiere-04.jpg;4/3;1400;bordure de jardin posée
+[ ];Paysagiste;21;matiere-05.jpg;4/3;1400;terre fine régalée
+[ ];Paysagiste;22;matiere-06.jpg;4/3;1400;haie taillée, arête nette
+[ ];Paysagiste;23;matiere-07.jpg;4/3;1400;dalle de terrasse sur plots
+[ ];Paysagiste;24;matiere-08.jpg;4/3;1400;goutte-à-goutte au pied d'un arbuste
+[ ];Paysagiste;25;ambiance-01.jpg;3/2;1600;jardin en fin de journée, lumière basse
+[ ];Paysagiste;26;ambiance-02.jpg;3/2;1600;outils posés sur l'herbe
+[ ];Paysagiste;27;ambiance-03.jpg;3/2;1600;allée pavée vue en perspective
+[ ];Paysagiste;28;ambiance-04.jpg;3/2;1600;arrosage en fonctionnement
+[ ];Paysagiste;29;ambiance-05.jpg;3/2;1600;tas de terre et brouette
+[ ];Paysagiste;30;signe-01.jpg;1/1;1400;texture de gazon plein cadre
+[ ];Paysagiste;31;signe-02.jpg;1/1;1400;trame de pavés
+[ ];Paysagiste;32;signe-03.jpg;1/1;1400;grain de terre et paillage
