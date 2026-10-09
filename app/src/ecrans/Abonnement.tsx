@@ -1,5 +1,6 @@
 // Abonnement : formule, état, échéance.
-// Prix acceptés par Fabrice le 9 octobre : 39 € HT par mois ou 390 € HT par an.
+// Prix acceptés par Fabrice le 9 octobre : 39 € HT par mois sans engagement, ou
+// 390 € HT par an (formule d'engagement).
 // Plus tard, le prix affiché sera lu chez Stripe (plan, 7.6).
 // Dans l'app Android (Play Store) : aucun prix, aucun lien d'achat (règle de
 // facturation de Google Play). L'abonnement se prend sur le site Sitô.
@@ -37,7 +38,7 @@ export function Abonnement() {
         <section className="carte" aria-labelledby="t-gerer">
           <h2 id="t-gerer">Gérer mon abonnement</h2>
           <ul className="puces">
-            <li>{FORMULES.mensuel.nom} : {FORMULES.mensuel.prix}.</li>
+            <li>{FORMULES.mensuel.nom} : {FORMULES.mensuel.prix}, sans engagement.</li>
             <li>{FORMULES.annuel.nom} : {FORMULES.annuel.prix}.</li>
           </ul>
           <p className="aide">Le paiement en ligne (carte, factures, changement de formule, résiliation) arrive bientôt.</p>
