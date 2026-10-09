@@ -133,9 +133,9 @@ Construction lancée le 5 octobre (« GO ») :
   en pleine résolution suit la photo réduite (migration
   `20261009005808_photo_source` appliquée, `droits-app.sql` : 19 conformes ;
   `essai-app` : 96 contrôles, 0 faute) ; essai gratuit 14 jours.
-- **GitHub** : le POUSSER du 9 octobre a échoué (crochet de commit qui
-  refusait `app/index.html`, corrigé). Dernier envoi réussi : `765c6f7`,
-  2 octobre. À relancer.
+- **GitHub** : à jour le 9 octobre à 3 h 07, commit `2e78036` (117 fichiers).
+  Les envois précédents échouaient : le crochet de commit refusait
+  `app/index.html` (corrigé). POUSSER ne pose plus de question.
 - **pour essayer contre la vraie base** (Fabrice) : la base n'a encore aucun
   utilisateur ni aucune entreprise ; le modèle d'e-mail « Magic Link » de
   Supabase doit contenir le code (`{{ .Token }}`) ; puis `lanceurs\APP.bat`.

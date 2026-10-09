@@ -43,6 +43,7 @@ fiche Google, photos de chantier qui enrichissent le site.
 | 5 oct. | Oui : Cloudflare (un seul Worker), Gandi, sous-domaine offert par défaut, domaine propre inclus dans l'abonnement, vidéos acceptées et gardées, réponses aux avis préparées et validées par l'artisan, abonnement au mois et à l'année, Supabase Pro au premier client. |
 | 5 oct. | « Il faut qu'elle soit sur Android Store, et pour Apple Store c'est compliqué, alors elle doit pouvoir être installée ou ajoutée sur la page d'accueil comme une app via le site Sitô. » |
 | 9 oct. | « 1. GO 2. OK » : construction lancée ; prix proposé accepté : **39 € HT par mois ou 390 € HT par an**. |
+| 9 oct. | Essai gratuit de 14 jours ; original en pleine résolution envoyé après la photo réduite ; mensuel **sans engagement**. |
 
 ## 3. Pour qui
 
@@ -110,8 +111,8 @@ exigences qui touchent l'app :
 
 | Élément | Valeur | Source |
 |---|---|---|
-| Abonnement mensuel | 39 € HT par mois (engagement : **Ouvert**) | 9 oct. |
-| Abonnement annuel | 390 € HT par an | 9 oct. |
+| Abonnement mensuel | 39 € HT par mois, **sans engagement** | 9 oct. |
+| Abonnement annuel | 390 € HT par an (2 mois offerts) : c'est la formule d'engagement | 9 oct. |
 | Domaine propre | inclus dans l'abonnement, au nom de l'artisan | 5 oct. |
 | Adresse offerte | `nom.domaine-sito.fr`, par défaut | 5 oct. |
 | Paiement | Stripe Checkout et portail client, sur le web seulement | plan 7.6 |
@@ -147,6 +148,5 @@ le produit entier :
 | N° | Question | Recommandation de Claude |
 |---|---|---|
 | O1 | Nom définitif et domaine de Sitô (liste : `docs/noms-2026-10-05.md`) | choisir parmi ceux libres en .fr et .com, après vérification INPI |
-| O2 | Engagement de l'abonnement mensuel | sans engagement (l'annuel sert d'engagement) — en attente de l'OK de Fabrice |
 | O4 | Artisan pilote pour l'accès Google | — (il le trouve) |
 | O5 | Compte Google Play : personnel (12 testeurs pendant 14 jours) ou organisation (D-U-N-S) | organisation, si la micro-entreprise obtient un D-U-N-S |

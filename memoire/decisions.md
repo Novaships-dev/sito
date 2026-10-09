@@ -115,4 +115,5 @@ affichés seulement s'il coche la case (voir « Le produit »).
 | 9 oct. 2026 | Il veut six documents `.md` pour coder : PRD, TRD tablé, AppFlow tablé, Design System (Design Brief), schéma back-end, plan d'implémentation tablé. Écrits dans `app/specs/`. |
 | 9 oct. 2026 | Essai gratuit : **14 jours** (« 2. OK »). |
 | 9 oct. 2026 | L'original en pleine résolution est envoyé après la version réduite (« 3. OK »). |
-| 9 oct. 2026 | Engagement de l'abonnement mensuel : il demande l'avis de Claude (« quelle est le mieux selon toi ? ») ; recommandation : sans engagement, l'annuel servant d'engagement. **En attente de son OK.** |
+| 9 oct. 2026 | Engagement de l'abonnement mensuel : il demande l'avis de Claude (« quelle est le mieux selon toi ? ») ; recommandation : sans engagement, l'annuel servant d'engagement. |
+| 9 oct. 2026 | « ok » : **mensuel sans engagement**, l'annuel (390 € HT) sert d'engagement. |
