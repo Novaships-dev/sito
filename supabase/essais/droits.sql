@@ -34,7 +34,7 @@ begin
   exception when others then r := r || 'A ecrit chez B : refuse ; '; end;
   begin insert into public.tarifs (siren, poste, bas, haut, unite) values ('480423623', 'Enduit gratte', 48, 62, 'EUR/m2'); r := r || 'A ecrit chez lui : accepte ; ';
   exception when others then r := r || 'A ecrit chez lui : REFUSE (FAUTE) ' || sqlerrm || ' ; '; end;
-  begin insert into public.photos (siren, role, origine, chemin) values ('480423623', 'geste', 'illustration', '480423623/x.jpg'); r := r || 'A declare une illustration : ACCEPTE (FAUTE) ; ';
+  begin insert into public.photos (siren, role, origine, chemin_original) values ('480423623', 'geste', 'illustration', '480423623/x.jpg'); r := r || 'A declare une illustration : ACCEPTE (FAUTE) ; ';
   exception when others then r := r || 'A declare une illustration : refuse ; '; end;
   begin insert into public.entreprises (siren, denomination, nom_affiche) values ('111111111', 'x', 'x'); r := r || 'A cree une entreprise : ACCEPTE (FAUTE) ; ';
   exception when others then r := r || 'A cree une entreprise : refuse ; '; end;

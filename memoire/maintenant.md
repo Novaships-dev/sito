@@ -1,4 +1,4 @@
-# État au 2 octobre 2026, fin de journée
+# État au 9 octobre 2026
 
 À lire en premier, à chaque séance. Réécrit à la fin de chaque séance.
 
@@ -95,8 +95,9 @@ de Fabrice, U3 ne les compte plus.
    d'aperçu de partage, pas de favicon, pas de `sitemap.xml` ni de `robots.txt`.
 7. **Aucun site en ligne.** Pas d'hébergement, pas de domaine.
 8. **Safari jamais testé.** Les vérificateurs tournent sous Chromium.
-9. **L'app** : la base existe, rien d'autre (inscription, écrans, branchement du
-   générateur sur la table `sites`, demande d'accès à Google Business Profile).
+9. **L'app** : écrite et essayée en démonstration le 9 octobre (voir plus
+   bas). Jamais lancée contre la vraie base. Manquent : le service HTTP, le
+   branchement du générateur sur la table `sites`, Stripe, Gandi, Google.
 
 ## Questions ouvertes pour Fabrice
 
@@ -104,6 +105,47 @@ de Fabrice, U3 ne les compte plus.
    Fabrice dans le tableau de bord, une suppression étant définitive.
 
 ## Prochaine action
+
+**App** : `app/PLAN-APP.md` (décisions de Fabrice du 5 octobre, section 10).
+Construction lancée le 5 octobre (« GO ») :
+
+- **base** : migration `20261005014022_app` appliquée (abonnements, demandes,
+  adresses, versions du site, vidéos, Google, suppressions, mentions légales,
+  photos de tout format) ; `supabase/essais/droits-app.sql` : 16 essais
+  conformes ; `droits.sql` rejoué : conforme ;
+- **photos** : `atelier/photos.mjs`, 18 formats et cas essayés, 0 faute,
+  contre-épreuve attrapée (`node scripts/essai-photos.mjs`) ;
+- **publication par versions** : `atelier/publier.mjs` et
+  `worker/routeur.js`, 19 essais, 0 faute, deux contre-épreuves attrapées
+  (`node scripts/essai-publication.mjs`) ;
+- **l'app** (9 octobre) : `app/`, React, installable (PWA). Connexion par
+  code e-mail, accueil (semaine, demandes), chantiers et photos (préparation
+  sur l'appareil, file d'envoi gardée dans IndexedDB, envoi TUS), mon site
+  (téléphone, case prix, tarifs), adresse, avis (réponse préparée validée),
+  fiche Google, abonnement (aucun prix dans l'app Android), compte (mentions
+  légales, export, suppression en 30 jours), page d'installation iPhone.
+  `node scripts/essai-app.mjs` : 94 contrôles, 0 faute, trois fois de suite,
+  en démonstration (iPhone 390, Android 360, ordinateur 1280) ; contre-essai
+  12/12 ; copie cassée exprès (photo non réduite) : 6 fautes attrapées.
+  Colonnes et droits lus par l'app vérifiés dans la vraie base par SQL.
+- **9 octobre, suite** : six documents pour coder dans `app/specs/` (PRD, TRD,
+  AppFlow, Design System, schéma back-end, plan d'implémentation) ; l'original
+  en pleine résolution suit la photo réduite (migration
+  `20261009005808_photo_source` appliquée, `droits-app.sql` : 19 conformes ;
+  `essai-app` : 96 contrôles, 0 faute) ; essai gratuit 14 jours.
+- **GitHub** : le POUSSER du 9 octobre a échoué (crochet de commit qui
+  refusait `app/index.html`, corrigé). Dernier envoi réussi : `765c6f7`,
+  2 octobre. À relancer.
+- **pour essayer contre la vraie base** (Fabrice) : la base n'a encore aucun
+  utilisateur ni aucune entreprise ; le modèle d'e-mail « Magic Link » de
+  Supabase doit contenir le code (`{{ .Token }}`) ; puis `lanceurs\APP.bat`.
+- **à faire** : le service HTTP qui relie le tout, les adaptateurs Cloudflare
+  R2/KV réels, l'essai sur de vraies photos, Stripe, Gandi, Google.
+
+Restent ouverts pour Fabrice : le nom (liste dans `docs/noms-2026-10-05.md`),
+le compte Google Play (numéro D-U-N-S), l'artisan pilote.
+
+**Images** :
 
 Générer les 22 images du ravalement, les ranger dans
 `images/ravalement/sources/`, relancer `node scripts/capacite-unicite.mjs`

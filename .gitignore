@@ -12,7 +12,8 @@ dotenv
 # sur la machine, et a terme dans le stockage de la base.
 images/
 
-# sites fabriques : ils se refabriquent depuis le depot
+# sites fabriques et app construite : ils se refabriquent depuis le depot
+app/dist/
 sites/
 flotte/
 sortie/

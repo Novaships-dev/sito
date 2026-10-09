@@ -94,3 +94,25 @@ affichés seulement s'il coche la case (voir « Le produit »).
 | sept. 2026 | Le curseur avant/après : « Ça doit fonctionner pour les deux » (souris et doigt). |
 | sept. 2026 | Ce qu'il retient de Framer : « surtout de l'animation et un beau design », pas la structure des pages. |
 | 15 sept. 2026 | « Tout doit être lisible, clair et intuitif. » Le mot RAVALEMENT était trop gros sur ordinateur et le nom de l'entreprise trop discret. |
+
+## L'app
+
+| Date | Décision |
+|---|---|
+| 3 oct. 2026 | « StructorAI et Sitô sont 2 apps différentes. » « Concentre-toi sur Sitô. » Le plan de l'app ne s'appuie plus sur StructorAI. |
+| 3 oct. 2026 | Aucun lien entre Sitô et une autre entreprise de Fabrice tant qu'il ne l'a pas dit : « tu dois supprimer tout rapport » avec celle que Claude avait citée. Qui édite Sitô reste à lui demander. |
+| 3 oct. 2026 | Hébergement de milliers de sites : « OK donc comment faire, faut écrire tout ça avec la solution. » Solution écrite dans `app/PLAN-APP.md` section 3, en attente de son accord. |
+| 3 oct. 2026 | Domaines des artisans : « OK donc faut organiser ça. » Organisation écrite dans `app/PLAN-APP.md` section 4, en attente de son accord. |
+| 3 oct. 2026 | Photos : « Tout doit être accepté, iPhone etc., la totale. » Tous les formats de tous les appareils (HEIC, RAW, Live Photo, Ultra HDR…). |
+| 5 oct. 2026 | Éditeur de Sitô : « Ma micro-entreprise, mais c'est un détail à la fin. » |
+| 5 oct. 2026 | Nom : « Sitô est un nom comme ça pour l'instant, je sais pas, il va falloir trouver le nom de domaine parfait. » |
+| 5 oct. 2026 | Oui à : hébergement Cloudflare (un seul Worker), registrar Gandi, adresse offerte en sous-domaine par défaut, domaine propre inclus dans l'abonnement, vidéos acceptées et gardées, réponses aux avis préparées et validées par l'artisan, Supabase Pro au premier client. |
+| 5 oct. 2026 | Artisan pilote pour l'accès Google : « Non, mais je vais trouver. » |
+| 5 oct. 2026 | L'app : « Il faut qu'elle soit sur Android Store, et pour Apple Store c'est compliqué, alors elle doit pouvoir être installée ou ajoutée sur la page d'accueil comme une app via le site Sitô. » |
+| 5 oct. 2026 | Abonnement au mois et à l'année : « Oui, les deux. » Montants non fixés. |
+| 9 oct. 2026 | « 1. GO 2. OK » : construction lancée (base, photos, publication par versions, puis l'app) ; prix proposé accepté : **39 € HT par mois, 390 € HT par an**. |
+| 9 oct. 2026 | « C'est bon l'ordinateur et là tu peux tout faire comme il faut. » |
+| 9 oct. 2026 | Il veut six documents `.md` pour coder : PRD, TRD tablé, AppFlow tablé, Design System (Design Brief), schéma back-end, plan d'implémentation tablé. Écrits dans `app/specs/`. |
+| 9 oct. 2026 | Essai gratuit : **14 jours** (« 2. OK »). |
+| 9 oct. 2026 | L'original en pleine résolution est envoyé après la version réduite (« 3. OK »). |
+| 9 oct. 2026 | Engagement de l'abonnement mensuel : il demande l'avis de Claude (« quelle est le mieux selon toi ? ») ; recommandation : sans engagement, l'annuel servant d'engagement. **En attente de son OK.** |

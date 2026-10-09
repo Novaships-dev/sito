@@ -32,6 +32,41 @@ modifie plus : on en écrit une nouvelle.
 | `…_stockage.sql` | les deux espaces d'images et leurs droits |
 | `…_metiers.sql` | les seize métiers |
 
+## Ajouts du 5 octobre 2026 (migration `20261005014022_app`)
+
+Pour l'app (plan : `app/PLAN-APP.md`, section 7.5) :
+
+| Table | Ce qu'elle garde | L'artisan |
+|---|---|---|
+| `abonnements` | la seule source de la formule et de l'état du paiement | lit le sien |
+| `evenements_stripe` | les événements Stripe déjà traités | rien |
+| `demandes` | les messages du formulaire du site | lit, marque lu (`lue_le` seulement) |
+| `adresses` | sous-domaine offert, domaine acheté, domaine existant | lit |
+| `versions_site` | versions publiées, une seule en ligne | lit |
+| `videos` | vidéos de chantier gardées | lit, ajoute, supprime |
+| `connexions_google` | état de la connexion Google | lit |
+| `prive.jetons_google` | jeton Google chiffré | rien, jamais |
+| `suppressions` | suppression du compte à 30 jours | demande (sans choisir la date), annule |
+
+`photos` reçoit tout format : l'app envoie l'original (`chemin_original`), le
+service pose l'image propre (`chemin`) et l'état `prete` ou `illisible` ;
+l'app ne peut écrire ni l'un ni l'autre. `avis` reçoit un brouillon de réponse
+que seul un membre de l'entreprise valide, en son nom. `profils` reçoit les
+mentions légales (TVA, décennale, médiateur). `prive.jour_paris()` donne le
+jour de Paris. Espace `photos-chantiers` : tout format, 50 Mo (à passer à
+150 Mo avec l'offre Pro).
+
+Essai : `essais/droits-app.sql`, 16 essais conformes le 5 octobre 2026 ;
+`essais/droits.sql` rejoué le même jour : conforme.
+
+**Ajout du 9 octobre 2026** (migration `20261009005808_photo_source`,
+décision de Fabrice « 3. OK ») : `photos.chemin_source` et `octets_source`.
+L'app envoie d'abord la version réduite (`chemin_original`), puis le fichier
+d'origine en pleine résolution, qu'elle pose dans `chemin_source` ; elle ne
+peut écrire que ces deux colonnes en plus. `essais/droits-app.sql` étendu :
+19 essais conformes le 9 octobre ; avant la migration, l'essai rougissait
+(colonne absente).
+
 ## Les tables
 
 | Table | Ce qu'elle garde | L'artisan |

@@ -11,8 +11,10 @@ node scripts/verifier-textes.mjs . || {
   exit 1
 }
 
-# toute page html ajoutee ou modifiee doit tenir le plancher
-pages=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.html$' || true)
+# toute page html ajoutee ou modifiee doit tenir le plancher, sauf la coquille
+# de l'app (app/index.html n'est pas un site d'artisan : elle est controlee
+# par scripts/essai-app.mjs)
+pages=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.html$' | grep -v '^app/' || true)
 for p in $pages; do
   [ -f "$p" ] || continue
   node scripts/verifier-site.mjs "$p" || {

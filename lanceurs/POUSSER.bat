@@ -21,9 +21,8 @@ if errorlevel 1 (
 
 git status --short >> "%LOG%" 2>&1
 echo.
-set "MSG="
-set /p "MSG=Ce qui a change, en une phrase (Entree pour un message automatique) : "
-if "%MSG%"=="" set "MSG=Mise a jour du %DATE%"
+rem Message automatique : plus de question, un double-clic suffit.
+set "MSG=Mise a jour du %DATE% %TIME:~0,5%"
 >> "%LOG%" echo message : %MSG%
 
 git add -A >> "%LOG%" 2>&1

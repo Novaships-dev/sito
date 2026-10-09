@@ -59,3 +59,22 @@ ce script doit avoir été essayé une fois sur une copie cassée exprès.
 | 1er oct. | Commande `cat > fichier` sans contenu en entrée : l'outil attend dix minutes. | Toujours un `<<'FIN'` ou un fichier source. |
 | 2 oct. | Trois sites de démonstration à zéro faisaient croire que la matrice tenait. Elle tient pour trois. | Mesurer à l'échelle où le produit servira, pas à celle de la démonstration. |
 | 2 oct. | Les vérificateurs en navigateur, enchaînés dans une seule commande, dépassent les dix minutes de l'outil. | Les lancer en arrière-plan, un journal par site. |
+
+## Photos et publication (service atelier)
+
+| Date | Panne | Garde |
+|---|---|---|
+| 5 oct. | L'essai « JPEG d'iPhone tenu en portrait » échouait : la faute était dans le **fichier d'essai**, pas dans le module. `sharp().withExif({ IFD0: { Orientation } })` n'écrit pas l'orientation. | Les métadonnées d'essai sont posées par exiftool, et l'essai vérifie d'abord que son fichier d'entrée porte l'orientation 6 et la position GPS, sinon il s'arrête (code 2). |
+| 5 oct. | Un DNG range ses données de capteur en JPEG : exiftool les rend comme « PreviewImage », et un contrôle « commence par FF D8 » les prenait pour un aperçu. | Un aperçu RAW n'est retenu que s'il se décode entièrement et mesure au moins 320 px. Essai « DNG sans aperçu ». |
+| 5 oct. | Contre-épreuve du Worker : sans la garde des segments `..`, l'essai de remontée de dossier restait vert, parce que l'adresse est normalisée avant d'arriver au Worker. Seul l'essai du manifeste caché a rougi. | Garder les deux essais ; la garde reste comme seconde barrière. |
+
+## L'app
+
+| Date | Panne | Garde |
+|---|---|---|
+| 9 oct. | Le champ fichier caché (`opacity: 0`, positionné en absolu) gardait le rembourrage des champs : 10 px de débordement horizontal sur l'écran d'un chantier, au téléphone seulement. | `.choix { position: relative }`, `.invisible` sans rembourrage ni bordure ; `essai-app.mjs` mesure le débordement sur chaque écran et chaque appareil. |
+| 9 oct. | Copie cassée avec `createImageBitmap(…, { imageOrientation: 'none' })` : l'essai restait vert. Chromium ignore cette valeur, retirée de la norme, et redresse quand même. | Une copie cassée se vérifie : celle qui compte envoie la photo sans la réduire, et l'essai rougit (6 fautes). |
+| 9 oct. | La suppression de compte en « upsert » aurait été refusée par la base : l'app n'a le droit de mettre à jour que `annulee_le`. Vu en relisant les droits, pas par un essai réel. | `insert` seul ; une demande annulée ne se relance pas depuis l'app. |
+| 9 oct. | La table des statistiques est `statistiques` (une ligne par jour, page et source), pas une vue par jour. | L'app additionne par jour de Paris (`jour.ts`, `sommeParJour`). |
+| 9 oct. | `isVisible({ timeout })` de Playwright n'attend pas : contrôle instable. | `waitFor({ state: 'visible', timeout })`. |
+| 9 oct. | **Rien n'a été poussé** : le crochet `git-hooks/pre-commit` passait `app/index.html` (la coquille de l'app) au vérificateur des sites d'artisan, qui l'a refusée ; le commit a échoué, GitHub est resté au 2 octobre. Vu en lisant `pousser.log`. | Le crochet ignore `app/` ; l'app est contrôlée par `essai-app.mjs`. Après chaque POUSSER, lire `pousser.log`. |

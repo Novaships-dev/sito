@@ -13,6 +13,9 @@
     "textes": "node scripts/verifier-textes.mjs .",
     "demo": "node scripts/fabriquer-demo.mjs",
     "unicite": "node scripts/verifier-unicite.mjs sites",
-    "capacite": "node scripts/capacite-unicite.mjs"
+    "capacite": "node scripts/capacite-unicite.mjs",
+    "photos": "node scripts/essai-photos.mjs",
+    "publication": "node scripts/essai-publication.mjs",
+    "app": "node scripts/essai-app.mjs"
   }
 }
