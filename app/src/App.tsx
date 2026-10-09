@@ -89,7 +89,7 @@ function Page({ route }: { route: string[] }) {
 }
 
 function Plus() {
-  useEffect(() => { document.title = 'Plus · Sitô'; }, []);
+  useEffect(() => { document.title = 'Plus, Sitô'; }, []);
   return (
     <main className="ecran" id="contenu" tabIndex={-1}>
       <h1>Plus</h1>

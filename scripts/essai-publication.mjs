@@ -24,8 +24,21 @@ const env = pub.liaisonsEssai(stockage, adresses);
 const appeler = (url, methode = 'GET') => worker.fetch(new Request(url, { method: methode }), env, { waitUntil() {} });
 const texte = async (r) => Buffer.from(await r.arrayBuffer()).toString('utf8');
 
-const source = 'sites/480423623';
-if (!existsSync(join(source, 'index.html'))) { console.error('Site de démonstration absent : lancer node scripts/fabriquer-demo.mjs'); process.exit(2); }
+// Le site de démonstration quand il existe (fabriqué avec les vraies images,
+// qui ne sont pas dans Git). Sinon, dans la CI ou un clone neuf, un petit site
+// d'essai fabriqué ici : la publication ne dépend pas du contenu des pages.
+let source = 'sites/480423623';
+if (!existsSync(join(source, 'index.html'))) {
+  source = join(D, 'site-essai');
+  const { mkdirSync } = await import('node:fs');
+  mkdirSync(join(source, 'images'), { recursive: true });
+  writeFileSync(join(source, 'index.html'), '<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Essai</title></head><body><h1>Essai</h1><img src="images/facade.webp" alt="Façade"><a href="le-travail">Le travail</a></body></html>');
+  writeFileSync(join(source, 'le-travail.html'), '<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Le travail</title></head><body><h1>Le travail</h1></body></html>');
+  writeFileSync(join(source, 'donnees.json'), '{"essai":true}');
+  // une vraie image WebP (en-tête RIFF/WEBP valide, 1 × 1 pixel)
+  writeFileSync(join(source, 'images', 'facade.webp'), Buffer.from('UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA', 'base64'));
+  console.log('Site de démonstration absent (images hors de Git) : essai sur un petit site fabriqué ici.');
+}
 
 let fautes = 0;
 const constat = (nom, ok, detail = '') => { if (!ok) fautes++; console.log(`${ok ? 'ok   ' : 'FAUTE'}  ${nom}${detail ? ' : ' + detail : ''}`); };

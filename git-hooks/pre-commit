@@ -6,6 +6,11 @@ cd "$racine" || exit 1
 
 echo "sito, controle avant commit"
 
+node scripts/verifier-secrets.mjs . || {
+  echo "REFUS : secret probable. Les secrets vivent dans le .env local seulement."
+  exit 1
+}
+
 node scripts/verifier-textes.mjs . || {
   echo "REFUS : signatures textuelles. Voir rules/web/design-interdits.md."
   exit 1

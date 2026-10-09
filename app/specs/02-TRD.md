@@ -183,6 +183,9 @@ vient d'écrire, et il est essayé une fois sur une copie cassée exprès.**
 | `node scripts/essai-publication.mjs` | versions, bascule, Worker | 19 essais, 0 faute |
 | `supabase/essais/droits.sql`, `droits-app.sql` | droits de la base | conformes |
 | `node scripts/verifier-depot.mjs .` | rien ne manque au dépôt | avant toute livraison |
+| `node scripts/essais.mjs` | tous les essais d'un coup, résumé dans `memoire/essais/derniers.txt` | vert le 9 oct. |
+| `node scripts/verifier-secrets.mjs .` (+ `--contre-essai`) | aucun secret dans ce qui part sur GitHub | vert ; 9 motifs sur 9 attrapés |
+| `node scripts/essai-outillage.mjs` (+ `--contre-essai`) | réglages et crochets de Claude Code, compte d'essai sur faux Supabase | 34 contrôles, 0 faute ; copie cassée : 13 fautes |
 
 **À ajouter** : un essai de bout en bout contre la vraie base (compte
 d'essai), lancé sur l'ordinateur de Fabrice ; un essai sur iPhone réel

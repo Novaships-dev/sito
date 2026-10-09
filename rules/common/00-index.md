@@ -5,8 +5,8 @@ Chargées à chaque session. Rester court : chaque ligne coûte du contexte part
 | Fichier | Portée | Imposé par |
 |---|---|---|
 | `ne-pas-fabriquer.md` | toute sortie | jugement, plus revue |
-| `securite.md` | secrets, contenu externe, skills tiers | hook `pre-ecriture` |
-| `git-workflow.md` | commits, branches | hook `pre-push` |
+| `securite.md` | secrets, contenu externe, skills tiers | `.claude/hooks/pre-outil.mjs`, `.claude/hooks/post-ecriture.mjs`, `scripts/verifier-secrets.mjs` |
+| `git-workflow.md` | commits, branches | `git-hooks/pre-commit`, interdits de `.claude/settings.json` |
 | `redaction-fr.md` | tout texte publié en français | `scripts/verifier-textes.mjs` |
 
 Règles hors paquet commun, chargées selon le travail :

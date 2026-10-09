@@ -5,12 +5,15 @@
 //
 // Portée : le CONTENU PUBLIÉ, pas la documentation interne. Un catalogue de
 // signatures contient forcément les signatures qu'il interdit. Les dossiers
-// docs/, references/, memoire/, banque/ et app/ sont exclus par défaut.
+// docs/, references/, memoire/ et banque/ sont exclus par défaut, ainsi que la
+// documentation de l'app (app/specs/, app/PLAN-APP.md, app/README.md).
+// Depuis le 9 octobre, les textes de l'app (app/src/, .ts et .tsx) sont
+// contrôlés : l'artisan les lit, ils suivent les mêmes règles.
 
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, extname } from 'node:path';
 
-const EXT = new Set(['.html', '.md', '.astro', '.jsx', '.tsx', '.vue', '.liquid', '.txt']);
+const EXT = new Set(['.html', '.md', '.astro', '.jsx', '.tsx', '.ts', '.vue', '.liquid', '.txt']);
 
 const REGLES = [
   { id: 'FR01', gravite: 'bloquant', libelle: 'tiret cadratin',
@@ -28,11 +31,13 @@ const REGLES = [
     motif: /devis gratuit et sans engagement/gi, remede: 'dire ce que couvre le devis' },
 ];
 
-// memoire/, banque/ et app/ sont de la documentation interne du depot sito,
+// memoire/ et banque/ sont de la documentation interne du depot sito,
 // au meme titre que docs/ : ils citent les signatures qu ils decrivent.
 // images/ et sites/ ne sont pas versionnes.
 const EXCLUS_DEFAUT = ['node_modules', 'docs', 'references', 'rules', 'dist', 'build', '.git',
-  'memoire', 'banque', 'app', 'images', 'sites'];
+  'memoire', 'banque', 'images', 'sites', 'specs', 'PLAN-APP.md', 'public'];
+// Documentation de l'app, exclue par son chemin (le nom seul serait trop large).
+const CHEMINS_EXCLUS = ['app/README.md'];
 
 const argExclude = process.argv.find(a => a.startsWith('--exclude='));
 const EXCLUS = argExclude
@@ -42,8 +47,12 @@ const EXCLUS = argExclude
 function fichiers(chemin) {
   const s = statSync(chemin);
   if (s.isFile()) return EXT.has(extname(chemin)) ? [chemin] : [];
-  return readdirSync(chemin).flatMap(n =>
-    EXCLUS.includes(n) || n.startsWith('.') ? [] : fichiers(join(chemin, n)));
+  return readdirSync(chemin).flatMap(n => {
+    const p = join(chemin, n);
+    const rel = p.replace(/\\/g, '/');
+    if (EXCLUS.includes(n) || n.startsWith('.') || CHEMINS_EXCLUS.some(c => rel.endsWith(c))) return [];
+    return fichiers(p);
+  });
 }
 
 const cible = process.argv[2];

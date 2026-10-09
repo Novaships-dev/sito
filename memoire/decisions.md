@@ -117,3 +117,5 @@ affichés seulement s'il coche la case (voir « Le produit »).
 | 9 oct. 2026 | L'original en pleine résolution est envoyé après la version réduite (« 3. OK »). |
 | 9 oct. 2026 | Engagement de l'abonnement mensuel : il demande l'avis de Claude (« quelle est le mieux selon toi ? ») ; recommandation : sans engagement, l'annuel servant d'engagement. |
 | 9 oct. 2026 | « ok » : **mensuel sans engagement**, l'annuel (390 € HT) sert d'engagement. |
+| 9 oct. 2026 | « Fais en sorte que le repo sito soit parfait pour que Claude Code puisse coder […] je veux que le repo soit prêt pour être codé car après Claude Code sera lancé et je ne veux plus intervenir. Je veux allumer mon ordinateur et il code et rectifie et finalise l'app jusqu'au bout. » Outillage de travail autonome mis en place (`CLAUDE.md` section 2, `app/specs/07-TACHES.md`, `.claude/`). |
+

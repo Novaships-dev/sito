@@ -13,7 +13,7 @@ export default [
     description: 'Palette beige laiton espresso, signature la plus repandue sur brief artisan',
     pattern: /#(f5f1ea|f7f5f1|fbf8f1|efeae0|ece6db|faf7f1|e8dfcb|f4f1ea|d97757|b08947|b6553a|9c6e2a|bc7c3a|7d5621)/i,
     files: /\.(css|html|astro|jsx|tsx|liquid)$/,
-    fix: 'voir skills/_partage/references/palettes.md, sept familles de rotation' },
+    fix: 'voir .claude/skills/_partage/references/palettes.md, sept familles de rotation' },
 
   { id: 'fr-noir-teinte', severity: 'warning',
     description: 'Noir teinte a la place du noir',

@@ -1,7 +1,8 @@
 # 06 — Plan d'implémentation
 
 Version du 9 octobre 2026. Repris de `app/PLAN-APP.md` section 9, mis à jour
-avec ce qui est fait. **Chaque étape finit par une preuve, pas par une
+avec ce qui est fait. Le découpage en tâches que Claude Code exécute est dans
+`07-TACHES.md`. **Chaque étape finit par une preuve, pas par une
 affirmation.** Rien de payant ne s'ouvre sans l'accord de Fabrice.
 
 États : **Fait, prouvé** / **Fait, non prouvé** / **À faire** / **Ouvert**.

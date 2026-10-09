@@ -95,7 +95,7 @@ même site.
 | Axe | Valeurs |
 |---|---|
 | archétype | `matiere`, `panneau`, `planche`, `elevation` |
-| famille de couleurs | les sept de `skills/_partage/references/palettes.md` |
+| famille de couleurs | les sept de `.claude/skills/_partage/references/palettes.md` |
 | sol | nuit ou papier |
 | polices | quatre appariements |
 | géométrie | angles vifs, adoucis ou ronds |

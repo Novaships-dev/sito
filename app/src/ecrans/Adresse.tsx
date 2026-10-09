@@ -24,7 +24,7 @@ export function Adresse() {
         {(adresses.valeur || []).map((a) => (
           <li className="carte" key={a.hote}>
             <p className="entete-carte"><strong className="hote">{a.hote}</strong>{a.principale && <span className="discret">adresse principale</span>}</p>
-            <p>{GENRES[a.genre]} · <Pastille ton={ETATS[a.etat].ton}>{ETATS[a.etat].texte}</Pastille></p>
+            <p>{GENRES[a.genre]}, <Pastille ton={ETATS[a.etat].ton}>{ETATS[a.etat].texte}</Pastille></p>
             {a.motif && <p className="erreur">{a.motif}</p>}
             {a.etat === 'active' && <a className="bouton secondaire" href={`https://${a.hote}`} target="_blank" rel="noopener">Ouvrir</a>}
           </li>

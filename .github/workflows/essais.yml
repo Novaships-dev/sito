@@ -1,0 +1,67 @@
+# Les essais de Sitô, rejoués depuis un clone neuf à chaque envoi sur GitHub.
+#
+# Pourquoi : dans StructorAI, quatre « preuves » n'étaient vertes que sur la
+# machine de leur auteur. Ici rien ne compte comme fait tant que ce workflow
+# n'est pas vert.
+#
+# Ce qu'il ne fait pas, exprès :
+#   - aucun secret : les essais tournent sans base et sans clé (démonstration,
+#     faux Supabase local, stockage en dossier) ;
+#   - il ne déploie rien et n'écrit dans aucune base ;
+#   - il ne refabrique pas les sites de démonstration : leurs images ne sont pas
+#     dans Git (décision de Fabrice, pas de Git LFS). Ce contrôle-là tourne sur
+#     l'ordinateur de Fabrice : node scripts/essais.mjs --complet.
+name: essais
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: essais-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  essais:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            app/package-lock.json
+
+      - name: Outils système (photos)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libimage-exiftool-perl ffmpeg
+          python3 -m pip install --user --break-system-packages pillow pillow-heif
+
+      - name: Dépendances
+        run: |
+          npm ci --no-audit --no-fund
+          npm --prefix app ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: Essais
+        run: node scripts/essais.mjs
+
+      - name: Contre-essais (chaque contrôle doit attraper une copie cassée)
+        run: |
+          node scripts/verifier-secrets.mjs --contre-essai
+          node scripts/essai-outillage.mjs --contre-essai
+          node scripts/essai-app.mjs --contre-essai
+
+      - name: Résumé
+        if: always()
+        run: cat memoire/essais/derniers.txt >> "$GITHUB_STEP_SUMMARY" || true

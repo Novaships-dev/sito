@@ -52,9 +52,11 @@ for (const f of tous) {
     }
 
   // Regles et scripts cites. On ne controle que le code et les regles :
-  // docs/ et memoire/ racontent l historique et peuvent citer un etat passe.
+  // docs/ et memoire/ racontent l historique et peuvent citer un etat passe ;
+  // app/specs/ decrit aussi ce qui reste a construire (07-TACHES.md cite les
+  // scripts que les taches doivent creer).
   const rel = relative(racine, f).replace(/\\/g, '/');
-  const narratif = rel.startsWith('docs/') || rel.startsWith('memoire/');
+  const narratif = rel.startsWith('docs/') || rel.startsWith('memoire/') || rel.startsWith('app/specs/');
   if (narratif) continue;
   for (const m of t.matchAll(/rules\/[\w/-]+\.md/g)) {
     const cible = join(racine, m[0]);

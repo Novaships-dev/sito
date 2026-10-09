@@ -6,7 +6,7 @@
 // voit la couleur et la typo avant la grille : les trois se ressemblaient.
 //
 // La rotation des sept familles est ecrite dans
-// skills/_partage/references/palettes.md depuis le 7 septembre, avec sa regle :
+// .claude/skills/_partage/references/palettes.md depuis le 7 septembre, avec sa regle :
 // « si le projet precedent utilisait une famille, celui-ci en utilise une autre.
 // Jamais deux fois de suite. » Elle n avait jamais ete appliquee. Ce module
 // l applique.

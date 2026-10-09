@@ -44,7 +44,7 @@ const REGLES = [
 
   { num: '27', gravite: 'bloquant', libelle: 'palette beige laiton espresso, famille F1',
     motif: new RegExp('#(' + HEX_BANNIS.join('|') + ')\\b', 'gi'),
-    remede: 'voir skills/_partage/references/palettes.md, sept familles de rotation' },
+    remede: 'voir .claude/skills/_partage/references/palettes.md, sept familles de rotation' },
 
   { num: '32', gravite: 'avertissement', libelle: 'bibliotheque d icones par defaut',
     motif: /(lucide-react|lucide|@heroicons|heroicons)/gi,

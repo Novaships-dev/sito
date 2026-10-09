@@ -4,7 +4,7 @@
 // (scripts/capacite-unicite.mjs). Un seul endroit : ni le tirage ni la mesure
 // ne peuvent etre plus indulgents que le controle.
 //
-// La regle est celle de skills/_partage/references/tells-design.md :
+// La regle est celle de .claude/skills/_partage/references/tells-design.md :
 // « si le meme brief, reformule, produirait le meme resultat, c est un defaut ».
 
 // Les axes compares, dans l ordre de ce que l oeil remarque. Le poids dit

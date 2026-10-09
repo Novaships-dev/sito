@@ -43,7 +43,7 @@ export function Chantiers() {
           <li key={c.id}>
             <a className="carte lien-carte" href={`#/chantiers/${c.id}`}>
               <strong>{c.titre || 'Chantier sans titre'}</strong>
-              <span className="discret">{[c.commune, dateLisible(c.cree_le)].filter(Boolean).join(' · ')}</span>
+              <span className="discret">{[c.commune, dateLisible(c.cree_le)].filter(Boolean).join(', ')}</span>
               <Pastille ton={c.publie ? 'ok' : 'neutre'}>{c.publie ? 'Sur le site' : 'Pas encore sur le site'}</Pastille>
             </a>
           </li>

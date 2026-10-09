@@ -82,7 +82,7 @@ peut écrire que ces deux colonnes en plus. `essais/droits-app.sql` étendu :
 | `photos` | ses photos, rangées par chantier et par paire avant / après | lit et écrit les siennes, toujours marquées « entreprise » |
 | `avis` | les avis Google récupérés | lit les siens |
 | `statistiques` | visites, appels, demandes par jour et par page | lit les siennes |
-| `prospects` | le suivi de prospection (`skills/prospection-sirene`) | rien : interne |
+| `prospects` | le suivi de prospection (`.claude/skills/prospection-sirene`) | rien : interne |
 
 Les règles qui ne dépendent pas du code de l'app sont dans la base elle-même :
 SIREN à neuf chiffres, téléphone à dix chiffres, tarif haut jamais sous le bas,

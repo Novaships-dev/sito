@@ -15,7 +15,7 @@ export function Avis() {
   return (
     <Ecran titre="Mes avis">
       <Chargement {...avis} />
-      {moyenne != null && <p className="moyenne"><strong>{moyenne.toFixed(1).replace('.', ',')} sur 5</strong> <span className="discret">· {notes.length} avis</span></p>}
+      {moyenne != null && <p className="moyenne"><strong>{moyenne.toFixed(1).replace('.', ',')} sur 5</strong> <span className="discret">({notes.length} avis)</span></p>}
       {avis.valeur && liste.length === 0 && (
         <div className="carte">
           <p>Aucun avis récupéré pour l’instant.</p>

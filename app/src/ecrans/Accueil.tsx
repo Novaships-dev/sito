@@ -48,7 +48,7 @@ function LigneDemande({ d, apres }: { d: Demande; apres: () => void }) {
     <li className={`carte ${d.lue_le ? '' : 'non-lue'}`}>
       <p className="entete-carte">
         <strong>{d.nom || 'Sans nom'}</strong>
-        <span className="discret">{heureLisible(d.recue_le)}{d.lue_le ? '' : ' · nouvelle'}</span>
+        <span className="discret">{heureLisible(d.recue_le)}{d.lue_le ? '' : ', nouvelle'}</span>
       </p>
       <p className="message">{d.message}</p>
       <div className="actions">

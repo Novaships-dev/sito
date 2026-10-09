@@ -25,3 +25,11 @@ sortie/
 Thumbs.db
 desktop.ini
 .claude/settings.local.json
+# etat de la boucle autonome de Claude Code (propre a chaque machine)
+.claude/boucle.json
+# journaux des lancements
+app.log
+claude-autonome.log
+installation.log
+# depot temporaire de l outillage avant installation (lanceurs/INSTALLER_OUTILLAGE.bat)
+_installation/

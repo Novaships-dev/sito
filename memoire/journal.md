@@ -239,3 +239,13 @@ refaire sur ses tarifs.
   plus. Mesure à 100 sites : aucun défaut, dans le département comme dans une
   seule commune. Vérifié que U3 attrape toujours une vraie phrase commune.
 
+## 9 octobre 2026, nuit : dépôt prêt pour Claude Code en autonomie
+
+- `CLAUDE.md` réécrit (ordre de lecture, « Travailler seul », interdits, commandes).
+- `app/specs/07-TACHES.md` : 34 tâches, état, preuve, dépendances, blocages.
+- `.claude/settings.json` (autorisations, interdits, 5 crochets en Node), `.claude/hooks/`, `.claude/skills/` (travailler, sito-app, sito-base, sito-service, fin-de-seance + les 4 anciens), `.mcp.json` (Playwright).
+- `scripts/essais.mjs`, `verifier-secrets.mjs`, `essai-outillage.mjs`, `compte-essai.mjs`, `env.mjs` ; `.env.example` racine ; CI `.github/workflows/essais.yml`.
+- `memoire/actions-fabrice.md` (F0 à F16), `questions.md`, `comptes-essai.md`, `essais/derniers.txt`.
+- `lanceurs/CLAUDE_AUTONOME.bat`.- Essai réel, dans un clone jetable (mode sans permissions, conteneur isolé) : `claude -p "/travailler 3"` a enchaîné en 10 minutes T00, T01, T06, T07 (avec essais et contre-essais), un commit par tâche, et a bloqué T02 (pas de dépôt distant) et T05 (pas d'outil Supabase) au lieu de les inventer. Ce travail n'est pas repris dans le dépôt : Claude Code le refera sur le PC.
+- Une session réelle a refusé d'afficher le `.env` (règle de CLAUDE.md) ; la valeur n'apparaît nulle part dans sa sortie.
+

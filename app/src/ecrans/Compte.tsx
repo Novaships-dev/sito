@@ -15,7 +15,7 @@ export function Compte() {
     <Ecran titre="Compte">
       <section className="carte">
         <Chargement {...ent} />
-        {ent.valeur && <p><strong>{ent.valeur.nom_affiche}</strong><br /><span className="discret">SIREN {ent.valeur.siren.replace(/(\d{3})(?=\d)/g, '$1 ')}{ent.valeur.commune ? ` · ${ent.valeur.commune}` : ''}</span></p>}
+        {ent.valeur && <p><strong>{ent.valeur.nom_affiche}</strong><br /><span className="discret">SIREN {ent.valeur.siren.replace(/(\d{3})(?=\d)/g, '$1 ')}{ent.valeur.commune ? `, ${ent.valeur.commune}` : ''}</span></p>}
         {qui.valeur && <p className="discret">Connecté avec {qui.valeur.courriel}</p>}
         <button className="bouton secondaire" disabled={sortie.occupe} onClick={() => void sortie.lancer(() => donnees.deconnecter())}>Me déconnecter</button>
         <Message erreur={sortie.erreur} />

@@ -22,11 +22,13 @@ chantiers : le site s'enrichit tout seul.
 | `rules/` | les règles que chaque site doit tenir : composition, mouvement, photos, client, design interdit… |
 | `banque/` | la liste des 864 images à produire (54 par métier) et les prompts ChatGPT |
 | `donnees/` | les données Sirene des entreprises de démonstration |
-| `app/` | l'app de l'artisan : ce qu'elle doit faire. Pas encore de code |
+| `app/` | l'app de l'artisan (React, installable) ; ce qu'il faut pour la coder : `app/specs/` (7 documents, dont la liste de tâches) |
+| `atelier/`, `worker/` | le service qui prépare les photos et publie les sites, et le Worker Cloudflare qui les sert |
 | `supabase/` | la base : migrations, essai des droits. Voir `supabase/README.md` |
-| `skills/` | les procédures de l'agent : rédaction, audit de design, prospection Sirene, veille |
+| `.claude/` | l'outillage de Claude Code : réglages, crochets, skills (voir `CLAUDE.md`) |
+| `skills/`, `hooks/` | anciens emplacements, remplacés par `.claude/` (à supprimer : tâche T00) |
 | `docs/` | le cahier des charges (non validé), l'étude Framer, l'historique |
-| `lanceurs/` | les fichiers à double-cliquer sous Windows |
+| `lanceurs/` | les fichiers à double-cliquer sous Windows : `CLAUDE_AUTONOME.bat` (Claude Code travaille seul), `POUSSER.bat`, `APP.bat` |
 
 Ce qui **n'est pas** dans Git, et pourquoi :
 

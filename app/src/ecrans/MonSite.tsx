@@ -29,7 +29,7 @@ export function MonSite() {
         {site.valeur === null && <p>Votre site n’est pas encore créé.</p>}
         {s && statut && (
           <>
-            <p><Pastille ton={statut.ton}>{statut.texte}</Pastille>{s.publie_le && <span className="discret"> · mis à jour le {dateLisible(s.publie_le)}</span>}</p>
+            <p><Pastille ton={statut.ton}>{statut.texte}</Pastille>{s.publie_le && <span className="discret">, mis à jour le {dateLisible(s.publie_le)}</span>}</p>
             {s.adresse_en_ligne && <a className="bouton secondaire" href={s.adresse_en_ligne} target="_blank" rel="noopener">Voir mon site</a>}
             <p className="aide">Chaque photo ajoutée met le site à jour : la nouvelle version remplace l’ancienne d’un coup, jamais à moitié.</p>
           </>
