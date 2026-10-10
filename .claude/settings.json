@@ -87,7 +87,21 @@
       "PowerShell(Write-Output *)",
       "mcp__playwright__*",
       "mcp__claude_ai_Supabase__*",
-      "mcp__supabase__*"
+      "mcp__supabase__*",
+      "Bash(git revert *)",
+      "Bash(gh run *)",
+      "Bash(gh pr view *)",
+      "Bash(winget install *)",
+      "Bash(pip install --user *)",
+      "Bash(python3 -m pip install --user *)",
+      "PowerShell(python *)",
+      "PowerShell(py *)",
+      "PowerShell(pip install --user *)",
+      "PowerShell(winget install *)",
+      "PowerShell(winget search *)",
+      "PowerShell(Get-Command *)",
+      "PowerShell(where.exe *)",
+      "PowerShell(gh run *)"
     ],
     "deny": [
       "Read(./.env)",
@@ -127,7 +141,35 @@
       "mcp__supabase__delete_branch",
       "mcp__supabase__merge_branch",
       "mcp__supabase__reset_branch",
-      "mcp__supabase__confirm_cost"
+      "mcp__supabase__confirm_cost",
+      "Edit(./.claude/settings.json)",
+      "Write(./.claude/settings.json)",
+      "Edit(./.claude/settings.local.json)",
+      "Write(./.claude/settings.local.json)",
+      "Edit(./.claude/hooks/**)",
+      "Write(./.claude/hooks/**)",
+      "Edit(./scripts/verifier-secrets.mjs)",
+      "Write(./scripts/verifier-secrets.mjs)",
+      "Edit(./scripts/essai-outillage.mjs)",
+      "Write(./scripts/essai-outillage.mjs)",
+      "Edit(./scripts/autonome.mjs)",
+      "Write(./scripts/autonome.mjs)",
+      "Edit(./git-hooks/**)",
+      "Write(./git-hooks/**)",
+      "Edit(./lanceurs/CLAUDE_AUTONOME.bat)",
+      "Write(./lanceurs/CLAUDE_AUTONOME.bat)",
+      "Edit(./memoire/decisions.md)",
+      "Write(./memoire/decisions.md)",
+      "Bash(git push --delete*)",
+      "Bash(git filter-repo*)",
+      "Bash(git branch -D*)",
+      "Bash(sudo *)",
+      "Bash(npm publish*)",
+      "PowerShell(git clean *)",
+      "PowerShell(git rebase *)",
+      "PowerShell(git filter-branch*)",
+      "PowerShell(Set-ExecutionPolicy *)",
+      "PowerShell(Start-Process * -Verb RunAs*)"
     ]
   },
   "hooks": {
@@ -147,7 +189,7 @@
     ],
     "PreToolUse": [
       {
-        "matcher": "Write|Edit|MultiEdit|NotebookEdit|Read|Grep|Bash|PowerShell",
+        "matcher": "Write|Edit|MultiEdit|NotebookEdit|Read|Grep|Bash|PowerShell|mcp__.*",
         "hooks": [
           {
             "type": "command",

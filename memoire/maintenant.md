@@ -1,26 +1,25 @@
-# État au 9 octobre 2026
+# État au 10 octobre 2026
 
 À lire en premier, à chaque séance. Réécrit à la fin de chaque séance.
 
-## En bref, 9 octobre 2026 au soir
+## En bref, 10 octobre 2026
 
-- **Le dépôt est prêt pour que Claude Code travaille seul** : `CLAUDE.md`
-  (section 2, « Travailler seul »), la liste de tâches `app/specs/07-TACHES.md`
-  (34 tâches : 22 prenables ou à faire, 12 bloquées par une action de Fabrice),
-  `.claude/` (réglages validés contre le schéma officiel, crochets, skills),
-  lancement `lanceurs\CLAUDE_AUTONOME.bat`.
-- **Essais** : `node scripts/essais.mjs` vert sur le poste de Claude (dépôt,
-  rédaction, secrets, outillage 34/34, app 96/96, photos 18/18, publication
-  19/19) ; résumé dans `memoire/essais/derniers.txt`. CI GitHub écrite, **pas
-  encore vue tourner** (tâche T02).
-- **Ce que Claude Code ne peut pas faire seul** : `memoire/actions-fabrice.md`
-  (F0 installer Claude Code, F1 le `.env`, F3 le modèle d'e-mail, puis les
-  comptes payants). Questions : `memoire/questions.md` (Q1).
-- **Essai réel de Claude Code** dans un clone : `/travailler` a enchaîné quatre
-  tâches en dix minutes, avec essais et commits, et a bloqué honnêtement les
-  deux qui demandaient un accès. Sur le PC, il faut d'abord F2 (approuver le
-  dossier), sinon les autorisations du projet sont ignorées.
-- **Prochaine tâche** : T00 (ranger `skills/` et `hooks/`), puis T01, T05, T06.
+- **Claude Code travaille et se dépanne seul** (décisions de Fabrice du
+  10 octobre) : `lanceurs\CLAUDE_AUTONOME.bat` → `scripts/autonome.mjs`, mode
+  auto sans fenêtre de question, 20 lancements par jour au plus ; une panne se
+  traite par `.claude/skills/depanner/SKILL.md` (pièges, doc officielle,
+  tickets GitHub), budget 3 approches ou 45 minutes, puis « bloqué » (panne) et
+  nouvelle tentative le lendemain. Garde-fous verrouillés (CLAUDE.md, Jamais 10).
+- **Prouvé dans un clone** : trois pannes posées exprès (paquet manquant,
+  texte fautif, erreur de type) réparées seul, essais à 0, puis quatre tâches
+  faites avec preuves et deux bloquées honnêtement (`memoire/journal.md`, 10 oct.).
+- **Liste de travail** : `app/specs/07-TACHES.md` (34 tâches, 12 bloquées par
+  une action de Fabrice). **Prochaine tâche** : T00, puis T01, T05, T06.
+- **Avant le premier lancement** (`memoire/actions-fabrice.md`) : F0 installer
+  Claude Code, F1 le `.env`, F2 `lanceurs\PREMIER_LANCEMENT.bat` une fois,
+  F3 le modèle d'e-mail. Questions ouvertes : `memoire/questions.md` (Q1).
+- **Ce qu'il ne fera jamais seul** : comptes payants, domaines, paiements réels,
+  Play Store, vraies photos (F5 à F15).
 
 ---
 

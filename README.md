@@ -28,7 +28,7 @@ chantiers : le site s'enrichit tout seul.
 | `.claude/` | l'outillage de Claude Code : réglages, crochets, skills (voir `CLAUDE.md`) |
 | `skills/`, `hooks/` | anciens emplacements, remplacés par `.claude/` (à supprimer : tâche T00) |
 | `docs/` | le cahier des charges (non validé), l'étude Framer, l'historique |
-| `lanceurs/` | les fichiers à double-cliquer sous Windows : `CLAUDE_AUTONOME.bat` (Claude Code travaille seul), `POUSSER.bat`, `APP.bat` |
+| `lanceurs/` | les fichiers à double-cliquer sous Windows : `PREMIER_LANCEMENT.bat` (une fois), `CLAUDE_AUTONOME.bat` (Claude Code travaille et se dépanne seul), `POUSSER.bat`, `APP.bat` |
 
 Ce qui **n'est pas** dans Git, et pourquoi :
 

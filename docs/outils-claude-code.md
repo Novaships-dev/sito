@@ -17,6 +17,9 @@ sources ci-dessous. Ce n'est pas une décision de Fabrice.
 | Supabase MCP | supabase.com/docs/guides/getting-started/mcp (officiel) | migrations, SQL, conseillers, journaux de la vraie base | le connecteur Supabase du compte Claude de Fabrice ; sinon commande de `memoire/actions-fabrice.md` F4, limitée au projet `sito` |
 | GitHub Actions | docs GitHub | essais rejoués depuis un clone neuf à chaque envoi, sans secret | `.github/workflows/essais.yml` |
 
+| Mode sans fenêtre (`claude -p`) + `--permission-prompts none` | docs officielles, headless et permission-modes | en session ouverte, le mode auto se remet à demander après 3 refus de suite ou 20 en tout ; sans fenêtre, une action refusée est sautée et Claude continue | `scripts/autonome.mjs`, lancé par `lanceurs/CLAUDE_AUTONOME.bat` (décision du 10 oct.) |
+| Crochets « avant outil » dans tous les modes | docs officielles, hooks-guide (« PreToolUse hooks fire before any permission-mode check, in every permission mode ») | les garde-fous tiennent même si le juge du mode auto laisse passer | `.claude/hooks/pre-outil.mjs` |
+
 ## Repéré, pas installé (à décider, ou plus tard)
 
 | Outil | Source | Pourquoi pas maintenant |
@@ -26,6 +29,7 @@ sources ci-dessous. Ce n'est pas une décision de Fabrice.
 | Extensions `code-review`, `pr-review-toolkit`, `security-guidance` | `anthropics/claude-code/plugins` (officiel) | utiles en revue ; à installer avec `/plugin` si Fabrice le souhaite |
 | Chrome DevTools MCP | `ChromeDevTools/chrome-devtools-mcp` (officiel Google) | recouvre en partie Playwright MCP |
 | Context7 (documentation à jour des bibliothèques) | `upstash/context7` | demande une clé d'API pour le serveur distant |
+| Crochet `PermissionRequest` (répondre aux demandes d'autorisation par un script) | docs officielles, hooks | inutile en mode sans fenêtre : rien n'attend de réponse |
 | Action GitHub `claude-code-action` | docs officielles | demande une clé d'API Anthropic payante dans GitHub |
 
 ## Limites qui restent, dites franchement

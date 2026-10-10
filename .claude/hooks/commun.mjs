@@ -2,7 +2,7 @@
 // ils tournent pareil sous Windows (Git Bash ou non), Linux et dans la CI.
 // Lancés en forme « exec » depuis .claude/settings.json :
 //   "command": "node", "args": ["${CLAUDE_PROJECT_DIR}/.claude/hooks/<nom>.mjs"]
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname, resolve, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -54,3 +54,39 @@ export function eligibles(liste) {
     ...liste.filter((t) => t.etat.startsWith('à faire') && pretes(t)),
   ];
 }
+
+// Change l'état (et la colonne « Bloqué par ») d'une tâche dans le tableau.
+// Utilisé par le crochet de fin (budget de panne dépassé) et par
+// scripts/autonome.mjs (nouvelle tentative le lendemain). Renvoie vrai si la
+// ligne a été trouvée.
+export function changerEtat(id, etat, bloquePar) {
+  const p = join(RACINE, 'app/specs/07-TACHES.md');
+  if (!existsSync(p)) return false;
+  let trouve = false;
+  const texte = readFileSync(p, 'utf8').split('\n').map((l) => {
+    if (!new RegExp(`^\\|\\s*${id}\\s*\\|`).test(l)) return l;
+    const c = l.split('|');
+    // c[0] vide, c[1] N°, c[2] tâche, c[3] état, c[4] preuve, c[5] dépend, c[6] bloqué par, c[7] vide
+    if (c.length < 8) return l;
+    trouve = true;
+    c[3] = ` ${etat} `;
+    if (bloquePar !== undefined) c[6] = bloquePar ? ` ${bloquePar} ` : ' ';
+    return c.join('|');
+  }).join('\n');
+  if (trouve) writeFileSync(p, texte);
+  return trouve;
+}
+
+// Fichiers verrouillés : les garde-fous (décision de Fabrice du 10 oct. 2026).
+// Claude Code ne les modifie jamais ; seul Fabrice le fait, hors de Claude Code.
+export const VERROUILLES = [
+  /^\.claude\/settings(\.local)?\.json$/,
+  /^\.claude\/hooks\//,
+  /^scripts\/verifier-secrets\.mjs$/,
+  /^scripts\/essai-outillage\.mjs$/,
+  /^scripts\/autonome\.mjs$/,
+  /^git-hooks\//,
+  /^lanceurs\/CLAUDE_AUTONOME\.bat$/,
+  /^memoire\/decisions\.md$/,
+];
+export const estVerrouille = (cheminRel) => VERROUILLES.some((re) => re.test(cheminRel));

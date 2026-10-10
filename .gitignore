@@ -27,6 +27,8 @@ desktop.ini
 .claude/settings.local.json
 # etat de la boucle autonome de Claude Code (propre a chaque machine)
 .claude/boucle.json
+.claude/budget.json
+.claude/autonome.json
 # journaux des lancements
 app.log
 claude-autonome.log

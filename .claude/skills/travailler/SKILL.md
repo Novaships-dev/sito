@@ -13,9 +13,10 @@ argument-hint: "[nombre maximal de tours, 300 par défaut]"
 2. Lire, dans l'ordre de CLAUDE.md section 1 : `memoire/maintenant.md`,
    `memoire/decisions.md`, `app/specs/07-TACHES.md`, `memoire/pieges.md`.
 3. Vérifier que l'environnement tient : `node scripts/essais.mjs`. Si rouge
-   avant d'avoir touché à quoi que ce soit, la première tâche est de comprendre
-   pourquoi (l'écrire dans le journal), pas de continuer par-dessus.
+   avant d'avoir touché à quoi que ce soit, la première tâche est de réparer
+   (`.claude/skills/depanner/SKILL.md`), pas de continuer par-dessus.
 4. Appliquer CLAUDE.md section 2 à la tâche choisie. Une tâche à la fois.
+   Toute panne pendant la tâche : `depanner`, sans attendre personne.
 5. Après chaque tâche : essais à 0, état mis à jour, `git add -A`,
    `git commit -m "Txx : ..."`, `git push`.
 6. Quand le crochet de fin te relance, il nomme la tâche suivante : la prendre.
