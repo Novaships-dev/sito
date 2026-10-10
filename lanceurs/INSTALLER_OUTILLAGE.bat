@@ -12,6 +12,11 @@ if not exist "_installation" ( >> "%LOG%" echo [RIEN] pas de dossier _installati
 if exist "_installation\claude" xcopy "_installation\claude" ".claude" /E /I /Y /Q >> "%LOG%" 2>&1
 if exist "_installation\github" xcopy "_installation\github" ".github" /E /I /Y /Q >> "%LOG%" 2>&1
 if exist "_installation\mcp.json" copy /Y "_installation\mcp.json" ".mcp.json" >> "%LOG%" 2>&1
+rem Fichiers de configuration locaux (jamais dans Git) : copies seulement s ils
+rem n existent pas encore, pour ne jamais ecraser une cle deja saisie.
+if exist "_installation\env" if exist ".env" >> "%LOG%" echo [GARDE] .env existait deja : pas touche
+if exist "_installation\env" if not exist ".env" ( copy "_installation\env" ".env" >nul & >> "%LOG%" echo [OK] .env cree, sans cle secrete )
+if exist "_installation\app-env.local" if not exist "app\.env.local" ( copy "_installation\app-env.local" "app\.env.local" >nul & >> "%LOG%" echo [OK] app\.env.local cree, cle publique )
 >> "%LOG%" echo --- fichiers en place ---
 dir /S /B /A-D ".claude" ".github" ".mcp.json" >> "%LOG%" 2>&1
 rmdir /S /Q "_installation"
