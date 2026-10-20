@@ -87,7 +87,12 @@ function lancer() {
 
 const LIMITE = /usage limit|rate.?limit|limit (will )?reset|quota|overloaded|\b429\b|\b529\b/i;
 
+const CONNEXION = /failed to authenticate|oauth session expired|not logged in|please run \/login|invalid api key|authentication_error/i;
+
 let etat = lireEtat();
+// Un nouveau lancement par Fabrice repart de zéro pour la stagnation (le
+// compteur de lancements du jour, lui, est gardé).
+etat.sansChangement = 0;
 noter('=== Travail autonome : début');
 let attentesLimite = 0;
 for (;;) {
@@ -115,6 +120,12 @@ for (;;) {
   const r = await lancer();
   const apres = signature();
 
+  if (CONNEXION.test(r.texte)) {
+    etat.lancements--;
+    ecrireEtat(etat);
+    noter('Arrêt : Claude Code n\'est plus connecté au compte Claude de Fabrice. Action : lanceurs\\PREMIER_LANCEMENT.bat, se connecter (/login), puis relancer CLAUDE_AUTONOME.bat.');
+    break;
+  }
   if (r.code !== 0 && LIMITE.test(r.texte) && attentesLimite < MAX_JOUR) {
     attentesLimite++;
     etat.lancements--;

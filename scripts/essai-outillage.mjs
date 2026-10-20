@@ -193,6 +193,7 @@ appendFileSync(process.env.CLAUDE_PROJECT_DIR + '/args.txt', process.argv.slice(
 const c = process.env.CLAUDE_PROJECT_DIR + '/compte.txt';
 const n = existsSync(c) ? Number(readFileSync(c, 'utf8')) + 1 : 1; writeFileSync(c, String(n));
 const mode = process.env.FAUX_MODE;
+if (mode === 'connexion') { console.log(JSON.stringify({ type: 'result', subtype: 'success', is_error: true, result: 'Failed to authenticate: OAuth session expired and could not be refreshed' })); process.exit(1); }
 if (mode === 'limite' && n === 1) { console.log(JSON.stringify({ type: 'result', subtype: 'error', is_error: true, result: 'Claude usage limit reached. Your limit will reset at 3pm' })); process.exit(1); }
 console.log(JSON.stringify({ type: 'assistant', message: { content: [{ type: 'text', text: 'Je travaille.' }, { type: 'tool_use', name: 'Bash', input: { command: 'node scripts/essais.mjs' } }] } }));
 if (mode !== 'rien') { const t = readFileSync(f, 'utf8'); writeFileSync(f, t.replace(/\\| à faire \\|/, '| fait |')); }
@@ -230,6 +231,15 @@ writeFileSync(join(tmp, 'app/specs/07-TACHES.md'), TACHES('fait', 'bloqué').rep
 writeFileSync(etatAuto, JSON.stringify({ jour: '2000-01-01', relances: { T02: 3 } }));
 const a5 = auto('travaille');
 ok(a5.n === 0 && !/nouvelle tentative/.test(a5.log), 'après trois tentatives, une panne reste bloquée (diagnostic dans le journal)');
+writeFileSync(join(tmp, 'app/specs/07-TACHES.md'), TACHES('fait', 'à faire'));
+rmSync(etatAuto, { force: true });
+writeFileSync(join(tmp, 'app/specs/07-TACHES.md'), TACHES('fait', 'à faire'));
+rmSync(etatAuto, { force: true });
+const a7 = auto('connexion');
+ok(a7.n === 1 && /plus connecté/.test(a7.log) && a7.etat.lancements === 0, 'connexion au compte Claude expirée : arrêt immédiat qui dit quoi faire, sans user les lancements', `${a7.n} lancement(s)`);
+writeFileSync(etatAuto, JSON.stringify({ jour, lancements: 3, sansChangement: 3, relances: {} }));
+const a8 = auto('travaille');
+ok(a8.n === 1 && !/3 lancements de suite/.test(a8.log.split('\n').slice(0, 3).join('')), 'relancé à la main après un arrêt : repart (la stagnation de la veille ne bloque pas)', `${a8.n} lancement(s)`);
 writeFileSync(join(tmp, 'app/specs/07-TACHES.md'), TACHES('fait', 'à faire'));
 rmSync(etatAuto, { force: true });
 const a6 = auto('limite');
