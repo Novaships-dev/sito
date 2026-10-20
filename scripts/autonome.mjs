@@ -87,6 +87,8 @@ function lancer() {
 
 const LIMITE = /usage limit|rate.?limit|limit (will )?reset|quota|overloaded|\b429\b|\b529\b/i;
 
+const RESEAU = /can't reach the api server|ENOTFOUND|ECONNRESET|ETIMEDOUT|EAI_AGAIN|ECONNREFUSED|network error|socket hang up/i;
+const ATTENTE_RESEAU = Number(process.env.SITO_AUTONOME_ATTENTE_RESEAU ?? 5 * 60);
 const CONNEXION = /failed to authenticate|oauth session expired|not logged in|please run \/login|invalid api key|authentication_error/i;
 
 let etat = lireEtat();
@@ -95,6 +97,7 @@ let etat = lireEtat();
 etat.sansChangement = 0;
 noter('=== Travail autonome : début');
 let attentesLimite = 0;
+let attentesReseau = 0;
 for (;;) {
   const jour = jourParis();
   if (etat.jour !== jour) {
@@ -126,6 +129,18 @@ for (;;) {
     noter('Arrêt : Claude Code n\'est plus connecté au compte Claude de Fabrice. Action : lanceurs\\PREMIER_LANCEMENT.bat, se connecter (/login), puis relancer CLAUDE_AUTONOME.bat.');
     break;
   }
+  // Panne du 21 oct. : Internet coupé sur le PC (ENOTFOUND), trois lancements
+  // perdus puis arrêt. Une coupure réseau n'est pas un blocage : on attend et
+  // on reprend, sans compter le lancement ni la stagnation (24 fois au plus, 2 h).
+  if (r.code !== 0 && RESEAU.test(r.texte) && attentesReseau < 24) {
+    attentesReseau++;
+    etat.lancements--;
+    ecrireEtat(etat);
+    noter(`Internet coupé (Claude Code ne joint pas son serveur) : nouvel essai dans ${Math.round(ATTENTE_RESEAU / 60)} minutes (${attentesReseau}/24, ce lancement ne compte pas).`);
+    await dormir(ATTENTE_RESEAU);
+    continue;
+  }
+  if (r.code === 0 || !RESEAU.test(r.texte)) attentesReseau = 0;
   if (r.code !== 0 && LIMITE.test(r.texte) && attentesLimite < MAX_JOUR) {
     attentesLimite++;
     etat.lancements--;

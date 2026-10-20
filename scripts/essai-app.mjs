@@ -15,14 +15,14 @@
 import { createServer } from 'node:http';
 import { readFile, writeFile, mkdtemp, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
-import { join, extname, resolve } from 'node:path';
+import { join, extname } from 'node:path';
 import { tmpdir } from 'node:os';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import sharp from 'sharp';
 import { chromium } from 'playwright';
+import { RACINE } from './env.mjs';
 
-const RACINE = resolve(new URL('..', import.meta.url).pathname);
 const DIST = process.env.SITO_APP_DIST || join(RACINE, 'app', 'dist'); // autre dossier : essai d'une copie cassée
 const CONTRE = process.argv.includes('--contre-essai');
 if (!existsSync(join(DIST, 'index.html'))) { console.error('app/dist absent : lancer « npm run build » dans app/ avant.'); process.exit(2); }

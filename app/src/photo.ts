@@ -61,8 +61,17 @@ export type Preparee =
   | { genre: 'video'; fichier: Blob; format: string }
   | { genre: 'refuse'; raison: string };
 
+// Le type que porte le fichier envoyé, pour chaque format que « reconnaitre » sait nommer.
+// Il fait autorité sur ce que le navigateur annonce : celui-ci lit le registre du système,
+// qui change d'un poste à l'autre (sur Windows, un .DNG est annoncé « image/DNG »).
+// Ce type devient le Content-Type de l'objet dans le stockage : il ne doit dépendre
+// que du format reconnu, jamais de l'appareil qui envoie.
 const TYPES: Record<string, string> = {
-  heic: 'image/heic', avif: 'image/avif', dng: 'image/x-adobe-dng', tiff: 'image/tiff', cr3: 'image/x-canon-cr3',
+  heic: 'image/heic', avif: 'image/avif', tiff: 'image/tiff',
+  dng: 'image/x-adobe-dng', nef: 'image/x-nikon-nef', arw: 'image/x-sony-arw',
+  cr2: 'image/x-canon-cr2', cr3: 'image/x-canon-cr3', orf: 'image/x-olympus-orf',
+  rw2: 'image/x-panasonic-rw2', pef: 'image/x-pentax-pef', srw: 'image/x-samsung-srw',
+  raf: 'image/x-fuji-raf',
   mov: 'video/quicktime', mp4: 'video/mp4', webm: 'video/webm', '3gp': 'video/3gpp',
 };
 
@@ -89,7 +98,9 @@ export async function preparer(fichier: File): Promise<Preparee> {
 }
 
 function avecType(f: File, format: string): Blob {
-  const type = f.type || TYPES[format] || 'application/octet-stream';
+  // Formats hors du tableau (jpeg, png, gif, webp, bmp) : le navigateur les annonce
+  // partout pareil, on garde ce qu'il dit.
+  const type = TYPES[format] || f.type || 'application/octet-stream';
   return f.type === type ? f : new Blob([f], { type });
 }
 

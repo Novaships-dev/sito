@@ -69,13 +69,17 @@ export async function assurerCompte(appel, courriel, { verifier = false, dire = 
   return { id, manque };
 }
 
+// Sortie : process.exitCode, jamais process.exit(). Sur Windows (Node 24),
+// process.exit() juste apres un fetch tue le processus pendant que libuv ferme
+// ses poignees : Assertion failed: !(handle->flags & UV_HANDLE_CLOSING),
+// async.c ligne 94, et le code de sortie devient 3221226505 au lieu de 1.
 if (process.argv[1] && process.argv[1].replace(/\\/g, '/').endsWith('scripts/compte-essai.mjs')) {
   const env = exiger(['SUPABASE_URL', 'SUPABASE_CLE_SERVICE', 'SITO_COMPTE_ESSAI_COURRIEL'], 'créer le compte d’essai dans la vraie base');
   const appel = client({ url: env.SUPABASE_URL, cle: env.SUPABASE_CLE_SERVICE });
   assurerCompte(appel, env.SITO_COMPTE_ESSAI_COURRIEL, { verifier: VERIFIER })
     .then(({ manque }) => {
-      if (manque.length) { console.log(`Manque : ${manque.join(', ')}. Relancer sans --verifier pour créer.`); process.exit(1); }
+      if (manque.length) { console.log(`Manque : ${manque.join(', ')}. Relancer sans --verifier pour créer.`); process.exitCode = 1; return; }
       console.log('Compte d’essai prêt. Connexion dans l’app avec le code reçu à cette adresse.');
     })
-    .catch((e) => { console.error(`Échec : ${e.message}`); process.exit(1); });
+    .catch((e) => { console.error(`Échec : ${e.message}`); process.exitCode = 1; });
 }

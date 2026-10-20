@@ -193,6 +193,7 @@ appendFileSync(process.env.CLAUDE_PROJECT_DIR + '/args.txt', process.argv.slice(
 const c = process.env.CLAUDE_PROJECT_DIR + '/compte.txt';
 const n = existsSync(c) ? Number(readFileSync(c, 'utf8')) + 1 : 1; writeFileSync(c, String(n));
 const mode = process.env.FAUX_MODE;
+if (mode === 'reseau' && n <= 2) { console.log(JSON.stringify({ type: 'result', subtype: 'success', is_error: true, result: "API Error: Can't reach the API server — check your internet or DNS (ENOTFOUND)" })); process.exit(1); }
 if (mode === 'connexion') { console.log(JSON.stringify({ type: 'result', subtype: 'success', is_error: true, result: 'Failed to authenticate: OAuth session expired and could not be refreshed' })); process.exit(1); }
 if (mode === 'limite' && n === 1) { console.log(JSON.stringify({ type: 'result', subtype: 'error', is_error: true, result: 'Claude usage limit reached. Your limit will reset at 3pm' })); process.exit(1); }
 console.log(JSON.stringify({ type: 'assistant', message: { content: [{ type: 'text', text: 'Je travaille.' }, { type: 'tool_use', name: 'Bash', input: { command: 'node scripts/essais.mjs' } }] } }));
@@ -205,7 +206,7 @@ const auto = (mode, env = {}) => {
   // Environnement isolé : un lancement réel (SITO_AUTONOME_TOURS…) ne doit pas fausser l'essai (piège du 10 oct.).
   const propre = Object.fromEntries(Object.entries(process.env).filter(([k]) => !/^SITO_AUTONOME_|^SITO_CLAUDE_CMD$|^SITO_BUDGET_/.test(k)));
   const r = spawnSync(process.execPath, [join(tmp, 'scripts/autonome.mjs')], { cwd: tmp, encoding: 'utf8', timeout: 60000,
-    env: { ...propre, CLAUDE_PROJECT_DIR: tmp, SITO_CLAUDE_CMD: fauxClaude, FAUX_MODE: mode, SITO_AUTONOME_PAUSE: '0', SITO_AUTONOME_ATTENTE_LIMITE: '0', ...env } });
+    env: { ...propre, CLAUDE_PROJECT_DIR: tmp, SITO_CLAUDE_CMD: fauxClaude, FAUX_MODE: mode, SITO_AUTONOME_PAUSE: '0', SITO_AUTONOME_ATTENTE_LIMITE: '0', SITO_AUTONOME_ATTENTE_RESEAU: '0', ...env } });
   const lu = (f) => (existsSync(join(tmp, f)) ? readFileSync(join(tmp, f), 'utf8') : '');
   return { code: r.status, log: lu('claude-autonome.log'), args: lu('args.txt'), n: Number(lu('compte.txt') || 0), etat: existsSync(etatAuto) ? JSON.parse(readFileSync(etatAuto, 'utf8')) : {} };
 };
@@ -240,6 +241,10 @@ ok(a7.n === 1 && /plus connecté/.test(a7.log) && a7.etat.lancements === 0, 'con
 writeFileSync(etatAuto, JSON.stringify({ jour, lancements: 3, sansChangement: 3, relances: {} }));
 const a8 = auto('travaille');
 ok(a8.n === 1 && !/3 lancements de suite/.test(a8.log.split('\n').slice(0, 3).join('')), 'relancé à la main après un arrêt : repart (la stagnation de la veille ne bloque pas)', `${a8.n} lancement(s)`);
+writeFileSync(join(tmp, 'app/specs/07-TACHES.md'), TACHES('fait', 'à faire'));
+rmSync(etatAuto, { force: true });
+const a9 = auto('reseau');
+ok(a9.n === 3 && /Internet coupé/.test(a9.log) && a9.etat.lancements === 1 && !/sans aucun changement/.test(a9.log), 'Internet coupé deux fois : attente puis reprise, rien de compté ni d’arrêt', `${a9.n} lancement(s), ${a9.etat.lancements} compté(s)`);
 writeFileSync(join(tmp, 'app/specs/07-TACHES.md'), TACHES('fait', 'à faire'));
 rmSync(etatAuto, { force: true });
 const a6 = auto('limite');

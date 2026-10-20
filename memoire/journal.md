@@ -260,3 +260,38 @@ refaire sur ses tarifs.
 - Claude Code : `lanceurs\INSTALLER_CLAUDE_CODE.bat` (installateur officiel `irm https://claude.ai/install.ps1 | iex`). Le poste de Claude ne peut pas télécharger ce script (proxy) : pas relu avant exécution ; source officielle d'Anthropic, demandée par Fabrice.
 - Modèle d'e-mail (F3) : ni le navigateur intégré ni Chrome ne sont connectés à Supabase ; Claude ne saisit pas de mot de passe. À faire dès que Fabrice est connecté dans Chrome.
 - Modèle d'e-mail (F3), après connexion de Fabrice dans Chrome : page « Magic link or OTP » ouverte ; Supabase refuse la modification sans SMTP personnel. Modèle par défaut relevé : sujet « Your sign-in link », un lien « Sign in », pas de code. Texte à mettre après F10 : sujet « Votre code de connexion Sitô » ; corps `<h2>Votre code Sitô</h2><p>Saisissez ce code dans l'app pour vous connecter :</p><p style="font-size:28px;font-weight:bold;letter-spacing:4px">{{ .Token }}</p><p>Si vous n'avez pas demandé ce code, ignorez ce message.</p>`.
+
+## 21 octobre 2026, nuit : suite rouge au réveil, réparée avant toute tâche
+
+Plan en trois lignes : la suite d'essais rougissait avant d'avoir touché à quoi
+que ce soit (2 fautes) ; donc dépannage d'abord, aucune tâche de `07-TACHES.md`
+par-dessus une suite rouge ; puis T00.
+
+Deux pannes, trouvées et réparées :
+
+- **Le type du fichier DNG dépendait du poste.** `app/src/photo.ts` posait le
+  Content-Type de l'envoi avec `f.type || TYPES[format]` : le navigateur lit le
+  registre de Windows, qui annonce un `.DNG` comme « image/DNG ». Le contrôle
+  de l'essai de l'app (DNG envoyé tel quel) rougissait. La séance précédente
+  avait déjà renversé la priorité (le tableau des formats fait autorité, ce qui
+  est juste : le type ne doit dépendre que du format reconnu, jamais de
+  l'appareil) mais avait écrit dans le tableau la valeur du registre Windows.
+  Remis la valeur du format : `image/x-adobe-dng`. `essai-app` : 96 contrôles,
+  0 faute.
+- **Un secret probable dans `app/dist-casse/`.** Une copie construite exprès
+  cassée (`SITO_APP_DIST`) était restée dans le dépôt, non ignorée : la clé
+  publique Supabase empaquetée dedans faisait rougir `verifier-secrets`
+  (4 lignes bloquantes). Copie supprimée, et `.gitignore` ignore maintenant
+  `app/dist-*/` : une copie d'essai construite sur place ne part plus sur
+  GitHub. Vérifié : `verifier-secrets` à 0, et la ligne `app/dist/` qui
+  précède n'a pas changé.
+
+Trouvé en arrivant, pas écrit par cette séance : `scripts/autonome.mjs` et
+`scripts/essai-outillage.mjs` (fichiers verrouillés) portaient déjà, dans le
+dossier de travail, l'attente sur coupure d'Internet et son contrôle
+(`FAUX_MODE=reseau`). Non touchés ici ; leur contrôle est vert
+(`essai-outillage` : 90 contrôles, 0 faute) et ils partent dans ce commit pour
+ne pas rester seulement sur la machine.
+
+Suite complète : aucune faute, 1 essai non lancé (photos du service : python +
+Pillow + pillow-heif manquent sur ce poste, c'est l'objet de T01).

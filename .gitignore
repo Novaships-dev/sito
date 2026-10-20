@@ -14,6 +14,8 @@ images/
 
 # sites fabriques et app construite : ils se refabriquent depuis le depot
 app/dist/
+# copies construites pour un contre-essai (SITO_APP_DIST=app/dist-casse)
+app/dist-*/
 sites/
 flotte/
 sortie/
