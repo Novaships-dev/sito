@@ -295,3 +295,27 @@ ne pas rester seulement sur la machine.
 
 Suite complète : aucune faute, 1 essai non lancé (photos du service : python +
 Pillow + pillow-heif manquent sur ce poste, c'est l'objet de T01).
+
+### T00 : les anciens `skills/` et `hooks/` retirés du dépôt
+
+Plan en trois lignes : vérifier d'abord que les 13 fichiers sont bien recopiés
+dans `.claude/` avant d'effacer quoi que ce soit ; `git rm -r skills hooks` ;
+corriger le dernier lien qui restait et prouver avec `verifier-depot`.
+
+- Comparaison octet pour octet avant la suppression : les 9 fichiers de
+  `skills/` sont identiques à ceux de `.claude/skills/` ; les 4 crochets
+  `hooks/*.sh` n'ont pas de jumeau, ils sont remplacés par les cinq crochets
+  Node de `.claude/hooks/` que `.claude/settings.json` appelle réellement.
+- `git rm -r skills hooks` : 13 fichiers.
+- `README.md` : la ligne « anciens emplacements » retirée du tableau.
+  `rules/common/00-index.md` était déjà juste (il cite `.claude/hooks/*.mjs` et
+  `git-hooks/pre-commit`). Les deux scripts qui citent le dossier partagé
+  pointaient déjà sur `.claude/skills/_partage/`.
+- Preuve : `verifier-depot` à 0 (270 fichiers), et plus aucun lien vers
+  `hooks/*.sh` hors de `docs/` et `memoire/`. Suite complète : aucune faute
+  (l'essai des photos du service reste non lancé, c'est T01).
+- Laissé exprès : un commentaire de la migration
+  `20261002194303_schema.sql` cite encore `skills/prospection-sirene`. Une
+  migration déjà écrite ne se modifie pas (CLAUDE.md, Jamais 6), et ce n'est
+  pas un lien vers `hooks/*.sh`.
+

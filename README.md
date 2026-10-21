@@ -26,7 +26,6 @@ chantiers : le site s'enrichit tout seul.
 | `atelier/`, `worker/` | le service qui prépare les photos et publie les sites, et le Worker Cloudflare qui les sert |
 | `supabase/` | la base : migrations, essai des droits. Voir `supabase/README.md` |
 | `.claude/` | l'outillage de Claude Code : réglages, crochets, skills (voir `CLAUDE.md`) |
-| `skills/`, `hooks/` | anciens emplacements, remplacés par `.claude/` (à supprimer : tâche T00) |
 | `docs/` | le cahier des charges (non validé), l'étude Framer, l'historique |
 | `lanceurs/` | les fichiers à double-cliquer sous Windows : `INSTALLER_CLAUDE_CODE.bat`, `CLE_SUPABASE.bat`, `PREMIER_LANCEMENT.bat` (une fois chacun), `CLAUDE_AUTONOME.bat` (Claude Code travaille et se dépanne seul), `POUSSER.bat`, `APP.bat` |
 
