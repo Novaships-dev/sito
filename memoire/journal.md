@@ -506,3 +506,42 @@ copie cassée exprès, construite hors du dépôt.
   28 contrôles et 0 faute ; `verifier-depot` à 0 (278 fichiers). T06 faite.
   Tâche suivante : T07 (préparation des photos reçues), qui s'appuie sur cet
   adaptateur et sur `atelier/photos.mjs`.
+
+### Deux sessions dans le même dépôt, en même temps (à savoir)
+
+Vu en relisant le commit de T06 : `git add -A` y a emporté trois fichiers
+qu'une **autre session Claude** (Cowork, piste prospection) écrivait au même
+moment — `memoire/decisions.md` (décisions de Fabrice des 23 et 24 octobre),
+`app/specs/08-PROSPECTION.md`, `lanceurs/CLE_CLOUDFLARE.bat`. Leur contenu est
+intact et poussé ; seul le message du commit ne les cite pas. Aucun fichier
+verrouillé n'a été modifié par cette session : `decisions.md` a été écrit par
+l'autre session, pas par moi (le diff ne contient que des décisions de
+Fabrice).
+
+Leçon pour la suite de cette séance : **ne plus faire `git add -A`**, nommer
+les fichiers de la tâche, et relire `git status` avant de commiter.
+
+Trouvé dans ces décisions : le 24 octobre, « Oui réveille la base ». Mesuré à
+l'instant : le projet Supabase `sito` est passé de `INACTIVE` à `COMING_UP`.
+F17 est donc en cours de traitement ; T05 redevient faisable dès que l'état
+passe à `ACTIVE_HEALTHY`.
+
+### T05 : essais de droits rejoués (rouverte dès que la base est debout)
+
+Plan en trois lignes : attendre que le projet passe de `COMING_UP` à
+`ACTIVE_HEALTHY` (la passerelle REST répond déjà 401, mais la base non) ;
+rejouer `supabase/essais/droits.sql` puis `droits-app.sql` par `execute_sql`,
+en lisant chaque ligne du résultat une par une ; relever les conseillers
+sécurité et performance, et ne compter comme « sans alerte nouvelle » que ce
+qui est comparé à la liste connue, jamais une réponse vide.
+
+**T05 remise en attente, sans rien inventer.** Le réveil de la base est lancé
+(`COMING_UP` depuis une dizaine de minutes) mais la base refuse encore toute
+requête : `execute_sql` sur un `select 1` répond « Database is possibly not
+accessible at the moment », quatre fois à quelques minutes d'intervalle. Deux
+sondes sans clé ont été essayées pour savoir quand elle sera debout, et aucune
+ne sert : `/rest/v1/` et `/auth/v1/health` répondent 401 même base éteinte
+(la passerelle vit séparément). Le seul signal juste est `execute_sql`
+lui-même, qu'il faut relancer de temps en temps. T05 reste donc « bloqué »
+par F17 (réveil en cours, pas encore fini) : je ne déclare rien de vert sans
+l'avoir mesuré. Je passe à T07, qui ne touche pas la vraie base.
