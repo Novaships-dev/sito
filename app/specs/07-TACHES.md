@@ -19,7 +19,7 @@ sont faites et prouvées : voir `06-PLAN-IMPLEMENTATION.md`.
 | N° | Tâche | État | Preuve | Dépend | Bloqué par |
 |---|---|---|---|---|---|
 | T00 | Supprimer `skills/` et `hooks/` (copiés le 9 oct. dans `.claude/skills/` et `.claude/hooks/`) avec `git rm -r`, puis corriger les liens restants (`README.md`, `rules/common/00-index.md`, `docs/historique` exclu) | fait | `node scripts/verifier-depot.mjs .` à 0 ; plus aucun lien vers `hooks/*.sh` hors de `docs/` et `memoire/` | | |
-| T01 | Outils de la machine : vérifier `exiftool`, `ffmpeg`, Python + Pillow + pillow-heif, Chromium de Playwright (`npx playwright install chromium`). Installer ce qui manque sans droits d'administrateur (pip --user, npx) ; sinon action de Fabrice précise | à faire | `node scripts/essais.mjs` sort 0 (et non 4) sur l'ordinateur de Fabrice | T00 | |
+| T01 | Outils de la machine : vérifier `exiftool`, `ffmpeg`, Python + Pillow + pillow-heif, Chromium de Playwright (`npx playwright install chromium`). Installer ce qui manque sans droits d'administrateur (pip --user, npx) ; sinon action de Fabrice précise | fait | `node scripts/essais.mjs` sort 0 (et non 4) sur l'ordinateur de Fabrice | T00 | |
 | T02 | Vérifier que la CI GitHub (`.github/workflows/essais.yml`) est verte sur le dernier envoi (`gh run list --workflow essais.yml`, ou la page Actions si `gh` est absent) ; corriger ce qui ne passe que sur une machine | à faire | dernier passage vert, écrit dans `memoire/essais/derniers.txt` | T01 | |
 
 ## La vraie base

@@ -8,8 +8,9 @@
 //
 //   node scripts/essai-photos.mjs [chemin du module]   (défaut : atelier/photos.mjs)
 //
-// Outils demandés sur la machine : exiftool, ffmpeg, python3 avec Pillow et
-// pillow-heif (pour fabriquer les fichiers d'essai seulement).
+// Outils demandés sur la machine : exiftool, ffmpeg, et un Python avec Pillow
+// et pillow-heif (pour fabriquer les fichiers d'essai seulement). Le nom de
+// l'interprète est cherché par scripts/python.mjs : il change selon le poste.
 //
 // Fabriqués ici, pas venus d'un vrai appareil : le HEIC (pillow-heif), le DNG
 // (TIFF marqué DNG avec un aperçu). Les vrais fichiers d'iPhone et d'Android
@@ -21,13 +22,16 @@ import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import sharp from 'sharp';
+import { pythonAvecHeif } from './python.mjs';
 
 const module = await import(pathToFileURL(resolve(process.argv[2] || 'atelier/photos.mjs')).href);
 const { preparerPhoto, Illisible, COTE_MAX } = module;
 
 const D = mkdtempSync(join(tmpdir(), 'essai-photos-'));
 const f = (n) => join(D, n);
-const py = (code) => execFileSync('python3', ['-c', code], { stdio: ['ignore', 'pipe', 'inherit'] });
+const PYTHON = pythonAvecHeif();
+if (!PYTHON) { console.error('python avec Pillow et pillow-heif introuvable : les fichiers d essai ne peuvent pas etre fabriques.'); process.exit(2); }
+const py = (code) => execFileSync(PYTHON, ['-c', code], { stdio: ['ignore', 'pipe', 'inherit'] });
 const exif = (...a) => execFileSync('exiftool', a, { encoding: 'utf8' });
 
 // Une image 800 x 600 : fond bleu, carré ROUGE en haut à gauche. Après

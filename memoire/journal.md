@@ -319,3 +319,78 @@ corriger le dernier lien qui restait et prouver avec `verifier-depot`.
   migration déjà écrite ne se modifie pas (CLAUDE.md, Jamais 6), et ce n'est
   pas un lien vers `hooks/*.sh`.
 
+
+## 24 octobre 2026 : T01, les outils de la machine
+
+Plan en trois lignes : mesurer ce qui est réellement installé sur le PC
+(exiftool, ffmpeg, Python + Pillow + pillow-heif, Chromium de Playwright) ;
+réparer la détection de Python, qui déclarait l'essai des photos impossible
+alors que tout était là ; prouver par `scripts/essais.mjs` à 0, sans aucun
+essai « non lancé », et par un contre-essai de chaque garde ajoutée.
+
+### Ce qui est installé, mesuré
+
+| Outil | Version | Où |
+|---|---|---|
+| exiftool | 13.59 | `AppData\Local\Programs\ExifTool` |
+| ffmpeg | 9.0.2-full (gyan.dev) | WinGet, portée utilisateur |
+| Python | 3.13.15 | `AppData\Local\Programs\Python\Python313` |
+| Pillow | 13.0.0 | paquet utilisateur |
+| pillow-heif | 1.8.1 | paquet utilisateur |
+| Chromium | celui de Playwright | pris par défaut par `essai-app.mjs` |
+
+Rien à installer : aucune action de Fabrice n'était nécessaire.
+
+### La détection de Python, réparée (`scripts/python.mjs`)
+
+Deux fautes dans la même ligne de `essais.mjs` :
+
+- `python3` **existe** sous Windows, mais ce n'est que la passerelle du
+  Microsoft Store : elle répond « Python est introuvable » et ne lance rien ;
+- `spawnSync(py, ['-c', 'import PIL, pillow_heif'], { shell: true })` laisse
+  cmd.exe recoller les arguments : la commande est coupée sur l'espace et la
+  virgule.
+
+Résultat : la suite finissait « aucune faute, mais 1 essai NON LANCÉ », donc
+jamais rouge. Une panne invisible, exactement ce que la preuve de T01 interdit.
+
+Un seul endroit cherche l'interprète maintenant : `scripts/python.mjs`
+(`python`, `py`, `python3` sous Windows ; `python3`, `python` ailleurs ; jamais
+de `shell`), lu par `essais.mjs` (lancer ou non l'essai) et par
+`essai-photos.mjs` (fabriquer les fichiers d'essai). `SITO_PYTHON` force un
+interprète, noté dans `02-TRD.md`.
+
+Contre-essai fait : `SITO_PYTHON=python-qui-nexiste-pas` → `essai-photos.mjs`
+sort 2 avec sa phrase, et la suite complète remet « NON LANCÉ (manque python +
+Pillow + pillow-heif) » avec le verdict « pas une réussite complète ».
+
+### L'essai de l'app rendait un diagnostic illisible
+
+Trouvé dans le relevé de la veille : `essai-app` avait rougi une fois avec
+`page.evaluate: TypeError: Cannot read properties of undefined (reading
+'fichier')`, sans nommer le contrôle ni écrire le résumé. Cause : l'attente de
+10 s après l'envoi d'une photo de 12 Mpx est dépassée quand la machine fait
+autre chose ; le contrôle rougissait bien, puis la lecture de l'envoi absent
+levait une erreur que rien ne rattrapait.
+
+- Attente portée à 30 s : le temps accordé change, la mesure non.
+- `lireEnvoi` dit « envoi N absent : M envoi(s) seulement ».
+- Le parcours a un `catch` : l'erreur est comptée comme faute, nommée, et le
+  résumé « X contrôles, Y faute(s) » s'écrit quand même.
+
+Contre-essai sur une copie cassée exprès, construite dans un dossier temporaire
+hors du dépôt (piège du 21 octobre) : `envois.push({ genre: 'original' … })`
+retiré de `donnees/demo.ts`, `SITO_APP_DIST` pointé sur ce `dist`. Rouge, et
+lisible : « FAUTE photo JPEG (iPhone, GPS, orientation 6) envoyée, puis son
+original » puis « FAUTE essai interrompu — envoi 1 absent : 1 envoi(s)
+seulement », 25 contrôles, 2 fautes, sortie 1. Copie supprimée.
+
+Refusé par un crochet, sans que ce soit une panne : le `Remove-Item -Recurse
+-Force` du nettoyage. Autre voie prise (la jonction `node_modules` retirée
+seule, puis `rm -r`) ; `app/node_modules` vérifié intact après coup.
+
+### Preuve
+
+`node scripts/essais.mjs` : les 8 étapes vertes, **aucun essai non lancé**
+(l'essai des photos du service tourne : 18 fichiers, 0 faute), verdict
+« TOUT EST VERT », sortie 0. C'est la preuve demandée par T01.

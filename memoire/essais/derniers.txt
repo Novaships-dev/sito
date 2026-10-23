@@ -1,12 +1,12 @@
-Essais du mercredi 21 octobre 2026 à 02:00 (heure de Paris), win32, commit cc84519
+Essais du samedi 24 octobre 2026 à 00:41 (heure de Paris), win32, commit 5482c53
 
-OK         dépôt complet (0 s) Depot complet. 270 fichiers, aucune piece manquante.
+OK         dépôt complet (0 s) Depot complet. 271 fichiers, aucune piece manquante.
 OK         règles de rédaction (sites et app) (0 s) Aucune signature textuelle detectee.
-OK         aucun secret (0 s) Aucun secret trouvé.
-OK         outillage de Claude Code (11 s) 90 contrôles, 0 faute(s).
-OK         app : types et construction (12 s) [33m[plugin builtin:vite-reporter]
-OK         app : parcours et rendu (navigateur) (32 s) 96 contrôles, 0 faute(s).
-NON LANCÉ  photos (service) : manque python + Pillow + pillow-heif
-OK         publication par versions et Worker (4 s) 0 faute(s). Dossier : C:\Users\fabri\AppData\Local\Temp\essai-publication-LZ0Ytp
+OK         aucun secret (1 s) Aucun secret trouvé.
+OK         outillage de Claude Code (19 s) 90 contrôles, 0 faute(s).
+OK         app : types et construction (11 s) [33m[plugin builtin:vite-reporter]
+OK         app : parcours et rendu (navigateur) (34 s) 96 contrôles, 0 faute(s).
+OK         photos (service) (18 s) 18 fichiers, 0 faute(s). Dossier : C:\Users\fabri\AppData\Local\Temp\essai-photos-31SFYL
+OK         publication par versions et Worker (4 s) 0 faute(s). Dossier : C:\Users\fabri\AppData\Local\Temp\essai-publication-TQ8sPr
 
-Verdict : aucune faute, mais 1 essai(s) NON LANCÉ(S) : pas une réussite complète
+Verdict : TOUT EST VERT

@@ -14,6 +14,7 @@ import { spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { RACINE } from './env.mjs';
+import { pythonAvecHeif } from './python.mjs';
 
 const COMPLET = process.argv.includes('--complet');
 const WIN = process.platform === 'win32';
@@ -21,12 +22,6 @@ const WIN = process.platform === 'win32';
 const present = (outil, args = ['--version']) => {
   const r = spawnSync(outil, args, { stdio: 'ignore', shell: WIN });
   return r.status === 0;
-};
-const pythonHeif = () => {
-  for (const py of WIN ? ['python', 'py'] : ['python3']) {
-    if (spawnSync(py, ['-c', 'import PIL, pillow_heif'], { stdio: 'ignore', shell: WIN }).status === 0) return true;
-  }
-  return false;
 };
 
 const ETAPES = [
@@ -39,7 +34,7 @@ const ETAPES = [
   } },
   { nom: 'app : parcours et rendu (navigateur)', cmd: ['node', 'scripts/essai-app.mjs'] },
   { nom: 'photos (service)', cmd: ['node', 'scripts/essai-photos.mjs'],
-    manque: () => [!present('exiftool', ['-ver']) && 'exiftool', !present('ffmpeg', ['-version']) && 'ffmpeg', !pythonHeif() && 'python + Pillow + pillow-heif'].filter(Boolean) },
+    manque: () => [!present('exiftool', ['-ver']) && 'exiftool', !present('ffmpeg', ['-version']) && 'ffmpeg', !pythonAvecHeif() && 'python + Pillow + pillow-heif'].filter(Boolean) },
   { nom: 'publication par versions et Worker', cmd: ['node', 'scripts/essai-publication.mjs'] },
 ];
 if (COMPLET) {

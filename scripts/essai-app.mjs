@@ -168,13 +168,17 @@ async function connecter(page) {
   return refus;
 }
 const envois = (page) => page.evaluate(() => window.__sitoDemo.envois.length);
+// 30 secondes, pas 10 : la préparation d'une photo de 12 Mpx dans le navigateur
+// est plus lente quand la machine fait autre chose en même temps (panne du
+// 21 octobre 2026 : l'essai s'arrêtait au premier envoi sur un poste occupé).
 async function attendreEnvois(page, n) {
-  for (let i = 0; i < 100; i++) { if (await envois(page) >= n) return true; await page.waitForTimeout(100); }
+  for (let i = 0; i < 300; i++) { if (await envois(page) >= n) return true; await page.waitForTimeout(100); }
   return false;
 }
 async function lireEnvoi(page, i) {
   const b64 = await page.evaluate(async (i) => {
     const e = window.__sitoDemo.envois[i];
+    if (!e) throw new Error(`envoi ${i} absent : ${window.__sitoDemo.envois.length} envoi(s) seulement`);
     const o = new Uint8Array(await e.fichier.arrayBuffer());
     let s = ''; for (let k = 0; k < o.length; k += 0x8000) s += String.fromCharCode(...o.subarray(k, k + 0x8000));
     return { b: btoa(s), genre: e.genre, nom: e.nom, format: e.format, type: e.type, role: e.role, paire: e.paire, cle: e.cle };
@@ -347,6 +351,12 @@ try {
     ok(/39\s€ HT par mois/.test(await p2.locator('main').textContent()), 'sur le web, le prix est affiché');
     await c2.close();
   }
+} catch (e) {
+  // Une erreur au milieu du parcours est une faute comme une autre : elle se
+  // compte et se nomme, sinon le résumé de scripts/essais.mjs n'affiche qu'un
+  // message de Playwright sans dire quel contrôle s'est arrêté.
+  fautes++;
+  console.log(`  FAUTE essai interrompu — ${e.message.split('\n')[0]}`);
 } finally {
   await navigateur.close();
   serveur.close();

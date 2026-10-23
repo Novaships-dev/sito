@@ -167,6 +167,7 @@ implémentations, puis à l'essai.
 | jetons Cloudflare, Gandi, Stripe, Google | `.env` du service | — | **oui** |
 | `SITO_CHROMIUM` | essais | chemin d'un Chromium si celui de Playwright manque | non |
 | `SITO_APP_DIST` | `essai-app` | dossier d'une copie construite (essai d'une copie cassée) | non |
+| `SITO_PYTHON` | essais des photos | interprète Python à utiliser (chemin complet s'il n'est pas dans le PATH ; nom inexistant pour le contre-essai) | non |
 
 ## 9. Essais
 
