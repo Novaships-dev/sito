@@ -433,3 +433,16 @@ Les trois chemins essayés avant de s'en servir :
 Relevé des cinq derniers passages : **#4 à #8 tous verts**, dont #8 sur le
 commit `916f4eb` (T01). Rien à corriger : aucun contrôle ne passait que sur une
 machine. Le dernier passage, celui du commit de T02, est vérifié plus bas.
+
+**Verdict de T02** : passage **#9 vert** sur le commit `bc6ef85` (celui de la
+tâche), relevé par `node scripts/ci-github.mjs` (sortie 0) et ajouté à
+`memoire/essais/derniers.txt` par `--ecrire`. Les six derniers passages (#4 à
+#9) sont verts : rien ne passait que sur une seule machine, aucun correctif à
+écrire. T02 faite.
+
+Trois actions de Fabrice passées à « fait » en les mesurant, pas en les
+supposant : **F0** (Claude Code tourne sur le PC), **F2** (`.claude.json` :
+`hasTrustDialogAccepted` vrai pour ce dossier), **F4** (les outils Supabase
+sont offerts à la session). **F1 reste à faire** : `compte-essai.mjs
+--verifier` dit « Configuration manquante : SUPABASE_CLE_SERVICE » (sortie 3),
+donc T03 et T04 restent bloquées, à juste titre.
