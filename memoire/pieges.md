@@ -59,6 +59,7 @@ ce script doit avoir été essayé une fois sur une copie cassée exprès.
 | 1er oct. | Commande `cat > fichier` sans contenu en entrée : l'outil attend dix minutes. | Toujours un `<<'FIN'` ou un fichier source. |
 | 2 oct. | Trois sites de démonstration à zéro faisaient croire que la matrice tenait. Elle tient pour trois. | Mesurer à l'échelle où le produit servira, pas à celle de la démonstration. |
 | 2 oct. | Les vérificateurs en navigateur, enchaînés dans une seule commande, dépassent les dix minutes de l'outil. | Les lancer en arrière-plan, un journal par site. |
+| 24 oct. | `process.exit(0)` appelé juste après un `fetch` : sous Windows, Node meurt sur une assertion de libuv (« Assertion failed: !(handle->flags & UV_HANDLE_CLOSING), src/win/async.c ») et rend **127**. Le script disait « Dernier passage : VERT » et son code de sortie disait l'échec. | Un script qui parle au réseau fixe `process.exitCode` et laisse les connexions se fermer ; il ne coupe jamais le processus lui-même (`scripts/ci-github.mjs`). |
 
 ## Photos et publication (service atelier)
 

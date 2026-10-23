@@ -168,6 +168,8 @@ implémentations, puis à l'essai.
 | `SITO_CHROMIUM` | essais | chemin d'un Chromium si celui de Playwright manque | non |
 | `SITO_APP_DIST` | `essai-app` | dossier d'une copie construite (essai d'une copie cassée) | non |
 | `SITO_PYTHON` | essais des photos | interprète Python à utiliser (chemin complet s'il n'est pas dans le PATH ; nom inexistant pour le contre-essai) | non |
+| `GITHUB_JETON` | `ci-github` | jeton GitHub à portée fine (Actions : lecture) ; facultatif, le gestionnaire d'identifiants de Git sert par défaut | **oui** |
+| `SITO_CI_API` | `ci-github` | autre adresse d'API GitHub (faux serveur local, pour essayer le verdict rouge) | non |
 
 ## 9. Essais
 

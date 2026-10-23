@@ -394,3 +394,42 @@ seule, puis `rm -r`) ; `app/node_modules` vérifié intact après coup.
 `node scripts/essais.mjs` : les 8 étapes vertes, **aucun essai non lancé**
 (l'essai des photos du service tourne : 18 fichiers, 0 faute), verdict
 « TOUT EST VERT », sortie 0. C'est la preuve demandée par T01.
+
+### T02 : l'état de la CI GitHub, lisible depuis la machine
+
+Plan en trois lignes : le dépôt est privé et `gh` n'est pas installé, donc
+l'API de GitHub refuse tout sans jeton ; écrire un script qui va chercher le
+jeton lui-même (jamais par l'agent) et rend un verdict en code de sortie ;
+l'essayer vert, rouge et refusé avant de s'en servir comme preuve.
+
+- `scripts/ci-github.mjs` : `--tous` (les cinq derniers passages), `--journal`
+  (les étapes en échec et la fin du journal de la tâche fautive), `--ecrire`
+  (la ligne du verdict ajoutée à `memoire/essais/derniers.txt`, après
+  `essais.mjs` qui réécrit ce fichier). Sorties : 0 vert, 1 rouge, 2 en cours,
+  3 pas de jeton, 4 l'API a refusé.
+- **Le jeton ne passe pas par l'agent.** Ordre : `GITHUB_JETON` du `.env`, sinon
+  `git credential fill` — le gestionnaire d'identifiants qui sert déjà à
+  `git push` sur ce poste. La valeur ne sort pas de la fonction qui la lit ;
+  rien à coller, aucune action de Fabrice. Variables notées dans `02-TRD.md`,
+  ligne facultative dans `.env.example`.
+- Panne rencontrée et réparée : `process.exit()` juste après un `fetch` tue
+  Node sous Windows sur une assertion de libuv (`UV_HANDLE_CLOSING`, sortie
+  127) — le verdict était perdu. Le script fixe `process.exitCode` et laisse
+  les connexions se fermer : 1,5 s, sortie juste.
+- Refusé par un crochet, sans que ce soit une panne : un téléchargement
+  raccordé directement à un interprète (« script téléchargé puis exécuté sans
+  être lu »). Autre voie : écrire la réponse dans un fichier, puis le lire.
+  C'est ce refus qui a montré que le dépôt est privé (404 sans jeton), donc
+  qu'un script authentifié était nécessaire.
+
+Les trois chemins essayés avant de s'en servir :
+
+| Essai | Résultat |
+|---|---|
+| vrai GitHub, jeton du gestionnaire | passage #8 vert, sortie 0 |
+| faux GitHub local (`SITO_CI_API`), passage en échec | « FAILURE », tâche et étape nommées, fin du journal affichée, sortie 1 |
+| vrai GitHub, faux jeton | « 401 Unauthorized », « le jeton n'a pas le droit Actions : lecture », sortie 4 |
+
+Relevé des cinq derniers passages : **#4 à #8 tous verts**, dont #8 sur le
+commit `916f4eb` (T01). Rien à corriger : aucun contrôle ne passait que sur une
+machine. Le dernier passage, celui du commit de T02, est vérifié plus bas.

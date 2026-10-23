@@ -118,6 +118,7 @@ bloquer la tâche.
 |---|---|
 | `node scripts/essais.mjs` | tous les essais, résumé dans `memoire/essais/derniers.txt` |
 | `node scripts/essais.mjs --complet` | + contre-essais et sites de démonstration |
+| `node scripts/ci-github.mjs --ecrire` | l'état de la CI GitHub, ajouté à `derniers.txt` (après `essais.mjs`) |
 | `cd app && npm run dev` | l'app en local (http://localhost:5173), `?demo` pour la démonstration |
 | `cd app && npm run build` | types stricts et construction de l'app |
 | `node scripts/essai-app.mjs` | l'app dans un navigateur, 3 appareils |
@@ -130,7 +131,10 @@ bloquer la tâche.
 | `supabase/essais/droits.sql`, `droits-app.sql` | droits de la base, à rejouer après toute migration (outil MCP Supabase `execute_sql`) |
 
 La CI (`.github/workflows/essais.yml`) rejoue les essais depuis un clone neuf à
-chaque envoi. Une tâche n'est finie que si elle est verte là aussi.
+chaque envoi. Une tâche n'est finie que si elle est verte là aussi : après avoir
+poussé, `node scripts/ci-github.mjs --journal` dit si le dernier passage est
+vert, et montre les étapes en échec. Le dépôt est privé : le jeton vient du
+gestionnaire d'identifiants de Git (celui de `git push`), jamais de l'agent.
 
 ## 5. Outils de Claude Code dans ce dépôt
 
