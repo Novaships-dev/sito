@@ -22,13 +22,29 @@ sont faites et prouvées : voir `06-PLAN-IMPLEMENTATION.md`.
 | T01 | Outils de la machine : vérifier `exiftool`, `ffmpeg`, Python + Pillow + pillow-heif, Chromium de Playwright (`npx playwright install chromium`). Installer ce qui manque sans droits d'administrateur (pip --user, npx) ; sinon action de Fabrice précise | fait | `node scripts/essais.mjs` sort 0 (et non 4) sur l'ordinateur de Fabrice | T00 | |
 | T02 | Vérifier que la CI GitHub (`.github/workflows/essais.yml`) est verte sur le dernier envoi (`gh run list --workflow essais.yml`, ou la page Actions si `gh` est absent) ; corriger ce qui ne passe que sur une machine | fait | `node scripts/ci-github.mjs --ecrire` à 0 : dernier passage vert, écrit dans `memoire/essais/derniers.txt` | T01 | |
 
+## Prospection (priorité de Fabrice du 23 oct. : avant le reste de l'app)
+
+Spécification : `app/specs/08-PROSPECTION.md`. But : chaque matin à 7 h, 30 sites
+en ligne sur des liens privés et la page d'appels du jour sur l'iPhone de Fabrice.
+
+| N° | Tâche | État | Preuve | Dépend | Bloqué par |
+|---|---|---|---|---|---|
+| T34 | Extraction et qualification : `scripts/prospection/extraire.mjs` et `qualifier.mjs` (API recherche-entreprises, 13, 3 métiers, filtres, note, registre `prospection/registre.json`) | à faire | essai sur réponse d'API enregistrée vert ; contre-essai (paramètre faux) rouge | | |
+| T35 | Textes à coller dans ChatGPT pour couverture et peinture (`banque/prompts/couverture.md`, `peinture.md`, 32 images chacun, noms de fichiers) + vérificateur d'images d'un métier (nom, taille, paires alignées) | à faire | `node scripts/verifier-images.mjs ravalement` vert ; une image trop petite rougit | | |
+| T36 | Textes des sites couverture et peinture (`generateur/metiers/couverture.json`, `peinture.json`, au volume du ravalement) | à faire | `node scripts/capacite-unicite.mjs --photos plan` : 100 sites sans défaut pour chacun | | |
+| T37 | Fabrication du lot : `scripts/prospection/fabriquer-lot.mjs`, 10 sites par métier prêt, mode prospection (photos d'illustration), contrôles du générateur | à faire | lot de 10 ravalement fabriqué et vérifié ; un métier sans images est sauté avec un message clair | T34 | |
+| T38 | Publication privée : `scripts/prospection/publier.mjs` (Cloudflare Pages gratuit, projet `sito-demo`, slugs aléatoires, `noindex`, images partagées, retrait à 30 jours) + `lanceurs/CLE_CLOUDFLARE.bat` | à faire | essai sur faux Cloudflare local vert ; contre-essai (noindex retiré) rouge | T37 | |
+| T39 | Page d'appels du jour (iPhone) et enregistrement des résultats (fonction Pages + KV gratuit), relances, point de la semaine | à faire | essai navigateur 390 px : boutons, résultat enregistré puis relu | T38 | |
+| T40 | `/preparer-appels` (skill) + `lanceurs/PREPARER_APPELS.bat` : la soirée de bout en bout (liste, recherche web des sites existants, fabrication, publication, page d'appels) | à faire | essai à blanc sur faux Cloudflare : 30 sites et la page produits | T39 | |
+| T41 | Première vraie publication sur Cloudflare et premier lot réel | bloqué | la page d'appels s'ouvre sur l'iPhone de Fabrice, 30 liens qui s'ouvrent, invisibles sur Google | T40 | F5 |
+
 ## La vraie base
 
 | N° | Tâche | État | Preuve | Dépend | Bloqué par |
 |---|---|---|---|---|---|
 | T03 | Créer le compte d'essai dans la vraie base | bloqué | `node scripts/compte-essai.mjs --verifier` à 0 | | F1 |
 | T04 | Essai de bout en bout contre la vraie base : `scripts/essai-app-reel.mjs`. L'app tourne en local avec `app/.env.local`, Playwright se connecte au compte d'essai (code obtenu par l'API d'administration `generate_link`, sans lire de boîte mail), change le téléphone, crée un chantier, envoie une photo (TUS) puis son original ; le script relit la base et le stockage (REST, clé de service) et nettoie | à faire | le script vert ; une copie cassée de `donnees/supabase.ts` (mauvaise colonne) le fait rougir | T03 | |
-| T05 | Essais de droits rejoués après la dernière migration (`droits.sql`, `droits-app.sql` via MCP `execute_sql`) et conseillers Supabase (`get_advisors`) sans alerte nouvelle | à faire | aucune ligne « FAUTE » ; avis copiés dans le journal | | |
+| T05 | Essais de droits rejoués après la dernière migration (`droits.sql`, `droits-app.sql` via MCP `execute_sql`) et conseillers Supabase (`get_advisors`) sans alerte nouvelle | bloqué | aucune ligne « FAUTE » ; avis copiés dans le journal | | F17 |
 
 ## Le service atelier
 

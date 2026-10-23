@@ -446,3 +446,31 @@ supposant : **F0** (Claude Code tourne sur le PC), **F2** (`.claude.json` :
 sont offerts à la session). **F1 reste à faire** : `compte-essai.mjs
 --verifier` dit « Configuration manquante : SUPABASE_CLE_SERVICE » (sortie 3),
 donc T03 et T04 restent bloquées, à juste titre.
+
+### T05 : bloquée, la base Supabase dort (action F17)
+
+Plan en trois lignes : rejouer `droits.sql` et `droits-app.sql` par l'outil
+Supabase, relever les conseillers, et ne rien conclure d'une réponse vide.
+
+Mesuré, pas supposé :
+
+- `list_projects` : le projet `sito` (`magxzrpboyrzguuocjgj`, eu-west-3) est
+  **INACTIVE**. Un projet gratuit se met en pause après quelques jours sans
+  usage ; le dernier usage date du 11 octobre.
+- `list_migrations` : « Connection terminated due to connection timeout »
+  (deux fois).
+- `execute_sql` sur un simple `select 1` : « Database is possibly not
+  accessible at the moment ».
+- **Le piège** : `get_advisors` répond `{"lints": []}` sans erreur. Une liste
+  vide sur une base en pause ne veut pas dire « aucune alerte » : elle veut
+  dire « rien n'a été analysé ». Écrire « conseillers sans alerte » ici aurait
+  été fabriquer un résultat (CLAUDE.md, Jamais 1).
+
+Aucun outil du connecteur Supabase ne sait relancer un projet en pause (ni
+`get_project`, ni rien d'autre dans la liste) : seul le tableau de bord le
+fait. Donc **T05 bloquée par F17**, nouvelle action : double-clic sur
+`lanceurs\REVEILLER_SUPABASE.bat`, bouton « Restore project », attendre
+« Active healthy ». Le lanceur ouvre la bonne page et relit la base ensuite.
+
+T03 et T04 étaient déjà bloquées par F1 (clé secrète) ; elles attendent aussi
+F17. Tâche suivante : T06, qui ne touche pas la vraie base.

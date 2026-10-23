@@ -15,15 +15,20 @@
   faites avec preuves et deux bloquées honnêtement (`memoire/journal.md`, 10 oct.).
 - **Liste de travail** : `app/specs/07-TACHES.md` (34 tâches, 12 bloquées par
   une action de Fabrice). T00 et T01 faites (24 oct.). **Prochaine tâche** :
-  T02 (CI verte sur le dernier envoi), puis T05, T06.
+  T06 (adaptateur Supabase du service). T02 faite : la CI est verte sur les six
+  derniers envois, et `node scripts/ci-github.mjs` la relit depuis la machine.
+  T05 bloquée par F17.
 - **La suite d'essais est verte et complète sur le PC de Fabrice** (24 oct.,
   `memoire/essais/derniers.txt`) : les 8 étapes à 0, plus aucun essai « non
   lancé ». exiftool 13.59, ffmpeg 9.0.2, Python 3.13.15 avec Pillow 13.0.0 et
   pillow-heif 1.8.1, Chromium de Playwright : tout est installé en portée
   utilisateur, rien à faire pour Fabrice.
-- **Avant le premier lancement** (`memoire/actions-fabrice.md`) : F0 installer
-  Claude Code, F1 le `.env`, F2 `lanceurs\PREMIER_LANCEMENT.bat` une fois,
-  F3 le modèle d'e-mail. Questions ouvertes : `memoire/questions.md` (Q1).
+- **Ce qui attend Fabrice, tout de suite** (`memoire/actions-fabrice.md`) :
+  **F17** réveiller la base Supabase (`lanceurs\REVEILLER_SUPABASE.bat` :
+  le projet gratuit s'est mis en pause, la base ne répond plus) et **F1** la
+  clé secrète (`lanceurs\CLE_SUPABASE.bat`). Sans elles, T03, T04 et T05
+  restent bloquées. F0, F2 et F4 sont faites (24 oct.) ; F3 attend F10.
+  Questions ouvertes : `memoire/questions.md` (Q1).
 - **Ce qu'il ne fera jamais seul** : comptes payants, domaines, paiements réels,
   Play Store, vraies photos (F5 à F15).
 
