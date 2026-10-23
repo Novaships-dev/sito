@@ -184,6 +184,7 @@ vient d'écrire, et il est essayé une fois sur une copie cassée exprès.**
 | copie cassée (`SITO_APP_DIST`) | une app qui n'envoie pas la photo réduite est refusée | 6 fautes attrapées |
 | `node scripts/essai-photos.mjs` | préparation des photos côté service | 18 cas, 0 faute |
 | `node scripts/essai-publication.mjs` | versions, bascule, Worker | 19 essais, 0 faute |
+| `node scripts/essai-service.mjs` (+ `--contre-essai`) | l'adaptateur Supabase du service contre un faux Supabase local : en-têtes, refus (401, 404, 409), rejeu, octets du stockage | 28 contrôles, 0 faute ; copie cassée : 22 fautes (24 oct.) |
 | `supabase/essais/droits.sql`, `droits-app.sql` | droits de la base | conformes |
 | `node scripts/verifier-depot.mjs .` | rien ne manque au dépôt | avant toute livraison |
 | `node scripts/essais.mjs` | tous les essais d'un coup, résumé dans `memoire/essais/derniers.txt` | vert le 9 oct. |

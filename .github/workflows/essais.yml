@@ -61,6 +61,7 @@ jobs:
           node scripts/verifier-secrets.mjs --contre-essai
           node scripts/essai-outillage.mjs --contre-essai
           node scripts/essai-app.mjs --contre-essai
+          node scripts/essai-service.mjs --contre-essai
 
       - name: Résumé
         if: always()

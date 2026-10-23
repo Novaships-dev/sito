@@ -50,7 +50,7 @@ en ligne sur des liens privés et la page d'appels du jour sur l'iPhone de Fabri
 
 | N° | Tâche | État | Preuve | Dépend | Bloqué par |
 |---|---|---|---|---|---|
-| T06 | Adaptateur Supabase du service (`atelier/supabase.mjs`, REST + stockage, clé dans `apikey`) avec son faux serveur | à faire | `node scripts/essai-service.mjs` (à créer) vert, contre-essai rouge | | |
+| T06 | Adaptateur Supabase du service (`atelier/supabase.mjs`, REST + stockage, clé dans `apikey`) avec son faux serveur | fait | `node scripts/essai-service.mjs` vert (28 contrôles), contre-essai rouge (22 fautes) | | |
 | T07 | Préparation des photos reçues : photos `recue` → image maîtresse (`atelier/photos.mjs`, HEIC par `atelier/heic.mjs`) → `chemin`, `largeur`, `hauteur`, `etat = prete` ou `illisible` + motif | à faire | essai sur faux Supabase : JPEG, HEIC fabriqué, PDF renommé ; états et fichiers mesurés | T06 | |
 | T08 | Fabriquer un site depuis la base : le générateur lit entreprise, profil, tarifs, photos prêtes (au lieu de `donnees/`) ; la charte reste figée (`sites.charte`) | à faire | essai : un site fabriqué depuis un faux jeu de données passe `verifier-site` ; un deuxième passage avec une photo de plus garde la même charte | T06 | |
 | T09 | Boucle du service : à chaque changement (photo prête, profil, tarifs), refabriquer, vérifier, publier par version (`atelier/publier.mjs`), noter `fabrications` et `versions_site` | à faire | essai de bout en bout sur faux Supabase + stockage dossier : une photo ajoutée se retrouve dans la version suivante ; une version refusée ne remplace rien | T07, T08 | |

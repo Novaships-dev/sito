@@ -6,6 +6,7 @@ sections 2, 3 et 5.
 
 | Fichier | Rôle | Essai |
 |---|---|---|
+| `supabase.mjs` | la seule porte vers la base : les tables (PostgREST) et le stockage, la clé secrète dans l'en-tête `apikey` et jamais en `Bearer` ; un refus de Supabase lève `ErreurSupabase` (jamais une liste vide silencieuse), une écriture rejouée n'écrit qu'une fois | `node scripts/essai-service.mjs` (faux Supabase local, sans réseau ni clé) |
 | `photos.mjs` | toute photo reçue (JPEG, PNG, WebP, AVIF, TIFF, GIF, BMP, HEIC, RAW/DNG, Motion Photo) devient une image maîtresse JPEG sRGB, 3 200 px au plus, redressée, **sans métadonnées** ; une vidéo est reconnue et mise à part ; un fichier illisible est refusé avec un motif qui le nomme | `node scripts/essai-photos.mjs` |
 | `heic.mjs` | conversion du HEIC par les transformations d'images de Supabase (offre Pro) : Sitô ne décode pas le HEVC lui-même | **pas encore essayé** contre Supabase (projet en offre gratuite) |
 | `publier.mjs` | publication par versions : vérifier, écrire la version à côté, basculer les adresses, garder deux versions | `node scripts/essai-publication.mjs` |

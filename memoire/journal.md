@@ -474,3 +474,35 @@ fait. Donc **T05 bloquée par F17**, nouvelle action : double-clic sur
 
 T03 et T04 étaient déjà bloquées par F1 (clé secrète) ; elles attendent aussi
 F17. Tâche suivante : T06, qui ne touche pas la vraie base.
+
+### T06 : l'adaptateur Supabase du service
+
+Plan en trois lignes : un seul fichier, `atelier/supabase.mjs`, qui pose les
+en-têtes (`apikey`, jamais `Bearer`) et rend les tables et le stockage derrière
+des fonctions qui se relisent ; `scripts/essai-service.mjs` le mesure contre un
+faux Supabase local (sans réseau ni clé, comme la CI) ; contre-essai sur une
+copie cassée exprès, construite hors du dépôt.
+
+- `atelier/supabase.mjs` : une seule fonction pose les en-têtes, et elle ne
+  pose que `apikey`. Les tables : `lire`, `lireUne` (deux lignes trouvées =
+  faute, pas un choix au hasard), `inserer`, `insererSiAbsent` (rejeu),
+  `poser` (upsert sur des colonnes nommées), `majorer` (refuse d'écrire sans
+  filtre : jamais toute la table), `fonction` (RPC, pour `prive.jour_paris`).
+  Le stockage : `lire`, `ecrire` (un fichier déjà là n'est pas écrasé sans le
+  dire), `supprimer`, `urlSignee`. Toute réponse ≥ 300 lève `ErreurSupabase`
+  qui nomme méthode, chemin et code — et jamais la clé.
+- `scripts/essai-service.mjs` : faux Supabase local (sous-ensemble de
+  PostgREST et du stockage, avec ses vrais refus 401, 404, 409), **28
+  contrôles, 0 faute**. Il mesure les en-têtes reçus, les octets relus, et ce
+  que fait un rejeu — pas ce que le code raconte.
+- Contre-essai sur une copie cassée hors du dépôt (clé posée en
+  `Authorization: Bearer`, refus HTTP avalés) : **22 fautes sur 28**, dont les
+  deux qui comptent (« la clé voyage dans apikey », « aucun appel ne pose
+  Authorization »). Le contre-essai s'arrête (code 2) si la copie ne casse
+  rien, pour que le jour où le module change de forme on le sache.
+- Branché dans `scripts/essais.mjs` (étape « service : adaptateur Supabase »),
+  dans `--complet` (contre-essai) et dans la CI.
+- Preuve : suite complète verte, l'étape « service : adaptateur Supabase » à
+  28 contrôles et 0 faute ; `verifier-depot` à 0 (278 fichiers). T06 faite.
+  Tâche suivante : T07 (préparation des photos reçues), qui s'appuie sur cet
+  adaptateur et sur `atelier/photos.mjs`.

@@ -35,6 +35,7 @@ const ETAPES = [
   { nom: 'app : parcours et rendu (navigateur)', cmd: ['node', 'scripts/essai-app.mjs'] },
   { nom: 'photos (service)', cmd: ['node', 'scripts/essai-photos.mjs'],
     manque: () => [!present('exiftool', ['-ver']) && 'exiftool', !present('ffmpeg', ['-version']) && 'ffmpeg', !pythonAvecHeif() && 'python + Pillow + pillow-heif'].filter(Boolean) },
+  { nom: 'service : adaptateur Supabase', cmd: ['node', 'scripts/essai-service.mjs'] },
   { nom: 'publication par versions et Worker', cmd: ['node', 'scripts/essai-publication.mjs'] },
 ];
 if (COMPLET) {
@@ -42,6 +43,7 @@ if (COMPLET) {
     { nom: 'contre-essai : secrets', cmd: ['node', 'scripts/verifier-secrets.mjs', '--contre-essai'] },
     { nom: 'contre-essai : outillage', cmd: ['node', 'scripts/essai-outillage.mjs', '--contre-essai'] },
     { nom: 'contre-essai : app', cmd: ['node', 'scripts/essai-app.mjs', '--contre-essai'] },
+    { nom: 'contre-essai : service', cmd: ['node', 'scripts/essai-service.mjs', '--contre-essai'] },
     { nom: 'sites de démonstration (5 vérificateurs)', cmd: ['node', 'scripts/fabriquer-demo.mjs'],
       manque: () => (existsSync(join(RACINE, 'images', 'ravalement', 'sources')) ? [] : ['images/ravalement/sources (hors de Git)']) },
   );
