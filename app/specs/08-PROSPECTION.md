@@ -25,9 +25,10 @@ Une page privée, faite pour son iPhone : la **page d'appels du jour**.
 
 | Pièce | Rôle |
 |---|---|
-| `scripts/prospection/extraire.mjs` | API publique `recherche-entreprises.api.gouv.fr` (sans clé) : codes APE du métier, `departement=13`, **`etat_administratif=A` obligatoire**, effectif 0 à 10, créée il y a plus de 2 ans. Pièges : l'API ignore en silence un paramètre mal écrit (vérifier que le nombre de résultats bouge), `total_results` plafonne à 10 000 |
-| `scripts/prospection/qualifier.mjs` | note de 0 à 100 : RGE (base publique ADEME) +, ancienneté +, site existant récent chez un prestataire = écarté. La présence d'un site se vérifie par une recherche web faite par Claude Code au moment de préparer le lot (`/preparer-appels`), notée dans la liste. **Jamais** de lecture automatisée de Google (conditions d'utilisation) ni de copie de ses photos |
-| `prospection/registre.json` (versionné, sans numéro de téléphone) | chaque artisan déjà traité : SIREN, métier, date du site, slug, statut, relance. Un artisan n'est jamais rappelé deux fois le même jour, jamais après « ne plus appeler » |
+| `prospection/metiers.json` (fait) | les trois métiers : libellé, codes APE, et les mots qui tranchent le métier sur la raison sociale. Les mots s'écrivent au singulier : la recherche se fait en mot entier, pluriel compris |
+| `scripts/prospection/extraire.mjs` (fait) | API publique `recherche-entreprises.api.gouv.fr` (sans clé) : codes APE du métier, `departement=13`, **`etat_administratif=A` obligatoire**, effectif `NN,00,01,02,03`, créée il y a plus de 2 ans. **Tous ces filtres sont refaits sur chaque réponse**, voir « Ce que l'API fait vraiment » plus bas |
+| `scripts/prospection/qualifier.mjs` (fait) | note de 0 à 100 : site existant 0 à 25, ancienneté 0 à 25, effectif 0 à 20, RGE +15, nom qui dit le métier +15. Un site récent fait par un prestataire **écarte** (il paie déjà). Le RGE vient de l'API elle-même (`complements.est_rge`), pas d'un appel à l'ADEME. La présence d'un site se vérifie par une recherche web faite par Claude Code au moment de préparer le lot (`/preparer-appels`) et passée dans `sites` ; sans elle, la valeur est `inconnu` et vaut peu : **une note haute ne se gagne pas en ne sachant rien**. **Jamais** de lecture automatisée de Google (conditions d'utilisation) ni de copie de ses photos |
+| `scripts/prospection/registre.mjs` + `prospection/registre.json` (versionné, sans numéro de téléphone) (fait) | chaque artisan déjà traité : SIREN, métier, nom, commune, date du site, slug, statut, date du dernier appel, relance. Un artisan n'est jamais rappelé deux fois le même jour, jamais après « ne plus appeler », jamais quand il est abonné. `valider()` cherche un numéro de téléphone dans le fichier **entier** et refuse l'écriture s'il en trouve un |
 | `scripts/prospection/fabriquer-lot.mjs` | 10 sites par métier pour les mieux notés, avec le générateur (`fabriquer-demo` en mode prospection : photos d'illustration, mention visible), contrôlés par `verifier-site`, `verifier-mobile`, unicité au département |
 | `scripts/prospection/publier.mjs` | Cloudflare Pages, offre gratuite, **un seul projet** `sito-demo` : chaque site sous un slug aléatoire de 16 caractères ; images communes partagées une fois ; `_headers` avec `X-Robots-Tag: noindex` partout ; `robots.txt` qui interdit tout ; aucune page d'index ; retrait des sites non signés après 30 jours. Jeton dans `.env` (`CLOUDFLARE_COMPTE_ID`, `CLOUDFLARE_JETON_API`), lu par `scripts/env.mjs` |
 | page d'appels + ses résultats | servie par le même projet sous un slug privé ; les résultats sont enregistrés par une fonction Pages dans un espace KV gratuit, et relus le soir pour la liste du lendemain |
@@ -47,6 +48,51 @@ vérifie (nom, taille ≥ 1600 px, paires alignées) avant toute fabrication.
 Les textes des sites de ces deux métiers (`generateur/metiers/<métier>.json`,
 au volume du ravalement) passent avant les 13 autres métiers de T32.
 
+## Ce que l'API fait vraiment (mesuré le 24 octobre 2026)
+
+Les chiffres sont des `total_results` réels, pour `activite_principale=43.34Z`
+et `etat_administratif=A`. Ils sont la raison d'être de la moitié du code de
+`extraire.mjs`.
+
+| Requête | Résultats |
+|---|---|
+| sans autre filtre | 10 000 (plafond) |
+| `&departement=13` | 4 019 |
+| `&departement_siege=13` (nom mal écrit) | **10 000** |
+| `&zzz=13` (nom inconnu) | **10 000** |
+| `&departement=13&tranche_effectif_salarie=00,01,02,03` | 563 |
+| `&departement=13&tranche_effectif_salarie=NN` | 3 418 |
+| `&departement=13&est_rge=true` | 21 |
+
+- **Un nom de paramètre inconnu est ignoré en silence.** Une faute de frappe
+  ne se voit donc pas dans la réponse. Comparer « avec » et « sans » ne suffit
+  pas non plus : deux totaux égaux peuvent dire « ignoré » comme « rien à
+  écarter » (vu sur 43.99D, où toutes les entreprises du 13 étaient déjà dans
+  la bonne tranche). Le signal décisif est une **valeur impossible** :
+  `departement=976` (Mayotte) ou `tranche_effectif_salarie=52` (5 000 salariés
+  et plus) doivent faire s'effondrer le total. `verifierFiltres()` le mesure
+  avant chaque extraction, et refuse de partir sinon.
+- Une **valeur** invalide de `activite_principale` rend un 400 qui liste les
+  valeurs valables. Le code veut la forme pointée : `43.34Z`, pas `4334Z`.
+- `per_page` ne dépasse pas 25, et `page × per_page` pas 10 000.
+- **`departement=13` ne filtre pas le siège** : il garde toute entreprise ayant
+  au moins un établissement dans le 13 (une société de Quimper domiciliée à
+  Marseille sort dans la réponse). Le filtre se refait sur `siege.departement`.
+- **`NN` (effectif non renseigné) pèse 3 418 des 3 979** petites entreprises :
+  l'exclure jetterait presque tous les artisans visés. Il est gardé et vaut
+  10 points sur 20.
+- `43.34Z` est « peinture **et vitrerie** » : la réponse est pleine de
+  miroitiers. D'où les mots de `metiers.json`, cherchés en mot entier,
+  **pluriel compris** : par morceaux, « ite » attrape ATS ETANCHEITE ; en mot
+  strictement entier, « couverture » rate LES COUVERTURES LOPEZ, qui serait
+  alors appelée comme peintre.
+
+Les codes APE retenus, et ce qu'ils pèsent dans le 13 (petites entreprises
+actives) : ravalement `43.34Z` 3 979, `43.99C` 9 264, `43.99D` 524,
+`43.29A` 304 ; couverture `43.91B` 653, `43.91A` 269, `43.99A` 395 ;
+peinture `43.34Z` 3 979, `43.33Z` 1 494. `43.99C` frôle le plafond de
+l'API : l'extraction le signale (`bilan.plafonds`).
+
 ## Cadre légal (rappel, non négociable)
 
 Numéro appelé = celui de la fiche publique de l'entreprise, ouvert par Fabrice
@@ -56,8 +102,13 @@ retrait du site le jour même.
 
 ## Preuves
 
-- extraction et qualification : essai sur une réponse d'API enregistrée (pas
-  de réseau dans l'essai), un paramètre faux doit faire rougir ;
+- extraction et qualification (faite) : `node scripts/essai-prospection.mjs`,
+  93 contrôles. Il tourne **sans réseau** : les entreprises sont réelles mais
+  prélevées une fois dans `prospection/essais/recherche-entreprises.json`
+  (693 entreprises, `node scripts/prospection/extraire.mjs --enregistrer-essai`),
+  et `scripts/faux-recherche-entreprises.mjs` les sert avec la sémantique
+  mesurée de l'API, pièges compris. Contre-essai : sept fautes posées une par
+  une, dont le paramètre mal écrit, chacune attrapée seule ;
 - publication : essai sur un faux Cloudflare local (comme `essai-publication`) :
   slugs non devinables, `noindex` présent sur chaque page, aucun index, retrait
   à 30 jours ;

@@ -63,6 +63,7 @@ jobs:
           node scripts/essai-app.mjs --contre-essai
           node scripts/essai-service.mjs --contre-essai
           node scripts/essai-preparation.mjs --contre-essai
+          node scripts/essai-prospection.mjs --contre-essai
 
       - name: Résumé
         if: always()

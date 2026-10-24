@@ -42,6 +42,7 @@ const ETAPES = [
   { nom: 'photos (service)', cmd: ['node', 'scripts/essai-photos.mjs'], manque: outilsPhotos },
   { nom: 'service : adaptateur Supabase', cmd: ['node', 'scripts/essai-service.mjs'] },
   { nom: 'service : préparation des photos reçues', cmd: ['node', 'scripts/essai-preparation.mjs'], manque: outilsPhotos },
+  { nom: 'prospection : extraction, note, registre', cmd: ['node', 'scripts/essai-prospection.mjs'] },
   { nom: 'publication par versions et Worker', cmd: ['node', 'scripts/essai-publication.mjs'] },
 ];
 if (COMPLET) {
@@ -51,6 +52,7 @@ if (COMPLET) {
     { nom: 'contre-essai : app', cmd: ['node', 'scripts/essai-app.mjs', '--contre-essai'] },
     { nom: 'contre-essai : service', cmd: ['node', 'scripts/essai-service.mjs', '--contre-essai'] },
     { nom: 'contre-essai : préparation des photos', cmd: ['node', 'scripts/essai-preparation.mjs', '--contre-essai'], manque: outilsPhotos },
+    { nom: 'contre-essai : prospection', cmd: ['node', 'scripts/essai-prospection.mjs', '--contre-essai'] },
     { nom: 'sites de démonstration (5 vérificateurs)', cmd: ['node', 'scripts/fabriquer-demo.mjs'],
       manque: () => (existsSync(join(RACINE, 'images', 'ravalement', 'sources')) ? [] : ['images/ravalement/sources (hors de Git)']) },
   );

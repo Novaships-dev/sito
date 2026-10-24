@@ -1,0 +1,29 @@
+{
+  "version": "24 octobre 2026",
+  "pourquoi": "Les trois metiers de la prospection (decision de Fabrice du 23 octobre : 30 sites par jour sur au moins 3 metiers differents). Les codes APE servent a interroger recherche-entreprises.api.gouv.fr ; les mots servent a trancher le metier sur la raison sociale, parce qu un meme code APE melange plusieurs metiers (43.34Z est peinture ET vitrerie).",
+  "comment_lire_les_mots": "Les mots s ecrivent au singulier : extraire.mjs les cherche en mot entier, pluriel compris (CHARPENTES repond a charpente). Sans accents : la comparaison passe par normaliser().",
+  "departement": "13",
+  "metiers": [
+    {
+      "nom": "ravalement",
+      "libelle": "ravalement de façade",
+      "codesApe": ["43.34Z", "43.99C", "43.99D", "43.29A"],
+      "mots": ["ravalement", "ravaleur", "facade", "enduit", "crepi", "ite", "isolation thermique", "maconnerie", "macon", "platrerie", "platrier"],
+      "motsExclus": ["miroiterie", "miroitier", "vitrerie", "vitrier", "verre", "survitrage", "store", "veranda", "nettoyage", "demolition", "terrassement", "piscine", "paysage", "paysagiste", "espaces verts", "beton arme", "travaux publics", "voirie"]
+    },
+    {
+      "nom": "couverture",
+      "libelle": "couverture et zinguerie",
+      "codesApe": ["43.91B", "43.91A", "43.99A"],
+      "mots": ["couverture", "couvreur", "zinguerie", "zingueur", "toiture", "toit", "charpente", "charpentier", "etancheite", "etancheiste", "demoussage", "gouttiere", "ardoise", "tuile"],
+      "motsExclus": ["miroiterie", "vitrerie", "nettoyage", "demolition", "terrassement", "piscine", "paysage", "paysagiste", "espaces verts", "travaux publics", "voirie", "echafaudage"]
+    },
+    {
+      "nom": "peinture",
+      "libelle": "peinture et décoration",
+      "codesApe": ["43.34Z", "43.33Z"],
+      "mots": ["peinture", "peintre", "decoration", "decorateur", "revetement", "sols et murs", "papier peint", "tapisserie", "tapissier", "parquet", "carrelage", "carreleur", "faience", "sol souple"],
+      "motsExclus": ["miroiterie", "miroitier", "vitrerie", "vitrier", "verre", "survitrage", "store", "veranda", "ravalement", "facade", "couverture", "toiture", "charpente", "zinguerie", "nettoyage", "industriel", "industrielle", "carrosserie", "automobile", "marine", "naval", "signaletique"]
+    }
+  ]
+}

@@ -29,7 +29,7 @@ en ligne sur des liens privés et la page d'appels du jour sur l'iPhone de Fabri
 
 | N° | Tâche | État | Preuve | Dépend | Bloqué par |
 |---|---|---|---|---|---|
-| T34 | Extraction et qualification : `scripts/prospection/extraire.mjs` et `qualifier.mjs` (API recherche-entreprises, 13, 3 métiers, filtres, note, registre `prospection/registre.json`) | à faire | essai sur réponse d'API enregistrée vert ; contre-essai (paramètre faux) rouge | | |
+| T34 | Extraction et qualification : `scripts/prospection/extraire.mjs` et `qualifier.mjs` (API recherche-entreprises, 13, 3 métiers, filtres, note, registre `prospection/registre.json`) | fait | `node scripts/essai-prospection.mjs` : 93 contrôles, 0 faute, sur 693 entreprises réelles enregistrées (sans réseau) ; contre-essai : 7 fautes posées une par une, dont le paramètre mal écrit, chacune attrapée seule | | |
 | T35 | Textes à coller dans ChatGPT pour couverture et peinture (`banque/prompts/couverture.md`, `peinture.md`, 32 images chacun, noms de fichiers) + vérificateur d'images d'un métier (nom, taille, paires alignées) | à faire | `node scripts/verifier-images.mjs ravalement` vert ; une image trop petite rougit | | |
 | T36 | Textes des sites couverture et peinture (`generateur/metiers/couverture.json`, `peinture.json`, au volume du ravalement) | à faire | `node scripts/capacite-unicite.mjs --photos plan` : 100 sites sans défaut pour chacun | | |
 | T37 | Fabrication du lot : `scripts/prospection/fabriquer-lot.mjs`, 10 sites par métier prêt, mode prospection (photos d'illustration), contrôles du générateur | à faire | lot de 10 ravalement fabriqué et vérifié ; un métier sans images est sauté avec un message clair | T34 | |

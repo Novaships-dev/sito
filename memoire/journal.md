@@ -607,3 +607,108 @@ s'en serve ; contre-essai sur copie cassée hors du dépôt.
   fabriquent de vraies photos partagent désormais une seule réponse sur les
   outils de la machine (`outilsPhotos`), pour qu'ils ne divergent pas.
 - Preuve : suite complète verte, `verifier-depot` à 0 (282 fichiers). T07 faite.
+
+### T34 : extraction et qualification des artisans à appeler
+
+Plan en trois lignes : `scripts/prospection/extraire.mjs` interroge
+`recherche-entreprises.api.gouv.fr` (publique, sans clé) code APE par code APE
+et refait lui-même les filtres que l'API prétend appliquer ;
+`qualifier.mjs` note de 0 à 100 avec les raisons écrites, `registre.mjs` tient
+`prospection/registre.json` (jamais de numéro de téléphone, jamais deux appels
+le même jour, jamais après « ne plus appeler ») ; `scripts/essai-prospection.mjs`
+rejoue tout contre une population d'entreprises **réelles enregistrées une
+fois** et un faux serveur qui reproduit la sémantique mesurée de l'API.
+
+**Sémantique de l'API mesurée avant d'écrire une ligne** (24 oct., totaux réels) :
+
+| Requête | `total_results` |
+|---|---|
+| `activite_principale=43.34Z&etat_administratif=A` | 10 000 (plafond) |
+| `… &departement=13` | 4 019 |
+| `… &departement_siege=13` (mal écrit) | **10 000** |
+| `… &zzz=13` (inconnu) | **10 000** |
+| `… &departement=13&tranche_effectif_salarie=00,01,02,03` | 563 |
+| `… &departement=13&tranche_effectif_salarie=NN` | 3 418 |
+| `… &departement=13&est_rge=true` | 21 |
+
+- Le piège de la spec est confirmé : **un nom de paramètre inconnu est ignoré
+  en silence**, et le nombre de résultats ne bouge pas. Une valeur invalide de
+  `activite_principale`, elle, rend un 400 qui liste les valeurs valables, et
+  le code veut la forme pointée (`43.34Z`, pas `4334Z`).
+- `per_page` est plafonné à 25, et `page × per_page` à 10 000 (400 au-delà).
+- **`departement=13` ne filtre pas le siège** mais n'importe quel
+  établissement : la première réponse rendait FRANCE VITRE, siège à Quimper,
+  avec une domiciliation à Marseille. L'extraction refait donc le filtre sur
+  `siege.departement`.
+- **`NN` (effectif non renseigné) pèse 3 418 des 3 979** : l'exclure jetterait
+  presque tous les artisans visés. Il est gardé et vaut peu de points.
+- Le RGE n'a pas besoin de la base ADEME : l'API le porte déjà
+  (`complements.est_rge`, `liste_rge` par établissement). 21 entreprises
+  seulement en 43.34Z dans le 13 : c'est un bonus rare, pas un filtre.
+- `43.34Z` est « peinture **et vitrerie** » : la réponse est pleine de
+  miroitiers (MIROITERIE MASSILIA, FRANCE VITRE). Le métier se tranche donc
+  aussi sur le nom, pas seulement sur le code APE.
+
+**Fait, mesuré.** Quatre pièces et leur essai : `prospection/metiers.json`,
+`scripts/prospection/extraire.mjs`, `qualifier.mjs`, `registre.mjs`, et
+`scripts/essai-prospection.mjs` — **93 contrôles, 0 faute**, sans réseau.
+
+- L'essai rejoue **693 entreprises réelles** prélevées une fois dans l'API
+  (`prospection/essais/recherche-entreprises.json`, réduites aux champs lus),
+  servies par `scripts/faux-recherche-entreprises.mjs`, qui reproduit la
+  sémantique mesurée plus haut, pièges compris. La population a été choisie
+  pour faire travailler chaque filtre : 394 sièges dans le 13, **105 sièges
+  ailleurs avec un établissement marseillais**, 134 effectifs hors cible,
+  60 entreprises de moins de deux ans, 169 RGE. La date du jour est figée au
+  24 octobre, sinon l'âge des entreprises changerait le résultat avec le temps.
+- Chaque entreprise retenue est **relue sur la population**, pas crue sur
+  parole : siège dans le 13, active, deux ans au moins, effectif dans la
+  cible, code APE du métier, aucun mot d'un autre métier dans sa raison
+  sociale.
+
+**Deux garde-fous se sont révélés faux en les essayant, et ont été refaits.**
+
+1. *« Le nombre de résultats doit bouger »* ne marche pas. Première version :
+   comparer le total avec et sans le filtre. Elle s'est arrêtée sur 43.99D,
+   où **toutes** les entreprises du 13 étaient déjà dans la bonne tranche
+   d'effectif : deux totaux égaux, et le garde-fou criait au loup. Deux totaux
+   égaux veulent dire « ignoré » **ou** « rien à écarter », et on ne peut pas
+   les distinguer. Le signal décisif est une **valeur impossible** :
+   `departement=976` (Mayotte) ou `tranche_effectif_salarie=52` (5 000
+   salariés et plus) doivent faire s'effondrer le total. Mesuré sur 43.99D :
+   10 000 sans filtre, 571 avec `departement=13`, **6** avec 976, **0** avec
+   l'effectif 52. Et avant tout appel réseau, le contrôle regarde simplement
+   si le paramètre est écrit dans l'adresse : une faute de frappe se voit là,
+   gratuitement.
+2. *« Mot entier »* ne marche pas non plus. En cherchant les mots du métier
+   par morceaux, « ite » (pour l'ITE) attrapait **48 noms** sans rapport, dont
+   ATS ETANCHEITE. Mais en mot strictement entier, « charpente » ratait SARL
+   MIDI CHARPENTES et « couverture » ratait LES COUVERTURES LOPEZ — qui aurait
+   donc été appelée comme peintre. La règle juste est **mot entier, pluriel
+   compris** (`s?`), et les deux moitiés sont épinglées par quatre vraies
+   raisons sociales de la population.
+
+- Le barème tient exactement dans 100 : site 0-25, ancienneté 0-25, effectif
+  0-20, RGE +15, nom qui dit le métier +15. Le meilleur profil possible fait
+  100, le plus maigre 33. **Une note haute ne se gagne pas en ne sachant
+  rien** : sans recherche web, le site vaut `inconnu` et 8 points. Un site
+  récent fait par un prestataire écarte : il paie déjà.
+- Le registre refuse un numéro de téléphone **où qu'il soit dans le fichier**
+  (quatre écritures essayées : `06 12 34 56 78`, `06.12.34.56.78`,
+  `0612345678`, `+33 6 12 34 56 78`), un statut inventé, un SIREN à huit
+  chiffres, une date à l'envers, une note à 140 — et un refus **n'écrit rien**
+  sur le disque (relu octet pour octet avant et après).
+- Le lot du jour : 30 artisans, 10 par métier, aucun SIREN deux fois même
+  quand deux métiers partagent 43.34Z.
+- Deux détails corrigés en route : le bilan des écartées sortait **une ligne
+  par date de création** (le motif contenait le détail) ; motif et détail sont
+  désormais séparés, avec trois exemples par motif. Et l'essai s'interrompait
+  quand l'extraction refusait de partir : chaque extraction est rattrapée,
+  nomme son métier et laisse le résumé s'écrire.
+- Essayé une fois **contre la vraie API** : ravalement et couverture,
+  150 entreprises lues, 79 retenues, les filtres vérifiés en passant
+  (`departement 10000→11`, `effectif 660→0`).
+- Contre-essai : **7 fautes posées une par une**, dans sept copies hors du
+  dépôt, l'essai entier rejoué sur chacune. Chacune est attrapée seule, aucune
+  n'interrompt l'essai.
+- Branché : `scripts/essais.mjs`, `--complet`, la CI.

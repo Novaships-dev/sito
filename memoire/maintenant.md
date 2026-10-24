@@ -14,14 +14,21 @@
   texte fautif, erreur de type) réparées seul, essais à 0, puis quatre tâches
   faites avec preuves et deux bloquées honnêtement (`memoire/journal.md`, 10 oct.).
 - **Liste de travail** : `app/specs/07-TACHES.md` (34 tâches, 12 bloquées par
-  une action de Fabrice). T00, T01, T02, T06 et T07 faites (24 oct.) : le
-  service sait parler à la base et au stockage, et transformer les photos que
-  l'app envoie en images propres pour le site. **Prochaine tâche** : T08
-  (fabriquer un site depuis la base). T02 faite : la CI est verte sur les six
-  derniers envois, et `node scripts/ci-github.mjs` la relit depuis la machine.
-  T05 bloquée par F17.
+  une action de Fabrice). T00, T01, T02, T06, T07 et T34 faites (24 oct.) : le
+  service sait parler à la base et au stockage, transformer les photos que
+  l'app envoie en images propres pour le site, et la prospection sait trouver
+  et noter des artisans réels. **Prochaine tâche** : T35 (textes à coller dans
+  ChatGPT pour les images de couverture et peinture) ou T37 (fabrication du
+  lot). T02 faite : la CI est verte sur les six derniers envois, et
+  `node scripts/ci-github.mjs` la relit depuis la machine. T05 bloquée par F17.
+- **La prospection, pièce par pièce** : 9 codes APE mesurés dans le 13,
+  `prospection/metiers.json` (3 métiers), extraction qui refait tous les
+  filtres de l'API (qui en ignore en silence), note sur 100 avec ses raisons,
+  registre sans aucun numéro de téléphone. Essai sur 693 entreprises réelles
+  enregistrées, sans réseau. Il manque les images des deux nouveaux métiers
+  (T35, à générer par Fabrice dans ChatGPT) et la publication Cloudflare (F5).
 - **La suite d'essais est verte et complète sur le PC de Fabrice** (24 oct.,
-  `memoire/essais/derniers.txt`) : les 9 étapes à 0, plus aucun essai « non
+  `memoire/essais/derniers.txt`) : les 10 étapes à 0, plus aucun essai « non
   lancé ». exiftool 13.59, ffmpeg 9.0.2, Python 3.13.15 avec Pillow 13.0.0 et
   pillow-heif 1.8.1, Chromium de Playwright : tout est installé en portée
   utilisateur, rien à faire pour Fabrice.
