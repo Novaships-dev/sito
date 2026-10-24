@@ -125,11 +125,11 @@ de Fabrice, U3 ne les compte plus.
    Prompts prêts dans `banque/prompts/ravalement.md` (images 33 à 54). Tant
    qu'elles ne sont pas générées, une paire de sites sur deux montre la même
    façade.
-2. **Un seul métier sur seize.** `generateur/metiers/` ne contient que
-   `ravalement.json`. Chaque métier doit atteindre le même volume de textes que
-   le ravalement pour tenir 100 sites. Les codes APE du ravalement diffèrent
-   entre `ravalement.json` (cinq codes) et `plan-images.json` (trois) : à
-   aligner.
+2. **Trois métiers sur seize.** `generateur/metiers/` contient
+   `ravalement.json`, `couverture.json` et `peinture.json`, chacun mesuré à
+   100 sites sans défaut. Les treize autres doivent atteindre le même volume de
+   textes (T32). Les codes APE du ravalement diffèrent entre `ravalement.json`
+   (cinq codes) et `plan-images.json` (trois) : à aligner (T31).
 3. **Les images des quinze autres métiers** : 54 chacun, 810 au total ; sujets
    dans `banque/liste-images.md`. Textes à coller dans ChatGPT prêts pour trois
    métiers (ravalement, couverture, peinture) ; les treize autres restent à

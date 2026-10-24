@@ -846,3 +846,67 @@ trois sites de démonstration compris (479 s) : c'est ce passage-là qui a sorti
 les deux pannes ci-dessus. `memoire/essais/derniers.txt` garde le passage
 simple.
 
+### T36 : les textes des sites de couverture et de peinture
+
+Plan en trois lignes, avant de faire :
+
+1. Lire ce que le moteur exige d'un fichier métier (`textes.mjs` : listes,
+   `combiner`, `etapes`/`nombre`/`toujours` ; `composer.mjs` : `libelle`,
+   `mot`, `alt`, `teintes`, `nuancierEtiquette`, `estimateur`) et les volumes
+   exacts du ravalement, emplacement par emplacement.
+2. Écrire `generateur/metiers/couverture.json` et `peinture.json` au même
+   volume, avec de la vraie connaissance de métier : l'eau et les recouvrements
+   pour la toiture, la préparation et la lumière pour la peinture.
+3. Mesurer avec le vrai tirage (`capacite-unicite.mjs --photos plan`), au
+   département et dans le pire cas (tous dans la même commune), et composer un
+   site de chaque métier pour voir le moteur tenir.
+
+**Fait, mesuré.** Deux fichiers, 40 Ko chacun environ, aux volumes du
+ravalement :
+
+| Emplacement | Ravalement | Couverture | Peinture |
+|---|---|---|---|
+| titres | 110 | 111 | 110 |
+| chapô (énumération) | 34 770 | 34 770 | 34 770 |
+| état avant | 1 358 | 1 358 | 1 358 |
+| état après | 3 850 | 3 850 | 3 850 |
+| gestes | 8 × 100 | 8 × 100 | 8 × 100 |
+| légendes de comparateur | 960 | 960 | 960 |
+| invitation, précision | 80, 81 | 80, 81 | 80, 81 |
+| rubriques | 5 × 15 | 5 × 15 | 5 × 15 |
+| phrases de matière | 30 | 30 | 30 |
+| teintes du nuancier | 10 | 10 | 10 |
+
+**La mesure, avec le vrai tirage** (`node scripts/capacite-unicite.mjs
+--metier <métier> --photos plan`) :
+
+| Sites | Couverture U1/U2/U3/U4 | Peinture U1/U2/U3/U4 |
+|---|---|---|
+| 25 | 0 / 0 / 0 / 0 | 0 / 0 / 0 / 0 |
+| 50 | 0 / 0 / 0 / 0 | 0 / 0 / 0 / 0 |
+| **100** | **0 / 0 / 0 / 0** | **0 / 0 / 0 / 0** |
+| 200 | 2 / 89 / 391 / 80 | 2 / 90 / 389 / 80 |
+
+À 100 sites, aucun défaut non plus avec `--communes une` (tous à Marseille, le
+pire cas), et les phrases partagées par une paire de voisins restent à 0,46 en
+moyenne et 3 au plus dans une même commune. À 200 sites les réserves cèdent,
+exactement comme pour le ravalement : la cible de Fabrice est 100.
+
+**Essai à blanc du moteur**, hors du dépôt et sur un registre à part
+(`--registre`), pour vérifier qu'un fichier métier neuf suffit au générateur :
+un site `couverture` et un site `peinture` composés avec les photos du
+ravalement (les leurs n'existent pas encore, F18), tous deux à **0 bloquant**
+chez `verifier-site`. Les textes se recollent comme ils doivent : « La dépose
+s'arrête à ce qu'on peut recouvrir le soir même. Le tri décide du nombre de
+tuiles à commander, donc du prix. » Chaque phrase à combiner porte son sujet
+(piège du 2 octobre). Dossiers d'essai effacés, `generateur/registre.json`
+jamais touché.
+
+**Un choix de nommage, à savoir.** `prospection/metiers.json` (Cowork) appelle
+le métier « peinture et décoration », le plan d'images « Peinture intérieure ».
+Le fichier métier dit **« peinture intérieure »**, parce que c'est ce que le
+site montre et raconte : les 32 images et les textes sont des pièces
+d'habitation. Promettre « décoration » sans contenu derrière serait écrire une
+phrase que la page ne tient pas. Le libellé de la prospection, qui sert à
+filtrer l'API, n'a pas été touché.
+

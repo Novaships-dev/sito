@@ -1,0 +1,816 @@
+{
+  "nom": "Peinture",
+  "libelle": "peinture intérieure",
+  "codesApe": ["43.34Z"],
+  "titres": [
+    "Une peinture se juge sur la préparation, pas sur la couleur.",
+    "Un mur mal poncé se voit à la première lumière rasante.",
+    "La peinture ne cache pas un mur. Elle le montre tel qu’il est.",
+    "Ce qui tient dix ans se décide avant la première couche.",
+    "Deux couches sur un mur préparé valent mieux que trois sur un mur sale.",
+    "Un rebouchage se voit toujours sous une peinture satinée.",
+    "La couleur change entre le nuancier, le pot et le mur.",
+    "Une teinte se choisit sur le mur, à la lumière de la pièce.",
+    "Un mur lessivé sèche avant d’être peint. Sans exception.",
+    "Les angles font la différence entre un travail propre et un mur repeint.",
+    "Une bande nette au plafond demande une main sûre, pas un ruban de plus.",
+    "Le blanc d’une pièce dépend de sa fenêtre, pas du pot.",
+    "Une fissure rebouchée sans être ouverte revient au premier hiver.",
+    "Un plafond se peint avant les murs. Toujours.",
+    "La poussière du ponçage se retrouve dans la peinture si on ne la retire pas.",
+    "Peindre vite, c’est repasser deux fois.",
+    "Une sous-couche adaptée fait plus que la marque de la peinture.",
+    "Sur un mur humide, aucune peinture ne tient.",
+    "L’humidité se traite à la source, pas au rouleau.",
+    "Un mur foncé demande une sous-couche, sinon le blanc tire au gris.",
+    "Les traces de reprise viennent d’un mur peint par morceaux.",
+    "Un rouleau se charge et s’égoutte : c’est là que se joue la régularité.",
+    "La peinture mate pardonne les défauts. Le satiné les dénonce.",
+    "Une pièce se protège avant d’être peinte, pas pendant.",
+    "Le ruban de masquage se retire au bon moment, ni sec ni frais.",
+    "Les plinthes se peignent avant ou après, mais jamais entre deux couches de mur.",
+    "Une boiserie laquée demande un ponçage entre chaque couche.",
+    "Peindre sur une ancienne peinture écaillée, c’est préparer la suivante.",
+    "Un mur neuf boit la première couche. Il faut la prévoir.",
+    "Le temps de séchage n’est pas une estimation, c’est une règle.",
+    "Deux teintes qui se touchent demandent une ligne, et la ligne demande du temps.",
+    "Le plafond blanc n’existe pas en un seul blanc.",
+    "On ne juge pas une couleur à la lumière du soir.",
+    "Un mur passé à l’enduit de lissage devient un mur neuf.",
+    "Dans une cuisine, la peinture se choisit lessivable, et ça change tout.",
+    "Une salle de bains demande une peinture qui accepte la vapeur.",
+    "Les traces de doigts autour des interrupteurs disent l’usure d’une pièce.",
+    "Un couloir se peint dans une teinte qui supporte les frottements.",
+    "Peindre une chambre d’enfant, c’est prévoir de la laver.",
+    "La peinture d’une cage d’escalier travaille plus que celle d’un salon.",
+    "Sur un plâtre neuf, on attend que le mur ait fini de sécher.",
+    "Un mur fissuré se répare, puis se peint. Jamais l’inverse.",
+    "Les reprises se font dans le frais, sinon elles marquent.",
+    "Un rouleau trop chargé coule. Un rouleau trop sec laisse des traces.",
+    "La lumière du jour montre ce que l’ampoule cache.",
+    "Une pièce vide se peint deux fois plus vite et deux fois mieux.",
+    "On peint du haut vers le bas, et du fond vers la porte.",
+    "Le blanc cassé réchauffe une pièce au nord.",
+    "Une teinte sombre réduit une pièce, et parfois c’est voulu.",
+    "Le même gris paraît bleu au nord et beige au sud.",
+    "Un mur se peint par bandes qui se rejoignent dans le frais.",
+    "La peinture au plafond demande un manche, pas un escabeau de plus.",
+    "Une fissure au plafond vient souvent du plancher du dessus.",
+    "Les taches d’eau se bloquent avant d’être peintes, sinon elles traversent.",
+    "Le nombre de couches dépend du support, pas du pot.",
+    "Une pièce peinte se laisse sécher avant d’y remettre les meubles.",
+    "Les odeurs de peinture partent en aérant, pas en fermant.",
+    "Un chantier de peinture propre se reconnaît aux plinthes.",
+    "Les papiers peints se retirent, ils ne se peignent pas.",
+    "Sous le papier peint, il y a toujours du travail.",
+    "La colle de papier peint se retire entièrement, ou la peinture cloque.",
+    "Un mur poncé doit être dépoussiéré avant la sous-couche.",
+    "Deux teintes dans une pièce, c’est un choix. Trois, c’est un risque.",
+    "Le plafond blanc fait respirer les murs colorés.",
+    "Une peinture velours se nettoie mieux qu’une mate.",
+    "Les finitions se jouent sur les derniers centimètres.",
+    "Un chambranle laqué supporte des années de passage.",
+    "Une porte se peint démontée quand c’est possible.",
+    "Peindre une pièce, c’est protéger le sol pendant deux jours.",
+    "On repère les défauts d’un mur avec une lampe tenue de biais.",
+    "Un mur droit se voit, un mur gauche se devine.",
+    "Les enduits de rebouchage se poncent fin, jamais au gros grain.",
+    "Un mur sans sous-couche boit la peinture par endroits.",
+    "La peinture d’un plafond pardonne moins que celle d’un mur.",
+    "Les reprises d’électricité se rebouchent avant la peinture, pas après.",
+    "Les prises et interrupteurs se démontent, et la bande reste nette.",
+    "Une pièce humide se peint quand elle est sèche, pas quand on est libre.",
+    "La température de la pièce compte autant que la qualité du pot.",
+    "On ne peint pas dans une pièce à cinq degrés.",
+    "Une peinture appliquée trop épaisse coule, puis se fendille.",
+    "Le rouleau choisit le grain du mur fini.",
+    "Un mur lisse se tient avec un rouleau à poils courts.",
+    "La teinte se valide sur un mètre carré, pas sur une languette.",
+    "Une peinture bien tendue n’a ni traces, ni surépaisseur.",
+    "Les angles se coupent au pinceau, le reste se roule.",
+    "Deux heures de protection économisent une journée de nettoyage.",
+    "Un chantier de peinture se finit par le nettoyage, pas par la dernière couche.",
+    "On ne repeint pas une pièce sans savoir ce qu’il y a sous la peinture.",
+    "Un mur déjà repeint six fois demande un décapage.",
+    "Le plâtre respire. La peinture doit le laisser respirer.",
+    "Une peinture à l’eau sèche vite en surface et longtemps en profondeur.",
+    "Le satiné renvoie la lumière, le mat l’absorbe.",
+    "Dans un couloir sans fenêtre, le mat éteint tout.",
+    "Une pièce se peint entièrement, murs et plafond, ou le neuf dénonce l’ancien.",
+    "Repeindre un seul mur dans une teinte ancienne ne marche jamais.",
+    "Le blanc du plafond jaunit avec le temps, et le mur voisin le montre.",
+    "Les pots se mélangent avant d’ouvrir, et entre eux si la teinte est spéciale.",
+    "Un fond de pot gardé sert à la retouche de l’année suivante.",
+    "La finition se décide avant la première couche, pas à la fin.",
+    "Un mur peint à la lumière du jour n’a pas de zone oubliée.",
+    "Les bavures sur une plinthe se voient de l’entrée.",
+    "Une peinture se mesure à la régularité, pas à l’épaisseur.",
+    "Un mur bien peint se regarde de biais sans montrer de raccord.",
+    "La peinture termine un chantier. Elle n’en rattrape pas les défauts.",
+    "Un mur abîmé par l’humidité se peint après avoir séché des semaines.",
+    "Peindre un plafond fissuré sans l’armer, c’est recommencer dans un an.",
+    "Les boiseries demandent plus de temps que les murs, pour moins de surface.",
+    "Une teinte claire agrandit une pièce, une teinte sourde la calme.",
+    "Le choix d’une peinture tient à la pièce et à son usage.",
+    "Une pièce peinte propre se reconnaît aux lignes droites."
+  ],
+  "chapos": {
+    "etapes": [
+      [
+        "protection de la pièce",
+        "sol bâché, meubles protégés",
+        "protection du sol et des menuiseries"
+      ],
+      [
+        "lessivage des supports",
+        "lavage des murs et des boiseries",
+        "dégraissage avant travaux",
+        "retrait des anciens papiers peints"
+      ],
+      [
+        "rebouchage des trous et des fissures",
+        "reprise des fissures à l’enduit",
+        "rebouchage et enduit de lissage",
+        "préparation des murs abîmés"
+      ],
+      [
+        "ponçage et dépoussiérage",
+        "ponçage fin des rebouchages",
+        "ponçage complet des murs",
+        "dépoussiérage avant mise en peinture"
+      ],
+      [
+        "sous-couche adaptée au support",
+        "impression sur plâtre neuf",
+        "sous-couche sur les reprises",
+        "sous-couche bloquante sur les taches",
+        "fixateur sur support poudreux"
+      ],
+      [
+        "deux couches de finition",
+        "peinture en deux couches",
+        "finition mate, satinée ou velours",
+        "peinture lessivable",
+        "finition appliquée au rouleau",
+        "peinture spéciale pièce humide"
+      ],
+      [
+        "plinthes et boiseries laquées",
+        "rechampissage des angles et des plinthes",
+        "finitions au pinceau",
+        "nettoyage du chantier",
+        "pièce rendue propre"
+      ]
+    ],
+    "nombre": [4, 5],
+    "toujours": [5]
+  },
+  "gestes": [
+    {
+      "terme": "Protection et préparation du chantier",
+      "textes": {
+        "combiner": [
+          [
+            "Le sol est bâché d’un mur à l’autre, et la bâche remonte sur les plinthes.",
+            "Les meubles qui restent sont groupés au centre et couverts.",
+            "Les interrupteurs et les prises sont démontés ou masqués.",
+            "Les menuiseries sont protégées au ruban avant la première passe.",
+            "Les radiateurs sont dégagés quand c’est possible.",
+            "Le passage reste libre pour les habitants, chaque soir.",
+            "Les luminaires sont décrochés ou emballés.",
+            "La protection est posée pièce par pièce, pas sur tout l’étage.",
+            "Les seuils de porte sont protégés pour ne rien emporter sur le palier.",
+            "Les bâches sont fixées au ruban, pas posées seulement."
+          ],
+          [
+            "Deux heures de protection évitent une journée de nettoyage.",
+            "Une goutte sur un parquet se voit pendant des années.",
+            "Un chantier protégé se travaille sans crainte, donc plus vite.",
+            "La peinture saute plus loin qu’on ne croit, surtout au rouleau.",
+            "Les plinthes sont la première chose qu’on regarde à la fin.",
+            "Un logement habité demande de ranger chaque soir.",
+            "Les projections sur une vitre se retirent mal une fois sèches.",
+            "La poussière de ponçage voyage dans tout l’appartement.",
+            "Un chantier bien installé se finit sans mauvaise surprise.",
+            "Protéger coûte du temps, repeindre un sol coûte davantage."
+          ]
+        ],
+        "joints": [" "]
+      }
+    },
+    {
+      "terme": "Lessivage des supports",
+      "textes": {
+        "combiner": [
+          [
+            "Les murs sont lessivés de haut en bas, puis rincés à l’eau claire.",
+            "Les murs de cuisine sont dégraissés avant tout le reste.",
+            "Les boiseries sont lavées et égrenées avant la première couche.",
+            "Les traces de doigts et les auréoles sont traitées une par une.",
+            "Le lessivage s’arrête avant de détremper le plâtre.",
+            "Les anciens papiers peints sont décollés entièrement, colle comprise.",
+            "Les murs sont laissés sécher après le lavage, le temps qu’il faut.",
+            "Les moisissures sont traitées avant d’être recouvertes.",
+            "La poussière du haut des murs est retirée à la brosse.",
+            "Les anciennes peintures écaillées sont grattées jusqu’au support sain."
+          ],
+          [
+            "La peinture n’accroche pas sur un mur gras.",
+            "Une colle de papier peint laissée en place fait cloquer la peinture.",
+            "Un mur sale fait des reprises visibles, même sous deux couches.",
+            "Les cuisines portent une pellicule que l’œil ne voit pas.",
+            "Une moisissure peinte revient, en plus foncé.",
+            "Un support propre demande moins de peinture.",
+            "Le lavage montre les fissures que la poussière cachait.",
+            "Le plâtre détrempé met des jours à sécher, et le chantier attend.",
+            "Les écailles qu’on laisse se décolleront en entraînant le neuf.",
+            "Cette étape ne se voit pas sur le résultat, elle se voit dans sa durée."
+          ]
+        ],
+        "joints": [" "]
+      }
+    },
+    {
+      "terme": "Rebouchage et enduit",
+      "textes": {
+        "combiner": [
+          [
+            "Les fissures sont ouvertes en V avant d’être rebouchées.",
+            "Les trous de chevilles sont rebouchés à l’enduit, pas au mastic.",
+            "Les grandes fissures reçoivent une bande d’armature.",
+            "Les angles abîmés sont repris à la spatule, puis dressés.",
+            "Un enduit de lissage passe sur tout le mur quand les défauts sont nombreux.",
+            "L’enduit est appliqué en passes fines, séchées entre elles.",
+            "Les trous profonds sont remplis en deux fois.",
+            "Les reprises d’électricité sont rebouchées et affleurées au mur.",
+            "Les fissures de plafond sont armées avant toute peinture.",
+            "Les plinthes décollées sont refixées avant les finitions."
+          ],
+          [
+            "Une fissure rebouchée sans être ouverte revient l’hiver suivant.",
+            "Un rebouchage trop épais se fendille en séchant.",
+            "Une bande d’armature empêche la fissure de traverser la peinture.",
+            "Un angle droit se voit depuis l’entrée de la pièce.",
+            "L’enduit de lissage transforme un mur ancien en mur neuf.",
+            "L’enduit sèche au cœur, pas seulement en surface.",
+            "Un trou mal rempli creuse une ombre sous la peinture.",
+            "Un mur plan prend la lumière sans montrer de bosse.",
+            "Les fissures de plafond travaillent avec le plancher du dessus.",
+            "C’est l’étape la plus longue, et celle qu’on ne voit plus après."
+          ]
+        ],
+        "joints": [" "]
+      }
+    },
+    {
+      "terme": "Ponçage et dépoussiérage",
+      "textes": {
+        "combiner": [
+          [
+            "Les rebouchages sont poncés à la cale, au grain fin.",
+            "Le ponçage s’arrête quand la main ne sent plus la reprise.",
+            "Les murs entiers sont égrenés avant la sous-couche.",
+            "La poussière est aspirée, puis essuyée à l’éponge humide.",
+            "Les boiseries sont égrenées entre chaque couche.",
+            "Le ponçage se fait à la lumière rasante, lampe de côté.",
+            "Les angles sont poncés à la main, sans attaquer le plâtre.",
+            "La ponceuse reste sur les grandes surfaces, la cale fait le reste.",
+            "La pièce est aérée pendant tout le ponçage.",
+            "Le sol est balayé avant la peinture, pour ne pas remonter la poussière."
+          ],
+          [
+            "Un rebouchage qui se sent sous la main se verra sous la peinture.",
+            "La poussière de ponçage dans la peinture fait un mur granuleux.",
+            "La lumière de biais montre ce que la lumière de face cache.",
+            "Un grain trop gros laisse des cercles visibles sous le satiné.",
+            "Un mur égrené accroche mieux la sous-couche.",
+            "Une ponceuse mal tenue creuse le plâtre en quelques secondes.",
+            "Les boiseries laquées ne pardonnent aucun grain oublié.",
+            "Un mur dépoussiéré se peint sans traces.",
+            "Cette étape décide de la finesse du résultat.",
+            "Le temps passé ici se voit sur le mur fini."
+          ]
+        ],
+        "joints": [" "]
+      }
+    },
+    {
+      "terme": "Sous-couche",
+      "textes": {
+        "combiner": [
+          [
+            "La sous-couche est choisie selon le support, plâtre, bois ou ancienne peinture.",
+            "Le plâtre neuf reçoit une impression avant toute finition.",
+            "Les taches d’eau et de suie sont bloquées par une sous-couche spéciale.",
+            "Un support poudreux est fixé avant d’être peint.",
+            "Les reprises d’enduit reçoivent la sous-couche en premier.",
+            "La sous-couche est teintée vers la finition quand la teinte est foncée.",
+            "Le bois nu est imprimé avant la laque.",
+            "La sous-couche est appliquée en une passe régulière, sans surcharge.",
+            "Le temps de séchage de la sous-couche est respecté avant la finition.",
+            "Les murs très absorbants reçoivent deux passes d’impression."
+          ],
+          [
+            "La sous-couche décide de l’accroche de tout ce qui vient après.",
+            "Sans impression, le plâtre neuf boit la finition par endroits.",
+            "Une tache non bloquée traverse deux couches de blanc.",
+            "Un fond poudreux emporte la peinture en se détachant.",
+            "Les reprises d’enduit boivent plus que le reste du mur.",
+            "Une sous-couche teintée économise une couche de finition.",
+            "Le bois sans impression avale la laque et ressort mat.",
+            "Une sous-couche trop épaisse ne remplace pas une finition.",
+            "La peinture posée sur une sous-couche fraîche reste collante.",
+            "C’est l’étape invisible qui fait tenir la peinture dix ans."
+          ]
+        ],
+        "joints": [" "]
+      }
+    },
+    {
+      "terme": "Application de la finition",
+      "textes": {
+        "combiner": [
+          [
+            "La peinture est appliquée en deux couches croisées, rouleau chargé puis tendu.",
+            "Chaque bande rejoint la précédente dans le frais.",
+            "Le plafond est peint avant les murs, dans la même journée.",
+            "Les angles sont coupés au pinceau juste avant de rouler le mur.",
+            "Le mur est peint en entier, sans pause au milieu.",
+            "La deuxième couche attend le séchage complet de la première.",
+            "Les teintes foncées demandent parfois une troisième passe.",
+            "La peinture est brassée avant chaque reprise de pot.",
+            "Le rouleau est égoutté sur la grille, pas sur le bord du bac.",
+            "Les reprises se font toujours dans le frais, jamais sur un bord sec."
+          ],
+          [
+            "Un mur peint par morceaux garde la trace de chaque arrêt.",
+            "Deux couches sur un mur préparé valent mieux que trois sur un mur sale.",
+            "Le plafond éclabousse : il passe avant les murs finis.",
+            "Un pinceau d’angle propre fait une ligne que le rouleau ne sait pas faire.",
+            "La peinture tend en séchant, à condition d’être posée régulièrement.",
+            "Une couche appliquée trop tôt décolle la précédente.",
+            "Les pigments foncés couvrent moins : le nombre de couches s’adapte.",
+            "Un pot mal brassé donne deux nuances sur le même mur.",
+            "Un rouleau trop chargé coule le long des plinthes.",
+            "C’est la régularité du geste qui fait la régularité du mur."
+          ]
+        ],
+        "joints": [" "]
+      }
+    },
+    {
+      "terme": "Boiseries et finitions",
+      "textes": {
+        "combiner": [
+          [
+            "Les plinthes sont laquées après les murs, ligne tirée au pinceau.",
+            "Les portes sont poncées, dépoussiérées, puis laquées en deux couches.",
+            "Les chambranles sont peints avec la porte, dans la même teinte.",
+            "Les fenêtres sont peintes ouvertes, et laissées ouvertes à sécher.",
+            "Les radiateurs reçoivent une peinture qui supporte la chaleur.",
+            "Les rubans sont retirés avant séchage complet, d’un geste continu.",
+            "Les retouches sont faites à la lumière du jour, pas le soir.",
+            "Les angles de deux teintes sont tirés au pinceau fin.",
+            "Les trous de fixation sont rebouchés et retouchés en fin de chantier.",
+            "La pièce est inspectée mur par mur avant d’être rendue."
+          ],
+          [
+            "Les boiseries prennent le plus de temps pour le moins de surface.",
+            "Une plinthe nette fait tout le travail d’une pièce.",
+            "Une laque sur bois non égrené s’écaille en quelques mois.",
+            "Une porte peinte fermée colle à son chambranle.",
+            "Une peinture ordinaire sur radiateur jaunit à la première chauffe.",
+            "Un ruban retiré trop tard emporte la peinture avec lui.",
+            "La lumière du jour montre les manques que l’ampoule cache.",
+            "Une ligne entre deux teintes se juge à vingt centimètres.",
+            "Les derniers détails sont ceux dont le client se souvient.",
+            "Une pièce se livre finie, pas presque finie."
+          ]
+        ],
+        "joints": [" "]
+      }
+    },
+    {
+      "terme": "Choix de la teinte",
+      "textes": {
+        "combiner": [
+          [
+            "La teinte est essayée sur un mètre carré du mur avant d’être validée.",
+            "L’essai est regardé à la lumière du matin et à celle du soir.",
+            "La teinte est choisie dans la pièce, jamais au magasin.",
+            "La finition, mate, velours ou satinée, est choisie selon l’usage de la pièce.",
+            "Les pièces au nord reçoivent des blancs chauds.",
+            "Les couloirs reçoivent une finition qui se lave.",
+            "Le plafond est tenu dans un blanc plus clair que les murs.",
+            "Deux teintes dans une pièce se séparent sur une arête, pas au milieu d’un mur.",
+            "La teinte d’origine est notée avant de peindre, pour les retouches.",
+            "Les teintes foncées sont réservées aux murs sans défaut."
+          ],
+          [
+            "Une couleur change entre le nuancier, le pot et le mur.",
+            "La lumière d’une pièce décide de la teinte, plus que le goût.",
+            "Un gris paraît bleu au nord et beige au sud.",
+            "Le mat absorbe la lumière, le satiné la renvoie et montre tout.",
+            "Un blanc froid dans une pièce sans soleil éteint la pièce.",
+            "Une peinture lessivable se nettoie sans perdre sa teinte.",
+            "Un plafond plus clair que les murs fait respirer la pièce.",
+            "Une limite de teinte au milieu d’un mur se voit toujours.",
+            "Sans la référence de teinte, la retouche se repère.",
+            "Une teinte sombre souligne chaque irrégularité du support."
+          ]
+        ],
+        "joints": [" "]
+      }
+    }
+  ],
+  "coupure": {
+    "avant": {
+      "etapes": [
+        [
+          "murs marqués par les meubles",
+          "traces de doigts et frottements",
+          "murs jaunis",
+          "peinture écaillée",
+          "murs griffés dans le couloir",
+          "anciennes reprises visibles",
+          "murs ternis par la fumée",
+          "peinture cloquée près de la fenêtre"
+        ],
+        [
+          "fissures capillaires sur les murs",
+          "fissure au plafond",
+          "trous de chevilles non rebouchés",
+          "angles épaufrés",
+          "enduit décollé par plaques",
+          "faïençage au-dessus des portes",
+          "plâtre nu par endroits"
+        ],
+        [
+          "papier peint décollé aux angles",
+          "papier peint daté",
+          "deux papiers superposés",
+          "traces de colle sèche",
+          "lés mal raccordés",
+          "papier gonflé par l’humidité",
+          "frise ancienne à retirer"
+        ],
+        [
+          "plinthes jaunies et écaillées",
+          "boiseries ternies",
+          "porte marquée par le passage",
+          "chambranle écaillé",
+          "radiateur jauni",
+          "contour de prise sali"
+        ]
+      ],
+      "nombre": [3, 3]
+    },
+    "apres": {
+      "etapes": [
+        [
+          "murs lessivés et rincés",
+          "supports dégraissés",
+          "anciens papiers retirés",
+          "écailles grattées jusqu’au sain",
+          "moisissures traitées"
+        ],
+        [
+          "fissures ouvertes et armées",
+          "trous rebouchés et affleurés",
+          "enduit de lissage passé",
+          "angles redressés"
+        ],
+        [
+          "deux couches de finition",
+          "murs unis, sans reprise visible",
+          "peinture tendue du sol au plafond",
+          "plafond blanc mat",
+          "finition satinée dans la pièce humide",
+          "teinte posée en deux couches",
+          "murs lessivables dans la cuisine"
+        ],
+        [
+          "plinthes laquées",
+          "boiseries reprises",
+          "portes et chambranles laqués",
+          "lignes nettes aux angles",
+          "contours de prises propres",
+          "radiateur repeint"
+        ],
+        [
+          "pièce nettoyée et rendue",
+          "sol débarrassé et balayé",
+          "protections retirées",
+          "chantier livré propre"
+        ]
+      ],
+      "nombre": [3, 4],
+      "toujours": [2]
+    }
+  },
+  "legendes": {
+    "comparateurs": {
+      "combiner": [
+        [
+          "Pièce complète",
+          "Salon",
+          "Chambre",
+          "Couloir",
+          "Cuisine",
+          "Cage d’escalier",
+          "Plafond",
+          "Salle de bains",
+          "Entrée",
+          "Bureau",
+          "Chambre d’enfant",
+          "Porte intérieure"
+        ],
+        [
+          "murs lessivés",
+          "papier peint retiré",
+          "fissures armées",
+          "trous rebouchés",
+          "enduit de lissage passé",
+          "angles redressés",
+          "sous-couche appliquée",
+          "plafond repris",
+          "support poncé",
+          "taches bloquées"
+        ],
+        [
+          "deux couches de finition",
+          "murs unis",
+          "peinture mate",
+          "finition satinée",
+          "peinture lessivable",
+          "plinthes laquées",
+          "teinte posée en deux couches",
+          "plafond blanc"
+        ]
+      ],
+      "joints": [", ", ", "],
+      "fin": "."
+    },
+    "invitation": {
+      "combiner": [
+        [
+          "Faites glisser la couture",
+          "Déplacez la séparation",
+          "Touchez la photo",
+          "Glissez le trait",
+          "Attrapez la couture",
+          "Faites glisser le curseur",
+          "Déplacez le trait",
+          "Passez le doigt sur la photo"
+        ],
+        [
+          "pour comparer l’avant et l’après.",
+          "pour voir la pièce avant les travaux.",
+          "pour passer d’un état à l’autre.",
+          "pour voir ce que le chantier a changé.",
+          "pour retrouver la pièce d’origine.",
+          "pour voir le mur avant la reprise.",
+          "pour comparer les deux états de la pièce.",
+          "pour voir la pièce avant et après.",
+          "pour mesurer le travail fait.",
+          "pour voir la différence."
+        ]
+      ],
+      "joints": [" "]
+    },
+    "precision": {
+      "combiner": [
+        [
+          "Même point de vue, même cadrage.",
+          "Les deux photos sont prises du même endroit.",
+          "Même angle, même distance.",
+          "Les deux images ont le même cadrage.",
+          "Même endroit, même objectif.",
+          "Le point de vue ne bouge pas d’une photo à l’autre.",
+          "Même hauteur, même focale.",
+          "Les deux prises de vue se superposent exactement.",
+          "Le cadrage est identique avant et après."
+        ],
+        [
+          "Seuls les murs changent.",
+          "La différence vient du chantier.",
+          "Rien d’autre ne change que la peinture.",
+          "Ce qui change, c’est le travail fait.",
+          "Le reste de la pièce est identique.",
+          "Seule la peinture a changé.",
+          "Ce que l’on voit changer, c’est le travail.",
+          "Tout le reste est à sa place.",
+          "La pièce est la même, repeinte."
+        ]
+      ],
+      "joints": [" "]
+    }
+  },
+  "rubriques": {
+    "gestes": [
+      "Le détail des postes.",
+      "Ce que recouvre une mise en peinture.",
+      "Ce qui se fait dans la pièce.",
+      "Les étapes, dans l’ordre.",
+      "Le travail, poste par poste.",
+      "De la protection à la finition.",
+      "Ce qui se passe avant la couleur.",
+      "Les postes d’un chantier de peinture.",
+      "Du lessivage au nettoyage.",
+      "Ce que comprend le chantier.",
+      "Le déroulé du chantier.",
+      "Les travaux, un par un.",
+      "Ce qui se fait, et dans quel ordre.",
+      "Les postes du devis.",
+      "Le chantier, étape par étape."
+    ],
+    "chantier": [
+      "Le chantier.",
+      "Dans la pièce.",
+      "En cours de travaux.",
+      "Pendant les travaux.",
+      "Le mur en cours de reprise.",
+      "Pièce bâchée.",
+      "Avant la première couche.",
+      "Le chantier en cours.",
+      "Au travail sur le mur.",
+      "La pièce en cours de peinture.",
+      "La pièce pendant le chantier.",
+      "Vue du chantier.",
+      "Les pots et les outils.",
+      "Entre deux couches.",
+      "Le chantier, de près."
+    ],
+    "verifiable": [
+      "Ce qui se vérifie.",
+      "Les faits publics.",
+      "Ce que disent les registres.",
+      "Ce qui est public.",
+      "Les informations officielles.",
+      "L’entreprise, en clair.",
+      "Ce qu’on peut contrôler.",
+      "Les données publiques.",
+      "L’entreprise au registre.",
+      "Ce qui est déclaré.",
+      "Les éléments vérifiables.",
+      "Pour vérifier.",
+      "Les faits, sans commentaire.",
+      "L’identité de l’entreprise.",
+      "Ce que dit l’administration."
+    ],
+    "contact": [
+      "Parler du chantier.",
+      "Prendre contact.",
+      "Faire venir quelqu’un.",
+      "Demander une visite.",
+      "Parler de vos pièces.",
+      "Faire voir la pièce à repeindre.",
+      "Demander un passage.",
+      "Appeler l’entreprise.",
+      "Faire regarder les murs.",
+      "Prendre rendez-vous.",
+      "Poser une question.",
+      "Pour en parler.",
+      "Faire établir un devis.",
+      "Demander un avis sur la pièce.",
+      "Entrer en contact."
+    ],
+    "prix": [
+      "Ce que ça coûte.",
+      "Les tarifs, poste par poste.",
+      "Avant de demander un devis.",
+      "Combien ça coûte.",
+      "Les prix pratiqués.",
+      "Les tarifs de l’entreprise.",
+      "L’ordre de prix.",
+      "Les prix, en clair.",
+      "Ce que coûte le chantier.",
+      "Les tarifs annoncés.",
+      "Pour situer le budget.",
+      "Les montants.",
+      "Les prix au mètre carré.",
+      "Les tarifs du métier.",
+      "Le budget du chantier."
+    ]
+  },
+  "mot": "Peinture",
+  "matiere": [
+    "À dix centimètres, on voit le grain que le rouleau a laissé.",
+    "Une peinture tendue n’a ni trace de reprise, ni surépaisseur.",
+    "Le mat absorbe la lumière, et il pardonne au mur ses petits défauts.",
+    "Le satiné renvoie la lumière, et il montre tout ce qu’on a laissé.",
+    "Un mur laqué garde le veinage du bois en relief très léger.",
+    "La teinte se juge sur un mètre carré de mur, pas sur une languette.",
+    "Un blanc chaud et un blanc froid ne font pas la même pièce.",
+    "La lumière rasante montre chaque rebouchage mal poncé.",
+    "Un rouleau à poils courts donne un grain fin, presque lisse.",
+    "La peinture change de teinte en séchant, et c’est normal.",
+    "Un enduit de lissage donne un mur plan, sans ombre portée.",
+    "Le grain du mur se décide au ponçage, pas à la dernière couche.",
+    "Une arête de deux teintes se juge à vingt centimètres.",
+    "La plinthe laquée tranche sur le mur mat, et la ligne doit être droite.",
+    "Un plafond blanc mat efface la limite entre mur et plafond.",
+    "Le velours tient le milieu : lavable, sans reflet dur.",
+    "Un mur foncé demande un support parfait, la lumière y glisse.",
+    "La trace du pinceau d’angle se voit si le rouleau ne la recouvre pas.",
+    "Sous une peinture claire, une tache bloquée reste invisible.",
+    "Un mur repeint six fois ne prend plus la peinture comme un mur neuf.",
+    "Le plâtre absorbe, le bois rend : les deux ne se peignent pas pareil.",
+    "Une peinture épaisse fait des coulures que le temps ne rattrape pas.",
+    "La teinte d’un mur varie du haut vers le bas selon la fenêtre.",
+    "Un mur poncé fin se touche sans sentir les reprises.",
+    "La couleur du mur change avec l’heure, et le soir elle mentira.",
+    "Une pièce entière repeinte montre une teinte régulière partout.",
+    "Les angles sont la signature du travail, bien plus que la surface.",
+    "Un mur sans sous-couche boit par endroits, et la finition se voit.",
+    "Deux couches régulières font une matière pleine.",
+    "De loin on voit la couleur. De près, on voit la préparation."
+  ],
+  "prix": {
+    "note": "Ordres de grandeur nationaux. Ce ne sont pas les prix de l'entreprise et ce n'est pas un devis.",
+    "sources": [],
+    "postes": [
+      {
+        "poste": "Protection et préparation",
+        "bas": 3,
+        "haut": 8,
+        "unite": "€/m²",
+        "note": "Bâchage, masquage, démontage des équipements."
+      },
+      {
+        "poste": "Lessivage et retrait des papiers peints",
+        "bas": 5,
+        "haut": 15,
+        "unite": "€/m²",
+        "note": "Varie selon le nombre de couches à retirer."
+      },
+      {
+        "poste": "Rebouchage et enduit de lissage",
+        "bas": 10,
+        "haut": 30,
+        "unite": "€/m²",
+        "note": "C'est le poste qui fait varier un devis du simple au double."
+      },
+      {
+        "poste": "Peinture, deux couches",
+        "bas": 20,
+        "haut": 40,
+        "unite": "€/m²",
+        "note": "Sous-couche comprise, selon la finition choisie."
+      },
+      {
+        "poste": "Boiseries et plinthes",
+        "bas": 25,
+        "haut": 50,
+        "unite": "€/m",
+        "note": "Ponçage, impression et deux couches de laque."
+      }
+    ],
+    "exemple": {
+      "titre": "Pièce de 20 m² au sol, murs et plafond",
+      "bas": 1400,
+      "haut": 3000,
+      "note": "Préparation, sous-couche et deux couches. L'état des murs fait l'écart."
+    }
+  },
+  "nuancierEtiquette": "Voir la pièce dans une autre teinte",
+  "teintes": [
+    { "nom": "D’origine", "voile": "", "pastille": "#E4DCCE" },
+    { "nom": "Blanc chaud", "voile": "40 30% 92% / .28", "pastille": "#EDE4D5" },
+    { "nom": "Lin", "voile": "38 22% 86% / .30", "pastille": "#E2DACA" },
+    { "nom": "Vert sauge", "voile": "110 16% 62% / .32", "pastille": "#9BAE95" },
+    { "nom": "Bleu profond", "voile": "215 42% 42% / .34", "pastille": "#3E5C84" },
+    { "nom": "Terre rosée", "voile": "16 38% 70% / .30", "pastille": "#CFA091" },
+    { "nom": "Gris perle", "voile": "210 10% 76% / .28", "pastille": "#BDC3C9" },
+    { "nom": "Taupe", "voile": "28 14% 56% / .32", "pastille": "#9A8D7E" },
+    { "nom": "Jaune paille", "voile": "48 54% 76% / .30", "pastille": "#DFCB92" },
+    { "nom": "Vert forêt", "voile": "150 26% 34% / .34", "pastille": "#3F6553" }
+  ],
+  "alt": {
+    "avant": "pièce complète avant travaux, murs marqués et plinthes jaunies",
+    "apres": "la même pièce après mise en peinture",
+    "invitation": "Comparer la pièce avant et après les travaux",
+    "avant2": "un autre chantier avant mise en peinture",
+    "apres2": "le même chantier une fois la peinture terminée",
+    "hero": "pièce dont une moitié est en travaux et l’autre déjà peinte",
+    "invitation2": "Comparer un second chantier avant et après",
+    "ouverture": "geste du métier dans une pièce en cours de peinture",
+    "chantier": "pièce bâchée, escabeau et pots alignés le long du mur",
+    "chantierBis": "ruban de masquage posé sur les plinthes et les encadrements",
+    "detail": "gros plan sur le grain d’un mur peint au rouleau",
+    "detailBis": "gros plan sur un mur laqué satiné",
+    "geste": "le rouleau qui dépose la peinture sur le mur"
+  },
+  "estimateur": {
+    "titre": "Vos pièces",
+    "mesure": {
+      "etiquette": "Surface à peindre",
+      "unite": "m²",
+      "min": 20,
+      "max": 300,
+      "pas": 10,
+      "defaut": 60,
+      "aria": "Surface à peindre en mètres carrés"
+    }
+  }
+}

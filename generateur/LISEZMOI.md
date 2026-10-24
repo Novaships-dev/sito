@@ -59,7 +59,7 @@ s'en servir pour proposer des noms de postes à l'artisan.
 | `style.mjs` | la feuille de style des archétypes `panneau`, `planche`, `elevation` |
 | `archetypes/matiere.mjs` | l'archétype `matiere`, avec sa deuxième page |
 | `sections/*.mjs` | les blocs communs aux quatre archétypes : arrivée, ambiance, nuancier, prix, avis, comparateur |
-| `metiers/*.json` | un fichier par métier. **Seul `ravalement.json` existe** |
+| `metiers/*.json` | un fichier par métier. Trois existent : `ravalement.json`, `couverture.json`, `peinture.json` (les treize autres restent à écrire, T32) |
 | `banque/plan-images.json` | les 54 images de chacun des seize métiers |
 | `registre.json` | les sites déjà fabriqués, pour que leurs voisins ne leur ressemblent pas |
 | `polices/` | les quatre polices autorisées (Archivo, Archivo Narrow, Bricolage Grotesque, Public Sans) |
