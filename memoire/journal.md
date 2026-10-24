@@ -545,3 +545,65 @@ ne sert : `/rest/v1/` et `/auth/v1/health` répondent 401 même base éteinte
 lui-même, qu'il faut relancer de temps en temps. T05 reste donc « bloqué »
 par F17 (réveil en cours, pas encore fini) : je ne déclare rien de vert sans
 l'avoir mesuré. Je passe à T07, qui ne touche pas la vraie base.
+
+### T07 : préparer les photos reçues
+
+Plan en trois lignes : `atelier/preparer-recues.mjs` prend les lignes
+`photos.etat = recue`, lit la meilleure source dans le stockage
+(`chemin_source` si l'original est arrivé, sinon `chemin_original`), la passe à
+`preparerPhoto`, pose l'image propre à côté (`<cle>-propre.jpg`) et écrit
+`chemin`, `largeur`, `hauteur`, `octets`, `etat = prete` — ou `illisible` avec
+un motif écrit pour l'artisan ; le faux Supabase de `scripts/essai-service.mjs`
+devient un module à part (`scripts/faux-supabase.mjs`) pour que le nouvel essai
+s'en serve ; contre-essai sur copie cassée hors du dépôt.
+
+**Fait, mesuré.** `atelier/preparer-recues.mjs` (131 lignes) et son essai
+`scripts/essai-preparation.mjs` : **77 contrôles, 0 faute**.
+
+- Deux corrections au plan ci-dessus, trouvées en relisant le schéma :
+  **`octets` n'est pas écrit.** C'est la taille du fichier que l'app a envoyé
+  (`app/src/donnees/supabase.ts` : `octets: e.fichier.size`), et elle reste
+  vraie après la préparation : l'écraser par la taille de l'image propre
+  perdait une information que personne ne pouvait plus retrouver. La §7 de
+  `05-SCHEMA-BACKEND.md` ne demandait d'ailleurs que
+  `chemin/largeur/hauteur/etat/motif`.
+  **`format_origine` l'est, en revanche** : l'app le devine du navigateur, qui
+  se trompe (piège du 21 octobre, un `.DNG` annoncé « image/DNG » sous
+  Windows) ; ici il est lu dans les premiers octets. Noté dans la spec.
+- L'essai mesure ce qui est **posé dans le stockage**, pas ce que la ligne
+  raconte : les octets se décodent, leur taille est celle annoncée par la
+  ligne, le rouge de la mire est dans le bon coin (orientation EXIF 6
+  redressée), et exiftool n'y trouve plus ni position GPS ni modèle de
+  téléphone. 14 photos d'essai : JPEG d'iPhone avec GPS, original en pleine
+  résolution préféré à la version réduite (3 200 px au lieu de 400),
+  original annoncé mais absent (la réduite suffit), deux HEIC fabriqués par
+  libheif, PDF renommé `.jpg`, JPEG coupé, vidéo MP4, nom de fichier de
+  400 caractères (le motif tient dans les 280 de la colonne), ligne sans
+  aucun fichier, fichier pas encore arrivé, lignes déjà `prete` et
+  `illisible` (intactes), et une image laissée par un passage interrompu.
+- Trois passages de suite : le deuxième reprend les HEIC quand le
+  convertisseur existe, le troisième ne touche plus rien (`JSON.stringify`
+  de la table, identique avant et après).
+- L'invariant, mesuré sur la table entière : **aucune ligne « prete » sans son
+  image dans le stockage**, et toute image propre rangée sous le SIREN.
+- **Contre-essai refait autrement.** Première version : les trois fautes
+  posées ensemble dans une seule copie. Elle rougissait, mais sur
+  « essai interrompu » — la deuxième faute faisait planter la troisième, et
+  l'essai s'arrêtait à 0 contrôle. Un essai interrompu ne prouve rien. Donc
+  chaque faute est maintenant posée **seule**, dans sa copie, et l'essai
+  entier est rejoué dessus : 10, 4 et 4 fautes nommées, aucune interruption.
+  Une cassure qui ferait planter l'essai au lieu d'être mesurée est comptée
+  « non attrapée ».
+- Deux pièges rencontrés et corrigés en passant :
+  `verifier-depot` lit les chaînes de caractères comme du code — la copie
+  cassée repointait un import en écrivant le chemin relatif en clair, et le
+  vérificateur a cru que l'essai importait un module voisin de lui (bloquant,
+  à raison). Le remplacement se fait par un motif. Et `coinRouge` / exiftool
+  sur les octets d'un fichier qui n'est pas une image levaient une exception
+  hors de tout `catch` : chaque mesure se rattrape et nomme son contrôle
+  (même leçon que le 24 octobre sur `essai-app.mjs`).
+- Branché : `scripts/essais.mjs` (étape « service : préparation des photos
+  reçues »), `--complet` (contre-essai), et la CI. Les deux essais qui
+  fabriquent de vraies photos partagent désormais une seule réponse sur les
+  outils de la machine (`outilsPhotos`), pour qu'ils ne divergent pas.
+- Preuve : suite complète verte, `verifier-depot` à 0 (282 fichiers). T07 faite.

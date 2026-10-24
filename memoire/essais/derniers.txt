@@ -1,15 +1,14 @@
-Essais du samedi 24 octobre 2026 à 01:02 (heure de Paris), win32, commit 4668efe
+Essais du samedi 24 octobre 2026 à 18:50 (heure de Paris), win32, commit 93a5e0d
 
-OK         dépôt complet (0 s) Depot complet. 277 fichiers, aucune piece manquante.
+OK         dépôt complet (0 s) Depot complet. 282 fichiers, aucune piece manquante.
 OK         règles de rédaction (sites et app) (0 s) Aucune signature textuelle detectee.
 OK         aucun secret (0 s) Aucun secret trouvé.
-OK         outillage de Claude Code (16 s) 90 contrôles, 0 faute(s).
-OK         app : types et construction (18 s) [33m[plugin builtin:vite-reporter]
-OK         app : parcours et rendu (navigateur) (39 s) 96 contrôles, 0 faute(s).
-OK         photos (service) (24 s) 18 fichiers, 0 faute(s). Dossier : C:\Users\fabri\AppData\Local\Temp\essai-photos-XuvUTe
-OK         service : adaptateur Supabase (1 s) 28 contrôles, 0 faute(s).
-OK         publication par versions et Worker (5 s) 0 faute(s). Dossier : C:\Users\fabri\AppData\Local\Temp\essai-publication-07ZJOX
+OK         outillage de Claude Code (48 s) 91 contrôles, 0 faute(s).
+OK         app : types et construction (41 s) [33m[plugin builtin:vite-reporter]
+OK         app : parcours et rendu (navigateur) (73 s) 96 contrôles, 0 faute(s).
+OK         photos (service) (87 s) 18 fichiers, 0 faute(s). Dossier : C:\Users\fabri\AppData\Local\Temp\essai-photos-Y4N3P5
+OK         service : adaptateur Supabase (3 s) 28 contrôles, 0 faute(s).
+OK         service : préparation des photos reçues (18 s) 77 contrôles, 0 faute(s). Dossier : C:\Users\fabri\AppData\Local\Temp\essai-preparation-sZEqkY
+OK         publication par versions et Worker (4 s) 0 faute(s). Dossier : C:\Users\fabri\AppData\Local\Temp\essai-publication-iyIWi7
 
 Verdict : TOUT EST VERT
-
-CI GitHub (essais.yml) : passage #11, SUCCESS, commit 4668efe, 24/10/2026 00:57:57 — https://github.com/Novaships-dev/sito/actions/runs/40036873975

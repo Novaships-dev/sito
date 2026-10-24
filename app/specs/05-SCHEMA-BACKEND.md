@@ -213,8 +213,8 @@ Droits : lire, créer, modifier, supprimer si membre.
 | `paire` | smallint | ≥ 1 ; obligatoire (avec le chantier) pour `avant`/`apres` ; **une seule photo par (chantier, paire, rôle)** | É, modifiable |
 | `origine` | text | `entreprise` (défaut) ou `illustration` ; l'app ne peut écrire que `entreprise` | É |
 | `chemin_original` | text | **unique**, commence par `<siren>/` — le fichier tel que reçu | É |
-| `format_origine` | text | ≤ 24 (`jpeg`, `heic`, `dng`…) | É |
-| `octets` | integer | > 0 | É |
+| `format_origine` | text | ≤ 24 (`jpeg`, `heic`, `dng`…) ; l'app l'annonce, le service le **corrige** d'après les premiers octets du fichier (le navigateur se trompe : piège du 21 oct.) | É |
+| `octets` | integer | > 0 — taille du fichier **reçu**, que la préparation ne réécrit pas | É |
 | `chemin_source` | text | **unique**, commence par `<siren>/` — l'original en pleine résolution, arrivé après la version réduite (migration du 9 oct.) | É (modification) |
 | `octets_source` | bigint | > 0 | É (modification) |
 | `chemin` | text | **unique**, commence par `<siren>/` — image propre pour le site | **service seulement** |
@@ -391,7 +391,7 @@ doit offrir pour que l'app soit complète. Les noms sont proposés.
 | Besoin | Déclencheur | Lit | Écrit |
 |---|---|---|---|
 | Inscrire un artisan | Fabrice / paiement | Sirene | `auth.users`, `entreprises`, `membres`, `profils`, `sites`, `adresses` (offerte) |
-| Préparer les photos reçues | nouvelle ligne `photos.etat = recue` | stockage | `photos.chemin/largeur/hauteur/etat/motif` |
+| Préparer les photos reçues (`atelier/preparer-recues.mjs`, fait) | nouvelle ligne `photos.etat = recue` | stockage | `photos.chemin/largeur/hauteur/etat/motif/format_origine` |
 | Refabriquer et publier | photo prête, profil ou tarifs modifiés | tout le site | `fabrications`, `versions_site`, `sites`, R2, KV |
 | Recevoir une demande | POST du formulaire du site | — | `demandes`, `statistiques` |
 | Statistiques | chaque nuit (heure de Paris) | Umami | `statistiques` |

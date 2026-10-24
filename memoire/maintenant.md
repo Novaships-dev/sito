@@ -14,12 +14,14 @@
   texte fautif, erreur de type) réparées seul, essais à 0, puis quatre tâches
   faites avec preuves et deux bloquées honnêtement (`memoire/journal.md`, 10 oct.).
 - **Liste de travail** : `app/specs/07-TACHES.md` (34 tâches, 12 bloquées par
-  une action de Fabrice). T00 et T01 faites (24 oct.). **Prochaine tâche** :
-  T06 (adaptateur Supabase du service). T02 faite : la CI est verte sur les six
+  une action de Fabrice). T00, T01, T02, T06 et T07 faites (24 oct.) : le
+  service sait parler à la base et au stockage, et transformer les photos que
+  l'app envoie en images propres pour le site. **Prochaine tâche** : T08
+  (fabriquer un site depuis la base). T02 faite : la CI est verte sur les six
   derniers envois, et `node scripts/ci-github.mjs` la relit depuis la machine.
   T05 bloquée par F17.
 - **La suite d'essais est verte et complète sur le PC de Fabrice** (24 oct.,
-  `memoire/essais/derniers.txt`) : les 8 étapes à 0, plus aucun essai « non
+  `memoire/essais/derniers.txt`) : les 9 étapes à 0, plus aucun essai « non
   lancé ». exiftool 13.59, ffmpeg 9.0.2, Python 3.13.15 avec Pillow 13.0.0 et
   pillow-heif 1.8.1, Chromium de Playwright : tout est installé en portée
   utilisateur, rien à faire pour Fabrice.

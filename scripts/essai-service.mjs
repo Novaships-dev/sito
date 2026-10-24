@@ -12,13 +12,13 @@
 //
 //   node scripts/essai-service.mjs [chemin du module]   (défaut : atelier/supabase.mjs)
 //   node scripts/essai-service.mjs --contre-essai       (copie cassée exprès, hors du dépôt)
-import { createServer } from 'node:http';
 import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { RACINE } from './env.mjs';
+import { fauxSupabase } from './faux-supabase.mjs';
 
 const CONTRE = process.argv.includes('--contre-essai');
 const CLE = 'cle-de-test-du-faux-supabase';
@@ -48,9 +48,9 @@ const CHEMIN = resolve(process.argv.find((a, i) => i >= 2 && !a.startsWith('--')
 const { supabase, ErreurSupabase } = await import(pathToFileURL(CHEMIN).href);
 
 // ------------------------------------------------------------- le faux Supabase
-// Juste ce que l'adaptateur demande, et rien de plus : des lignes en mémoire,
-// des objets en mémoire, et les mêmes refus que le vrai (401, 404, 409).
-const base = {
+// Le faux serveur vit dans scripts/faux-supabase.mjs : le même pour cet essai
+// et pour celui de la préparation des photos.
+const lignes = {
   photos: [
     { id: 1, siren: '480423623', etat: 'recue', chemin_original: '480423623/c1/a.jpg', rang: 2 },
     { id: 2, siren: '480423623', etat: 'prete', chemin_original: '480423623/c1/b.jpg', rang: 1 },
@@ -61,119 +61,13 @@ const base = {
   statistiques: [],
   fabrications: [],
 };
-const CLES = { evenements_stripe: ['id_stripe'], statistiques: ['siren', 'jour'], profils: ['siren'] };
-const objets = new Map(); // chemin -> Buffer
-const vues = [];          // chaque appel reçu : pour mesurer les en-têtes
-
-const OPS = {
-  eq: (l, v) => String(l) === v, neq: (l, v) => String(l) !== v,
-  gt: (l, v) => Number(l) > Number(v), gte: (l, v) => Number(l) >= Number(v),
-  lt: (l, v) => Number(l) < Number(v), lte: (l, v) => Number(l) <= Number(v),
-  like: (l, v) => new RegExp('^' + v.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/%/g, '.*') + '$').test(String(l)),
-  is: (l, v) => (v === 'null' ? l === null || l === undefined : String(l) === v),
-  in: (l, v) => v.replace(/^\(|\)$/g, '').split(',').map((x) => x.replace(/^"|"$/g, '')).includes(String(l)),
-};
-
-function filtrer(lignes, params) {
-  return lignes.filter((l) => [...params].every(([k, v]) => {
-    if (['select', 'order', 'limit', 'on_conflict'].includes(k)) return true;
-    const i = v.indexOf('.');
-    const op = v.slice(0, i), val = v.slice(i + 1);
-    return OPS[op] ? OPS[op](l[k], val) : false;
-  }));
-}
-
-const serveur = createServer((req, res) => {
-  const morceaux = [];
-  req.on('data', (c) => morceaux.push(c));
-  req.on('end', () => {
-    const corpsOctets = Buffer.concat(morceaux);
-    const u = new URL(req.url, 'http://x');
-    const repondre = (statut, donnees, type = 'application/json') => {
-      res.writeHead(statut, { 'content-type': type });
-      res.end(donnees === undefined ? '' : (Buffer.isBuffer(donnees) ? donnees : JSON.stringify(donnees)));
-    };
-    vues.push({ methode: req.method, chemin: u.pathname, entetes: req.headers });
-
-    // Le vrai Supabase refuse une clé secrète posée en Bearer : on fait pareil.
-    if (req.headers.apikey !== CLE || req.headers.authorization) return repondre(401, { message: 'clé absente ou mal posée' });
-
-    const prefer = req.headers.prefer || '';
-    const json = () => { try { return JSON.parse(corpsOctets.toString('utf8')); } catch { return null; } };
-
-    // ---- stockage
-    const sign = u.pathname.match(/^\/storage\/v1\/object\/sign\/([a-z0-9-]+)\/(.+)$/);
-    if (sign && req.method === 'POST') {
-      const chemin = decodeURIComponent(sign[2]);
-      if (!objets.has(`${sign[1]}/${chemin}`)) return repondre(404, { message: 'Object not found' });
-      return repondre(200, { signedURL: `/storage/v1/object/sign/${sign[1]}/${sign[2]}?token=jeton-de-test` });
-    }
-    const obj = u.pathname.match(/^\/storage\/v1\/object\/([a-z0-9-]+)\/(.+)$/);
-    if (obj) {
-      const cle = `${obj[1]}/${decodeURIComponent(obj[2])}`;
-      if (req.method === 'GET') return objets.has(cle) ? repondre(200, objets.get(cle), 'application/octet-stream') : repondre(404, { message: 'Object not found' });
-      if (req.method === 'POST') {
-        if (objets.has(cle) && req.headers['x-upsert'] !== 'true') return repondre(409, { message: 'The resource already exists' });
-        objets.set(cle, corpsOctets); return repondre(200, { Key: cle });
-      }
-    }
-    const espace = u.pathname.match(/^\/storage\/v1\/object\/([a-z0-9-]+)$/);
-    if (espace && req.method === 'DELETE') {
-      const pris = (json()?.prefixes || []).map((c) => `${espace[1]}/${c}`);
-      const effaces = pris.filter((c) => objets.delete(c));
-      return repondre(200, effaces.map((c) => ({ name: c })));
-    }
-
-    // ---- fonctions
-    const rpc = u.pathname.match(/^\/rest\/v1\/rpc\/(\w+)$/);
-    if (rpc && req.method === 'POST') {
-      if (rpc[1] !== 'jour_paris') return repondre(404, { message: `function ${rpc[1]} does not exist` });
-      const d = new Date(json()?.quand || Date.now());
-      return repondre(200, new Date(d.getTime() + 2 * 3600 * 1000).toISOString().slice(0, 10));
-    }
-
-    // ---- tables
-    const t = u.pathname.match(/^\/rest\/v1\/(\w+)$/);
-    if (t && base[t[1]]) {
-      const nom = t[1];
-      if (req.method === 'GET') {
-        let lignes = filtrer(base[nom], u.searchParams);
-        const ordre = u.searchParams.get('order');
-        if (ordre) {
-          const [col, sens] = ordre.split('.');
-          lignes = [...lignes].sort((a, b) => (a[col] > b[col] ? 1 : a[col] < b[col] ? -1 : 0) * (sens === 'desc' ? -1 : 1));
-        }
-        const limite = u.searchParams.get('limit');
-        if (limite) lignes = lignes.slice(0, Number(limite));
-        return repondre(200, lignes);
-      }
-      if (req.method === 'POST') {
-        const entrantes = [].concat(json() || []);
-        const cles = CLES[nom] || ['id'];
-        const memeCle = (a, b) => cles.every((k) => String(a[k]) === String(b[k]));
-        const ecrites = [];
-        for (const ligne of entrantes) {
-          const deja = base[nom].find((l) => memeCle(l, ligne));
-          if (deja && /ignore-duplicates/.test(prefer)) continue;
-          if (deja && /merge-duplicates/.test(prefer)) { Object.assign(deja, ligne); ecrites.push(deja); continue; }
-          if (deja) return repondre(409, { message: 'duplicate key value violates unique constraint' });
-          const neuve = { id: base[nom].length + 100, cree_le: '2026-10-24T00:00:00Z', ...ligne };
-          base[nom].push(neuve); ecrites.push(neuve);
-        }
-        return /return=representation/.test(prefer) ? repondre(201, ecrites) : repondre(201);
-      }
-      if (req.method === 'PATCH') {
-        const champs = json() || {};
-        const touchees = filtrer(base[nom], u.searchParams);
-        for (const l of touchees) Object.assign(l, champs);
-        return /return=representation/.test(prefer) ? repondre(200, touchees) : repondre(204);
-      }
-    }
-    repondre(404, { message: `relation "${t ? t[1] : u.pathname}" does not exist` });
-  });
+const faux = await fauxSupabase({
+  cle: CLE,
+  base: lignes,
+  cles: { evenements_stripe: ['id_stripe'], statistiques: ['siren', 'jour'], profils: ['siren'] },
 });
-await new Promise((r) => serveur.listen(0, '127.0.0.1', r));
-const URL_FAUSSE = `http://127.0.0.1:${serveur.address().port}`;
+const base = faux.base, vues = faux.vues;
+const URL_FAUSSE = faux.url;
 
 const sb = supabase({ url: URL_FAUSSE, cle: CLE });
 const photos = sb.stockage('photos');
@@ -256,7 +150,7 @@ try {
   fautes++;
   console.log(`  FAUTE essai interrompu — ${e.message.split('\n')[0]}`);
 } finally {
-  serveur.close();
+  faux.arreter();
   if (casse) rmSync(casse.dossier, { recursive: true, force: true });
 }
 

@@ -24,6 +24,12 @@ const present = (outil, args = ['--version']) => {
   return r.status === 0;
 };
 
+// Les deux essais qui fabriquent de vrais fichiers de photo demandent les
+// mêmes outils système : une seule réponse, pour qu'ils ne divergent jamais.
+const outilsPhotos = () => [!present('exiftool', ['-ver']) && 'exiftool',
+  !present('ffmpeg', ['-version']) && 'ffmpeg',
+  !pythonAvecHeif() && 'python + Pillow + pillow-heif'].filter(Boolean);
+
 const ETAPES = [
   { nom: 'dépôt complet', cmd: ['node', 'scripts/verifier-depot.mjs', '.'] },
   { nom: 'règles de rédaction (sites et app)', cmd: ['node', 'scripts/verifier-textes.mjs', '.'] },
@@ -33,9 +39,9 @@ const ETAPES = [
     if (!existsSync(join(RACINE, 'app', 'node_modules'))) spawnSync('npm', ['--prefix', 'app', 'ci'], { cwd: RACINE, stdio: 'inherit', shell: WIN });
   } },
   { nom: 'app : parcours et rendu (navigateur)', cmd: ['node', 'scripts/essai-app.mjs'] },
-  { nom: 'photos (service)', cmd: ['node', 'scripts/essai-photos.mjs'],
-    manque: () => [!present('exiftool', ['-ver']) && 'exiftool', !present('ffmpeg', ['-version']) && 'ffmpeg', !pythonAvecHeif() && 'python + Pillow + pillow-heif'].filter(Boolean) },
+  { nom: 'photos (service)', cmd: ['node', 'scripts/essai-photos.mjs'], manque: outilsPhotos },
   { nom: 'service : adaptateur Supabase', cmd: ['node', 'scripts/essai-service.mjs'] },
+  { nom: 'service : préparation des photos reçues', cmd: ['node', 'scripts/essai-preparation.mjs'], manque: outilsPhotos },
   { nom: 'publication par versions et Worker', cmd: ['node', 'scripts/essai-publication.mjs'] },
 ];
 if (COMPLET) {
@@ -44,6 +50,7 @@ if (COMPLET) {
     { nom: 'contre-essai : outillage', cmd: ['node', 'scripts/essai-outillage.mjs', '--contre-essai'] },
     { nom: 'contre-essai : app', cmd: ['node', 'scripts/essai-app.mjs', '--contre-essai'] },
     { nom: 'contre-essai : service', cmd: ['node', 'scripts/essai-service.mjs', '--contre-essai'] },
+    { nom: 'contre-essai : préparation des photos', cmd: ['node', 'scripts/essai-preparation.mjs', '--contre-essai'], manque: outilsPhotos },
     { nom: 'sites de démonstration (5 vérificateurs)', cmd: ['node', 'scripts/fabriquer-demo.mjs'],
       manque: () => (existsSync(join(RACINE, 'images', 'ravalement', 'sources')) ? [] : ['images/ravalement/sources (hors de Git)']) },
   );
