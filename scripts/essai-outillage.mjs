@@ -193,6 +193,7 @@ appendFileSync(process.env.CLAUDE_PROJECT_DIR + '/args.txt', process.argv.slice(
 const c = process.env.CLAUDE_PROJECT_DIR + '/compte.txt';
 const n = existsSync(c) ? Number(readFileSync(c, 'utf8')) + 1 : 1; writeFileSync(c, String(n));
 const mode = process.env.FAUX_MODE;
+if (mode === 'session' && n === 1) { console.log(JSON.stringify({ type: 'result', subtype: 'success', is_error: true, result: "You've hit your session limit · resets 5:10am (Europe/Paris)" })); process.exit(1); }
 if (mode === 'reseau' && n <= 2) { console.log(JSON.stringify({ type: 'result', subtype: 'success', is_error: true, result: "API Error: Can't reach the API server — check your internet or DNS (ENOTFOUND)" })); process.exit(1); }
 if (mode === 'connexion') { console.log(JSON.stringify({ type: 'result', subtype: 'success', is_error: true, result: 'Failed to authenticate: OAuth session expired and could not be refreshed' })); process.exit(1); }
 if (mode === 'limite' && n === 1) { console.log(JSON.stringify({ type: 'result', subtype: 'error', is_error: true, result: 'Claude usage limit reached. Your limit will reset at 3pm' })); process.exit(1); }
@@ -241,6 +242,10 @@ ok(a7.n === 1 && /plus connecté/.test(a7.log) && a7.etat.lancements === 0, 'con
 writeFileSync(etatAuto, JSON.stringify({ jour, lancements: 3, sansChangement: 3, relances: {} }));
 const a8 = auto('travaille');
 ok(a8.n === 1 && !/3 lancements de suite/.test(a8.log.split('\n').slice(0, 3).join('')), 'relancé à la main après un arrêt : repart (la stagnation de la veille ne bloque pas)', `${a8.n} lancement(s)`);
+writeFileSync(join(tmp, 'app/specs/07-TACHES.md'), TACHES('fait', 'à faire'));
+rmSync(etatAuto, { force: true });
+const a10 = auto('session');
+ok(a10.n === 2 && /Limite d'usage/.test(a10.log) && a10.etat.lancements === 1 && !/sans aucun changement/.test(a10.log), 'limite de séance de l’abonnement (« session limit · resets 5:10am ») : attente puis reprise, pas d’arrêt', `${a10.n} lancement(s), ${a10.etat.lancements} compté(s)`);
 writeFileSync(join(tmp, 'app/specs/07-TACHES.md'), TACHES('fait', 'à faire'));
 rmSync(etatAuto, { force: true });
 const a9 = auto('reseau');

@@ -51,8 +51,11 @@ Pour chaque tâche :
    une suite rouge.
 7. Mettre à jour : l'état de la tâche (« fait »), les specs si le comportement
    a changé, `memoire/maintenant.md` si l'état global change.
-8. **Enregistrer et pousser** : `git add -A`, `git commit -m "Txx : ..."`,
-   `git push`. Un travail non poussé n'existe pas.
+8. **Enregistrer et pousser** : `git status`, puis `git add` **des seuls
+   fichiers de la tâche** (jamais `git add -A`), `git commit -m "Txx : ..."`,
+   `git push`. Un travail non poussé n'existe pas. Un fichier modifié que la
+   tâche n'a pas touché vient de Cowork (voir « Deux sessions » plus bas) :
+   il part dans un commit à lui, `Cowork : <fichiers>`, sans être modifié.
 9. Passer à la suivante.
 
 **Une panne ?** (essai rouge, commande en échec, erreur, outil absent) :
@@ -70,6 +73,19 @@ diagnostic au journal ; elle est rouverte le lendemain. Permis sans demander :
 Une action refusée par le mode auto ou par un crochet n'est pas une panne :
 lire la raison et prendre une autre voie, ou bloquer la tâche si aucune voie
 permise n'existe.
+
+**Deux sessions (Claude Code et Cowork).** Fabrice travaille aussi avec Claude
+dans l'app (Cowork), qui peut déposer des fichiers dans ce dossier pendant que
+tu travailles (décisions de Fabrice, specs, lanceurs). Règles :
+
+- Cowork annonce chaque dépôt en ajoutant une ligne à `memoire/de-cowork.md`
+  (fichier que lui seul écrit) : date, fichiers, pourquoi. Tu le lis au début
+  de chaque tâche et avant chaque commit.
+- Tu ne réécris pas un fichier que Cowork vient de déposer sans l'avoir relu ;
+  s'il contredit ta tâche, la décision de Fabrice qu'il porte gagne.
+- Tu commites ses fichiers à part (`Cowork : …`), tels quels.
+- Cowork n'écrit jamais un fichier que tu as en cours de modification : il
+  vérifie la date du fichier juste avant d'écrire et renonce si elle a bougé.
 
 **Bloqué ?** (un compte, une clé, un paiement, une décision de produit, un
 appareil) : passer la tâche « bloqué », remplir la colonne « Bloqué par » avec

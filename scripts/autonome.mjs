@@ -85,7 +85,23 @@ function lancer() {
   });
 }
 
-const LIMITE = /usage limit|rate.?limit|limit (will )?reset|quota|overloaded|\b429\b|\b529\b/i;
+// Panne du 24 oct. : « You've hit your session limit · resets 5:10am » n'était
+// pas reconnu ; trois lancements perdus, puis arrêt pour toute la journée.
+const LIMITE = /usage limit|session limit|weekly limit|hit your [\w\s]*limit|rate.?limit|limit (will )?reset|resets? (at )?\d{1,2}(:\d{2})?\s*(am|pm)|quota|overloaded|\b429\b|\b529\b/i;
+
+// Attente jusqu'à l'heure de reprise annoncée (« resets 5:10am », heure de
+// Paris), plus 2 minutes ; sinon 30 minutes. Jamais plus de 6 heures d'un coup.
+function attenteLimite(texte) {
+  if (process.env.SITO_AUTONOME_ATTENTE_LIMITE !== undefined) return ATTENTE_LIMITE;
+  const m = String(texte).match(/resets?\s+(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i);
+  if (!m) return ATTENTE_LIMITE;
+  let h = Number(m[1]) % 12; if (m[3].toLowerCase() === 'pm') h += 12;
+  const min = Number(m[2] || 0);
+  const ici = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Paris' }));
+  const cible = new Date(ici); cible.setHours(h, min + 2, 0, 0);
+  if (cible <= ici) cible.setDate(cible.getDate() + 1);
+  return Math.min(6 * 3600, Math.max(60, Math.round((cible - ici) / 1000)));
+}
 
 const RESEAU = /can't reach the api server|ENOTFOUND|ECONNRESET|ETIMEDOUT|EAI_AGAIN|ECONNREFUSED|network error|socket hang up/i;
 const ATTENTE_RESEAU = Number(process.env.SITO_AUTONOME_ATTENTE_RESEAU ?? 5 * 60);
@@ -145,8 +161,9 @@ for (;;) {
     attentesLimite++;
     etat.lancements--;
     ecrireEtat(etat);
-    noter(`Limite d'usage de l'abonnement atteinte : attente de ${Math.round(ATTENTE_LIMITE / 60)} minutes (ce lancement ne compte pas).`);
-    await dormir(ATTENTE_LIMITE);
+    const attente = attenteLimite(r.texte);
+    noter(`Limite d'usage de l'abonnement atteinte : reprise dans ${Math.round(attente / 60)} minutes (ce lancement ne compte pas).`);
+    await dormir(attente);
     continue;
   }
   if (r.code !== 0) noter(`  Claude Code est sorti avec le code ${r.code}.`);
