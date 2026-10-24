@@ -15,12 +15,23 @@ de l'app.
 |---|---|
 | `liste-images.md` | les 864 images à produire, 54 par métier, avec nom de fichier, cadrage, largeur et sujet. Engendré par `node scripts/liste-images.mjs` depuis `generateur/banque/plan-images.json` |
 | `liste-images.csv` | la même liste, à cocher dans un tableur (`node scripts/liste-images.mjs --csv`) |
-| `prompts/ravalement.md` | les prompts ChatGPT du ravalement, prêts à coller : les 32 du 15 septembre et les 22 ajoutés le 2 octobre. **Seul métier fait.** |
+| `prompts/ravalement.md` | les prompts ChatGPT du ravalement, prêts à coller : les 32 du 15 septembre et les 22 ajoutés le 2 octobre |
+| `prompts/couverture.md`, `prompts/peinture.md` | les 32 prompts du premier jeu de chacun des deux métiers de la prospection (24 octobre). Les 22 suivants viendront après |
 | `ravalement/provenance.md` | quel original ChatGPT est devenu quel fichier |
 
 La source de vérité est `generateur/banque/plan-images.json` : seize métiers,
 leurs codes APE, leur mot géant, leur matière, et le sujet exact de chacune des
-54 images.
+54 images. Les dossiers, les cadrages et les largeurs attendus sont dans
+`scripts/plan-images.mjs`, lu par `liste-images.mjs` et `verifier-images.mjs` :
+une seule table, pour que la liste ne demande pas une image que le contrôle
+refuse.
+
+Avant de fabriquer un site d'un métier :
+
+```
+node scripts/verifier-images.mjs <metier>     les fichiers de images/<metier>/
+node scripts/verifier-images.mjs --prompts    les feuilles de prompts/
+```
 
 ## Les 54 images d'un métier
 

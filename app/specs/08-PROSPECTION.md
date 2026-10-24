@@ -43,7 +43,14 @@ texte par image avec son nom de fichier, d'après `banque/liste-images.csv`.
 **32 images par métier pour démarrer** (2 hero, 3 paires, 3 chantier, 5 geste,
 8 matière dont le détail principal, 5 ambiance, 3 signes), 54 ensuite. Fabrice
 les génère dans ChatGPT et les range dans `images/<métier>/` ; un script les
-vérifie (nom, taille ≥ 1600 px, paires alignées) avant toute fabrication.
+vérifie avant toute fabrication : `node scripts/verifier-images.mjs <métier>`
+(nom, cadrage, largeur, paires alignées au pixel, minimum jouable du
+générateur). La largeur exigée est la plus grande rendition que le générateur
+encode à partir du fichier : **1600 px pour un hero, 1400 px pour les autres**
+(`scripts/plan-images.mjs`, miroir de `TAILLES` dans `generateur/composer.mjs`).
+Les images n'étant pas dans Git, la suite d'essais contrôle partout l'accord
+entre les feuilles de prompts et le plan (`verifier-images.mjs --prompts`), et
+les fichiers eux-mêmes seulement là où ils sont.
 
 Les textes des sites de ces deux métiers (`generateur/metiers/<métier>.json`,
 au volume du ravalement) passent avant les 13 autres métiers de T32.

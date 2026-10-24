@@ -30,6 +30,11 @@ const outilsPhotos = () => [!present('exiftool', ['-ver']) && 'exiftool',
   !present('ffmpeg', ['-version']) && 'ffmpeg',
   !pythonAvecHeif() && 'python + Pillow + pillow-heif'].filter(Boolean);
 
+// Les images ne sont pas dans Git (décision de Fabrice : pas de Git LFS) :
+// hors de la machine de Fabrice, les essais qui les lisent ne peuvent pas
+// tourner, et le disent.
+const imagesRavalement = () => (existsSync(join(RACINE, 'images', 'ravalement', 'sources')) ? [] : ['images/ravalement/sources (hors de Git)']);
+
 const ETAPES = [
   { nom: 'dépôt complet', cmd: ['node', 'scripts/verifier-depot.mjs', '.'] },
   { nom: 'règles de rédaction (sites et app)', cmd: ['node', 'scripts/verifier-textes.mjs', '.'] },
@@ -43,6 +48,9 @@ const ETAPES = [
   { nom: 'service : adaptateur Supabase', cmd: ['node', 'scripts/essai-service.mjs'] },
   { nom: 'service : préparation des photos reçues', cmd: ['node', 'scripts/essai-preparation.mjs'], manque: outilsPhotos },
   { nom: 'prospection : extraction, note, registre', cmd: ['node', 'scripts/essai-prospection.mjs'] },
+  // Les feuilles de prompts sont dans Git, les images non : ce contrôle tourne
+  // partout, celui des fichiers (plus bas) seulement là où les images sont.
+  { nom: 'feuilles de prompts contre le plan d images', cmd: ['node', 'scripts/verifier-images.mjs', '--prompts'] },
   { nom: 'publication par versions et Worker', cmd: ['node', 'scripts/essai-publication.mjs'] },
 ];
 if (COMPLET) {
@@ -53,8 +61,10 @@ if (COMPLET) {
     { nom: 'contre-essai : service', cmd: ['node', 'scripts/essai-service.mjs', '--contre-essai'] },
     { nom: 'contre-essai : préparation des photos', cmd: ['node', 'scripts/essai-preparation.mjs', '--contre-essai'], manque: outilsPhotos },
     { nom: 'contre-essai : prospection', cmd: ['node', 'scripts/essai-prospection.mjs', '--contre-essai'] },
-    { nom: 'sites de démonstration (5 vérificateurs)', cmd: ['node', 'scripts/fabriquer-demo.mjs'],
-      manque: () => (existsSync(join(RACINE, 'images', 'ravalement', 'sources')) ? [] : ['images/ravalement/sources (hors de Git)']) },
+    { nom: 'contre-essai : feuilles de prompts', cmd: ['node', 'scripts/verifier-images.mjs', '--contre-essai-prompts'] },
+    { nom: 'images du ravalement sur le disque', cmd: ['node', 'scripts/verifier-images.mjs', 'ravalement'], manque: imagesRavalement },
+    { nom: 'contre-essai : images sur le disque', cmd: ['node', 'scripts/verifier-images.mjs', '--contre-essai'], manque: imagesRavalement },
+    { nom: 'sites de démonstration (5 vérificateurs)', cmd: ['node', 'scripts/fabriquer-demo.mjs'], manque: imagesRavalement },
   );
 }
 

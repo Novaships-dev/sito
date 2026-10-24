@@ -712,3 +712,137 @@ fois** et un faux serveur qui reproduit la sémantique mesurée de l'API.
   dépôt, l'essai entier rejoué sur chacune. Chacune est attrapée seule, aucune
   n'interrompt l'essai.
 - Branché : `scripts/essais.mjs`, `--complet`, la CI.
+
+### T35 : les deux feuilles de prompts, et le contrôle des images d'un métier
+
+Plan en trois lignes, avant de faire :
+
+1. `banque/prompts/couverture.md` et `peinture.md` : 32 prompts chacun, sur le
+   modèle du ravalement (bloc de tête collé une fois, puis une image par
+   message), avec le nom de fichier exact, le cadrage et la largeur minimale
+   lus dans le plan — l'après avant l'avant pour chaque paire.
+2. `scripts/plan-images.mjs` : une seule table des dossiers, cadrages et
+   largeurs, utilisée par `liste-images.mjs` et `verifier-images.mjs`, pour
+   que les trois réponses ne divergent plus (les anciennes largeurs de
+   `liste-images.mjs` étaient fausses des deux côtés).
+3. `scripts/verifier-images.mjs` : les fichiers sur le disque (nom, largeur,
+   cadrage, paires alignées, minimum jouable) **et** l'accord entre une feuille
+   de prompts et le plan (`--prompts`), celui-ci seul pouvant tourner dans la
+   CI puisque les images ne sont pas dans Git. Contre-essais des deux côtés.
+
+**Fait, mesuré.** Deux feuilles de prompts, une table unique, un vérificateur à
+deux faces.
+
+- `banque/prompts/couverture.md` et `banque/prompts/peinture.md` : **32 prompts
+  chacune**, sur le modèle du ravalement — un bloc de règles à coller une fois
+  en tête de conversation, puis une image par message, avec son nom de fichier,
+  son cadrage et sa largeur minimale. Les sujets viennent du plan
+  (`generateur/banque/plan-images.json`), rien n'est inventé à côté. Pour les
+  paires, l'**après est demandé avant l'avant**, l'avant étant la dégradation
+  de cette image même : deux images séparées donneraient deux bâtiments
+  différents et le comparateur du site n'aurait plus de sens.
+- La peinture se photographie dedans : le bloc de tête lui interdit la pièce de
+  catalogue (meubles design, décoration de magazine, lumière de studio) et
+  demande des logements français ordinaires, vides, éclairés par la fenêtre.
+
+**Une seule table des dossiers, des cadrages et des largeurs**
+(`scripts/plan-images.mjs`). Trois scripts posent la même question et doivent
+recevoir la même réponse. La table vivait dans `liste-images.mjs` seulement, et
+elle y était **fausse des deux côtés** : 1 300 px annoncés pour les vues de
+chantier et les gestes, que `composer.mjs` encode jusqu'à 1 400 (le site
+afficherait un agrandissement), et 1 600 px pour les ambiances, qui ne passent
+jamais par le jeu « bandeau ». La largeur exigée est maintenant la plus grande
+rendition que le générateur fabrique à partir du fichier : **1600 px pour un
+hero, 1400 px pour les autres**. `liste-images.mjs` lit la table au lieu de la
+recopier, et `banque/liste-images.md` et `.csv` ont été regénérés (864 images,
+avec le dossier de rangement en colonne).
+
+**Le vérificateur, deux faces** (`scripts/verifier-images.mjs`).
+
+1. Les **fichiers sur le disque**, `node scripts/verifier-images.mjs <metier>` :
+   présence (le nom fait foi, l'extension non), largeur, cadrage à 3 % près,
+   **paires alignées au pixel** (sinon la couture du comparateur ne tombe pas
+   au même endroit sur les deux images), et le minimum jouable demandé à la
+   fonction même du générateur (`generateur/main-photos.mjs`), pas à une liste
+   recopiée. Sur le ravalement : **32 images attendues, 0 faute**, 3 remarques
+   (les trois `signe-*` font 1 254 px). Les largeurs des trois dossiers de
+   `banque/` sont des remarques et non des fautes : **aucun code ne les lit
+   aujourd'hui**, ce sont les couches d'habillage prévues par
+   `main-photos.mjs` ; exiger une largeur que rien n'utilise serait inventer
+   une règle.
+2. Les **feuilles de prompts**, `--prompts` : chaque image du jeu a un prompt et
+   un seul, qui annonce le bon cadrage et la bonne largeur ; un nom qui n'est
+   dans aucun jeu du métier est une faute de frappe ; l'après est demandé avant
+   l'avant. **C'est le seul des deux contrôles qui tourne dans un clone neuf et
+   dans la CI**, puisque les images ne sont pas dans Git et que les feuilles,
+   elles, y sont.
+
+**Ce que le contrôle des feuilles a trouvé en naissant** : 13 largeurs périmées
+dans `banque/prompts/ravalement.md` (les trois chantier et les cinq geste
+annonçaient 1 300 px, les cinq ambiance 1 600 px). Corrigées. Le bloc « où
+ranger » de cette feuille citait encore `sources-ravalement/`, dossier qui
+n'existe plus : remis sur `images/ravalement/sources/`. Même correction dans
+`banque/liste-images.md` et dans `app/specs/08-PROSPECTION.md`, qui demandait
+« taille ≥ 1600 px » pour toutes les images.
+
+**Contre-essais, dix cassures posées une par une, chacune attrapée seule.**
+
+- Sur les fichiers (copies hors du dépôt) : une image réduite à 900 px, une
+  image absente, une paire désalignée (1448×1086 contre 1400×1050), un cadrage
+  carré au lieu de 16/9, tous les hero retirés (le générateur refuserait le
+  métier).
+- Sur les feuilles : une largeur ramenée à 1 300 px, un prompt retiré, `signe-01`
+  écrit `signes-01`, la paire 01 demandée dans le mauvais ordre, un cadrage
+  annoncé 3/2 au lieu de 16/9. Le contre-essai refuse aussi une cassure qui ne
+  changerait rien au texte : une cassure sans effet ne prouve rien.
+
+**Branché** dans `scripts/essais.mjs` : les feuilles de prompts à chaque
+passage ; en `--complet`, leur contre-essai, les images du ravalement sur le
+disque et leur contre-essai (ces deux derniers « NON LANCÉ » là où `images/`
+n'est pas, avec la raison).
+
+Ce qui reste à Fabrice : **générer les 64 images** dans ChatGPT (décision du
+24 octobre : « générer par moi à la main ») et les ranger dans
+`images/couverture/` et `images/peinture/`, puis lancer
+`node scripts/verifier-images.mjs couverture` et `… peinture`. Sans elles, T37
+sautera les deux métiers avec un message clair, et la prospection n'aura que le
+ravalement.
+
+### Deux pannes trouvées en passant la suite en mode complet (24 oct., nuit)
+
+Le mode `--complet` n'avait plus tourné en entier sur le PC depuis T34 : il
+cachait deux rouges, tous deux réparés avant de clore T35.
+
+1. **Deux cassures du contre-essai de prospection ne mordaient plus.**
+   `essai-prospection.mjs` visait `if (siege.departement !== departement)
+   return { garde: false,` et `if (annees < ancienneteMin) return { garde:
+   false,` ; `extraire.mjs` a depuis rangé ses refus derrière une fonction
+   `non(motif, detail)` (la correction du bilan des écartées, même journée).
+   Le texte ne se trouvait plus, et le contre-essai **le disait** au lieu de
+   passer au vert : « la cassure n a rien changé dans extraire.mjs : le module
+   a changé de forme », sortie 2. C'est exactement ce qu'on lui demande. Les
+   deux cassures visent maintenant `return non(` : **7 cassures, 0 non
+   attrapée**.
+2. **O6 rougissait sur les trois sites de démonstration, sous Windows
+   seulement.** `verifier-ordinateur.mjs` comparait `page.url()` à une adresse
+   fabriquée à la main, `'file://' + fichier` : sous Windows cela donne
+   `file://C:\…\index.html`, là où le navigateur rend
+   `file:///C:/…/index.html`. L'égalité était donc fausse à chaque fois, et le
+   contrôle annonçait une navigation qui n'avait pas eu lieu — sur Linux, où le
+   chemin commence par `/`, la concaténation tombe juste par hasard : la CI
+   était verte. L'adresse se demande maintenant à Node
+   (`pathToFileURL(fichier).href`), ici et dans les deux autres scripts qui
+   fabriquaient la même chaîne (`verifier-mobile.mjs`,
+   `mesure-lisibilite.mjs`). Le vérificateur ordinateur repasse à « aucun
+   constat » sur le site de Sud Ravalement, et **O6 mord toujours** :
+   contre-épreuve sur une copie du site, hors du dépôt, où un `pointerup`
+   change l'adresse — 2 bloquants O6 attrapés, un par écran.
+
+**Preuve de T35**, sur le PC de Fabrice, 24 octobre 23 h 44 :
+`node scripts/essais.mjs` → **TOUT EST VERT** (12 étapes, dont la nouvelle
+« feuilles de prompts contre le plan d images »), et
+`node scripts/essais.mjs --complet` → **TOUT EST VERT** aussi, 19 étapes, les
+trois sites de démonstration compris (479 s) : c'est ce passage-là qui a sorti
+les deux pannes ci-dessus. `memoire/essais/derniers.txt` garde le passage
+simple.
+

@@ -111,7 +111,7 @@ différents et le comparateur du site n'aurait aucun sens.
 
 ## Les trois chantier
 
-### 9 — `chantier.jpg` · 4/3 · 1300 px
+### 9 — `chantier.jpg` · 4/3 · 1400 px
 
 > Échafaudage tubulaire monté sur toute la hauteur d'une façade, dans une rue
 > étroite de Marseille. Bâche de protection tendue sur une partie, filet de
@@ -119,7 +119,7 @@ différents et le comparateur du site n'aurait aucun sens.
 > face, objectif 35 mm, hauteur d'œil. Aucune personne. Fin d'après-midi.
 > Format 4/3.
 
-### 10 — `chantier-2.jpg` · 4/3 · 1300 px
+### 10 — `chantier-2.jpg` · 4/3 · 1400 px
 
 > Pied d'un échafaudage au niveau du trottoir : seaux de mortier empilés, sacs
 > de mortier en pile, règle d'aluminium appuyée contre le tube, taloche posée
@@ -127,7 +127,7 @@ différents et le comparateur du site n'aurait aucun sens.
 > plongée. Aucune personne, aucune marque lisible sur les sacs. Lumière de fin
 > d'après-midi. Format 4/3.
 
-### 11 — `chantier-3.jpg` · 4/3 · 1300 px
+### 11 — `chantier-3.jpg` · 4/3 · 1400 px
 
 > Façade en cours de ravalement vue depuis le trottoir d'en face : partie
 > gauche piquée et grise, partie droite déjà enduite teinte sable, limite
@@ -138,7 +138,7 @@ différents et le comparateur du site n'aurait aucun sens.
 
 ## Les cinq geste — mains et outils, jamais de visage
 
-### 12 — `geste.jpg` · 4/3 · 1300 px
+### 12 — `geste.jpg` · 4/3 · 1400 px
 
 > Gros plan sur une main et un avant-bras d'artisan qui applique de l'enduit
 > contre un mur avec une taloche inox chargée de mortier. Manche de veste de
@@ -147,27 +147,27 @@ différents et le comparateur du site n'aurait aucun sens.
 > Objectif 50 mm, faible profondeur de champ, lumière rasante de fin de
 > journée. Format 4/3.
 
-### 13 — `geste-2.jpg` · 4/3 · 1300 px
+### 13 — `geste-2.jpg` · 4/3 · 1400 px
 
 > Gros plan sur une lame de gratton qui gratte un enduit encore frais : fine
 > poussière d'enduit qui tombe en suspension devant le mur, sillons réguliers
 > apparaissant sur la surface. Main gantée seulement, aucun visage. Objectif
 > 50 mm, lumière rasante qui éclaire la poussière en suspension. Format 4/3.
 
-### 14 — `geste-3.jpg` · 4/3 · 1300 px
+### 14 — `geste-3.jpg` · 4/3 · 1400 px
 
 > Deux mains qui tirent une règle d'aluminium sur un enduit frais, de bas en
 > haut, laissant une surface plane derrière elle et un bourrelet de mortier
 > devant. Cadrage serré sur les mains, la règle et le mur. Aucun visage.
 > Objectif 50 mm. Format 4/3.
 
-### 15 — `geste-4.jpg` · 4/3 · 1300 px
+### 15 — `geste-4.jpg` · 4/3 · 1400 px
 
 > Main qui passe une brosse large sur un mur de pierre pour l'humidifier avant
 > reprise : le support foncit au passage de la brosse, gouttes d'eau sur la
 > pierre. Cadrage serré, aucun visage. Objectif 50 mm. Format 4/3.
 
-### 16 — `geste-5.jpg` · 4/3 · 1300 px
+### 16 — `geste-5.jpg` · 4/3 · 1400 px
 
 > Lance de machine à projeter tenue à bout de bras, en train de projeter du
 > mortier sur un mur : jet de matière visible, éclaboussures sur l'enduit,
@@ -229,28 +229,28 @@ différents et le comparateur du site n'aurait aucun sens.
 
 ## Les cinq ambiance
 
-### 25 — `ambiance-01.jpg` · 3/2 · 1600 px
+### 25 — `ambiance-01.jpg` · 3/2 · 1400 px
 > Rue étroite de Marseille en fin d'après-midi, un échafaudage monté sur une
 > façade se découpe en silhouette à contre-jour, lumière chaude au fond de la
 > rue, façades ocre de part et d'autre. Aucune personne. Objectif 35 mm.
 > Format 3/2.
 
-### 26 — `ambiance-02.jpg` · 3/2 · 1600 px
+### 26 — `ambiance-02.jpg` · 3/2 · 1400 px
 > Outils de façadier posés au pied d'un mur enduit : taloche, seau, règle,
 > brosse. Ombres longues de fin de journée sur le trottoir. Légère plongée,
 > objectif 50 mm. Aucune personne. Format 3/2.
 
-### 27 — `ambiance-03.jpg` · 3/2 · 1600 px
+### 27 — `ambiance-03.jpg` · 3/2 · 1400 px
 > Façade terminée vue en contre-plongée depuis le pied du mur, l'enduit neuf
 > monte vers un ciel clair, tuiles canal en couronnement. Objectif 35 mm.
 > Format 3/2.
 
-### 28 — `ambiance-04.jpg` · 3/2 · 1600 px
+### 28 — `ambiance-04.jpg` · 3/2 · 1400 px
 > Filet de chantier vert tendu sur un échafaudage, photographié à contre-jour :
 > la lumière du soir passe à travers la maille, la façade derrière est
 > adoucie. Objectif 50 mm. Format 3/2.
 
-### 29 — `ambiance-05.jpg` · 3/2 · 1600 px
+### 29 — `ambiance-05.jpg` · 3/2 · 1400 px
 > Gouttière et descente d'eau en zinc neuves fixées contre un enduit sable
 > fraîchement refait, vues en léger contre-plongée, ombre portée nette sur le
 > mur. Objectif 50 mm. Format 3/2.
@@ -279,18 +279,31 @@ différents et le comparateur du site n'aurait aucun sens.
 ## Contrôle avant de ranger les fichiers
 
 1. Les trois paires se superposent : fenêtres, gouttière et trottoir au même
-   endroit sur l'avant et sur l'après.
+   endroit sur l'avant et sur l'après, et les deux fichiers ont **exactement
+   les mêmes dimensions** (le vérificateur le mesure).
 2. `hero.jpg` : la coupure est verticale et franche.
 3. `detail-enduit.jpg` : grain net à 300 % d'agrandissement, couleur chaude.
 4. Aucune image ne contient de visage ni de texte lisible.
-5. Toutes font au moins la largeur demandée.
+5. Toutes font au moins la largeur demandée : 1600 px pour les hero, 1400 px
+   pour les autres.
 
-Renommer exactement comme indiqué, puis :
+Renommer exactement comme indiqué, puis ranger :
 
 ```
-sources-ravalement/   hero, avant-01, apres-01, avant-02, apres-02,
-                      chantier, geste, detail-enduit  (+ SOURCE-ILLUSTRATION)
-banque/ravalement/    tout le reste
+images/ravalement/sources/         hero, hero-variante-2,
+                                   avant-01 à 03, apres-01 à 03,
+                                   chantier, chantier-2, chantier-3,
+                                   geste, geste-2 à geste-5, detail-enduit
+                                   (+ SOURCE-ILLUSTRATION)
+images/ravalement/banque/matiere/  matiere-02 à matiere-08
+images/ravalement/banque/ambiance/ ambiance-01 à ambiance-05
+images/ravalement/banque/signes/   signe-01 à signe-03
+```
+
+Puis mesurer, avant toute fabrication de site :
+
+```
+node scripts/verifier-images.mjs ravalement
 ```
 
 ---

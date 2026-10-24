@@ -13,20 +13,25 @@
 - **Prouvé dans un clone** : trois pannes posées exprès (paquet manquant,
   texte fautif, erreur de type) réparées seul, essais à 0, puis quatre tâches
   faites avec preuves et deux bloquées honnêtement (`memoire/journal.md`, 10 oct.).
-- **Liste de travail** : `app/specs/07-TACHES.md` (34 tâches, 12 bloquées par
-  une action de Fabrice). T00, T01, T02, T06, T07 et T34 faites (24 oct.) : le
-  service sait parler à la base et au stockage, transformer les photos que
-  l'app envoie en images propres pour le site, et la prospection sait trouver
-  et noter des artisans réels. **Prochaine tâche** : T35 (textes à coller dans
-  ChatGPT pour les images de couverture et peinture) ou T37 (fabrication du
-  lot). T02 faite : la CI est verte sur les six derniers envois, et
-  `node scripts/ci-github.mjs` la relit depuis la machine. T05 bloquée par F17.
+- **Liste de travail** : `app/specs/07-TACHES.md` (41 tâches, 12 bloquées par
+  une action de Fabrice). T00, T01, T02, T06, T07, T34 et T35 faites
+  (24 oct.) : le service sait parler à la base et au stockage, transformer les
+  photos que l'app envoie en images propres pour le site, la prospection sait
+  trouver et noter des artisans réels, et les textes à coller dans ChatGPT pour
+  les 64 images de couverture et de peinture sont prêts, avec le contrôle qui
+  les mesure. **Prochaine tâche** : T36 (textes des sites couverture et
+  peinture, au volume du ravalement). T02 faite : la CI est verte sur les six
+  derniers envois, et `node scripts/ci-github.mjs` la relit depuis la machine.
+  T05 bloquée par F17.
 - **La prospection, pièce par pièce** : 9 codes APE mesurés dans le 13,
   `prospection/metiers.json` (3 métiers), extraction qui refait tous les
   filtres de l'API (qui en ignore en silence), note sur 100 avec ses raisons,
   registre sans aucun numéro de téléphone. Essai sur 693 entreprises réelles
-  enregistrées, sans réseau. Il manque les images des deux nouveaux métiers
-  (T35, à générer par Fabrice dans ChatGPT) et la publication Cloudflare (F5).
+  enregistrées, sans réseau. Les deux feuilles de prompts sont prêtes
+  (`banque/prompts/couverture.md`, `peinture.md`, 32 images chacune) ; il manque
+  les images elles-mêmes (**F18**, à générer par Fabrice dans ChatGPT, puis
+  `node scripts/verifier-images.mjs couverture`) et la publication Cloudflare
+  (F5).
 - **La suite d'essais est verte et complète sur le PC de Fabrice** (24 oct.,
   `memoire/essais/derniers.txt`) : les 10 étapes à 0, plus aucun essai « non
   lancé ». exiftool 13.59, ffmpeg 9.0.2, Python 3.13.15 avec Pillow 13.0.0 et
@@ -126,7 +131,10 @@ de Fabrice, U3 ne les compte plus.
    entre `ravalement.json` (cinq codes) et `plan-images.json` (trois) : à
    aligner.
 3. **Les images des quinze autres métiers** : 54 chacun, 810 au total ; sujets
-   dans `banque/liste-images.md`, prompts seulement pour le ravalement.
+   dans `banque/liste-images.md`. Textes à coller dans ChatGPT prêts pour trois
+   métiers (ravalement, couverture, peinture) ; les treize autres restent à
+   écrire. Un métier se mesure avant fabrication :
+   `node scripts/verifier-images.mjs <metier>`.
 4. **Quinze images de la banque du ravalement inutilisées** : matière 02 à 08,
    ambiance 01 à 05, signes 01 à 03.
 5. **La deuxième page** n'existe que sur l'archétype `matiere`.
