@@ -8,6 +8,7 @@
 //   node scripts/verifier-ordinateur.mjs <dossier ou fichier.html>
 import { existsSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { mesurer as mesurerContraste } from './contraste-rendu.mjs';
 
 const arg = process.argv[2];
@@ -43,7 +44,10 @@ for (const e of ECRANS) {
   const dire = (num, ok, libelle, detail, remede) => {
     if (!ok) constats.push({ num, libelle: libelle + ' (' + e.nom + ')', detail, remede });
   };
-  const urlDepart = 'file://' + fichier;
+  // L adresse se demande a Node, elle ne se fabrique pas : sous Windows,
+  // 'file://' + 'C:\…\index.html' n est pas ce que le navigateur rend
+  // ensuite ('file:///C:/…/index.html'), et O6 croyait voir une navigation.
+  const urlDepart = pathToFileURL(fichier).href;
   await page.goto(urlDepart, { waitUntil: 'load' });
 
   // O1 : l ecran d entree part tout seul, meme si le script casse
@@ -226,7 +230,7 @@ for (const e of ECRANS) {
 // passaient ; la page, elle, avait change de voix.
 {
   const page = await navigateur.newPage({ viewport: { width: 1440, height: 900 } });
-  await page.goto('file://' + fichier, { waitUntil: 'load' });
+  await page.goto(pathToFileURL(fichier).href, { waitUntil: 'load' });
   await page.waitForTimeout(800);
   const r = await page.evaluate(async () => {
     await document.fonts.ready;
@@ -253,7 +257,7 @@ for (const e of ECRANS) {
 // Le 16 septembre 2026, un iPhone n a affiche qu un degrade vide.
 {
   const page = await navigateur.newPage({ viewport: { width: 1440, height: 900 }, javaScriptEnabled: false });
-  await page.goto('file://' + fichier, { waitUntil: 'load' });
+  await page.goto(pathToFileURL(fichier).href, { waitUntil: 'load' });
   await page.waitForTimeout(600);
   const caches = await page.evaluate(() => {
     const sel = 'h1, h2, p, figure, section, .nuancier, .photo, .phrase-atmo';

@@ -8,6 +8,7 @@
 
 import { existsSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { mesurer as mesurerContraste } from './contraste-rendu.mjs';
 
 const cible = process.argv[2];
@@ -50,7 +51,7 @@ for (const f of FORMATS) {
     viewport: { width: f.l, height: f.h }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
   let octets = 0, premier = true;
   page.on('response', async r => { try { if (premier) octets += (await r.body()).length; } catch { /* ignore */ } });
-  await page.goto('file://' + resolve(fichier), { waitUntil: 'networkidle' });
+  await page.goto(pathToFileURL(resolve(fichier)).href, { waitUntil: 'networkidle' });
   // Attendre que l ecran d entree soit parti et que les arrivees soient finies.
   // Mesurer pendant l animation donnait des cibles tactiles fantomes : le
   // controle M5 tombait une fois sur six, ce qui est pire que pas de controle.

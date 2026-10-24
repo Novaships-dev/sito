@@ -14,13 +14,15 @@
 import { chromium } from 'playwright';
 import { PNG } from 'pngjs';
 import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 let b=null; for (const o of [...(process.env.SITO_CHROMIUM ? [{ executablePath: process.env.SITO_CHROMIUM }] : []), {channel:'chrome'},{},{channel:'msedge'}]) { try { b = await chromium.launch(o); break; } catch {} }
 const fichier = process.argv[2] || '/tmp/site.html';
 const large = process.argv[3] === 'tel' ? 390 : 1440;
 const p = await b.newPage({ viewport:{width:large,height:900}, deviceScaleFactor:1,
   isMobile: large < 500, hasTouch: large < 500 });
-await p.goto('file://' + fichier, {waitUntil:'load'});
+await p.goto(pathToFileURL(resolve(fichier)).href, {waitUntil:'load'});
 await p.waitForTimeout(3200);
 await p.evaluate(async()=>{ await new Promise(r=>{ let y=0; const s=()=>{ window.scrollTo(0,y); y+=700;
   if (y<document.body.scrollHeight+900) setTimeout(s,50); else { window.scrollTo(0,0); setTimeout(r,600);} }; s(); }); });
