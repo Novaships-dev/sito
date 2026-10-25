@@ -48,6 +48,10 @@ const ETAPES = [
   { nom: 'service : adaptateur Supabase', cmd: ['node', 'scripts/essai-service.mjs'] },
   { nom: 'service : préparation des photos reçues', cmd: ['node', 'scripts/essai-preparation.mjs'], manque: outilsPhotos },
   { nom: 'prospection : extraction, note, registre', cmd: ['node', 'scripts/essai-prospection.mjs'] },
+  // La fabrication du lot sans aucune image : un métier sans images est sauté,
+  // les données du générateur n'inventent rien, les slugs ne se répètent pas.
+  // La fabrication réelle demande les images : elle est plus bas.
+  { nom: 'prospection : fabrication du lot', cmd: ['node', 'scripts/essai-lot.mjs'] },
   // Les feuilles de prompts sont dans Git, les images non : ce contrôle tourne
   // partout, celui des fichiers (plus bas) seulement là où les images sont.
   { nom: 'feuilles de prompts contre le plan d images', cmd: ['node', 'scripts/verifier-images.mjs', '--prompts'] },
@@ -61,9 +65,11 @@ if (COMPLET) {
     { nom: 'contre-essai : service', cmd: ['node', 'scripts/essai-service.mjs', '--contre-essai'] },
     { nom: 'contre-essai : préparation des photos', cmd: ['node', 'scripts/essai-preparation.mjs', '--contre-essai'], manque: outilsPhotos },
     { nom: 'contre-essai : prospection', cmd: ['node', 'scripts/essai-prospection.mjs', '--contre-essai'] },
+    { nom: 'contre-essai : fabrication du lot', cmd: ['node', 'scripts/essai-lot.mjs', '--contre-essai'] },
     { nom: 'contre-essai : feuilles de prompts', cmd: ['node', 'scripts/verifier-images.mjs', '--contre-essai-prompts'] },
     { nom: 'images du ravalement sur le disque', cmd: ['node', 'scripts/verifier-images.mjs', 'ravalement'], manque: imagesRavalement },
     { nom: 'contre-essai : images sur le disque', cmd: ['node', 'scripts/verifier-images.mjs', '--contre-essai'], manque: imagesRavalement },
+    { nom: 'lot de prospection : deux sites fabriqués pour de vrai', cmd: ['node', 'scripts/essai-lot.mjs', '--complet'], manque: imagesRavalement },
     { nom: 'sites de démonstration (5 vérificateurs)', cmd: ['node', 'scripts/fabriquer-demo.mjs'], manque: imagesRavalement },
   );
 }

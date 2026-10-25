@@ -910,3 +910,91 @@ d'habitation. Promettre « décoration » sans contenu derrière serait écrire 
 phrase que la page ne tient pas. Le libellé de la prospection, qui sert à
 filtrer l'API, n'a pas été touché.
 
+### T37 : la fabrication du lot du jour
+
+Plan en trois lignes, avant de faire :
+
+1. Lire ce que la pièce doit relier : la qualification en amont
+   (`qualifier.lot()`, qui dit qui appeler), le générateur en aval
+   (`composer.mjs --donnees --registre`), et les trois vérificateurs
+   (`verifier-site`, `verifier-mobile`, `verifier-unicite`).
+2. Écrire `scripts/prospection/fabriquer-lot.mjs` : dix sites par métier
+   **prêt**, en mode prospection (photos de la banque, mention visible), un
+   métier sans images sauté avec son message, le slug tiré et inscrit au
+   registre des artisans.
+3. Prouver sur le ravalement, le seul métier qui a ses images aujourd'hui :
+   dix sites fabriqués et vérifiés pour de vrai, et les deux autres métiers
+   sautés proprement.
+
+**Fait.** La pièce est entre la qualification et la publication. Quatre
+décisions de structure, parce qu'elles se paieraient cher plus tard :
+
+**Un métier sans images est sauté, pas fabriqué de travers.** La réponse à
+« les images sont-elles là ? » ne vient pas d'un `existsSync` recopié mais de
+`verifier-images.mjs` lui-même : une image trop petite ou une paire avant/après
+désalignée rendrait le site bancal, et il vaut mieux sauter le métier. Pour
+cela, `verifier-images.mjs` a reçu la garde `pathToFileURL(process.argv[1])` :
+il s'importe sans que sa ligne de commande s'exécute. Le marqueur
+`SOURCE-ILLUSTRATION` est exigé **en plus** des images : sans lui, le
+générateur ne poserait pas la mention « images d'illustration » et le site
+montrerait des photos de banque sans le dire. Mieux vaut aucun site qu'un site
+qui ment. Ce qui bloque un métier ne bloque pas les autres : couverture et
+peinture attendent F18, le ravalement se fabrique quand même.
+
+**Deux registres, qui ne se mélangent jamais.** `prospection/registre.json`
+garde les artisans (qui a reçu un site, quand, sous quel slug, où en est
+l'appel) ; `prospection/registre-sites.json` garde l'unicité des sites de
+prospection, l'équivalent de `generateur/registre.json` pour la démonstration.
+Les mêler aurait fait compter les trois sites de démonstration comme des
+voisins des sites de prospection, et l'inverse aussi.
+
+**Le slug est tiré ici, pas à la publication.** Seize caractères de
+`randomBytes`, jamais `Math.random` : l'adresse du site privé est son seul
+secret. Il est inscrit au registre avec le jour ; `publier.mjs` le relira au
+lieu de le refaire. La spec (`08-PROSPECTION.md`) l'attribuait à la
+publication : elle est corrigée, ligne de `fabriquer-lot.mjs`.
+
+**Rien n'est inventé pour le générateur.** `donneesSirene()` recopie la forme
+de l'API : un champ que l'extraction n'a pas (adresse, SIRET, forme juridique)
+reste `null` et la page affiche le vide tel quel ; `est_rge` absent vaut faux,
+jamais vrai par défaut.
+
+**La preuve, sur les vraies entreprises.** Dix ravaleurs réels du 13, pris
+dans les mieux notés des 693 entreprises enregistrées, fabriqués par la ligne
+de commande (`--lot`, `--mobile 1`) :
+
+| Mesure | Résultat |
+|---|---|
+| sites fabriqués | **10 / 10**, 0 sauté, 0 en échec |
+| notes | 83, 77, 73, 72, puis six à 68 |
+| `verifier-site` | passé sur chacun des dix |
+| `verifier-mobile` | passé sur 749892089, ok (3 appareils) |
+| unicité du lot | « Aucun constat. Deux voisins ne se ressemblent pas. » |
+| registre des artisans | 10 inscrits, 10 slugs distincts, statut `a-appeler`, `valider()` à 0 faute, aucun champ de téléphone |
+| mention d'illustration | `<meta name="atelier-images" content="illustration">` sur les dix pages |
+
+La preuve a tourné avec `--sortie`, `--registre` et `--appels` dans le dossier
+temporaire : **le `prospection/registre.json` versionné n'a pas bougé**, parce
+que ces dix artisans n'ont reçu aucun site en ligne (la publication est T38).
+Inscrire un site non publié aurait écrit une chose fausse dans le registre.
+
+**L'essai** (`scripts/essai-lot.mjs`) est coupé en deux, parce que les images
+ne sont pas dans Git : 25 contrôles qui ne demandent aucune image (un métier
+sans images sauté avec son message, F18 et la commande nommés ; les données du
+générateur qui n'inventent rien ; 500 slugs tirés, aucun deux fois ; le
+registre qui refuse un numéro de téléphone), et 54 en `--complet`, qui
+fabriquent deux sites de ravalement pour de vrai et relisent leur registre.
+**Contre-essai** : trois cassures posées une par une dans une copie du module
+hors du dépôt — le marqueur plus exigé, le slug devenu devinable, un métier
+sans images fabriqué quand même — **chacune attrapée**, et une cassure qui ne
+trouverait plus son texte compterait comme ratée (piège du 24 octobre).
+
+**Branché dans `scripts/essais.mjs`** : la moitié sans images à chaque passage,
+le contre-essai et la fabrication réelle en `--complet` (celle-ci « NON LANCÉ »
+là où `images/` n'est pas, avec la raison).
+
+**Un piège retrouvé en passant.** Le vérificateur mobile sur un lot dépasse les
+dix minutes de l'outil : le lot a été lancé en arrière-plan, comme le piège du
+2 octobre le demande. Et pour fabriquer la liste d'essai, un script hors du
+dépôt importait les modules par chemin absolu Windows : Node refuse
+(`ERR_UNSUPPORTED_ESM_URL_SCHEME`, « protocol 'c:' »), il faut `file:///C:/…`.

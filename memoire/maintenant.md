@@ -1,8 +1,8 @@
-# État au 10 octobre 2026
+# État au 25 octobre 2026
 
 À lire en premier, à chaque séance. Réécrit à la fin de chaque séance.
 
-## En bref, 10 octobre 2026
+## En bref, 25 octobre 2026
 
 - **Claude Code travaille et se dépanne seul** (décisions de Fabrice du
   10 octobre) : `lanceurs\CLAUDE_AUTONOME.bat` → `scripts/autonome.mjs`, mode
@@ -14,15 +14,15 @@
   texte fautif, erreur de type) réparées seul, essais à 0, puis quatre tâches
   faites avec preuves et deux bloquées honnêtement (`memoire/journal.md`, 10 oct.).
 - **Liste de travail** : `app/specs/07-TACHES.md` (41 tâches, 12 bloquées par
-  une action de Fabrice). T00, T01, T02, T06, T07, T34 et T35 faites
-  (24 oct.) : le service sait parler à la base et au stockage, transformer les
+  une action de Fabrice). T00, T01, T02, T06, T07, T34, T35, T36 et T37 faites
+  (25 oct.) : le service sait parler à la base et au stockage, transformer les
   photos que l'app envoie en images propres pour le site, la prospection sait
-  trouver et noter des artisans réels, et les textes à coller dans ChatGPT pour
-  les 64 images de couverture et de peinture sont prêts, avec le contrôle qui
-  les mesure. **Prochaine tâche** : T36 (textes des sites couverture et
-  peinture, au volume du ravalement). T02 faite : la CI est verte sur les six
-  derniers envois, et `node scripts/ci-github.mjs` la relit depuis la machine.
-  T05 bloquée par F17.
+  trouver et noter des artisans réels, les trois métiers ont leurs textes de
+  site, et **le lot du jour se fabrique** : dix sites par métier prêt, en mode
+  prospection, vérifiés un par un. **Prochaine tâche** : T38 (publication
+  privée sur Cloudflare Pages), qui a besoin de la clé de Fabrice (**F5**).
+  T02 faite : la CI est verte sur les six derniers envois, et
+  `node scripts/ci-github.mjs` la relit depuis la machine. T05 bloquée par F17.
 - **La prospection, pièce par pièce** : 9 codes APE mesurés dans le 13,
   `prospection/metiers.json` (3 métiers), extraction qui refait tous les
   filtres de l'API (qui en ignore en silence), note sur 100 avec ses raisons,
@@ -32,6 +32,13 @@
   les images elles-mêmes (**F18**, à générer par Fabrice dans ChatGPT, puis
   `node scripts/verifier-images.mjs couverture`) et la publication Cloudflare
   (F5).
+- **Le lot du jour est fabricable** (T37, 25 oct.) : dix ravaleurs réels du 13,
+  dix sites sur dix, 0 en échec, chacun passé à `verifier-site`, un passé au
+  vérificateur mobile, unicité du lot sans constat, dix slugs de 16 caractères
+  inscrits au registre. Couverture et peinture sont **sautées avec leur
+  message** tant que F18 n'est pas fait : ce qui bloque un métier ne bloque pas
+  les autres. Rien n'a été écrit dans `prospection/registre.json` : ces dix
+  artisans n'ont reçu aucun site, la mise en ligne est T38.
 - **La suite d'essais est verte et complète sur le PC de Fabrice** (24 oct.,
   `memoire/essais/derniers.txt`) : les 10 étapes à 0, plus aucun essai « non
   lancé ». exiftool 13.59, ffmpeg 9.0.2, Python 3.13.15 avec Pillow 13.0.0 et

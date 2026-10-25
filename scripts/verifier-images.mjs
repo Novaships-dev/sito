@@ -35,6 +35,7 @@
 import { existsSync, readdirSync, mkdirSync, cpSync, rmSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 import sharp from 'sharp';
 import { RACINE } from './env.mjs';
 import { images, cadrage, EXTENSIONS, plan } from './plan-images.mjs';
@@ -286,6 +287,11 @@ function contreEssaiPrompts(cle, dossier) {
 }
 
 // --------------------------------------------------------------------- en ligne
+// Le bloc qui suit ne tourne que si ce fichier est la commande lancée : les
+// deux fonctions ci-dessus s'importent (la fabrication du lot de prospection
+// demande si les images d'un métier sont prêtes avant de fabriquer).
+const enLigne = process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url;
+
 const USAGE = `usage :
   node scripts/verifier-images.mjs <metier> [--complet] [--racine <dossier>]
       les fichiers d images sur le disque (hors de Git)
@@ -302,7 +308,9 @@ const prompts = join(RACINE, 'banque', 'prompts');
 const cleDemandee = args.find((a, i) => !a.startsWith('--') && !(iRacine >= 0 && i === iRacine + 1));
 const jeu = args.includes('--complet') ? 'complet' : 'demarrage';
 
-if (args.includes('--contre-essai-prompts')) {
+if (!enLigne) {
+  // importé : rien ne s exécute.
+} else if (args.includes('--contre-essai-prompts')) {
   process.exitCode = contreEssaiPrompts('ravalement', prompts) ? 1 : 0;
 } else if (args.includes('--contre-essai')) {
   if (!existsSync(join(racine, 'ravalement', 'sources'))) {
