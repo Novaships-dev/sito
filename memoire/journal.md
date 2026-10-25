@@ -998,3 +998,110 @@ dix minutes de l'outil : le lot a été lancé en arrière-plan, comme le piège
 2 octobre le demande. Et pour fabriquer la liste d'essai, un script hors du
 dépôt importait les modules par chemin absolu Windows : Node refuse
 (`ERR_UNSUPPORTED_ESM_URL_SCHEME`, « protocol 'c:' »), il faut `file:///C:/…`.
+
+### T38 : la publication privée sur Cloudflare Pages
+
+Plan en trois lignes, avant de faire :
+
+1. Lire ce que l'API Pages demande vraiment (envoi direct : jeton d'envoi,
+   `check-missing`, `upload`, `upsert-hashes`, dépôt avec manifeste) au lieu de
+   le supposer, et comment Cloudflare calcule l'empreinte d'un fichier.
+2. Écrire le dialogue (`cloudflare-pages.mjs`), la décision de publication
+   (`publier.mjs`) et un faux Cloudflare qui refait les règles de l'API, pour
+   que le **vrai** client soit le code mesuré.
+3. Prouver sans compte : noindex partout, aucune page d'index, images communes
+   montées une fois, retrait à 30 jours et retrait le jour même ; contre-essai
+   sur chaque règle.
+
+**Fait**, sauf la seule chose qui demande Fabrice : la première publication
+réelle (**F5**). Quatre décisions de structure :
+
+**Pages déploie le projet entier, pas un site.** C'est le fait qui commande
+tout le reste : un dépôt porte le plan complet du projet `sito-demo`. Publier
+le lot du jour, c'est donc redéployer **tous les sites encore vivants**. Un
+site retiré n'est pas effacé : il n'entre plus au manifeste, et son adresse
+rend 404. Le « retrait à 30 jours » n'est pas un ménage à faire, c'est une
+omission.
+
+**Un manifeste n'a besoin que d'empreintes, pas de fichiers.** Les fichiers
+restent dans le magasin du projet d'un dépôt au suivant. D'où
+`prospection/en-ligne.json` (versionné, comme le registre) : pour chaque slug,
+son plan chemin → empreinte. Les sites des jours précédents se redéploient
+**sans que leurs dossiers soient encore sur le disque et sans renvoyer un
+octet** — mesuré : après avoir effacé les dossiers, le projet se redéploie,
+0 fichier monté, le site retiré en moins.
+
+**L'empreinte n'est pas un SHA.** Cloudflare attend
+`blake3(base64(contenu) + extension sans le point)`, en hexadécimal coupé à
+32 signes — c'est `hashFile` de `@cloudflare/deploy-helpers`, le code dont
+wrangler se sert. Un SHA-256 ferait tout remonter à chaque dépôt et
+`check-missing` ne servirait plus à rien ; or c'est précisément lui qui fait
+que **les images de banque partagées par trente sites ne montent qu'une
+fois**. Node ne sait pas faire blake3 (seulement blake2b512 et blake2s256) :
+`hash-wasm` installé (gratuit, libre, sans droits d'administrateur, zéro
+dépendance), le paquet que wrangler utilise lui aussi. Son blake3 a été
+recoupé avec les vecteurs officiels (chaîne vide et « abc ») avant d'être cru.
+
+**Le faux Cloudflare est un `fetch`, pas une doublure.** Même parti que
+`faux-recherche-entreprises.mjs` : le faux est passé au vrai client, qui n'est
+pas modifié pour l'essai. Il refait quatre règles de l'API, parce qu'un essai
+qui les ignore ne prouverait rien : les **deux signatures** (les trois appels
+de fichiers n'acceptent que le jeton d'envoi, pas celui du compte) ;
+`check-missing` qui ne rend que ce qui manque ; **un manifeste désignant une
+empreinte absente est refusé** (sans quoi oublier un fichier passerait
+inaperçu et le site serait troué en ligne) ; `_headers` qui est un réglage et
+non un fichier servi.
+
+**La preuve** (`node scripts/essai-publication-prospection.mjs`) : **68
+contrôles, 0 faute**, et **dix cassures posées une par une, chacune
+attrapée**. Ce qui est mesuré sur ce que reçoit le visiteur : la
+racine du projet rend **404** (aucune page d'accueil) ; chaque page et chaque
+image portent `X-Robots-Tag: noindex` ; `robots.txt` interdit tout ;
+`donnees.json`, `sirene.json` et les fichiers cachés ne sont pas publiés et
+rendent 404 ; onze contenus distincts pour trois sites, l'image partagée
+comptée **une fois** ; un second dépôt ne renvoie rien ; un abonné garde son
+site quel que soit son âge, un site de 30 jours pile reste, 54 jours part,
+« ne plus appeler » part le jour même ; `--sec` ne fait aucun appel.
+
+**Le contre-essai a trouvé un trou dans l'essai lui-même**, ce qui est tout
+son intérêt. Sept cassures posées une par une ; six rougissaient, la septième
+non : remplacer blake3 par un SHA-256 **passait**. Raison : l'essai calculait
+l'empreinte attendue avec la fonction qu'il essayait, donc l'attente bougeait
+avec elle. Réparé en écrivant des **témoins en dur** (l'empreinte d'un `.webp`
+connu, d'un `.txt` connu, et le même contenu sous deux extensions, qui doivent
+différer). La leçon est celle du haut de `pieges.md` : un essai qui se mesure à
+lui-même ne mesure rien.
+
+**Mesuré aussi sur le vrai lot de T37**, par la ligne de commande et en mode
+`--sec` (aucun appel) : les dix sites de ravalement donnent **713 chemins au
+manifeste pour 167 fichiers distincts à monter**. Les 546 autres chemins
+désignent des empreintes déjà présentes : ce sont les images de banque, les
+mêmes pour les dix artisans, et elles ne monteront qu'une fois. Le partage
+n'est donc pas une propriété de trois sites d'essai, il se voit sur le lot
+réel.
+
+**Et une faute trouvée en relisant mon propre code**, qu'aucun essai ne
+couvrait : les sites du lot entraient au manifeste **sans demander au registre
+s'il les gardait**. Un artisan qui dit « ne plus appeler » entre la fabrication
+du soir et la publication aurait vu son site mis en ligne quand même, parce que
+son dossier était sur le disque. C'est le registre qui décide, jamais le lot :
+un slug que le plan ne garde pas est écarté, ses fichiers ne sont même pas
+montés, et le bilan le dit (`ecartes`).
+
+Durci dans le même esprit : une **date de site illisible fait retirer**, pas
+garder. `registre.ecrire()` refuse d'écrire une date mal formée, donc une telle
+date vient d'une retouche à la main ; un site qu'on ne sait pas dater ne peut
+pas tenir la promesse des trente jours, il sort, et son motif le dit. Garder
+par défaut aurait laissé un site en ligne sans fin, en silence.
+
+**Et le contre-essai a repris la main une seconde fois.** La garde ci-dessus
+testait `Number.isFinite(age)` ; la cassure correspondante est **passée**. La
+raison vaut d'être écrite : `Date.parse('le 3 mars')` **ne rend pas NaN**. V8 y
+lit mars 2001, l'âge devient 9 367 jours, le site est retiré — pour la mauvaise
+raison — et la branche de précaution n'est jamais atteinte. Le garde-fou avait
+l'air de marcher parce qu'un autre chemin donnait par hasard le bon verdict.
+Réparé en vérifiant la **forme** de la date avant tout calcul, avec la même
+expression que le registre, et en essayant les trois cas : illisible franche,
+`2026-13-45`, et « le 3 mars », celle qui ment. Dixième cassure ajoutée ; les
+dix rougissent. Huitième cassure ajoutée au
+contre-essai, qui rougit.

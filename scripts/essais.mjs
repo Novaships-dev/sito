@@ -52,6 +52,9 @@ const ETAPES = [
   // les données du générateur n'inventent rien, les slugs ne se répètent pas.
   // La fabrication réelle demande les images : elle est plus bas.
   { nom: 'prospection : fabrication du lot', cmd: ['node', 'scripts/essai-lot.mjs'] },
+  // La publication privée contre un faux Cloudflare : aucun compte, aucun
+  // réseau. La première publication réelle attend l'action F5.
+  { nom: 'prospection : publication privée', cmd: ['node', 'scripts/essai-publication-prospection.mjs'] },
   // Les feuilles de prompts sont dans Git, les images non : ce contrôle tourne
   // partout, celui des fichiers (plus bas) seulement là où les images sont.
   { nom: 'feuilles de prompts contre le plan d images', cmd: ['node', 'scripts/verifier-images.mjs', '--prompts'] },
@@ -66,6 +69,7 @@ if (COMPLET) {
     { nom: 'contre-essai : préparation des photos', cmd: ['node', 'scripts/essai-preparation.mjs', '--contre-essai'], manque: outilsPhotos },
     { nom: 'contre-essai : prospection', cmd: ['node', 'scripts/essai-prospection.mjs', '--contre-essai'] },
     { nom: 'contre-essai : fabrication du lot', cmd: ['node', 'scripts/essai-lot.mjs', '--contre-essai'] },
+    { nom: 'contre-essai : publication privée', cmd: ['node', 'scripts/essai-publication-prospection.mjs', '--contre-essai'] },
     { nom: 'contre-essai : feuilles de prompts', cmd: ['node', 'scripts/verifier-images.mjs', '--contre-essai-prompts'] },
     { nom: 'images du ravalement sur le disque', cmd: ['node', 'scripts/verifier-images.mjs', 'ravalement'], manque: imagesRavalement },
     { nom: 'contre-essai : images sur le disque', cmd: ['node', 'scripts/verifier-images.mjs', '--contre-essai'], manque: imagesRavalement },

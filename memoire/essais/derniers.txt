@@ -1,29 +1,31 @@
-Essais du dimanche 25 octobre 2026 à 16:33 (heure de Paris), win32, commit 61b5a83, mode complet
+Essais du dimanche 25 octobre 2026 à 17:05 (heure de Paris), win32, commit f345554, mode complet
 
-OK         dépôt complet (5 s) Depot complet. 298 fichiers, aucune piece manquante.
-OK         règles de rédaction (sites et app) (1 s) Aucune signature textuelle detectee.
-OK         aucun secret (1 s) Aucun secret trouvé.
+OK         dépôt complet (0 s) Depot complet. 302 fichiers, aucune piece manquante.
+OK         règles de rédaction (sites et app) (0 s) Aucune signature textuelle detectee.
+OK         aucun secret (0 s) Aucun secret trouvé.
 OK         outillage de Claude Code (12 s) 91 contrôles, 0 faute(s).
-OK         app : types et construction (70 s) [33m[plugin builtin:vite-reporter]
-OK         app : parcours et rendu (navigateur) (42 s) 96 contrôles, 0 faute(s).
-OK         photos (service) (21 s) 18 fichiers, 0 faute(s). Dossier : C:\Users\fabri\AppData\Local\Temp\essai-photos-GOBLFt
+OK         app : types et construction (13 s) [33m[plugin builtin:vite-reporter]
+OK         app : parcours et rendu (navigateur) (35 s) 96 contrôles, 0 faute(s).
+OK         photos (service) (16 s) 18 fichiers, 0 faute(s). Dossier : C:\Users\fabri\AppData\Local\Temp\essai-photos-rUeBfK
 OK         service : adaptateur Supabase (1 s) 28 contrôles, 0 faute(s).
-OK         service : préparation des photos reçues (9 s) 77 contrôles, 0 faute(s). Dossier : C:\Users\fabri\AppData\Local\Temp\essai-preparation-EkBpwl
+OK         service : préparation des photos reçues (6 s) 77 contrôles, 0 faute(s). Dossier : C:\Users\fabri\AppData\Local\Temp\essai-preparation-ERJQ1z
 OK         prospection : extraction, note, registre (0 s) 93 contrôles, 0 faute(s).
 OK         prospection : fabrication du lot (2 s) La fabrication réelle de deux sites s essaie avec --complet (demande les images du ravalement).
+OK         prospection : publication privée (0 s) 68 contrôles, 0 faute(s).
 OK         feuilles de prompts contre le plan d images (0 s) 3 feuille(s) de prompts (couverture, peinture, ravalement), 0 faute(s).
-OK         publication par versions et Worker (5 s) 0 faute(s). Dossier : C:\Users\fabri\AppData\Local\Temp\essai-publication-m6je36
+OK         publication par versions et Worker (4 s) 0 faute(s). Dossier : C:\Users\fabri\AppData\Local\Temp\essai-publication-EB8cTg
 OK         contre-essai : secrets (0 s) 
-OK         contre-essai : outillage (9 s) 91 contrôles, 54 faute(s).
-OK         contre-essai : app (6 s) 12 contrôles, 0 faute(s).
+OK         contre-essai : outillage (7 s) 91 contrôles, 54 faute(s).
+OK         contre-essai : app (3 s) 12 contrôles, 0 faute(s).
 OK         contre-essai : service (1 s) 28 contrôles, 22 faute(s).
-OK         contre-essai : préparation des photos (25 s) FAUTE p3 : octets reste la taille du fichier reçu — 2270 au lieu de 3547
+OK         contre-essai : préparation des photos (18 s) FAUTE p3 : octets reste la taille du fichier reçu — 2270 au lieu de 3547
 OK         contre-essai : prospection (2 s) FAUTE un numéro écrit « 06.12.34.56.78 » est refusé — aucune faute relevée
-OK         contre-essai : fabrication du lot (22 s) sortie 1 : FAUTE les trois entreprises du métier sont comptées comme sautées — 0
+OK         contre-essai : fabrication du lot (19 s) sortie 1 : FAUTE les trois entreprises du métier sont comptées comme sautées — 0
+OK         contre-essai : publication privée (15 s) sortie 1 : FAUTE l empreinte d un .webp connu est celle attendue — f8e3cab7354bfe0c3768f6096dcf8c44
 OK         contre-essai : feuilles de prompts (0 s) 1 faute(s) : ravalement.md ligne 31, `hero.jpg` : le cadrage 16/9 n est pas annoncé
 OK         images du ravalement sur le disque (0 s) 32 images attendues, 0 faute(s), 3 remarque(s).
-OK         contre-essai : images sur le disque (8 s) 3 faute(s) : sources/hero.jpg manque | sources/hero-variante-2.jpg manque
-OK         lot de prospection : deux sites fabriqués pour de vrai (160 s) 54 contrôles, 0 faute(s).
-OK         sites de démonstration (5 vérificateurs) (401 s) --- fichiers uniques
+OK         contre-essai : images sur le disque (5 s) 3 faute(s) : sources/hero.jpg manque | sources/hero-variante-2.jpg manque
+OK         lot de prospection : deux sites fabriqués pour de vrai (151 s) 54 contrôles, 0 faute(s).
+OK         sites de démonstration (5 vérificateurs) (349 s) --- fichiers uniques
 
 Verdict : TOUT EST VERT

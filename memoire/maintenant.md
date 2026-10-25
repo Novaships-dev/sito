@@ -18,9 +18,10 @@
   (25 oct.) : le service sait parler à la base et au stockage, transformer les
   photos que l'app envoie en images propres pour le site, la prospection sait
   trouver et noter des artisans réels, les trois métiers ont leurs textes de
-  site, et **le lot du jour se fabrique** : dix sites par métier prêt, en mode
-  prospection, vérifiés un par un. **Prochaine tâche** : T38 (publication
-  privée sur Cloudflare Pages), qui a besoin de la clé de Fabrice (**F5**).
+  site, **le lot du jour se fabrique** (dix sites par métier prêt, vérifiés un
+  par un) et **il se publie, privé** : noindex partout, aucune page d'accueil,
+  retrait à 30 jours. **Prochaine tâche** : T39 (la page d'appels du jour sur
+  l'iPhone).
   T02 faite : la CI est verte sur les six derniers envois, et
   `node scripts/ci-github.mjs` la relit depuis la machine. T05 bloquée par F17.
 - **La prospection, pièce par pièce** : 9 codes APE mesurés dans le 13,
@@ -39,6 +40,14 @@
   message** tant que F18 n'est pas fait : ce qui bloque un métier ne bloque pas
   les autres. Rien n'a été écrit dans `prospection/registre.json` : ces dix
   artisans n'ont reçu aucun site, la mise en ligne est T38.
+- **La publication privée est écrite et prouvée sans compte** (T38, 25 oct.) :
+  68 contrôles sur un faux Cloudflare qui refait les règles de l'API, et
+  10 cassures posées une par une, chacune attrapée. Ce que voit un visiteur :
+  la racine rend 404, chaque page et chaque image portent `noindex`,
+  `robots.txt` interdit tout, et les images de banque ne montent qu'une fois.
+  **Ce qui manque est le compte Cloudflare lui-même (F5)** : tant qu'il
+  n'existe pas, aucun site n'est réellement en ligne, et « publication
+  Cloudflare » n'est pas une chose prouvée — seulement un code mesuré.
 - **La suite d'essais est verte et complète sur le PC de Fabrice** (24 oct.,
   `memoire/essais/derniers.txt`) : les 10 étapes à 0, plus aucun essai « non
   lancé ». exiftool 13.59, ffmpeg 9.0.2, Python 3.13.15 avec Pillow 13.0.0 et
