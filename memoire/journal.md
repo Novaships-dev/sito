@@ -1105,3 +1105,74 @@ expression que le registre, et en essayant les trois cas : illisible franche,
 `2026-13-45`, et « le 3 mars », celle qui ment. Dixième cassure ajoutée ; les
 dix rougissent. Huitième cassure ajoutée au
 contre-essai, qui rougit.
+
+### T39 : la page d'appels du jour, et les résultats
+
+Plan en trois lignes, avant de faire :
+
+1. Lire ce que le registre sait déjà faire (`appelable`, `relancesDues`,
+   `resultat`) : la décision de qui appeler est écrite depuis T34, la page ne
+   doit pas la refaire.
+2. Fabriquer la page (`page-appels.mjs`, HTML statique, iPhone d'abord) et la
+   fonction qui enregistre (`worker/appels.js`, le `_worker.js` du projet
+   Pages, branché sur un KV gratuit).
+3. Prouver au doigt, sur 390 px, dans un vrai navigateur : toucher un bouton,
+   relire le résultat dans KV, et vérifier qu'un échec ne mente pas.
+
+**Fait**, sauf le KV réel (**F5**). Ce qui a demandé une décision :
+
+**La page ne décide rien.** Qui appeler est déjà écrit dans le registre :
+`appelsDuJour()` compose les relances dues (devant, c'est la seule promesse
+faite à quelqu'un) puis les appelables du lot, les mieux notés d'abord, et
+range les autres dans « pas aujourd'hui » **avec leur raison** — déjà appelé
+le jour même, abonné, ne plus appeler. Une absence qui ne s'explique pas
+ressemble à une panne.
+
+**KV est une boîte aux lettres, pas une base.** Le Worker écrit
+`resultat:<siren>` et s'arrête là ; le soir, `/preparer-appels` relit et
+reporte dans `prospection/registre.json`, qui reste la vérité versionnée.
+Deux sources de vérité auraient divergé le premier jour d'avion sans réseau.
+
+**Aucun numéro, deux fois gardé.** Ni la page ni KV n'en portent : le Worker
+refuse un corps où un numéro traîne (cherché dans le corps **entier**, pas
+champ par champ), et la page est relue par `verifier()` avant d'être écrite.
+C'est la même expression que le registre : la page ne peut pas être plus
+laxiste que lui.
+
+**Un échec ne s'affiche pas comme un succès.** Si l'enregistrement rate, le
+bouton ne reste pas allumé et la fiche écrit « Pas enregistré : … À refaire ».
+Mieux vaut un appel refait qu'un résultat cru à tort — c'est mesuré, en
+coupant l'API avec `page.route`.
+
+**« Liens ouverts » est le seul chiffre qui ne vient pas du registre** : il se
+passe chez le visiteur. Le Worker compte une vue quand la **page** d'un site
+est servie — pas ses images (un site de soixante-dix fichiers vaudrait soixante-
+dix visites), pas ses autres pages (le lien envoyé est la racine), pas la page
+d'appels de Fabrice. KV n'a pas d'incrément atomique : deux vues à la même
+seconde peuvent n'en faire qu'une, donc ce chiffre est un indice et il est
+présenté comme tel. Un compte inconnu s'affiche **« ? »**, jamais « 0 », qui
+voudrait dire « personne n'a ouvert ».
+
+**La preuve** : **79 contrôles, 0 faute**, dont le navigateur à 390 px —
+aucun bouton sous 44 px (plancher d'Apple), rien ne dépasse à droite,
+« Intéressé » touché au doigt, la fiche dit « Enregistré. », le résultat relu
+dans KV, et le report dans le registre sort l'artisan de la liste du jour.
+**Contre-essai : 13 cassures, chacune attrapée.**
+
+**Deux essais à moi, faux, corrigés en route.** Le point de la semaine :
+j'avais compté trois appels là où le jeu d'essai n'en portait que deux — le
+code avait raison, l'attente était fausse. Plutôt que de corriger le chiffre,
+le jeu d'essai a été refait pour mesurer **les deux bords** de la fenêtre de
+sept jours (un appel le 19, dedans ; un le 18, dehors ; et la fenêtre
+resserrée à six jours qui fait sortir le 19) : c'est au bord qu'un décompte se
+trompe, pas au milieu. Et une cassure qui ne mordait pas : « chaque image
+compte une vue » ne changeait rien, parce que mon image d'essai était rangée
+trois niveaux plus bas et qu'une autre garde l'excluait déjà. Remplacée par ce
+qu'elle visait vraiment — une deuxième page du même site, et l'adresse tordue
+`/<slug>/index.html/n-importe-quoi`, qui permettrait de gonfler le compteur
+depuis l'extérieur.
+
+**À savoir pour Fabrice.** Le texte du SMS est un gabarit court
+(`page-appels.mjs`, `SMS`) : le texte exact est dans son document commercial,
+section Messages, et s'écrase par paramètre. Rien n'y promet ce que le site ne
+tient pas.

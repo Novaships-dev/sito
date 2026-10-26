@@ -19,9 +19,10 @@
   photos que l'app envoie en images propres pour le site, la prospection sait
   trouver et noter des artisans réels, les trois métiers ont leurs textes de
   site, **le lot du jour se fabrique** (dix sites par métier prêt, vérifiés un
-  par un) et **il se publie, privé** : noindex partout, aucune page d'accueil,
-  retrait à 30 jours. **Prochaine tâche** : T39 (la page d'appels du jour sur
-  l'iPhone).
+  par un), **il se publie, privé** (noindex partout, aucune page d'accueil,
+  retrait à 30 jours) et **la page d'appels du jour existe** : relances
+  devant, résultats enregistrés au doigt sur 390 px. **Prochaine tâche** :
+  T40 (`/preparer-appels`, la soirée de bout en bout).
   T02 faite : la CI est verte sur les six derniers envois, et
   `node scripts/ci-github.mjs` la relit depuis la machine. T05 bloquée par F17.
 - **La prospection, pièce par pièce** : 9 codes APE mesurés dans le 13,
@@ -48,6 +49,12 @@
   **Ce qui manque est le compte Cloudflare lui-même (F5)** : tant qu'il
   n'existe pas, aucun site n'est réellement en ligne, et « publication
   Cloudflare » n'est pas une chose prouvée — seulement un code mesuré.
+- **La page d'appels est prête** (T39, 25 oct.) : 79 contrôles dont le
+  navigateur à 390 px (aucun bouton sous 44 px, « Intéressé » touché au doigt,
+  résultat relu dans KV), 13 cassures chacune attrapée. Les relances passent
+  devant, un artisan déjà appelé ou abonné est écarté **avec sa raison**, et
+  aucun numéro de téléphone n'entre ni dans la page ni dans KV. Le KV réel
+  attend **F5** lui aussi.
 - **La suite d'essais est verte et complète sur le PC de Fabrice** (24 oct.,
   `memoire/essais/derniers.txt`) : les 10 étapes à 0, plus aucun essai « non
   lancé ». exiftool 13.59, ffmpeg 9.0.2, Python 3.13.15 avec Pillow 13.0.0 et
