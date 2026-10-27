@@ -401,6 +401,30 @@ doit offrir pour que l'app soit complète. Les noms sont proposés.
 | Publier une réponse validée | `avis.valide_le` posé, `reponse` vide | — | Google, `avis.reponse/repondu_le` |
 | Supprimer un compte | `suppressions.effective_le` atteinte, non annulée | tout | efface tout, résilie, retire le site |
 
+**Fabriquer un site depuis la base (T08, `atelier/fabriquer.mjs`, fait le
+27 octobre).** Lit `entreprises` (le `sirene` brut), `profils`, `tarifs` et
+`photos` (`etat = prete`), construit l'entrée du générateur et lance
+`generateur/composer.mjs` en sous-processus, comme `fabriquer-lot.mjs` le fait
+déjà pour la prospection. Deux points à retenir :
+
+- **La charte ne se retire plus une fois choisie.** `tirerSite()`
+  (`generateur/tirage.mjs`) accepte un `charteFixee` qui saute le tirage et le
+  retirage pour ressemblance ; `composer.mjs --charte <fichier>` le lui donne.
+  Sans ça, une refabrication (une photo de plus) pouvait changer l'apparence
+  d'un site déjà montré, si d'autres sites avaient été fabriqués entre les
+  deux et rendaient aujourd'hui un autre choix moins fautif. `sites.charte`
+  s'écrit à la première fabrication, jamais ensuite.
+- **Pas de catégorie « hero » dans `photos.role`** (seulement avant, après,
+  chantier, geste, detail) : la coupure avant/après du premier écran reprend
+  la photo « après » de la première paire. Choix d'ingénierie, à revoir avec
+  de vraies photos d'artisan (T30) — s'il s'avère que ça ne rend pas, la
+  structure devra pouvoir se passer de section « coupure » hors prospection.
+
+Preuve : `node scripts/essai-fabrication-base.mjs`, 12 contrôles, 0 faute
+(faux Supabase) ; contre-essai : 1 cassure (la charte figée n'est plus relue),
+attrapée sur l'archétype et la charte qui changent alors qu'ils ne devraient
+pas.
+
 ## 8. État des données au 9 octobre
 
 Base vide : 0 utilisateur, 0 entreprise, 0 site. Les 16 métiers sont chargés.

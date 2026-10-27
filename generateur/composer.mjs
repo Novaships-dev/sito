@@ -239,9 +239,13 @@ async function fabriquer(opts) {
   const trous = manquantsPhotos(sources);
   if (trous.length) { console.error('Photos manquantes : ' + trous.join(', ')); process.exit(2); }
 
+  // Charte deja figee (refabrication d un site existant, sites.charte) :
+  // --charte pointe un fichier { archetype, charte }, jamais retire.
+  const charteFixee = opts.charte ? JSON.parse(readFileSync(opts.charte, 'utf8')) : null;
+
   // Tout ce qui decide de l apparence du site : voir generateur/tirage.mjs.
   const { archetype, p, t, ap, ch, main, ouverture: roleOuverture, fiche, essai } =
-    tirerSite({ siren: e.siren, metier: opts.metier, base, sources, voisins, e, prix: !!tf });
+    tirerSite({ siren: e.siren, metier: opts.metier, base, sources, voisins, e, prix: !!tf, charteFixee });
   // Un dossier de sortie reutilise garde l ancienne deuxieme page si celle-ci
   // n est plus produite : le lien disparait mais la page reste en ligne.
   if (existsSync(join(opts.sortie, 'le-travail.html')) && !ch.structure.page2)
@@ -855,4 +859,5 @@ fabriquer({
   sortie: arg('sortie'),
   donnees: arg('donnees'),
   registre: arg('registre'),
+  charte: arg('charte'),
 });

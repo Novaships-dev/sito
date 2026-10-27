@@ -107,12 +107,17 @@ export function parametrer(g, archetype) {
   return p;
 }
 
-// Un tirage, dans l ordre, a partir d une graine donnee.
-function tirerUneFois(cle, { siren, metier, base, sources, voisins, prix }) {
+// Un tirage, dans l ordre, a partir d une graine donnee. `charteFixee` :
+// { archetype, charte } deja choisis pour ce site (sites.charte, figee a la
+// creation, 05-SCHEMA-BACKEND.md §3.6) — on ne les retire pas, meme si de
+// nouveaux voisins rendraient aujourd hui un autre choix moins fautif. Sans
+// elle, une refabrication (photo ajoutee) pourrait changer l apparence d un
+// site deja montre a l artisan pour une raison qui ne le concerne pas.
+function tirerUneFois(cle, { siren, metier, base, sources, voisins, prix, charteFixee }) {
   const g = graine(cle);
   const vals = (c) => voisins.filter(s => s[c] !== undefined && s[c] !== null)
     .map(s => ({ valeur: s[c], poids: s.poids || 1 }));
-  const archetype = moinsPris(g, ARCHETYPES, vals('archetype'));
+  const archetype = charteFixee ? charteFixee.archetype : moinsPris(g, ARCHETYPES, vals('archetype'));
   const p = parametrer(g, archetype);
   const t = composerTextes(base, g, p, voisins.flatMap(s =>
     (s.phrases || [s.titre]).filter(Boolean).map(x => ({ valeur: x, poids: s.poids || 1 }))));
@@ -120,7 +125,7 @@ function tirerUneFois(cle, { siren, metier, base, sources, voisins, prix }) {
   // 2026 ne devait deplacer aucun autre tirage des sites deja montres.
   const avecPoids = (c) => voisins.filter(s => s[c]).map(s => ({ ...s[c], poids: s.poids || 1 }));
   const ap = appel.tirer(graine(cle + '|appel'), avecPoids('appel'));
-  const ch = tirerCharte(g, {
+  const ch = charteFixee ? structuredClone(charteFixee.charte) : tirerCharte(g, {
     archetype,
     noyaux: voisins.filter(s => s.famille).map(s => ({ archetype: s.archetype, sol: s.sol,
       famille: s.famille, polices: s.polices, geometrie: s.geometrie, mot: s.mot, poids: s.poids || 1 })),
@@ -165,8 +170,14 @@ export function fiche(e, metier, d) {
 // voisins redonnent le meme site. Un voisin de la meme commune pese cinq fois
 // plus qu un voisin du departement.
 export const ESSAIS = 12;
-export function tirerSite({ siren, metier, base, sources, voisins = [], e = {}, prix = false }) {
+export function tirerSite({ siren, metier, base, sources, voisins = [], e = {}, prix = false, charteFixee = null }) {
   const ident = { siren, commune: e.commune, departement: e.departement, codePostal: e.codePostal, nom: e.nom || e.denomination };
+  // Charte figee : un seul tirage, jamais retire pour ressembler moins a un
+  // voisin — c est justement ce qu on protege (voir tirerUneFois).
+  if (charteFixee) {
+    const d = tirerUneFois(siren + '|' + metier, { siren, metier, base, sources, voisins, prix, charteFixee });
+    return { ...d, fiche: fiche(ident, metier, d), essai: 0 };
+  }
   let meilleur = null, coutMin = Infinity;
   for (let k = 0; k < ESSAIS; k++) {
     const cle = siren + '|' + metier + (k ? '|essai' + k : '');

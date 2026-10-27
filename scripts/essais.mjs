@@ -47,6 +47,7 @@ const ETAPES = [
   { nom: 'photos (service)', cmd: ['node', 'scripts/essai-photos.mjs'], manque: outilsPhotos },
   { nom: 'service : adaptateur Supabase', cmd: ['node', 'scripts/essai-service.mjs'] },
   { nom: 'service : préparation des photos reçues', cmd: ['node', 'scripts/essai-preparation.mjs'], manque: outilsPhotos },
+  { nom: 'service : fabrication depuis la base', cmd: ['node', 'scripts/essai-fabrication-base.mjs'] },
   { nom: 'prospection : extraction, note, registre', cmd: ['node', 'scripts/essai-prospection.mjs'] },
   // La fabrication du lot sans aucune image : un métier sans images est sauté,
   // les données du générateur n'inventent rien, les slugs ne se répètent pas.
@@ -58,6 +59,9 @@ const ETAPES = [
   // La page d'appels : le Worker avec un faux KV, et la page au doigt sur
   // 390 px dans un vrai navigateur.
   { nom: 'prospection : page d appels du jour', cmd: ['node', 'scripts/essai-appels.mjs'] },
+  // La soirée de bout en bout : lister, qualifier avec le web, fabriquer,
+  // publier, produire la page — sur un faux Cloudflare, sans aucune image.
+  { nom: 'prospection : préparation de la soirée, de bout en bout', cmd: ['node', 'scripts/essai-preparer-appels.mjs'] },
   // Les feuilles de prompts sont dans Git, les images non : ce contrôle tourne
   // partout, celui des fichiers (plus bas) seulement là où les images sont.
   { nom: 'feuilles de prompts contre le plan d images', cmd: ['node', 'scripts/verifier-images.mjs', '--prompts'] },
@@ -70,10 +74,12 @@ if (COMPLET) {
     { nom: 'contre-essai : app', cmd: ['node', 'scripts/essai-app.mjs', '--contre-essai'] },
     { nom: 'contre-essai : service', cmd: ['node', 'scripts/essai-service.mjs', '--contre-essai'] },
     { nom: 'contre-essai : préparation des photos', cmd: ['node', 'scripts/essai-preparation.mjs', '--contre-essai'], manque: outilsPhotos },
+    { nom: 'contre-essai : fabrication depuis la base', cmd: ['node', 'scripts/essai-fabrication-base.mjs', '--contre-essai'] },
     { nom: 'contre-essai : prospection', cmd: ['node', 'scripts/essai-prospection.mjs', '--contre-essai'] },
     { nom: 'contre-essai : fabrication du lot', cmd: ['node', 'scripts/essai-lot.mjs', '--contre-essai'] },
     { nom: 'contre-essai : publication privée', cmd: ['node', 'scripts/essai-publication-prospection.mjs', '--contre-essai'] },
     { nom: 'contre-essai : page d appels', cmd: ['node', 'scripts/essai-appels.mjs', '--contre-essai'] },
+    { nom: 'contre-essai : préparation de la soirée', cmd: ['node', 'scripts/essai-preparer-appels.mjs', '--contre-essai'] },
     { nom: 'contre-essai : feuilles de prompts', cmd: ['node', 'scripts/verifier-images.mjs', '--contre-essai-prompts'] },
     { nom: 'images du ravalement sur le disque', cmd: ['node', 'scripts/verifier-images.mjs', 'ravalement'], manque: imagesRavalement },
     { nom: 'contre-essai : images sur le disque', cmd: ['node', 'scripts/verifier-images.mjs', '--contre-essai'], manque: imagesRavalement },

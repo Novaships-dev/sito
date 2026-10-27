@@ -1,4 +1,4 @@
-# État au 25 octobre 2026
+# État au 28 octobre 2026
 
 À lire en premier, à chaque séance. Réécrit à la fin de chaque séance.
 
@@ -20,9 +20,21 @@
   trouver et noter des artisans réels, les trois métiers ont leurs textes de
   site, **le lot du jour se fabrique** (dix sites par métier prêt, vérifiés un
   par un), **il se publie, privé** (noindex partout, aucune page d'accueil,
-  retrait à 30 jours) et **la page d'appels du jour existe** : relances
-  devant, résultats enregistrés au doigt sur 390 px. **Prochaine tâche** :
-  T40 (`/preparer-appels`, la soirée de bout en bout).
+  retrait à 30 jours), **la page d'appels du jour existe** : relances
+  devant, résultats enregistrés au doigt sur 390 px, et **la soirée se
+  prépare de bout en bout** (`/preparer-appels` : liste, recherche web des
+  sites existants, fabrication, publication, page). **F5 faite (27 oct.,
+  Cowork)** : Fabrice a créé le compte Cloudflare gratuit et rangé le jeton
+  (Pages + KV) ; **T41 débloquée, à faire** : la première vraie publication
+  et le premier lot réel. **T08 faite (27 oct.)** : le générateur fabrique un
+  site depuis la base (entreprise, profil, tarifs, photos prêtes) au lieu de
+  `donnees/`, et la charte d'un site existant ne se retire plus à chaque
+  refabrication (`generateur/tirage.mjs --charte`, `atelier/fabriquer.mjs`).
+  **Prochaine tâche, dans l'ordre du tableau** : T41 (dépend de T40, fait ;
+  plus aucun blocage) — demande une vraie recherche web candidat par candidat
+  (T40, `--lister`/`--sites`) avant de fabriquer et publier pour de vrai ; pas
+  entamée cette séance pour ne pas la bâcler en fin de tour. T09 (boucle du
+  service) vient après dans le tableau, mais T41 passe avant.
   T02 faite : la CI est verte sur les six derniers envois, et
   `node scripts/ci-github.mjs` la relit depuis la machine. T05 bloquée par F17.
 - **La prospection, pièce par pièce** : 9 codes APE mesurés dans le 13,
@@ -55,6 +67,16 @@
   devant, un artisan déjà appelé ou abonné est écarté **avec sa raison**, et
   aucun numéro de téléphone n'entre ni dans la page ni dans KV. Le KV réel
   attend **F5** lui aussi.
+- **La soirée se prépare de bout en bout** (T40, 26 oct., `/preparer-appels`) :
+  deux commandes séparées par la recherche web (qui ne se scripte pas) —
+  `--lister` écrit les candidats à vérifier, `--sites <fichier>` qualifie avec
+  ce que le web a dit, fabrique, publie, et écrit la page d'appels et
+  `_worker.js` dans le même dépôt, sous un slug **stable**
+  (`prospection/appels.json`). 43 contrôles, 0 faute, dont « 30 sites et la
+  page produits » sur le faux Cloudflare ; 3 cassures attrapées. **F5**
+  (compte Cloudflare) et, une fois faite, un réglage à poser à la main dans
+  le tableau de bord (espace KV `APPELS`, variable `SLUG_APPELS`) restent les
+  seules choses qui manquent pour que ça serve pour de vrai.
 - **La suite d'essais est verte et complète sur le PC de Fabrice** (24 oct.,
   `memoire/essais/derniers.txt`) : les 10 étapes à 0, plus aucun essai « non
   lancé ». exiftool 13.59, ffmpeg 9.0.2, Python 3.13.15 avec Pillow 13.0.0 et
