@@ -47,9 +47,9 @@
       },
       "phrases": [
         "Le temps de séchage fait partie du chantier, pas du retard.",
-        "Protection des abords et des menuiseries, rebouchage du faïençage, reprise des angles, enduit à la chaux, teinte choisie sur le mur.",
-        "Support fatigué, fissures suivies, appuis fendus.",
-        "Fissures traitées une par une, enduit à la chaux, ruissellement maîtrisé.",
+        "Purge jusqu’au sain, pontage armé des fissures actives, rejointoiement des pierres, enduit à la chaux.",
+        "Cloques à la sous-face, coulures sous les bandeaux, angles épaufrés.",
+        "Support purgé et réparé, enduit à la chaux, points d’eau traités.",
         "Les bords et les angles sont grattés à la main, au plus près. Un gratté régulier se reconnaît à vingt centimètres.",
         "L’enduit est taloché en mouvements circulaires, sans appuyer par endroits. Le résultat dépend du geste plus que du produit.",
         "Les corniches sont nettoyées, réparées et protégées sur le dessus. Des appuis mal traités dessinent des coulures noires sur la façade.",
@@ -71,7 +71,7 @@
       "geometrie": "vif",
       "mot": "metier",
       "accent": "#d86e00",
-      "produitLe": "2026-10-25"
+      "produitLe": "2026-10-27"
     },
     {
       "siren": "849891528",
@@ -120,9 +120,9 @@
       },
       "phrases": [
         "Les cloques sous la peinture disent que l’eau ne sort plus.",
-        "Décapage des anciennes peintures, pontage armé des fissures actives, enduit monocouche, finition talochée.",
-        "Fissures en escalier aux angles, coulures sous les bandeaux, descentes d’eau mal fixées.",
-        "Parties creuses reprises au mortier, fissures traitées une par une, enduit respirant.",
+        "Échafaudage et protections, nettoyage basse pression, reprise des angles, enduit monocouche.",
+        "Fissures fines en réseau, traces vertes en pied de mur, descentes d’eau mal fixées.",
+        "Mur purgé jusqu’au sain, finition régulière sur toute la hauteur, teinte choisie sur le mur.",
         "Les zones creuses sont marquées à la craie avant d’être purgées. La purge est le poste qui fait varier un devis du simple au double.",
         "Les fissures en escalier suivent les joints et se reprennent joint par joint. Le diagnostic décide du traitement, pas l’inverse.",
         "L’enduit est dressé à la règle, puis gratté le lendemain ou le jour même selon la météo. Le gratté pardonne les petits défauts de planéité et vieillit bien en ville.",
@@ -135,8 +135,8 @@
         "Le mur en cours de reprise.",
         "Attrapez la couture pour mesurer le travail fait.",
         "Même angle, même distance. Rien d’autre ne change que le mur.",
-        "Façade complète, appuis repris, teinte d’origine retrouvée.",
-        "Soubassement, corniche reprise, enduit gratté."
+        "Façade complète, appuis repris, enduit respirant.",
+        "Façade sur rue, parties creuses purgées, enduit respirant."
       ],
       "intitules": [
         "Ce que recouvre le mot ravalement.",
@@ -150,7 +150,7 @@
       "geometrie": "rond",
       "mot": "commune",
       "accent": "#b08c6f",
-      "produitLe": "2026-10-25"
+      "produitLe": "2026-10-27"
     },
     {
       "siren": "881767842",
@@ -198,9 +198,9 @@
       },
       "phrases": [
         "Sur une rue passante, l’échafaudage protège les passants autant que la façade.",
-        "Protection des abords et des menuiseries, lavage complet de la façade, purge des parties creuses, enduit adapté au mur, finition grattée fin.",
-        "Enduit qui farine sous le doigt, faïençage général, traces vertes en pied de mur.",
-        "Support purgé et réparé, fissures ouvertes et pontées, finition régulière sur toute la hauteur, points d’eau traités.",
+        "Échafaudage et protections, nettoyage du support, rebouchage du faïençage, traitement des points singuliers, enduit traditionnel en trois couches.",
+        "Fissures reprises au mastic qui ressortent, mousses en soubassement, reprises anciennes visibles.",
+        "Parties creuses reprises au mortier, enduit gratté fin, angles redressés.",
         "Les pierres tendres se lavent à l’eau froide, sans pression forte. Sans cette étape, l’enduit neuf se salit par en dessous.",
         "Les parties décollées sont purgées, puis reprises au mortier. Le temps passé à purger ne se voit pas, mais il se garde.",
         "Les fissures fines et ramifiées sont des défauts d’enduit, rebouchées en surface. Une fissure bien traitée disparaît sous l’enduit et n’en ressort plus.",
@@ -211,7 +211,7 @@
         "Le chantier.",
         "Faites glisser la couture pour retrouver la façade d’origine.",
         "Les deux prises de vue se superposent exactement. Tout le reste est à sa place.",
-        "Façade sur rue, fissures pontées, enduit taloché.",
+        "Façade sur cour, fissures pontées, teinte accordée à la rue.",
         "Villa, fissure ouverte et pontée, teinte accordée à la rue."
       ],
       "intitules": [
@@ -226,7 +226,7 @@
       "geometrie": "vif",
       "mot": "aucun",
       "accent": "#b08c6f",
-      "produitLe": "2026-10-25"
+      "produitLe": "2026-10-27"
     }
   ]
 }
