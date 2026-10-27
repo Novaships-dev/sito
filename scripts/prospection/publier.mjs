@@ -41,6 +41,12 @@
 //   --en-ligne <fichier>  défaut prospection/en-ligne.json
 //   --appels <fichier>    registre des artisans (défaut prospection/registre.json)
 //   --sec                 ne publie rien : dit ce qui serait publié et retiré
+//
+// `extra` (appelé par `preparer-appels.mjs`, pas par la ligne de commande) :
+// des fichiers fixes du projet, hors du cycle de vie des sites d'artisan —
+// `_worker.js` (la fonction Pages) et la page d'appels sous son slug privé.
+// Ils entrent au manifeste à chaque publication, jamais retirés par `plan()`
+// puisqu'aucun artisan ne les porte.
 import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, dirname, sep, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -134,6 +140,7 @@ export async function planDuSite(slug, dossier) {
 export async function publier({
   lot = [], registre = null, jour = jourDeParis(), projet = PROJET,
   client, enLigne = EN_LIGNE, sec = false, dire = console.log, jours: duree = JOURS,
+  extra = [],
 } = {}) {
   const memoire = existsSync(enLigne) ? JSON.parse(readFileSync(enLigne, 'utf8')) : { version: 1, sites: {} };
   const reg = registre || registreAppels.lire();
@@ -181,8 +188,16 @@ export async function publier({
   manifeste['robots.txt'] = cleRobots;
   aEnvoyer.set(cleRobots, { cle: cleRobots, contenu: robots, chemin: 'robots.txt' });
 
+  for (const x of extra) {
+    const contenu = Buffer.isBuffer(x.contenu) ? x.contenu : Buffer.from(x.contenu, 'utf8');
+    const cle = await empreinte(contenu, x.chemin);
+    manifeste[x.chemin] = cle;
+    aEnvoyer.set(cle, { cle, contenu, chemin: x.chemin });
+  }
+
   const bilan = {
     jour, projet, slugs: [...parSlug.keys()], retires, sansPlan, ecartes,
+    extra: extra.map((x) => x.chemin),
     fichiers: Object.keys(manifeste).length, envoyes: 0, url: null, publie: false,
   };
 

@@ -12,6 +12,11 @@ dotenv
 # sur la machine, et a terme dans le stockage de la base.
 images/
 
+# fichiers de travail d'un soir de prospection : se refabriquent, jamais
+# la verite (registre.json et en-ligne.json restent versionnes)
+prospection/a-verifier.json
+prospection/sites-du-jour.json
+
 # sites fabriques et app construite : ils se refabriquent depuis le depot
 app/dist/
 # copies construites pour un contre-essai (SITO_APP_DIST=app/dist-casse)
