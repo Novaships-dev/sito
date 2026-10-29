@@ -19,7 +19,9 @@
 //      `<fichier.json>` : { "<siren>": "aucun" | "reseau-social" | "annuaire"
 //      | "ancien" | "recent-prestataire", ... } — ce que la recherche web a
 //      trouvé pour tout ou partie des candidats de l'étape 1. Un SIREN absent
-//      reste « inconnu ». Qualifie une seconde fois avec cette information,
+//      reste « inconnu ». Pour un candidat `metier_a_prouver` (ravalement au
+//      nom muet), la valeur est un objet : { "site": "aucun", "metier": "oui"
+//      | "non", "vu": "ce qui le montre" } ; sans « oui », il n'entre pas au lot. Qualifie une seconde fois avec cette information,
 //      choisit les `--combien` meilleurs de chaque métier, fabrique (comme
 //      `fabriquer-lot.mjs`), publie (comme `publier.mjs`, sauf `--sec`), et
 //      écrit la page d'appels et `_worker.js` dans le même dépôt Cloudflare.
@@ -68,12 +70,17 @@ export async function lister({
     if (filtre && !filtre.includes(m.nom)) continue;
     dire(`extraction : ${m.nom}`);
     const { entreprises, bilan } = await ex.extraire({ metier: m.nom, fiche, pages, aujourdhui, fetch: f, dire: (d) => dire('  ' + d) });
-    const preliminaire = qualifier(entreprises, { registre: reg, aujourdhui }).retenus;
+    // Sans exiger la preuve du métier : les noms muets doivent apparaître ici,
+    // c'est la recherche web qui les fera entrer ou non dans le lot.
+    const preliminaire = qualifier(entreprises, { registre: reg, aujourdhui, exigerPreuve: false }).retenus;
     dire(`  ${entreprises.length} éligible(s), ${preliminaire.length} appelable(s) aujourd'hui`);
     metiersSortie[m.nom] = {
       entreprises,
       bilan,
-      a_verifier: preliminaire.slice(0, verifier).map((e) => ({ siren: e.siren, nom: e.nom, commune: e.commune, note_sans_site: e.note })),
+      a_verifier: preliminaire.slice(0, verifier).map((e) => ({
+        siren: e.siren, nom: e.nom, commune: e.commune, note_sans_site: e.note,
+        ...(e.preuveExigee ? { metier_a_prouver: true } : {}),
+      })),
     };
   }
   return { jour, verifier, metiers: metiersSortie };
@@ -162,10 +169,14 @@ if (process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url) 
     mkdirSync(dirname(fichierEntrees), { recursive: true });
     writeFileSync(fichierEntrees, JSON.stringify(sortie, null, 1) + '\n', 'utf8');
     console.log(`\nÉcrit : ${fichierEntrees}`);
-    for (const [m, d] of Object.entries(sortie.metiers)) console.log(`  ${m} : ${d.a_verifier.length} candidat(s) à vérifier sur le web`);
+    for (const [m, d] of Object.entries(sortie.metiers)) {
+      const aProuver = d.a_verifier.filter((x) => x.metier_a_prouver).length;
+      console.log(`  ${m} : ${d.a_verifier.length} candidat(s) à vérifier sur le web${aProuver ? `, dont ${aProuver} dont le métier est à prouver` : ''}`);
+    }
     console.log('\nÀ faire ensuite : chercher chaque candidat sur le web (nom + commune), écrire');
     console.log('le résultat dans un fichier { "<siren>": "aucun" | "reseau-social" | "annuaire"');
-    console.log('| "ancien" | "recent-prestataire" }, puis :');
+    console.log('| "ancien" | "recent-prestataire" }. Pour un candidat « metier_a_prouver », la valeur est');
+    console.log('{ "site": "…", "metier": "oui" | "non", "vu": "ce qui le montre" } : sans « oui », pas de site. Puis :');
     console.log(`  node scripts/prospection/preparer-appels.mjs --sites <fichier> --entrees ${fichierEntrees}`);
   } else if (val('sites')) {
     const sites = JSON.parse(readFileSync(resolve(val('sites')), 'utf8'));

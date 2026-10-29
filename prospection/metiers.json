@@ -1,14 +1,16 @@
 {
-  "version": "24 octobre 2026",
+  "version": "29 octobre 2026",
   "pourquoi": "Les trois metiers de la prospection (decision de Fabrice du 23 octobre : 30 sites par jour sur au moins 3 metiers differents). Les codes APE servent a interroger recherche-entreprises.api.gouv.fr ; les mots servent a trancher le metier sur la raison sociale, parce qu un meme code APE melange plusieurs metiers (43.34Z est peinture ET vitrerie).",
-  "comment_lire_les_mots": "Les mots s ecrivent au singulier : extraire.mjs les cherche en mot entier, pluriel compris (CHARPENTES repond a charpente). Sans accents : la comparaison passe par normaliser().",
+  "comment_lire_les_mots": "motsAutreMetier : un metier voisin, qui n ecarte que si le nom ne dit pas aussi celui-ci (FACADES ET MACONNERIE reste un facadier). Les mots s ecrivent au singulier : extraire.mjs les cherche en mot entier, pluriel compris (CHARPENTES repond a charpente). Sans accents : la comparaison passe par normaliser().",
   "departement": "13",
   "metiers": [
     {
       "nom": "ravalement",
       "libelle": "ravalement de façade",
       "codesApe": ["43.34Z", "43.99C", "43.99D", "43.29A"],
-      "mots": ["ravalement", "ravaleur", "facade", "enduit", "crepi", "ite", "isolation thermique", "maconnerie", "macon", "platrerie", "platrier"],
+      "mots": ["ravalement", "ravaleur", "facade", "facadier", "enduit", "crepi"],
+      "motsAutreMetier": ["maconnerie", "macon", "isolation", "isol", "ite", "platrerie", "platrier", "cheminee", "energie", "gros oeuvre"],
+      "preuveDuMetier": "Decision de Fabrice du 29 octobre : le ravalement, ce sont les facadiers. Aucun code APE ne le dit (43.99C, 43.34Z, 43.29A, 43.99D sont macons, peintres, isolation, travaux divers) : un nom qui ne dit pas la facade ne suffit pas, la recherche web doit montrer que la facade est son metier principal.",
       "motsExclus": ["miroiterie", "miroitier", "vitrerie", "vitrier", "verre", "survitrage", "store", "veranda", "nettoyage", "demolition", "terrassement", "piscine", "paysage", "paysagiste", "espaces verts", "beton arme", "travaux publics", "voirie"]
     },
     {

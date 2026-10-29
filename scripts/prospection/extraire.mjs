@@ -42,6 +42,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { RACINE } from '../env.mjs';
+import { nomAffiche, communeOfficielle, chargerCommunes } from './noms.mjs';
 
 export const API = 'https://recherche-entreprises.api.gouv.fr/search';
 export const PER_PAGE_MAX = 25;     // plafond de l'API
@@ -163,12 +164,20 @@ const contient = (nom, mots) => mots.find((m) => motif(m).test(nom));
 // Rend le mot qui a tranché, ou null. Un nom qui porte le mot d'un AUTRE
 // métier n'est pas de celui-ci : un « MIROITERIE MASSILIA » en 43.34Z n'est ni
 // peintre ni ravaleur.
+//
+// `motsAutreMetier` : un métier voisin, qui ne compte que si le nom ne dit
+// pas aussi celui-ci. « BMAV MACONNERIE » n'est pas façadier ; « FACADES ET
+// MACONNERIE » l'est (décision du 29 oct. 2026 : « Ravalement de façade c'est
+// des façadiers »).
 export function nomDitLeMetier(nom, m) {
   const n = normaliser(nom);
   const exclu = contient(n, m.motsExclus || []);
   if (exclu) return { metier: false, mot: exclu };
   const dit = contient(n, m.mots || []);
-  return { metier: dit ? true : null, mot: dit || null };
+  if (dit) return { metier: true, mot: dit };
+  const autre = contient(n, m.motsAutreMetier || []);
+  if (autre) return { metier: false, mot: autre };
+  return { metier: null, mot: null };
 }
 
 // ------------------------------------------------------------------- retenir
@@ -186,7 +195,12 @@ const anneesDepuis = (date, aujourdhui) => {
 //
 // Tous les filtres que l'API prétend appliquer sont refaits ici, parce qu'elle
 // en ignore en silence (voir l'en-tête).
-export function retenir(e, { m, departement, aujourdhui, ancienneteMin = ANCIENNETE_MIN, effectifs = EFFECTIFS }) {
+//
+// Un nom muet (« NICOLAS FERMAUD ») est gardé, mais si le métier exige une
+// preuve (`preuveDuMetier`, le ravalement : aucun code APE ne le dit), il
+// porte `preuveExigee` : seule la recherche web peut alors le faire entrer
+// dans le lot (`qualifier.mjs`).
+export function retenir(e, { m, departement, aujourdhui, ancienneteMin = ANCIENNETE_MIN, effectifs = EFFECTIFS, communes = null }) {
   const siege = e.siege || {};
   const non = (motif, detail) => ({ garde: false, motif, detail });
   if (e.etat_administratif !== 'A') return non('entreprise fermée', e.etat_administratif);
@@ -197,6 +211,8 @@ export function retenir(e, { m, departement, aujourdhui, ancienneteMin = ANCIENN
   if (annees === null) return non('date de création illisible', String(e.date_creation));
   if (annees < ancienneteMin) return non(`créée il y a moins de ${ancienneteMin} ans`, e.date_creation);
   if (!m.codesApe.includes(e.activite_principale)) return non('code APE hors du métier', e.activite_principale);
+  // Le métier se lit sur tout ce qui nomme l'entreprise (raison sociale et
+  // nom commercial) ; le site, lui, écrit le nom choisi par `nomAffiche`.
   const nom = e.nom_complet || e.nom_raison_sociale || '';
   const dit = nomDitLeMetier(nom, m);
   if (dit.metier === false) return non('la raison sociale dit un autre métier', `${nom} : « ${dit.mot} »`);
@@ -205,9 +221,9 @@ export function retenir(e, { m, departement, aujourdhui, ancienneteMin = ANCIENN
     garde: true,
     entreprise: {
       siren: e.siren,
-      nom,
+      nom: nomAffiche(e),
       metier: m.nom,
-      commune: siege.libelle_commune || null,
+      commune: communeOfficielle(siege, communes) || siege.libelle_commune || null,
       codePostal: siege.code_postal || null,
       codeApe: e.activite_principale,
       dateCreation: e.date_creation,
@@ -215,6 +231,7 @@ export function retenir(e, { m, departement, aujourdhui, ancienneteMin = ANCIENN
       effectif: e.tranche_effectif_salarie,
       rge: Boolean(e.complements?.est_rge),
       nomDitLeMetier: dit.metier === true,
+      preuveExigee: dit.metier !== true && Boolean(m.preuveDuMetier),
     },
   };
 }
@@ -230,6 +247,8 @@ export async function extraire({
 } = {}) {
   const m = metier(nom, fiche);
   const dep = departement || fiche.departement;
+  const communes = chargerCommunes(dep);
+  if (!communes) dire(`ATTENTION : prospection/communes-${dep}.json absent, les communes gardent l écriture de l API (node scripts/prospection/noms.mjs --telecharger ${dep})`);
   const bilan = { metier: nom, departement: dep, lus: 0, retenus: 0, doublons: 0, ecartes: {}, plafonds: [], pages: 0 };
   const vus = new Set();
   const entreprises = [];
@@ -250,7 +269,7 @@ export async function extraire({
       for (const e of lot) {
         if (vus.has(e.siren)) { bilan.doublons++; continue; }
         vus.add(e.siren);
-        const r = retenir(e, { m, departement: dep, aujourdhui, ancienneteMin, effectifs });
+        const r = retenir(e, { m, departement: dep, aujourdhui, ancienneteMin, effectifs, communes });
         if (!r.garde) {
           const vu = bilan.ecartes[r.motif] || (bilan.ecartes[r.motif] = { combien: 0, exemples: [] });
           vu.combien++;
@@ -292,6 +311,7 @@ export function reduire(e) {
     siege: {
       siret: s.siret, departement: s.departement, libelle_commune: s.libelle_commune,
       code_postal: s.code_postal, etat_administratif: s.etat_administratif,
+      commune: s.commune, nom_commercial: s.nom_commercial, liste_enseignes: s.liste_enseignes,
     },
     departements_etablissements: [...new Set([s.departement, ...(e.matching_etablissements || []).map((x) => x.code_postal?.slice(0, 2))].filter(Boolean))],
   };

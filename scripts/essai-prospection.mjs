@@ -61,6 +61,16 @@ const CASSURES = [
     a: "const motif = (m) => new RegExp(`(?:^| )${normaliser(m)}(?: |$)`);" },
   { fichier: 'qualifier.mjs', nom: 'un site récent fait par un prestataire rapporte des points au lieu d écarter',
     de: "'recent-prestataire': { points: 0, ecarte:", a: "'recent-prestataire': { points: 22, dit: 'un site récent', pasEcarte:" },
+  { fichier: 'extraire.mjs', nom: 'un mot d un métier voisin (maçonnerie, isolation, cheminée) ne compte plus',
+    de: "  if (autre) return { metier: false, mot: autre };", a: "  if (false) return { metier: false, mot: autre };" },
+  { fichier: 'qualifier.mjs', nom: 'un nom muet du ravalement entre au lot sans preuve du web',
+    de: "    if (exigerPreuve && e.preuveExigee && web.metier !== 'oui') {", a: "    if (false) {" },
+  { fichier: 'qualifier.mjs', nom: 'un « non » du web sur le métier est ignoré',
+    de: "    if (web.metier === 'non') {", a: "    if (false) {" },
+  { fichier: 'noms.mjs', nom: 'le nom reprend nom_complet, parenthèse et forme juridique comprises',
+    de: "  return sansForme(choisi) || sansForme(raison) || complet;", a: "  return complet;" },
+  { fichier: 'noms.mjs', nom: 'la commune n est plus lue dans la table officielle',
+    de: "  if (parCode) return parCode.nom;", a: "  if (false) return parCode.nom;" },
   { fichier: 'registre.mjs', nom: 'le registre accepte un numéro de téléphone',
     de: '  if (trouve) fautes.push(', a: '  if (false) fautes.push(' },
 ];
@@ -70,7 +80,7 @@ function copieCassee(c) {
   mkdirSync(join(d, 'prospection'), { recursive: true });
   const envUrl = JSON.stringify(pathToFileURL(join(RACINE, 'scripts', 'env.mjs')).href);
   let casse = false;
-  for (const nom of ['extraire.mjs', 'qualifier.mjs', 'registre.mjs']) {
+  for (const nom of ['extraire.mjs', 'qualifier.mjs', 'registre.mjs', 'noms.mjs']) {
     let src = readFileSync(join(MODULES, nom), 'utf8');
     if (nom === c.fichier) {
       const avant = src;
@@ -283,7 +293,11 @@ try {
   registre.fiches[b.siren] = { metier: 'ravalement', nom: b.nom, commune: b.commune, site_le: '2026-10-24', slug: 'y', statut: 'pas-de-reponse', appele_le: JOUR, relance_le: null, note: 50 };
   registre.fiches[c.siren] = { metier: 'ravalement', nom: c.nom, commune: c.commune, site_le: '2026-10-20', slug: 'z', statut: 'a-rappeler', appele_le: '2026-10-20', relance_le: '2026-10-30', note: 50 };
   registre.fiches[d.siren] = { metier: 'ravalement', nom: d.nom, commune: d.commune, site_le: '2026-09-01', slug: 'w', statut: 'abonne-annee', appele_le: '2026-09-01', relance_le: null, note: 90 };
-  const q = qu.qualifier(candidats, { registre, aujourdhui: AUJOURDHUI, sites: { [candidats[4].siren]: 'aucun', [candidats[5].siren]: 'recent-prestataire' } });
+  // Ce qui suit essaie le registre et le tri, pas la preuve du métier : la
+  // recherche web simulée dit « oui » au métier de chaque nom muet.
+  const prouve = (liste) => Object.fromEntries(liste.filter((e) => e.preuveExigee).map((e) => [e.siren, { metier: 'oui' }]));
+  const sitesTri = { ...prouve(candidats), [candidats[4].siren]: { site: 'aucun', metier: 'oui' }, [candidats[5].siren]: { site: 'recent-prestataire', metier: 'oui' } };
+  const q = qu.qualifier(candidats, { registre, aujourdhui: AUJOURDHUI, sites: sitesTri });
   const motif = (siren) => q.ecartes.find((e) => e.siren === siren)?.motif;
   ok(motif(a.siren)?.includes('ne plus être appelé'), '« ne plus appeler » est définitif', motif(a.siren));
   ok(motif(b.siren)?.includes('aujourd hui'), 'un artisan déjà appelé aujourd hui ne ressort pas', motif(b.siren));
@@ -293,16 +307,82 @@ try {
   ok(q.retenus.length === candidats.length - 5, 'les cinq écartés manquent, et eux seuls', `${q.retenus.length} retenus sur ${candidats.length}`);
   const trie = q.retenus.every((e, i) => i === 0 || q.retenus[i - 1].note > e.note || (q.retenus[i - 1].note === e.note && q.retenus[i - 1].siren < e.siren));
   ok(trie, 'trié par note décroissante, puis par SIREN : deux préparations donnent la même liste');
-  const q2 = qu.qualifier(candidats, { registre, aujourdhui: AUJOURDHUI, sites: { [candidats[4].siren]: 'aucun', [candidats[5].siren]: 'recent-prestataire' } });
+  const q2 = qu.qualifier(candidats, { registre, aujourdhui: AUJOURDHUI, sites: sitesTri });
   ok(JSON.stringify(q2.retenus) === JSON.stringify(q.retenus), 'deux passages donnent exactement la même liste');
   ok(q.retenus.find((e) => e.siren === candidats[4].siren)?.pourquoi.some((x) => /aucun site/.test(x)), 'la recherche web se retrouve dans les raisons');
 
-  const parMetier = Object.fromEntries(FICHE.metiers.map((m) => [m.nom, qu.qualifier(lots[m.nom].entreprises, { aujourdhui: AUJOURDHUI }).retenus]));
+  const parMetier = Object.fromEntries(FICHE.metiers.map((m) => [m.nom, qu.qualifier(lots[m.nom].entreprises, { aujourdhui: AUJOURDHUI, sites: prouve(lots[m.nom].entreprises) }).retenus]));
   const lot = qu.lot(parMetier, 10);
   ok(lot.length === 30, '30 artisans par jour, 10 par métier (décision du 23 octobre)', String(lot.length));
   ok(new Set(lot.map((e) => e.siren)).size === 30, 'aucun SIREN deux fois dans le lot, même quand deux métiers partagent un code APE');
   ok(FICHE.metiers.every((m) => lot.filter((e) => e.metier === m.nom).length === 10), 'dix par métier, exactement', FICHE.metiers.map((m) => `${m.nom}:${lot.filter((e) => e.metier === m.nom).length}`).join(' '));
   }
+
+  // ------------------------------------------- ravalement : façadiers seulement
+  // Décision de Fabrice du 29 oct. 2026 : « Ravalement de façade c'est des
+  // façadiers ». Les quatre cas du lot du 28 oct., avec leurs vrais noms.
+  console.log('\nRavalement : façadiers seulement (décision du 29 octobre)');
+  const R = FICHE.metiers.find((m) => m.nom === 'ravalement');
+  const fausse = (siren, nom_complet, ape, siege = {}) => ({
+    siren, nom_complet, nom_raison_sociale: nom_complet.replace(/\s*\(.*$/, ''), activite_principale: ape,
+    date_creation: '2015-03-01', etat_administratif: 'A', tranche_effectif_salarie: '01', complements: { est_rge: false },
+    siege: { departement: '13', etat_administratif: 'A', libelle_commune: 'MARSEILLE', code_postal: '13008', commune: '13208', ...siege },
+  });
+  const communes = (await import(pathToFileURL(join(DOSSIER, 'noms.mjs')).href)).chargerCommunes('13');
+  const garde = (e) => ex.retenir(e, { m: R, departement: '13', aujourdhui: AUJOURDHUI, communes });
+  for (const [nom, ape] of [['SASU BMAV MACONNERIE (SASU BMAV MACONNERIE)', '43.99C'], ['SMILE ISOL (SMILE ISOL)', '43.29A'],
+    ['MISOL ENERGIE', '43.29A'], ['CHEMINEES CONCEPTION', '43.99D']]) {
+    const r = garde(fausse('900000001', nom, ape));
+    ok(!r.garde && /autre métier/.test(r.motif), `« ${nom} » n entre pas au ravalement`, r.garde ? 'gardé' : r.motif);
+  }
+  const mixte = garde(fausse('900000002', 'FACADES ET MACONNERIE DU SUD', '43.99C'));
+  ok(mixte.garde && mixte.entreprise.nomDitLeMetier && !mixte.entreprise.preuveExigee, 'un nom qui dit la façade reste façadier, même avec « maçonnerie »');
+  const muet = garde(fausse('900000003', 'NICOLAS FERMAUD', '43.99C'));
+  ok(muet.garde && muet.entreprise.preuveExigee, 'un nom muet est gardé, mais sa preuve est exigée');
+  if (muet.garde && mixte.garde) {
+    const sansWeb = qu.qualifier([muet.entreprise], { aujourdhui: AUJOURDHUI });
+    ok(sansWeb.retenus.length === 0 && /pas prouvé/.test(sansWeb.ecartes[0]?.motif || ''), 'sans recherche web, un nom muet n entre pas au lot', sansWeb.ecartes[0]?.motif);
+    const siteSeul = qu.qualifier([muet.entreprise], { aujourdhui: AUJOURDHUI, sites: { 900000003: 'aucun' } });
+    ok(siteSeul.retenus.length === 0, 'savoir qu il n a pas de site ne prouve pas son métier');
+    const nonWeb = qu.qualifier([mixte.entreprise], { aujourdhui: AUJOURDHUI, sites: { 900000002: { site: 'aucun', metier: 'non', vu: 'site : maçonnerie générale' } } });
+    ok(nonWeb.retenus.length === 0 && /maçonnerie générale/.test(nonWeb.ecartes[0]?.motif || ''), 'un « non » du web écarte, avec ce qui a été vu', nonWeb.ecartes[0]?.motif);
+    const ouiWeb = qu.qualifier([muet.entreprise], { aujourdhui: AUJOURDHUI, sites: { 900000003: { site: 'annuaire', metier: 'oui', vu: 'fiche : ravalement' } } });
+    ok(ouiWeb.retenus.length === 1 && ouiWeb.retenus[0].site === 'annuaire', 'un « oui » du web fait entrer le nom muet, avec l état de son site');
+    const avant = qu.qualifier([muet.entreprise], { aujourdhui: AUJOURDHUI, exigerPreuve: false });
+    ok(avant.retenus.length === 1, 'la première liste du soir montre le nom muet, pour qu il soit vérifié');
+  }
+  const sansPreuve = qu.qualifier(lots.ravalement.entreprises, { aujourdhui: AUJOURDHUI }).retenus;
+  ok(sansPreuve.length > 0 && sansPreuve.every((e) => e.nomDitLeMetier), 'sur la population réelle, sans web, seuls les noms qui disent la façade restent',
+    `${sansPreuve.length} retenus ; muets : ${sansPreuve.filter((e) => !e.nomDitLeMetier).map((e) => e.nom).slice(0, 3).join(', ')}`);
+
+  // ------------------------------------------------------- noms et communes
+  console.log('\nLe nom et la commune que le site écrit');
+  const no = await import(pathToFileURL(join(DOSSIER, 'noms.mjs')).href);
+  const { normaliser: lireSirene } = await import(pathToFileURL(join(RACINE, 'generateur', 'sirene.mjs')).href);
+  ok(communes?.communes?.length === 119, 'la table officielle des communes du 13 est là', String(communes?.communes?.length));
+  const cas = [
+    [fausse('900000004', 'SASU BMAV MACONNERIE (SASU BMAV MACONNERIE)', '43.99C', { commune: '13030', code_postal: '13780', libelle_commune: 'CUGES-LES-PINS', nom_commercial: 'SASU BMAV MACONNERIE' }), 'BMAV MACONNERIE', 'Cuges-les-Pins', 'Bmav Maçonnerie'],
+    [fausse('900000005', 'SMILE ISOL (SMILE ISOL)', '43.29A', { commune: '13213', code_postal: '13013', libelle_commune: 'MARSEILLE 13EME' }), 'SMILE ISOL', 'Marseille', 'Smile Isol'],
+    [fausse('900000006', 'SCULPTURE FACADE', '43.99C', { commune: '13106', code_postal: '13240', libelle_commune: 'SEPTEMES-LES-VALLONS' }), 'SCULPTURE FACADE', 'Septèmes-les-Vallons', 'Sculpture Façade'],
+    [{ ...fausse('900000007', 'LUCAS VOLLEKINDT (HW ETANCHEITE)', '43.99C', { commune: '13103', code_postal: '13300', libelle_commune: 'SALON-DE-PROVENCE' }), nom_raison_sociale: null }, 'HW ETANCHEITE', 'Salon-de-Provence', 'Hw Étanchéité'],
+  ];
+  for (const [e, nom, commune, affiche] of cas) {
+    ok(no.nomAffiche(e) === nom, `« ${e.nom_complet} » s écrit « ${nom} »`, no.nomAffiche(e));
+    ok(no.communeOfficielle(e.siege, communes) === commune, `${e.siege.libelle_commune} s écrit « ${commune} »`, String(no.communeOfficielle(e.siege, communes)));
+    const page = lireSirene({ siren: e.siren, nom_complet: no.nomAffiche(e), siege: { libelle_commune: no.communeOfficielle(e.siege, communes) } });
+    ok(page.nomLisible === affiche && page.commune === commune, `le site affiche « ${affiche} », à ${commune}`, `${page.nomLisible} | ${page.commune}`);
+  }
+  // 13103 est partagé par deux communes : seul le code INSEE tranche.
+  ok(no.communeOfficielle({ commune: '13094', code_postal: '13103', libelle_commune: 'ST ETIENNE DU GRES' }, communes) === 'Saint-Étienne-du-Grès',
+    'un code postal partagé : la commune se lit par son code INSEE');
+  ok(no.communeOfficielle({ commune: '99999', code_postal: '13103' }, communes) === null, 'une commune inconnue ne se devine pas : null');
+  // Le générateur se défend seul aussi : un nom brut de l'API (sites refaits
+  // depuis la base) ne doit plus donner « Sasu Bmav Maconnerie (sasu …) ».
+  const brut = lireSirene({ siren: '900000004', nom_complet: 'SASU BMAV MACONNERIE (SASU BMAV MACONNERIE)', siege: { libelle_commune: 'MARSEILLE 13EME' } });
+  ok(brut.nomLisible === 'Bmav Maçonnerie' && brut.commune === 'Marseille', 'le générateur nettoie aussi un nom brut et un arrondissement', `${brut.nomLisible} | ${brut.commune}`);
+  const facadier = garde(cas[2][0]);
+  ok(facadier.garde && facadier.entreprise.nom === 'SCULPTURE FACADE' && facadier.entreprise.commune === 'Septèmes-les-Vallons',
+    'l extraction rend le nom propre et la commune officielle', `${facadier.entreprise?.nom} | ${facadier.entreprise?.commune}`);
 
   // -------------------------------------------------------------------- registre
   console.log('\nLe registre : ce qui ne doit jamais y entrer');

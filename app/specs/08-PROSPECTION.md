@@ -94,6 +94,20 @@ et `etat_administratif=A`. Ils sont la raison d'être de la moitié du code de
   **pluriel compris** : par morceaux, « ite » attrape ATS ETANCHEITE ; en mot
   strictement entier, « couverture » rate LES COUVERTURES LOPEZ, qui serait
   alors appelée comme peintre.
+- **Le ravalement n'a pas de code APE** (décision du 29 oct. : « Ravalement
+  de façade c'est des façadiers »). 43.99C, 43.34Z, 43.29A et 43.99D sont
+  maçons, peintres, isolation, travaux divers : sur les 413 candidats du
+  28 oct., 8 seulement disaient la façade dans leur nom, et 4 non-façadiers
+  ont reçu un site. Désormais : `motsAutreMetier` (maçonnerie, isolation,
+  cheminée, énergie…) écarte un nom qui ne dit pas aussi la façade ; un nom
+  muet porte `preuveExigee` et n'entre au lot que si la recherche web écrit
+  `"metier": "oui"` (`qualifier.mjs`, `/preparer-appels`).
+- **Le nom et la commune** (`scripts/prospection/noms.mjs`) : l'enseigne ou le
+  nom commercial, sinon la raison sociale, sans forme juridique (`nom_complet`
+  vaut « RAISON (NOM COMMERCIAL) ») ; la commune officielle par son code INSEE
+  (`prospection/communes-13.json`, tiré de geo.api.gouv.fr). Le générateur
+  remet les accents des mots de métier et retire un arrondissement
+  (`generateur/sirene.mjs`).
 
 Les codes APE retenus, et ce qu'ils pèsent dans le 13 (petites entreprises
 actives) : ravalement `43.34Z` 3 979, `43.99C` 9 264, `43.99D` 524,

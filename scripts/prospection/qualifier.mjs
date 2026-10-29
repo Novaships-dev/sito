@@ -76,10 +76,24 @@ export function noter(e, { site = 'inconnu' } = {}) {
   return { note, pourquoi, ecarte: null };
 }
 
+// Ce que la recherche web a vu pour un SIREN. Deux formes : l'état du site
+// seul (« aucun »), ou { site, metier: "oui" | "non", vu } quand elle a aussi
+// regardé ce que fait l'entreprise (site, fiche, annuaire) — obligatoire pour
+// un nom muet dans un métier qui exige une preuve (`preuveExigee`).
+export function vuSurLeWeb(x) {
+  if (!x) return { site: 'inconnu', metier: null, vu: null };
+  if (typeof x === 'string') return { site: x, metier: null, vu: null };
+  if (x.metier != null && !['oui', 'non'].includes(x.metier)) throw new Error(`métier vu sur le web : « oui » ou « non », reçu « ${x.metier} »`);
+  return { site: x.site || 'inconnu', metier: x.metier ?? null, vu: x.vu || null };
+}
+
 // Trie les entreprises extraites et dit lesquelles sont écartées, pourquoi.
 // Déterministe : à égalité de note, l'ordre est celui des SIREN, pour que deux
 // préparations du même soir donnent la même liste.
-export function qualifier(entreprises, { registre = { fiches: {} }, aujourdhui = new Date(), sites = {} } = {}) {
+//
+// `exigerPreuve` : faux seulement pour la première liste du soir (`lister`),
+// qui doit justement montrer les noms muets à vérifier sur le web.
+export function qualifier(entreprises, { registre = { fiches: {} }, aujourdhui = new Date(), sites = {}, exigerPreuve = true } = {}) {
   const jour = aujourdhui.toISOString().slice(0, 10);
   const retenus = [];
   const ecartes = [];
@@ -88,9 +102,15 @@ export function qualifier(entreprises, { registre = { fiches: {} }, aujourdhui =
     const fiche = registre.fiches?.[e.siren];
     const porte = appelable(fiche, jour);
     if (!porte.oui) { ecartes.push({ ...e, motif: porte.motif }); continue; }
-    const n = noter(e, { site: sites[e.siren] || 'inconnu' });
+    const web = vuSurLeWeb(sites[e.siren]);
+    if (web.metier === 'non') { ecartes.push({ ...e, motif: `la recherche web montre un autre métier${web.vu ? ` : ${web.vu}` : ''}` }); continue; }
+    if (exigerPreuve && e.preuveExigee && web.metier !== 'oui') {
+      ecartes.push({ ...e, motif: 'métier pas prouvé : le nom ne le dit pas et la recherche web ne l a pas montré' });
+      continue;
+    }
+    const n = noter(e, { site: web.site });
     if (n.ecarte) { ecartes.push({ ...e, motif: n.ecarte }); continue; }
-    retenus.push({ ...e, note: n.note, pourquoi: n.pourquoi, site: sites[e.siren] || 'inconnu' });
+    retenus.push({ ...e, note: n.note, pourquoi: n.pourquoi, site: web.site, ...(web.vu ? { metierVu: web.vu } : {}) });
   }
 
   retenus.sort((a, b) => b.note - a.note || a.siren.localeCompare(b.siren));

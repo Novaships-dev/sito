@@ -33,14 +33,41 @@ export function normaliser(brut) {
   };
 }
 const petits = new Set(['de','du','des','la','le','les','et','a','au','aux','en','sur','sous']);
+// La base écrit en majuscules sans accents : les mots du métier retrouvent
+// les leurs (« Maconnerie » sur un site de maçon se voit tout de suite).
+const ACCENTS = { facade: 'façade', facades: 'façades', facadier: 'façadier', facadiers: 'façadiers',
+  maconnerie: 'maçonnerie', macon: 'maçon', macons: 'maçons', etancheite: 'étanchéité',
+  platrerie: 'plâtrerie', platrier: 'plâtrier', batiment: 'bâtiment', batiments: 'bâtiments',
+  renovation: 'rénovation', renovations: 'rénovations', decoration: 'décoration', revetement: 'revêtement',
+  revetements: 'revêtements', electricite: 'électricité', energie: 'énergie', cheminee: 'cheminée',
+  cheminees: 'cheminées', crepi: 'crépi', crepis: 'crépis', freres: 'frères', pere: 'père', generale: 'générale' };
+const FORMES_JURIDIQUES = /(^|\s)(sasu|sas|sarlu|sarl|eurl|earl|sci|snc|sa|ei|eirl|scop)(?=\s|$)/gi;
+const mot = (m, i) => {
+  const a = ACCENTS[m] || m;
+  return petits.has(a) && i > 0 ? a : a.charAt(0).toUpperCase() + a.slice(1);
+};
+// Une casse déjà mêlée (« Septèmes-les-Vallons ») vient d'une source qui
+// sait l'écrire : on la garde. Seul le tout-majuscules se refait.
+const enMajuscules = (t) => t === t.toUpperCase();
+function casse(t) {
+  return String(t).toLowerCase().split(' ')
+    .map((m, i) => m.split('-').map((p, j) => mot(p, i + j)).join('-'))
+    .join(' ');
+}
+// « RAISON (NOM COMMERCIAL) » : la parenthèse qui répète le nom part, avec
+// la forme juridique (lot du 28 oct. 2026 : « Sasu Bmav Maconnerie (sasu
+// Bmav Maconnerie) »).
 function lisible(nom) {
-  return String(nom).toLowerCase().split(/\s+/)
-    .map((m, i) => petits.has(m) && i > 0 ? m : m.charAt(0).toUpperCase() + m.slice(1))
-    .join(' ')
-    .replace(/\bFacade/g, 'Façade').replace(/\bFacades/g, 'Façades');
+  let n = String(nom).replace(/\s+/g, ' ').trim();
+  const sans = (t) => t.replace(FORMES_JURIDIQUES, ' ').replace(/\s+/g, ' ').trim();
+  const p = n.match(/^(.*?)\s*\(([^()]*)\)(?:\s*\([^()]*\))*$/);
+  if (p && sans(p[1]).toUpperCase() === sans(p[2]).toUpperCase()) n = p[1];
+  n = sans(n) || n;
+  return enMajuscules(n) ? casse(n) : n;
 }
 function capitaliser(t) {
-  return String(t).toLowerCase().split(' ')
-    .map((m, i) => petits.has(m) && i > 0 ? m : m.charAt(0).toUpperCase() + m.slice(1))
-    .join(' ');
+  const n = String(t).replace(/\s+/g, ' ').trim();
+  // « MARSEILLE 13EME » : l'arrondissement n'est pas le nom de la commune.
+  const sans = n.replace(/^(marseille|lyon|paris)\s+\d{1,2}\s*(e|er|eme|ème)$/i, '$1');
+  return enMajuscules(sans) ? casse(sans) : sans;
 }

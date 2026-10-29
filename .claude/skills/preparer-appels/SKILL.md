@@ -50,6 +50,21 @@ n'avait pas été cherché — jamais une note haute sans savoir.
 { "123456789": "aucun", "987654321": "recent-prestataire" }
 ```
 
+**Le métier, pour les candidats `metier_a_prouver`** (décision du 29 oct. :
+« Ravalement de façade c'est des façadiers »). Aucun code APE ne dit le
+ravalement : un nom qui ne dit pas la façade (« NICOLAS FERMAUD ») ne suffit
+pas. La recherche regarde aussi **ce que fait l'entreprise** (son site, sa
+fiche, un annuaire) et l'écrit :
+
+```json
+{ "123456789": { "site": "annuaire", "metier": "oui", "vu": "fiche Pages Jaunes : ravalement de façades, enduits" },
+  "555666777": { "site": "aucun", "metier": "non", "vu": "site : maçonnerie générale, piscines" } }
+```
+
+`"oui"` seulement si la façade est son **métier principal**. Sans `"oui"`, le
+candidat est écarté avec sa raison et ne reçoit pas de site. Un `"non"`
+écarte aussi un candidat dont le nom dit le métier.
+
 ## 3. Fabriquer, publier, produire la page
 
 ```

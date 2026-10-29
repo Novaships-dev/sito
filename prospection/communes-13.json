@@ -1,0 +1,865 @@
+{
+ "source": "geo.api.gouv.fr (Code officiel géographique)",
+ "prelevee_le": "2026-10-29",
+ "departement": "13",
+ "communes": [
+  {
+   "nom": "Aix-en-Provence",
+   "code": "13001",
+   "codesPostaux": [
+    "13080",
+    "13090",
+    "13100",
+    "13290",
+    "13540"
+   ]
+  },
+  {
+   "nom": "Allauch",
+   "code": "13002",
+   "codesPostaux": [
+    "13190"
+   ]
+  },
+  {
+   "nom": "Alleins",
+   "code": "13003",
+   "codesPostaux": [
+    "13980"
+   ]
+  },
+  {
+   "nom": "Arles",
+   "code": "13004",
+   "codesPostaux": [
+    "13104",
+    "13123",
+    "13129",
+    "13200",
+    "13280"
+   ]
+  },
+  {
+   "nom": "Aubagne",
+   "code": "13005",
+   "codesPostaux": [
+    "13400"
+   ]
+  },
+  {
+   "nom": "Aureille",
+   "code": "13006",
+   "codesPostaux": [
+    "13930"
+   ]
+  },
+  {
+   "nom": "Auriol",
+   "code": "13007",
+   "codesPostaux": [
+    "13390"
+   ]
+  },
+  {
+   "nom": "Aurons",
+   "code": "13008",
+   "codesPostaux": [
+    "13121"
+   ]
+  },
+  {
+   "nom": "La Barben",
+   "code": "13009",
+   "codesPostaux": [
+    "13330"
+   ]
+  },
+  {
+   "nom": "Barbentane",
+   "code": "13010",
+   "codesPostaux": [
+    "13570"
+   ]
+  },
+  {
+   "nom": "Les Baux-de-Provence",
+   "code": "13011",
+   "codesPostaux": [
+    "13520"
+   ]
+  },
+  {
+   "nom": "Beaurecueil",
+   "code": "13012",
+   "codesPostaux": [
+    "13100"
+   ]
+  },
+  {
+   "nom": "Belcodène",
+   "code": "13013",
+   "codesPostaux": [
+    "13720"
+   ]
+  },
+  {
+   "nom": "Berre-l'Étang",
+   "code": "13014",
+   "codesPostaux": [
+    "13130"
+   ]
+  },
+  {
+   "nom": "Bouc-Bel-Air",
+   "code": "13015",
+   "codesPostaux": [
+    "13320"
+   ]
+  },
+  {
+   "nom": "La Bouilladisse",
+   "code": "13016",
+   "codesPostaux": [
+    "13720"
+   ]
+  },
+  {
+   "nom": "Boulbon",
+   "code": "13017",
+   "codesPostaux": [
+    "13150"
+   ]
+  },
+  {
+   "nom": "Cabannes",
+   "code": "13018",
+   "codesPostaux": [
+    "13440"
+   ]
+  },
+  {
+   "nom": "Cabriès",
+   "code": "13019",
+   "codesPostaux": [
+    "13480"
+   ]
+  },
+  {
+   "nom": "Cadolive",
+   "code": "13020",
+   "codesPostaux": [
+    "13950"
+   ]
+  },
+  {
+   "nom": "Carry-le-Rouet",
+   "code": "13021",
+   "codesPostaux": [
+    "13620"
+   ]
+  },
+  {
+   "nom": "Cassis",
+   "code": "13022",
+   "codesPostaux": [
+    "13260"
+   ]
+  },
+  {
+   "nom": "Ceyreste",
+   "code": "13023",
+   "codesPostaux": [
+    "13600"
+   ]
+  },
+  {
+   "nom": "Charleval",
+   "code": "13024",
+   "codesPostaux": [
+    "13350"
+   ]
+  },
+  {
+   "nom": "Châteauneuf-le-Rouge",
+   "code": "13025",
+   "codesPostaux": [
+    "13790"
+   ]
+  },
+  {
+   "nom": "Châteauneuf-les-Martigues",
+   "code": "13026",
+   "codesPostaux": [
+    "13220"
+   ]
+  },
+  {
+   "nom": "Châteaurenard",
+   "code": "13027",
+   "codesPostaux": [
+    "13160"
+   ]
+  },
+  {
+   "nom": "La Ciotat",
+   "code": "13028",
+   "codesPostaux": [
+    "13600"
+   ]
+  },
+  {
+   "nom": "Cornillon-Confoux",
+   "code": "13029",
+   "codesPostaux": [
+    "13250"
+   ]
+  },
+  {
+   "nom": "Cuges-les-Pins",
+   "code": "13030",
+   "codesPostaux": [
+    "13780"
+   ]
+  },
+  {
+   "nom": "La Destrousse",
+   "code": "13031",
+   "codesPostaux": [
+    "13112"
+   ]
+  },
+  {
+   "nom": "Éguilles",
+   "code": "13032",
+   "codesPostaux": [
+    "13510"
+   ]
+  },
+  {
+   "nom": "Ensuès-la-Redonne",
+   "code": "13033",
+   "codesPostaux": [
+    "13820"
+   ]
+  },
+  {
+   "nom": "Eygalières",
+   "code": "13034",
+   "codesPostaux": [
+    "13810"
+   ]
+  },
+  {
+   "nom": "Eyguières",
+   "code": "13035",
+   "codesPostaux": [
+    "13430"
+   ]
+  },
+  {
+   "nom": "Eyragues",
+   "code": "13036",
+   "codesPostaux": [
+    "13630"
+   ]
+  },
+  {
+   "nom": "La Fare-les-Oliviers",
+   "code": "13037",
+   "codesPostaux": [
+    "13580"
+   ]
+  },
+  {
+   "nom": "Fontvieille",
+   "code": "13038",
+   "codesPostaux": [
+    "13990"
+   ]
+  },
+  {
+   "nom": "Fos-sur-Mer",
+   "code": "13039",
+   "codesPostaux": [
+    "13270"
+   ]
+  },
+  {
+   "nom": "Fuveau",
+   "code": "13040",
+   "codesPostaux": [
+    "13710"
+   ]
+  },
+  {
+   "nom": "Gardanne",
+   "code": "13041",
+   "codesPostaux": [
+    "13120"
+   ]
+  },
+  {
+   "nom": "Gémenos",
+   "code": "13042",
+   "codesPostaux": [
+    "13420"
+   ]
+  },
+  {
+   "nom": "Gignac-la-Nerthe",
+   "code": "13043",
+   "codesPostaux": [
+    "13180"
+   ]
+  },
+  {
+   "nom": "Grans",
+   "code": "13044",
+   "codesPostaux": [
+    "13450"
+   ]
+  },
+  {
+   "nom": "Graveson",
+   "code": "13045",
+   "codesPostaux": [
+    "13690"
+   ]
+  },
+  {
+   "nom": "Gréasque",
+   "code": "13046",
+   "codesPostaux": [
+    "13850"
+   ]
+  },
+  {
+   "nom": "Istres",
+   "code": "13047",
+   "codesPostaux": [
+    "13118",
+    "13800"
+   ]
+  },
+  {
+   "nom": "Jouques",
+   "code": "13048",
+   "codesPostaux": [
+    "13490"
+   ]
+  },
+  {
+   "nom": "Lamanon",
+   "code": "13049",
+   "codesPostaux": [
+    "13113"
+   ]
+  },
+  {
+   "nom": "Lambesc",
+   "code": "13050",
+   "codesPostaux": [
+    "13410"
+   ]
+  },
+  {
+   "nom": "Lançon-Provence",
+   "code": "13051",
+   "codesPostaux": [
+    "13680"
+   ]
+  },
+  {
+   "nom": "Maillane",
+   "code": "13052",
+   "codesPostaux": [
+    "13910"
+   ]
+  },
+  {
+   "nom": "Mallemort",
+   "code": "13053",
+   "codesPostaux": [
+    "13370"
+   ]
+  },
+  {
+   "nom": "Marignane",
+   "code": "13054",
+   "codesPostaux": [
+    "13700"
+   ]
+  },
+  {
+   "nom": "Marseille",
+   "code": "13055",
+   "codesPostaux": [
+    "13001",
+    "13002",
+    "13003",
+    "13004",
+    "13005",
+    "13006",
+    "13007",
+    "13008",
+    "13009",
+    "13010",
+    "13011",
+    "13012",
+    "13013",
+    "13014",
+    "13015",
+    "13016"
+   ]
+  },
+  {
+   "nom": "Martigues",
+   "code": "13056",
+   "codesPostaux": [
+    "13117",
+    "13500"
+   ]
+  },
+  {
+   "nom": "Mas-Blanc-des-Alpilles",
+   "code": "13057",
+   "codesPostaux": [
+    "13103"
+   ]
+  },
+  {
+   "nom": "Maussane-les-Alpilles",
+   "code": "13058",
+   "codesPostaux": [
+    "13520"
+   ]
+  },
+  {
+   "nom": "Meyrargues",
+   "code": "13059",
+   "codesPostaux": [
+    "13650"
+   ]
+  },
+  {
+   "nom": "Meyreuil",
+   "code": "13060",
+   "codesPostaux": [
+    "13590"
+   ]
+  },
+  {
+   "nom": "Saint-Pierre-de-Mézoargues",
+   "code": "13061",
+   "codesPostaux": [
+    "13150"
+   ]
+  },
+  {
+   "nom": "Mimet",
+   "code": "13062",
+   "codesPostaux": [
+    "13105"
+   ]
+  },
+  {
+   "nom": "Miramas",
+   "code": "13063",
+   "codesPostaux": [
+    "13140"
+   ]
+  },
+  {
+   "nom": "Mollégès",
+   "code": "13064",
+   "codesPostaux": [
+    "13940"
+   ]
+  },
+  {
+   "nom": "Mouriès",
+   "code": "13065",
+   "codesPostaux": [
+    "13890"
+   ]
+  },
+  {
+   "nom": "Noves",
+   "code": "13066",
+   "codesPostaux": [
+    "13550"
+   ]
+  },
+  {
+   "nom": "Orgon",
+   "code": "13067",
+   "codesPostaux": [
+    "13660"
+   ]
+  },
+  {
+   "nom": "Paradou",
+   "code": "13068",
+   "codesPostaux": [
+    "13520"
+   ]
+  },
+  {
+   "nom": "Pélissanne",
+   "code": "13069",
+   "codesPostaux": [
+    "13330"
+   ]
+  },
+  {
+   "nom": "La Penne-sur-Huveaune",
+   "code": "13070",
+   "codesPostaux": [
+    "13821"
+   ]
+  },
+  {
+   "nom": "Les Pennes-Mirabeau",
+   "code": "13071",
+   "codesPostaux": [
+    "13170"
+   ]
+  },
+  {
+   "nom": "Peynier",
+   "code": "13072",
+   "codesPostaux": [
+    "13790"
+   ]
+  },
+  {
+   "nom": "Peypin",
+   "code": "13073",
+   "codesPostaux": [
+    "13124"
+   ]
+  },
+  {
+   "nom": "Peyrolles-en-Provence",
+   "code": "13074",
+   "codesPostaux": [
+    "13860"
+   ]
+  },
+  {
+   "nom": "Plan-de-Cuques",
+   "code": "13075",
+   "codesPostaux": [
+    "13380"
+   ]
+  },
+  {
+   "nom": "Plan-d'Orgon",
+   "code": "13076",
+   "codesPostaux": [
+    "13750"
+   ]
+  },
+  {
+   "nom": "Port-de-Bouc",
+   "code": "13077",
+   "codesPostaux": [
+    "13110"
+   ]
+  },
+  {
+   "nom": "Port-Saint-Louis-du-Rhône",
+   "code": "13078",
+   "codesPostaux": [
+    "13230"
+   ]
+  },
+  {
+   "nom": "Puyloubier",
+   "code": "13079",
+   "codesPostaux": [
+    "13114"
+   ]
+  },
+  {
+   "nom": "Le Puy-Sainte-Réparade",
+   "code": "13080",
+   "codesPostaux": [
+    "13610"
+   ]
+  },
+  {
+   "nom": "Rognac",
+   "code": "13081",
+   "codesPostaux": [
+    "13340"
+   ]
+  },
+  {
+   "nom": "Rognes",
+   "code": "13082",
+   "codesPostaux": [
+    "13840"
+   ]
+  },
+  {
+   "nom": "Rognonas",
+   "code": "13083",
+   "codesPostaux": [
+    "13870"
+   ]
+  },
+  {
+   "nom": "La Roque-d'Anthéron",
+   "code": "13084",
+   "codesPostaux": [
+    "13640"
+   ]
+  },
+  {
+   "nom": "Roquefort-la-Bédoule",
+   "code": "13085",
+   "codesPostaux": [
+    "13830"
+   ]
+  },
+  {
+   "nom": "Roquevaire",
+   "code": "13086",
+   "codesPostaux": [
+    "13360"
+   ]
+  },
+  {
+   "nom": "Rousset",
+   "code": "13087",
+   "codesPostaux": [
+    "13790"
+   ]
+  },
+  {
+   "nom": "Le Rove",
+   "code": "13088",
+   "codesPostaux": [
+    "13740"
+   ]
+  },
+  {
+   "nom": "Saint-Andiol",
+   "code": "13089",
+   "codesPostaux": [
+    "13670"
+   ]
+  },
+  {
+   "nom": "Saint-Antonin-sur-Bayon",
+   "code": "13090",
+   "codesPostaux": [
+    "13100"
+   ]
+  },
+  {
+   "nom": "Saint-Cannat",
+   "code": "13091",
+   "codesPostaux": [
+    "13760"
+   ]
+  },
+  {
+   "nom": "Saint-Chamas",
+   "code": "13092",
+   "codesPostaux": [
+    "13250"
+   ]
+  },
+  {
+   "nom": "Saint-Estève-Janson",
+   "code": "13093",
+   "codesPostaux": [
+    "13610"
+   ]
+  },
+  {
+   "nom": "Saint-Étienne-du-Grès",
+   "code": "13094",
+   "codesPostaux": [
+    "13103"
+   ]
+  },
+  {
+   "nom": "Saint-Marc-Jaumegarde",
+   "code": "13095",
+   "codesPostaux": [
+    "13100"
+   ]
+  },
+  {
+   "nom": "Saintes-Maries-de-la-Mer",
+   "code": "13096",
+   "codesPostaux": [
+    "13460"
+   ]
+  },
+  {
+   "nom": "Saint-Martin-de-Crau",
+   "code": "13097",
+   "codesPostaux": [
+    "13310"
+   ]
+  },
+  {
+   "nom": "Saint-Mitre-les-Remparts",
+   "code": "13098",
+   "codesPostaux": [
+    "13920"
+   ]
+  },
+  {
+   "nom": "Saint-Paul-lès-Durance",
+   "code": "13099",
+   "codesPostaux": [
+    "13115"
+   ]
+  },
+  {
+   "nom": "Saint-Rémy-de-Provence",
+   "code": "13100",
+   "codesPostaux": [
+    "13210"
+   ]
+  },
+  {
+   "nom": "Saint-Savournin",
+   "code": "13101",
+   "codesPostaux": [
+    "13119"
+   ]
+  },
+  {
+   "nom": "Saint-Victoret",
+   "code": "13102",
+   "codesPostaux": [
+    "13730"
+   ]
+  },
+  {
+   "nom": "Salon-de-Provence",
+   "code": "13103",
+   "codesPostaux": [
+    "13300"
+   ]
+  },
+  {
+   "nom": "Sausset-les-Pins",
+   "code": "13104",
+   "codesPostaux": [
+    "13960"
+   ]
+  },
+  {
+   "nom": "Sénas",
+   "code": "13105",
+   "codesPostaux": [
+    "13560"
+   ]
+  },
+  {
+   "nom": "Septèmes-les-Vallons",
+   "code": "13106",
+   "codesPostaux": [
+    "13240"
+   ]
+  },
+  {
+   "nom": "Simiane-Collongue",
+   "code": "13107",
+   "codesPostaux": [
+    "13109"
+   ]
+  },
+  {
+   "nom": "Tarascon",
+   "code": "13108",
+   "codesPostaux": [
+    "13150"
+   ]
+  },
+  {
+   "nom": "Le Tholonet",
+   "code": "13109",
+   "codesPostaux": [
+    "13100"
+   ]
+  },
+  {
+   "nom": "Trets",
+   "code": "13110",
+   "codesPostaux": [
+    "13530"
+   ]
+  },
+  {
+   "nom": "Vauvenargues",
+   "code": "13111",
+   "codesPostaux": [
+    "13126"
+   ]
+  },
+  {
+   "nom": "Velaux",
+   "code": "13112",
+   "codesPostaux": [
+    "13880"
+   ]
+  },
+  {
+   "nom": "Venelles",
+   "code": "13113",
+   "codesPostaux": [
+    "13770"
+   ]
+  },
+  {
+   "nom": "Ventabren",
+   "code": "13114",
+   "codesPostaux": [
+    "13122"
+   ]
+  },
+  {
+   "nom": "Vernègues",
+   "code": "13115",
+   "codesPostaux": [
+    "13116"
+   ]
+  },
+  {
+   "nom": "Verquières",
+   "code": "13116",
+   "codesPostaux": [
+    "13670"
+   ]
+  },
+  {
+   "nom": "Vitrolles",
+   "code": "13117",
+   "codesPostaux": [
+    "13127"
+   ]
+  },
+  {
+   "nom": "Coudoux",
+   "code": "13118",
+   "codesPostaux": [
+    "13111"
+   ]
+  },
+  {
+   "nom": "Carnoux-en-Provence",
+   "code": "13119",
+   "codesPostaux": [
+    "13470"
+   ]
+  }
+ ]
+}

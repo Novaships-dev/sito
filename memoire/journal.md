@@ -1401,3 +1401,29 @@ les 4 non-façadiers signalés par Cowork n'y sont plus. Reste dans T41 : la
 cause du mauvais tri (mots de `metiers.json`, nom muet gardé d'office), les
 noms (enseigne, forme juridique, accents) et les communes officielles, puis
 refabriquer les 6 — ce dernier point attend F19.
+
+**La cause du mauvais tri, corrigée** (décision du 29 oct., signalement de
+Cowork). Plan : 1) mots de `metiers.json` et preuve du métier ; 2) noms et
+communes à la source et dans le générateur ; 3) essais qui rougissent sur les
+quatre cas réels.
+- `metiers.json` : ravalement = ravalement, ravaleur, façade, façadier, enduit,
+  crépi ; `motsAutreMetier` (maçonnerie, maçon, isolation, isol, ITE,
+  plâtrerie, cheminée, énergie, gros œuvre) écarte un nom qui ne dit pas aussi
+  la façade ; `preuveDuMetier` : un nom muet porte `preuveExigee`.
+- `qualifier.mjs` : la recherche web peut écrire `{ site, metier, vu }` ; sans
+  `"oui"`, un nom muet est écarté avec sa raison ; un `"non"` écarte toujours.
+  `lister` montre les noms muets (`metier_a_prouver`) pour qu'ils soient
+  cherchés. Skill `/preparer-appels` mis à jour.
+- `scripts/prospection/noms.mjs` (nouveau) + `prospection/communes-13.json`
+  (119 communes, geo.api.gouv.fr) ; `generateur/sirene.mjs` : accents des
+  mots de métier, casse des noms composés gardée, arrondissement retiré,
+  parenthèse en double et forme juridique retirées.
+- Communes du registre remises au nom officiel (6 fiches).
+Preuve : `essai-prospection.mjs` 122 contrôles, 0 faute ; contre-essai
+12 cassures sur 12 attrapées (dont 5 nouvelles ; celle de la table des
+communes passait d'abord, le code postal suffisant à tous les cas : ajouté un
+code postal partagé, 13103). Sur la population réelle, sans web, plus aucun
+nom muet au ravalement. Suite complète verte.
+
+T41 passe **bloqué** : refabriquer les 6 sites avec leurs noms propres
+demande de la place (F19) ; les 30 liens demandent F18.
