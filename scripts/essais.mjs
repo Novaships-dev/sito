@@ -46,6 +46,8 @@ const ETAPES = [
   { nom: 'app : parcours et rendu (navigateur)', cmd: ['node', 'scripts/essai-app.mjs'] },
   { nom: 'photos (service)', cmd: ['node', 'scripts/essai-photos.mjs'], manque: outilsPhotos },
   { nom: 'service : adaptateur Supabase', cmd: ['node', 'scripts/essai-service.mjs'] },
+  // L'inscription par lien (fonction Edge) sur un faux dépôt : jamais le réseau.
+  { nom: 'inscription par lien (fonction Edge)', cmd: ['node', 'scripts/essai-inscription.mjs'] },
   { nom: 'service : préparation des photos reçues', cmd: ['node', 'scripts/essai-preparation.mjs'], manque: outilsPhotos },
   { nom: 'service : fabrication depuis la base', cmd: ['node', 'scripts/essai-fabrication-base.mjs'] },
   { nom: 'service : boucle (refaire, vérifier, publier par version)', cmd: ['node', 'scripts/essai-boucle.mjs'] },
@@ -78,6 +80,7 @@ if (COMPLET) {
     { nom: 'contre-essai : outillage', cmd: ['node', 'scripts/essai-outillage.mjs', '--contre-essai'] },
     { nom: 'contre-essai : app', cmd: ['node', 'scripts/essai-app.mjs', '--contre-essai'] },
     { nom: 'contre-essai : service', cmd: ['node', 'scripts/essai-service.mjs', '--contre-essai'] },
+    { nom: 'contre-essai : inscription par lien', cmd: ['node', 'scripts/essai-inscription.mjs', '--contre-essai'] },
     { nom: 'contre-essai : préparation des photos', cmd: ['node', 'scripts/essai-preparation.mjs', '--contre-essai'], manque: outilsPhotos },
     { nom: 'contre-essai : fabrication depuis la base', cmd: ['node', 'scripts/essai-fabrication-base.mjs', '--contre-essai'] },
     { nom: 'contre-essai : boucle du service', cmd: ['node', 'scripts/essai-boucle.mjs', '--contre-essai'] },

@@ -121,6 +121,17 @@ avertissement. Sécurité, 3 informations voulues : `prospects`,
 seulement, « rien, jamais » pour l'app). Performance : 18 index jamais
 utilisés (base vide).
 
+**Ajout du 29 octobre 2026** (T43, migration `20261029181645_invitations`) :
+table `invitations` et `public.creer_invitation`, et la fonction Edge
+`inscription` (`functions/inscription/`, déployée par l'outil MCP
+`deploy_edge_function`, `verify_jwt` faux : le jeton d'invitation fait
+office de clé). `essais/invitations.sql` : rouge avant la migration
+(fonction absente), 7 résultats attendus après. `droits.sql` (11) et
+`droits-app.sql` (20) rejoués : aucune « FAUTE ». Conseillers : une
+information de plus, voulue (`invitations` sans politique). Le code déployé
+est une copie de `functions/inscription/` : après une modification, le
+redéployer (mêmes deux fichiers).
+
 ## Ce qui n'est pas encore fait
 
 - Le générateur lit encore `generateur/registre.json`. Le brancher sur la

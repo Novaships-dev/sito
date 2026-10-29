@@ -1539,3 +1539,27 @@ sur 4 attrapées ; suite complète verte. Place libre : 2,1 Go.
   (73dfb14), fait pendant la tâche. Historique laissé tel quel (jamais
   réécrit). Garde : un audit qui corrige indexe ses `git rm` ; avant un
   commit `Cowork : …`, vérifier `git diff --cached --stat`.
+
+## 29 oct. 2026 — T43 (inscription sans code)
+
+Plan : 1) base : `invitations` + `creer_invitation`, fonction Edge
+`inscription` (compte créé confirmé par l'API d'administration, rattaché à
+l'entreprise du lien) ; 2) app : connexion par mot de passe, écrans
+d'inscription et de reprise, code retiré ; 3) essais (logique, réel sur le
+compte d'essai, navigateur) et specs.
+
+- Doc Supabase relue (29 oct.) : sans serveur d'e-mail personnel, Supabase
+  refuse d'écrire aux adresses hors de l'équipe du projet. « Mot de passe
+  oublié » par l'e-mail de Supabase ne toucherait donc aucun artisan :
+  remplacé par un lien de reprise que Fabrice envoie par SMS (Q4).
+- Fonction Edge plutôt qu'inscription libre : les inscriptions publiques
+  restent fermées, rien à régler dans le tableau de bord, aucune clé posée.
+- Le `.env` n'a toujours pas la clé de service (F1) : l'essai réel passe par
+  la fonction elle-même (`essai-inscription.mjs --reel <jeton>`), le jeton
+  fabriqué par l'outil MCP. Le compte d'essai (SIREN 000000000,
+  `SITO_COMPTE_ESSAI_COURRIEL`) est né ainsi : inscription 6/0, puis reprise
+  6/0 (connexion par mot de passe, mauvais mot de passe refusé, il ne voit
+  que l'entreprise d'essai, lien refusé la seconde fois). Mot de passe tiré
+  au hasard, jamais écrit : la fois suivante, un lien de reprise.
+- Contrôle des secrets : l’argument `motDePasse` passé à `password` passait pour un mot de passe
+  écrit en clair (motif de 8 caractères) ; variable renommée `mdp`.
