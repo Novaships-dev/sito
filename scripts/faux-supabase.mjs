@@ -123,6 +123,10 @@ export async function fauxSupabase({ cle, base = {}, cles = {}, objets = new Map
       repondre(404, { message: `relation "${t ? t[1] : u.pathname}" does not exist` });
     });
   });
+  // Node ferme une connexion inactive au bout de 5 s ; Supabase la garde bien
+  // plus. Après une fabrication de 9 s, le client réutilisait une connexion que
+  // le faux venait de fermer : « fetch failed » en CI (29 oct. 2026).
+  serveur.keepAliveTimeout = 120000;
   await new Promise((r) => serveur.listen(0, '127.0.0.1', r));
   return {
     url: `http://127.0.0.1:${serveur.address().port}`,

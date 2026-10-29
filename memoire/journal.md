@@ -1482,3 +1482,13 @@ dernière fabrication, le refaire, le publier par version, noter la base ;
   manifeste de la version 1 est maintenant lu juste après le premier tour.
 Preuve : `essai-boucle.mjs` 23 contrôles, 0 faute ; contre-essai 4/4 ; suite
 complète verte (18 étapes). Place libre : 133 Mo.
+
+## 29 oct. 2026 — CI rouge, réparée avant T10
+
+#25, #26, #27 rouges, #24 vert. `node scripts/ci-github.mjs --journal` ne
+montrait que la fin du journal (rien d'utile) : option `--lignes=N` ajoutée.
+Avec 3 000 lignes : « essai interrompu — fetch failed » dans
+`essai-fabrication-base` et `essai-boucle`, juste après la première
+fabrication. Cause et réparation : `memoire/pieges.md` (29 oct., course entre
+un `spawnSync` de 9 s et la fermeture des connexions inactives du faux
+serveur). Essais locaux verts ; preuve attendue : la CI.

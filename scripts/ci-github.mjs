@@ -14,6 +14,7 @@
 //   node scripts/ci-github.mjs              le dernier passage sur main
 //   node scripts/ci-github.mjs --tous       les cinq derniers passages
 //   node scripts/ci-github.mjs --journal    + le journal des étapes en échec
+//                         [--lignes=N]     (les N dernières lignes, 120 par défaut)
 //   node scripts/ci-github.mjs --ecrire     + la ligne du verdict ajoutée à
 //                                           memoire/essais/derniers.txt (à
 //                                           lancer après scripts/essais.mjs,
@@ -29,6 +30,9 @@ import { chargerEnv, RACINE } from './env.mjs';
 const TOUS = process.argv.includes('--tous');
 const JOURNAL = process.argv.includes('--journal');
 const ECRIRE = process.argv.includes('--ecrire');
+// --lignes=N : la fin du journal d'une étape en échec (120 par défaut) ; une
+// erreur qui arrive tôt dans une longue étape n'est pas dans les dernières.
+const LIGNES = Number(process.argv.find((a) => a.startsWith('--lignes='))?.split('=')[1]) || 120;
 
 // --------------------------------------------------------------- dépôt et jeton
 function depot() {
@@ -110,7 +114,7 @@ async function verdict() {
         const texte = await api(`/actions/jobs/${j.id}/logs`, true).catch(() => '');
         const lignes = texte.split('\n').filter((l) => l.trim());
         console.log(`\n  --- fin du journal de « ${j.name} » (${lignes.length} lignes en tout) ---`);
-        for (const l of lignes.slice(-120)) console.log(`  ${l}`);
+        for (const l of lignes.slice(-LIGNES)) console.log(`  ${l}`);
       }
     }
   }

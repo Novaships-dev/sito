@@ -22,7 +22,16 @@
 import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { spawnSync } from 'node:child_process';
+import { spawn } from 'node:child_process';
+
+const lancer = (cmd, args, options) => new Promise((resoudre, rejeter) => {
+  const p = spawn(cmd, args, { ...options, stdio: ['ignore', 'pipe', 'pipe'] });
+  let stdout = '', stderr = '';
+  p.stdout.setEncoding('utf8').on('data', (d) => { stdout += d; });
+  p.stderr.setEncoding('utf8').on('data', (d) => { stderr += d; });
+  p.on('error', rejeter);
+  p.on('close', (status) => resoudre({ status, stdout, stderr }));
+});
 import { pathToFileURL } from 'node:url';
 import { RACINE } from '../scripts/env.mjs';
 // Importé par chemin (via RACINE), pas par spécificateur relatif : un essai
@@ -152,8 +161,10 @@ export async function fabriquerDepuisBase({
       '--siren', siren, '--metier', metier, '--images', dossierImages,
       '--sortie', sortie, '--donnees', fichierDonnees, '--registre', registre];
     if (fichierCharte) args.push('--charte', fichierCharte);
-    const r = spawnSync(process.execPath, args, { cwd: RACINE, stdio: ['ignore', 'pipe', 'pipe'], encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 });
-    const texteSortie = (r.stdout || '') + (r.stderr || '');
+    // Asynchrone : un `spawnSync` gelait la boucle d'événements le temps de la
+    // fabrication, et les connexions ouvertes vers Supabase mouraient dessous.
+    const r = await lancer(process.execPath, args, { cwd: RACINE });
+    const texteSortie = r.stdout + r.stderr;
     dire(texteSortie);
     if (r.status !== 0) return { ok: false, motif: 'fabrication', sortie: texteSortie };
 
