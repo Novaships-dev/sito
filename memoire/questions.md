@@ -60,3 +60,19 @@ l'entreprise, `{lien}` = adresse du site :
 
 Le prénom du patron n'est pas dans le registre : les textes n'en ont pas
 besoin. Si Fabrice change un texte, sa version gagne.
+
+## Q3 (ouverte), 29 octobre 2026
+
+**T10 dit « serveur HTTP du service » (`atelier/serveur.mjs`) pour recevoir le
+formulaire des sites.** Ta décision du 29 oct. : pas de serveur loué. Où
+arrive donc la demande d'un visiteur ?
+
+**Réponse recommandée** : dans le Worker Cloudflare qui sert déjà les sites
+(offre gratuite : 100 000 requêtes par jour). Il garde le champ piège et la
+limite par adresse IP (10 par jour, compteur dans KV), puis écrit la demande
+dans Supabase par une fonction SQL dédiée (`deposer_demande`), qui refait les
+contrôles et plafonne à 50 demandes par site et par jour : aucune clé secrète
+à poser dans Cloudflare. Coût : 0 €. Réversible : le code du formulaire ne
+change pas si la demande part ailleurs plus tard.
+Choix réversible et sans coût : il sera appliqué à T10 si personne ne dit
+autre chose, et la ligne de T10 réécrite en conséquence.

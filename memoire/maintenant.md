@@ -1,6 +1,40 @@
-# État au 28 octobre 2026
+# État au 29 octobre 2026
 
 À lire en premier, à chaque séance. Réécrit à la fin de chaque séance.
+
+## En bref, 29 octobre 2026
+
+- **Disque du PC presque plein : 133 Mo libres** (sur 58 Go). Sous 1 Go,
+  plus aucune fabrication de site (décision du 29 oct.). **Action F19** pour
+  Fabrice (`memoire/actions-fabrice.md`) : fichiers temporaires de Windows
+  (≈ 1,6 Go dans %TEMP%, dont ≈ 650 Mo laissés par les essais avant le
+  29 oct.), Téléchargements (894 Mo). Claude Code n'a pas le droit d'effacer
+  %TEMP% en masse (refusé par le mode auto). Corrigé à la source : les essais
+  effacent maintenant leur dossier, et le lot publié du 28 oct. a perdu sa
+  copie locale après relecture en ligne (81 Mo).
+- **En ligne sur `sito-demo.pages.dev`** : 6 façadiers du 13 et la page
+  d'appels (`verifier-en-ligne.mjs` : 50 contrôles, 0 faute ; racine 404,
+  `noindex` partout, KV et `SLUG_APPELS` posés par l'API). Les 4
+  non-façadiers signalés par Cowork n'y sont plus ; le Worker rend 404 à un
+  site retiré (Pages le servirait encore 7 jours).
+- **La cause du mauvais tri du ravalement est corrigée** (décision du 29 oct. :
+  « Ravalement de façade c'est des façadiers ») : un nom qui dit maçonnerie,
+  isolation, cheminée, énergie… est écarté ; un nom muet n'entre au lot que si
+  la recherche web écrit que la façade est son métier principal. Noms sans
+  doublon ni forme juridique, accents des mots de métier, communes officielles
+  (`prospection/communes-13.json`). 122 contrôles, 12 cassures attrapées.
+- **T41 bloquée** : refabriquer les 6 sites avec leurs noms propres attend
+  **F19** (disque) ; les 30 liens attendent **F18** (images couverture et
+  peinture). Les 6 sites en ligne portent encore l'ancienne écriture des
+  communes (« Marseille 13eme »).
+- **T05 faite** : droits rejoués sur la vraie base (31 résultats attendus,
+  0 faute), conseillers sans alerte nouvelle.
+- **T09 faite** : `atelier/boucle.mjs`, un tour qui refait, vérifie et publie
+  par version chaque site changé, et note la base ; c'est ce que GitHub
+  Actions appellera (T45). 23 contrôles, 4 cassures attrapées.
+- **Suivante** : T10 (formulaire des sites). Question **Q3** posée : la
+  demande arrive dans le Worker Cloudflare gratuit plutôt que sur un serveur ;
+  appliquée à T10 si personne ne dit autre chose.
 
 ## En bref, 25 octobre 2026
 
