@@ -49,12 +49,21 @@ export type EnvoiPhoto = { fichier: Blob; nom: string; format: string; role: Rol
 // (décision du 9 octobre, migration 20261009005808_photo_source).
 export type EnvoiOriginal = { fichier: Blob; nom: string; format: string; chantierId: string; cle: string };
 
+// Ce qu'ouvre un lien envoyé par Fabrice (fonction Edge « inscription »,
+// supabase/functions/inscription) : créer le compte, ou choisir un nouveau
+// mot de passe (décision du 29 octobre 2026 : e-mail et mot de passe, une
+// seule fois, sans code).
+export type LienCompte = { genre: 'inscription' | 'reprise'; entreprise: string; courriel: string | null };
+export const MOT_DE_PASSE_MIN = 8;
+
 export interface Donnees {
   readonly demo: boolean;
   // connexion
   utilisateur(): Promise<{ courriel: string } | null>;
-  envoyerCode(courriel: string): Promise<void>;
-  verifierCode(courriel: string, code: string): Promise<void>;
+  seConnecter(courriel: string, motDePasse: string): Promise<void>;
+  lireLien(jeton: string): Promise<LienCompte>;
+  sInscrire(jeton: string, courriel: string, motDePasse: string): Promise<void>;
+  reprendre(jeton: string, motDePasse: string): Promise<void>;
   deconnecter(): Promise<void>;
   surChangementSession(rappel: () => void): () => void;
   // entreprise

@@ -156,17 +156,20 @@ async function nouvellePage(appareil, extra = '') {
   await page.goto(`${BASE}?demo${extra}#/`);
   return { ctx, page, erreurs };
 }
-async function connecter(page) {
-  await page.getByLabel('Votre adresse e-mail').fill('artisan@exemple.fr');
-  await page.getByRole('button', { name: 'Recevoir mon code' }).click();
-  await page.getByLabel('Code reçu par e-mail').fill('000000');
+// Compte de démonstration (app/src/donnees/demo.ts, COMPTE_DEMO).
+const DEMO = { courriel: 'artisan@exemple.fr', mdp: 'chantier13' };
+const visible = (loc, ms = 3000) => loc.first().waitFor({ state: 'visible', timeout: ms }).then(() => true, () => false);
+async function connecter(page, { courriel = DEMO.courriel, mdp = DEMO.mdp } = {}) {
+  await page.getByLabel('Votre adresse e-mail').fill(courriel);
+  await page.getByLabel('Votre mot de passe').fill(mdp + '-faux');
   await page.getByRole('button', { name: 'Me connecter' }).click();
-  const refus = await page.getByText('Code incorrect').waitFor({ state: 'visible', timeout: 3000 }).then(() => true, () => false);
-  await page.getByLabel('Code reçu par e-mail').fill('123456');
+  const refus = await visible(page.getByText('Adresse e-mail ou mot de passe incorrect.'));
+  await page.getByLabel('Votre mot de passe').fill(mdp);
   await page.getByRole('button', { name: 'Me connecter' }).click();
   await page.getByRole('navigation', { name: 'Navigation principale' }).waitFor();
   return refus;
 }
+const connecte = (page) => visible(page.getByRole('navigation', { name: 'Navigation principale' }), 5000);
 const envois = (page) => page.evaluate(() => window.__sitoDemo.envois.length);
 // 30 secondes, pas 10 : la préparation d'une photo de 12 Mpx dans le navigateur
 // est plus lente quand la machine fait autre chose en même temps (panne du
@@ -190,7 +193,7 @@ try {
   // ------------------------------------------------ parcours complet, au doigt
   console.log('\nParcours (iPhone 390)');
   const { ctx, page, erreurs } = await nouvellePage(appareils[0]);
-  ok(await connecter(page), 'un code faux est refusé avec un message');
+  ok(await connecter(page), 'un mauvais mot de passe est refusé avec un message');
   ok(await page.getByRole('heading', { level: 1 }).textContent() === 'Façades Exemple', 'connecté : accueil au nom de l’entreprise');
 
   // chiffres de la semaine = somme des 7 jours les plus récents du tableau affiché
@@ -302,6 +305,68 @@ try {
   ok(await page.getByLabel('Votre adresse e-mail').waitFor({ state: 'visible', timeout: 3000 }).then(() => true, () => false), 'déconnexion : retour à l’écran de connexion');
   await ctx.close();
 
+  // ------------------------------------------------ inscription par lien, une fois, sans code
+  console.log('\nInscription par le lien envoyé par SMS (iPhone 390)');
+  {
+    const { ctx: c, page: p, erreurs: errs } = await nouvellePage(appareils[0]);
+    await p.goto(`${BASE}?demo#/inscription/demo-inscription`);
+    ok(await visible(p.getByRole('heading', { name: 'Créer votre compte' })) && await visible(p.getByText('Façades Exemple')), 'le lien ouvre l’inscription au nom de l’entreprise');
+    ok(!(await p.getByText(/code/i).count()), 'aucun code demandé');
+    await p.getByLabel('Votre adresse e-mail').fill(DEMO.courriel);
+    await p.getByLabel('Choisissez un mot de passe').fill('echafaudage13');
+    await p.getByRole('button', { name: 'Créer mon compte' }).click();
+    ok(await visible(p.getByText('Cette adresse a déjà un compte Sitô')), 'une adresse qui a déjà un compte est refusée');
+    await p.getByLabel('Votre adresse e-mail').fill('Nouveau@Exemple.fr');
+    await p.getByRole('button', { name: 'Créer mon compte' }).click();
+    ok(await connecte(p), 'compte créé : l’app s’ouvre, connectée');
+    await p.close();
+    const p2 = await c.newPage();
+    p2.on('pageerror', (e) => errs.push(e.message));
+    await p2.goto(`${BASE}?demo#/`);
+    ok(await connecte(p2), 'app fermée puis rouverte : toujours connecté, sans rien retaper');
+    await p2.goto(`${BASE}?demo#/compte`);
+    await p2.getByRole('button', { name: 'Me déconnecter' }).click();
+    await p2.getByLabel('Votre adresse e-mail').waitFor();
+    ok(await connecter(p2, { courriel: 'nouveau@exemple.fr', mdp: 'echafaudage13' }), 'reconnexion avec l’adresse et le mot de passe choisis ; un faux mot de passe est refusé');
+    await c.close();
+
+    const { ctx: c3, page: p3, erreurs: errs3 } = await nouvellePage(appareils[0]);
+    for (const [jeton, quoi, attendu] of [
+      ['demo-deja-servi', 'le lien d’une autre entreprise, qui a déjà servi', 'déjà servi'],
+      ['inconnu-0123', 'un lien inconnu', 'pas valable'],
+    ]) {
+      await p3.goto(`${BASE}?demo#/inscription/${jeton}`);
+      ok(await visible(p3.getByRole('heading', { name: 'Lien refusé' })) && await visible(p3.getByText(attendu)), `${quoi} : refusé`);
+      ok(!(await p3.getByLabel('Choisissez un mot de passe').count()), `${quoi} : aucun formulaire`);
+    }
+    await p3.goto(`${BASE}?demo#/inscription/demo-inscription`);
+    await p3.getByLabel('Votre adresse e-mail').fill('second@exemple.fr');
+    await p3.getByLabel('Choisissez un mot de passe').fill('echafaudage13');
+    await p3.getByRole('button', { name: 'Créer mon compte' }).click();
+    await connecte(p3);
+    await p3.evaluate(() => { localStorage.removeItem('sito-demo-connecte'); });
+    await p3.goto(`${BASE}?demo#/inscription/demo-inscription`); await p3.reload();
+    ok(await visible(p3.getByText('déjà servi')), 'le même lien, une seconde fois : refusé');
+
+    // mot de passe oublié : Sitô renvoie un lien de reprise
+    await p3.goto(`${BASE}?demo#/`); await p3.reload();
+    await p3.getByRole('button', { name: 'Mot de passe oublié ?' }).click();
+    ok(await visible(p3.getByText('Demandez à Sitô un nouveau lien')), 'mot de passe oublié : la marche à suivre est dite');
+    await p3.goto(`${BASE}?demo#/reprise/demo-reprise`);
+    ok(await visible(p3.getByRole('heading', { name: 'Nouveau mot de passe' })) && await visible(p3.getByText(`Compte : ${DEMO.courriel}`)), 'le lien de reprise montre le compte');
+    await p3.getByLabel('Nouveau mot de passe').fill('nouveau-mot-2026');
+    await p3.getByRole('button', { name: 'Enregistrer et me connecter' }).click();
+    ok(await connecte(p3), 'nouveau mot de passe posé : connecté');
+    await p3.evaluate(() => { localStorage.removeItem('sito-demo-connecte'); });
+    await p3.goto(`${BASE}?demo#/`); await p3.reload();
+    await p3.getByLabel('Votre adresse e-mail').fill(DEMO.courriel);
+    await p3.getByLabel('Votre mot de passe').fill(DEMO.mdp);
+    await p3.getByRole('button', { name: 'Me connecter' }).click();
+    ok(await visible(p3.getByText('Adresse e-mail ou mot de passe incorrect.')), 'l’ancien mot de passe ne marche plus');
+    ok(errs.length === 0 && errs3.length === 0, 'aucune erreur dans la console', [...errs, ...errs3].join(' | '));
+    await c3.close();
+  }
+
   // ------------------------------------------------ chaque écran, sur chaque appareil
   for (const appareil of appareils) {
     console.log(`\nRendu (${appareil.nom})`);
@@ -309,6 +374,11 @@ try {
     await p.locator('h1').first().waitFor();
     const r0 = await mesurerRendu(p);
     ok(renduBon(r0), 'connexion', JSON.stringify(r0));
+    await p.goto(`${BASE}?demo#/inscription/demo-inscription`);
+    await p.getByRole('heading', { name: 'Créer votre compte' }).waitFor();
+    const ri = await mesurerRendu(p);
+    ok(renduBon(ri), '#/inscription/…', JSON.stringify(ri));
+    await p.goto(`${BASE}?demo#/`);
     await connecter(p);
     for (const e of ECRANS) {
       await p.goto(`${BASE}?demo#/${e}`);

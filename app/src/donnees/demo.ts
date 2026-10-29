@@ -2,14 +2,27 @@
 // Sert à essayer l'app sans compte, et aux essais automatiques, qui lisent ce
 // qui a été « envoyé » dans window.__sitoDemo (le fichier réellement produit
 // par l'app, pas une variable que l'app aurait remplie pour l'essai).
-import type { Donnees, Profil, Tarif, Chantier, Photo, Demande, Avis, Adresse, Abonnement, ConnexionGoogle, Suppression, JourStat, EnvoiPhoto } from '../types';
+import { MOT_DE_PASSE_MIN } from '../types';
+import type { Donnees, LienCompte, Profil, Tarif, Chantier, Photo, Demande, Avis, Adresse, Abonnement, ConnexionGoogle, Suppression, JourStat, EnvoiPhoto } from '../types';
 import { jourParis, decalerJour } from '../jour';
 
 export type EnvoiDemo = { genre: 'photo' | 'video' | 'original'; nom: string; format: string; type: string; octets: number; fichier: Blob; role?: string; paire?: number | null; chantierId: string; cle?: string };
 
 declare global { interface Window { __sitoDemo?: { envois: EnvoiDemo[] } } }
 
-const CODE = '123456';
+// Le compte de démonstration, et les liens qu'enverrait Fabrice. Tout vit
+// dans le navigateur (localStorage) : fermer l'app et la rouvrir garde la
+// session, comme la vraie (Supabase garde la sienne au même endroit).
+export const COMPTE_DEMO = { courriel: 'artisan@exemple.fr', motDePasse: 'chantier13' };
+const LIENS_DEMO: Record<string, LienCompte & { utilise?: boolean }> = {
+  'demo-inscription': { genre: 'inscription', entreprise: 'Façades Exemple', courriel: null },
+  'demo-reprise': { genre: 'reprise', entreprise: 'Façades Exemple', courriel: COMPTE_DEMO.courriel },
+  'demo-deja-servi': { genre: 'inscription', entreprise: 'Toitures Voisines', courriel: null, utilise: true },
+};
+const memoire = {
+  lire<T>(cle: string, defaut: T): T { try { const v = localStorage.getItem(cle); return v ? JSON.parse(v) as T : defaut; } catch { return defaut; } },
+  ecrire(cle: string, v: unknown) { try { if (v === null) localStorage.removeItem(cle); else localStorage.setItem(cle, JSON.stringify(v)); } catch { /* navigation privée */ } },
+};
 const attendre = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 // Un tirage pseudo-aléatoire fixe : les mêmes chiffres à chaque ouverture.
@@ -18,8 +31,18 @@ function tirage(graine: number) { let x = graine; return () => (x = (x * 1103515
 export function donneesDemo(): Donnees {
   const envois: EnvoiDemo[] = [];
   window.__sitoDemo = { envois };
-  let connecte: string | null = null;
-  try { connecte = sessionStorage.getItem('sito-demo-connecte'); } catch { /* navigation privée */ }
+  let connecte = memoire.lire<string | null>('sito-demo-connecte', null);
+  const comptes = memoire.lire<Record<string, string>>('sito-demo-comptes', { [COMPTE_DEMO.courriel]: COMPTE_DEMO.motDePasse });
+  const liensServis = memoire.lire<string[]>('sito-demo-liens-servis', []);
+  const ouvrir = (courriel: string) => { connecte = courriel; memoire.ecrire('sito-demo-connecte', courriel); prevenir(); };
+  const lienValable = (jeton: string) => {
+    const l = LIENS_DEMO[jeton];
+    if (!l) throw new Error('Ce lien n’est pas valable. Demandez-en un nouveau à Sitô.');
+    if (l.utilise || liensServis.includes(jeton)) throw new Error('Ce lien a déjà servi. Connectez-vous avec votre adresse e-mail et votre mot de passe.');
+    return l;
+  };
+  const motDePasseValable = (m: string) => { if (m.length < MOT_DE_PASSE_MIN) throw new Error(`Le mot de passe doit faire au moins ${MOT_DE_PASSE_MIN} caractères.`); };
+  const servi = (jeton: string) => { liensServis.push(jeton); memoire.ecrire('sito-demo-liens-servis', liensServis); memoire.ecrire('sito-demo-comptes', comptes); };
   const rappels = new Set<() => void>();
   const prevenir = () => rappels.forEach((r) => r());
   let id = 100;
@@ -59,20 +82,37 @@ export function donneesDemo(): Donnees {
   return {
     demo: true,
     async utilisateur() { return connecte ? { courriel: connecte } : null; },
-    async envoyerCode(courriel) {
+    async seConnecter(courriel, mdp) {
       await attendre(150);
-      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(courriel)) throw new Error('Adresse e-mail invalide.');
+      const c = courriel.trim().toLowerCase();
+      if (comptes[c] !== mdp) throw new Error('Adresse e-mail ou mot de passe incorrect.');
+      ouvrir(c);
     },
-    async verifierCode(courriel, code) {
+    async lireLien(jeton) { await attendre(100); const { utilise: _u, ...l } = lienValable(jeton); return l; },
+    async sInscrire(jeton, courriel, mdp) {
       await attendre(150);
-      if (code.trim() !== CODE) throw new Error('Code incorrect ou expiré. Demandez-en un nouveau.');
-      connecte = courriel;
-      try { sessionStorage.setItem('sito-demo-connecte', courriel); } catch { /* rien */ }
-      prevenir();
+      const l = lienValable(jeton);
+      if (l.genre !== 'inscription') throw new Error('Ce lien n’est pas valable. Demandez-en un nouveau à Sitô.');
+      const c = courriel.trim().toLowerCase();
+      motDePasseValable(mdp);
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(c)) throw new Error('Adresse e-mail invalide.');
+      if (comptes[c]) throw new Error('Cette adresse a déjà un compte Sitô. Connectez-vous, ou choisissez une autre adresse.');
+      comptes[c] = mdp;
+      servi(jeton);
+      ouvrir(c);
+    },
+    async reprendre(jeton, mdp) {
+      await attendre(150);
+      const l = lienValable(jeton);
+      if (l.genre !== 'reprise' || !l.courriel) throw new Error('Ce lien n’est pas valable. Demandez-en un nouveau à Sitô.');
+      motDePasseValable(mdp);
+      comptes[l.courriel] = mdp;
+      servi(jeton);
+      ouvrir(l.courriel);
     },
     async deconnecter() {
       connecte = null;
-      try { sessionStorage.removeItem('sito-demo-connecte'); } catch { /* rien */ }
+      memoire.ecrire('sito-demo-connecte', null);
       prevenir();
     },
     surChangementSession(rappel) { rappels.add(rappel); return () => rappels.delete(rappel); },

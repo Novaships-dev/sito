@@ -5,6 +5,7 @@ import { Ctx, useApp, type Contexte } from './ui';
 import { creerFile, type Etat } from './attente';
 import type { Donnees } from './types';
 import { Connexion } from './ecrans/Connexion';
+import { Inscription } from './ecrans/Inscription';
 import { Accueil } from './ecrans/Accueil';
 import { Chantiers, Chantier } from './ecrans/Chantiers';
 import { MonSite } from './ecrans/MonSite';
@@ -57,6 +58,7 @@ export function App({ donnees, android }: { donnees: Donnees; android: boolean }
   let page;
   if (connecte === null) page = <main className="ecran" id="contenu" tabIndex={-1}><p className="discret">Chargement…</p></main>;
   else if (route[0] === 'installer') page = <Installer />;
+  else if (!connecte && (route[0] === 'inscription' || route[0] === 'reprise') && route[1]) page = <Inscription key={route[1]} jeton={decodeURIComponent(route[1])} />;
   else if (!connecte) page = <Connexion />;
   else page = <Page route={route} />;
 
@@ -75,7 +77,8 @@ export function App({ donnees, android }: { donnees: Donnees; android: boolean }
 
 function Page({ route }: { route: string[] }) {
   switch (route[0] || '') {
-    case '': return <Accueil />;
+    // un lien d'inscription rouvert une fois connecté : rien à faire, l'accueil
+    case '': case 'inscription': case 'reprise': return <Accueil />;
     case 'chantiers': return route[1] ? <Chantier id={decodeURIComponent(route[1])} /> : <Chantiers />;
     case 'site': return <MonSite />;
     case 'adresse': return <Adresse />;

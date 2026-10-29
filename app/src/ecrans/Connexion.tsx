@@ -1,12 +1,16 @@
-// Connexion par code reçu par e-mail : pas de mot de passe à retenir sur un chantier.
+// Connexion par e-mail et mot de passe (décision du 29 octobre 2026 : on
+// s'inscrit une fois, c'est fini). Le compte se crée par le lien que Sitô
+// envoie par SMS (Inscription.tsx) ; la session reste ouverte sur le téléphone.
 import { useState } from 'react';
 import { useApp, useAction, Message } from '../ui';
+import { COMPTE_DEMO } from '../donnees/demo';
 
 export function Connexion() {
   const { donnees } = useApp();
   const [courriel, setCourriel] = useState('');
-  const [code, setCode] = useState('');
-  const [etape, setEtape] = useState<'courriel' | 'code'>('courriel');
+  const [motDePasse, setMotDePasse] = useState('');
+  const [voir, setVoir] = useState(false);
+  const [oubli, setOubli] = useState(false);
   const a = useAction();
 
   return (
@@ -14,28 +18,27 @@ export function Connexion() {
       <img src="icone.svg" alt="" width="72" height="72" />
       <h1>Sitô</h1>
       <p className="discret">Votre site, vos chantiers, vos demandes et vos avis.</p>
-      {donnees.demo && <p className="bandeau-demo">Démonstration : aucune donnée réelle. Le code est 123456.</p>}
+      {donnees.demo && <p className="bandeau-demo">Démonstration : aucune donnée réelle. Adresse {COMPTE_DEMO.courriel}, mot de passe {COMPTE_DEMO.motDePasse}.</p>}
 
-      {etape === 'courriel' ? (
-        <form onSubmit={async (e) => { e.preventDefault(); if (await a.lancer(() => donnees.envoyerCode(courriel.trim()))) setEtape('code'); }}>
-          <label htmlFor="courriel">Votre adresse e-mail</label>
-          <p className="aide" id="aide-courriel">Celle donnée à l’inscription. Vous recevrez un code.</p>
-          <input id="courriel" type="email" inputMode="email" autoComplete="email" required aria-describedby="aide-courriel"
-            value={courriel} onChange={(e) => setCourriel(e.target.value)} />
-          <Message erreur={a.erreur} />
-          <button className="bouton" disabled={a.occupe}>{a.occupe ? 'Envoi…' : 'Recevoir mon code'}</button>
-        </form>
-      ) : (
-        <form onSubmit={async (e) => { e.preventDefault(); await a.lancer(() => donnees.verifierCode(courriel.trim(), code.trim())); }}>
-          <label htmlFor="code">Code reçu par e-mail</label>
-          <p className="aide" id="aide-code">Envoyé à {courriel}. Regardez aussi dans les indésirables.</p>
-          <input id="code" inputMode="numeric" autoComplete="one-time-code" pattern="[0-9]{6,8}" maxLength={8} required aria-describedby="aide-code"
-            value={code} onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))} />
-          <Message erreur={a.erreur} />
-          <button className="bouton" disabled={a.occupe}>{a.occupe ? 'Vérification…' : 'Me connecter'}</button>
-          <button type="button" className="lien" onClick={() => { setEtape('courriel'); setCode(''); a.effacer(); }}>Changer d’adresse ou renvoyer un code</button>
-        </form>
+      <form onSubmit={async (e) => { e.preventDefault(); await a.lancer(() => donnees.seConnecter(courriel, motDePasse)); }}>
+        <label htmlFor="courriel">Votre adresse e-mail</label>
+        <input id="courriel" type="email" inputMode="email" autoComplete="username" required
+          value={courriel} onChange={(e) => setCourriel(e.target.value)} />
+        <label htmlFor="mot-de-passe">Votre mot de passe</label>
+        <input id="mot-de-passe" type={voir ? 'text' : 'password'} autoComplete="current-password" required
+          value={motDePasse} onChange={(e) => setMotDePasse(e.target.value)} />
+        <div className="case-a-cocher">
+          <input id="voir-mdp" type="checkbox" checked={voir} onChange={(e) => setVoir(e.target.checked)} />
+          <label htmlFor="voir-mdp">Afficher le mot de passe</label>
+        </div>
+        <Message erreur={a.erreur} />
+        <button className="bouton" disabled={a.occupe}>{a.occupe ? 'Connexion…' : 'Me connecter'}</button>
+      </form>
+      <button type="button" className="lien" aria-expanded={oubli} onClick={() => setOubli(!oubli)}>Mot de passe oublié ?</button>
+      {oubli && (
+        <p className="aide">Demandez à Sitô un nouveau lien : vous le recevez par SMS, il vous fait choisir un nouveau mot de passe. Vos chantiers et votre site ne bougent pas.</p>
       )}
+      <p className="aide">Pas encore de compte ? Ouvrez le lien d’inscription que Sitô vous a envoyé par SMS.</p>
       <p className="pied"><a href="#/installer">Installer l’app sur mon téléphone</a></p>
     </main>
   );

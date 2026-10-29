@@ -10,7 +10,7 @@ parcours de bout en bout. Le code est dans `app/src/ecrans/`.
 ## 1. Carte de l'app
 
 ```
-Lancement ─► session ? ── non ─► Connexion (e-mail → code) ─┐
+Lancement ─► session ? ── non ─► Connexion (e-mail + mot de passe) ┐
                 │                                            │
                oui ◄─────────────────────────────────────────┘
                 ▼
@@ -42,6 +42,8 @@ gauche. « Installer l'app » est aussi joignable sans être connecté.
 | `#/abonnement` | Abonnement | `Abonnement.tsx` | oui | Fait, prouvé (affichage) |
 | `#/compte` | Compte | `Compte.tsx` | oui | Fait, prouvé |
 | `#/installer` | Installer l'app | `Installer.tsx` | non | Fait, prouvé (rendu) |
+| `#/inscription/<jeton>` | Créer son compte (lien envoyé par SMS) | `Inscription.tsx` | non (connecté : accueil) | Fait, prouvé |
+| `#/reprise/<jeton>` | Nouveau mot de passe (lien envoyé par SMS) | `Inscription.tsx` | non (connecté : accueil) | Fait, prouvé |
 | autre | Page introuvable | `App.tsx` | oui | Fait |
 
 Paramètres d'adresse : `?demo` force la démonstration ; `?source=android`
@@ -53,10 +55,20 @@ active le mode Play Store (mémorisé sur l'appareil).
 
 | Élément | Détail |
 |---|---|
-| Étape 1 | champ « Votre adresse e-mail » → bouton « Recevoir mon code » → `envoyerCode` |
-| Étape 2 | champ « Code reçu par e-mail » (6 à 8 chiffres, `autocomplete="one-time-code"`) → « Me connecter » → `verifierCode` ; lien « Changer d'adresse ou renvoyer un code » |
-| Erreurs | adresse inconnue : « Cette adresse n'a pas de compte Sitô… » ; code faux : « Code incorrect ou expiré… » (affichées sous le champ) |
-| Démonstration | bandeau « Le code est 123456 » |
+| Champs | « Votre adresse e-mail » (`autocomplete="username"`), « Votre mot de passe » (`current-password`), case « Afficher le mot de passe » → « Me connecter » → `seConnecter` |
+| Erreurs | « Adresse e-mail ou mot de passe incorrect. » sous le champ |
+| Mot de passe oublié | bouton qui dit : demander à Sitô un nouveau lien, reçu par SMS (aucun e-mail : voir 02-TRD §7) |
+| Pas de compte | « Ouvrez le lien d'inscription que Sitô vous a envoyé par SMS. » |
+| Démonstration | bandeau avec l'adresse et le mot de passe du compte de démonstration ; liens `#/inscription/demo-inscription`, `#/reprise/demo-reprise`, `#/inscription/demo-deja-servi` (déjà servi) |
+
+### 3.1 bis Inscription et reprise (`#/inscription/<jeton>`, `#/reprise/<jeton>`)
+
+| Élément | Détail |
+|---|---|
+| Lecture du lien | `lireLien` : nom de l'entreprise ; pour une reprise, l'adresse du compte. Lien inconnu, expiré ou déjà servi : écran « Lien refusé » avec la raison, aucun formulaire |
+| Inscription | « Votre adresse e-mail », « Choisissez un mot de passe » (8 caractères au moins), « Créer mon compte » → `sInscrire` → connecté, accueil |
+| Reprise | « Nouveau mot de passe » → « Enregistrer et me connecter » → `reprendre` |
+| Erreurs | adresse qui a déjà un compte : « Cette adresse a déjà un compte Sitô… » ; le lien reste valable |
 | Lien | « Installer l'app sur mon téléphone » |
 
 ### 3.2 Accueil
@@ -146,9 +158,9 @@ active le mode Play Store (mémorisé sur l'appareil).
 
 | # | Qui | Ce qui se passe | État |
 |---|---|---|---|
-| 1 | Service | à l'inscription : crée l'utilisateur, l'entreprise (Sirene), le lien `membres` | **À faire** |
-| 2 | Artisan | tape son e-mail, reçoit un code à 6 chiffres | Fait, non prouvé |
-| 3 | App | `verifyOtp` ; session gardée sur l'appareil, rafraîchie seule | Fait, non prouvé |
+| 1 | Fabrice | l'entreprise existe (Sirene) ; `select public.creer_invitation('<siren>')` (outil MCP) donne le jeton ; il envoie par SMS `<adresse de l'app>/#/inscription/<jeton>` | Fait (fonction) ; l'adresse de l'app attend sa mise en ligne |
+| 2 | Artisan | ouvre le lien, tape son e-mail et choisit un mot de passe, une fois | Fait, prouvé (T43) |
+| 3 | Fonction Edge | crée le compte déjà confirmé, le rattache dans `membres`, marque le lien servi ; l'app se connecte (`signInWithPassword`), session gardée sur l'appareil | Fait, prouvé sur le compte d'essai |
 | 4 | App | lit `membres` → SIREN ; toutes les lectures suivantes en dépendent | Fait, non prouvé |
 
 ### 4.2 Ajouter une photo depuis un chantier

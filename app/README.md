@@ -9,7 +9,7 @@ n'a pas encore tourné contre la vraie base (voir « Ce qui n'est pas prouvé »
 
 - Sur l'ordinateur de Fabrice : `lanceurs\APP.bat` (installe, puis ouvre l'app
   sur http://localhost:5173). Avec `app/.env.local`, elle parle à la vraie base ;
-  sans, ou avec `?demo` dans l'adresse, elle tourne en démonstration (code : 123456).
+  sans, ou avec `?demo` dans l'adresse, elle tourne en démonstration (compte artisan@exemple.fr, mot de passe chantier13 ; voir `src/donnees/demo.ts`).
 - `app/.env.local` n'est jamais dans le dépôt (`.env.*` est ignoré). Il ne
   contient que l'adresse du projet et la clé **publique** ; modèle :
   `app/.env.example`. La clé de service n'y va jamais.
@@ -21,11 +21,11 @@ n'a pas encore tourné contre la vraie base (voir « Ce qui n'est pas prouvé »
 | Fichier | Rôle |
 |---|---|
 | `src/types.ts` | les données, telles que la base les décrit, et l'interface `Donnees` |
-| `src/donnees/supabase.ts` | la vraie base : connexion par code e-mail, envoi reprenable (TUS, 6 Mo) |
+| `src/donnees/supabase.ts` | la vraie base : connexion par e-mail et mot de passe, inscription par lien (fonction Edge `inscription`), envoi reprenable (TUS, 6 Mo) |
 | `src/donnees/demo.ts` | la démonstration, en mémoire ; garde les fichiers « envoyés » pour l'essai |
 | `src/photo.ts` | préparation sur l'appareil : redressée, 3 200 px au plus, JPEG sans métadonnées ; RAW, DNG et HEIC illisibles partent tels quels ; vidéos à part ; PDF refusé |
 | `src/attente.ts` | file d'envoi gardée dans l'appareil (IndexedDB) jusqu'à la fin de l'envoi |
-| `src/ecrans/` | Connexion, Accueil, Chantiers, Mon site, Mon adresse, Avis, Fiche Google, Abonnement, Compte, Installer |
+| `src/ecrans/` | Connexion, Inscription (lien d'inscription ou de reprise), Accueil, Chantiers, Mon site, Mon adresse, Avis, Fiche Google, Abonnement, Compte, Installer |
 
 Dans l'app Android (Play Store, ouverte avec `?source=android`) : aucun prix,
 aucun achat (règle de facturation de Google Play).

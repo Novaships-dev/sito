@@ -76,3 +76,19 @@ contrôles et plafonne à 50 demandes par site et par jour : aucune clé secrèt
 change pas si la demande part ailleurs plus tard.
 Choix réversible et sans coût : il sera appliqué à T10 si personne ne dit
 autre chose, et la ligne de T10 réécrite en conséquence.
+
+## Q4 (ouverte), 29 octobre 2026
+
+**« Mot de passe oublié » : par e-mail ou par un nouveau lien SMS ?** T43
+prévoyait l'e-mail fourni avec Supabase. La documentation de Supabase (relue
+le 29 oct.) dit que, sans serveur d'e-mail à soi, Supabase refuse d'écrire à
+toute adresse qui n'est pas dans l'équipe du projet : un artisan ne recevrait
+rien.
+
+**Réponse recommandée** : l'artisan qui a oublié son mot de passe vous le dit ;
+vous lui renvoyez par SMS un **lien de reprise** (Claude le fabrique :
+`creer_invitation('<siren>', 'reprise')`), il choisit un nouveau mot de passe,
+c'est fini. Coût : 0 €, aucun serveur d'e-mail. Réversible : si un jour un
+serveur d'e-mail est branché (F10), un bouton « recevoir un e-mail »
+s'ajoute sans rien retirer.
+Appliqué dans T43 (réversible, sans coût).

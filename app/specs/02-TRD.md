@@ -144,8 +144,9 @@ implémentations, puis à l'essai.
 
 | Service | Usage | Limites connues | État |
 |---|---|---|---|
-| Supabase Auth | code à 6 chiffres par e-mail (`signInWithOtp` / `verifyOtp`) | serveur d'e-mail intégré : **2 e-mails par heure** ; le modèle « Magic Link » doit contenir `{{ .Token }}` | Fait, non prouvé |
-| Serveur d'e-mail (Brevo ou équivalent) | envoi des codes en volume | prix à relever | À faire |
+| Supabase Auth | e-mail et mot de passe (`signInWithPassword`) ; le compte est créé déjà confirmé par la fonction Edge `inscription` (API d'administration), à partir d'un lien d'invitation (`invitations`) ; inscriptions libres fermées | le serveur d'e-mail fourni par Supabase n'écrit qu'aux membres de l'équipe du projet (doc relue le 29 oct.) : **aucun e-mail n'est envoyé à l'artisan**, « mot de passe oublié » passe par un lien de reprise envoyé par Fabrice | Fait, prouvé (T43) |
+| Supabase Edge Functions | `inscription` : lire un lien, créer le compte, poser un nouveau mot de passe | offre gratuite : 500 000 appels par mois ; déployée par l'outil MCP, `verify_jwt` faux (le jeton du lien fait office de clé) | Fait (T43) |
+| Serveur d'e-mail (Brevo ou équivalent) | plus nécessaire pour se connecter ; seulement si un jour l'app écrit à l'artisan | prix à relever | Plus utile pour la connexion |
 | Supabase Storage | photos et vidéos d'origine, TUS | 50 Mo par fichier en gratuit ; pas dans les sauvegardes | Fait |
 | Supabase transformations d'images | HEIC → JPEG | offre Pro | Fait, non prouvé |
 | Cloudflare Workers + KV + R2 | servir tous les sites | KV : jusqu'à 60 s pour être vu partout ; Pages : 100 projets (non utilisé) | Fait, non déployé |

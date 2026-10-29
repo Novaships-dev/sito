@@ -1563,3 +1563,17 @@ compte d'essai, navigateur) et specs.
   au hasard, jamais écrit : la fois suivante, un lien de reprise.
 - Contrôle des secrets : l’argument `motDePasse` passé à `password` passait pour un mot de passe
   écrit en clair (motif de 8 caractères) ; variable renommée `mdp`.
+- App : `Donnees` perd `envoyerCode`/`verifierCode`, gagne `seConnecter`,
+  `lireLien`, `sInscrire`, `reprendre` (démonstration et Supabase) ; écran
+  `Inscription.tsx` pour `#/inscription/<jeton>` et `#/reprise/<jeton>`. La
+  démonstration garde sa session dans localStorage (comme Supabase) : avant,
+  sessionStorage la perdait à la fermeture.
+- L'essai a trouvé un vrai défaut : passer d'un lien refusé à un autre lien
+  gardait l'écran « Lien refusé » (état non remis à zéro). Corrigé par une clé
+  par jeton sur l'écran.
+- Contre-essai de l'app : les copies construites avec `mktemp -d` rougissaient
+  toutes dès le premier champ, cassées ou non : Node lisait le chemin POSIX
+  `/tmp/…` comme `C:\tmp\…`. Avec `cygpath -w`, la copie saine passe (115/0)
+  et chaque cassure rougit sur son contrôle (piège noté).
+Preuve : `essai-app` 115/0, contre-essai 2/2 ; `essai-inscription` 23/0 et
+4/4, réel 6/0 deux fois ; suite complète verte (20 étapes).

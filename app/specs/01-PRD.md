@@ -60,7 +60,7 @@ et à la souris** (décision de septembre).
 
 | N° | Exigence | Source | État |
 |---|---|---|---|
-| A1 | Se connecter sans mot de passe, par code reçu par e-mail | plan 7.3 | Fait, non prouvé contre la vraie base |
+| A1 | S'inscrire une seule fois, par le lien que Fabrice envoie par SMS (e-mail et mot de passe choisi, sans code ni e-mail de confirmation), puis rester connecté sur son téléphone ; mot de passe oublié : Fabrice renvoie un lien de reprise | décision du 29 oct. 2026 | Fait (T43) : `essai-app` (démonstration) et `essai-inscription.mjs --reel` (vraie base, compte d'essai) |
 | A2 | Voir les visites, appels et demandes de la semaine, et la courbe de 28 jours, comptés au jour de Paris | 23 sept. ; plan 7.4 | Fait (affichage, prouvé `essai-app`) ; mesure Umami à faire |
 | A3 | Lire les demandes laissées sur le site, appeler ou répondre d'un geste, marquer comme lue | plan 7.1 | Fait, prouvé `essai-app` ; formulaire du site à faire |
 | A4 | Créer un chantier, ajouter des paires avant/après et d'autres photos | 23 sept. | Fait, prouvé `essai-app` (démonstration) |
@@ -103,7 +103,7 @@ exigences qui touchent l'app :
 |---|---|
 | App dans l'App Store d'Apple | « pour Apple Store c'est compliqué » (5 oct.) : installation depuis le site |
 | Montrer les vidéos sur le site | décision du 5 oct. : gardées, montrées plus tard |
-| Connexion par SMS | option du plan (8 centimes le code), non décidée |
+| Connexion par code (e-mail ou SMS) | remplacée par l'inscription par lien et mot de passe (décision du 29 oct. 2026) |
 | Plusieurs entreprises par compte | la base le permet (`membres`), l'app prend la première |
 | Notifications | pas encore demandées |
 
