@@ -1,37 +1,21 @@
-Essais du mercredi 28 octobre 2026 à 00:26 (heure de Paris), win32, commit da0ceb6, mode complet
+Essais du jeudi 29 octobre 2026 à 14:09 (heure de Paris), win32, commit b26e34d
 
-OK         dépôt complet (0 s) Depot complet. 312 fichiers, aucune piece manquante.
+OK         dépôt complet (1 s) Depot complet. 325 fichiers, aucune piece manquante.
 OK         règles de rédaction (sites et app) (0 s) Aucune signature textuelle detectee.
 OK         aucun secret (0 s) Aucun secret trouvé.
-OK         outillage de Claude Code (24 s) 91 contrôles, 0 faute(s).
-OK         app : types et construction (23 s) [33m[plugin builtin:vite-reporter]
-OK         app : parcours et rendu (navigateur) (45 s) 96 contrôles, 0 faute(s).
-OK         photos (service) (39 s) 18 fichiers, 0 faute(s). Dossier : C:\Users\fabri\AppData\Local\Temp\essai-photos-xfi4ua
-OK         service : adaptateur Supabase (3 s) 28 contrôles, 0 faute(s).
-OK         service : préparation des photos reçues (21 s) 77 contrôles, 0 faute(s). Dossier : C:\Users\fabri\AppData\Local\Temp\essai-preparation-yRnXp3
-OK         service : fabrication depuis la base (44 s) 12 contrôles, 0 faute(s).
-OK         prospection : extraction, note, registre (1 s) 93 contrôles, 0 faute(s).
-OK         prospection : fabrication du lot (3 s) La fabrication réelle de deux sites s essaie avec --complet (demande les images du ravalement).
-OK         prospection : publication privée (1 s) 68 contrôles, 0 faute(s).
-OK         prospection : page d appels du jour (9 s) 79 contrôles, 0 faute(s).
-OK         prospection : préparation de la soirée, de bout en bout (1 s) 43 contrôles, 0 faute(s).
-OK         feuilles de prompts contre le plan d images (1 s) 3 feuille(s) de prompts (couverture, peinture, ravalement), 0 faute(s).
-OK         publication par versions et Worker (9 s) 0 faute(s). Dossier : C:\Users\fabri\AppData\Local\Temp\essai-publication-7xPaDw
-OK         contre-essai : secrets (0 s) 
-OK         contre-essai : outillage (31 s) 91 contrôles, 54 faute(s).
-OK         contre-essai : app (9 s) 12 contrôles, 0 faute(s).
-OK         contre-essai : service (2 s) 28 contrôles, 22 faute(s).
-OK         contre-essai : préparation des photos (82158 s) FAUTE p3 : octets reste la taille du fichier reçu — 2270 au lieu de 3547
-OK         contre-essai : fabrication depuis la base (30 s) 12 contrôles, 2 faute(s).
-OK         contre-essai : prospection (6 s) FAUTE un numéro écrit « 06.12.34.56.78 » est refusé — aucune faute relevée
-OK         contre-essai : fabrication du lot (203 s) sortie 1 : FAUTE les trois entreprises du métier sont comptées comme sautées — 0
-OK         contre-essai : publication privée (42 s) sortie 1 : FAUTE l empreinte d un .webp connu est celle attendue — f8e3cab7354bfe0c3768f6096dcf8c44
-OK         contre-essai : page d appels (213 s) sortie 1 : FAUTE aucun bouton sous 44 px de haut — [{"t":"Pas de réponse","h":34},{"t":"Rappeler","h":34},{"t":"Intéressé","h":34},{"t":"Essai lancé","h":34},{"t
-OK         contre-essai : préparation de la soirée (20 s) sortie 1 : FAUTE le candidat « site récent, fait par un prestataire » n est jamais dans le lot : la recherche web l a écarté avant même le choix des dix
-OK         contre-essai : feuilles de prompts (0 s) 1 faute(s) : ravalement.md ligne 31, `hero.jpg` : le cadrage 16/9 n est pas annoncé
-OK         images du ravalement sur le disque (1 s) 32 images attendues, 0 faute(s), 3 remarque(s).
-OK         contre-essai : images sur le disque (23 s) 3 faute(s) : sources/hero.jpg manque | sources/hero-variante-2.jpg manque
-OK         lot de prospection : deux sites fabriqués pour de vrai (370 s) 54 contrôles, 0 faute(s).
-OK         sites de démonstration (5 vérificateurs) (614 s) --- fichiers uniques
+OK         outillage de Claude Code (18 s) 92 contrôles, 0 faute(s).
+OK         app : types et construction (62 s) [33m[plugin builtin:vite-reporter]
+OK         app : parcours et rendu (navigateur) (40 s) 96 contrôles, 0 faute(s).
+OK         photos (service) (18 s) 18 fichiers, 0 faute(s). Dossier effacé.
+OK         service : adaptateur Supabase (1 s) 28 contrôles, 0 faute(s).
+OK         service : préparation des photos reçues (7 s) 77 contrôles, 0 faute(s). Dossier effacé.
+OK         service : fabrication depuis la base (21 s) 12 contrôles, 0 faute(s).
+OK         prospection : extraction, note, registre (0 s) 93 contrôles, 0 faute(s).
+OK         prospection : fabrication du lot (2 s) La fabrication réelle de deux sites s essaie avec --complet (demande les images du ravalement).
+OK         prospection : publication privée (0 s) 68 contrôles, 0 faute(s).
+OK         prospection : page d appels du jour (2 s) 79 contrôles, 0 faute(s).
+OK         prospection : préparation de la soirée, de bout en bout (1 s) 49 contrôles, 0 faute(s).
+OK         feuilles de prompts contre le plan d images (0 s) 3 feuille(s) de prompts (couverture, peinture, ravalement), 0 faute(s).
+OK         publication par versions et Worker (4 s) 0 faute(s). Dossier effacé.
 
 Verdict : TOUT EST VERT

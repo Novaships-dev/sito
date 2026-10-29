@@ -147,11 +147,14 @@ export function clientCloudflare({ compte, jeton, fetch: aller = globalThis.fetc
     // Le dépôt : le manifeste (chemin → empreinte) et les fichiers de réglage
     // que Pages ne traite pas comme des pages (`_headers`, `_redirects`).
     // C'est `_headers` qui porte le `X-Robots-Tag: noindex`.
-    async deployer(projet = PROJET, { manifeste, entetes = null, branche = 'main' } = {}) {
+    // `worker` : le contenu de `_worker.js`, dans son propre champ — c'est
+    // ainsi seulement que Pages l'exécute (module ES, liaisons du projet).
+    async deployer(projet = PROJET, { manifeste, entetes = null, worker = null, branche = 'main' } = {}) {
       const form = new FormData();
       form.set('manifest', JSON.stringify(manifeste));
       form.set('branch', branche);
       if (entetes) form.set('_headers', new Blob([entetes], { type: 'text/plain' }), '_headers');
+      if (worker) form.set('_worker.js', new Blob([worker], { type: 'application/javascript+module' }), '_worker.js');
       // `type: null` : c'est FormData qui pose son Content-Type et sa frontière.
       const r = await appeler(`/accounts/${compte}/pages/projects/${projet}/deployments`, {
         methode: 'POST', corps: form, type: null,
@@ -168,6 +171,41 @@ export function clientCloudflare({ compte, jeton, fetch: aller = globalThis.fetc
     async creerProjet(nom = PROJET, branche = 'main') {
       return appeler(`/accounts/${compte}/pages/projects`, {
         methode: 'POST', corps: JSON.stringify({ name: nom, production_branch: branche }),
+      });
+    },
+
+    // Les espaces KV du compte (la page d'appels range ses résultats dans un).
+    async espacesKv() {
+      const r = await appeler(`/accounts/${compte}/storage/kv/namespaces?per_page=100`);
+      return Array.isArray(r) ? r : [];
+    },
+
+    async creerEspaceKv(titre) {
+      return appeler(`/accounts/${compte}/storage/kv/namespaces`, {
+        methode: 'POST', corps: JSON.stringify({ title: titre }),
+      });
+    },
+
+    // Une clé d'un espace KV : sa valeur brute, ou null si elle n'existe pas.
+    // Cette route rend la valeur nue, pas l'enveloppe JSON habituelle.
+    async lireKv(espace, cle) {
+      const r = await aller(`${api}/accounts/${compte}/storage/kv/namespaces/${espace}/values/${encodeURIComponent(cle)}`,
+        { headers: { Authorization: `Bearer ${jeton}` } });
+      if (r.status === 404) return null;
+      if (!r.ok) throw new Error(`Cloudflare a refusé la lecture KV de ${cle} : sortie ${r.status}`);
+      return r.text();
+    },
+
+    async effacerKv(espace, cle) {
+      return appeler(`/accounts/${compte}/storage/kv/namespaces/${espace}/values/${encodeURIComponent(cle)}`, { methode: 'DELETE' });
+    },
+
+    // Les réglages du projet (liaisons KV, variables). Cloudflare fusionne :
+    // ce qui n'est pas cité reste tel quel. Ils ne valent qu'à partir du
+    // dépôt suivant.
+    async reglerProjet(nom = PROJET, deploymentConfigs) {
+      return appeler(`/accounts/${compte}/pages/projects/${nom}`, {
+        methode: 'PATCH', corps: JSON.stringify({ deployment_configs: deploymentConfigs }),
       });
     },
   };

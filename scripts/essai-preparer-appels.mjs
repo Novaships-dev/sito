@@ -34,7 +34,8 @@ import * as ex from './prospection/extraire.mjs';
 import * as reg from './prospection/registre.mjs';
 import { lister, appelsSlug, preparer } from './prospection/preparer-appels.mjs';
 import { page, verifier as verifierPage } from './prospection/page-appels.mjs';
-import { publier } from './prospection/publier.mjs';
+import { publier, workerAvecSlugs } from './prospection/publier.mjs';
+import { brancherAppels } from './prospection/reglages-cloudflare.mjs';
 
 const FICHE = ex.metiers();
 const POPULATION = JSON.parse(readFileSync(join(RACINE, 'prospection', 'essais', 'recherche-entreprises.json'), 'utf8')).entreprises;
@@ -136,10 +137,14 @@ ok(resultat.publication.publie === true, 'la publication a eu lieu sur le faux C
 ok((resultat.publication.extra || []).includes('_worker.js'), 'le worker fait partie du voyage');
 ok((resultat.publication.extra || []).includes(`${resultat.page.slug}/index.html`), 'la page d appels fait partie du voyage, sous son slug');
 
-const servWorker = fauxCF.servir('_worker.js');
-ok(servWorker.statut === 200, 'le worker se récupère à la racine du projet', String(servWorker.statut));
-ok(servWorker.corps?.toString('utf8') === readFileSync(join(RACINE, 'worker', 'appels.js'), 'utf8'),
-  'le contenu déployé du worker est bien celui du dépôt');
+// Pages n'exécute le Worker que s'il vient dans son champ `_worker.js` du
+// dépôt ; rangé au manifeste, il serait un fichier mort (28 oct. 2026).
+// Le contenu du dépôt, avec la seule ligne SLUGS_EN_LIGNE remplacée par les
+// slugs de ce dépôt-ci (`publier.mjs`, `workerAvecSlugs`).
+ok(fauxCF.dernier?.worker === workerAvecSlugs(readFileSync(join(RACINE, 'worker', 'appels.js')), resultat.publication.slugs).toString('utf8'),
+  'le worker se récupère : il part dans son champ _worker.js, avec le contenu du dépôt et les slugs en ligne');
+ok(!Object.keys(fauxCF.dernier?.manifeste || {}).some((c) => /_worker.js$/.test(c)), 'le worker n est pas rangé parmi les fichiers servis');
+ok(Object.keys(fauxCF.dernier?.manifeste || {}).every((c) => c.startsWith('/')), 'chaque chemin du manifeste commence par « / »');
 const servPage = fauxCF.servir('/' + resultat.page.slug + '/');
 ok(servPage.statut === 200, 'la page d appels se récupère sous son slug privé', String(servPage.statut));
 ok((servPage.entetes['Content-Type'] || '').includes('html'), 'la page d appels est servie en HTML');
@@ -193,15 +198,34 @@ ok(bilan30.publie === true, 'les trente sites sont publiés');
 ok(bilan30.slugs.length === 30, 'trente slugs en ligne', String(bilan30.slugs.length));
 ok(bilan30.extra.length === 2 && bilan30.extra.includes('_worker.js') && bilan30.extra.includes(`${slugAppels30}/index.html`),
   'le bilan nomme le worker et la page d appels parmi les fichiers fixes');
-// 30 pages distinctes + 1 image partagée par les trente + le worker + la page
-// d appels + robots.txt : l image commune ne doit compter qu une fois.
-ok(fauxCF30.magasin.size === 34, 'trente-quatre contenus distincts montés : l image partagée par les trente sites ne compte qu une fois',
+// 30 pages distinctes + 1 image partagée par les trente + la page d appels
+// + robots.txt (le worker part dans son propre champ, pas au magasin) :
+// l image commune ne doit compter qu une fois.
+ok(fauxCF30.magasin.size === 33, 'trente-trois contenus distincts montés : l image partagée par les trente sites ne compte qu une fois',
   String(fauxCF30.magasin.size));
 
 const servPage30 = fauxCF30.servir('/' + slugAppels30 + '/');
 ok(servPage30.statut === 200 && servPage30.corps?.toString('utf8') === htmlPage30, 'la page des trente sites se récupère sous son slug');
-ok(fauxCF30.servir('_worker.js').statut === 200, 'le worker se récupère aussi dans ce second dépôt');
+ok(!!fauxCF30.dernier?.worker, 'le worker se récupère aussi dans ce second dépôt');
 ok(fauxCF30.servir('/' + lot30[0].slug + '/').statut === 200, 'un site du lot se récupère sous son slug');
+
+// ------------------------------------------- réglages KV et SLUG_APPELS
+// `reglages-cloudflare.mjs` remplace le réglage à la main du tableau de bord :
+// l'espace KV est créé une fois, repris ensuite, et le projet relu porte bien
+// la liaison et la variable.
+const fauxReg = fauxCloudflare({ projets: [] });
+const clientReg = clientCloudflare({ compte: fauxReg.compte, jeton: fauxReg.jeton, fetch: fauxReg.fetch });
+const slugReg = 'b'.repeat(16);
+const r1 = await brancherAppels({ client: clientReg, projet: 'essai-reglages', slug: slugReg, dire: () => {} });
+ok(r1.fautes.length === 0, 'les réglages relus portent la liaison APPELS et SLUG_APPELS', r1.fautes.join(' ; '));
+const ficheReg = fauxReg.projetFiche('essai-reglages');
+ok(ficheReg?.deployment_configs?.production?.env_vars?.SLUG_APPELS?.value === slugReg, 'SLUG_APPELS vaut le slug de la page, en production');
+ok(ficheReg?.deployment_configs?.preview?.kv_namespaces?.APPELS?.namespace_id === r1.espace.id, 'la liaison APPELS vise l espace créé, en préversion aussi');
+const r2 = await brancherAppels({ client: clientReg, projet: 'essai-reglages', slug: slugReg, dire: () => {} });
+ok(r2.fautes.length === 0 && r2.espace.id === r1.espace.id && fauxReg.espaces.size === 1, 'relancé, il reprend le même espace KV au lieu d en créer un second', String(fauxReg.espaces.size));
+let refuseSansSlug = false;
+try { await brancherAppels({ client: clientReg, projet: 'essai-reglages', slug: '', dire: () => {} }); } catch { refuseSansSlug = true; }
+ok(refuseSansSlug, 'sans slug, aucun réglage n est posé');
 
 console.log(`\n${controles} contrôles, ${fautes} faute(s).`);
 

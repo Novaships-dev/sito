@@ -17,7 +17,7 @@
 // restent à passer : voir PLAN-APP.md, section 5.4.
 
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, writeFileSync, readFileSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -147,5 +147,7 @@ for (const e of essais) {
   if (constat.length) fautes++;
   console.log(`${constat.length ? 'FAUTE' : 'ok   '}  ${e.nom.padEnd(30)} ${constat.join(' ; ')}`);
 }
-console.log(`\n${essais.length} fichiers, ${fautes} faute(s). Dossier : ${D}`);
+// Gardé seulement pour lire une faute : sinon chaque passage reste dans %TEMP%.
+if (!fautes) rmSync(D, { recursive: true, force: true });
+console.log(`\n${essais.length} fichiers, ${fautes} faute(s). ${fautes ? `Dossier gardé : ${D}` : 'Dossier effacé.'}`);
 process.exit(fautes ? 1 : 0);

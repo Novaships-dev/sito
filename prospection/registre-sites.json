@@ -1,0 +1,766 @@
+{
+  "sites": [
+    {
+      "siren": "839830775",
+      "nom": "BRIZZI FACADES",
+      "metier": "ravalement",
+      "commune": "Roquevaire",
+      "codePostal": "13360",
+      "departement": "13",
+      "archetype": "elevation",
+      "titre": "Une façade ne se repeint pas. Elle se répare, puis elle se recouvre.",
+      "main": {
+        "hero": "hero",
+        "chantier": "chantier-3",
+        "geste": "geste",
+        "detail": "detail-enduit",
+        "paire1": "03",
+        "paire2": "02"
+      },
+      "appel": {
+        "forme": "plein",
+        "libelle": "Appeler",
+        "place": "nom-gauche"
+      },
+      "photos": "hero,chantier-3,geste,detail-enduit,avant-03,apres-03,avant-02,apres-02",
+      "structure": "coupure > ouverture > prix > travail > chantier > avis > verifiable > contact",
+      "structureDetail": {
+        "ordre": [
+          "coupure",
+          "ouverture",
+          "prix",
+          "travail",
+          "chantier",
+          "avis",
+          "verifiable",
+          "contact"
+        ],
+        "prix": false,
+        "avis": true,
+        "page2": false,
+        "nuancierPlace": "comparateur"
+      },
+      "comparateur": {
+        "prise": "fil",
+        "indice": "Touchez pour comparer",
+        "etiquettes": "haut"
+      },
+      "phrases": [
+        "Une façade ne se repeint pas. Elle se répare, puis elle se recouvre.",
+        "Protection des abords et des menuiseries, nettoyage basse pression, rebouchage du faïençage, enduit traditionnel en trois couches, teinte choisie sur le mur.",
+        "Enduit qui farine sous le doigt, fissures en escalier aux angles, moulures érodées.",
+        "Support stabilisé, finition régulière sur toute la hauteur, points d’eau traités.",
+        "La reprise se fait en couches, chaque couche sèche avant la suivante. On reprend à partir du sain, jamais par-dessus.",
+        "Une fissure s’ouvre en V, se nettoie, se ponte avec une armature. L’armature répartit l’effort au lieu de le laisser au même endroit.",
+        "Le grattage se fait au gratton, en mouvements circulaires réguliers. Le gratté se reprend mal : il se fait bien du premier coup.",
+        "Serré à la taloche pour un fini plus fermé. Sur une maison ancienne, le taloché rappelle les enduits faits à la main.",
+        "Les descentes d’eau sont déposées, puis refixées après l’enduit. Les reprises se voient d’abord autour des détails, en lumière rasante.",
+        "Le passage des piétons est maintenu sous l’échafaudage quand la rue l’impose. La sécurité de la rue fait partie du travail.",
+        "Ce que comprend un ravalement.",
+        "Les faits publics.",
+        "Prendre rendez-vous.",
+        "Le chantier en cours.",
+        "Attrapez la couture pour voir le mur avant la reprise.",
+        "Les deux photos sont prises du même endroit. La différence vient du chantier.",
+        "Façade sur rue, purge complète, enduit à la chaux.",
+        "Soubassement, purge complète, finition grattée fin."
+      ],
+      "intitules": [
+        "Ce que comprend un ravalement.",
+        "Les faits publics.",
+        "Prendre rendez-vous.",
+        "Le chantier en cours."
+      ],
+      "famille": "foret",
+      "sol": "papier",
+      "polices": "archivo-etroit",
+      "geometrie": "vif",
+      "mot": "aucun",
+      "accent": "#dca466",
+      "produitLe": "2026-10-28"
+    },
+    {
+      "siren": "827547217",
+      "nom": "MISOL ENERGIE",
+      "metier": "ravalement",
+      "commune": "Venelles",
+      "codePostal": "13770",
+      "departement": "13",
+      "archetype": "panneau",
+      "titre": "Une façade fissurée laisse entrer l’eau bien avant qu’on la voie.",
+      "main": {
+        "hero": "hero-variante-2",
+        "chantier": "chantier-3",
+        "geste": "geste-3",
+        "detail": "detail-enduit",
+        "paire1": "03",
+        "paire2": "01"
+      },
+      "appel": {
+        "forme": "pastille",
+        "libelle": "Appeler",
+        "place": "nom-gauche"
+      },
+      "photos": "hero-variante-2,chantier-3,geste-3,detail-enduit,avant-03,apres-03,avant-01,apres-01",
+      "structure": "ouverture > coupure > travail > prix > chantier > verifiable > contact",
+      "structureDetail": {
+        "ordre": [
+          "ouverture",
+          "coupure",
+          "travail",
+          "prix",
+          "chantier",
+          "verifiable",
+          "contact"
+        ],
+        "prix": false,
+        "avis": false,
+        "page2": false,
+        "nuancierPlace": "atmo"
+      },
+      "comparateur": {
+        "prise": "barre",
+        "indice": "Touchez pour comparer",
+        "etiquettes": "haut"
+      },
+      "phrases": [
+        "Une façade fissurée laisse entrer l’eau bien avant qu’on la voie.",
+        "Protection des abords et des menuiseries, sondage au marteau, rejointoiement des pierres, enduit adapté au mur.",
+        "Enduit faïencé, fissure ouverte au-dessus d’une fenêtre, coulures sous les bandeaux.",
+        "Support purgé et réparé, fissures traitées une par une, parement neuf.",
+        "On juge sur une surface d’essai d’au moins un mètre carré. La bonne teinte est celle qu’on oublie dans la rue.",
+        "L’eau du lavage est recueillie au pied du mur, les menuiseries sont bâchées. Le choix se fait au marteau, pas au catalogue.",
+        "Les parties décollées sont purgées, puis reprises au mortier. Le temps passé à purger ne se voit pas, mais il se garde.",
+        "Ouverture en V, pontage armé pour les fissures actives, rebouchage pour le faïençage. Une fissure franche est un mouvement de structure : elle se ponte, ou elle se rouvre.",
+        "Application en deux passes, puis grattage à la lame quand la prise est suffisante. Le gratté se salit moins vite qu’un fini lisse.",
+        "Le geste reste le même sur toute la façade pour garder un aspect uniforme. La moindre reprise se voit en lumière rasante.",
+        "Les étapes, dans l’ordre.",
+        "Ce qui est public.",
+        "Parler du chantier.",
+        "Sur la façade.",
+        "Faites glisser le curseur pour voir la différence.",
+        "Même angle, même distance. Ce que l’on voit changer, c’est le travail.",
+        "Angle de façade, fissures pontées, enduit taloché.",
+        "Façade arrière, fissures pontées, finition grattée fin."
+      ],
+      "intitules": [
+        "Les étapes, dans l’ordre.",
+        "Ce qui est public.",
+        "Parler du chantier.",
+        "Sur la façade."
+      ],
+      "famille": "noir-fauve",
+      "sol": "papier",
+      "polices": "bricolage",
+      "geometrie": "vif",
+      "mot": "enseigne",
+      "accent": "#dca466",
+      "produitLe": "2026-10-28"
+    },
+    {
+      "siren": "833250046",
+      "nom": "CHEMINEES CONCEPTION",
+      "metier": "ravalement",
+      "commune": "Salon-de-provence",
+      "codePostal": "13300",
+      "departement": "13",
+      "archetype": "planche",
+      "titre": "Le gel entre dans les fissures et les agrandit chaque hiver.",
+      "main": {
+        "hero": "hero-variante-2",
+        "chantier": "chantier-2",
+        "geste": "geste-2",
+        "detail": "detail-enduit",
+        "paire1": "02",
+        "paire2": "03"
+      },
+      "appel": {
+        "forme": "pastille",
+        "libelle": "Téléphoner",
+        "place": "nom-droite"
+      },
+      "photos": "hero-variante-2,chantier-2,geste-2,detail-enduit,avant-02,apres-02,avant-03,apres-03",
+      "structure": "coupure > ouverture > avis > travail > chantier > prix > verifiable > contact",
+      "structureDetail": {
+        "ordre": [
+          "coupure",
+          "ouverture",
+          "avis",
+          "travail",
+          "chantier",
+          "prix",
+          "verifiable",
+          "contact"
+        ],
+        "prix": false,
+        "avis": true,
+        "page2": false,
+        "nuancierPlace": "atmo"
+      },
+      "comparateur": {
+        "prise": "barre",
+        "indice": "Glissez le trait",
+        "etiquettes": "bas"
+      },
+      "phrases": [
+        "Le gel entre dans les fissures et les agrandit chaque hiver.",
+        "Montage de l’échafaudage, bâchage des menuiseries, purge jusqu’au sain, reprise des corniches et bandeaux, enduit de parement.",
+        "Fissures suivies, salissures de ruissellement sous les appuis, reprises anciennes visibles.",
+        "Parties creuses reprises au mortier, fissures ouvertes et pontées, enduit respirant, teinte choisie dans la gamme des façades voisines.",
+        "Les bords et les angles sont grattés à la main, au plus près. Le résultat change selon l’heure du grattage : on ne s’arrête pas au milieu d’un pan.",
+        "Le talochage se fait sur un enduit encore frais, pan par pan. Le rendu est plus contemporain qu’un gratté.",
+        "Le pied de façade est repris avec un enduit plus résistant. Les détails sont l’endroit où l’eau entre.",
+        "L’emprise sur le trottoir se déclare en mairie. L’échafaudage est le premier poste du devis, et le dernier démonté.",
+        "On compare les échantillons sur le mur, à différentes heures. Le nuancier de la page donne une idée, le mur donne la réponse.",
+        "Le chantier en détail.",
+        "Les données officielles.",
+        "Demander un passage.",
+        "Le mur en cours de reprise.",
+        "Faites glisser la couture pour retrouver la façade d’origine.",
+        "Même point de vue, même cadrage. Seul l’enduit a changé.",
+        "Pignon, reprise du support, teinte d’origine retrouvée.",
+        "Maison de ville, angles redressés, teinte d’origine retrouvée."
+      ],
+      "intitules": [
+        "Le chantier en détail.",
+        "Les données officielles.",
+        "Demander un passage.",
+        "Le mur en cours de reprise."
+      ],
+      "famille": "mono-vif",
+      "sol": "nuit",
+      "polices": "archivo-plein",
+      "geometrie": "rond",
+      "mot": "commune",
+      "accent": "#b08c6f",
+      "produitLe": "2026-10-28"
+    },
+    {
+      "siren": "844126698",
+      "nom": "SASU BMAV MACONNERIE (SASU BMAV MACONNERIE)",
+      "metier": "ravalement",
+      "commune": "Cuges-les-pins",
+      "codePostal": "13780",
+      "departement": "13",
+      "archetype": "matiere",
+      "titre": "Ce qui dure sur une façade, c’est ce qu’on a laissé sécher.",
+      "main": {
+        "hero": "hero",
+        "chantier": "chantier",
+        "geste": "geste-3",
+        "detail": "detail-enduit",
+        "paire1": "02",
+        "paire2": "03"
+      },
+      "appel": {
+        "forme": "plein",
+        "libelle": "Téléphoner",
+        "place": "nom-gauche"
+      },
+      "photos": "hero,chantier,geste-3,detail-enduit,avant-02,apres-02,avant-03,apres-03",
+      "structure": "coupure > ouverture > prix > travail > avis > chantier > verifiable > contact",
+      "structureDetail": {
+        "ordre": [
+          "coupure",
+          "ouverture",
+          "prix",
+          "travail",
+          "avis",
+          "chantier",
+          "verifiable",
+          "contact"
+        ],
+        "prix": false,
+        "avis": true,
+        "page2": true,
+        "nuancierPlace": "comparateur"
+      },
+      "comparateur": {
+        "prise": "rond",
+        "indice": "Touchez pour comparer",
+        "etiquettes": "bas"
+      },
+      "phrases": [
+        "Ce qui dure sur une façade, c’est ce qu’on a laissé sécher.",
+        "Échafaudage et protections, décapage des anciennes peintures, enduit gratté ou taloché, finition talochée.",
+        "Support fatigué, salissures noires en pied de mur, appuis fendus.",
+        "Parties creuses reprises au mortier, enduit neuf, ruissellement maîtrisé, teinte accordée aux voisines.",
+        "L’épaisseur reste régulière pour que le grain soit le même partout. La pluie glisse sur le grain sans laisser de coulures marquées.",
+        "Le taloché demande un support parfaitement plan avant la finition. Le résultat dépend du geste plus que du produit.",
+        "Les appuis fendus sont repris au mortier, avec une pente vers l’extérieur. Des appuis mal traités dessinent des coulures noires sur la façade.",
+        "L’échafaudage est monté à distance du mur pour laisser travailler les angles. Un bon montage se voit au résultat des angles et des rives.",
+        "Le choix se fait en lumière du jour, devant la façade. La rue entière doit pouvoir accueillir la couleur choisie.",
+        "Le nettoyage s’arrête à ce que le mur supporte. Un enduit neuf n’adhère pas sur un support sale.",
+        "Ce qui se passe sur l’échafaudage.",
+        "Les informations officielles.",
+        "Parler de votre mur.",
+        "Un enduit monocouche donne un grain régulier, en une seule couche."
+      ],
+      "intitules": [
+        "Ce qui se passe sur l’échafaudage.",
+        "Les informations officielles.",
+        "Parler de votre mur."
+      ],
+      "famille": "cobalt-creme",
+      "sol": "nuit",
+      "polices": "public-bricolage",
+      "geometrie": "adouci",
+      "mot": "metier",
+      "accent": "#a97659",
+      "produitLe": "2026-10-28"
+    },
+    {
+      "siren": "844620393",
+      "nom": "SMILE ISOL (SMILE ISOL)",
+      "metier": "ravalement",
+      "commune": "Marseille",
+      "codePostal": "13008",
+      "departement": "13",
+      "archetype": "planche",
+      "titre": "Le mortier de reprise doit être moins dur que la pierre qu’il répare.",
+      "main": {
+        "hero": "hero",
+        "chantier": "chantier-3",
+        "geste": "geste-4",
+        "detail": "detail-enduit",
+        "paire1": "01",
+        "paire2": "02"
+      },
+      "appel": {
+        "forme": "contour",
+        "libelle": "Appeler",
+        "place": "nom-droite"
+      },
+      "photos": "hero,chantier-3,geste-4,detail-enduit,avant-01,apres-01,avant-02,apres-02",
+      "structure": "ouverture > coupure > prix > travail > chantier > verifiable > contact",
+      "structureDetail": {
+        "ordre": [
+          "ouverture",
+          "coupure",
+          "prix",
+          "travail",
+          "chantier",
+          "verifiable",
+          "contact"
+        ],
+        "prix": false,
+        "avis": false,
+        "page2": false,
+        "nuancierPlace": "atmo"
+      },
+      "comparateur": {
+        "prise": "double",
+        "indice": "Comparez d’un geste",
+        "etiquettes": "bas"
+      },
+      "phrases": [
+        "Le mortier de reprise doit être moins dur que la pierre qu’il répare.",
+        "Montage de l’échafaudage, bâchage des menuiseries, nettoyage du support, purge des parties creuses, enduit adapté au mur.",
+        "Support fatigué, efflorescences blanches, angles épaufrés.",
+        "Support stabilisé, enduit respirant, points singuliers repris.",
+        "Les fenêtres sont bâchées, les seuils et les sols couverts. Les poussières de purge restent sur le chantier, pas chez les voisins.",
+        "Une teinte d’origine se retrouve parfois sous les anciennes couches. Une teinte trop sombre chauffe le mur, une teinte trop claire montre chaque coulure.",
+        "Le lavage se fait de haut en bas, pan par pan. Le mur doit ensuite sécher avant la suite.",
+        "Le sondage se fait sur toute la surface, mètre par mètre. Une purge incomplète se lit deux hivers plus tard, en cloques.",
+        "Le mastic de rebouchage reste souple pour suivre les mouvements du mur. Le diagnostic décide du traitement, pas l’inverse.",
+        "Étape par étape.",
+        "L’identité de l’entreprise.",
+        "Une visite avant tout chiffre.",
+        "Sur l’échafaudage.",
+        "Déplacez la séparation pour voir ce que le chantier a changé.",
+        "Les deux images ont le même cadrage. Le mur est le seul à avoir changé.",
+        "Maison de village, fissure ouverte et pontée, enduit monocouche.",
+        "Façade complète, fissure ouverte et pontée, enduit monocouche."
+      ],
+      "intitules": [
+        "Étape par étape.",
+        "L’identité de l’entreprise.",
+        "Une visite avant tout chiffre.",
+        "Sur l’échafaudage."
+      ],
+      "famille": "olive-papier",
+      "sol": "nuit",
+      "polices": "archivo-etroit",
+      "geometrie": "rond",
+      "mot": "commune",
+      "accent": "#b08c6f",
+      "produitLe": "2026-10-28"
+    },
+    {
+      "siren": "881767842",
+      "nom": "EVORA RAVALEMENT",
+      "metier": "ravalement",
+      "commune": "Marseille",
+      "codePostal": "13005",
+      "departement": "13",
+      "archetype": "elevation",
+      "titre": "Un ravalement en copropriété se vote, se prépare, puis se planifie.",
+      "main": {
+        "hero": "hero-variante-2",
+        "chantier": "chantier-2",
+        "geste": "geste-5",
+        "detail": "detail-enduit",
+        "paire1": "03",
+        "paire2": "01"
+      },
+      "appel": {
+        "forme": "pastille",
+        "libelle": "Appeler l’entreprise",
+        "place": "nom-gauche"
+      },
+      "photos": "hero-variante-2,chantier-2,geste-5,detail-enduit,avant-03,apres-03,avant-01,apres-01",
+      "structure": "coupure > ouverture > travail > chantier > prix > verifiable > contact",
+      "structureDetail": {
+        "ordre": [
+          "coupure",
+          "ouverture",
+          "travail",
+          "chantier",
+          "prix",
+          "verifiable",
+          "contact"
+        ],
+        "prix": false,
+        "avis": false,
+        "page2": false,
+        "nuancierPlace": "atmo"
+      },
+      "comparateur": {
+        "prise": "fil",
+        "indice": "Glissez ou touchez",
+        "etiquettes": "bas"
+      },
+      "phrases": [
+        "Un ravalement en copropriété se vote, se prépare, puis se planifie.",
+        "Protection des abords et des menuiseries, ouverture et pontage des fissures, reprise des angles, enduit de parement.",
+        "Cloques à la sous-face, fissures reprises au mastic qui ressortent, descentes d’eau mal fixées.",
+        "Parties creuses reprises au mortier, enduit gratté fin, appuis et rives refaits.",
+        "Les pierres tendres se lavent à l’eau froide, sans pression forte. Sans cette étape, l’enduit neuf se salit par en dessous.",
+        "Les zones creuses sont marquées à la craie avant d’être purgées. Le mur réparé doit être plan avant de recevoir l’enduit.",
+        "Chaque fissure est ouverte à la disqueuse sur sa longueur. Confondre faïençage et fissure active fait revenir la fissure en un hiver.",
+        "Une façade grattée se travaille d’un seul tenant, angle à angle. Le gratté pardonne les petits défauts de planéité et vieillit bien en ville.",
+        "Ce que l’on fait, et pourquoi.",
+        "Ce que dit la base Sirene.",
+        "Faire venir quelqu’un.",
+        "Le chantier.",
+        "Touchez la photo pour passer d’un état à l’autre.",
+        "Le cadrage est identique avant et après. Rien d’autre ne change que le mur.",
+        "Immeuble de deux étages, parties creuses purgées, enduit taloché.",
+        "Villa, parties creuses purgées, enduit taloché."
+      ],
+      "intitules": [
+        "Ce que l’on fait, et pourquoi.",
+        "Ce que dit la base Sirene.",
+        "Faire venir quelqu’un.",
+        "Le chantier."
+      ],
+      "famille": "terre-ardoise",
+      "sol": "nuit",
+      "polices": "archivo-plein",
+      "geometrie": "vif",
+      "mot": "aucun",
+      "accent": "#dca466",
+      "produitLe": "2026-10-28"
+    },
+    {
+      "siren": "478155559",
+      "nom": "SP FACADES",
+      "metier": "ravalement",
+      "commune": "Marseille 13eme",
+      "codePostal": "13013",
+      "departement": "13",
+      "archetype": "matiere",
+      "titre": "Un monocouche se projette en une seule couche, et ne pardonne pas un mauvais support.",
+      "main": {
+        "hero": "hero-variante-2",
+        "chantier": "chantier",
+        "geste": "geste-5",
+        "detail": "detail-enduit",
+        "paire1": "01",
+        "paire2": "03"
+      },
+      "appel": {
+        "forme": "contour",
+        "libelle": "Appeler l’entreprise",
+        "place": "nom-droite"
+      },
+      "photos": "hero-variante-2,chantier,geste-5,detail-enduit,avant-01,apres-01,avant-03,apres-03",
+      "structure": "coupure > ouverture > chantier > travail > avis > prix > verifiable > contact",
+      "structureDetail": {
+        "ordre": [
+          "coupure",
+          "ouverture",
+          "chantier",
+          "travail",
+          "avis",
+          "prix",
+          "verifiable",
+          "contact"
+        ],
+        "prix": false,
+        "avis": true,
+        "page2": true,
+        "nuancierPlace": "comparateur"
+      },
+      "comparateur": {
+        "prise": "double",
+        "indice": "Touchez pour comparer",
+        "etiquettes": "haut"
+      },
+      "phrases": [
+        "Un monocouche se projette en une seule couche, et ne pardonne pas un mauvais support.",
+        "Protection des abords et des menuiseries, pontage armé des fissures actives, traitement des points singuliers, enduit à la chaux.",
+        "Parties creuses au marteau, fissures fines en réseau, corniche abîmée.",
+        "Mur purgé jusqu’au sain, enduit gratté fin, corniche reprise.",
+        "Les angles reçoivent un profilé avant l’enduit. Une façade se juge à ses détails autant qu’à ses grands pans.",
+        "Montage, filet, bâchage des menuiseries, protection du sol. Le temps passé à protéger est du temps qu’on ne passe pas à nettoyer.",
+        "En secteur réglementé, la teinte se prend dans le nuancier local. Une couleur se juge à distance, pas le nez sur l’échantillon.",
+        "Basse pression sur un enduit fatigué, haute pression seulement sur un support sain. Un lavage trop fort abîme ce qu’on voulait garder.",
+        "Ce qui sonne creux sous le marteau tombe, jusqu’au sain. Un support sain est la seule garantie qu’un enduit tienne.",
+        "Les postes du ravalement.",
+        "Ce qui se vérifie.",
+        "Joindre l’entreprise.",
+        "Le grain se décide à la lame, au moment exact où l’enduit a pris."
+      ],
+      "intitules": [
+        "Les postes du ravalement.",
+        "Ce qui se vérifie.",
+        "Joindre l’entreprise."
+      ],
+      "famille": "luxe-froid",
+      "sol": "nuit",
+      "polices": "bricolage",
+      "geometrie": "rond",
+      "mot": "enseigne",
+      "accent": "#a97659",
+      "produitLe": "2026-10-28"
+    },
+    {
+      "siren": "539547653",
+      "nom": "SCULPTURE FACADE",
+      "metier": "ravalement",
+      "commune": "Septemes-les-vallons",
+      "codePostal": "13240",
+      "departement": "13",
+      "archetype": "panneau",
+      "titre": "Le temps de séchage fait partie du chantier, pas du retard.",
+      "main": {
+        "hero": "hero",
+        "chantier": "chantier",
+        "geste": "geste",
+        "detail": "detail-enduit",
+        "paire1": "01",
+        "paire2": "02"
+      },
+      "appel": {
+        "forme": "plein",
+        "libelle": "Appeler l’entreprise",
+        "place": "nom-gauche"
+      },
+      "photos": "hero,chantier,geste,detail-enduit,avant-01,apres-01,avant-02,apres-02",
+      "structure": "coupure > ouverture > prix > travail > chantier > verifiable > contact",
+      "structureDetail": {
+        "ordre": [
+          "coupure",
+          "ouverture",
+          "prix",
+          "travail",
+          "chantier",
+          "verifiable",
+          "contact"
+        ],
+        "prix": false,
+        "avis": false,
+        "page2": false,
+        "nuancierPlace": "comparateur"
+      },
+      "comparateur": {
+        "prise": "fil",
+        "indice": "Comparez d’un geste",
+        "etiquettes": "bas"
+      },
+      "phrases": [
+        "Le temps de séchage fait partie du chantier, pas du retard.",
+        "Montage de l’échafaudage, bâchage des menuiseries, traitement des fissures, reprise des appuis et des rives, enduit traditionnel en trois couches.",
+        "Peinture écaillée sur ancien enduit, faïençage général, traces vertes en pied de mur.",
+        "Parties creuses reprises au mortier, faïençage rebouché, parement neuf.",
+        "L’enduit est appliqué, dressé, puis taloché quand il commence à tirer. Le taloché marque davantage les reprises : il se travaille sans s’arrêter au milieu d’un mur.",
+        "Les bandeaux reçoivent une protection qui renvoie l’eau loin du mur. Un détail oublié se lit comme une tache sur le neuf.",
+        "Les gouttières et les descentes sont protégées pendant les travaux. Le délai d’autorisation fait partie du planning, pas des imprévus.",
+        "Les échantillons sont posés côte à côte sur le mur même. Une teinte change avec la lumière du quartier.",
+        "Un traitement contre les mousses agit plusieurs jours avant qu’on rince. La salissure cache souvent les fissures.",
+        "Ce qui se fait sur le mur.",
+        "Ce que chacun peut vérifier.",
+        "Prendre contact.",
+        "Sur place, au fil du chantier.",
+        "Déplacez le trait pour comparer l’avant et l’après.",
+        "Les deux prises de vue se superposent exactement. Tout le reste est à sa place.",
+        "Mur de clôture, appuis repris, teinte accordée à la rue.",
+        "Façade sur cour, joints refaits, teinte accordée à la rue."
+      ],
+      "intitules": [
+        "Ce qui se fait sur le mur.",
+        "Ce que chacun peut vérifier.",
+        "Prendre contact.",
+        "Sur place, au fil du chantier."
+      ],
+      "famille": "terre-ardoise",
+      "sol": "papier",
+      "polices": "public-bricolage",
+      "geometrie": "adouci",
+      "mot": "metier",
+      "accent": "#b08c6f",
+      "produitLe": "2026-10-28"
+    },
+    {
+      "siren": "807459938",
+      "nom": "DUO FACADE",
+      "metier": "ravalement",
+      "commune": "Marseille",
+      "codePostal": "13005",
+      "departement": "13",
+      "archetype": "panneau",
+      "titre": "Les fissures fines se rebouchent. Les fissures qui bougent se pontent.",
+      "main": {
+        "hero": "hero",
+        "chantier": "chantier",
+        "geste": "geste-2",
+        "detail": "detail-enduit",
+        "paire1": "02",
+        "paire2": "03"
+      },
+      "appel": {
+        "forme": "plein",
+        "libelle": "Téléphoner",
+        "place": "nom-gauche"
+      },
+      "photos": "hero,chantier,geste-2,detail-enduit,avant-02,apres-02,avant-03,apres-03",
+      "structure": "coupure > ouverture > chantier > prix > travail > avis > verifiable > contact",
+      "structureDetail": {
+        "ordre": [
+          "coupure",
+          "ouverture",
+          "chantier",
+          "prix",
+          "travail",
+          "avis",
+          "verifiable",
+          "contact"
+        ],
+        "prix": false,
+        "avis": true,
+        "page2": false,
+        "nuancierPlace": "atmo"
+      },
+      "comparateur": {
+        "prise": "fil",
+        "indice": "Touchez la photo",
+        "etiquettes": "haut"
+      },
+      "phrases": [
+        "Les fissures fines se rebouchent. Les fissures qui bougent se pontent.",
+        "Montage de l’échafaudage, bâchage des menuiseries, lavage complet de la façade, rebouchage du faïençage, enduit gratté ou taloché.",
+        "Parties creuses au marteau, joints ouverts, traces d’eau sous les rives.",
+        "Support purgé et réparé, finition régulière sur toute la hauteur, teinte choisie sur le mur.",
+        "Un filet couvre toute la façade pendant la purge. Le chantier se rend propre.",
+        "La teinte se choisit sur la façade et par temps couvert, jamais sur un écran. Ce choix engage la façade pour dix ans ou plus.",
+        "Le jet reste à distance de l’enduit pour ne pas le creuser. Ce que le jet décolle serait tombé de toute façon.",
+        "Le mortier de reprise est choisi pour le mur : chaux sur l’ancien, ciment sur le béton. Le reste du chantier repose sur la purge.",
+        "Une fissure qui bouge encore se surveille avant d’être pontée. Une fissure est le premier chemin de l’eau dans le mur.",
+        "Ce que recouvre le mot ravalement.",
+        "Les faits, sources à l’appui.",
+        "Fixer une visite.",
+        "De près, sur le mur.",
+        "Glissez le trait pour voir le mur avant les travaux.",
+        "Même endroit, même objectif. Ce qui change, c’est le travail fait.",
+        "Mur de clôture, reprise du support, enduit à la chaux.",
+        "Soubassement, appuis repris, enduit à la chaux."
+      ],
+      "intitules": [
+        "Ce que recouvre le mot ravalement.",
+        "Les faits, sources à l’appui.",
+        "Fixer une visite.",
+        "De près, sur le mur."
+      ],
+      "famille": "mono-vif",
+      "sol": "papier",
+      "polices": "bricolage",
+      "geometrie": "adouci",
+      "mot": "metier",
+      "accent": "#b08c6f",
+      "produitLe": "2026-10-28"
+    },
+    {
+      "siren": "808287007",
+      "nom": "MC FACADES",
+      "metier": "ravalement",
+      "commune": "Saint-victoret",
+      "codePostal": "13730",
+      "departement": "13",
+      "archetype": "matiere",
+      "titre": "La teinte se choisit en regardant la rue, pas le nuancier seul.",
+      "main": {
+        "hero": "hero-variante-2",
+        "chantier": "chantier-2",
+        "geste": "geste-4",
+        "detail": "detail-enduit",
+        "paire1": "02",
+        "paire2": "01"
+      },
+      "appel": {
+        "forme": "contour",
+        "libelle": "Appeler",
+        "place": "nom-droite"
+      },
+      "photos": "hero-variante-2,chantier-2,geste-4,detail-enduit,avant-02,apres-02,avant-01,apres-01",
+      "structure": "ouverture > coupure > travail > chantier > avis > prix > verifiable > contact",
+      "structureDetail": {
+        "ordre": [
+          "ouverture",
+          "coupure",
+          "travail",
+          "chantier",
+          "avis",
+          "prix",
+          "verifiable",
+          "contact"
+        ],
+        "prix": false,
+        "avis": true,
+        "page2": true,
+        "nuancierPlace": "comparateur"
+      },
+      "comparateur": {
+        "prise": "rond",
+        "indice": "Glissez le trait",
+        "etiquettes": "bas"
+      },
+      "phrases": [
+        "La teinte se choisit en regardant la rue, pas le nuancier seul.",
+        "Protection des abords et des menuiseries, diagnostic du support, enduit adapté au mur, finition talochée.",
+        "Support fatigué, fissures suivies, mousses en soubassement.",
+        "Parties creuses reprises au mortier, enduit respirant, teinte accordée aux voisines.",
+        "Le grain dépend de la granulométrie et du moment où l’on gratte. Gratté trop tôt, l’enduit colle ; trop tard, il arrache.",
+        "La taloche serre la matière et ferme le grain. Une façade talochée se salit plus vite qu’une façade grattée.",
+        "Les rejingots et les larmiers sont refaits sous chaque appui. Le temps passé sur les détails ne se voit pas, et c’est le but.",
+        "Menuiseries, sols et végétation sont protégés avant la première passe. Sans accès sûr, le haut de la façade est toujours moins bien fait.",
+        "Le travail du mur.",
+        "Les registres publics.",
+        "Parler de votre projet.",
+        "Un enduit coloré dans la masse garde sa teinte jusqu’au cœur."
+      ],
+      "intitules": [
+        "Le travail du mur.",
+        "Les registres publics.",
+        "Parler de votre projet."
+      ],
+      "famille": "luxe-froid",
+      "sol": "papier",
+      "polices": "public-bricolage",
+      "geometrie": "vif",
+      "mot": "enseigne",
+      "accent": "#a97659",
+      "produitLe": "2026-10-28"
+    }
+  ]
+}

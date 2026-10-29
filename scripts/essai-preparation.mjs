@@ -348,5 +348,7 @@ try {
   faux.arreter();
 }
 
-console.log(`\n${essais} contrôles, ${fautes} faute(s). Dossier : ${D}`);
+// Gardé seulement pour lire une faute : sinon chaque passage reste dans %TEMP%.
+if (!fautes) rmSync(D, { recursive: true, force: true });
+console.log(`\n${essais} contrôles, ${fautes} faute(s). ${fautes ? `Dossier gardé : ${D}` : 'Dossier effacé.'}`);
 process.exitCode = fautes ? 1 : 0;

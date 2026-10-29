@@ -69,14 +69,15 @@ Sans compte Cloudflare (action **F5** de `memoire/actions-fabrice.md`), ajouter
 `--sec` : tout se calcule, rien ne part en ligne. Tant que F5 n'est pas faite,
 c'est le seul mode possible.
 
-## 4. Ce qui reste manuel (une fois, pas tous les soirs)
+## 4. Les réglages Cloudflare (une fois, pas tous les soirs)
 
-- **F5** : le compte Cloudflare (`lanceurs\CLE_CLOUDFLARE.bat`).
-- Dans le tableau de bord Cloudflare Pages du projet `sito-demo`, une fois
-  F5 faite : un espace KV lié sous le nom `APPELS`, et la variable
-  d'environnement `SLUG_APPELS` posée à la valeur de `prospection/appels.json`
-  (`.slug`). Sans ça, `worker/appels.js` refuse d'enregistrer un résultat
-  (`env.APPELS` ou `env.SLUG_APPELS` absents) — il le dit, il n'invente rien.
+- **F5** : le compte Cloudflare (`lanceurs\CLE_CLOUDFLARE.bat`), fait le 27 oct.
+- L'espace KV lié sous le nom `APPELS` et la variable `SLUG_APPELS` (valeur de
+  `prospection/appels.json`, `.slug`) se posent par l'API, sans tableau de
+  bord : `node scripts/prospection/reglages-cloudflare.mjs` (idempotent, relit
+  le projet et dit ce qui manque). À lancer **avant** `--sites` : un réglage ne
+  vaut qu'à partir du dépôt suivant. Sans eux, `worker/appels.js` refuse
+  d'enregistrer un résultat (`env.APPELS` ou `env.SLUG_APPELS` absents).
 
 ## 5. Le soir suivant : relire les résultats
 

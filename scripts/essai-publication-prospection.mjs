@@ -138,8 +138,8 @@ ok(/^https:\/\/[0-9a-f]+\.sito-demo\.pages\.dev$/.test(bilan.url || ''), 'Cloudf
 ok(faux.dernier?.branche === 'main', 'le dépôt part sur la branche de production');
 
 const m = faux.dernier.manifeste;
-ok(Object.keys(m).every((c) => c === 'robots.txt' || SIRENS.some(([, s]) => c.startsWith(s + '/'))),
-  'chaque chemin du manifeste vit sous son slug, sauf robots.txt');
+ok(Object.keys(m).every((c) => c === '/robots.txt' || SIRENS.some(([, s]) => c.startsWith('/' + s + '/'))),
+  'chaque chemin du manifeste vit sous son slug, sauf robots.txt, et commence par « / » (sans elle, Cloudflare rend 404)');
 
 // ------------------------------------------------- rien d indexable, aucun index
 console.log('\nRien d indexable, aucune page d accueil');
@@ -280,8 +280,11 @@ const CASSURES = [
     de: "'User-agent: *\\nDisallow: /\\n'", a: "'User-agent: *\\nAllow: /\\n'",
     attendu: /robots\.txt interdit tout/ },
   { fichier: 'scripts/prospection/publier.mjs', nom: 'une page d accueil apparaît à la racine',
-    de: "manifeste['robots.txt'] = cleRobots;", a: "manifeste['robots.txt'] = cleRobots; manifeste['index.html'] = cleRobots;",
+    de: "manifeste['/robots.txt'] = cleRobots;", a: "manifeste['/robots.txt'] = cleRobots; manifeste['/index.html'] = cleRobots;",
     attendu: /racine|page d accueil/ },
+  { fichier: 'scripts/prospection/publier.mjs', nom: 'les chemins du manifeste perdent leur barre de tête (Cloudflare rendrait 404)',
+    de: 'manifeste[`/${slug}/${rel}`] = cle;', a: 'manifeste[`${slug}/${rel}`] = cle;',
+    attendu: /commence par|rend 404|200/ },
   { fichier: 'scripts/prospection/publier.mjs', nom: 'les donnees internes du generateur partent en ligne',
     de: "const EXCLUS = [/^donnees\\.json$/,", a: 'const EXCLUS = [',
     attendu: /donnees\.json/ },

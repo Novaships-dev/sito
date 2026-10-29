@@ -114,6 +114,22 @@ export async function lireVues(env, slugs = []) {
   return out;
 }
 
+// Les slugs en ligne, posés par `publier.mjs` au moment du dépôt (la ligne
+// ci-dessous est remplacée ; `null` = pas de filtre, pour les essais).
+//
+// Pourquoi : Pages **continue de servir pendant sept jours** les fichiers
+// d'un dépôt précédent qui ne sont plus dans le nouveau (`s-maxage=604800`,
+// constaté le 29 oct. 2026 sur sito-demo.pages.dev). Un artisan qui dit « ne
+// plus appeler » verrait son site rester en ligne une semaine. Le Worker voit
+// chaque requête : tout ce qui vit sous un slug qui n'est plus dans cette
+// liste rend 404, avant même de demander le fichier.
+export const SLUGS_EN_LIGNE = null; // SLUGS_EN_LIGNE posé par publier.mjs
+
+export function horsLigne(slug, env, enLigne = SLUGS_EN_LIGNE) {
+  if (!enLigne || !SLUG.test(slug) || slug === env?.SLUG_APPELS) return false;
+  return !enLigne.includes(slug);
+}
+
 export default {
   async fetch(requete, env, contexte) {
     const url = new URL(requete.url);
@@ -132,6 +148,10 @@ export default {
       return enregistrer(env, corps);
     }
     if (url.pathname.endsWith('/api/resultat')) return refus('page inconnue', 404);
+
+    if (bouts.length && horsLigne(bouts[0], env)) {
+      return new Response('page inconnue', { status: 404, headers: { 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex' } });
+    }
 
     // La page d'un site de prospection : on compte la vue avant de servir.
     // Jamais la page d'appels elle-même (c'est Fabrice qui la regarde), et

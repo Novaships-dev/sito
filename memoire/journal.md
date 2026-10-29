@@ -1363,3 +1363,41 @@ ce tour : elle demande une vraie recherche web candidat par candidat avant de
 publier pour de vrai sur le compte Cloudflare réel de Fabrice, et ce tour-ci
 était déjà long. `memoire/maintenant.md` mis à jour pour que le prochain tour
 la prenne, pas T09.
+
+## 28 oct. 2026 — T41 (première vraie publication, premier lot réel)
+
+Plan : 1) `--lister` sur le ravalement (couverture et peinture attendent F18,
+sautées avec leur message) puis recherche web candidat par candidat ;
+2) `--sites` pour de vrai sur le compte Cloudflare de Fabrice, et poser par
+l'API (si le jeton le permet) l'espace KV `APPELS` et `SLUG_APPELS` ;
+3) relire en ligne : 404 à la racine, `noindex` partout, chaque lien répond.
+
+## 29 oct. 2026 — T41, suite
+
+**Disque plein au démarrage** : 11 Mo libres sur C:, la suite rougit sur
+« Espace insuffisant sur le disque » (fabrication du lot). Mesuré : `%TEMP%`
+pèse 1,6 Go, dont ≈ 650 Mo de dossiers `essai-publication-…` (≈ 50 Mo
+chacun), `essai-photos-…`, `essai-preparation-…` jamais effacés par les essais.
+L'effacement en masse de ces dossiers est **refusé par le mode auto**
+(« Shared Scratch Sweep ») : pas contourné. Fait à la place :
+- `sites/prospection/2026-10-28/` (81 Mo) effacé **après** relecture en
+  ligne : `verifier-en-ligne.mjs` → 6 sites et la page d'appels, 50 contrôles,
+  0 faute (décision du 29 oct.) ;
+- la cause : `essai-publication.mjs`, `essai-photos.mjs`,
+  `essai-preparation.mjs` effacent leur dossier quand ils passent (gardé pour
+  lire une faute). Vérifié : 122 dossiers avant trois passages, 122 après.
+- 139 Mo libres : sous 1 Go, plus de fabrication (décision du 29 oct.) ;
+  **F19** ajoutée pour Fabrice (fichiers temporaires, Téléchargements 894 Mo).
+
+**Essai faux, réparé** : `essai-preparer-appels.mjs` comparait le Worker
+publié au fichier brut ; il part désormais avec `SLUGS_EN_LIGNE` posé
+(`workerAvecSlugs`, filtre des sites retirés que Pages sert encore 7 jours).
+L'essai attend maintenant ce contenu-là. 49 contrôles, 0 faute ; contre-essai
+3 cassures sur 3 attrapées. Suite complète verte.
+
+En ligne sur `sito-demo.pages.dev` : 6 façadiers seulement (SP FACADES,
+SCULPTURE FACADE, DUO FACADE, MC FACADES, BRIZZI FACADES, EVORA RAVALEMENT) ;
+les 4 non-façadiers signalés par Cowork n'y sont plus. Reste dans T41 : la
+cause du mauvais tri (mots de `metiers.json`, nom muet gardé d'office), les
+noms (enseigne, forme juridique, accents) et les communes officielles, puis
+refabriquer les 6 — ce dernier point attend F19.

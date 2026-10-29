@@ -9,7 +9,7 @@
 // 60 s) et du cache de Cloudflare. À refaire sur Cloudflare dès que le compte
 // existe (PLAN-APP.md, section 9, étape 1).
 
-import { mkdtempSync, cpSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
+import { mkdtempSync, cpSync, writeFileSync, readFileSync, existsSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -98,5 +98,7 @@ let refusVieille = false;
 try { await pub.revenir({ site: 'sud-ravalement', version: 1, stockage, adresses, hotes }); } catch { refusVieille = true; }
 constat('retour à une version effacée refusé', refusVieille);
 
-console.log(`\n${fautes} faute(s). Dossier : ${D}`);
+// Le dossier pèse environ 50 Mo : gardé seulement pour lire une faute.
+if (!fautes) rmSync(D, { recursive: true, force: true });
+console.log(`\n${fautes} faute(s). ${fautes ? `Dossier gardé : ${D}` : 'Dossier effacé.'}`);
 process.exit(fautes ? 1 : 0);

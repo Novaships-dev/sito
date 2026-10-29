@@ -20,7 +20,11 @@
 //      refusé.** Sans cette règle, oublier d'envoyer un fichier passerait
 //      inaperçu et le site serait troué en ligne ;
 //   4. **`_headers` n'est pas un fichier servi** : c'est un réglage. Le faux
-//      l'applique aux réponses, comme Pages le fait, et ne le sert pas.
+//      l'applique aux réponses, comme Pages le fait, et ne le sert pas ;
+//   5. **un chemin du manifeste sans « / » en tête n'est jamais servi.**
+//      Cloudflare accepte le dépôt et rend 404 (constaté le 28 oct. 2026) ;
+//   6. **le Worker vient de son champ `_worker.js`**, pas du manifeste : un
+//      `_worker.js` rangé parmi les fichiers n'est ni exécuté ni servi.
 //
 // Ce que le faux ne prouve pas : les délais réels, le cache de Cloudflare, les
 // plafonds de l'offre gratuite, et la forme exacte des erreurs. La première
@@ -58,6 +62,7 @@ export function fauxCloudflare({ compte = 'f'.repeat(32), jeton = 'jeton-de-comp
   const connus = new Set();       // empreintes déclarées par upsert-hashes
   const existants = new Map();    // nom de projet → fiche
   const deploiements = [];
+  const espaces = new Map();      // id → { id, title }
   let jwtCourant = null;
   const journal = [];             // ce qui a été appelé, pour que l'essai puisse le mesurer
 
@@ -96,6 +101,19 @@ export function fauxCloudflare({ compte = 'f'.repeat(32), jeton = 'jeton-de-comp
 
     // ------------------------------------------- le compte (jeton du compte)
     if (!avecCompte()) return mauvais(10000, 'jeton du compte absent ou faux', 403);
+
+    // Les espaces KV. Le titre est unique dans un compte, comme chez Cloudflare.
+    if (chemin === `/accounts/${compte}/storage/kv/namespaces`) {
+      if (method === 'GET') return bon([...espaces.values()]);
+      if (method === 'POST') {
+        const { title } = JSON.parse(body);
+        if (!title) return mauvais(10019, 'titre absent');
+        if ([...espaces.values()].some((e) => e.title === title)) return mauvais(10014, 'a namespace with this account ID and title already exists');
+        const e = { id: 'kv' + (espaces.size + 1).toString().padStart(30, '0'), title };
+        espaces.set(e.id, e);
+        return bon(e);
+      }
+    }
     const m = chemin.match(new RegExp(`^/accounts/${compte}/pages/projects(?:/([^/]+))?(?:/(upload-token|deployments))?$`));
     if (!m) return mauvais(7003, `route inconnue : ${chemin}`, 404);
     const [, projet, sous] = m;
@@ -105,6 +123,23 @@ export function fauxCloudflare({ compte = 'f'.repeat(32), jeton = 'jeton-de-comp
       if (!/^[a-z0-9][a-z0-9-]*$/.test(name || '')) return mauvais(8000007, 'nom de projet invalide');
       existants.set(name, { id: name, name, production_branch: production_branch || 'main' });
       return bon(existants.get(name));
+    }
+    if (projet && !sous && method === 'PATCH') {
+      const f = existants.get(projet);
+      if (!f) return mauvais(8000007, 'Project not found', 404);
+      // Fusion par environnement puis par liaison, comme l'API le fait.
+      const dc = JSON.parse(body).deployment_configs || {};
+      f.deployment_configs ||= {};
+      for (const [envNom, conf] of Object.entries(dc)) {
+        const cible = (f.deployment_configs[envNom] ||= {});
+        for (const [cle, val] of Object.entries(conf)) {
+          if (val && typeof val === 'object' && !Array.isArray(val)) {
+            cible[cle] = { ...(cible[cle] || {}), ...val };
+            for (const kv of Object.values(cible[cle])) if (kv?.namespace_id && !espaces.has(kv.namespace_id)) return mauvais(8000011, `espace KV inconnu : ${kv.namespace_id}`);
+          } else cible[cle] = val;
+        }
+      }
+      return bon(f);
     }
     if (projet && !sous && method === 'GET') {
       const f = existants.get(projet);
@@ -133,7 +168,9 @@ export function fauxCloudflare({ compte = 'f'.repeat(32), jeton = 'jeton-de-comp
       const brutEntetes = form.get('_headers');
       const entetes = brutEntetes ? (typeof brutEntetes === 'string' ? brutEntetes : await brutEntetes.text()) : null;
       const id = (deploiements.length + 1).toString().padStart(8, '0');
-      deploiements.push({ id, projet, manifeste, entetes: lireEntetes(entetes), branche: form.get('branch') || 'main' });
+      const brutWorker = form.get('_worker.js');
+      const worker = brutWorker ? (typeof brutWorker === 'string' ? brutWorker : await brutWorker.text()) : null;
+      deploiements.push({ id, projet, manifeste, worker, entetes: lireEntetes(entetes), branche: form.get('branch') || 'main' });
       return bon({ id, short_id: id.slice(0, 8), url: `https://${id}.${projet}.pages.dev`, environment: 'production' });
     }
     return mauvais(7003, `route inconnue : ${method} ${chemin}`, 404);
@@ -146,10 +183,11 @@ export function fauxCloudflare({ compte = 'f'.repeat(32), jeton = 'jeton-de-comp
     if (!d) return { statut: 404, entetes: {}, corps: null };
     let cle = chemin.replace(/^\//, '');
     if (cle === '' || cle.endsWith('/')) cle += 'index.html';
-    let hash = d.manifeste[cle] ?? d.manifeste['/' + cle];
+    if (cle === '_worker.js') return { statut: 404, entetes: {}, corps: null };
+    let hash = d.manifeste['/' + cle];
     if (!hash && !extname(cle)) {
       // Pages sert aussi `/x/page` comme `/x/page.html`.
-      hash = d.manifeste[cle + '.html'] ?? d.manifeste['/' + cle + '.html'];
+      hash = d.manifeste['/' + cle + '.html'];
     }
     const entetes = {};
     for (const r of d.entetes) if (correspond(r.motif, '/' + cle.replace(/index\.html$/, ''))) Object.assign(entetes, r.entetes);
@@ -165,6 +203,8 @@ export function fauxCloudflare({ compte = 'f'.repeat(32), jeton = 'jeton-de-comp
     get magasin() { return magasin; },
     get connus() { return connus; },
     get journal() { return journal; },
+    get espaces() { return espaces; },
+    projetFiche: (nom) => existants.get(nom),
     // Combien de fois un contenu a-t-il été envoyé ? Doit rester à 1 pour une
     // image partagée par trente sites.
     envois: () => journal.filter((l) => l.includes('/pages/assets/upload')).length,

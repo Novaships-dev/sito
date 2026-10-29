@@ -46,7 +46,14 @@
 // des fichiers fixes du projet, hors du cycle de vie des sites d'artisan —
 // `_worker.js` (la fonction Pages) et la page d'appels sous son slug privé.
 // Ils entrent au manifeste à chaque publication, jamais retirés par `plan()`
-// puisqu'aucun artisan ne les porte.
+// puisqu'aucun artisan ne les porte. `_worker.js` fait exception : Pages ne
+// l'exécute que s'il arrive dans son propre champ du dépôt, jamais comme un
+// fichier du manifeste (où il serait un fichier mort, et la fonction absente :
+// constaté au premier dépôt réel, 28 oct. 2026).
+//
+// **Chaque chemin du manifeste commence par « / ».** Sans elle, Cloudflare
+// accepte le dépôt sans rien dire et rend 404 sur chaque page (constaté au
+// premier dépôt réel, 28 oct. 2026 ; `wrangler` écrit lui aussi « /chemin »).
 import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, dirname, sep, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -130,10 +137,26 @@ export async function planDuSite(slug, dossier) {
   for (const rel of fichiersDe(dossier)) {
     const contenu = readFileSync(join(dossier, rel));
     const cle = await empreinte(contenu, rel);
-    manifeste[`${slug}/${rel}`] = cle;
+    manifeste[`/${slug}/${rel}`] = cle;
     fichiers.set(cle, { cle, contenu, chemin: rel });
   }
   return { manifeste, fichiers };
+}
+
+// Les plans gardés dans `en-ligne.json` avant le 28 oct. 2026 n'avaient pas
+// la barre de tête : ils la reçoivent en repartant.
+export const avecBarre = (m) => Object.fromEntries(Object.entries(m).map(([c, h]) => [c.startsWith('/') ? c : '/' + c, h]));
+
+// Le Worker part avec la liste des slugs en ligne (`worker/appels.js`,
+// SLUGS_EN_LIGNE) : Pages sert encore sept jours les fichiers d'un dépôt
+// précédent, et c'est le Worker qui rend 404 à un site retiré. Sans la ligne
+// à remplacer, rien ne part : un retrait qui ne retire pas est pire qu'un
+// dépôt refusé.
+export const LIGNE_SLUGS = 'export const SLUGS_EN_LIGNE = null; // SLUGS_EN_LIGNE posé par publier.mjs';
+export function workerAvecSlugs(source, slugs) {
+  const texte = Buffer.isBuffer(source) ? source.toString('utf8') : String(source);
+  if (!texte.includes(LIGNE_SLUGS)) throw new Error('worker/appels.js n a plus la ligne SLUGS_EN_LIGNE à remplacer : un site retiré resterait servi sept jours, rien n est publié');
+  return Buffer.from(texte.replace(LIGNE_SLUGS, `export const SLUGS_EN_LIGNE = ${JSON.stringify([...slugs].sort())};`), 'utf8');
 }
 
 // ------------------------------------------------------------------- publier
@@ -170,7 +193,7 @@ export async function publier({
   for (const g of gardes) {
     if (parSlug.has(g.slug)) continue;
     const vieux = memoire.sites?.[g.slug];
-    if (vieux?.manifeste) parSlug.set(g.slug, vieux.manifeste);
+    if (vieux?.manifeste) parSlug.set(g.slug, avecBarre(vieux.manifeste));
     else sansPlan.push(g);
   }
 
@@ -185,15 +208,19 @@ export async function publier({
   for (const [, m] of parSlug) Object.assign(manifeste, m);
   const robots = Buffer.from(ROBOTS, 'utf8');
   const cleRobots = await empreinte(robots, 'robots.txt');
-  manifeste['robots.txt'] = cleRobots;
+  manifeste['/robots.txt'] = cleRobots;
   aEnvoyer.set(cleRobots, { cle: cleRobots, contenu: robots, chemin: 'robots.txt' });
 
+  let worker = null;
   for (const x of extra) {
     const contenu = Buffer.isBuffer(x.contenu) ? x.contenu : Buffer.from(x.contenu, 'utf8');
+    if (x.chemin === '_worker.js') { worker = contenu; continue; }
     const cle = await empreinte(contenu, x.chemin);
-    manifeste[x.chemin] = cle;
+    manifeste['/' + x.chemin.replace(/^\//, '')] = cle;
     aEnvoyer.set(cle, { cle, contenu, chemin: x.chemin });
   }
+
+  if (worker) worker = workerAvecSlugs(worker, parSlug.keys());
 
   const bilan = {
     jour, projet, slugs: [...parSlug.keys()], retires, sansPlan, ecartes,
@@ -229,7 +256,7 @@ export async function publier({
   bilan.envoyes = await client.televerser(jwt, manquants.map((h) => aEnvoyer.get(h)));
   await client.confirmerEmpreintes(jwt, manquants);
 
-  const { id, url } = await client.deployer(projet, { manifeste, entetes: ENTETES });
+  const { id, url } = await client.deployer(projet, { manifeste, entetes: ENTETES, worker });
   bilan.url = url; bilan.id = id; bilan.publie = true;
 
   // La mémoire de ce qui est en ligne : les plans gardés, les retirés enlevés.
