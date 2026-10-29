@@ -1,10 +1,30 @@
 # État au 29 octobre 2026
 
+Place libre du disque : **1850,0 Mo** (audit du 29 octobre 2026 à 18:28).
+
+## Ce qui prend la place sur C: (29 oct., 18 h 58, mesuré)
+
+2,1 Go libres sur 57 Go. Tableau complet : `memoire/essais/disque.txt`
+(`node scripts/mesure-disque.mjs`, lecture seule). Ce que Claude Code a déjà
+effacé seul : ses dossiers d'essai oubliés (≈ 610 Mo) et le cache npm (≈ 530 Mo).
+
+| Où | Taille | À qui | Qui peut vider |
+|---|---|---|---|
+| `C:\Windows\SoftwareDistribution\Download` | 4,9 Go | Windows Update, mises à jour déjà installées | **Fabrice** (F19, point 1) : Paramètres > Système > Stockage > Fichiers temporaires > « Nettoyage de Windows Update » |
+| `C:\Program Files\Microsoft Office` | 4,4 Go | Office | **Fabrice** s'il ne s'en sert pas (F19, point 2) |
+| `C:\pagefile.sys` | 5,0 Go | mémoire de Windows | personne : ne pas toucher |
+| `C:\Users\fabri\AppData\Local\Google` | 1,5 Go | Chrome (profil et cache) | **Fabrice**, le cache (F19, point 3) |
+| `C:\hiberfil.sys` | 1,5 Go | veille prolongée | **Fabrice**, facultatif (F19, point 5) |
+| `Téléchargements` + `C:\Users\Public\Downloads` | 1,2 Go | Fabrice, installateurs | **Fabrice** (F19, point 4) |
+| `AppData\Local\ms-playwright` | 0,7 Go | navigateurs des essais de Sitô | personne : les essais en ont besoin |
+| `%TEMP%` | 0,4 Go | tous les programmes | Claude Code efface les siens à chaque fin de séance (`audit-depot.mjs`) |
+| dépôt `sito` (code, `.git`, `node_modules`, `images`, `sites`) | 0,3 Go | Sitô | rien à gagner |
+
 À lire en premier, à chaque séance. Réécrit à la fin de chaque séance.
 
 ## En bref, 29 octobre 2026
 
-- **Disque du PC presque plein : 133 Mo libres** (sur 58 Go). Sous 1 Go,
+- **Disque du PC : 2,1 Go libres** à 18 h 58 (133 Mo à midi). Tableau ci-dessus. Sous 1 Go,
   plus aucune fabrication de site (décision du 29 oct.). **Action F19** pour
   Fabrice (`memoire/actions-fabrice.md`) : fichiers temporaires de Windows
   (≈ 1,6 Go dans %TEMP%, dont ≈ 650 Mo laissés par les essais avant le

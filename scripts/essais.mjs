@@ -67,6 +67,10 @@ const ETAPES = [
   // partout, celui des fichiers (plus bas) seulement là où les images sont.
   { nom: 'feuilles de prompts contre le plan d images', cmd: ['node', 'scripts/verifier-images.mjs', '--prompts'] },
   { nom: 'publication par versions et Worker', cmd: ['node', 'scripts/essai-publication.mjs'] },
+  // L'audit de fin de séance sur un clone : un doublon, un fichier mort et des
+  // temporaires posés exprès, trouvés puis corrigés. L'audit du vrai dépôt,
+  // qui efface, se lance à part (/fin-de-seance).
+  { nom: 'audit du dépôt (sur un clone cassé exprès)', cmd: ['node', 'scripts/audit-depot.mjs', '--contre-essai'] },
 ];
 if (COMPLET) {
   ETAPES.push(

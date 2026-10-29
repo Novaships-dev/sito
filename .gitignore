@@ -40,5 +40,7 @@ desktop.ini
 app.log
 claude-autonome.log
 installation.log
+# captures et journaux du serveur Playwright (outil MCP) : temporaires
+.playwright-mcp/
 # depot temporaire de l outillage avant installation (lanceurs/INSTALLER_OUTILLAGE.bat)
 _installation/

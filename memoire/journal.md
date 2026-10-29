@@ -1492,3 +1492,50 @@ Avec 3 000 lignes : « essai interrompu — fetch failed » dans
 fabrication. Cause et réparation : `memoire/pieges.md` (29 oct., course entre
 un `spawnSync` de 9 s et la fermeture des connexions inactives du faux
 serveur). Essais locaux verts ; preuve attendue : la CI.
+
+## 29 oct. 2026 — T42 (audit du dépôt et du PC)
+
+T10 repassée « à faire » : Cowork (18 h 11) place T42 et T43 avant T10. Le
+brouillon de T10 (`supabase/migrations/20261029150000_deposer_demande.sql`,
+`supabase/essais/demandes.sql`) reste sur le disque, non enregistré, non
+appliqué à la base : T10 le reprendra.
+Plan : 1) `scripts/audit-depot.mjs` : doublons (SHA-256), fichiers suivis
+morts, dossiers vides, temporaires (%TEMP% `sito-*`/`essai-*`, `app/dist-*`,
+lots anciens), 20 plus gros fichiers, place libre ; corrige ce qui est permis ;
+2) contre-essai sur un clone avec un doublon, un mort, un temporaire ;
+3) branché dans `/fin-de-seance`, rapport `memoire/essais/audit.txt`.
+
+## 29 octobre 2026 à 18:28 — audit du dépôt (scripts/audit-depot.mjs)
+
+- scripts/unicite-regles.mjs : cité nulle part (ni chemin, ni nom)
+- `scripts/audit-depot.mjs` : premier passage sur le vrai dépôt, 1 fichier
+  mort retiré par `git rm` (`scripts/unicite-regles.mjs`, simple renvoi vers
+  `generateur/unicite.mjs` depuis le 2 oct., que plus rien n'importe),
+  132 temporaires (dossiers `essai-*` et `sito-*` de %TEMP% d'avant le
+  29 oct., `.playwright-mcp/`) et `sites/prospection/` vide supprimés :
+  1 240 → 1 850 Mo libres. Second passage : 0/0/0/0. `docs/` que rien ne
+  cite (43 fichiers, surtout `docs/lecture-structorai/`) : listés, gardés
+  comme archive, pas retirés.
+- Une règle « dossier cité » (un fichier vit si son dossier est cité)
+  essayée puis retirée : « scripts/ » cité seul dans CLAUDE.md rendait vivant
+  tout `scripts/`, et le mort n'était plus trouvé.
+- `verifier-depot` rougissait sur les deux fichiers posés par le contre-essai
+  (chemins écrits en clair dans l'essai) : chemins composés, ils n'existent
+  que dans le clone.
+- Le crochet refuse la suppression récursive dans %TEMP% depuis le terminal
+  (même nommée avec un joker) : les copies gardées par les contre-essais
+  cassés exprès (≈ 55 Mo, `sito-audit-contre-essai-*`) partiront au prochain
+  audit, après deux heures.
+- Demande de Cowork (18 h 30) : `scripts/mesure-disque.mjs`, lecture seule,
+  296 s pour tout C: ; `pagefile.sys` et `hiberfil.sys` refusent `lstat`
+  (EPERM), leur taille vient de `dir`. Le gros : Windows Update 4,9 Go,
+  Office 4,4 Go, Chrome 1,5 Go, veille prolongée 1,5 Go → F19 réécrite.
+  `npm cache clean --force` fait par Claude Code : ≈ 530 Mo (le dossier
+  `_npx`, où vit le serveur Playwright de Claude Code, est gardé).
+Preuve : audit 0/0/0/0 ; `--contre-essai` 18 contrôles, 0 faute ; 4 cassures
+sur 4 attrapées ; suite complète verte. Place libre : 2,1 Go.
+- Erreur de rangement : le `git rm` de `scripts/unicite-regles.mjs`, déjà
+  indexé par l'audit, est parti dans le commit `Cowork : memoire/de-cowork.md`
+  (73dfb14), fait pendant la tâche. Historique laissé tel quel (jamais
+  réécrit). Garde : un audit qui corrige indexe ses `git rm` ; avant un
+  commit `Cowork : …`, vérifier `git diff --cached --stat`.

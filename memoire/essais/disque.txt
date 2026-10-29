@@ -1,0 +1,61 @@
+Ce qui prend la place sur C:\, 29 octobre 2026 à 18:58 (lecture seule, 296 s)
+Disque : 57,13 Go, utilisé 55,05 Go, libre 2,08 Go ; lu 52,78 Go
+90 dossier(s) ou fichier(s) illisible(s) sans droits d administrateur, non comptés : c est l écart entre « utilisé » et « lu »
+
+| Emplacement | Taille | À qui | Sûr à supprimer ? |
+|---|---|---|---|
+| `C:\Windows` | 24,25 Go | Windows | non ; « Nettoyage de disque » > « Nettoyer les fichiers système » par Fabrice |
+| `C:\Program Files` | 6,06 Go | programmes installés | par Fabrice : Paramètres > Applications |
+| `C:\pagefile.sys` | 5,00 Go | Windows (mémoire virtuelle) | non : Windows le gère ; se réduit dans Paramètres > Système > Informations > Paramètres avancés > Performances > Mémoire virtuelle |
+| `C:\Windows\SoftwareDistribution\Download` | 4,88 Go | Windows Update (mises à jour déjà téléchargées) | oui, par Fabrice : Paramètres > Système > Stockage > Fichiers temporaires, cocher « Nettoyage de Windows Update » |
+| `C:\Users\fabri\AppData\Local\Microsoft` | 2,93 Go | Windows, Edge, Teams, OneDrive (programme) | non en bloc |
+| `C:\Program Files (x86)` | 2,39 Go | programmes installés (32 bits) | par Fabrice : Paramètres > Applications |
+| `C:\Users\fabri\AppData\Local\Programs` | 2,18 Go | programmes installés pour l utilisateur | par Fabrice : Paramètres > Applications |
+| `C:\hiberfil.sys` | 1,52 Go | Windows (veille prolongée, démarrage rapide) | oui, par Fabrice : `powercfg /hibernate off` dans un terminal administrateur (perd le démarrage rapide) |
+| `C:\Users\fabri\AppData\Local\Google` | 1,52 Go | Google Chrome (profil et cache) | le cache, par Fabrice : Chrome > Paramètres > Confidentialité > Effacer les données |
+| `C:\Users\fabri\OneDrive` | 1,44 Go | OneDrive (fichiers de Fabrice, dont le dépôt sito) | par Fabrice : clic droit > « Libérer de l espace » garde les fichiers dans le nuage |
+| `C:\Users\fabri\AppData\Local\Packages` | 0,88 Go | applis du Microsoft Store | par Fabrice : Paramètres > Applications |
+| `C:\Users\fabri\AppData\Local\ms-playwright` | 0,69 Go | Playwright (navigateurs des essais de Sitô) | non : les essais de l app en ont besoin |
+| `C:\Users\fabri\Downloads` | 0,68 Go | Téléchargements de Fabrice | par Fabrice |
+| `C:\ProgramData` | 0,60 Go | données des programmes | non en bloc |
+| `C:\Users\Public\Downloads` | 0,56 Go | Téléchargements partagés (installateurs) | par Fabrice, après avoir regardé ce qu il y a |
+| `C:\Users\fabri\AppData\Local\Temp` | 0,44 Go | tous les programmes (fichiers temporaires) | en partie : les dossiers d essai de Sitô sont effacés par audit-depot ; le reste par Fabrice, Paramètres > Système > Stockage > Fichiers temporaires |
+| `C:\Users\fabri\AppData\Local\npm-cache` | 0,19 Go | npm (copies des paquets téléchargés) | oui : `npm cache clean --force`, tout se retélécharge au besoin |
+| `C:\Users\fabri\OneDrive\Bureau\sito\app\node_modules` | 0,12 Go | Sitô : paquets npm de l app | oui, se refait par `npm ci`, mais la construction en a besoin |
+| `C:\Users\fabri\OneDrive\Bureau\sito\images` | 0,12 Go | Sitô : images de banque (hors Git) | non (décision : jamais) |
+| `C:\Users\fabri\.claude` | 0,07 Go | Claude Code (journaux des séances, réglages) | en partie : les vieux journaux de séance (projects/) se suppriment sans risque pour le dépôt, mais on perd l historique des conversations |
+| `C:\Users\fabri\OneDrive\Bureau\sito\node_modules` | 0,04 Go | Sitô : paquets npm du dépôt | oui, se refait par `npm ci`, mais les essais en ont besoin |
+| `C:\Users\fabri\OneDrive\Bureau\sito\sites` | 0,03 Go | Sitô : sites fabriqués | oui, se refabriquent |
+| `C:\Users\fabri\AppData\Local\ms-playwright-mcp` | 0,02 Go | Playwright MCP (navigateur de Claude Code) | non tant que Claude Code s en sert |
+| `C:\Users\fabri\AppData\Local\pip` | 0,02 Go | pip (copies des paquets Python) | oui : `pip cache purge` |
+| `C:\swapfile.sys` | 0,02 Go | Windows (applis du Store) | non |
+| `C:\Users\fabri\OneDrive\Bureau\sito\.git` | 0,00 Go | Sitô : historique Git | non |
+| `C:\Users\fabri\AppData\Local\claude-cli-nodejs` | 0,00 Go | Claude Code (programme et caches) | non |
+| `C:\Users\fabri\AppData\Local\Claude` | 0,00 Go | l application Claude | non |
+
+Les 25 plus gros dossiers à la profondeur 3 :
+    9,18 Go  c:\users\fabri\appdata
+    4,88 Go  c:\windows\softwaredistribution\download
+    4,43 Go  c:\program files\microsoft office\root
+    2,42 Go  c:\windows\system32\driverstore
+    1,44 Go  c:\users\fabri\onedrive
+    1,00 Go  c:\program files\google\chrome
+    0,85 Go  c:\program files (x86)\microsoft\edgewebview
+    0,70 Go  c:\program files (x86)\microsoft\edgecore
+    0,69 Go  c:\windows\winsxs\amd64_microsoft-windows-dynamic-image_31bf3856ad364e35_10.0.19041.6466_none_b4f118bcea95ee65
+    0,68 Go  c:\users\fabri\downloads
+    0,56 Go  c:\users\public\downloads
+    0,52 Go  c:\program files (x86)\google\googleupdater
+    0,44 Go  c:\programdata\microsoft\windows defender
+    0,42 Go  c:\windows\system32\intel
+    0,34 Go  c:\windows\containers\serviced
+    0,30 Go  c:\windows\microsoft.net\framework64
+    0,28 Go  c:\windows\microsoft.net\framework
+    0,27 Go  c:\windows\assembly\nativeimages_v4.0.30319_64
+    0,26 Go  c:\windows\assembly\nativeimages_v2.0.50727_64
+    0,21 Go  c:\program files (x86)\microsoft\edgeupdate
+    0,20 Go  c:\program files\git\mingw64
+    0,18 Go  c:\program files\git\usr
+    0,18 Go  c:\windows\system32\drivers
+    0,18 Go  c:\windows\microsoft.net\assembly
+    0,18 Go  c:\windows\winsxs\amd64_microsoft-windows-e..-firsttimeinstaller_31bf3856ad364e35_10.0.19041.681_none_31051459c61ca882

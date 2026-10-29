@@ -141,6 +141,8 @@ bloquer la tâche.
 | `node scripts/verifier-depot.mjs .` | rien ne manque au dépôt |
 | `node scripts/verifier-secrets.mjs .` | aucun secret dans ce qui part sur GitHub |
 | `node scripts/verifier-textes.mjs .` | règles de rédaction (sites et textes de l'app) |
+| `node scripts/audit-depot.mjs` | doublons, fichiers morts, temporaires, place libre : trouve et corrige (`--lecture` : trouve seulement), rapport dans `memoire/essais/audit.txt` |
+| `node scripts/mesure-disque.mjs` | ce qui prend la place sur C: (lecture seule, ≈ 5 min), tableau dans `memoire/essais/disque.txt` |
 | `node scripts/compte-essai.mjs` | compte d'essai dans la vraie base (besoin du `.env`) |
 | `node scripts/fabriquer-demo.mjs` | refabrique les sites de démonstration (besoin de `images/`) |
 | `node scripts/capacite-unicite.mjs --photos plan` | 100 sites d'un métier différents dans un département ? |
