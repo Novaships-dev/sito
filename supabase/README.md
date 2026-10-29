@@ -112,6 +112,15 @@ performance. Deux remarques d'information, voulues : `prospects` n'a aucune
 politique (accès service seulement), et les index ne servent pas encore (base
 vide).
 
+**Rejoué le 29 octobre 2026** (T05, après la dernière migration
+`20261009005808_photo_source` ; base et dépôt ont les mêmes 7 migrations) :
+`droits.sql` 11 résultats attendus, `droits-app.sql` 20 résultats attendus,
+aucune « FAUTE », rien de resté dans la base. Conseillers : aucun
+avertissement. Sécurité, 3 informations voulues : `prospects`,
+`evenements_stripe` et `prive.jetons_google` sans politique (service
+seulement, « rien, jamais » pour l'app). Performance : 18 index jamais
+utilisés (base vide).
+
 ## Ce qui n'est pas encore fait
 
 - Le générateur lit encore `generateur/registre.json`. Le brancher sur la

@@ -57,7 +57,7 @@ Rien de payant : ni ordinateur loué, ni serveur d'e-mail, ni carte bancaire
 |---|---|---|---|---|---|
 | T03 | Créer le compte d'essai dans la vraie base | bloqué | `node scripts/compte-essai.mjs --verifier` à 0 | | F1 |
 | T04 | Essai de bout en bout contre la vraie base : `scripts/essai-app-reel.mjs`. L'app tourne en local avec `app/.env.local`, Playwright se connecte au compte d'essai (code obtenu par l'API d'administration `generate_link`, sans lire de boîte mail), change le téléphone, crée un chantier, envoie une photo (TUS) puis son original ; le script relit la base et le stockage (REST, clé de service) et nettoie | à faire | le script vert ; une copie cassée de `donnees/supabase.ts` (mauvaise colonne) le fait rougir | T03 | |
-| T05 | Essais de droits rejoués après la dernière migration (`droits.sql`, `droits-app.sql` via MCP `execute_sql`) et conseillers Supabase (`get_advisors`) sans alerte nouvelle | à faire | aucune ligne « FAUTE » ; avis copiés dans le journal | |  |
+| T05 | Essais de droits rejoués après la dernière migration (`droits.sql`, `droits-app.sql` via MCP `execute_sql`) et conseillers Supabase (`get_advisors`) sans alerte nouvelle | fait | aucune ligne « FAUTE » ; avis copiés dans le journal | |  |
 
 ## Le service atelier
 

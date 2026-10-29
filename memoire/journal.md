@@ -1427,3 +1427,33 @@ nom muet au ravalement. Suite complète verte.
 
 T41 passe **bloqué** : refabriquer les 6 sites avec leurs noms propres
 demande de la place (F19) ; les 30 liens demandent F18.
+
+## 29 oct. 2026 — T05 (essais de droits et conseillers)
+
+Plan : 1) comparer migrations base / dépôt ; 2) rejouer `droits.sql` et
+`droits-app.sql` par `execute_sql` ; 3) `get_advisors` sécurité et performance.
+
+- `list_migrations` : 7 migrations, les mêmes noms et versions que
+  `supabase/migrations/`.
+- `droits.sql` : « A voit 1 entreprise(s) ; A ecrit chez B : refuse ; A ecrit
+  chez lui : accepte ; A declare une illustration : refuse ; A cree une
+  entreprise : refuse ; A modifie Sirene : 0 ligne(s) ; A voit 0 prospect(s) ;
+  telephone faux : refuse ; haut sous bas : refuse ; A pose son telephone :
+  accepte ; anonyme : refuse ».
+- `droits-app.sql` : « A voit 1 demande(s) ; A marque sa demande lue : 1 ; A
+  marque une demande de B : 0 ; A reecrit un message : refuse ; A voit 0
+  abonnement(s) de B ; A se donne un abonnement : refuse ; A lit les jetons
+  Google : refuse ; A envoie une photo HEIC : accepte ; A pose l original de sa
+  photo : accepte ; A range son original chez B : refuse ; A pose l image
+  propre : refuse ; A declare sa photo prete : refuse ; A valide sa reponse :
+  1 ; A reecrit l avis du client : refuse ; A valide au nom de B : refuse ; A
+  raccourcit le delai : refuse ; A demande la suppression : accepte ; A
+  supprime B : refuse ; anonyme : refuse ; jour de Paris pour 23 h 30 UTC le
+  5 : 2026-10-06 ». Aucune « FAUTE ».
+- Après coup : 0 utilisateur `@essai.invalid`, 0 entreprise d'essai.
+- Conseillers sécurité : 1 avis INFO `rls_enabled_no_policy` sur 3 tables
+  (`prive.jetons_google`, `public.evenements_stripe`, `public.prospects`) :
+  voulu, accès service seulement (05-SCHEMA-BACKEND §2). Le 2 oct., seule
+  `prospects` était citée : les deux autres viennent de la migration `app`
+  du 5 oct., même intention. Performance : 1 avis INFO `unused_index`,
+  18 index (base vide). Aucune alerte nouvelle.
