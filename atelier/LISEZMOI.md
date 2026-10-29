@@ -11,6 +11,8 @@ sections 2, 3 et 5.
 | `preparer-recues.mjs` | les lignes `photos.etat = recue` deviennent `prete` (image propre posée à côté de l'original, `chemin`, `largeur`, `hauteur`) ou `illisible` avec un motif écrit pour l'artisan ; la meilleure source est préférée (`chemin_source` dès qu'il est là), un fichier pas encore arrivé laisse la photo « reçue », et `octets` n'est jamais écrasé. Reprenable : l'image s'écrit avant la ligne | `node scripts/essai-preparation.mjs` (faux Supabase local ; `--contre-essai` repose trois fautes une par une) |
 | `heic.mjs` | conversion du HEIC par les transformations d'images de Supabase (offre Pro) : Sitô ne décode pas le HEVC lui-même | **pas encore essayé** contre Supabase (projet en offre gratuite) |
 | `publier.mjs` | publication par versions : vérifier, écrire la version à côté, basculer les adresses, garder deux versions | `node scripts/essai-publication.mjs` |
+| `fabriquer.mjs` | fabrique un site depuis la base (entreprise, profil, tarifs, photos prêtes) ; la charte s'écrit une fois, puis reste figée | `node scripts/essai-fabrication-base.mjs` |
+| `boucle.mjs` | un tour : chaque site changé depuis sa dernière fabrication (photo prête, profil, tarifs, entreprise) est refait, vérifié par `verifier-site`, publié par version ; `fabrications`, `versions_site` (une seule en ligne) et `sites.version` notés ; un refus ne remplace rien et ne se retente pas sans changement. Pas de serveur : c'est ce que GitHub Actions appellera (T45) | `node scripts/essai-boucle.mjs` (faux Supabase, vrai générateur et vrai vérificateur ; `--contre-essai` : 4 cassures) |
 | `../worker/routeur.js` | le Worker Cloudflare qui sert tous les sites selon l'adresse demandée | idem |
 
 Outils demandés sur la machine du service : Node 22, `exiftool`

@@ -158,7 +158,9 @@ export async function fabriquerDepuisBase({
     if (r.status !== 0) return { ok: false, motif: 'fabrication', sortie: texteSortie };
 
     const produit = JSON.parse(readFileSync(join(sortie, 'donnees.json'), 'utf8'));
-    if (!siteExistant) {
+    // Une ligne `sites` peut exister sans charte (inscrite avant sa première
+    // fabrication) : elle reçoit la sienne ici, une seule fois.
+    if (!siteExistant?.charte) {
       await sb.poser('sites', {
         siren, metier, archetype: produit.archetype, charte: produit.charte,
         titre: produit.titre, commune: entreprise.commune, departement: entreprise.departement,

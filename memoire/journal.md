@@ -1457,3 +1457,28 @@ Plan : 1) comparer migrations base / dépôt ; 2) rejouer `droits.sql` et
   `prospects` était citée : les deux autres viennent de la migration `app`
   du 5 oct., même intention. Performance : 1 avis INFO `unused_index`,
   18 index (base vide). Aucune alerte nouvelle.
+
+## 29 oct. 2026 — T09 (boucle du service)
+
+Plan : 1) `atelier/boucle.mjs` : savoir si un site a changé depuis sa
+dernière fabrication, le refaire, le publier par version, noter la base ;
+2) essai de bout en bout sur faux Supabase ; 3) contre-essai.
+
+- Sans serveur loué (décision du 29 oct.) : la boucle fait **un tour** et rend
+  son bilan ; c'est le workflow GitHub Actions de T45 qui la lancera.
+- « Changé » = une date (`mis_a_jour_le`/`cree_le`) de photos prêtes, profil,
+  tarifs ou entreprise plus récente que la dernière fabrication, **réussie ou
+  non** : un site refusé n'est pas retenté en boucle. Limite notée dans le
+  module : un tarif supprimé ne laisse pas de date.
+- `atelier/fabriquer.mjs` : une ligne `sites` inscrite **sans** charte
+  recevait jamais la sienne (`if (!siteExistant)`) ; corrigé en
+  `if (!siteExistant?.charte)`. `essai-fabrication-base` reste à 12/0.
+- Constat sur le générateur : un second « geste » n'est pas forcément montré
+  (un seul est tiré parmi les candidats, `main-photos.mjs`) ; une seconde
+  paire avant/après l'est toujours. L'essai prouve donc « une photo ajoutée
+  est dans la version suivante » avec une paire.
+- Contre-essai : la première cassure faisait d'abord planter l'essai (il
+  relisait la version 1 après son effacement, deux versions gardées) : le
+  manifeste de la version 1 est maintenant lu juste après le premier tour.
+Preuve : `essai-boucle.mjs` 23 contrôles, 0 faute ; contre-essai 4/4 ; suite
+complète verte (18 étapes). Place libre : 133 Mo.
