@@ -16,6 +16,8 @@
 //   - au plus 20 lancements par jour de Paris ;
 //   - arrêt après 3 lancements de suite sans aucun changement (ni commit, ni état) ;
 //   - limite d'usage de l'abonnement atteinte : attente, sans compter le lancement ;
+//   - Internet coupé : attente sans limite (5 min, puis 15 min après une heure),
+//     sans compter le lancement ni la stagnation ;
 //   - chaque nouveau jour : les tâches « bloqué » par « panne » repassent « à faire »
 //     (3 nouvelles tentatives au plus par tâche).
 // Tout est écrit dans claude-autonome.log (racine, ignoré par Git) et l'état
@@ -105,6 +107,7 @@ function attenteLimite(texte) {
 
 const RESEAU = /can't reach the api server|ENOTFOUND|ECONNRESET|ETIMEDOUT|EAI_AGAIN|ECONNREFUSED|network error|socket hang up/i;
 const ATTENTE_RESEAU = Number(process.env.SITO_AUTONOME_ATTENTE_RESEAU ?? 5 * 60);
+const ATTENTE_RESEAU_LONGUE = Number(process.env.SITO_AUTONOME_ATTENTE_RESEAU ?? 15 * 60);
 const CONNEXION = /failed to authenticate|oauth session expired|not logged in|please run \/login|invalid api key|authentication_error/i;
 
 let etat = lireEtat();
@@ -147,13 +150,18 @@ for (;;) {
   }
   // Panne du 21 oct. : Internet coupé sur le PC (ENOTFOUND), trois lancements
   // perdus puis arrêt. Une coupure réseau n'est pas un blocage : on attend et
-  // on reprend, sans compter le lancement ni la stagnation (24 fois au plus, 2 h).
-  if (r.code !== 0 && RESEAU.test(r.texte) && attentesReseau < 24) {
+  // on reprend, sans compter le lancement ni la stagnation.
+  // Panne du 29 oct. : coupure de plus de 2 h (0 h 30 à 2 h 45) ; l'ancienne
+  // limite de 24 attentes a compté les essais suivants comme « sans changement »
+  // et tout arrêté à 1 h 52, onze heures perdues. Plus de limite : on attend
+  // le retour d'Internet, 5 minutes entre deux essais, puis 15 après une heure.
+  if (r.code !== 0 && RESEAU.test(r.texte)) {
     attentesReseau++;
     etat.lancements--;
     ecrireEtat(etat);
-    noter(`Internet coupé (Claude Code ne joint pas son serveur) : nouvel essai dans ${Math.round(ATTENTE_RESEAU / 60)} minutes (${attentesReseau}/24, ce lancement ne compte pas).`);
-    await dormir(ATTENTE_RESEAU);
+    const attente = attentesReseau <= 12 ? ATTENTE_RESEAU : ATTENTE_RESEAU_LONGUE;
+    noter(`Internet coupé (Claude Code ne joint pas son serveur) : nouvel essai dans ${Math.round(attente / 60)} minutes (essai ${attentesReseau}, ce lancement ne compte pas).`);
+    await dormir(attente);
     continue;
   }
   if (r.code === 0 || !RESEAU.test(r.texte)) attentesReseau = 0;

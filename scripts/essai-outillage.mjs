@@ -194,7 +194,7 @@ const c = process.env.CLAUDE_PROJECT_DIR + '/compte.txt';
 const n = existsSync(c) ? Number(readFileSync(c, 'utf8')) + 1 : 1; writeFileSync(c, String(n));
 const mode = process.env.FAUX_MODE;
 if (mode === 'session' && n === 1) { console.log(JSON.stringify({ type: 'result', subtype: 'success', is_error: true, result: "You've hit your session limit · resets 5:10am (Europe/Paris)" })); process.exit(1); }
-if (mode === 'reseau' && n <= 2) { console.log(JSON.stringify({ type: 'result', subtype: 'success', is_error: true, result: "API Error: Can't reach the API server — check your internet or DNS (ENOTFOUND)" })); process.exit(1); }
+if ((mode === 'reseau' && n <= 2) || (mode === 'longue-coupure' && n <= 30)) { console.log(JSON.stringify({ type: 'result', subtype: 'success', is_error: true, result: "API Error: Can't reach the API server — check your internet or DNS (ENOTFOUND)" })); process.exit(1); }
 if (mode === 'connexion') { console.log(JSON.stringify({ type: 'result', subtype: 'success', is_error: true, result: 'Failed to authenticate: OAuth session expired and could not be refreshed' })); process.exit(1); }
 if (mode === 'limite' && n === 1) { console.log(JSON.stringify({ type: 'result', subtype: 'error', is_error: true, result: 'Claude usage limit reached. Your limit will reset at 3pm' })); process.exit(1); }
 console.log(JSON.stringify({ type: 'assistant', message: { content: [{ type: 'text', text: 'Je travaille.' }, { type: 'tool_use', name: 'Bash', input: { command: 'node scripts/essais.mjs' } }] } }));
@@ -250,6 +250,10 @@ writeFileSync(join(tmp, 'app/specs/07-TACHES.md'), TACHES('fait', 'à faire'));
 rmSync(etatAuto, { force: true });
 const a9 = auto('reseau');
 ok(a9.n === 3 && /Internet coupé/.test(a9.log) && a9.etat.lancements === 1 && !/sans aucun changement/.test(a9.log), 'Internet coupé deux fois : attente puis reprise, rien de compté ni d’arrêt', `${a9.n} lancement(s), ${a9.etat.lancements} compté(s)`);
+writeFileSync(join(tmp, 'app/specs/07-TACHES.md'), TACHES('fait', 'à faire'));
+rmSync(etatAuto, { force: true });
+const a11 = auto('longue-coupure');
+ok(a11.n === 31 && a11.etat.lancements === 1 && !/sans aucun changement/.test(a11.log) && /fin/.test(a11.log), 'Internet coupé 30 fois de suite (plus de 2 h, panne du 29 oct.) : on attend toujours, aucun arrêt', `${a11.n} lancement(s), ${a11.etat.lancements} compté(s)`);
 writeFileSync(join(tmp, 'app/specs/07-TACHES.md'), TACHES('fait', 'à faire'));
 rmSync(etatAuto, { force: true });
 const a6 = auto('limite');
