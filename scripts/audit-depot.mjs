@@ -285,9 +285,12 @@ function contreEssai() {
   const ok = (cond, quoi) => { n++; if (!cond) fautes++; console.log(`${cond ? 'ok   ' : 'FAUTE'}  ${quoi}`); };
   try {
     git(base, 'clone', '-q', '--no-hardlinks', racine, copie);
-    // Les deux fichiers posés n'existent que dans le clone : leurs chemins
-    // sont composés, pour que verifier-depot ne les cherche pas dans le dépôt.
-    const COPIE = ['scripts', 'env-copie.mjs'].join('/'), MORT = ['scripts', 'vieil-outil-oublie.mjs'].join('/');
+    // Les deux fichiers posés n'existent que dans le clone, sous un nom tiré au
+    // hasard : écrit ici en clair, ce fichier-ci (enregistré dans le clone)
+    // le citerait, et le mort serait vivant ; verifier-depot le chercherait
+    // aussi dans le dépôt.
+    const hasard = Math.random().toString(36).slice(2, 10);
+    const COPIE = `scripts/env-${hasard}.mjs`, MORT = `scripts/outil-${hasard}.mjs`;
     // Le doublon, le mort, et les temporaires.
     cpSync(join(copie, 'scripts', 'env.mjs'), join(copie, COPIE));
     writeFileSync(join(copie, MORT), '// outil que plus rien n appelle\nconsole.log(42);\n');
