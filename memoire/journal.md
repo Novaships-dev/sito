@@ -1577,3 +1577,10 @@ compte d'essai, navigateur) et specs.
   et chaque cassure rougit sur son contrôle (piège noté).
 Preuve : `essai-app` 115/0, contre-essai 2/2 ; `essai-inscription` 23/0 et
 4/4, réel 6/0 deux fois ; suite complète verte (20 étapes).
+
+## 3 nov. 2026 — fin de séance
+
+Séance du 29 oct. (soir) : T42 (`ae27a7d`, `0fdb906`), T43 (`1077659`,
+`90c1f51`), commits Cowork `36211e8`, `73dfb14`. CI verte sur `90c1f51`.
+Audit du 3 nov. : 6 copies d'essai oubliées effacées, 0 doublon, 0 mort ;
+1,5 Go libres. Suite complète verte. Suivante : T44.

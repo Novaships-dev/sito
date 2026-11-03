@@ -1,6 +1,6 @@
-# État au 29 octobre 2026
+# État au 3 novembre 2026
 
-Place libre du disque : **1850,0 Mo** (audit du 29 octobre 2026 à 18:28).
+Place libre du disque : **1519,4 Mo** (audit du 3 novembre 2026 à 01:16).
 
 ## Ce qui prend la place sur C: (29 oct., 18 h 58, mesuré)
 
@@ -21,6 +21,30 @@ effacé seul : ses dossiers d'essai oubliés (≈ 610 Mo) et le cache npm (≈ 5
 | dépôt `sito` (code, `.git`, `node_modules`, `images`, `sites`) | 0,3 Go | Sitô | rien à gagner |
 
 À lire en premier, à chaque séance. Réécrit à la fin de chaque séance.
+
+## En bref, 3 novembre 2026 (séance du 29 oct. au soir)
+
+- **T43 faite : plus de code pour se connecter.** L'artisan reçoit par SMS un
+  lien `<adresse de l'app>/#/inscription/<jeton>`, tape son e-mail, choisit un
+  mot de passe, une seule fois ; il reste connecté sur son téléphone. Aucun
+  e-mail n'est envoyé. **Pour fabriquer un lien** : demander à Claude
+  `select public.creer_invitation('<siren>');` (le lien vaut 14 jours, sert
+  une fois). Prouvé en vrai sur le compte d'essai (inscription, puis reprise).
+- **Mot de passe oublié** : vous renvoyez un lien de reprise
+  (`creer_invitation('<siren>', 'reprise')`). Raison : sans serveur d'e-mail
+  à vous, Supabase n'écrit qu'aux membres de l'équipe du projet. **Q4** dans
+  `memoire/questions.md`, appliquée (réversible, 0 €).
+- Ce qui manque pour qu'un artisan s'inscrive pour de vrai : **l'app en ligne**
+  (son adresse, pour le lien), et une entreprise réelle dans la base.
+- **T42 faite** : `node scripts/audit-depot.mjs` à chaque fin de séance
+  (doublons, fichiers morts, copies d'essai oubliées, place libre) ;
+  `node scripts/mesure-disque.mjs` dit ce qui prend la place sur C:.
+  **F19** chiffrée : Windows Update à vider (≈ 4,9 Go), Office (4,4 Go) s'il
+  ne sert pas, cache de Chrome, Téléchargements.
+- **Suivante : T44** (photos préparées dans l'app, GPS retiré), puis T45,
+  puis T10 (formulaire des sites, brouillon de migration
+  `20261029150000_deposer_demande.sql` sur le disque, non appliqué, Q3).
+- Essais : tout vert (20 étapes), CI verte sur le dernier envoi (`90c1f51`).
 
 ## En bref, 29 octobre 2026
 
