@@ -23,6 +23,11 @@ Ce fichier est la loi du dépôt. Claude Code le lit en premier.
 
 4. `memoire/pieges.md` : les pannes déjà rencontrées. Ne pas les refaire.
 5. `rules/methode.md`, et `rules/web/` avant de toucher au générateur.
+6. `docs/00-INDEX.md` : chaque document et quand le lire. Avant toute tâche :
+   `docs/CONSTRAINTS.md` (ce qui ne se discute pas) et `docs/SOURCE-UNIQUE.md`
+   (les chiffres ; en cas de contradiction entre deux fichiers, il gagne).
+   Vocabulaire : `docs/CONTEXT.md`. Ces documents sont écrits par Claude
+   (Cowork, 3 nov. 2026) : ils citent les décisions, ils n'en sont pas.
 
 ## 2. Travailler seul
 
@@ -49,8 +54,12 @@ Pour chaque tâche :
 6. `node scripts/essais.mjs` : **0** obligatoire (4 seulement si un outil manque
    sur la machine et que la tâche T01 le note). Jamais de tâche « fait » sur
    une suite rouge.
-7. Mettre à jour : l'état de la tâche (« fait »), les specs si le comportement
-   a changé, `memoire/maintenant.md` si l'état global change.
+7. Mettre à jour tout ce que demande `docs/REGLE-TRACABILITE.md` : au moins
+   l'état de la tâche, une ligne de `CHANGELOG.md`, le journal (finir par
+   `TRACAGE : <fichiers>`) ; selon la tâche, `docs/SOURCE-UNIQUE.md`, les specs,
+   `memoire/maintenant.md` (réécrit, pas complété), `docs/DETTE.md`,
+   `docs/audit/REGISTRE.md`, et `node scripts/carte-depot.mjs --ecrire` si des
+   fichiers sont ajoutés ou retirés. Sans cela, la tâche n'est pas finie.
 8. **Enregistrer et pousser** : `git status`, puis `git add` **des seuls
    fichiers de la tâche** (jamais `git add -A`), `git commit -m "Txx : ..."`,
    `git push`. Un travail non poussé n'existe pas. Un fichier modifié que la
@@ -142,6 +151,7 @@ bloquer la tâche.
 | `node scripts/verifier-secrets.mjs .` | aucun secret dans ce qui part sur GitHub |
 | `node scripts/verifier-textes.mjs .` | règles de rédaction (sites et textes de l'app) |
 | `node scripts/audit-depot.mjs` | doublons, fichiers morts, temporaires, place libre : trouve et corrige (`--lecture` : trouve seulement), rapport dans `memoire/essais/audit.txt` |
+| `node scripts/carte-depot.mjs --ecrire` | la carte de tous les fichiers par zone, dans `docs/audit/CARTE.md` (`--verifier` : sort 1 si elle est périmée ; `--contre-essai`) |
 | `node scripts/mesure-disque.mjs` | ce qui prend la place sur C: (lecture seule, ≈ 5 min), tableau dans `memoire/essais/disque.txt` |
 | `node scripts/compte-essai.mjs` | compte d'essai dans la vraie base (besoin du `.env`) |
 | `node scripts/fabriquer-demo.mjs` | refabrique les sites de démonstration (besoin de `images/`) |

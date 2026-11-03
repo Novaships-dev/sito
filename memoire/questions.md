@@ -92,3 +92,16 @@ c'est fini. Coût : 0 €, aucun serveur d'e-mail. Réversible : si un jour un
 serveur d'e-mail est branché (F10), un bouton « recevoir un e-mail »
 s'ajoute sans rien retirer.
 Appliqué dans T43 (réversible, sans coût).
+
+## Q5 (ouverte), 3 novembre 2026
+
+**Les tâches de l'audit du 3 novembre (T47 à T53) passent-elles avant le reste
+de l'app (T45, T46, T04…) ?** Elles sont à la fin du tableau : Claude Code les
+prendra en dernier. Or sans T50 (mentions légales) et T51 (référencement),
+aucun site d'abonné n'est vendable, et sans T49 rien n'est essayé sur Safari.
+
+**Réponse recommandée** : oui, dans cet ordre : T47, T48, T50, T51, T49, puis
+T45, T46 et la suite ; T52 et T53 après T45. Il suffit de répondre « Q5 oui » :
+Cowork ou Claude Code déplace alors la section en tête de la liste.
+**En attendant** : rien n'est déplacé ; l'ordre du tableau reste celui de
+Claude Code.

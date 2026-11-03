@@ -65,7 +65,16 @@ Chaque contrôle a été essayé au moins une fois sur une page cassée exprès.
 
 `capacite-unicite.mjs` n'est pas un vérificateur mais une mesure : combien de
 sites d'un même métier le générateur sait rendre différents dans un
-département. Résultat du 2 octobre 2026 : trois. Voir `memoire/maintenant.md`.
+département. Le matin du 2 octobre 2026 : trois ; le soir, après la refonte des
+textes et des chartes : **100 sans défaut**, pour ravalement, couverture et
+peinture (projection avec les 54 images prévues par métier). Voir
+`memoire/maintenant.md`.
+
+## Les documents
+
+`docs/00-INDEX.md` donne chaque document et le moment où le lire. Les
+chiffres font foi dans `docs/SOURCE-UNIQUE.md` ; ce qui a changé est dans
+`CHANGELOG.md` ; les constats d'audit dans `docs/audit/REGISTRE.md`.
 
 Sur une machine où Playwright n'a pas téléchargé son navigateur, la variable
 `SITO_CHROMIUM` donne le chemin d'un Chromium déjà installé. Sous Windows,
