@@ -87,7 +87,7 @@ for (const f of FORMATS) {
     const debord = [];
     document.querySelectorAll('body *').forEach(el => {
       const b = el.getBoundingClientRect();
-      if (b.width > 0 && b.left > -1 && b.right > vw + 1 && !coupe(el)) debord.push(el.tagName.toLowerCase());
+      if (b.width > 0 && b.left > -1 && b.right > vw + 1 && !coupe(el)) debord.push(`${el.tagName.toLowerCase()}${typeof el.className === 'string' && el.className.trim() ? '.' + el.className.trim().split(/\s+/).join('.') : ''} jusqu a ${Math.round(b.right)} px`);
     });
     const h1 = document.querySelector('h1');
     const bh = h1 ? h1.getBoundingClientRect() : null;
@@ -114,7 +114,7 @@ for (const f of FORMATS) {
     // Lesquels : sans leur nom, un constat M5 ne se corrige pas (T49, WebKit).
     const petitsNoms = petits.slice(0, 4).map(({ e, b }) => `${e.tagName.toLowerCase()}${e.className && typeof e.className === 'string' ? '.' + e.className.trim().split(/\s+/).join('.') : ''} ${Math.round(b.width)}x${Math.round(b.height)}`).join(', ');
     return {
-      debordement: debord.length, scroll: document.documentElement.scrollWidth > vw + 1,
+      debordement: debord.length, debordNoms: debord.slice(0, 3).join(', '), scroll: document.documentElement.scrollWidth > vw + 1,
       titrePx: h1 ? Math.round(parseFloat(getComputedStyle(h1).fontSize)) : 0,
       titrePart: bh ? +(Math.max(0, Math.min(bh.bottom, vh) - Math.max(bh.top, 0)) / vh).toFixed(3) : 0,
       titreLarge: bh ? +(bh.width / vw).toFixed(3) : 0,
@@ -129,7 +129,7 @@ for (const f of FORMATS) {
     if (!ok) constats.push({ num, format: f.nom, libelle, detail, remede });
   };
   dire('M0', !d.scroll && d.debordement === 0, 'la page deborde en largeur',
-    d.debordement + ' element(s), largeur ' + f.l, 'aucun defilement horizontal sur telephone');
+    d.debordement + ' element(s), largeur ' + f.l + (d.debordNoms ? ' : ' + d.debordNoms : ''), 'aucun defilement horizontal sur telephone');
   dire('M1', d.titrePx >= M.titre, 'titre trop petit sur telephone',
     d.titrePx + ' px contre ' + M.titre + ' exiges', 'plancher mobile separe, pas une formule en vw');
   // Un titre d un seul mot ne peut pas occuper 14 % de la hauteur sans devenir
