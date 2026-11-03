@@ -33,15 +33,15 @@ traite aussi de la personne physique (entrepreneur individuel).
 |---|---|---|---|---|---|
 | ML1 | Dénomination | société : dénomination sociale ; personne physique : nom et prénom suivis de « entrepreneur individuel » ou « EI » | tous | F37351 | Sirene (`entreprises`) |
 | ML2 | Forme juridique | SAS, SARL, etc. | société | F37351 | Sirene |
-| ML3 | Capital social | montant | société | F37351 | **absent de Sirene** : à saisir par l'artisan dans l'app (champ à ajouter, T50) |
+| ML3 | Capital social | montant | société | F37351 | **absent de Sirene** : `profils.capital_social`, saisi dans l'app (écran « Compte ») ; vide : « Non renseigné » |
 | ML4 | Siège ou domiciliation | adresse | tous | F37351 | Sirene |
-| ML5 | Contact | adresse, adresse e-mail, téléphone | tous | F37351 | téléphone et e-mail de `profils` ; adresse de Sirene |
-| ML6 | Immatriculation | numéro au registre national des entreprises (RNE, qui regroupe désormais le répertoire des métiers) pour une activité artisanale ; numéro RCS pour une activité commerciale | selon l'activité | F37351 | SIREN de Sirene ; mention RCS ou RNE selon la nature de l'activité (Sirene) |
+| ML5 | Contact | adresse, adresse e-mail, téléphone | tous | F37351 | `profils.telephone` et `profils.courriel` (l'app écrit désormais l'adresse) ; adresse de Sirene |
+| ML6 | Immatriculation | numéro au registre national des entreprises (RNE, qui regroupe désormais le répertoire des métiers) pour une activité artisanale ; numéro RCS pour une activité commerciale | selon l'activité | F37351 | `profils.immatriculation` si l'artisan l'a saisie (« RCS Marseille … ») ; sinon « SIREN …, registre national des entreprises (RNE) », vrai pour toute entreprise depuis le 1er janvier 2023. Le greffe du RCS n'est pas dans Sirene : il n'est jamais deviné |
 | ML7 | TVA intracommunautaire | numéro, si l'entreprise y est assujettie | entreprises assujetties | F37351 | `profils.tva_intra` ; sans numéro : ne rien afficher, jamais un numéro calculé |
-| ML8 | Hébergeur | nom ou raison sociale, adresse, téléphone | tous | F37351 | Cloudflare : coordonnées à relever sur la page officielle de Cloudflare au moment de T50, et à écrire dans `docs/SOURCE-UNIQUE.md` |
-| ML9 | Éditeur et directeur de la publication | l'éditeur est l'entreprise ; le directeur de la publication est son représentant légal (personne physique : l'entrepreneur) | tous | F37351 nomme l'éditeur ; le directeur de la publication vient de l'article 93-2 de la loi du 29 juillet 1982, cité par des fiches de Service Public : **à confirmer** avant T50 | Sirene (dirigeant) ou saisi dans l'app |
-| ML10 | Médiateur de la consommation | nom, adresse postale, site internet du médiateur, de manière visible et lisible | tout professionnel qui vend à des particuliers | Code de la consommation L. 616-1 et R. 616-1 ; fiche Service Public F33338 : « Ces informations font partie des mentions obligatoires devant figurer sur le site internet d'un professionnel » | `profils.mediateur_nom`, `mediateur_site` ; **adresse postale à ajouter** (champ manquant, T50) |
-| ML11 | Données personnelles | responsable du traitement, données, finalités, base légale, destinataires, durée, droits, saisine de la CNIL | site qui collecte des données (le formulaire de demande, T10 et T11, en collecte) | F37351 | texte commun à écrire (lot 5, `docs/juridique/`), rempli avec l'identité de l'artisan |
+| ML8 | Hébergeur | nom ou raison sociale, adresse, téléphone | tous | F37351 | Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, États-Unis, +1 888 993 5273 : dépôt de Cloudflare à la SEC, relevé le 3 nov. 2026, écrit dans `docs/SOURCE-UNIQUE.md` |
+| ML9 | Éditeur et directeur de la publication | l'éditeur est l'entreprise ; le directeur de la publication est son représentant légal (personne physique : l'entrepreneur) | tous | LCEN (loi 2004-575), ancien article 6-III-1 c, transféré à l'article 1-1 par la loi SREN du 21 mai 2024 (selon des avocats, à vérifier sur Légifrance) ; le directeur est le représentant légal (article 93-2 de la loi du 29 juillet 1982, Cass. crim. 22 janv. 2019, n° 18-81.779) : **confirmé le 3 nov. 2026** | `profils.directeur_publication`, sinon le dirigeant personne physique de la réponse Sirene (`dirigeants`), sinon l'entrepreneur individuel ; sinon la fabrication s'arrête |
+| ML10 | Médiateur de la consommation | nom, adresse postale, site internet du médiateur, de manière visible et lisible | tout professionnel qui vend à des particuliers | Code de la consommation L. 616-1 et R. 616-1 ; fiche Service Public F33338 : « Ces informations font partie des mentions obligatoires devant figurer sur le site internet d'un professionnel » | `profils.mediateur_nom`, `mediateur_adresse`, `mediateur_site` |
+| ML11 | Données personnelles | responsable du traitement, données, finalités, base légale, destinataires, durée, droits, saisine de la CNIL | site qui collecte des données (le formulaire de demande, T10 et T11, en collecte) | F37351 | aujourd'hui le site n'a ni formulaire ni compte : la page le dit, avec la saisine de la CNIL. Quand le formulaire de demande arrivera (T10, T11), le texte complet (lot 5, `docs/juridique/`) le remplace |
 | ML12 | Cookies et traceurs | information ; consentement pour les traceurs soumis | site qui en dépose | F37351 | aucun aujourd'hui ; la mesure d'audience prévue (Umami, sans cookie, `docs/CONSTRAINTS.md` C40) n'en dépose pas : le dire |
 
 ## 4. Ce qui n'est pas une obligation du site, mais se montre
@@ -69,6 +69,21 @@ traite aussi de la personne physique (entrepreneur individuel).
 3. Générateur : `generateur/sections/mentions.mjs` (page et lien de pied de page), commun aux quatre archétypes.
 4. Vérificateur : `scripts/verifier-site.mjs` gagne le contrôle « mentions légales présentes sur un site d'abonné » (ML1 à ML10 trouvées dans la page, lien présent sur chaque page), essayé sur une copie sans la page : rouge.
 
+## 6 bis. Ce qui a été fait (T50, 3 nov. 2026)
+
+| Pièce | Fichier |
+|---|---|
+| Migration (appliquée, version de la base) | `supabase/migrations/20261103143933_mentions_legales.sql` ; essais `supabase/essais/droits-app.sql` |
+| App | `app/src/ecrans/Compte.tsx` (adresse électronique, directeur, capital, immatriculation, adresse du médiateur ; ce qui manque pour la mise en ligne est dit) ; `app/src/types.ts` |
+| Service | `atelier/fabriquer.mjs` : `donneesDepuisBase` porte les champs (`mentions`) ; un site fabriqué depuis la base l'est avec `--publication` |
+| Générateur | `generateur/sections/mentions.mjs` ; `composer.mjs` : balise `atelier-regime`, pied de page, page `mentions-legales.html`, médiateur près du contact |
+| Vérificateur | `scripts/verifier-site.mjs`, contrôle **ML** |
+| Essai | `scripts/essai-mentions.mjs` (et son `--contre-essai`), dans `scripts/essais.mjs` |
+
+Le titre de l'onglet de la page dit « informations légales » : « mentions
+légales » avant le h1 fait rougir le contrôle C3 de `verifier-site`, qui
+n'est pas affaibli pour autant.
+
 ## 7. Preuve attendue
 
 Un site d'abonné fabriqué depuis la base, sur chacun des quatre archétypes,
@@ -77,6 +92,9 @@ tous retirée de la base arrête la fabrication avec son nom ; le contrôle de
 `verifier-site` rougit sur une copie sans la page.
 
 ## Sources (relevées le 3 novembre 2026)
+
+- [Simonnet Avocat : la loi SREN déplace les mentions légales à l'article 1-1 de la LCEN](https://www.simonnetavocat.fr/mentions-legales-dun-site-internet-obligations-sanctions-et-modele/)
+- [SEC EDGAR, Cloudflare, Inc. (adresse et téléphone)](https://www.sec.gov/Archives/edgar/data/1477333/0001958244-24-000539-index.htm)
 
 - [Service Public, F37351 : mentions obligatoires sur le site internet d'une société](https://entreprendre.service-public.gouv.fr/vosdroits/F37351)
 - [Service Public, F33338 : médiation des litiges de la consommation](https://entreprendre.service-public.gouv.fr/vosdroits/F33338?profil=tout)

@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 3 nov. | T50 : mentions légales sur chaque site d'abonné (page, lien de pied de page, médiateur près du contact) ; fabrication refusée si une mention obligatoire manque ; contrôle ML de `verifier-site` ; quatre champs de plus dans `profils` (migration appliquée) et dans l'écran « Compte » ; essai `essai-mentions.mjs`. Un site fabriqué depuis la base l'est désormais avec `--publication`. |
 | 3 nov. | T48 : un seul échappement pour le générateur (`generateur/echapper.mjs`, `& < > " '`, plus un échappement JSON pour T51) ; nouvel essai `essai-echappement.mjs` dans la suite, avec son contre-essai. L'ancienne fonction laissait un nom d'entreprise injecter un attribut. |
 | 3 nov. | T47 : la suite d'essais dit « NON LANCÉ » pour l'essai de l'app quand exiftool ou ffmpeg manque, au lieu de planter. |
 | 3 nov. | Lot 2 (produit) par Cowork : PRD réécrit avec le site d'abord (S01 à S31, P1 à P6, A1 à A20 gardées) ; spécifications des mentions légales et du référencement, sourcées (Service Public, Code de la consommation, Google) ; parcours du visiteur ; fiche des 16 métiers. Lignes périmées du TRD et du plan corrigées. 3 constats nouveaux (S-022 à S-024) et leurs tâches T54 à T56. Q5 répondue : les tâches de l'audit passent avant le reste de l'app. |

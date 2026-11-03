@@ -10,6 +10,7 @@ const ESPACE = 'photos-chantiers';
 const PROFIL_VIDE = (siren: string): Profil => ({
   siren, telephone: null, courriel: null, prix_affiches: false, prix_mention: null, tva_intra: null,
   decennale_assureur: null, decennale_contrat: null, decennale_zone: null, mediateur_nom: null, mediateur_site: null,
+  capital_social: null, immatriculation: null, directeur_publication: null, mediateur_adresse: null,
 });
 
 // Une réponse de Supabase : l'erreur devient une exception, la donnée est typée

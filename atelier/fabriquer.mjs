@@ -66,13 +66,21 @@ export function tarifsDepuisBase(profil, tarifs) {
 // Le fichier « brut » attendu par generateur/sirene.mjs (normaliser) : c'est
 // la réponse Sirene brute, déjà gardée telle quelle dans entreprises.sirene
 // (« réponse brute », 05-SCHEMA-BACKEND.md §3.2). On y ajoute ce que
-// `sirene.mjs` ne lit pas ailleurs : le téléphone et les tarifs de l'artisan.
+// `sirene.mjs` ne lit pas ailleurs : le téléphone et les tarifs de l'artisan,
+// et ce qu'il a déclaré pour les mentions légales (T50,
+// generateur/sections/mentions.mjs).
+export const CHAMPS_MENTIONS = ['courriel', 'capital_social', 'immatriculation', 'tva_intra',
+  'directeur_publication', 'decennale_assureur', 'decennale_contrat', 'decennale_zone',
+  'mediateur_nom', 'mediateur_adresse', 'mediateur_site'];
 export function donneesDepuisBase(entreprise, profil, tarifs) {
+  const mentions = {};
+  for (const c of CHAMPS_MENTIONS) if (profil?.[c]) mentions[c] = profil[c];
   return {
     ...(entreprise.sirene || {}),
     siren: entreprise.siren,
     telephone: profil?.telephone || undefined,
     prix: tarifsDepuisBase(profil, tarifs || []),
+    mentions,
   };
 }
 
@@ -159,7 +167,10 @@ export async function fabriquerDepuisBase({
     mkdirSync(sortie, { recursive: true });
     const args = [join(RACINE, 'generateur', 'composer.mjs'),
       '--siren', siren, '--metier', metier, '--images', dossierImages,
-      '--sortie', sortie, '--donnees', fichierDonnees, '--registre', registre];
+      '--sortie', sortie, '--donnees', fichierDonnees, '--registre', registre,
+      // Un site fabriqué depuis la base est celui d'un abonné : il sera publié
+      // à son adresse, avec ses mentions légales (T50).
+      '--publication'];
     if (fichierCharte) args.push('--charte', fichierCharte);
     // Asynchrone : un `spawnSync` gelait la boucle d'événements le temps de la
     // fabrication, et les connexions ouvertes vers Supabase mouraient dessous.

@@ -15,6 +15,11 @@ export type Profil = {
   decennale_zone: string | null;
   mediateur_nom: string | null;
   mediateur_site: string | null;
+  // Migration 20261103_mentions_legales (T50) : ce que l'annuaire ne donne pas.
+  capital_social: string | null;
+  immatriculation: string | null;
+  directeur_publication: string | null;
+  mediateur_adresse: string | null;
 };
 
 export type Tarif = { id: string; poste: string; bas: number; haut: number | null; unite: string; note: string | null; rang: number };

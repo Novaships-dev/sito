@@ -57,6 +57,7 @@ recopiée (liste « Recopiée dans »). Une valeur sans source n'entre pas.
 | Lien d'inscription | jeton de 256 bits, un seul usage, valable 14 jours | migration `20261029181645_invitations.sql` | `supabase/functions/inscription/` |
 | Mot de passe | 8 à 72 caractères | `supabase/functions/inscription/logique.ts` | |
 | Délai de suppression d'un compte | 30 jours, réversible | `app/specs/01-PRD.md` A18 | |
+| Hébergeur des sites d'abonnés (mentions légales, ML8) | Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, États-Unis ; +1 888 993 5273 | dépôt de Cloudflare à la SEC (EDGAR, CIK 1477333, « Business Address »), relevé le 3 nov. 2026 | `generateur/sections/mentions.mjs` (`HEBERGEUR`) |
 | Délai de diffusion d'une nouvelle version (KV) | jusqu'à 60 s | `app/specs/02-TRD.md` §7 | `worker/routeur.js` |
 | Versions gardées par site | les deux dernières | `app/PLAN-APP.md` §3.3 | `atelier/publier.mjs` |
 | Écrans essayés | iPhone 390 px, Android 360 px, ordinateur 1 280 px | `app/specs/02-TRD.md` T1 | `scripts/essai-app.mjs` |

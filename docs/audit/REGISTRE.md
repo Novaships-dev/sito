@@ -18,7 +18,7 @@ document « Audit sito, Atelier et StructorAI : ce qui manque » (Claude Docs,
 
 ## Comptage au 3 novembre 2026 (après le lot 2)
 
-**24 constats : 17 ouverts, 7 clos, 0 refusé.**
+**24 constats : 16 ouverts, 8 clos, 0 refusé.**
 
 ## Constats
 
@@ -27,7 +27,7 @@ document « Audit sito, Atelier et StructorAI : ce qui manque » (Claude Docs,
 | S-001 | majeur | `memoire/maintenant.md` se contredit : « 6 façadiers en ligne » puis « Aucun site en ligne » ; décrit encore le modèle d'e-mail « Magic Link » abandonné le 29 oct. ; « Prochaine action » datée du 5 oct. | lignes 33, 242, 286 du fichier du 29 oct. | lot 1 Cowork | clos le 3 nov. : fichier réécrit |
 | S-002 | mineur | `README.md` annonce « Résultat du 2 octobre 2026 : trois » sites différents ; la mesure du même soir donne 100 | `README.md` ligne 68 ; `memoire/maintenant.md` « Où en est l'unicité » | lot 1 Cowork | clos le 3 nov. : README corrigé |
 | S-003 | bloquant | Aucun référencement sur les sites d'artisan : pas de données structurées `LocalBusiness`, pas d'Open Graph, pas de favicon, pas de `sitemap.xml` ni de `robots.txt` pour un site d'abonné. Contredit la décision du 23 sept. : « L'app sert à son référencement. » | 0 occurrence de `schema.org`, `og:image`, `sitemap` dans `generateur/` | T51 | ouvert |
-| S-004 | bloquant | Aucune mention légale sur les sites, hors le SIRET : l'app fait saisir assurance décennale, médiateur, TVA (exigence A11, marquée « Fait »), le générateur ne les affiche nulle part ; pas d'hébergeur ni de directeur de publication | 0 occurrence de `decennale`, `mediateur`, `hebergeur` dans `generateur/` ; `app/specs/01-PRD.md` A11 | T50 | ouvert |
+| S-004 | bloquant | Aucune mention légale sur les sites, hors le SIRET : l'app fait saisir assurance décennale, médiateur, TVA (exigence A11, marquée « Fait »), le générateur ne les affiche nulle part ; pas d'hébergeur ni de directeur de publication | 0 occurrence de `decennale`, `mediateur`, `hebergeur` dans `generateur/` ; `app/specs/01-PRD.md` A11 | T50 | clos le 3 nov. : page `mentions-legales.html`, contrôle ML de `verifier-site`, migration des champs manquants (T50) |
 | S-005 | mineur | `scripts/essais.mjs` : l'étape « app : parcours et rendu » n'a pas la garde `manque: outilsPhotos` ; sans exiftool, `essai-app.mjs` plante (`spawnSync exiftool ENOENT`) au lieu de dire « NON LANCÉ » | rejoué le 3 nov. sur une machine sans exiftool | T47 | clos le 3 nov. : garde `outilsApp` dans `scripts/essais.mjs` (T47) |
 | S-006 | majeur | `echapper()` (`generateur/composer.mjs`) et `ech()` (`generateur/sections/appel.mjs`, `prix.mjs`) n'échappent ni `"` ni `'`. Aucune faille aujourd'hui (les textes de l'artisan vont dans le contenu des balises), mais le premier texte de l'artisan placé dans un attribut ou dans un bloc JSON-LD (T51) ouvre une injection | lecture du code, 3 nov. | T48 | clos le 3 nov. : `generateur/echapper.mjs` seul échappement, `scripts/essai-echappement.mjs` (T48) ; le contre-essai a montré l'injection réelle d'un attribut avec l'ancienne fonction |
 | S-007 | bloquant | Safari n'est essayé nulle part : aucun vérificateur ne lance WebKit. Contredit la décision de sept. : tout doit marcher pareil sur iPhone | 0 occurrence de `webkit` comme navigateur dans `scripts/` | T49 | ouvert |

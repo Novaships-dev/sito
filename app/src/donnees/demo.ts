@@ -53,6 +53,7 @@ export function donneesDemo(): Donnees {
   const profil: Profil = {
     siren: '000000000', telephone: '0491234567', courriel: 'contact@exemple.fr', prix_affiches: false, prix_mention: null,
     tva_intra: null, decennale_assureur: null, decennale_contrat: null, decennale_zone: null, mediateur_nom: null, mediateur_site: null,
+    capital_social: null, immatriculation: null, directeur_publication: null, mediateur_adresse: null,
   };
   const tarifs: Tarif[] = [
     { id: 'demo-t1', poste: 'Ravalement enduit gratté', bas: 45, haut: 70, unite: 'm²', note: null, rang: 0 },

@@ -21,6 +21,7 @@ begin
   insert into public.abonnements (siren, formule, etat) values ('849891528', 'annuel', 'actif');
   insert into public.avis (siren, ref_externe, note, texte) values ('480423623', 'essai-1', 5, 'Très bon travail') returning id into a;
   insert into prive.jetons_google (siren, jeton_chiffre, portee) values ('480423623', '\x00'::bytea, 'business.manage');
+  insert into public.profils (siren) values ('849891528') on conflict (siren) do nothing;
 
   perform set_config('request.jwt.claims', json_build_object('sub', ua, 'role', 'authenticated')::text, true);
   set local role authenticated;
@@ -68,6 +69,18 @@ begin
 
   begin insert into public.suppressions (user_id, effective_le) values (ua, now() + interval '1 minute'); r := r || 'A raccourcit le delai : ACCEPTE (FAUTE) ; ';
   exception when others then r := r || 'A raccourcit le delai : refuse ; '; end;
+  -- Mentions légales (migration 20261103143933_mentions_legales, T50).
+  begin insert into public.profils (siren, courriel, capital_social, immatriculation, directeur_publication, mediateur_adresse)
+    values ('480423623', 'a@essai.invalid', '10 000 €', 'RCS Marseille 480 423 623', 'Jeanne Essai', '1 rue de la Médiation, 75001 Paris')
+    on conflict (siren) do update set courriel = excluded.courriel, capital_social = excluded.capital_social,
+      immatriculation = excluded.immatriculation, directeur_publication = excluded.directeur_publication,
+      mediateur_adresse = excluded.mediateur_adresse;
+    r := r || 'A ecrit ses mentions legales : accepte ; ';
+  exception when others then r := r || 'A ecrit ses mentions legales : REFUSE (FAUTE) ' || sqlerrm || ' ; '; end;
+  update public.profils set directeur_publication = 'pirate' where siren = '849891528'; get diagnostics n = row_count;
+  r := r || 'A ecrit le directeur de B : ' || case when n = 0 then 'refuse' else 'ACCEPTE (FAUTE)' end || ' ; ';
+  begin update public.profils set capital_social = repeat('9', 41) where siren = '480423623'; r := r || 'A pose un capital de 41 caracteres : ACCEPTE (FAUTE) ; ';
+  exception when others then r := r || 'A pose un capital de 41 caracteres : refuse ; '; end;
   begin insert into public.suppressions (user_id) values (ua); r := r || 'A demande la suppression : accepte ; ';
   exception when others then r := r || 'A demande la suppression : REFUSE (FAUTE) ' || sqlerrm || ' ; '; end;
   begin insert into public.suppressions (user_id) values (ub); r := r || 'A supprime B : ACCEPTE (FAUTE) ; ';

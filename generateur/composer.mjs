@@ -27,6 +27,7 @@ import { tirerSite, voisinsDe, departement } from './tirage.mjs';
 import { roles as rolesPhotos, manquants as manquantsPhotos } from './main-photos.mjs';
 import * as matiere from './archetypes/matiere.mjs';
 import * as appel from './sections/appel.mjs';
+import * as mentionsSection from './sections/mentions.mjs';
 import { html as echapper } from './echapper.mjs';
 
 const ici = dirname(fileURLToPath(import.meta.url));
@@ -184,13 +185,14 @@ function verifiable(t, e, illustration) {
 </section>`;
 }
 
-function contact(t, e, tel) {
+function contact(t, e, tel, presContact = '') {
   return `<section class="contact" aria-labelledby="t-contact">
   <div class="tete"><p class="enseigne">Prendre contact</p><h2 id="t-contact" class="grand">${echapper(t.rub.contact)}</h2></div>
   <div class="creux"><p class="enseigne">${tel ? 'Téléphone' : 'Emplacement à remplir'}</p>
     ${appel.enGrand({ tel })}
     ${tel ? '' : '<p>Le numéro de l’entreprise s’affiche ici et dans la barre d’appel dès qu’elle l’a donné. Il ne figure dans aucune source publique, et cette page n’en invente aucun.</p>'}
-    ${e.adresse ? `<p class="note">${echapper(e.adresse)}</p>` : ''}</div>
+    ${e.adresse ? `<p class="note">${echapper(e.adresse)}</p>` : ''}
+    ${presContact}</div>
 </section>`;
 }
 
@@ -221,6 +223,15 @@ async function fabriquer(opts) {
   let tf;
   try { tf = prixSection.tarifs(brut.prix); }
   catch (err) { console.error('Refus : ' + err.message); process.exit(2); }
+  // Un site d abonne (--publication) porte les mentions legales ; une mention
+  // obligatoire pour tous qui manque arrete tout. Voir sections/mentions.mjs.
+  const abonne = process.argv.includes('--publication');
+  const ml = abonne ? mentionsSection.rassembler({ brut, e, tel }) : null;
+  if (ml && ml.manque.length) {
+    console.error('Refus : mentions légales manquantes pour un site d abonné : ' + ml.manque.join(', '));
+    process.exit(2);
+  }
+  const presContact = ml ? mentionsSection.pres(ml) : '';
 
   // Le registre : les sites deja fabriques. Leurs voisins (meme metier, meme
   // departement, la commune comptant cinq fois plus) ne doivent pas leur
@@ -314,7 +325,7 @@ async function fabriquer(opts) {
 
   if (archetype === 'matiere') {
     im.avantOuverture = jeu('avant-01', enc['avant-01'], '100vw', 1400);
-    corps = matiere.corps({ e, t, im, img, p, base, fraction, fractionTel, illustration, ch, tel, ap, tf,
+    corps = matiere.corps({ e, t, im, img, p, base, fraction, fractionTel, illustration, ch, tel, ap, tf, presContact,
       mot: motGeant(ch, base, e) });
     style = matiere.feuille(p, pal, ch);
   } else {
@@ -337,7 +348,7 @@ async function fabriquer(opts) {
       prix: prixSection.bloc({ tarifs: tf, titre: t.rub.prix, estimation: base.estimateur }),
       avis: avisSection.bloc(),
       verifiable: verifiable(t, e, illustration),
-      contact: contact(t, e, tel),
+      contact: contact(t, e, tel, presContact),
     };
     corps = [
       arrivee.calques({ e }),
@@ -361,6 +372,7 @@ async function fabriquer(opts) {
 <meta name="description" content="${echapper(t.chapo)}">
 <meta name="atelier-generateur" content="composer ${VERSION}, ${echapper(e.siren)}, ${new Date().toISOString().slice(0, 10)}">
 <meta name="atelier-images" content="${illustration ? 'illustration' : 'entreprise'}">
+<meta name="atelier-regime" content="${abonne ? 'abonne' : 'prospection'}">
 ${ch.polices.fichiers.map(f => `<link rel="preload" href="polices/${f}" as="font" type="font/woff2" crossorigin>`).join("\n")}
 <style>${style}</style>
 </head>
@@ -373,7 +385,7 @@ ${corps}
 </main>
 <footer>
   <p class="enseigne">${echapper(e.nomLisible)}${e.commune ? '<br>' + echapper(e.commune) : ''}</p>
-  <p class="note" style="max-width:44ch">Proposition de site. Les informations proviennent de bases publiques, les photographies sont des exemples.</p>
+  ${abonne ? mentionsSection.LIEN : '<p class="note" style="max-width:44ch">Proposition de site. Les informations proviennent de bases publiques, les photographies sont des exemples.</p>'}
 </footer>
 <script>
 (function(){
@@ -826,6 +838,15 @@ ${corps}
       .replace(/<div class="entree"[\s\S]*?<\/div>\n/, '');
     writeFileSync(join(opts.sortie, 'le-travail.html'), comparateurVariante.appliquer(html2, ch.comparateur), 'utf8');
   }
+  // La page des mentions legales : la meme enveloppe, un autre contenu. Un
+  // dossier reutilise par un site de prospection perd l ancienne page.
+  if (ml) {
+    const htmlMl = html
+      .replace(/<title>[^<]*<\/title>/, `<title>${echapper(e.nomLisible)}, ${mentionsSection.TITRE}</title>`)
+      .replace(/<main id="principal">[\s\S]*?<\/main>/, `<main id="principal">\n${mentionsSection.page({ lignes: ml.lignes, e, barre: appel.barre({ e, tel, ap }) })}\n</main>`)
+      .replace(/<div class="entree"[\s\S]*?<\/div>\n/, '');
+    writeFileSync(join(opts.sortie, 'mentions-legales.html'), htmlMl, 'utf8');
+  } else if (existsSync(join(opts.sortie, 'mentions-legales.html'))) rmSync(join(opts.sortie, 'mentions-legales.html'));
   writeFileSync(join(opts.sortie, 'donnees.json'), JSON.stringify({
     entreprise: e, metier: opts.metier, archetype, palette: pal,
     titre: t.titre,
@@ -833,6 +854,8 @@ ${corps}
       polices: ch.polices.cle, geometrie: ch.geo.cle, mot: ch.mot,
       structure: ch.structure, teintes: ch.teintes, comparateur: ch.comparateur, appel: ap },
     telephone: tel ? tel.lisible : null,
+    regime: abonne ? 'abonne' : 'prospection',
+    mentions: ml ? ml.lignes.map(l => ({ ml: l.ml, titre: l.titre, renseigne: !l.vide })) : null,
     main, photos: table, phrases: phrasesTextes(t, { archetype, prix: ch.structure.prix }),
     intitules: intitulesTextes(t, { archetype, prix: ch.structure.prix }),
     coupure: { fraction, ecart: +cp.ecart.toFixed(1), fiable: cp.fiable },

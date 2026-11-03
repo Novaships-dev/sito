@@ -56,6 +56,7 @@ s'en servir pour proposer des noms de postes à l'artisan.
 | `couture.mjs` | mesure dans la photo hero où passe la limite avant / après |
 | `zone-matiere.mjs` | trouve dans une photo la fenêtre de matière qui remplit le mot géant |
 | `echapper.mjs` | le seul échappement du générateur : `html()` pour le contenu et les attributs (`& < > " '`), `jsonDansPage()` pour un bloc JSON-LD ; essai : `scripts/essai-echappement.mjs` |
+| `sections/mentions.mjs` | les mentions légales d'un site d'abonné (`--publication`) : page `mentions-legales.html`, lien du pied de page, médiateur près du contact ; refuse de fabriquer si une mention obligatoire manque (spécification `docs/specs/S-MENTIONS.md`) |
 | `sirene.mjs` | met en forme les données Sirene, sans jamais combler un trou |
 | `style.mjs` | la feuille de style des archétypes `panneau`, `planche`, `elevation` |
 | `archetypes/matiere.mjs` | l'archétype `matiere`, avec sa deuxième page |

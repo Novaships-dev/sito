@@ -470,6 +470,34 @@ for (const f of fichiers(cible)) {
   }
 }
 
+// ---------------------------------------------------------------- mentions legales
+// ML, tache T50 (docs/specs/S-MENTIONS.md) : un site d abonne (balise
+// atelier-regime = abonne) porte une page mentions-legales.html avec chaque
+// mention obligatoire, un lien vers elle sur chaque page (MP1), et le mediateur
+// pres du contact de l accueil (MP3). Un site de prospection n en a pas besoin.
+const MENTIONS_EXIGEES = ['ML1', 'ML4', 'ML5', 'ML6', 'ML8', 'ML9', 'ML10', 'ML11', 'ML12'];
+function mentionsLegales(chemin) {
+  const c = [];
+  if (!statSync(chemin).isDirectory()) return c;
+  const pages = readdirSync(chemin).filter(n => n.endsWith('.html'));
+  const lire = (n) => readFileSync(join(chemin, n), 'utf8');
+  const abonne = pages.some(n => /<meta name="atelier-regime" content="abonne">/.test(lire(n)));
+  if (!abonne) return c;
+  const ml = (detail, fichier = 'mentions-legales.html') => c.push({ fichier, num: 'ML', gravite: 'bloquant',
+    libelle: 'mentions legales d un site d abonne', detail, remede: 'docs/specs/S-MENTIONS.md, generateur/sections/mentions.mjs' });
+  if (!pages.includes('mentions-legales.html')) ml('page mentions-legales.html absente');
+  else {
+    const t = lire('mentions-legales.html');
+    const manquent = MENTIONS_EXIGEES.filter(m => !t.includes(`data-ml="${m}"`));
+    if (manquent.length) ml('mention(s) absente(s) : ' + manquent.join(', '));
+  }
+  for (const n of pages) if (!/href="mentions-legales\.html"/.test(lire(n))) ml('aucun lien vers les mentions legales', n);
+  if (pages.includes('index.html') && !lire('index.html').includes('data-ml="ML10"'))
+    ml('mediateur de la consommation absent de l accueil (R. 616-1)', 'index.html');
+  return c;
+}
+constats.push(...mentionsLegales(cible));
+
 // ---------------------------------------------------------------- sortie
 if (process.argv.includes('--json')) {
   console.log(JSON.stringify({ constats }, null, 2));

@@ -132,6 +132,16 @@ information de plus, voulue (`invitations` sans politique). Le code déployé
 est une copie de `functions/inscription/` : après une modification, le
 redéployer (mêmes deux fichiers).
 
+**Ajout du 3 novembre 2026** (T50, migration `20261103143933_mentions_legales`,
+appliquée par Cowork avec l'outil MCP `apply_migration`) : quatre colonnes de
+`profils` pour les mentions légales (`capital_social`, `immatriculation`,
+`directeur_publication`, `mediateur_adresse`), droits de la table inchangés.
+`droits-app.sql` étendu (3 cas, et un profil pour B) : rouge avant la
+migration (« column "capital_social" does not exist »), 23 résultats attendus
+après, aucune « FAUTE ». Conseillers de sécurité : rien de nouveau ; un
+avertissement d'Auth déjà présent, « protection contre les mots de passe
+divulgués désactivée » (réglage du tableau de bord : action de Fabrice).
+
 ## Ce qui n'est pas encore fait
 
 - Le générateur lit encore `generateur/registre.json`. Le brancher sur la

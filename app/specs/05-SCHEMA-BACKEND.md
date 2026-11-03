@@ -95,7 +95,7 @@ Droits : chacun lit ses propres lignes. L'app prend la première entreprise.
 |---|---|---|---|
 | `siren` | text | **PK**, FK `entreprises` | L/É |
 | `telephone` | text | `^0[1-9][0-9]{8}$` (10 chiffres sans espace) | L/É |
-| `courriel` | text | forme d'adresse | L |
+| `courriel` | text | forme d'adresse (affichée dans les mentions légales ; obligatoire pour mettre en ligne) | L/É |
 | `horaires` | jsonb | | — (pas encore dans l'app) |
 | `prix_affiches` | boolean | NN, défaut `false` | L/É |
 | `prix_mention` | text | ≤ 280 | L/É |
@@ -105,6 +105,10 @@ Droits : chacun lit ses propres lignes. L'app prend la première entreprise.
 | `decennale_zone` | text | ≤ 140 | L/É |
 | `mediateur_nom` | text | ≤ 140 | L/É |
 | `mediateur_site` | text | `^https://` | L/É |
+| `mediateur_adresse` | text | ≤ 280 (adresse postale du médiateur, R. 616-1) | L/É |
+| `capital_social` | text | ≤ 40 (société seulement) | L/É |
+| `immatriculation` | text | ≤ 140 (« RCS Marseille 480 423 623 » ; vide : SIREN et RNE) | L/É |
+| `directeur_publication` | text | ≤ 140 (représentant légal ; obligatoire pour mettre en ligne) | L/É |
 | `cree_le`, `mis_a_jour_le` | timestamptz | horodatage auto | |
 
 Droits : lire, créer, modifier si membre. L'app écrit par `upsert` sur `siren`.

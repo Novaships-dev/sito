@@ -300,7 +300,7 @@ ${appel.feuille()}
 
 
 export function corps(ctx) {
-  const { e, t, im, img, p, mot, fraction, fractionTel, base, illustration, ch, tel, ap, tf } = ctx;
+  const { e, t, im, img, p, mot, fraction, fractionTel, base, illustration, ch, tel, ap, tf, presContact = '' } = ctx;
 
   const comparateur = (id, av, ap, legende, classe, altAv, altAp, aria) => `
   <figure class="comparateur ${classe}">
@@ -415,6 +415,7 @@ export function corps(ctx) {
     ${appel.enGrand({ tel })}
     ${tel ? '' : '<p class="note">Le numéro de l’entreprise s’affiche ici et dans la barre d’appel dès qu’elle l’a donné. Il ne figure dans aucune source publique, et cette page n’en invente aucun.</p>'}
     ${e.adresse ? `<p class="adresse">${ech(e.adresse)}</p>` : ''}
+    ${presContact}
   </div>
 </section>`,
   };

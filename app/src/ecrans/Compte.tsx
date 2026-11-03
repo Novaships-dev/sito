@@ -29,10 +29,13 @@ export function Compte() {
   );
 }
 
-// Les mentions obligatoires du site : TVA, assurance décennale, médiateur.
+// Les mentions obligatoires du site (docs/specs/S-MENTIONS.md) : ce que
+// l'annuaire des entreprises ne donne pas. Sans adresse électronique ni
+// directeur de la publication, le site ne peut pas être mis en ligne (T50).
 function Mentions({ profil, apres }: { profil: Profil; apres: () => void }) {
   const { donnees } = useApp();
-  const champs = ['tva_intra', 'decennale_assureur', 'decennale_contrat', 'decennale_zone', 'mediateur_nom', 'mediateur_site'] as const;
+  const champs = ['courriel', 'directeur_publication', 'capital_social', 'immatriculation', 'tva_intra',
+    'decennale_assureur', 'decennale_contrat', 'decennale_zone', 'mediateur_nom', 'mediateur_adresse', 'mediateur_site'] as const;
   type Champ = typeof champs[number];
   const depuis = (p: Profil) => Object.fromEntries(champs.map((c) => [c, p[c] || ''])) as Record<Champ, string>;
   const [v, setV] = useState(depuis(profil));
@@ -42,6 +45,10 @@ function Mentions({ profil, apres }: { profil: Profil; apres: () => void }) {
   const tva = v.tva_intra.replace(/\s/g, '').toUpperCase();
   const tvaOk = tva === '' || /^FR[0-9A-Z]{2}[0-9]{9}$/.test(tva);
   const siteOk = v.mediateur_site.trim() === '' || /^https:\/\/\S+$/.test(v.mediateur_site.trim());
+  const courrielOk = v.courriel.trim() === '' || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.courriel.trim());
+  // Ce qui manque encore pour la mise en ligne, d'après ce qui est enregistré.
+  const manque = [!profil.telephone && 'le téléphone (écran « Mon site »)', !profil.courriel && 'l’adresse électronique',
+    !profil.directeur_publication && 'le directeur de la publication'].filter(Boolean) as string[];
   const champ = (c: Champ, libelle: string, aide?: string, extra?: Record<string, unknown>) => (
     <>
       <label htmlFor={c}>{libelle}</label>
@@ -53,23 +60,30 @@ function Mentions({ profil, apres }: { profil: Profil; apres: () => void }) {
   return (
     <form className="carte" onSubmit={async (e) => {
       e.preventDefault();
-      if (!tvaOk || !siteOk) return;
+      if (!tvaOk || !siteOk || !courrielOk) return;
       const p: Partial<Profil> = { tva_intra: tva || null };
       for (const c of champs) if (c !== 'tva_intra') p[c] = v[c].trim() || null;
       if (await a.lancer(() => donnees.enregistrerProfil(p), 'Enregistré. Les mentions légales du site seront mises à jour.')) apres();
     }}>
       <h2>Mentions légales du site</h2>
-      <p className="aide">Obligatoires sur le site d’un artisan. Elles apparaissent sur la page « Mentions légales ».</p>
+      <p className="aide">Obligatoires sur le site d’un artisan. Elles apparaissent sur la page « Mentions légales ». Le nom, la forme, le siège et le SIREN viennent de l’annuaire des entreprises.</p>
+      {manque.length > 0 && <p className="erreur" role="status">Avant la mise en ligne, il manque : {manque.join(', ')}.</p>}
+      {champ('courriel', 'Adresse électronique affichée sur le site', 'Obligatoire : la loi demande un moyen de vous écrire.', { type: 'email', inputMode: 'email', maxLength: 254, 'aria-invalid': !courrielOk })}
+      {!courrielOk && <p className="erreur">Adresse électronique invalide.</p>}
+      {champ('directeur_publication', 'Directeur de la publication', 'Obligatoire : le représentant légal de l’entreprise (vous, si vous êtes entrepreneur individuel).', { maxLength: 140, autoComplete: 'name' })}
+      {champ('capital_social', 'Capital social', 'Pour une société. Par exemple : 10 000 €.', { maxLength: 40 })}
+      {champ('immatriculation', 'Immatriculation', 'Par exemple : RCS Marseille 480 423 623. Laissez vide : le site indique le SIREN et le registre national des entreprises.', { maxLength: 140 })}
       {champ('tva_intra', 'Numéro de TVA intracommunautaire', 'Laissez vide si vous êtes en franchise de TVA.', { autoCapitalize: 'characters', 'aria-invalid': !tvaOk })}
       {!tvaOk && <p className="erreur">Format attendu : FR suivi de 11 caractères (par exemple FR12345678901).</p>}
       {champ('decennale_assureur', 'Assureur décennale', undefined, { maxLength: 140 })}
       {champ('decennale_contrat', 'Numéro de contrat', undefined, { maxLength: 60 })}
       {champ('decennale_zone', 'Zone couverte', 'Par exemple : France métropolitaine.', { maxLength: 140 })}
       {champ('mediateur_nom', 'Médiateur de la consommation', 'Obligatoire si vous travaillez pour des particuliers.', { maxLength: 140 })}
+      {champ('mediateur_adresse', 'Adresse postale du médiateur', undefined, { maxLength: 280 })}
       {champ('mediateur_site', 'Site du médiateur', undefined, { type: 'url', inputMode: 'url', placeholder: 'https://', 'aria-invalid': !siteOk })}
       {!siteOk && <p className="erreur">L’adresse doit commencer par https://</p>}
       <Message erreur={a.erreur} fait={a.fait} />
-      <button className="bouton" disabled={a.occupe || !tvaOk || !siteOk}>Enregistrer</button>
+      <button className="bouton" disabled={a.occupe || !tvaOk || !siteOk || !courrielOk}>Enregistrer</button>
     </form>
   );
 }

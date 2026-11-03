@@ -7,7 +7,8 @@ change, la phrase fausse disparaît et la juste la remplace
 (`docs/REGLE-TRACABILITE.md`). Réécrit le 3 novembre 2026 par Cowork après
 l'audit du dépôt (`docs/audit/REGISTRE.md`, 24 constats), à partir de l'état
 écrit par Claude Code après T44 (commit `0dd3776`), puis après le lot 2
-(produit) de Cowork. Les chiffres viennent de
+(produit) de Cowork, puis après T47, T48 et T50 (Cowork, même jour). Les
+chiffres viennent de
 `docs/SOURCE-UNIQUE.md`.
 
 ## En une phrase
@@ -15,37 +16,39 @@ l'audit du dépôt (`docs/audit/REGISTRE.md`, 24 constats), à partir de l'état
 Le générateur de sites, la base, l'inscription, la préparation des photos dans
 l'app, la publication par versions et la prospection marchent et sont prouvés
 par des essais ; **aucun site d'abonné n'est encore vendable** : pas de
-référencement, pas de mentions légales, rien d'essayé sur Safari, pas de
-formulaire de demande, 3 métiers sur 16.
+référencement, rien d'essayé sur Safari, pas de formulaire de demande,
+3 métiers sur 16. Les mentions légales sont faites (T50).
 
 ## Les tâches
 
-57 tâches : **18 faites, 13 bloquées, 26 à faire** (`app/specs/07-TACHES.md`).
+57 tâches : **21 faites, 13 bloquées, 23 à faire** (`app/specs/07-TACHES.md`).
 T47 à T56 viennent de l'audit du 3 novembre.
 
 **Ordre décidé par Fabrice le 3 nov. (« oui Q5 ») : les tâches de l'audit
-d'abord.** Prochaine : **T47** (garde de l'essai de l'app), puis T48
-(échappement), T50 (mentions légales), T51 (référencement), T49 (Safari),
+d'abord.** T47 (garde de l'essai de l'app), T48 (échappement) et T50
+(mentions légales) sont faites. Prochaine : **T51** (référencement), puis T49 (Safari),
 T54 (pied de page selon le régime), T55 (textes alternatifs par métier), T56
 (avis) ; ensuite T45 (GitHub Actions), T46 (GPS des vidéos), T52, T53, puis
 T10 (formulaire des sites : brouillon de migration
 `20261029150000_deposer_demande.sql` sur le disque du PC, non appliqué, Q3).
-Spécifications prêtes : `docs/specs/S-MENTIONS.md` (T50),
-`docs/specs/S-REFERENCEMENT.md` (T51).
+Spécification prête : `docs/specs/S-REFERENCEMENT.md` (T51). Depuis T50, un
+site fabriqué depuis la base est un site d'abonné (`--publication`) : sans
+adresse électronique ni directeur de la publication dans `profils`, il n'est
+pas fabriqué (l'écran « Compte » de l'app le dit à l'artisan).
 
 ## Ce qui marche, avec sa preuve
 
 | Partie | Ce qui est fait | Preuve |
 |---|---|---|
-| Générateur | un site complet depuis un SIREN, un métier et des photos, en 1 min 30 environ ; 4 archétypes ; bouton « Appeler » ; prix et estimateur seulement sur les tarifs de l'artisan | les cinq vérificateurs à 0 sur les trois sites de démonstration (`node scripts/fabriquer-demo.mjs`, machine avec images) |
+| Générateur | un site complet depuis un SIREN, un métier et des photos, en 1 min 30 environ ; 4 archétypes ; bouton « Appeler » ; prix et estimateur seulement sur les tarifs de l'artisan ; un seul échappement (T48) ; mentions légales sur un site d'abonné (T50) | `essai-echappement.mjs` (101), `essai-mentions.mjs` (56) ; les cinq vérificateurs à 0 sur les trois sites de démonstration (`node scripts/fabriquer-demo.mjs`, machine avec images) |
 | Unicité | 100 sites d'un même métier tous différents dans un département, pour ravalement, couverture et peinture | `node scripts/capacite-unicite.mjs --photos plan` (projection avec les 54 images prévues par métier) |
-| Base Supabase | projet `sito`, Paris, gratuit ; droits par ligne sur toutes les tables, droits par colonne | `supabase/essais/droits.sql` et `droits-app.sql` rejoués le 29 oct. (T05) |
+| Base Supabase | projet `sito`, Paris, gratuit ; droits par ligne sur toutes les tables, droits par colonne ; 9 migrations (la dernière : mentions légales, 3 nov.) | `droits-app.sql` rejoué le 3 nov. après la migration de T50, aucune faute ; `droits.sql` le 29 oct. (T05) |
 | Inscription (T43) | par le lien que Fabrice envoie par SMS, e-mail et mot de passe, une seule fois, sans code ; l'artisan reste connecté | `essai-inscription.mjs` (23 contrôles) ; essayée en vrai sur le compte d'essai (inscription, puis reprise) |
 | Photos dans l'app (T44) | sur le téléphone, avant l'envoi : version réduite redressée, original nettoyé (sans GPS ni appareil, mêmes pixels), aperçu des RAW ; ce qui est illisible est dit à l'artisan et n'est pas envoyé | `node scripts/essai-app.mjs` : 132 contrôles, 0 faute ; 3 copies cassées attrapées |
 | App de l'artisan | React, installable ; tous les écrans en démonstration | `essai-app.mjs` sur iPhone 390, Android 360, ordinateur 1 280 (**Chromium seulement**) |
 | Service atelier | photos reçues préparées (T07) ; site fabriqué depuis la base (T08) ; boucle qui refait, vérifie et publie par version (T09) | `essai-preparation.mjs` (77), `essai-fabrication-base.mjs` (12), `essai-boucle.mjs` (23) |
 | Prospection | artisans réels du 13 trouvés et notés ; lot du jour fabriqué, publié en privé ; page d'appels | `essai-prospection.mjs` (122), `essai-publication-prospection.mjs` (68), `essai-appels.mjs` (79), `essai-preparer-appels.mjs` (49) |
-| Suite d'essais | 20 étapes, toutes vertes le 3 nov. à 01:42 sur le PC (commit `85bba53`) | `memoire/essais/derniers.txt` |
+| Suite d'essais | 22 étapes ; toutes vertes le 3 nov. à 01:42 sur le PC (commit `85bba53`, 20 étapes alors) ; sur la machine de Cowork, sans exiftool, les 3 étapes qui en ont besoin disent « NON LANCÉ » (T47) | `memoire/essais/derniers.txt` ; CI GitHub |
 
 ## Pour Fabrice : fabriquer un lien d'inscription
 
@@ -79,14 +82,13 @@ Aucun site d'abonné n'est en ligne ; aucun domaine n'est acheté.
 Le détail, avec la preuve de chaque constat, est dans `docs/audit/REGISTRE.md`.
 
 1. **Référencement** des sites d'abonné : absent (S-003, T51).
-2. **Mentions légales** sur les sites : absentes, alors que l'app les fait saisir (S-004, T50).
-3. **Safari** : jamais essayé (S-007, T49).
-4. **Formulaire de demande** sur les sites (T10, T11 ; question Q3).
-5. **13 métiers sur 16** sans textes (S-013, T32), et leurs images.
-6. **Pied de page, textes alternatifs et avis** faux sur un site d'abonné : « Proposition de site » partout, photos décrites comme une façade sur tous les métiers, « Les avis viennent ici » (S-022 à S-024, T54 à T56).
-7. **Deuxième page** sur un seul archétype sur quatre (S-012, T52).
-8. **GPS des vidéos** encore dans les fichiers envoyés (T46).
-9. **Documents** encore à écrire : technique, qualité, juridique, exploitation, commerce (lots 3 à 7, `docs/00-INDEX.md`, dernière section). Lots 1 et 2 faits le 3 nov.
+2. **Safari** : jamais essayé (S-007, T49).
+3. **Formulaire de demande** sur les sites (T10, T11 ; question Q3).
+4. **13 métiers sur 16** sans textes (S-013, T32), et leurs images.
+5. **Pied de page, textes alternatifs et avis** faux sur un site d'abonné : « Proposition de site » encore sur la note des photos (le pied d'un site d'abonné est corrigé par T50), photos décrites comme une façade sur tous les métiers, « Les avis viennent ici » (S-022 à S-024, T54 à T56).
+6. **Deuxième page** sur un seul archétype sur quatre (S-012, T52).
+7. **GPS des vidéos** encore dans les fichiers envoyés (T46).
+8. **Documents** encore à écrire : technique, qualité, juridique, exploitation, commerce (lots 3 à 7, `docs/00-INDEX.md`, dernière section). Lots 1 et 2 faits le 3 nov.
 
 ## Ne pas refaire
 

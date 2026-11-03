@@ -105,7 +105,7 @@ const lignes = {
     { siren: SIREN_SANS_PHOTOS, denomination: 'Sans Photos SARL', nom_affiche: 'Sans Photos', commune: 'Lyon', code_postal: '69001',
       departement: '69', code_ape: '43.99D', sirene: sireneBrut('Lyon', '69001'), mis_a_jour_le: T0 },
   ],
-  profils: [{ siren: SIREN, telephone: '0491234567', prix_affiches: true, prix_mention: 'Hors fournitures.', mis_a_jour_le: T0 }],
+  profils: [{ siren: SIREN, telephone: '0491234567', courriel: 'contact@facades-essai.fr', directeur_publication: 'Jeanne Essai', capital_social: '10 000 €', mediateur_nom: 'Médiateur Essai', mediateur_adresse: '1 rue de la Médiation, 75001 Paris', mediateur_site: 'https://mediateur.example', prix_affiches: true, prix_mention: 'Hors fournitures.', mis_a_jour_le: T0 }],
   tarifs: [{ id: 1, siren: SIREN, poste: 'Ravalement enduit', bas: 60, haut: 90, unite: '€/m²', note: '', rang: 0, mis_a_jour_le: T0 }],
   photos: [
     photo(1, 'avant', 1, `${SIREN}/c1/avant1.jpg`), photo(2, 'apres', 1, `${SIREN}/c1/apres1.jpg`),

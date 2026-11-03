@@ -1643,3 +1643,24 @@ Contre-essai : 7 fautes ; l'ancienne fonction laissait un vrai attribut
 `data-injecte` entrer dans la page (4 sites sur 10). Panne en route : un
 U+2028 écrit tel quel dans une regex (piège noté).
 TRACAGE : generateur/echapper.mjs, generateur/composer.mjs, generateur/archetypes/matiere.mjs, generateur/sections/appel.mjs, generateur/sections/arrivee.mjs, generateur/sections/atmosphere.mjs, generateur/sections/prix.mjs, generateur/LISEZMOI.md, scripts/essai-echappement.mjs, scripts/essais.mjs, app/specs/07-TACHES.md, docs/audit/REGISTRE.md (S-006 clos), docs/audit/CARTE.md, CHANGELOG.md, memoire/pieges.md, memoire/journal.md
+
+## 3 nov. 2026 — T50 (mentions légales d'un site d'abonné), par Cowork
+
+Plan : 1. `generateur/sections/mentions.mjs` (page, lien, médiateur) et le
+régime abonné (`--publication`) dans `composer.mjs` ; 2. contrôle ML de
+`verifier-site` et `essai-mentions.mjs` ; 3. migration des champs manquants,
+écran « Compte », `atelier/fabriquer.mjs`.
+
+Résultat : 56 contrôles, 0 faute, quatre archétypes ; contre-essai 4 fautes ;
+contrôle ML rouge sur 4 copies cassées. Migration appliquée sur la vraie base
+(`apply_migration`, version `20261103143933`, fichier renommé) ; `droits-app.sql`
+rouge avant (« column capital_social does not exist »), 23 résultats sans
+faute après ; conseillers : rien de nouveau. Vérifié en route : le directeur
+de la publication est bien obligatoire (LCEN, déplacé à l'article 1-1 par la
+loi SREN de 2024) ; adresse de Cloudflare relevée à la SEC. Écart : le titre
+d'onglet dit « informations légales », car « mentions légales » avant le h1
+fait rougir C3 (contrôle laissé tel quel). Le pied de page d'un site d'abonné
+est déjà corrigé ici ; le reste de T54 (note « Photographies d'exemple », texte
+alternatif « Exemple, ») reste à faire. `essai-fabrication-base` et
+`essai-boucle` ont des profils complets (sinon refus, à raison).
+TRACAGE : generateur/sections/mentions.mjs, generateur/composer.mjs, generateur/archetypes/matiere.mjs, generateur/LISEZMOI.md, atelier/fabriquer.mjs, scripts/verifier-site.mjs, scripts/essai-mentions.mjs, scripts/essais.mjs, scripts/essai-fabrication-base.mjs, scripts/essai-boucle.mjs, supabase/migrations/20261103143933_mentions_legales.sql, supabase/essais/droits-app.sql, supabase/README.md, app/src/ecrans/Compte.tsx, app/src/types.ts, app/src/donnees/supabase.ts, app/src/donnees/demo.ts, app/specs/05-SCHEMA-BACKEND.md, app/specs/07-TACHES.md, docs/specs/S-MENTIONS.md, docs/SOURCE-UNIQUE.md, docs/audit/REGISTRE.md (S-004 clos), docs/audit/CARTE.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md

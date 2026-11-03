@@ -85,7 +85,7 @@ const lignes = {
       commune: 'Lyon', code_postal: '69001', departement: '69', code_ape: '43.99D',
       sirene: sireneBrut('Lyon', '69001') },
   ],
-  profils: [{ siren: SIREN, telephone: '0491234567', prix_affiches: true, prix_mention: 'Hors fournitures.' }],
+  profils: [{ siren: SIREN, telephone: '0491234567', courriel: 'contact@facades-essai.fr', directeur_publication: 'Jeanne Essai', capital_social: '10 000 €', mediateur_nom: 'Médiateur Essai', mediateur_adresse: '1 rue de la Médiation, 75001 Paris', mediateur_site: 'https://mediateur.example', prix_affiches: true, prix_mention: 'Hors fournitures.' }],
   tarifs: [{ id: 1, siren: SIREN, poste: 'Ravalement enduit', bas: 60, haut: 90, unite: '€/m²', note: '', rang: 0 }],
   photos: [
     { id: 1, siren: SIREN, chantier_id: 'c1', role: 'avant', paire: 1, chemin: `${SIREN}/c1/avant1.jpg`, etat: 'prete' },
@@ -110,6 +110,7 @@ try {
   const r1 = await fabriquerDepuisBase({ sb, siren: SIREN, metier: 'ravalement', sortie: dossier1, registre });
   if (!ok(r1.ok === true, 'fabrication depuis entreprise + profil + tarifs + photos prêtes', JSON.stringify(r1).slice(0, 300))) throw new Error('fabrication 1 refusée');
   ok(existsSync(join(dossier1, 'index.html')), 'un index.html est écrit');
+  ok(existsSync(join(dossier1, 'mentions-legales.html')), 'site d abonné : la page des mentions légales est écrite (T50)');
 
   const v1 = spawnSync(process.execPath, [join(RACINE, 'scripts', 'verifier-site.mjs'), dossier1], { encoding: 'utf8' });
   ok(v1.status === 0, 'le site produit passe verifier-site', (v1.stdout || v1.stderr || '').trim().split('\n').slice(-3).join(' | '));
