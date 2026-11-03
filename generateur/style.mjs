@@ -177,7 +177,12 @@ footer{${CONTEXTES.sol};background:var(--encre);color:var(--t2);padding:clamp(32
   .geste dd,.faits td{font-size:15px}
   .faits th{font-size:13px}
   /* Le premier ecran porte l image ET le titre : l artisan ouvre sur son telephone. */
-  .ouverture{grid-template-columns:1fr;grid-template-rows:auto auto;min-height:0}
+  /* minmax(0,1fr), pas 1fr : sous WebKit (Safari) le mot le plus long du
+     titre elargissait la colonne de 18 px a 360 px de large, et la page
+     defilait de cote (elevation, T49, 3 novembre 2026). */
+  .ouverture{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;min-height:0}
+  .ouverture .panneau{min-width:0}
+  .ouverture .panneau .geant{overflow-wrap:break-word;hyphens:auto}
   .ouverture .visuel{order:1;height:38svh;min-height:230px;max-height:340px}
   .ouverture .visuel img{height:100%}
   .ouverture .panneau{order:2;border:0;gap:1.4rem;padding-top:calc(var(--marge)*1.1);padding-bottom:calc(var(--marge)*1.2)}

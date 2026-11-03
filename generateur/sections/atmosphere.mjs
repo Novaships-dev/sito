@@ -183,8 +183,12 @@ ${disposition(v, p)}
   .atmo .sous{display:none}
   .atmo .photo{flex:1 1 auto;min-height:190px;display:flex;flex-direction:column;order:0}
   .atmo .photo .comparateur{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
-  .atmo .photo .cadre{flex:1 1 auto;min-height:0}
-  .atmo .photo .cadre img{aspect-ratio:auto;height:100%;max-height:none;object-fit:cover}
+  /* La photo remplit le cadre en position absolue : sous WebKit (Safari), la
+     hauteur 100 % d une image dans cette chaine de boites souples ne se
+     resolvait pas, et la photo tombait a 28 px de haut sur un iPhone, curseur
+     compris (panneau, elevation, planche ; T49, 3 novembre 2026). */
+  .atmo .photo .cadre{flex:1 1 auto;min-height:160px;position:relative}
+  .atmo .photo .cadre img{position:absolute;inset:0;width:100%;aspect-ratio:auto;height:100%;max-height:none;object-fit:cover}
   .atmo .photo .bascule{margin-top:8px}
   .atmo .photo .vers{font-size:10px;padding:8px 12px}
   /* le nuancier tient sur une ligne qui se fait defiler, jamais sur trois */
