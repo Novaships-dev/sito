@@ -291,7 +291,9 @@ try {
   await page.getByLabel('Photo avant').first().setInputFiles(F('chantier.jpg'));
   ok(await attendreEnvois(page, 2), 'photo JPEG (iPhone, GPS, orientation 6) envoyée, puis son original',
     // ce que la page dit quand rien n'est parti (T49, WebKit)
-    `${await envois(page)} envoi(s) ; page : ${(await page.locator('.erreur, [role=alert], [role=status]').allTextContents()).join(' | ').slice(0, 200)} ; console : ${erreurs.join(' | ').slice(0, 200)}`);
+    `${await envois(page)} envoi(s) ; page : ${(await page.locator('.erreur, .envois-erreur, [role=alert], [role=status]').allTextContents()).join(' | ').slice(0, 200)} ; console : ${erreurs.join(' | ').slice(0, 200)} ; `
+    + JSON.stringify(await page.evaluate(() => ({ securise: window.isSecureContext, enLigne: navigator.onLine,
+      uuid: typeof crypto.randomUUID, idb: typeof indexedDB }))));
   const e1 = await lireEnvoi(page, 0);
   ok(e1.genre === 'photo' && e1.role === 'avant' && e1.paire === 1, 'rangée en « avant », paire 1', `${e1.role} ${e1.paire}`);
   ok(e1.nom === 'chantier.jpg' && e1.type === 'image/jpeg', 'nom et type du fichier envoyé', `${e1.nom} ${e1.type}`);
