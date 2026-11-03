@@ -42,6 +42,17 @@ lot 2, le 3 nov.) sont rangées avec elles : ce sont des tâches de l'audit.
 | T55 | Constat S-023 : les textes alternatifs et légendes des photos (hero, chantier, détail, geste, paires) viennent du fichier du métier (`alt` dans `generateur/metiers/<clé>.json`) ou de la légende de l'artisan, jamais écrits en dur pour la façade dans `composer.mjs` et `archetypes/matiere.mjs` | à faire | un site de couverture et un de peinture ne contiennent ni « façade », ni « enduit », ni « échafaudage », ni « taloche » dans un `alt` (sauf si le fichier du métier les écrit) ; contrôle dans `verifier-site` : chaque `alt` d'image vient des données, essayé sur une copie cassée : rouge | | |
 | T56 | Constat S-024 : sur un site d'abonné, la section « avis » n'apparaît que s'il y a des avis réels (table `avis`) ; sinon elle est absente, jamais « Les avis viennent ici ». Sur un site de prospection, l'emplacement vide qui le dit reste permis | à faire | site d'abonné sans avis : pas de section ; avec deux avis en base : deux cartes, textes exacts, sans note inventée ; contre-essai : l'emplacement vide sur un site d'abonné rougit | | |
 
+## Modèles de prospection (décision de Fabrice du 4 nov. 2026)
+
+Spécification : `docs/specs/S-MODELES.md`. Jusqu'ici chaque artisan appelé recevait un site différent ; désormais un modèle par métier, rempli avec l'entreprise, et seul le site accepté devient unique.
+
+| N° | Tâche | État | Preuve | Dépend de | Bloqué par |
+|---|---|---|---|---|---|
+| T57 | Modèles : `--graine <clé>` dans le générateur (textes, paramètres, photos tirés de la clé) ; `scripts/prospection/modeles.mjs` tire 10 modèles par métier, différents entre eux et de tout modèle pris, dans `prospection/modeles/<métier>.json` | à faire | deux entreprises fabriquées avec le même modèle : mêmes archétype, charte, textes et photos, seules les données de l'entreprise diffèrent ; 10 modèles du ravalement : aucune paire jugée trop proche par `generateur/unicite.mjs` ; contre-essai : deux modèles jumeaux rougissent | | |
+| T58 | Lot du jour sur les modèles : `fabriquer-lot.mjs` répartit les artisans sur les modèles libres du métier et note le modèle dans `prospection/registre.json` | à faire | `essai-lot.mjs` : chaque site du lot porte un modèle libre de son métier, noté au registre ; un métier sans modèle s'arrête avec son message | T57 | |
+| T59 | Acceptation : `scripts/prospection/accepter.mjs --siren` : le modèle passe « pris » au SIREN, un nouveau modèle différent de tous est tiré (10 libres), conflit du même modèle accepté deux fois traité (MO6) ; la page d'appels sait dire « accepté » | à faire | essai : accepter A puis B sur le même modèle : A le garde, B en reçoit un autre et c'est dit ; 10 libres après chaque acceptation ; le modèle pris ne ressort jamais dans un lot | T58 | |
+| T60 | Photos reçues par mail ou WhatsApp : `scripts/prospection/photos-artisan.mjs --siren --dossier` range les photos par rôle et refait le site de l'artisan avec son modèle, en site d'abonné ; procédure pour Fabrice dans `docs/PROCEDURE-PHOTOS.md` | à faire | essai : un dossier de photos en vrac (JPEG, HEIC, noms d'iPhone) devient un site d'abonné au modèle de l'artisan, sans « exemple », `verifier-site` à 0 ; une photo manquante (pas de paire avant/après) est dite, rien n'est fabriqué | T59 | Q6 |
+
 ## Prospection (priorité de Fabrice du 23 oct. : avant le reste de l'app)
 
 Spécification : `app/specs/08-PROSPECTION.md`. But : chaque matin à 7 h, 30 sites

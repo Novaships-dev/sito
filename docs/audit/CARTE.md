@@ -6,14 +6,14 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**337 fichiers suivis, dont 149 .md ; 80992 lignes de texte.** Hors zone : 0.
+**338 fichiers suivis, dont 150 .md ; 81062 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
 | Z01 Pilotage de l agent | 27 | 2141 | 0 |
-| Z02 Mémoire du projet | 11 | 2405 | 0 |
-| Z03 Spécifications | 11 | 2370 | 0 |
-| Z04 Documentation de travail | 22 | 3178 | 0 |
+| Z02 Mémoire du projet | 11 | 2419 | 0 |
+| Z03 Spécifications | 11 | 2381 | 0 |
+| Z04 Documentation de travail | 23 | 3223 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
 | Z06 Générateur de sites | 33 | 8479 | 4 |
 | Z07 Règles | 15 | 1147 | 0 |
@@ -66,15 +66,15 @@ Un audit qui ne couvre pas toutes les zones le dit.
 |---|---|
 | `memoire/actions-fabrice.md` | 33 |
 | `memoire/comptes-essai.md` | 19 |
-| `memoire/de-cowork.md` | 33 |
-| `memoire/decisions.md` | 131 |
+| `memoire/de-cowork.md` | 34 |
+| `memoire/decisions.md` | 132 |
 | `memoire/essais/audit.txt` | 44 |
 | `memoire/essais/derniers.txt` | 24 |
 | `memoire/essais/disque.txt` | 61 |
 | `memoire/journal.md` | 1725 |
 | `memoire/maintenant.md` | 101 |
 | `memoire/pieges.md` | 118 |
-| `memoire/questions.md` | 116 |
+| `memoire/questions.md` | 128 |
 
 ## Z03 Spécifications
 
@@ -88,7 +88,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `app/specs/04-DESIGN-SYSTEM.md` | 180 |
 | `app/specs/05-SCHEMA-BACKEND.md` | 463 |
 | `app/specs/06-PLAN-IMPLEMENTATION.md` | 93 |
-| `app/specs/07-TACHES.md` | 135 |
+| `app/specs/07-TACHES.md` | 146 |
 | `app/specs/08-PROSPECTION.md` | 144 |
 | `app/specs/README.md` | 21 |
 
@@ -96,9 +96,9 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `CHANGELOG.md` | 56 |
+| `CHANGELOG.md` | 57 |
 | `SECURITY.md` | 55 |
-| `docs/00-INDEX.md` | 111 |
+| `docs/00-INDEX.md` | 112 |
 | `docs/CONSTRAINTS.md` | 58 |
 | `docs/CONTEXT.md` | 87 |
 | `docs/DETTE.md` | 27 |
@@ -115,6 +115,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `docs/prospection-script.md` | 253 |
 | `docs/specs/METIERS.md` | 55 |
 | `docs/specs/S-MENTIONS.md` | 103 |
+| `docs/specs/S-MODELES.md` | 43 |
 | `docs/specs/S-PARCOURS-VISITEUR.md` | 62 |
 | `docs/specs/S-REFERENCEMENT.md` | 114 |
 | `docs/verification-outillage-2026-10-09.md` | 86 |

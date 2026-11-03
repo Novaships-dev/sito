@@ -31,3 +31,4 @@ section 2, « Deux sessions ».
 | 3 nov. 2026 | T47, T48, T50 faites par Cowork sur GitHub (commits « T47 : … », « T48 : … », « T50 : … ») ; **migration `20261103143933_mentions_legales` appliquée sur la vraie base** | « Ok continue tout doit etre conforme et doit etre rectifier » (Fabrice, 3 nov.). Claude Code : faire `git pull` avant toute tâche ; la prochaine est T51 |
 | 3 nov. 2026 | T51 faite par Cowork sur GitHub (commit « T51 : … ») | suite de « Ok continue » et « Go » (Fabrice, 3 nov.). Prochaine : T49 |
 | 3 nov. 2026 | T49 faite par Cowork sur GitHub (commits « T49 … ») ; `CLAUDE.md` §4 : deux lignes de commandes | suite de « Go » (Fabrice, 3 nov.). Prochaine : T54 |
+| 4 nov. 2026 | `memoire/decisions.md` (4 nov., modèles de prospection, mot pour mot), `docs/specs/S-MODELES.md` (nouveau), `app/specs/07-TACHES.md` (section « Modèles de prospection », T57 à T60), `memoire/questions.md` (Q6) | décision et réponses de Fabrice du 4 nov. |

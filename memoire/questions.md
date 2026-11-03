@@ -114,3 +114,15 @@ T49) ; T52 et T53 dans une section à part, après T45 et T46. Ordre de prise
 vérifié avec `eligibles()` de `.claude/hooks/commun.mjs` : T47, puis T48 ;
 T50 et T51 (qui dépendent de T48) et T49 (qui dépend de T47) passent ensuite
 avant T45, puisqu'elles sont plus haut dans le tableau.
+
+## Q6 (ouverte), 4 novembre 2026
+
+Les photos que les artisans t'envoient par mail ou WhatsApp : où les garder ?
+Tu as dit « sur GitHub ou ailleurs ». Le dépôt `sito` est **public** : une
+photo de chantier peut montrer une adresse, une plaque, un visage. Et Git
+garde tout pour toujours (pas de Git LFS, ta décision).
+
+**Réponse recommandée** : un dépôt GitHub **privé** à part, `sito-photos`,
+gratuit (un dossier par SIREN), que Claude lit pour refaire le site. Sinon le
+stockage Supabase, gratuit jusqu'à 1 Go, déjà prévu pour l'app.
+**En attendant** : T60 est bloquée sur Q6 ; T57 à T59 avancent.

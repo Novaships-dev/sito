@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 4 nov. | Décision de Fabrice : modèles de prospection (`docs/specs/S-MODELES.md`, T57 à T60, Q6). |
 | 4 nov. | T54 : sur un site d'abonné, les photos sont celles de l'artisan : ni « Exemple » dans les textes alternatifs, ni marqueur, ni note « Photographies d'exemple ». Contrôle R-EXEMPLE dans `verifier-site`. |
 | 3 nov. | T49 : Safari (WebKit) dans la CI, pour les sites (`essai-navigateurs.mjs`) et l'app ; `--navigateur webkit` dans `verifier-mobile`, `verifier-ordinateur`, `essai-app`. Corrigés : images de la deuxième paire absentes (16 fichiers), WebP proposé en plus de l'AVIF, débordement d'elevation, boutons du comparateur recouverts sur panneau, file d'envoi de l'app, lien d'inscription sous WebKit. Nouveau contrôle R-FICHIER. Contre-essais d'échappement, mentions, référencement dans la CI. |
 | 3 nov. | T51 : référencement. Prospection : `noindex` dans la page. Abonné : URL canonique, Open Graph, JSON-LD du métier, `robots.txt` qui autorise, `sitemap.xml` ; icônes et image de partage pour tous ; `--adresse` lue dans `adresses`. Contrôles R-REGIME, R-OG, R-JSONLD, R-SITE dans `verifier-site` ; essai `essai-referencement.mjs`. |
