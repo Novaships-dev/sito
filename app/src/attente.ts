@@ -25,11 +25,19 @@ function ouvrir(BASE: string): Promise<IDBDatabase | null> {
   });
 }
 
+// Une opération qui ne répond pas en 4 s est un échec : sous WebKit (session
+// privée, essais de T49, 3 nov. 2026), poser un fichier dans IndexedDB peut
+// échouer ou ne jamais répondre. La file passe alors en mémoire.
 function operation<T>(db: IDBDatabase, mode: IDBTransactionMode, faire: (t: IDBObjectStore) => IDBRequest<T>): Promise<T> {
   return new Promise((ok, ko) => {
-    const r = faire(db.transaction(TABLE, mode).objectStore(TABLE));
-    r.onsuccess = () => ok(r.result);
-    r.onerror = () => ko(r.error);
+    const delai = setTimeout(() => ko(new Error('IndexedDB ne répond pas')), 4000);
+    try {
+      const t = db.transaction(TABLE, mode);
+      const r = faire(t.objectStore(TABLE));
+      r.onsuccess = () => { clearTimeout(delai); ok(r.result); };
+      r.onerror = () => { clearTimeout(delai); ko(r.error); };
+      t.onabort = () => { clearTimeout(delai); ko(t.error || new Error('transaction annulée')); };
+    } catch (err) { clearTimeout(delai); ko(err); }
   });
 }
 
@@ -45,10 +53,14 @@ export function creerFile(donnees: Donnees) {
 
   const publier = (e: Partial<Etat>) => { etat = { ...etat, ...e }; ecouteurs.forEach((f) => f(etat)); };
 
+  // Ce que l'appareil garde ET ce qui n'a pu aller qu'en mémoire. Jusqu'au
+  // 3 novembre 2026, un fichier refusé par IndexedDB restait en mémoire mais
+  // la file ne lisait que la base : la photo ne partait jamais (WebKit, T49).
   async function tous(): Promise<Element[]> {
     const db = await dbPromesse;
-    const liste = db ? await operation(db, 'readonly', (t) => t.getAll() as IDBRequest<Element[]>).catch(() => [...memoire.values()]) : [...memoire.values()];
-    return liste.sort((a, b) => a.ajoute - b.ajoute);
+    const garde = db ? await operation(db, 'readonly', (t) => t.getAll() as IDBRequest<Element[]>).catch(() => [] as Element[]) : [];
+    const ids = new Set(garde.map((e) => e.id));
+    return [...garde, ...[...memoire.values()].filter((e) => !ids.has(e.id))].sort((a, b) => a.ajoute - b.ajoute);
   }
   async function poser(e: Element) {
     const db = await dbPromesse;
