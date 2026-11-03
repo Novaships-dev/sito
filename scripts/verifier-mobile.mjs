@@ -52,6 +52,7 @@ if (!navigateur) { console.log(`aucun navigateur utilisable (${MOTEUR}), control
 console.log(`moteur : ${MOTEUR}`);
 
 const constats = [];
+const nonEssayes = new Set();
 for (const f of FORMATS) {
   const page = await navigateur.newPage({
     viewport: { width: f.l, height: f.h }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
@@ -105,10 +106,13 @@ for (const f of FORMATS) {
     const auFilDuTexte = (e) => e.tagName === 'A'
       && getComputedStyle(e).display === 'inline'
       && /^(P|LI|TD|TH|DD|FIGCAPTION|SPAN)$/.test(e.parentElement ? e.parentElement.tagName : '');
-    const petitsControles = [...document.querySelectorAll('a,button,input,select')]
+    const petits = [...document.querySelectorAll('a,button,input,select')]
       .filter(e => getComputedStyle(e).pointerEvents !== 'none' && !auFilDuTexte(e))
-      .map(e => e.getBoundingClientRect())
-      .filter(b => b.width > 0 && b.left > -1000 && Math.min(b.width, b.height) < seuils.doigt).length;
+      .map(e => ({ e, b: e.getBoundingClientRect() }))
+      .filter(({ b }) => b.width > 0 && b.left > -1000 && Math.min(b.width, b.height) < seuils.doigt);
+    const petitsControles = petits.length;
+    // Lesquels : sans leur nom, un constat M5 ne se corrige pas (T49, WebKit).
+    const petitsNoms = petits.slice(0, 4).map(({ e, b }) => `${e.tagName.toLowerCase()}${e.className && typeof e.className === 'string' ? '.' + e.className.trim().split(/\s+/).join('.') : ''} ${Math.round(b.width)}x${Math.round(b.height)}`).join(', ');
     return {
       debordement: debord.length, scroll: document.documentElement.scrollWidth > vw + 1,
       titrePx: h1 ? Math.round(parseFloat(getComputedStyle(h1).fontSize)) : 0,
@@ -117,7 +121,7 @@ for (const f of FORMATS) {
       imagePart: +(surface / (vw * vh)).toFixed(3),
       plusPetit: petites.length ? Math.round(petites[0].px) : 99,
       plusPetitTexte: petites.length ? petites[0].t : '',
-      petitsControles,
+      petitsControles, petitsNoms,
     };
   }, M);
 
@@ -145,7 +149,7 @@ for (const f of FORMATS) {
       + ct.fautes.map(x => x.ou + ' « ' + x.texte + ' » ' + x.ratio + ':1').join(' ; '),
     'chaque surface a ses couleurs de texte, voir generateur/charte.mjs, CONTEXTES');
   dire('M5', d.petitsControles === 0, 'cible tactile trop petite',
-    d.petitsControles + ' controle(s) sous ' + M.doigt + ' px', 'un doigt fait 44 px');
+    d.petitsControles + ' controle(s) sous ' + M.doigt + ' px : ' + d.petitsNoms, 'un doigt fait 44 px');
   // M7 et M8 : un comparateur peut avoir la bonne taille et ne pas fonctionner
   // au doigt. On l essaie vraiment, en haut et en bas de l image, puis on
   // verifie que le defilement vertical reste possible par-dessus.
@@ -169,7 +173,10 @@ for (const f of FORMATS) {
       mauvais + ' cadre(s) sans input range large et haut d au moins ' + M.doigt + ' px',
       'voir rules/web/mouvement.md, V4');
   }
-  if (cadres.length) try {
+  // Les gestes au doigt passent par le protocole de Chromium (CDP). WebKit ne
+  // l a pas : M7, M8 et M9 ne s y essaient pas, et le rapport le dit (T49).
+  if (cadres.length && MOTEUR !== 'chromium') { nonEssayes.add('M7, M8, M9 (gestes au doigt : protocole CDP, propre a Chromium)'); }
+  else if (cadres.length) try {
     const cdp = await page.context().newCDPSession(page);
     const b = await page.evaluate(() => {
       const c = document.querySelector('.cadre');
@@ -327,6 +334,7 @@ for (const f of FORMATS) {
 }
 await navigateur.close();
 
+for (const n of nonEssayes) console.log(`NON ESSAYE sous ${MOTEUR} : ${n}`);
 if (!constats.length) {
   console.log('Aucun constat. La page tient sur un telephone.');
   process.exit(0);

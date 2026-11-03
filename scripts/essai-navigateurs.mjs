@@ -69,8 +69,13 @@ try {
       for (const p of pages) {
         const x = spawnSync(process.execPath, [join(RACINE, 'scripts', v), join(sortie, p), '--navigateur', MOTEUR], { encoding: 'utf8', cwd: RACINE });
         if (x.status === 3) { console.log(`  NON LANCÉ : ${MOTEUR} n est pas installé (npx playwright install ${MOTEUR})`); sortieFinale = 3; throw new Error('moteur absent'); }
+        const sortieV = (x.stdout || x.stderr || '').trim();
+        // Les constats en entier (le titre et le détail) : sans eux, une faute
+        // de la CI ne se corrige pas.
+        const constatsV = sortieV.split('\n\n').filter((b) => /\[BLOQUANT\]/.test(b)).map((b) => b.replace(/\s+/g, ' ').trim());
         ok(x.status === 0, `${arch} ${p} : ${v.replace('.mjs', '')} sous ${MOTEUR}`,
-          (x.stdout || x.stderr || '').trim().split('\n').filter((l) => /BLOQUANT|^\s+\S/.test(l)).slice(0, 4).join(' | '));
+          constatsV.length ? constatsV.join(' || ') : sortieV.split('\n').slice(-3).join(' | '));
+        for (const l of sortieV.split('\n').filter((l) => l.startsWith('NON ESSAYE'))) console.log(`  (${arch} ${p} : ${l})`);
       }
     }
   }
