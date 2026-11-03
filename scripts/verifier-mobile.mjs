@@ -163,14 +163,18 @@ for (const f of FORMATS) {
       document.querySelectorAll('.cadre').forEach(c => {
         const g = c.querySelector('input[type=range]');
         const rc = c.getBoundingClientRect();
+        const im = c.querySelector('img');
         out.push(g ? { l: g.getBoundingClientRect().width / rc.width, h: g.getBoundingClientRect().height,
-          cache: getComputedStyle(g).pointerEvents === 'none' } : null);
+          cache: getComputedStyle(g).pointerEvents === 'none',
+          // ce qui entoure le curseur, pour comprendre un constat (T49) :
+          quoi: `cadre ${Math.round(rc.width)}x${Math.round(rc.height)} ${getComputedStyle(c).position}, image ${im ? Math.round(im.getBoundingClientRect().height) : '-'} px, curseur ${Math.round(g.getBoundingClientRect().height)} px (hauteur calculee ${getComputedStyle(g).height})` } : null);
       });
       return out;
     });
     const mauvais = geo.filter(g => !g || g.cache || g.l < 0.8 || g.h < M.doigt).length;
     dire('M11', mauvais === 0, 'comparateur sans controle natif attrapable',
-      mauvais + ' cadre(s) sans input range large et haut d au moins ' + M.doigt + ' px',
+      mauvais + ' cadre(s) sans input range large et haut d au moins ' + M.doigt + ' px : '
+        + geo.filter(g => !g || g.cache || g.l < 0.8 || g.h < M.doigt).slice(0, 2).map(g => g ? g.quoi : 'aucun curseur').join(' ; '),
       'voir rules/web/mouvement.md, V4');
   }
   // Les gestes au doigt passent par le protocole de Chromium (CDP). WebKit ne
