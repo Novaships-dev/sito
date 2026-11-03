@@ -167,7 +167,7 @@ for (const f of FORMATS) {
         out.push(g ? { l: g.getBoundingClientRect().width / rc.width, h: g.getBoundingClientRect().height,
           cache: getComputedStyle(g).pointerEvents === 'none',
           // ce qui entoure le curseur, pour comprendre un constat (T49) :
-          quoi: `cadre ${Math.round(rc.width)}x${Math.round(rc.height)} ${getComputedStyle(c).position}, image ${im ? Math.round(im.getBoundingClientRect().height) : '-'} px, curseur ${Math.round(g.getBoundingClientRect().height)} px (hauteur calculee ${getComputedStyle(g).height})` } : null);
+          quoi: `cadre ${Math.round(rc.width)}x${Math.round(rc.height)} ${getComputedStyle(c).position}, image ${im ? Math.round(im.getBoundingClientRect().height) + ' px (' + (im.complete ? 'chargee' : 'non chargee') + ', ' + im.naturalWidth + 'x' + im.naturalHeight + ', ' + (im.currentSrc || '').split('/').pop() + ')' : '-'}, dans ${(c.closest('section') || {}).className || '?'} > ${(c.parentElement || {}).className || '?'}, curseur ${Math.round(g.getBoundingClientRect().height)} px (hauteur calculee ${getComputedStyle(g).height})` } : null);
       });
       return out;
     });
