@@ -172,6 +172,12 @@ export async function fabriquerDepuisBase({
       // à son adresse, avec ses mentions légales (T50).
       '--publication'];
     if (fichierCharte) args.push('--charte', fichierCharte);
+    // L'adresse publique (T51) : celle marquée principale dans `adresses`. Sans
+    // elle, le site se fabrique sans URL canonique ni plan du site, et
+    // `verifier-site` le signale ; il est refait quand l'adresse existe.
+    const adresse = siteExistant?.id
+      ? await sb.lireUne('adresses', { filtres: { site_id: ['eq', siteExistant.id], principale: ['eq', true] } }) : null;
+    if (adresse?.hote) args.push('--adresse', `https://${adresse.hote}/`);
     // Asynchrone : un `spawnSync` gelait la boucle d'événements le temps de la
     // fabrication, et les connexions ouvertes vers Supabase mouraient dessous.
     const r = await lancer(process.execPath, args, { cwd: RACINE });

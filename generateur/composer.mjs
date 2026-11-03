@@ -28,6 +28,7 @@ import { roles as rolesPhotos, manquants as manquantsPhotos } from './main-photo
 import * as matiere from './archetypes/matiere.mjs';
 import * as appel from './sections/appel.mjs';
 import * as mentionsSection from './sections/mentions.mjs';
+import * as referencement from './sections/referencement.mjs';
 import { html as echapper } from './echapper.mjs';
 
 const ici = dirname(fileURLToPath(import.meta.url));
@@ -226,6 +227,11 @@ async function fabriquer(opts) {
   // Un site d abonne (--publication) porte les mentions legales ; une mention
   // obligatoire pour tous qui manque arrete tout. Voir sections/mentions.mjs.
   const abonne = process.argv.includes('--publication');
+  // L adresse publique du site (table adresses) : sans elle, rien d absolu ne
+  // s ecrit (URL canonique, og:url, plan du site). Voir sections/referencement.mjs.
+  let adresse;
+  try { adresse = referencement.adressePublique(opts.adresse); }
+  catch (err) { console.error('Refus : ' + err.message); process.exit(2); }
   const ml = abonne ? mentionsSection.rassembler({ brut, e, tel }) : null;
   if (ml && ml.manque.length) {
     console.error('Refus : mentions légales manquantes pour un site d abonné : ' + ml.manque.join(', '));
@@ -363,13 +369,22 @@ async function fabriquer(opts) {
     style = feuille(p, pal, archetype, ch);
   }
 
+  // Le titre et l en-tete de referencement de chaque page (T51).
+  const titrePage = `${e.nomLisible}, ${base.libelle}${e.commune ? ' à ' + e.commune : ''}`;
+  const teteDe = (fichier, titre) => referencement.tete({ abonne, adresse, fichier, titre, description: t.chapo, e, base, tel });
+  const autrePage = (source, fichier, titre) => source
+    .replace(/<title>[^<]*<\/title>/, `<title>${echapper(titre)}</title>`)
+    .replace(/<!-- referencement -->[\s\S]*?<!-- \/referencement -->/, `<!-- referencement -->\n${teteDe(fichier, titre)}\n<!-- /referencement -->`);
   const html = `<!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${echapper(e.nomLisible)}, ${base.libelle}${e.commune ? ' à ' + echapper(e.commune) : ''}</title>
+<title>${echapper(titrePage)}</title>
 <meta name="description" content="${echapper(t.chapo)}">
+<!-- referencement -->
+${teteDe('index.html', titrePage)}
+<!-- /referencement -->
 <meta name="atelier-generateur" content="composer ${VERSION}, ${echapper(e.siren)}, ${new Date().toISOString().slice(0, 10)}">
 <meta name="atelier-images" content="${illustration ? 'illustration' : 'entreprise'}">
 <meta name="atelier-regime" content="${abonne ? 'abonne' : 'prospection'}">
@@ -832,8 +847,7 @@ ${corps}
   if (archetype === 'matiere' && ch.structure.page2 && matiere.corpsTravail) {
     const corps2 = matiere.corpsTravail({ e, t, im, img, p, base, illustration, tel, ap,
       mot: motGeant(ch, base, e) });
-    const html2 = html
-      .replace(/<title>[^<]*<\/title>/, `<title>${echapper(e.nomLisible)}, le travail en détail</title>`)
+    const html2 = autrePage(html, 'le-travail.html', `${e.nomLisible}, le travail en détail`)
       .replace(/<main id="principal">[\s\S]*?<\/main>/, `<main id="principal">\n${corps2}\n</main>`)
       .replace(/<div class="entree"[\s\S]*?<\/div>\n/, '');
     writeFileSync(join(opts.sortie, 'le-travail.html'), comparateurVariante.appliquer(html2, ch.comparateur), 'utf8');
@@ -841,12 +855,20 @@ ${corps}
   // La page des mentions legales : la meme enveloppe, un autre contenu. Un
   // dossier reutilise par un site de prospection perd l ancienne page.
   if (ml) {
-    const htmlMl = html
-      .replace(/<title>[^<]*<\/title>/, `<title>${echapper(e.nomLisible)}, ${mentionsSection.TITRE}</title>`)
+    const htmlMl = autrePage(html, 'mentions-legales.html', `${e.nomLisible}, ${mentionsSection.TITRE}`)
       .replace(/<main id="principal">[\s\S]*?<\/main>/, `<main id="principal">\n${mentionsSection.page({ lignes: ml.lignes, e, barre: appel.barre({ e, tel, ap }) })}\n</main>`)
       .replace(/<div class="entree"[\s\S]*?<\/div>\n/, '');
     writeFileSync(join(opts.sortie, 'mentions-legales.html'), htmlMl, 'utf8');
   } else if (existsSync(join(opts.sortie, 'mentions-legales.html'))) rmSync(join(opts.sortie, 'mentions-legales.html'));
+  // Referencement (T51) : image de partage, icones ; robots.txt et plan du
+  // site pour un abonne seulement. Un dossier reutilise perd ceux de l autre regime.
+  await referencement.imagePartage(sources[table.hero], opts.sortie);
+  const clair = (hex) => { const n = parseInt(hex.slice(1), 16); return ((n >> 16) * 299 + ((n >> 8) & 255) * 587 + (n & 255) * 114) / 1000 > 150; };
+  await referencement.icones({ sortie: opts.sortie, initiale: (e.nomLisible || e.denomination || '?').trim()[0],
+    fond: pal.accent, encre: clair(pal.accent) ? '#111111' : '#ffffff' });
+  const pagesSite = ['index.html', 'le-travail.html', 'mentions-legales.html'].filter(f => existsSync(join(opts.sortie, f)));
+  if (abonne) referencement.fichiersSite({ sortie: opts.sortie, adresse, pages: pagesSite, jour: new Date().toISOString().slice(0, 10) });
+  else for (const f of ['robots.txt', 'sitemap.xml']) if (existsSync(join(opts.sortie, f))) rmSync(join(opts.sortie, f));
   writeFileSync(join(opts.sortie, 'donnees.json'), JSON.stringify({
     entreprise: e, metier: opts.metier, archetype, palette: pal,
     titre: t.titre,
@@ -854,7 +876,7 @@ ${corps}
       polices: ch.polices.cle, geometrie: ch.geo.cle, mot: ch.mot,
       structure: ch.structure, teintes: ch.teintes, comparateur: ch.comparateur, appel: ap },
     telephone: tel ? tel.lisible : null,
-    regime: abonne ? 'abonne' : 'prospection',
+    regime: abonne ? 'abonne' : 'prospection', adresse,
     mentions: ml ? ml.lignes.map(l => ({ ml: l.ml, titre: l.titre, renseigne: !l.vide })) : null,
     main, photos: table, phrases: phrasesTextes(t, { archetype, prix: ch.structure.prix }),
     intitules: intitulesTextes(t, { archetype, prix: ch.structure.prix }),
@@ -883,4 +905,5 @@ fabriquer({
   donnees: arg('donnees'),
   registre: arg('registre'),
   charte: arg('charte'),
+  adresse: arg('adresse'),
 });

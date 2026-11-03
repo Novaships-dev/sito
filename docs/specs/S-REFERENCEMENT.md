@@ -79,6 +79,21 @@ signalera ce qui contredit le site : nom, adresse, téléphone, activité.
 Règle : **le site et la fiche disent la même chose** ; une différence est
 montrée à l'artisan, jamais corrigée sans lui.
 
+## 5 bis. Ce qui a été fait (T51, 3 nov. 2026)
+
+| Pièce | Fichier |
+|---|---|
+| En-tête de chaque page, JSON-LD, icônes, image de partage, `robots.txt`, `sitemap.xml` | `generateur/sections/referencement.mjs`, appelé par `generateur/composer.mjs` |
+| Type schema.org par métier | champ `schemaType` de `generateur/metiers/*.json` (couverture : `RoofingContractor`, peinture : `HousePainter`, ravalement : `HomeAndConstructionBusiness`, schema.org n'ayant pas de type façadier) |
+| Adresse publique | `--adresse https://hote/` ; `atelier/fabriquer.mjs` la lit dans `adresses` (ligne principale du site) |
+| Contrôles | `scripts/verifier-site.mjs` : R-REGIME, R-OG, R-JSONLD, R-SITE (bloquants), R-ADRESSE et R-TITRE (avertissements) |
+| Essai | `scripts/essai-referencement.mjs` et son `--contre-essai`, dans `scripts/essais.mjs` |
+
+Pas encore faits, écrits dans `docs/DETTE.md` (D-13, D-14) : horaires,
+`priceRange`, redirection RS3, et la pose de l'adresse avant la première
+fabrication. Le régime de prospection porte maintenant aussi la balise
+`noindex` dans la page, en plus de l'en-tête `X-Robots-Tag` de la publication.
+
 ## 6. Preuve attendue (T51)
 
 `scripts/verifier-site.mjs` gagne trois contrôles, chacun essayé sur une copie

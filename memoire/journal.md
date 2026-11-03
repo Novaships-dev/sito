@@ -1664,3 +1664,18 @@ est déjà corrigé ici ; le reste de T54 (note « Photographies d'exemple », t
 alternatif « Exemple, ») reste à faire. `essai-fabrication-base` et
 `essai-boucle` ont des profils complets (sinon refus, à raison).
 TRACAGE : generateur/sections/mentions.mjs, generateur/composer.mjs, generateur/archetypes/matiere.mjs, generateur/LISEZMOI.md, atelier/fabriquer.mjs, scripts/verifier-site.mjs, scripts/essai-mentions.mjs, scripts/essais.mjs, scripts/essai-fabrication-base.mjs, scripts/essai-boucle.mjs, supabase/migrations/20261103143933_mentions_legales.sql, supabase/essais/droits-app.sql, supabase/README.md, app/src/ecrans/Compte.tsx, app/src/types.ts, app/src/donnees/supabase.ts, app/src/donnees/demo.ts, app/specs/05-SCHEMA-BACKEND.md, app/specs/07-TACHES.md, docs/specs/S-MENTIONS.md, docs/SOURCE-UNIQUE.md, docs/audit/REGISTRE.md (S-004 clos), docs/audit/CARTE.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md
+
+## 3 nov. 2026 — T51 (référencement), par Cowork
+
+Plan : 1. `generateur/sections/referencement.mjs` (en-tête par régime, JSON-LD,
+icônes, image de partage, robots.txt, plan du site) et `--adresse` ; 2. contrôles
+R-REGIME, R-OG, R-JSONLD, R-SITE de `verifier-site` ; 3. `essai-referencement.mjs`.
+
+Résultat : 94 contrôles, 0 faute, quatre archétypes ; 10 copies cassées
+attrapées ; contre-essai 14 fautes. `schemaType` ajouté aux trois fichiers
+métier. `atelier/fabriquer.mjs` lit l'adresse principale dans `adresses` ;
+`essai-fabrication-base` la pose avant la deuxième fabrication (14 contrôles),
+`essai-boucle` a une table `adresses` vide. Trou trouvé : rien ne pose
+`sites` ni l'adresse offerte avant la première fabrication (D-14). Laissés pour
+plus tard, en dette : horaires, `priceRange`, redirection RS3 (D-13).
+TRACAGE : generateur/sections/referencement.mjs, generateur/composer.mjs, generateur/metiers/couverture.json, generateur/metiers/peinture.json, generateur/metiers/ravalement.json, generateur/LISEZMOI.md, atelier/fabriquer.mjs, scripts/verifier-site.mjs, scripts/essai-referencement.mjs, scripts/essais.mjs, scripts/essai-fabrication-base.mjs, scripts/essai-boucle.mjs, docs/specs/S-REFERENCEMENT.md, docs/DETTE.md (D-13, D-14), docs/audit/REGISTRE.md (S-003 clos), docs/audit/CARTE.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md

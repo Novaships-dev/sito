@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 3 nov. | T51 : référencement. Prospection : `noindex` dans la page. Abonné : URL canonique, Open Graph, JSON-LD du métier, `robots.txt` qui autorise, `sitemap.xml` ; icônes et image de partage pour tous ; `--adresse` lue dans `adresses`. Contrôles R-REGIME, R-OG, R-JSONLD, R-SITE dans `verifier-site` ; essai `essai-referencement.mjs`. |
 | 3 nov. | T50 : mentions légales sur chaque site d'abonné (page, lien de pied de page, médiateur près du contact) ; fabrication refusée si une mention obligatoire manque ; contrôle ML de `verifier-site` ; quatre champs de plus dans `profils` (migration appliquée) et dans l'écran « Compte » ; essai `essai-mentions.mjs`. Un site fabriqué depuis la base l'est désormais avec `--publication`. |
 | 3 nov. | T48 : un seul échappement pour le générateur (`generateur/echapper.mjs`, `& < > " '`, plus un échappement JSON pour T51) ; nouvel essai `essai-echappement.mjs` dans la suite, avec son contre-essai. L'ancienne fonction laissait un nom d'entreprise injecter un attribut. |
 | 3 nov. | T47 : la suite d'essais dit « NON LANCÉ » pour l'essai de l'app quand exiftool ou ffmpeg manque, au lieu de planter. |

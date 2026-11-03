@@ -1,6 +1,7 @@
 {
   "nom": "Peinture",
   "libelle": "peinture intérieure",
+  "schemaType": "HousePainter",
   "codesApe": ["43.34Z"],
   "titres": [
     "Une peinture se juge sur la préparation, pas sur la couleur.",

@@ -1,6 +1,7 @@
 {
   "nom": "ravalement",
   "libelle": "ravalement de façade",
+  "schemaType": "HomeAndConstructionBusiness",
   "codesApe": [
     "43.34Z",
     "43.33Z",

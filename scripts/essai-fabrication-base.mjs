@@ -95,6 +95,7 @@ const lignes = {
     { id: 5, siren: SIREN, chantier_id: 'c1', role: 'detail', paire: null, chemin: `${SIREN}/c1/detail.jpg`, etat: 'prete' },
   ],
   sites: [],
+  adresses: [],
 };
 
 const faux = await fauxSupabase({ cle: CLE, base: lignes, objets, cles: { sites: ['siren', 'metier'] } });
@@ -135,6 +136,9 @@ try {
   await poser(`${SIREN}/c2/detail2.jpg`, { r: 50, g: 60, b: 70 });
   lignes.photos.push({ id: 6, siren: SIREN, chantier_id: 'c2', role: 'detail', paire: null, chemin: `${SIREN}/c2/detail2.jpg`, etat: 'prete' });
 
+  // L'adresse offerte posée entre les deux fabrications (T51) : la deuxième
+  // porte l'URL canonique et le plan du site.
+  lignes.adresses.push({ id: 'a1', site_id: site1.id, hote: 'facades-essai.example.fr', genre: 'offerte', principale: true, etat: 'active' });
   dossier2 = mkdtempSync(join(tmpdir(), 'sito-site2-'));
   const r2 = await fabriquerDepuisBase({ sb, siren: SIREN, metier: 'ravalement', sortie: dossier2, registre });
   if (!ok(r2.ok === true, 'deuxième fabrication : réussie', JSON.stringify(r2).slice(0, 300))) throw new Error('fabrication 2 refusée');
@@ -144,6 +148,8 @@ try {
   const site2 = await sb.lireUne('sites', { filtres: { siren: ['eq', SIREN], metier: ['eq', 'ravalement'] } });
   ok(JSON.stringify(site2?.charte) === JSON.stringify(site1?.charte), 'sites.charte jamais réécrite après la création');
 
+  ok(readFileSync(join(dossier2, 'index.html'), 'utf8').includes('<link rel="canonical" href="https://facades-essai.example.fr/">')
+    && existsSync(join(dossier2, 'sitemap.xml')), 'deuxième fabrication : URL canonique et plan du site depuis l adresse principale (T51)');
   const v2 = spawnSync(process.execPath, [join(RACINE, 'scripts', 'verifier-site.mjs'), dossier2], { encoding: 'utf8' });
   ok(v2.status === 0, 'le site de la deuxième fabrication passe aussi verifier-site', (v2.stdout || v2.stderr || '').trim().split('\n').slice(-3).join(' | '));
 

@@ -7,7 +7,7 @@
 // ecrit dans le catalogue. La forme reste libre : voir rules/web/design-interdits.md,
 // section « test d'unicite ».
 
-import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, extname, basename } from 'node:path';
 
 const EXT = new Set(['.html', '.astro', '.jsx', '.tsx', '.vue', '.css', '.liquid']);
@@ -497,6 +497,82 @@ function mentionsLegales(chemin) {
   return c;
 }
 constats.push(...mentionsLegales(cible));
+
+// ---------------------------------------------------------------- referencement
+// R-REGIME, R-OG, R-JSONLD, tache T51 (docs/specs/S-REFERENCEMENT.md). Ne
+// regarde que les pages qui disent leur regime (balise atelier-regime).
+function referencementSite(chemin) {
+  const c = [];
+  const dossier = statSync(chemin).isDirectory() ? chemin : join(chemin, '..');
+  const pages = statSync(chemin).isDirectory() ? readdirSync(chemin).filter(n => n.endsWith('.html')) : [basename(chemin)];
+  const lire = (n) => readFileSync(join(dossier, n), 'utf8');
+  const meta = (t, nom) => (t.match(new RegExp(`<meta (?:name|property)="${nom}" content="([^"]*)"`)) || [])[1];
+  const dire = (num, gravite, fichier, detail, remede) => c.push({ fichier, num, gravite,
+    libelle: { 'R-REGIME': 'regime de referencement', 'R-OG': 'apercu de partage (Open Graph)', 'R-JSONLD': 'donnees structurees',
+      'R-SITE': 'robots.txt et plan du site', 'R-ADRESSE': 'adresse publique', 'R-TITRE': 'titre ou description trop longs' }[num],
+    detail, remede: remede || 'docs/specs/S-REFERENCEMENT.md' });
+  let regimeVu = null, adresseVue = null;
+  for (const n of pages) {
+    const t = lire(n);
+    const regime = meta(t, 'atelier-regime');
+    if (!regime) continue;
+    regimeVu = regime;
+    const adresse = meta(t, 'atelier-adresse');
+    if (adresse && adresse !== 'aucune') adresseVue = adresse;
+    const noindex = /<meta name="robots" content="[^"]*noindex/i.test(t);
+    if (regime === 'abonne' && noindex) dire('R-REGIME', 'bloquant', n, 'site d abonne en noindex : invisible sur Google');
+    if (regime === 'prospection' && !noindex) dire('R-REGIME', 'bloquant', n, 'site de prospection sans noindex : un artisan qui n a rien demande serait expose');
+    for (const p of ['og:title', 'og:description', 'og:image'])
+      if (!meta(t, p)) dire('R-OG', 'bloquant', n, p + ' absent');
+    if (adresse && adresse !== 'aucune' && !meta(t, 'og:url')) dire('R-OG', 'bloquant', n, 'og:url absent alors que l adresse est connue');
+    const img = meta(t, 'og:image');
+    if (img) {
+      const local = adresse && img.startsWith(adresse) ? img.slice(adresse.length) : img;
+      if (/^https?:/.test(local) || !existsSync(join(dossier, local))) dire('R-OG', 'bloquant', n, 'og:image ne pointe aucun fichier du site : ' + img);
+    }
+    if (regime === 'abonne' && meta(t, 'atelier-images') === 'illustration') dire('R-OG', 'bloquant', n, 'image d exemple sur un site d abonne');
+    const blocs = [...t.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => m[1]);
+    if (regime === 'prospection' && blocs.length) dire('R-JSONLD', 'bloquant', n, 'donnees structurees sur un site de prospection');
+    if (regime === 'abonne' && n === 'index.html') {
+      if (blocs.length !== 1) dire('R-JSONLD', 'bloquant', n, blocs.length + ' bloc(s) JSON-LD, 1 attendu');
+      else {
+        let d = null;
+        try { d = JSON.parse(blocs[0]); } catch (e) { dire('R-JSONLD', 'bloquant', n, 'JSON-LD illisible : ' + e.message); }
+        if (d) {
+          const a = d.address || {};
+          if (!d['@type'] || !d.name) dire('R-JSONLD', 'bloquant', n, '@type ou name absent');
+          if (!a.streetAddress || !a.postalCode || !a.addressLocality) dire('R-JSONLD', 'bloquant', n, 'address incomplete (rue, code postal, commune)');
+          if (/"(aggregateRating|review)"/.test(blocs[0])) dire('R-JSONLD', 'bloquant', n, 'note ou avis sur soi-meme : jamais');
+          const decode = (x) => x.replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+          if (d.name && !decode((t.match(/<title>([^<]*)<\/title>/) || [])[1] || '').includes(d.name))
+            dire('R-JSONLD', 'bloquant', n, 'name absent du titre de la page : ' + d.name);
+          if (d.telephone && !t.includes(`href="tel:${d.telephone}"`)) dire('R-JSONLD', 'bloquant', n, 'telephone absent de la page (invente ?) : ' + d.telephone);
+        }
+      }
+    }
+    const titre = (t.match(/<title>([^<]*)<\/title>/) || [])[1] || '';
+    if (titre.length > 70) dire('R-TITRE', 'avertissement', n, `titre de ${titre.length} caracteres (60 conseilles)`);
+    const desc = meta(t, 'description') || '';
+    if (desc.length > 170) dire('R-TITRE', 'avertissement', n, `description de ${desc.length} caracteres (160 conseilles)`);
+  }
+  if (!statSync(chemin).isDirectory() || !regimeVu) return c;
+  const robots = existsSync(join(dossier, 'robots.txt')) ? readFileSync(join(dossier, 'robots.txt'), 'utf8') : null;
+  if (regimeVu === 'abonne') {
+    if (!robots || !/^Allow:\s*\/\s*$/m.test(robots) || /^Disallow:\s*\/\s*$/m.test(robots)) dire('R-SITE', 'bloquant', 'robots.txt', 'site d abonne : robots.txt absent ou qui interdit');
+    if (!adresseVue) dire('R-ADRESSE', 'avertissement', 'index.html', 'site d abonne sans adresse publique : ni URL canonique ni plan du site ; a refabriquer quand l adresse existe');
+    else {
+      const plan = existsSync(join(dossier, 'sitemap.xml')) ? readFileSync(join(dossier, 'sitemap.xml'), 'utf8') : '';
+      if (!plan) dire('R-SITE', 'bloquant', 'sitemap.xml', 'plan du site absent');
+      for (const n of pages) {
+        const loc = adresseVue + (n === 'index.html' ? '' : n.replace(/\.html$/, ''));
+        if (plan && !plan.includes(`<loc>${loc}</loc>`)) dire('R-SITE', 'bloquant', 'sitemap.xml', 'page absente du plan : ' + loc);
+      }
+      if (robots && !robots.includes(`Sitemap: ${adresseVue}sitemap.xml`)) dire('R-SITE', 'bloquant', 'robots.txt', 'ligne Sitemap absente');
+    }
+  } else if (robots && /^Allow:\s*\/\s*$/m.test(robots)) dire('R-SITE', 'bloquant', 'robots.txt', 'site de prospection : robots.txt qui autorise');
+  return c;
+}
+constats.push(...referencementSite(cible));
 
 // ---------------------------------------------------------------- sortie
 if (process.argv.includes('--json')) {

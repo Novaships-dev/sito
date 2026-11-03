@@ -119,6 +119,7 @@ const lignes = {
   ],
   fabrications: [],
   versions_site: [],
+  adresses: [],
 };
 
 const faux = await fauxSupabase({ cle: CLE, base: lignes, objets, cles: { sites: ['siren', 'metier'] } });
