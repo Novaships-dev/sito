@@ -105,3 +105,12 @@ T45, T46 et la suite ; T52 et T53 après T45. Il suffit de répondre « Q5 oui �
 Cowork ou Claude Code déplace alors la section en tête de la liste.
 **En attendant** : rien n'est déplacé ; l'ordre du tableau reste celui de
 Claude Code.
+
+## Q5 (répondue), 3 novembre 2026
+
+Fabrice : « oui Q5 ». Appliqué par Cowork le jour même : section « Rattrapage
+de l'audit » placée juste après « Rangement et machine » (T47, T48, T50, T51,
+T49) ; T52 et T53 dans une section à part, après T45 et T46. Ordre de prise
+vérifié avec `eligibles()` de `.claude/hooks/commun.mjs` : T47, puis T48 ;
+T50 et T51 (qui dépendent de T48) et T49 (qui dépend de T47) passent ensuite
+avant T45, puisqu'elles sont plus haut dans le tableau.
