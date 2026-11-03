@@ -1696,3 +1696,16 @@ dessus (attente de Playwright) au lieu d'un constat. Corrigé : le corps de
 l'atmosphère ne se tasse plus sur grand écran ; le clic recouvert devient le
 constat O5 (l'ancien site le montre, avec O15). La page des mentions légales a
 maintenant le bouton d'appel en haut et un titre de 40 px.
+
+Résultat (T49) : CI verte avec WebKit au septième passage (commit `36077de`) :
+sites 17 contrôles, app 132 contrôles, 0 faute ; Chromium sur les mêmes sites,
+0 faute. Ce que WebKit a montré, et que Chromium cachait : 16 images de la
+deuxième paire citées et absentes (cause réelle des cadres de 28 px ; l'AVIF
+était une fausse piste, le WebP est proposé quand même) ; débordement de 18 px
+d'elevation à 360 px ; une photo « ajoutée à l'envoi » qui ne partait jamais
+(la file ne lisait pas sa réserve en mémoire) ; le lien d'inscription qui
+ouvrait la connexion. Nouveau contrôle R-FICHIER. M7 à M9 non essayés sous
+WebKit (CDP), dit dans le rapport. Constat S-025 ouvert (deuxième page, M2).
+Installer WebKit (et exiftool par npm) sur la machine de Cowork : refusé par le
+mode auto ; toute la preuve WebKit vient de la CI.
+TRACAGE : scripts/verifier-mobile.mjs, scripts/verifier-ordinateur.mjs, scripts/verifier-site.mjs, scripts/essai-app.mjs, scripts/essai-navigateurs.mjs, scripts/essais.mjs, .github/workflows/essais.yml, generateur/composer.mjs, generateur/style.mjs, generateur/sections/atmosphere.mjs, generateur/sections/mentions.mjs, generateur/archetypes/matiere.mjs, app/src/photo.ts, app/src/attente.ts, app/src/App.tsx, app/specs/07-TACHES.md, docs/audit/REGISTRE.md (S-007 clos, S-025), docs/audit/CARTE.md, CLAUDE.md (§4), CHANGELOG.md, memoire/pieges.md, memoire/maintenant.md, memoire/journal.md, memoire/de-cowork.md

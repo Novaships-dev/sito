@@ -146,7 +146,8 @@ bloquer la tâche.
 | `node scripts/ci-github.mjs --ecrire` | l'état de la CI GitHub, ajouté à `derniers.txt` (après `essais.mjs`) |
 | `cd app && npm run dev` | l'app en local (http://localhost:5173), `?demo` pour la démonstration |
 | `cd app && npm run build` | types stricts et construction de l'app |
-| `node scripts/essai-app.mjs` | l'app dans un navigateur, 3 appareils |
+| `node scripts/essai-app.mjs` | l'app dans un navigateur, 3 appareils (`--navigateur webkit` : Safari) |
+| `node scripts/essai-navigateurs.mjs` | un site d'abonné par archétype, rendu téléphone et ordinateur (`--navigateur webkit` : Safari) |
 | `node scripts/verifier-depot.mjs .` | rien ne manque au dépôt |
 | `node scripts/verifier-secrets.mjs .` | aucun secret dans ce qui part sur GitHub |
 | `node scripts/verifier-textes.mjs .` | règles de rédaction (sites et textes de l'app) |
