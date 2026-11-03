@@ -22,6 +22,10 @@ function useRoute(): string[] {
   useEffect(() => {
     const f = () => { setR(lire()); window.scrollTo(0, 0); document.getElementById('contenu')?.focus({ preventScroll: true }); };
     addEventListener('hashchange', f);
+    // L'adresse a pu changer entre le premier rendu et cet abonnement (WebKit
+    // pose le « #/inscription/… » après le chargement : le lien d'inscription
+    // ouvrait la connexion, T49, 3 nov. 2026). On la relit une fois.
+    setR(lire());
     return () => removeEventListener('hashchange', f);
   }, []);
   return r;
