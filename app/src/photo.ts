@@ -130,18 +130,39 @@ function avecType(f: File, format: string): Blob {
 
 const mo = (o: number) => `${Math.round(o / 1024 / 1024)} Mo`;
 
-async function reencoder(fichier: Blob): Promise<{ blob: Blob; largeur: number; hauteur: number } | null> {
-  let image: ImageBitmap;
+// L'image décodée, redressée selon son EXIF. D'abord createImageBitmap avec
+// l'option d'orientation ; si le navigateur la refuse (WebKit, essai de T49,
+// 3 nov. 2026 : la photo d'un iPhone n'était jamais envoyée), une balise <img>,
+// que Safari, Chrome et Firefox redressent d'eux-mêmes (image-orientation:
+// from-image, valeur par défaut). Rend null si rien ne la lit.
+type Decodee = { largeur: number; hauteur: number; dessiner: (ctx: CanvasRenderingContext2D, l: number, h: number) => void; fermer: () => void };
+async function decoder(fichier: Blob): Promise<Decodee | null> {
   try {
-    image = await createImageBitmap(fichier, { imageOrientation: 'from-image' });
+    const b = await createImageBitmap(fichier, { imageOrientation: 'from-image' });
+    return { largeur: b.width, hauteur: b.height, dessiner: (ctx, l, h) => ctx.drawImage(b, 0, 0, l, h), fermer: () => b.close() };
+  } catch { /* option refusée ou format non lu : on essaie une balise <img> */ }
+  const url = URL.createObjectURL(fichier);
+  try {
+    const im = new Image();
+    im.decoding = 'async';
+    im.src = url;
+    await im.decode();
+    return { largeur: im.naturalWidth, hauteur: im.naturalHeight, dessiner: (ctx, l, h) => ctx.drawImage(im, 0, 0, l, h),
+      fermer: () => URL.revokeObjectURL(url) };
   } catch {
+    URL.revokeObjectURL(url);
     return null; // HEIC hors Safari, image abîmée…
   }
+}
+
+async function reencoder(fichier: Blob): Promise<{ blob: Blob; largeur: number; hauteur: number } | null> {
+  const image = await decoder(fichier);
+  if (!image) return null;
   try {
-    if (image.width < 1 || image.height < 1) return null;
-    const echelle = Math.min(1, COTE_MAX / Math.max(image.width, image.height));
-    const largeur = Math.max(1, Math.round(image.width * echelle));
-    const hauteur = Math.max(1, Math.round(image.height * echelle));
+    if (image.largeur < 1 || image.hauteur < 1) return null;
+    const echelle = Math.min(1, COTE_MAX / Math.max(image.largeur, image.hauteur));
+    const largeur = Math.max(1, Math.round(image.largeur * echelle));
+    const hauteur = Math.max(1, Math.round(image.hauteur * echelle));
     const toile = document.createElement('canvas');
     toile.width = largeur; toile.height = hauteur;
     const ctx = toile.getContext('2d');
@@ -150,12 +171,12 @@ async function reencoder(fichier: Blob): Promise<{ blob: Blob; largeur: number; 
     ctx.fillRect(0, 0, largeur, hauteur);
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';
-    ctx.drawImage(image, 0, 0, largeur, hauteur);
+    image.dessiner(ctx, largeur, hauteur);
     const blob = await new Promise<Blob | null>((ok) => toile.toBlob(ok, 'image/jpeg', QUALITE));
     toile.width = toile.height = 0; // libère la mémoire tout de suite (iPhone)
     return blob && blob.size > 0 ? { blob, largeur, hauteur } : null;
   } finally {
-    image.close();
+    image.fermer();
   }
 }
 
