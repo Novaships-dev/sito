@@ -7,12 +7,21 @@
 //     appareil). Moins lourd à envoyer sur un chantier en 4G.
 //     Décision du 9 octobre : le fichier d'origine en pleine résolution part
 //     ensuite (photos.chemin_source) ; le site se met à jour avec la version
-//     réduite sans l'attendre.
-//   - Ce qu'il ne sait pas lire (RAW, DNG, HEIC hors iPhone, TIFF) part tel
-//     quel ; le service le convertit (atelier/photos.mjs).
+//     réduite sans l'attendre. T44 (pas de serveur, 29 octobre) : l'original
+//     part lui aussi sans métadonnées (nettoyer.ts), et seulement pour JPEG
+//     et PNG, qu'on sait nettoyer sans toucher à l'image.
+//   - RAW, DNG, TIFF : l'aperçu JPEG rangé dedans par l'appareil part à la
+//     place (apercu-brut.ts), préparé comme une photo.
+//   - Ce qui ne se lit pas (HEIC hors iPhone, RAW sans aperçu) ne part
+//     pas : aucun serveur ne le convertirait, et il porterait sa position
+//     GPS. L'artisan lit pourquoi et comment l'envoyer ; la photo reste sur
+//     son téléphone.
 //   - Une vidéo part telle quelle, rangée avec les vidéos.
 //   - Le reste (PDF, document…) est refusé avec une phrase claire.
 // La nature du fichier se lit dans ses premiers octets, pas dans son nom.
+
+import { sansMetadonnees } from './nettoyer';
+import { apercuIntegre } from './apercu-brut';
 
 export const COTE_MAX = 3200;
 export const QUALITE = 0.88;
@@ -75,6 +84,13 @@ const TYPES: Record<string, string> = {
   mov: 'video/quicktime', mp4: 'video/mp4', webm: 'video/webm', '3gp': 'video/3gpp',
 };
 
+// Ce qui ne se lit pas sur ce téléphone : dit, avec le moyen de l'envoyer quand même.
+function illisible(format: string): string {
+  const f = format.toUpperCase();
+  if (format === 'heic') return 'Ce téléphone ne sait pas lire les photos HEIC. Elle reste sur votre téléphone, rien n’est perdu : sur iPhone, Réglages > Appareil photo > Formats > « Le plus compatible », ou envoyez-la depuis l’iPhone.';
+  return `Ce téléphone ne sait pas lire les photos ${f}. Elle reste sur votre appareil, rien n’est perdu : envoyez sa version JPEG.`;
+}
+
 export async function preparer(fichier: File): Promise<Preparee> {
   if (fichier.size === 0) return { genre: 'refuse', raison: 'Fichier vide.' };
   const tete = new Uint8Array(await fichier.slice(0, 64).arrayBuffer());
@@ -88,13 +104,21 @@ export async function preparer(fichier: File): Promise<Preparee> {
 
   if (nature.genre === 'image' && nature.lisible) {
     const jpeg = await reencoder(fichier);
-    // L'original suit s'il tient dans la limite du stockage ; sinon la version réduite suffit.
-    const original = fichier.size <= POIDS_MAX ? avecType(fichier, nature.format) : undefined;
-    if (jpeg) return { genre: 'photo', fichier: jpeg.blob, format: nature.format, prepareeIci: true, largeur: jpeg.largeur, hauteur: jpeg.hauteur, original };
+    if (jpeg) {
+      // L'original suit, sans métadonnées, s'il tient dans la limite du stockage ;
+      // sinon, ou s'il ne se nettoie pas, la version réduite suffit.
+      const nettoye = fichier.size <= POIDS_MAX ? await sansMetadonnees(fichier, nature.format) : null;
+      const original = nettoye ? avecType(new File([nettoye], fichier.name), nature.format) : undefined;
+      return { genre: 'photo', fichier: jpeg.blob, format: nature.format, prepareeIci: true, largeur: jpeg.largeur, hauteur: jpeg.hauteur, original };
+    }
   }
-  // Non décodable ici : part tel quel, le service s'en charge.
-  if (fichier.size > POIDS_MAX) return { genre: 'refuse', raison: `Photo trop lourde (${mo(fichier.size)}). Maximum ${mo(POIDS_MAX)} pour l’instant.` };
-  return { genre: 'photo', fichier: avecType(fichier, nature.format), format: nature.format, prepareeIci: false };
+  // RAW, DNG, TIFF : l'aperçu JPEG que l'appareil a rangé dedans, s'il y en a un.
+  if (nature.genre === 'brut' && fichier.size <= POIDS_MAX) {
+    const apercu = await apercuIntegre(fichier);
+    const jpeg = apercu ? await reencoder(apercu) : null;
+    if (jpeg) return { genre: 'photo', fichier: jpeg.blob, format: nature.format, prepareeIci: true, largeur: jpeg.largeur, hauteur: jpeg.hauteur };
+  }
+  return { genre: 'refuse', raison: illisible(nature.format) };
 }
 
 function avecType(f: File, format: string): Blob {

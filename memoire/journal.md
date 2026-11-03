@@ -1584,3 +1584,28 @@ Séance du 29 oct. (soir) : T42 (`ae27a7d`, `0fdb906`), T43 (`1077659`,
 `90c1f51`), commits Cowork `36211e8`, `73dfb14`. CI verte sur `90c1f51`.
 Audit du 3 nov. : 6 copies d'essai oubliées effacées, 0 doublon, 0 mort ;
 1,5 Go libres. Suite complète verte. Suivante : T44.
+
+## 3 nov. 2026 — T44 (photos préparées dans l'app)
+
+Plan : 1) l'original part sans métadonnées, sans perte (`nettoyer.ts`) ;
+2) RAW/DNG : l'aperçu JPEG intégré (`apercu-brut.ts`) ; illisible : pas
+envoyé, dit à l'artisan ; 3) essais (pixels, exiftool), contre-essai, specs.
+
+- Ce qui existait : réduction 3 200 px, redressement, JPEG sans métadonnées.
+  Ce qui fuyait : l'original (décision du 9 oct.) partait avec son GPS, et un
+  DNG ou un HEIC illisible partait tel quel, avec le sien, vers un service de
+  conversion qui n'existe plus (pas de serveur, 29 oct.).
+- Décision du 3 oct. « tout doit être accepté » contre « pas de serveur » :
+  un RAW porte presque toujours un aperçu JPEG de l'appareil ; c'est lui qui
+  part. Seul ce qui n'a ni aperçu ni décodeur (HEIC hors iPhone) est refusé,
+  avec le moyen de l'envoyer quand même.
+- Originaux : seulement JPEG et PNG (nettoyables sans toucher à l'image) ;
+  WebP, GIF, AVIF, HEIC sur iPhone : la version réduite suffit.
+- Premier passage rouge : l'aperçu d'essai, tout uni, pesait 18 Ko, sous un
+  seuil de 32 Ko. Un aperçu se juge à ses pixels une fois décodé (1 000 px au
+  moins), pas à son poids. Et la fin d'un JPEG se lit (FFD9 après l'image) au
+  lieu de « jusqu'au JPEG suivant », qui aurait coupé un aperçu à sa vignette.
+- Vidéos : leur position GPS reste dedans (iPhone, Android). Hors du sujet de
+  T44 (photos) ; T46 ajoutée.
+Preuve : `essai-app` 132/0 ; contre-essai 3/3 (une cassure d'abord non
+posée par un sed mal échappé, reposée et attrapée).

@@ -38,7 +38,7 @@ Téléphone ou ordinateur ──► App Sitô (React, PWA)          app/
 | Base | données, droits, photos d'origine | `supabase/` | Fait, prouvé (`supabase/essais/droits*.sql`) |
 | Générateur | fabrique un site unique | `generateur/` | Fait, prouvé (5 vérificateurs) |
 | Préparation des photos (service) | toute photo → JPEG sRGB propre | `atelier/photos.mjs` | Fait, prouvé (`essai-photos`, fichiers fabriqués) |
-| Conversion HEIC (service) | par les transformations d'images Supabase | `atelier/heic.mjs` | Fait, non prouvé (offre Pro requise) |
+| Conversion HEIC (service) | par les transformations d'images Supabase | `atelier/heic.mjs` | **Plus utilisée** (T44, 29 oct.) : l'app n'envoie que du JPEG ; un HEIC illisible sur le téléphone n'est pas envoyé |
 | Publication par versions | écrire à côté, basculer, garder 2 versions | `atelier/publier.mjs` | Fait, prouvé (`essai-publication`, R2/KV simulés) |
 | Worker | sert tous les sites selon l'hôte | `worker/routeur.js` | Fait, prouvé (même essai) ; jamais déployé |
 | Service HTTP | relie app, base, générateur, publication | `atelier/serveur.mjs` | À faire |
@@ -62,7 +62,7 @@ Téléphone ou ordinateur ──► App Sitô (React, PWA)          app/
 | tus-js-client | ^4.3.1 | idem |
 | sharp | ^0.34 | service, essais |
 | Playwright | ^1.63 | essais en navigateur |
-| exiftool, ffmpeg | paquets système | service, essais |
+| exiftool, ffmpeg | paquets système | **essais seulement** (fabriquer et relire les fichiers d'essai) ; plus aucun serveur n'en a besoin depuis T44 |
 | Supabase | projet `sito`, réf. `magxzrpboyrzguuocjgj`, eu-west-3 (Paris), offre gratuite → Pro au premier client | — |
 | Cloudflare | zone Sitô, Workers payant, R2, KV, Cloudflare for SaaS | à ouvrir |
 
@@ -78,6 +78,8 @@ Pas de cadriciel CSS : une feuille `app/src/style.css` avec des variables
 | `src/donnees/demo.ts` | implémentation en mémoire ; garde les fichiers « envoyés » dans `window.__sitoDemo` pour les essais |
 | `src/donnees/index.ts` | choix : Supabase si `VITE_SUPABASE_URL` et `VITE_SUPABASE_CLE_PUBLIQUE`, sinon démonstration ; `?demo` force la démonstration ; mode Android (`?source=android`, mémorisé) |
 | `src/photo.ts` | reconnaissance par les premiers octets, préparation sur l'appareil |
+| `src/nettoyer.ts` | l'original sans métadonnées, sans perte (JPEG : segments Exif, XMP, IPTC, commentaires retirés, orientation gardée ; PNG : eXIf, tEXt, zTXt, iTXt, tIME retirés) |
+| `src/apercu-brut.ts` | l'aperçu JPEG rangé dans un RAW (DNG, NEF, CR2…), le plus grand, avec l'orientation du RAW |
 | `src/attente.ts` | file d'envoi dans IndexedDB (base `sito-envois`, ou `sito-envois-demo`) |
 | `src/jour.ts` | jour de Paris, sommes par jour, dates en français |
 | `src/ui.tsx` | contexte, chargement, actions, composants communs |
@@ -112,14 +114,15 @@ implémentations, puis à l'essai.
 | P1 | La nature d'un fichier se lit dans ses **premiers octets**, jamais dans son nom | `photo.ts`, `atelier/photos.mjs` | Fait, prouvé |
 | P2 | Champ d'envoi : `image/*,video/*` + extensions RAW, HEIC, TIFF, vidéo ; sélection multiple pour « autres photos » | `Chantiers.tsx` | Fait |
 | P3 | Lisible par le navigateur → redressé, 3 200 px au plus, JPEG qualité 0,88, fond blanc sous la transparence, **aucune métadonnée** | `photo.ts` | Fait, prouvé (pixels, exiftool) |
-| P4 | Illisible ici (RAW, DNG, TIFF, HEIC hors Safari) → envoyé **octet pour octet** | `photo.ts` | Fait, prouvé (empreinte SHA-256) |
+| P4 | RAW, DNG, TIFF → l'aperçu JPEG qu'il contient (1 000 px au moins sur le grand côté) part, préparé comme P3 ; **illisible ici** (HEIC hors Safari, RAW sans aperçu) → **pas envoyé** : l'artisan lit pourquoi, que la photo reste sur son téléphone, et comment l'envoyer (décision du 29 oct. : pas de serveur pour convertir ; et le fichier porterait sa position GPS) | `photo.ts`, `apercu-brut.ts` | Fait, prouvé (T44, `essai-app`) |
 | P5 | Vidéo → table `videos`, jamais une case avant/après | `photo.ts`, `Chantiers.tsx` | Fait, prouvé |
 | P6 | Ni photo ni vidéo (PDF…) → refus avec une phrase qui nomme le fichier ; les autres du lot passent | idem | Fait, prouvé |
 | P7 | 50 Mo au plus par fichier (limite actuelle de l'espace `photos-chantiers`) ; 150 Mo proposés en offre Pro | `photo.ts` `POIDS_MAX`, base | Fait ; passage à 150 Mo à faire |
 | P8 | Envoi reprenable : TUS, morceaux de **6 Mo exactement** (imposé par Supabase), reprise par empreinte | `supabase.ts` | Fait, non prouvé contre Supabase |
 | P9 | Chemin de stockage `<siren>/<chantier>/<uuid>.<ext>` ; l'extension suit le fichier envoyé (`.jpg` si réencodé), `format_origine` garde le format d'appareil | `supabase.ts` | Fait, non prouvé |
 | P10 | Le service rend la photo `prete` (image propre dans `chemin`) ou `illisible` (avec `motif`) ; l'app ne peut écrire ni l'un ni l'autre | base (droits par colonne) | Base faite, prouvée ; service à faire |
-| P11 | L'original en pleine résolution suit la version réduite, même clé ; posé dans `photos.chemin_source` ; pas d'original pour un fichier déjà envoyé tel quel ni au-delà de 50 Mo | décision du 9 oct. | Fait, prouvé (`essai-app`, `droits-app.sql`) |
+| P11 | L'original en pleine résolution suit la version réduite, même clé ; posé dans `photos.chemin_source`. Depuis T44 il part **sans métadonnées** (ni GPS, ni appareil, ni texte), mêmes pixels, orientation gardée ; seulement pour JPEG et PNG (les seuls qu'on sait nettoyer sans toucher à l'image) ; pas d'original pour un RAW ni au-delà de 50 Mo | décision du 9 oct. ; T44 | Fait, prouvé (`essai-app` : pixels identiques, exiftool) |
+| P12 | Vidéos : envoyées telles quelles, **avec leur position GPS** (iPhone et Android l'écrivent dans le fichier) ; stockage privé, jamais publiées | T46 | À faire |
 | P12 | Les originaux sont recopiés dans R2 (Supabase ne sauvegarde pas le stockage) | plan 5.3 | À faire |
 | P13 | Safari et `createImageBitmap(…, { imageOrientation: 'from-image' })` : la valeur `'none'` est ignorée par Chromium | `memoire/pieges.md` | noté |
 
@@ -148,7 +151,7 @@ implémentations, puis à l'essai.
 | Supabase Edge Functions | `inscription` : lire un lien, créer le compte, poser un nouveau mot de passe | offre gratuite : 500 000 appels par mois ; déployée par l'outil MCP, `verify_jwt` faux (le jeton du lien fait office de clé) | Fait (T43) |
 | Serveur d'e-mail (Brevo ou équivalent) | plus nécessaire pour se connecter ; seulement si un jour l'app écrit à l'artisan | prix à relever | Plus utile pour la connexion |
 | Supabase Storage | photos et vidéos d'origine, TUS | 50 Mo par fichier en gratuit ; pas dans les sauvegardes | Fait |
-| Supabase transformations d'images | HEIC → JPEG | offre Pro | Fait, non prouvé |
+| Supabase transformations d'images | HEIC → JPEG | offre Pro | Plus utilisée (T44) |
 | Cloudflare Workers + KV + R2 | servir tous les sites | KV : jusqu'à 60 s pour être vu partout ; Pages : 100 projets (non utilisé) | Fait, non déployé |
 | Cloudflare for SaaS | domaines des artisans | 100 inclus, puis 0,10 $/mois ; domaine sans `www` impossible hors Entreprise ; domaine non validé supprimé à 7 jours | À faire |
 | Gandi API v5 | vérifier, acheter (titulaire = artisan), renouveler, code de transfert, redirection `https://domaine.fr → www` | passage revendeur irréversible ; endpoint de redirection à vérifier | À faire |

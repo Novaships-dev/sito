@@ -60,6 +60,18 @@ execFileSync('exiftool', ['-q', '-overwrite_original', '-n', '-Orientation=6', '
 await sharp({ create: { width: 800, height: 600, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } } })
   .composite([{ input: await sharp({ create: { width: 200, height: 200, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 1 } } }).png().toBuffer(), left: 300, top: 200 }])
   .png().toFile(F('capture.png'));
+// La capture porte aussi une position et un texte (blocs eXIf et tEXt du PNG).
+execFileSync('exiftool', ['-q', '-overwrite_original', '-n', '-GPSLatitude=43.2965', '-GPSLatitudeRef=N', '-GPSLongitude=5.3698', '-GPSLongitudeRef=E', '-PNG:Comment=Chantier rue des Essais', F('capture.png')]);
+// DNG avec aperçu : en-tête TIFF (orientation 6) puis l'aperçu JPEG 2000 × 1500
+// rangé par l'appareil, qui porte GPS, marque, et sa propre vignette nichée.
+await sharp({ create: { width: 2000, height: 1500, channels: 3, background: { r: 40, g: 160, b: 60 } } })
+  .composite([{ input: await sharp({ create: { width: 200, height: 150, channels: 3, background: { r: 230, g: 20, b: 20 } } }).png().toBuffer(), left: 0, top: 0 }])
+  .jpeg({ quality: 85 }).toFile(F('apercu.jpg'));
+await sharp({ create: { width: 160, height: 120, channels: 3, background: { r: 250, g: 250, b: 0 } } }).jpeg().toFile(F('vignette.jpg'));
+execFileSync('exiftool', ['-q', '-overwrite_original', '-n', '-GPSLatitude=43.2965', '-GPSLatitudeRef=N', '-GPSLongitude=5.3698', '-GPSLongitudeRef=E', '-Make=Apple', '-Model=iPhone 15 Pro', '-ThumbnailImage<=' + F('vignette.jpg'), F('apercu.jpg')]);
+const enteteTiff = Buffer.from([0x49, 0x49, 0x2a, 0, 8, 0, 0, 0, 1, 0, 0x12, 0x01, 3, 0, 1, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0]);
+const dngApercu = Buffer.concat([enteteTiff, Buffer.alloc(3000, 9), await readFile(F('apercu.jpg')), Buffer.alloc(9000, 5)]);
+await writeFile(F('IMG_0003.DNG'), dngApercu);
 // HEIC (en-tête seul, illisible par Chromium), DNG (en-tête TIFF), PDF, vidéo.
 const heic = Buffer.concat([Buffer.from([0, 0, 0, 0x18]), Buffer.from('ftypheic'), Buffer.from([0, 0, 0, 0]), Buffer.from('mif1heic'), Buffer.alloc(4000, 7)]);
 await writeFile(F('IMG_0001.HEIC'), heic);
@@ -85,6 +97,36 @@ async function controlerJpegPrepare(buf, nom) {
   const rouge = ([r, g, b]) => r > 180 && g < 80 && b < 80;
   r.push(['coin rouge en haut à droite (sens mesuré aux pixels)', rouge(px(info.width - 60, 60)) && !rouge(px(60, 60)), `${px(info.width - 60, 60)} / ${px(60, 60)}`]);
   return r;
+}
+
+// Un original nettoyé : plus de GPS, d'appareil ni de texte, et l'image
+// elle-même intacte (mêmes pixels décodés, même orientation).
+async function controlerOriginal(buf, source, ext, orientation) {
+  const f = F(`original-nettoye.${ext}`); await writeFile(f, buf);
+  const m = exif(f);
+  const r = [];
+  r.push(['aucune position GPS', !aGps(m), Object.keys(m).filter((k) => /GPS/.test(k)).join(', ')]);
+  r.push(['aucun appareil (Make/Model)', !Object.keys(m).some((k) => /:(Make|Model)$/.test(k)), '']);
+  r.push(['aucun commentaire', !Object.keys(m).some((k) => /Comment/i.test(k)), Object.keys(m).filter((k) => /Comment/i.test(k)).join(', ')]);
+  if (orientation) r.push([`orientation gardée (${orientation})`, m['IFD0:Orientation'] === orientation, String(m['IFD0:Orientation'])]);
+  const [a, b] = await Promise.all([sharp(buf).raw().toBuffer(), sharp(source).raw().toBuffer()]);
+  r.push(['mêmes pixels que l’original (aucune perte)', sha(a) === sha(b), `${a.length} / ${b.length}`]);
+  r.push(['plus léger ou égal', buf.length <= source.length, `${buf.length} / ${source.length}`]);
+  return r;
+}
+async function controlerApercu(buf) {
+  const f = F('apercu-envoye.jpg'); await writeFile(f, buf);
+  const meta = await sharp(buf).metadata();
+  const m = exif(f);
+  const { data, info } = await sharp(buf).raw().toBuffer({ resolveWithObject: true });
+  const px = (x, y) => { const i = (y * info.width + x) * info.channels; return [data[i], data[i + 1], data[i + 2]]; };
+  const rouge = ([r, g, b]) => r > 180 && g < 80 && b < 80;
+  return [
+    ['l’aperçu entier, pas la vignette (redressé : 1500 × 2000)', meta.width === 1500 && meta.height === 2000, `${meta.width}×${meta.height}`],
+    ['tourné comme le dit le DNG (coin rouge en haut à droite)', rouge(px(info.width - 40, 40)) && !rouge(px(40, 40)), `${px(info.width - 40, 40)} / ${px(40, 40)}`],
+    ['aucune position GPS', !aGps(m), Object.keys(m).filter((k) => /GPS/.test(k)).join(', ')],
+    ['aucun appareil (Make/Model)', !Object.keys(m).some((k) => /:(Make|Model)$/.test(k)), ''],
+  ];
 }
 
 async function mesurerRendu(page) {
@@ -247,13 +289,15 @@ try {
   ok(e1.buf.length < (await readFile(F('chantier.jpg'))).length * 2, 'poids raisonnable', `${e1.buf.length} octets`);
   // Décision du 9 octobre : l'original en pleine résolution suit, après la version réduite.
   const o1 = await lireEnvoi(page, 1);
-  ok(o1.genre === 'original' && o1.cle === e1.cle && sha(o1.buf) === sha(await readFile(F('chantier.jpg'))), 'l’original suit la photo réduite, octet pour octet, relié par sa clé', `${o1.genre} ${o1.cle === e1.cle}`);
+  ok(o1.genre === 'original' && o1.cle === e1.cle, 'l’original suit la photo réduite, relié par sa clé', `${o1.genre} ${o1.cle === e1.cle}`);
+  for (const [quoi, bon, detail] of await controlerOriginal(o1.buf, await readFile(F('chantier.jpg')), 'jpg', 6)) ok(bon, `original JPEG : ${quoi}`, detail);
 
   await page.getByLabel('Photo après').first().setInputFiles(F('capture.png'));
   ok(await attendreEnvois(page, 4), 'PNG transparent envoyé, puis son original');
   const e2 = await lireEnvoi(page, 2);
   const o2 = await lireEnvoi(page, 3);
-  ok(o2.genre === 'original' && o2.cle === e2.cle && sha(o2.buf) === sha(await readFile(F('capture.png'))), 'original du PNG envoyé intact');
+  ok(o2.genre === 'original' && o2.cle === e2.cle, 'l’original du PNG suit, relié par sa clé');
+  for (const [quoi, bon, detail] of await controlerOriginal(o2.buf, await readFile(F('capture.png')), 'png', null)) ok(bon, `original PNG : ${quoi}`, detail);
   const { data: pxPng, info: iPng } = await sharp(e2.buf).raw().toBuffer({ resolveWithObject: true });
   const coin = [pxPng[0], pxPng[1], pxPng[2]];
   const centre = (() => { const i = (300 * iPng.width + 400) * iPng.channels; return [pxPng[i], pxPng[i + 1], pxPng[i + 2]]; })();
@@ -262,16 +306,19 @@ try {
   await page.waitForTimeout(300);
   ok(await page.locator('.paire').first().locator('img').count() === 2, 'la paire avant / après s’affiche avec ses deux images');
 
-  await page.getByLabel('Ajouter des photos ou vidéos').setInputFiles([F('IMG_0001.HEIC'), F('IMG_0002.DNG'), F('video.mp4'), F('devis.pdf')]);
-  ok(await attendreEnvois(page, 7), 'HEIC, DNG et vidéo envoyés');
+  await page.getByLabel('Ajouter des photos ou vidéos').setInputFiles([F('IMG_0001.HEIC'), F('IMG_0002.DNG'), F('IMG_0003.DNG'), F('video.mp4'), F('devis.pdf')]);
+  ok(await attendreEnvois(page, 6), 'DNG avec aperçu et vidéo envoyés');
   ok(await page.getByText('Un PDF n’est pas une photo').isVisible(), 'PDF refusé avec une phrase claire');
-  const e3 = await lireEnvoi(page, 4), e4 = await lireEnvoi(page, 5), e5 = await lireEnvoi(page, 6);
-  ok(e3.format === 'heic' && sha(e3.buf) === sha(heic) && e3.type === 'image/heic', 'HEIC illisible ici : envoyé tel quel, octet pour octet', `${e3.format} ${e3.type}`);
-  ok(e4.format === 'dng' && sha(e4.buf) === sha(dng) && e4.type === 'image/x-adobe-dng', 'DNG : envoyé tel quel, octet pour octet', `${e4.format} ${e4.type}`);
-  ok(e5.genre === 'video' && e5.format === 'mp4' && sha(e5.buf) === sha(await readFile(F('video.mp4'))), 'vidéo rangée avec les vidéos, intacte', `${e5.genre} ${e5.format}`);
-  ok(await envois(page) === 7, 'le PDF n’est jamais parti, et aucun « original » pour un fichier déjà envoyé tel quel', String(await envois(page)));
-  await page.waitForTimeout(300);
-  ok(await page.getByText('Reçue, en préparation').count() === 2, 'HEIC et DNG affichés « reçue, en préparation »');
+  ok(await page.getByText('IMG_0001.HEIC : Ce téléphone ne sait pas lire les photos HEIC').isVisible(), 'HEIC illisible ici : dit à l’artisan, avec le moyen de l’envoyer');
+  ok(await page.getByText('IMG_0002.DNG : Ce téléphone ne sait pas lire les photos DNG').isVisible(), 'DNG sans aperçu : dit à l’artisan');
+  ok(await page.getByText(/rien n’est perdu/).count() === 2, 'les deux messages disent que la photo reste sur l’appareil');
+  const e3 = await lireEnvoi(page, 4), e4 = await lireEnvoi(page, 5);
+  ok(e3.genre === 'photo' && e3.format === 'dng' && e3.type === 'image/jpeg' && e3.nom === 'IMG_0003.jpg', 'DNG avec aperçu : l’aperçu part, en JPEG', `${e3.genre} ${e3.format} ${e3.type} ${e3.nom}`);
+  for (const [quoi, bon, detail] of await controlerApercu(e3.buf)) ok(bon, `aperçu du DNG : ${quoi}`, detail);
+  ok(e4.genre === 'video' && e4.format === 'mp4' && sha(e4.buf) === sha(await readFile(F('video.mp4'))), 'vidéo rangée avec les vidéos, intacte', `${e4.genre} ${e4.format}`);
+  ok(await envois(page) === 6, 'ni le PDF, ni le HEIC, ni le DNG sans aperçu ne sont partis, et aucun original d’un RAW', String(await envois(page)));
+  const partis = await page.evaluate(() => window.__sitoDemo.envois.map((e) => e.nom));
+  ok(!partis.includes('IMG_0001.HEIC') && !partis.includes('IMG_0002.DNG'), 'aucun fichier illisible envoyé avec sa position', partis.join(', '));
 
   // Avis : la réponse préparée n'est publiée qu'après validation
   await page.goto(`${BASE}?demo#/avis`);
@@ -292,7 +339,7 @@ try {
   const [telechargement] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: 'Télécharger mes données' }).click()]);
   const exporte = JSON.parse(await readFile(await telechargement.path(), 'utf8'));
   ok(exporte.profil.tva_intra === 'FR40123456789' && exporte.profil.telephone === '0698765432', 'l’export contient les réglages enregistrés', `${exporte.profil.tva_intra} ${exporte.profil.telephone}`);
-  ok(exporte.chantiers.some((c) => c.titre === 'Ravalement rue des Essais' && c.photos.length === 4), 'l’export contient le chantier et ses photos');
+  ok(exporte.chantiers.some((c) => c.titre === 'Ravalement rue des Essais' && c.photos.length === 3), 'l’export contient le chantier et ses photos');
   const boutonSuppr = page.getByRole('button', { name: 'Demander la suppression' });
   ok(await boutonSuppr.isDisabled(), 'suppression bloquée tant que SUPPRIMER n’est pas écrit');
   await page.getByLabel('Pour confirmer, écrivez SUPPRIMER').fill('supprimer');

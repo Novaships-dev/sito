@@ -212,10 +212,10 @@ Droits : lire, créer, modifier, supprimer si membre.
 | `role` | text | `avant`, `apres`, `chantier`, `geste`, `detail` | É, modifiable |
 | `paire` | smallint | ≥ 1 ; obligatoire (avec le chantier) pour `avant`/`apres` ; **une seule photo par (chantier, paire, rôle)** | É, modifiable |
 | `origine` | text | `entreprise` (défaut) ou `illustration` ; l'app ne peut écrire que `entreprise` | É |
-| `chemin_original` | text | **unique**, commence par `<siren>/` — le fichier tel que reçu | É |
-| `format_origine` | text | ≤ 24 (`jpeg`, `heic`, `dng`…) ; l'app l'annonce, le service le **corrige** d'après les premiers octets du fichier (le navigateur se trompe : piège du 21 oct.) | É |
+| `chemin_original` | text | **unique**, commence par `<siren>/` — le fichier reçu ; depuis T44 (29 oct.), toujours un JPEG préparé sur le téléphone (redressé, 3 200 px au plus, sans métadonnées) | É |
+| `format_origine` | text | ≤ 24 (`jpeg`, `heic`, `dng`…) — ce que l'appareil avait produit, lu dans les premiers octets par l'app (`photo.ts`) ; pour un DNG, c'est son aperçu JPEG qui a été envoyé | É |
 | `octets` | integer | > 0 — taille du fichier **reçu**, que la préparation ne réécrit pas | É |
-| `chemin_source` | text | **unique**, commence par `<siren>/` — l'original en pleine résolution, arrivé après la version réduite (migration du 9 oct.) | É (modification) |
+| `chemin_source` | text | **unique**, commence par `<siren>/` — l'original en pleine résolution, arrivé après la version réduite (migration du 9 oct.) ; JPEG ou PNG, **sans métadonnées** depuis T44, mêmes pixels | É (modification) |
 | `octets_source` | bigint | > 0 | É (modification) |
 | `chemin` | text | **unique**, commence par `<siren>/` — image propre pour le site | **service seulement** |
 | `largeur`, `hauteur` | integer | > 0 | service |
@@ -226,6 +226,12 @@ Droits : lire, créer, modifier, supprimer si membre.
 Contraintes : `chemin` ou `chemin_original` présent. Droits : l'app insère
 seulement `siren, chantier_id, role, paire, origine, chemin_original,
 format_origine, octets`, et ne modifie que `chantier_id, role, paire, chemin_source, octets_source`.
+
+Sans serveur (décision du 29 oct.) : la photo reçue est déjà propre. Le passage
+`recue` → `prete` (image maîtresse, `chemin`, `largeur`, `hauteur`) reste à
+faire par le workflow de T45 ; il n'a plus besoin d'exiftool ni de ffmpeg
+(un JPEG se lit et se réduit avec sharp). `etat = illisible` ne devrait plus
+arriver : l'app ne fait plus partir ce qu'elle ne sait pas lire.
 
 ### 3.12 `videos` (app)
 
