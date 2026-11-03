@@ -1,4 +1,5 @@
 import { CONTEXTES } from '../charte.mjs';
+import { html as ech } from '../echapper.mjs';
 // Les tarifs de l entreprise, communs aux quatre archetypes.
 //
 // Decision de Fabrice, 2 octobre 2026 : « Ce n est pas le generateur qui
@@ -130,7 +131,7 @@ export function feuille() {
 // section vide, pas de titre orphelin.
 // L estimateur : seulement si le metier dit ce qu on mesure (la surface de
 // facade pour un ravaleur) et si l artisan a au moins un tarif a la surface.
-function estimateur(tf, cfg, ech) {
+function estimateur(tf, cfg) {
   const m = cfg && cfg.mesure;
   if (!m) return '';
   const postes = tf.postes.map(o => ({ ...o, type: nature(o.unite, m.unite) }));
@@ -172,7 +173,7 @@ ${boutons}
   </div>`;
 }
 
-export function bloc({ tarifs: tf, ech, titre, estimation = null }) {
+export function bloc({ tarifs: tf, titre, estimation = null }) {
   if (!tf) return '';
   const fr = (n) => Number(n).toLocaleString('fr-FR');
   const montant = (o) => o.haut !== null && o.haut !== o.bas
@@ -192,6 +193,6 @@ export function bloc({ tarifs: tf, ech, titre, estimation = null }) {
     </tbody>
   </table>
   <p class="note">Tarifs indiqués par l’entreprise.</p>
-  ${estimateur(tf, estimation, ech)}
+  ${estimateur(tf, estimation)}
 </section>`;
 }

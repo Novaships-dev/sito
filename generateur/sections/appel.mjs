@@ -40,7 +40,7 @@ export function telephone(brut) {
   return { lisible: n.replace(/(\d{2})(?=\d)/g, '$1 '), lien: 'tel:+33' + n.slice(1) };
 }
 
-const ech = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+import { html as ech } from '../echapper.mjs';
 
 // Le bouton. Sans numero : un emplacement, pas un lien.
 // `seulNumero` : dans la pastille du haut, le numero seul. Avec le libelle,

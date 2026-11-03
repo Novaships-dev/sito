@@ -1626,3 +1626,20 @@ LANCÉ », 0 faute (3 étapes non lancées, toutes faute d'exiftool). Contre-ess
 quel (il porte le passage complet du PC, 3 nov. 01:42) ; la preuve avec les
 outils est la CI GitHub.
 TRACAGE : scripts/essais.mjs, app/specs/07-TACHES.md, docs/audit/REGISTRE.md (S-005 clos), docs/REGLE-ESSAIS.md, docs/TROUBLESHOOTING.md, CHANGELOG.md, memoire/journal.md
+
+## 3 nov. 2026 — T48 (un seul échappement pour le générateur), par Cowork
+
+Plan : 1. `generateur/echapper.mjs` (`html`, `jsonDansPage`) remplace les trois
+copies et l'échappement passé en paramètre aux sections ; 2. un essai qui
+fabrique des sites porteurs d'une charge et les lit dans Chromium ; 3. contre-
+essai sur une copie du générateur avec l'ancienne fonction.
+
+Résultat : trois copies retirées (`composer.mjs`, `archetypes/matiere.mjs`,
+`sections/appel.mjs`) ; `arrivee`, `atmosphere`, `prix` importent la fonction
+au lieu de la recevoir ; échappés en plus : le texte alternatif des images, le
+`aria-label` des glissières, le SIREN de la balise `atelier-generateur`.
+`essai-echappement.mjs` : 101 contrôles, 0 faute, 10 sites, quatre archétypes.
+Contre-essai : 7 fautes ; l'ancienne fonction laissait un vrai attribut
+`data-injecte` entrer dans la page (4 sites sur 10). Panne en route : un
+U+2028 écrit tel quel dans une regex (piège noté).
+TRACAGE : generateur/echapper.mjs, generateur/composer.mjs, generateur/archetypes/matiere.mjs, generateur/sections/appel.mjs, generateur/sections/arrivee.mjs, generateur/sections/atmosphere.mjs, generateur/sections/prix.mjs, generateur/LISEZMOI.md, scripts/essai-echappement.mjs, scripts/essais.mjs, app/specs/07-TACHES.md, docs/audit/REGISTRE.md (S-006 clos), docs/audit/CARTE.md, CHANGELOG.md, memoire/pieges.md, memoire/journal.md

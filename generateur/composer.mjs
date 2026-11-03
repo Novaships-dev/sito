@@ -27,6 +27,7 @@ import { tirerSite, voisinsDe, departement } from './tirage.mjs';
 import { roles as rolesPhotos, manquants as manquantsPhotos } from './main-photos.mjs';
 import * as matiere from './archetypes/matiere.mjs';
 import * as appel from './sections/appel.mjs';
+import { html as echapper } from './echapper.mjs';
 
 const ici = dirname(fileURLToPath(import.meta.url));
 const arg = (nom, defaut) => {
@@ -59,10 +60,9 @@ const jeu = (role, r, sizes, tailleDefaut) => {
 
 const img = (j, alt, extra = '') =>
   `<img src="${j.src}" srcset="${j.srcset}" sizes="${j.sizes}" width="${j.w}" height="${j.h}" ` +
-  `alt="Exemple, ${alt}" data-exemple="oui"${extra}>`;
+  `alt="Exemple, ${echapper(alt)}" data-exemple="oui"${extra}>`;
 
 // -------------------------------------------------------------- morceaux
-const echapper = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;');
 
 // L atmosphere porte desormais le h1. L ouverture reprend la main juste
 // dessous avec le mot du metier en geant : un seul titre de premier rang par
@@ -107,7 +107,7 @@ function comparateur(id, av, ap, legende, classe, altAv, altAp, aria) {
       ${img(av, altAv, ' draggable="false"')}
       ${img(ap, altAp, ' draggable="false"').replace('<img ', '<img class="apres" ')}
       <span class="etiquette av">Avant</span><span class="etiquette ap">Après</span>
-      <input class="glissiere" type="range" min="0" max="100" value="50" step="1" aria-label="${aria}">
+      <input class="glissiere" type="range" min="0" max="100" value="50" step="1" aria-label="${echapper(aria)}">
       <span class="couture"><span class="prise"></span></span>
       <span class="teint" aria-hidden="true"></span>
       <span class="indice">Glissez ou touchez</span>
@@ -334,16 +334,16 @@ async function fabriquer(opts) {
       comparateurs: comparateurs(p, t, im),
       travail: gestes(t),
       chantier: chantier(t, im),
-      prix: prixSection.bloc({ tarifs: tf, ech: echapper, titre: t.rub.prix, estimation: base.estimateur }),
+      prix: prixSection.bloc({ tarifs: tf, titre: t.rub.prix, estimation: base.estimateur }),
       avis: avisSection.bloc(),
       verifiable: verifiable(t, e, illustration),
       contact: contact(t, e, tel),
     };
     corps = [
-      arrivee.calques({ e, ech: echapper }),
+      arrivee.calques({ e }),
       '<div class="premier-ecran">',
-      arrivee.pastille({ e, ech: echapper, appel: appel.lien({ tel, ap, seulNumero: true }) }),
-      atmosphere.bloc({ e, t, base, im, ech: echapper, comparateur, mot, ans, alt, ch }),
+      arrivee.pastille({ e, appel: appel.lien({ tel, ap, seulNumero: true }) }),
+      atmosphere.bloc({ e, t, base, im, comparateur, mot, ans, alt, ch }),
       '</div>',
       ...ch.structure.ordre.map(k => bloc[k]).filter(Boolean),
       bloc.comparateurs,
@@ -359,7 +359,7 @@ async function fabriquer(opts) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${echapper(e.nomLisible)}, ${base.libelle}${e.commune ? ' à ' + echapper(e.commune) : ''}</title>
 <meta name="description" content="${echapper(t.chapo)}">
-<meta name="atelier-generateur" content="composer ${VERSION}, ${e.siren}, ${new Date().toISOString().slice(0, 10)}">
+<meta name="atelier-generateur" content="composer ${VERSION}, ${echapper(e.siren)}, ${new Date().toISOString().slice(0, 10)}">
 <meta name="atelier-images" content="${illustration ? 'illustration' : 'entreprise'}">
 ${ch.polices.fichiers.map(f => `<link rel="preload" href="polices/${f}" as="font" type="font/woff2" crossorigin>`).join("\n")}
 <style>${style}</style>

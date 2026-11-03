@@ -1,4 +1,5 @@
 import { CONTEXTES } from '../charte.mjs';
+import { html as ech } from '../echapper.mjs';
 // Arrivee sur la page, commune aux quatre archetypes.
 //
 // Quatre choses qui ne dependent d aucune composition : l ecran d entree, la
@@ -127,7 +128,7 @@ body.anime:not(.prete) .scene-1{animation-play-state:paused}
 }
 
 // L ecran d entree et le halo de pointeur : deux calques, aucun contenu.
-export function calques({ e, ech }) {
+export function calques({ e }) {
   return `<div class="entree" id="entree" aria-hidden="true">
   <p class="nom"><span>${ech(e.nomLisible)}</span></p>
   <span class="trait"></span>
@@ -138,7 +139,7 @@ export function calques({ e, ech }) {
 // La pastille d etat. Rien qui ne soit un fait public : nom, commune, annee de
 // creation, SIREN. L heure sur place est calculee par le script.
 // `page2` ajoute le lien vers la seconde page quand l archetype en produit une.
-export function pastille({ e, ech, page2 = null, appel = '' }) {
+export function pastille({ e, page2 = null, appel = '' }) {
   const jeton = (contenu, point) =>
     `<span class="jeton">${point ? '<span class="point"></span>' : ''}${contenu}</span>`;
   const second = (x) => jeton(x).replace('class="jeton"', 'class="jeton second-plan"');

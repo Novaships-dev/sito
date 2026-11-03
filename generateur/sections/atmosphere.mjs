@@ -1,4 +1,5 @@
 import { CONTEXTES } from '../charte.mjs';
+import { html as ech } from '../echapper.mjs';
 // Premier ecran d ambiance, commun aux quatre archetypes.
 //
 // Ce qui manquait a nos pages face aux meilleurs sites : de l air. Une lumiere
@@ -266,7 +267,7 @@ function disposition(v, p) {
 
 // Le bloc. Les teintes viennent du fichier metier : aucune couleur n est
 // inventee ici, et un metier sans nuancier n en recoit pas.
-export function bloc({ e, t, base, im, ech, comparateur, mot, ans, alt, ch }) {
+export function bloc({ e, t, base, im, comparateur, mot, ans, alt, ch }) {
   // Le nuancier ne montre jamais le vivier entier ni dans l ordre du fichier :
   // la teinte d origine reste en tete, les autres tournent avec la graine.
   const vivier = Array.isArray(base.teintes) ? base.teintes : [];

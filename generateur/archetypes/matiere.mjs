@@ -14,6 +14,7 @@ import * as avis from '../sections/avis.mjs';
 import * as comparateurV from '../sections/comparateur.mjs';
 import * as appel from '../sections/appel.mjs';
 import { declarer, CONTEXTES } from '../charte.mjs';
+import { html as ech } from '../echapper.mjs';
 
 export function feuille(p, pal, ch) {
   return `
@@ -297,7 +298,6 @@ ${appel.feuille()}
 }`;
 }
 
-const ech = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;');
 
 export function corps(ctx) {
   const { e, t, im, img, p, mot, fraction, fractionTel, base, illustration, ch, tel, ap, tf } = ctx;
@@ -308,7 +308,7 @@ export function corps(ctx) {
       ${img(av, altAv, ' draggable="false"')}
       ${img(ap, altAp, ' draggable="false"').replace('<img ', '<img class="apres" ')}
       <span class="etiquette av">Avant</span><span class="etiquette ap">Après</span>
-      <input class="glissiere" type="range" min="0" max="100" value="50" step="1" aria-label="${aria}">
+      <input class="glissiere" type="range" min="0" max="100" value="50" step="1" aria-label="${ech(aria)}">
       <span class="couture"><span class="prise"></span></span>
       <span class="teint" aria-hidden="true"></span>
       <span class="indice">Glissez ou touchez</span>
@@ -347,7 +347,7 @@ export function corps(ctx) {
   const page2 = ch.structure.page2 ? { href: 'le-travail.html', texte: 'Le travail en détail' } : null;
   // Le lien « Ce que ça coûte » n existe que si la section prix est sur la page :
   // une ancre vers rien est un bouton mort.
-  const blocPrix = prix.bloc({ tarifs: tf, ech, titre: t.rub.prix, estimation: base.estimateur });
+  const blocPrix = prix.bloc({ tarifs: tf, titre: t.rub.prix, estimation: base.estimateur });
   const prixPresent = ch.structure.ordre.includes('prix') && !!blocPrix;
 
   // Les sections deviennent des pieces nommees : la charte decide
@@ -419,12 +419,12 @@ export function corps(ctx) {
 </section>`,
   };
 
-  return `${arrivee.calques({ e, ech })}
+  return `${arrivee.calques({ e })}
 
 <div class="premier-ecran">
-${arrivee.pastille({ e, ech, page2, appel: appel.lien({ tel, ap, seulNumero: true }) })}
+${arrivee.pastille({ e, page2, appel: appel.lien({ tel, ap, seulNumero: true }) })}
 
-${atmosphere.bloc({ e, t, base, im, ech, comparateur, mot, ans, alt, ch })}
+${atmosphere.bloc({ e, t, base, im, comparateur, mot, ans, alt, ch })}
 </div>
 
 ${ch.structure.ordre.map(k => bloc[k]).filter(Boolean).join('\n\n')}
