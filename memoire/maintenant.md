@@ -7,7 +7,7 @@ change, la phrase fausse disparaît et la juste la remplace
 (`docs/REGLE-TRACABILITE.md`). Réécrit le 3 novembre 2026 par Cowork après
 l'audit du dépôt (`docs/audit/REGISTRE.md`, 24 constats), à partir de l'état
 écrit par Claude Code après T44 (commit `0dd3776`), puis après le lot 2
-(produit) de Cowork, puis après T47, T48, T50, T51 et T49 (Cowork, même jour). Les
+(produit) de Cowork, puis après T47, T48, T50, T51, T49 (Cowork, même jour) et T54 (4 nov.). Les
 chiffres viennent de
 `docs/SOURCE-UNIQUE.md`.
 
@@ -22,13 +22,13 @@ fabrication (D-14), rien d'essayé sur un vrai iPhone (F14). Mentions légales
 
 ## Les tâches
 
-57 tâches : **23 faites, 13 bloquées, 21 à faire** (`app/specs/07-TACHES.md`).
+57 tâches : **24 faites, 13 bloquées, 20 à faire** (`app/specs/07-TACHES.md`).
 T47 à T56 viennent de l'audit du 3 novembre.
 
 **Ordre décidé par Fabrice le 3 nov. (« oui Q5 ») : les tâches de l'audit
 d'abord.** T47 (garde de l'essai de l'app), T48 (échappement), T50
-(mentions légales), T51 (référencement) et T49 (Safari) sont faites. Prochaine :
-**T54** (pied de page selon le régime), T55 (textes alternatifs par métier), T56
+(mentions légales), T51 (référencement), T49 (Safari) et T54 (photos et pied de page selon le régime) sont faites. Prochaine :
+**T55** (textes alternatifs par métier), T56
 (avis) ; ensuite T45 (GitHub Actions), T46 (GPS des vidéos), T52, T53, puis
 T10 (formulaire des sites : brouillon de migration
 `20261029150000_deposer_demande.sql` sur le disque du PC, non appliqué, Q3).
@@ -86,7 +86,7 @@ Le détail, avec la preuve de chaque constat, est dans `docs/audit/REGISTRE.md`.
 2. **Vrais appareils** : rien d'essayé sur un vrai iPhone ou Android, ni les gestes au doigt sous Safari (F14) ; WebKit tourne dans la CI depuis T49.
 3. **Formulaire de demande** sur les sites (T10, T11 ; question Q3).
 4. **13 métiers sur 16** sans textes (S-013, T32), et leurs images.
-5. **Pied de page, textes alternatifs et avis** faux sur un site d'abonné : « Proposition de site » encore sur la note des photos (le pied d'un site d'abonné est corrigé par T50), photos décrites comme une façade sur tous les métiers, « Les avis viennent ici » (S-022 à S-024, T54 à T56).
+5. **Textes alternatifs et avis** faux sur un site d'abonné : photos décrites comme une façade sur tous les métiers, « Les avis viennent ici » (S-023, S-024, T55, T56).
 6. **Deuxième page** sur un seul archétype sur quatre (S-012, T52).
 7. **GPS des vidéos** encore dans les fichiers envoyés (T46).
 8. **Documents** encore à écrire : technique, qualité, juridique, exploitation, commerce (lots 3 à 7, `docs/00-INDEX.md`, dernière section). Lots 1 et 2 faits le 3 nov.

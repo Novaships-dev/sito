@@ -6,21 +6,21 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**337 fichiers suivis, dont 149 .md ; 80947 lignes de texte.** Hors zone : 0.
+**337 fichiers suivis, dont 149 .md ; 80992 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
 | Z01 Pilotage de l agent | 27 | 2141 | 0 |
-| Z02 Mémoire du projet | 11 | 2391 | 0 |
+| Z02 Mémoire du projet | 11 | 2405 | 0 |
 | Z03 Spécifications | 11 | 2370 | 0 |
-| Z04 Documentation de travail | 22 | 3177 | 0 |
+| Z04 Documentation de travail | 22 | 3178 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
-| Z06 Générateur de sites | 33 | 8470 | 4 |
+| Z06 Générateur de sites | 33 | 8479 | 4 |
 | Z07 Règles | 15 | 1147 | 0 |
 | Z08 App de l artisan | 35 | 9042 | 4 |
 | Z09 Service atelier et Worker | 10 | 1320 | 0 |
 | Z10 Base Supabase | 15 | 1301 | 0 |
-| Z11 Essais et vérificateurs | 34 | 7554 | 0 |
+| Z11 Essais et vérificateurs | 34 | 7575 | 0 |
 | Z12 Prospection | 18 | 19722 | 0 |
 | Z13 Autres scripts | 12 | 1356 | 0 |
 | Z14 Banque d images | 8 | 3419 | 0 |
@@ -71,7 +71,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `memoire/essais/audit.txt` | 44 |
 | `memoire/essais/derniers.txt` | 24 |
 | `memoire/essais/disque.txt` | 61 |
-| `memoire/journal.md` | 1711 |
+| `memoire/journal.md` | 1725 |
 | `memoire/maintenant.md` | 101 |
 | `memoire/pieges.md` | 118 |
 | `memoire/questions.md` | 116 |
@@ -96,7 +96,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `CHANGELOG.md` | 55 |
+| `CHANGELOG.md` | 56 |
 | `SECURITY.md` | 55 |
 | `docs/00-INDEX.md` | 111 |
 | `docs/CONSTRAINTS.md` | 58 |
@@ -196,7 +196,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `generateur/archetypes/matiere.mjs` | 495 |
 | `generateur/banque/plan-images.json` | 1581 |
 | `generateur/charte.mjs` | 305 |
-| `generateur/composer.mjs` | 920 |
+| `generateur/composer.mjs` | 929 |
 | `generateur/couture.mjs` | 62 |
 | `generateur/echapper.mjs` | 32 |
 | `generateur/graine.mjs` | 29 |
@@ -331,10 +331,10 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `scripts/essai-appels.mjs` | 419 |
 | `scripts/essai-boucle.mjs` | 208 |
 | `scripts/essai-echappement.mjs` | 172 |
-| `scripts/essai-fabrication-base.mjs` | 175 |
+| `scripts/essai-fabrication-base.mjs` | 177 |
 | `scripts/essai-inscription.mjs` | 197 |
 | `scripts/essai-lot.mjs` | 257 |
-| `scripts/essai-mentions.mjs` | 190 |
+| `scripts/essai-mentions.mjs` | 196 |
 | `scripts/essai-navigateurs.mjs` | 91 |
 | `scripts/essai-outillage.mjs` | 309 |
 | `scripts/essai-photos.mjs` | 153 |
@@ -356,7 +356,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `scripts/verifier-mobile.mjs` | 348 |
 | `scripts/verifier-ordinateur.mjs` | 317 |
 | `scripts/verifier-secrets.mjs` | 115 |
-| `scripts/verifier-site.mjs` | 622 |
+| `scripts/verifier-site.mjs` | 635 |
 | `scripts/verifier-textes.mjs` | 95 |
 | `scripts/verifier-unicite.mjs` | 64 |
 

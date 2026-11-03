@@ -1709,3 +1709,17 @@ WebKit (CDP), dit dans le rapport. Constat S-025 ouvert (deuxième page, M2).
 Installer WebKit (et exiftool par npm) sur la machine de Cowork : refusé par le
 mode auto ; toute la preuve WebKit vient de la CI.
 TRACAGE : scripts/verifier-mobile.mjs, scripts/verifier-ordinateur.mjs, scripts/verifier-site.mjs, scripts/essai-app.mjs, scripts/essai-navigateurs.mjs, scripts/essais.mjs, .github/workflows/essais.yml, generateur/composer.mjs, generateur/style.mjs, generateur/sections/atmosphere.mjs, generateur/sections/mentions.mjs, generateur/archetypes/matiere.mjs, app/src/photo.ts, app/src/attente.ts, app/src/App.tsx, app/specs/07-TACHES.md, docs/audit/REGISTRE.md (S-007 clos, S-025), docs/audit/CARTE.md, CLAUDE.md (§4), CHANGELOG.md, memoire/pieges.md, memoire/maintenant.md, memoire/journal.md, memoire/de-cowork.md
+
+## 4 nov. 2026 — T54 (photos et pied de page selon le régime), par Cowork
+
+Plan : 1. `PHOTOS_EXEMPLE` dans `composer.mjs` (faux pour `--publication`) :
+alt sans « Exemple, », sans `data-exemple`, sans marqueur ni note ; 2. contrôle
+R-EXEMPLE de `verifier-site` ; 3. contrôles dans `essai-mentions` et
+`essai-fabrication-base`.
+
+Résultat : essai-mentions 62 contrôles, 0 faute (contre-essai toujours
+attrapé) ; essai-fabrication-base 15 contrôles, 0 faute. R-EXEMPLE rouge sur
+deux copies cassées. Le pied de page était déjà réglé par T50. Constaté en
+route : sur un site de prospection matiere, la note « Photographies
+d'exemple » n'existe pas (alt et marquage suffisent) ; rien changé.
+TRACAGE : generateur/composer.mjs, scripts/verifier-site.mjs, scripts/essai-mentions.mjs, scripts/essai-fabrication-base.mjs, app/specs/07-TACHES.md, docs/audit/REGISTRE.md (S-022 clos), CHANGELOG.md, memoire/maintenant.md, memoire/journal.md

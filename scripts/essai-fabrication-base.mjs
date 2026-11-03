@@ -112,6 +112,8 @@ try {
   if (!ok(r1.ok === true, 'fabrication depuis entreprise + profil + tarifs + photos prêtes', JSON.stringify(r1).slice(0, 300))) throw new Error('fabrication 1 refusée');
   ok(existsSync(join(dossier1, 'index.html')), 'un index.html est écrit');
   ok(existsSync(join(dossier1, 'mentions-legales.html')), 'site d abonné : la page des mentions légales est écrite (T50)');
+  ok(!/exemple|Proposition de site/i.test(readFileSync(join(dossier1, 'index.html'), 'utf8').replace(/<head>[\s\S]*?<\/head>/, '')),
+    'site d abonné fabriqué depuis la base : ni « exemple » ni « proposition » (T54)');
 
   const v1 = spawnSync(process.execPath, [join(RACINE, 'scripts', 'verifier-site.mjs'), dossier1], { encoding: 'utf8' });
   ok(v1.status === 0, 'le site produit passe verifier-site', (v1.stdout || v1.stderr || '').trim().split('\n').slice(-3).join(' | '));

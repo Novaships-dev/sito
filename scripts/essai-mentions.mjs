@@ -111,6 +111,8 @@ try {
     ok(/data-ml="ML10">Médiateur de la consommation : Médiateur Essai, 1 rue de la Médiation/.test(accueil), `${arch} : médiateur près du contact de l accueil`);
     ok(accueil.includes('<meta name="atelier-regime" content="abonne">') && !accueil.includes('Proposition de site'),
       `${arch} : régime abonné, pas de « Proposition de site »`);
+    const dits = pagesDe(sortie).filter((p) => /exemple|Proposition de site/i.test(lire(sortie, p).replace(/<head>[\s\S]*?<\/head>/, '')));
+    ok(dits.length === 0, `${arch} : photos de l artisan, aucune page ne dit « exemple » ni « proposition » (T54)`, dits.join(', '));
     const v = verifier(sortie);
     ok(v.status === 0, `${arch} : verifier-site à 0`, (v.stdout || '').trim().split('\n').slice(-3).join(' | '));
   }
@@ -161,6 +163,8 @@ try {
     ok(!t.includes('mentions-legales.html') && t.includes('Proposition de site') && t.includes('content="prospection"'),
       'prospection : ni lien ni médiateur, « Proposition de site », régime prospection');
     ok(verifier(sq).status === 0, 'prospection : verifier-site à 0 (le contrôle ML ne s y applique pas)');
+    ok(/data-exemple="oui"/.test(t) && /alt="Exemple, /.test(t),
+      'prospection : les photos sont dites « exemple » (alt et marquage) (T54)');
   }
 
   console.log('\nLe contrôle ML de verifier-site, sur des copies cassées');
@@ -173,6 +177,8 @@ try {
     ok(verifier(sansLien).status === 1 && /aucun lien vers les mentions legales/.test(verifier(sansLien).stdout), 'sans le lien sur l accueil : rouge');
     const sansMl = copie('ml', (d) => writeFileSync(join(d, 'mentions-legales.html'), lire(d, 'mentions-legales.html').replace(/data-ml="ML8"/g, 'data-ml="X"')));
     ok(verifier(sansMl).status === 1 && /mention\(s\) absente\(s\) : ML8/.test(verifier(sansMl).stdout), 'sans l hébergeur : rouge');
+    const ditExemple = copie('exemple', (d) => writeFileSync(join(d, 'index.html'), lire(d, 'index.html').replace('<img ', '<img data-exemple="oui" ')));
+    ok(verifier(ditExemple).status === 1 && /\[BLOQUANT\] R-EXEMPLE/.test(verifier(ditExemple).stdout), 'photo de l artisan marquée « exemple » : R-EXEMPLE rouge (T54)');
     const sansMed = copie('med', (d) => writeFileSync(join(d, 'index.html'), lire(d, 'index.html').replace(/data-ml="ML10"/g, 'data-x')));
     ok(verifier(sansMed).status === 1 && /mediateur de la consommation absent/.test(verifier(sansMed).stdout), 'sans le médiateur sur l accueil : rouge');
   }

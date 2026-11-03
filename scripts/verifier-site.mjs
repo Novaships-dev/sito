@@ -529,7 +529,8 @@ function referencementSite(chemin) {
   const meta = (t, nom) => (t.match(new RegExp(`<meta (?:name|property)="${nom}" content="([^"]*)"`)) || [])[1];
   const dire = (num, gravite, fichier, detail, remede) => c.push({ fichier, num, gravite,
     libelle: { 'R-REGIME': 'regime de referencement', 'R-OG': 'apercu de partage (Open Graph)', 'R-JSONLD': 'donnees structurees',
-      'R-SITE': 'robots.txt et plan du site', 'R-ADRESSE': 'adresse publique', 'R-TITRE': 'titre ou description trop longs' }[num],
+      'R-SITE': 'robots.txt et plan du site', 'R-ADRESSE': 'adresse publique', 'R-TITRE': 'titre ou description trop longs',
+      'R-EXEMPLE': 'photos de l artisan dites « exemple », ou exemples non dits' }[num],
     detail, remede: remede || 'docs/specs/S-REFERENCEMENT.md' });
   let regimeVu = null, adresseVue = null;
   for (const n of pages) {
@@ -551,6 +552,18 @@ function referencementSite(chemin) {
       if (/^https?:/.test(local) || !existsSync(join(dossier, local))) dire('R-OG', 'bloquant', n, 'og:image ne pointe aucun fichier du site : ' + img);
     }
     if (regime === 'abonne' && meta(t, 'atelier-images') === 'illustration') dire('R-OG', 'bloquant', n, 'image d exemple sur un site d abonne');
+    // R-EXEMPLE, tache T54 (constat S-022) : sur un site d abonne, les photos
+    // sont les chantiers de l artisan ; rien ne les dit « exemple », et le site
+    // ne se dit pas « proposition ». Sur un site de prospection a photos
+    // d illustration, chaque image le dit.
+    const corps = t.replace(/<head>[\s\S]*?<\/head>/, '');
+    if (regime === 'abonne') {
+      const m = corps.match(/data-exemple="oui"|alt="Exemple|Proposition de site|Photographies d’exemple|class="marqueur">Exemple/i);
+      if (m) dire('R-EXEMPLE', 'bloquant', n, 'site d abonne : « ' + m[0] + ' »', 'generateur/composer.mjs, PHOTOS_EXEMPLE');
+    } else if (meta(t, 'atelier-images') === 'illustration') {
+      const nues = (corps.match(/<img\b[^>]*>/gi) || []).filter(x => !/data-exemple="oui"/.test(x)).length;
+      if (nues) dire('R-EXEMPLE', 'bloquant', n, nues + ' image(s) d illustration non marquee(s) « exemple »', 'rules/web/photos.md');
+    }
     const blocs = [...t.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => m[1]);
     if (regime === 'prospection' && blocs.length) dire('R-JSONLD', 'bloquant', n, 'donnees structurees sur un site de prospection');
     if (regime === 'abonne' && n === 'index.html') {

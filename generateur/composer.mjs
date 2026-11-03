@@ -70,7 +70,15 @@ const jeu = (_role, r, sizes, tailleDefaut) => {
   return { src: `images/${role}-${tailleDefaut}.webp`, srcset, srcsetAvif, sizes, w: r.largeur, h: r.hauteur };
 };
 
-const img = (j, alt, extra = '') =>
+// Les photos d un site de prospection sont des exemples, et le disent (alt,
+// data-exemple, marqueur, note). Celles d un site d abonne (--publication, qui
+// refuse les photos d illustration) sont les chantiers de l artisan : rien ne
+// les dit « exemple » (T54, constat S-022). Fixe au debut de fabriquer().
+let PHOTOS_EXEMPLE = true;
+const img = (j, alt, extra = '') => !PHOTOS_EXEMPLE
+  ? `<picture><source type="image/avif" srcset="${j.srcsetAvif}" sizes="${j.sizes}">` +
+    `<img src="${j.src}" srcset="${j.srcset}" sizes="${j.sizes}" width="${j.w}" height="${j.h}" ` +
+    `alt="${echapper(alt.charAt(0).toUpperCase() + alt.slice(1))}"${extra}></picture>` :
   `<picture><source type="image/avif" srcset="${j.srcsetAvif}" sizes="${j.sizes}">` +
   `<img src="${j.src}" srcset="${j.srcset}" sizes="${j.sizes}" width="${j.w}" height="${j.h}" ` +
   `alt="Exemple, ${echapper(alt)}" data-exemple="oui"${extra}></picture>`;
@@ -83,7 +91,7 @@ const img = (j, alt, extra = '') =>
 function ouverture(a, p, t, e, im, mot, alt) {
   const visuel = `<div class="visuel"><span class="trait-accent"></span>${
     img(im.ouverture, alt.ouverture || '', ' fetchpriority="high"')
-  }<p class="marqueur">Exemple</p></div>`;
+  }${PHOTOS_EXEMPLE ? '<p class="marqueur">Exemple</p>' : ''}</div>`;
   const panneau = `<div class="panneau">
       <p class="enseigne">${echapper(e.nomLisible)}${e.commune ? `<br>${echapper(e.commune)}` : ''}${e.anneeCreation ? `, depuis ${e.anneeCreation}` : ''}</p>
       <h2 id="t-ouverture" class="geant">${echapper(mot)}</h2>
@@ -168,7 +176,7 @@ function chantier(t, im) {
     <div class="pile">${img(im.chantier, 'échafaudage monté sur une façade')}${img(im.detail, 'gros plan sur le grain de l’enduit')}</div>
     <div class="haut">${img(im.geste, 'la taloche chargée d’enduit appliquée contre le mur')}</div>
   </div>
-  <p class="note" style="margin-top:.9rem">Photographies d’exemple. Elles seront remplacées par les chantiers de l’entreprise.</p>
+  ${PHOTOS_EXEMPLE ? '<p class="note" style="margin-top:.9rem">Photographies d’exemple. Elles seront remplacées par les chantiers de l’entreprise.</p>' : ''}
 </section>`;
 }
 
@@ -238,6 +246,7 @@ async function fabriquer(opts) {
   // Un site d abonne (--publication) porte les mentions legales ; une mention
   // obligatoire pour tous qui manque arrete tout. Voir sections/mentions.mjs.
   const abonne = process.argv.includes('--publication');
+  PHOTOS_EXEMPLE = !abonne;
   // L adresse publique du site (table adresses) : sans elle, rien d absolu ne
   // s ecrit (URL canonique, og:url, plan du site). Voir sections/referencement.mjs.
   let adresse;
