@@ -40,6 +40,7 @@ dans le dépôt.
 | unicité | deux sites voisins (même métier, même commune ou même département) ne se ressemblent pas | `scripts/verifier-unicite.mjs` (U1 à U4) |
 | registre d'unicité | ce que chaque site a déjà pris (phrases, chartes), pour que le suivant diffère | `generateur/registre.json` |
 | plancher | ce qu'aucune page ne peut rater (contraste, polices, poids, appel…) | `scripts/verifier-site.mjs` |
+| régime | prospection (privé, `noindex`, « Proposition de site ») ou abonné (indexable, mentions légales, photos de l'artisan) ; jamais mélangés | `docs/specs/S-REFERENCEMENT.md` §1 |
 
 ## La fabrication et la publication
 
@@ -79,7 +80,8 @@ dans le dépôt.
 | tâche T.. | une ligne de travail de Claude Code, avec sa preuve | `app/specs/07-TACHES.md` |
 | action F.. | ce que seul Fabrice peut faire (compte, clé, paiement, appareil) | `memoire/actions-fabrice.md` |
 | question Q.. | une question posée à Fabrice, avec la réponse recommandée | `memoire/questions.md` |
-| constat S.. | un constat d'audit numéroté | `docs/audit/REGISTRE.md` |
+| exigence S.., P.., A.. | une exigence du produit : S01… le site, P1… la prospection, A1… l'app ; numéro qui ne change jamais | `app/specs/01-PRD.md` |
+| constat S-0.. | un constat d'audit numéroté (avec un trait d'union : S-005 n'est pas S05) | `docs/audit/REGISTRE.md` |
 | dette D.. | un défaut connu, accepté pour l'instant | `docs/DETTE.md` |
 | contre-essai | l'essai lancé sur une copie cassée exprès, qui doit rougir | `docs/REGLE-ESSAIS.md` E1 |
 | garde-fou verrouillé | un fichier que Claude Code n'a pas le droit de modifier | `CLAUDE.md` §3, point 10 |

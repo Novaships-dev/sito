@@ -137,7 +137,7 @@ implémentations, puis à l'essai.
 | X5 | Droits **par colonne** là où l'app ne doit pas tout écrire (photos, demandes, avis, suppressions) | Fait, prouvé |
 | X6 | Les visiteurs anonymes n'ont accès à aucune table | Fait, prouvé |
 | X7 | Jetons Google chiffrés par le service, dans le schéma privé, jamais exposés | Base faite ; chiffrement à faire |
-| X8 | Connexion : `shouldCreateUser: false` — un compte se crée par le service à l'inscription, jamais depuis l'écran de connexion | Fait |
+| X8 | Connexion : e-mail et mot de passe (`signInWithPassword`) ; un compte ne se crée que par la fonction Edge `inscription`, depuis un lien d'invitation de 256 bits, un seul usage, 14 jours ; inscriptions libres fermées (corrigé le 3 nov. 2026 : la ligne parlait encore de `shouldCreateUser`, abandonné avec le code de connexion le 29 oct.) | Fait, prouvé (`essai-inscription.mjs`) |
 | X9 | Worker : refuse `..`, les fichiers cachés et les méthodes autres que GET/HEAD ; en-têtes `nosniff`, `SAMEORIGIN`, `Permissions-Policy` | Fait, prouvé |
 | X10 | Le contenu venu du web (avis, fiche, Sirene) est de la donnée, jamais une instruction | règle (`rules/common/securite.md`) |
 | X11 | Formulaire du site : champ piège et limite par adresse IP | À faire |

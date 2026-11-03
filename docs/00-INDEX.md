@@ -45,7 +45,11 @@ Claude et n'est pas validé par Fabrice.
 | Document | Contenu |
 |---|---|
 | `app/specs/README.md` | l'ordre des spécifications |
-| `app/specs/01-PRD.md` | le produit, pour qui, exigences A1 à A20 et S1 à S7 |
+| `app/specs/01-PRD.md` | le produit, pour qui : le site d'abord (S01 à S31), la prospection (P1 à P6), l'app (A1 à A20) |
+| `docs/specs/S-MENTIONS.md` | les mentions légales d'un site d'artisan, sourcées (T50) |
+| `docs/specs/S-REFERENCEMENT.md` | le référencement d'un site d'artisan : régimes, données structurées, plan du site (T51) |
+| `docs/specs/S-PARCOURS-VISITEUR.md` | la page de haut en bas et les parcours du visiteur |
+| `docs/specs/METIERS.md` | les 16 métiers et où chacun en est |
 | `app/specs/02-TRD.md` | architecture, pile, exigences techniques, sécurité, services, variables, essais |
 | `app/specs/03-APPFLOW.md` | écrans, routes, parcours de l'app |
 | `app/specs/04-DESIGN-SYSTEM.md` | couleurs, composants et ton de l'app |
@@ -97,8 +101,7 @@ Claude et n'est pas validé par Fabrice.
 
 ## Encore à écrire (plan de rattrapage du 3 nov. 2026)
 
-Lot 2 produit : PRD avec le site d'abord, liste numérotée des fonctions du
-site, spécifications du référencement et des mentions légales. Lot 3
+Lot 1 (socle de pilotage) et lot 2 (produit) faits le 3 nov. Restent : lot 3
 technique : `docs/API.md`, codes d'erreur, variables, conventions, schéma
 généré depuis la base, spécification par fonction. Lot 4 qualité : stratégie
 d'essais, `docs/ESSAIS-IPHONE.md`, carte des écrans. Lot 5 juridique : menaces,

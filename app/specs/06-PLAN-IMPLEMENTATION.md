@@ -28,11 +28,11 @@ affirmation.** Rien de payant ne s'ouvre sans l'accord de Fabrice.
 | 2 | Photos (service) | `atelier/photos.mjs`, `heic.mjs` | `essai-photos` : 18 cas, 0 faute ; contre-épreuve attrapée | — | Claude | **Fait, prouvé** (HEIC Supabase non prouvé) |
 | 3 | Publication par versions | `atelier/publier.mjs`, `worker/routeur.js` | `essai-publication` : 19 essais, 0 faute ; 2 contre-épreuves | — | Claude | **Fait, prouvé** (simulé) |
 | 4 | App en démonstration | écrans, données démo, photos sur l'appareil, file d'envoi | `essai-app` : 96 contrôles, 0 faute, 3 appareils ; original en pleine résolution envoyé ; contre-essai 12/12 ; copie cassée attrapée | — | Claude | **Fait, prouvé** |
-| 5 | App contre la vraie base | compte d'essai, connexion par code, profil, tarifs, chantier, envoi TUS | Fabrice se connecte sur son ordinateur puis sur iPhone ; un chantier et une photo apparaissent dans la base | 4 ; actions F1–F3 | Fabrice + Claude | **À faire** |
+| 5 | App contre la vraie base | compte d'essai, connexion par lien d'inscription et mot de passe (T43 ; plus de code depuis le 29 oct.), profil, tarifs, chantier, envoi TUS | Fabrice se connecte sur son ordinateur puis sur iPhone ; un chantier et une photo apparaissent dans la base | 4 ; action F1 de `memoire/actions-fabrice.md` (clé secrète) | Fabrice + Claude | **À faire** |
 | 6 | Nom et domaine de Sitô | choix, vérification INPI / Pappers, achat | domaine enregistré au nom de l'éditeur | décision O1 | Fabrice | **Ouvert** |
 | 7 | Cloudflare | zone, Workers payant, R2, KV, déploiement du Worker, adaptateurs réels | le site de démonstration en ligne à `x.domaine-sito.fr` ; une version cassée exprès est refusée et l'ancienne reste | 6 ; accord pour 5 $/mois | Claude (Fabrice ouvre le compte) | **À faire** |
-| 8 | Service HTTP | `atelier/serveur.mjs` : inscrire, préparer les photos, refabriquer, publier | une photo envoyée depuis l'app est sur le site en moins de 2 minutes, sans mélange de versions | 5, 7 ; clé de service dans le `.env` local | Claude | **À faire** |
-| 9 | Hébergement du service | Railway ou équivalent ; exiftool, ffmpeg | le service tourne sans l'ordinateur de Fabrice | 8 ; prix à relever et accord | Claude | **À faire** |
+| 8 | Service HTTP | `atelier/serveur.mjs` : inscrire, préparer les photos, refabriquer, publier | une photo envoyée depuis l'app est sur le site en moins de 2 minutes, sans mélange de versions | 5, 7 ; clé de service dans le `.env` local | Claude | **Abandonné** le 29 oct. (pas de serveur loué, décision de Fabrice) : remplacé par T44 (photos dans l'app, faite) et T45 (GitHub Actions) |
+| 9 | Hébergement du service | Railway ou équivalent ; exiftool, ffmpeg | le service tourne sans l'ordinateur de Fabrice | 8 ; prix à relever et accord | Claude | **Abandonné** le 29 oct. (pas de serveur loué, décision de Fabrice) : remplacé par T44 (photos dans l'app, faite) et T45 (GitHub Actions) |
 | 10 | Formulaire et demandes | formulaire sur les 4 archétypes, champ piège, limite par IP | une demande du site arrive dans l'app ; un robot est refusé | 8 | Claude | **À faire** |
 | 11 | Statistiques | Umami hébergé, un site par artisan, événement « Appeler » ; import nocturne | les chiffres de l'accueil égalent Umami et la base pour le même jour de Paris | 9 | Claude | **À faire** |
 | 12 | E-mail de connexion | serveur d'envoi (Brevo ou équivalent) | 20 codes envoyés en une heure arrivent | 6 ; prix et accord | Claude | **À faire** |
@@ -50,11 +50,15 @@ Les étapes 1 à 19 n'attendent pas Google.
 
 ## 3. Ce que Fabrice fait
 
+**Attention** : les numéros F de ce tableau datent du 9 octobre et ne sont pas
+ceux qui font foi. La liste à jour, avec ses numéros, est
+`memoire/actions-fabrice.md` (corrigé le 3 nov. 2026, constat S-011).
+
 | N° | Action | Pour l'étape |
 |---|---|---|
 | F1 | Créer `app\.env.local` (copier `.env.example`, coller la clé publique) | 5 |
 | F2 | Créer son utilisateur dans Supabase (Authentication → Users → Add user) | 5 |
-| F3 | Mettre `{{ .Token }}` dans le modèle d'e-mail « Magic Link » de Supabase | 5 |
+| F3 | ~~Mettre `{{ .Token }}` dans le modèle d'e-mail « Magic Link » de Supabase~~ : **inutile** depuis le 29 oct. (plus de code de connexion, T43) | 5 |
 | F4 | Envoyer 4 ou 5 vraies photos : iPhone HEIC, Live Photo, ProRAW, Android | 19 |
 | F5 | Choisir le nom (INPI, Pappers) | 6 |
 | F6 | Demander le numéro D-U-N-S (compte Google Play organisation) | 18 |

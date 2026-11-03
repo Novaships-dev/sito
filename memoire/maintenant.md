@@ -5,8 +5,9 @@ Place libre du disque : **1519,4 Mo** (audit du 3 novembre 2026 à 01:16).
 À lire en premier, à chaque séance. **Réécrit, pas complété** : quand l'état
 change, la phrase fausse disparaît et la juste la remplace
 (`docs/REGLE-TRACABILITE.md`). Réécrit le 3 novembre 2026 par Cowork après
-l'audit du dépôt (`docs/audit/REGISTRE.md`, 21 constats), à partir de l'état
-écrit par Claude Code après T44 (commit `0dd3776`). Les chiffres viennent de
+l'audit du dépôt (`docs/audit/REGISTRE.md`, 24 constats), à partir de l'état
+écrit par Claude Code après T44 (commit `0dd3776`), puis après le lot 2
+(produit) de Cowork. Les chiffres viennent de
 `docs/SOURCE-UNIQUE.md`.
 
 ## En une phrase
@@ -19,15 +20,18 @@ formulaire de demande, 3 métiers sur 16.
 
 ## Les tâches
 
-54 tâches : **18 faites, 13 bloquées, 23 à faire** (`app/specs/07-TACHES.md`).
-T47 à T53 viennent de l'audit du 3 novembre.
+57 tâches : **18 faites, 13 bloquées, 26 à faire** (`app/specs/07-TACHES.md`).
+T47 à T56 viennent de l'audit du 3 novembre.
 
-**Prochaine tâche dans l'ordre du tableau : T45** (site refait et publié par
-GitHub Actions, dépend de T44, faite), puis T46 (GPS des vidéos), puis T10
-(formulaire des sites : brouillon de migration
+**Ordre décidé par Fabrice le 3 nov. (« oui Q5 ») : les tâches de l'audit
+d'abord.** Prochaine : **T47** (garde de l'essai de l'app), puis T48
+(échappement), T50 (mentions légales), T51 (référencement), T49 (Safari),
+T54 (pied de page selon le régime), T55 (textes alternatifs par métier), T56
+(avis) ; ensuite T45 (GitHub Actions), T46 (GPS des vidéos), T52, T53, puis
+T10 (formulaire des sites : brouillon de migration
 `20261029150000_deposer_demande.sql` sur le disque du PC, non appliqué, Q3).
-Question **Q5** posée : faire passer avant elles les tâches de l'audit
-(T47, T48, T50, T51, T49).
+Spécifications prêtes : `docs/specs/S-MENTIONS.md` (T50),
+`docs/specs/S-REFERENCEMENT.md` (T51).
 
 ## Ce qui marche, avec sa preuve
 
@@ -69,7 +73,6 @@ Aucun site d'abonné n'est en ligne ; aucun domaine n'est acheté.
 | Clé secrète Supabase (compte d'essai, essais contre la vraie base) | Fabrice | F1 |
 | Vrais appareils (iPhone, Android) pour les essais | Fabrice | F14 |
 | Domaine, Cloudflare payant, Stripe, Google Play | repoussés jusqu'à ce que l'app fonctionne | décision du 29 oct. |
-| Ordre des tâches de l'audit | Fabrice | Q5 (`memoire/questions.md`) |
 
 ## Ce qui manque, par ordre d'importance
 
@@ -80,9 +83,10 @@ Le détail, avec la preuve de chaque constat, est dans `docs/audit/REGISTRE.md`.
 3. **Safari** : jamais essayé (S-007, T49).
 4. **Formulaire de demande** sur les sites (T10, T11 ; question Q3).
 5. **13 métiers sur 16** sans textes (S-013, T32), et leurs images.
-6. **Deuxième page** sur un seul archétype sur quatre (S-012, T52).
-7. **GPS des vidéos** encore dans les fichiers envoyés (T46).
-8. **Documents** encore à écrire : produit, technique, qualité, juridique, exploitation, commerce (lots 2 à 7, `docs/00-INDEX.md`, dernière section).
+6. **Pied de page, textes alternatifs et avis** faux sur un site d'abonné : « Proposition de site » partout, photos décrites comme une façade sur tous les métiers, « Les avis viennent ici » (S-022 à S-024, T54 à T56).
+7. **Deuxième page** sur un seul archétype sur quatre (S-012, T52).
+8. **GPS des vidéos** encore dans les fichiers envoyés (T46).
+9. **Documents** encore à écrire : technique, qualité, juridique, exploitation, commerce (lots 3 à 7, `docs/00-INDEX.md`, dernière section). Lots 1 et 2 faits le 3 nov.
 
 ## Ne pas refaire
 

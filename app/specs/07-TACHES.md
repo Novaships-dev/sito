@@ -27,8 +27,9 @@ sont faites et prouvées : voir `06-PLAN-IMPLEMENTATION.md`.
 
 Constats : `docs/audit/REGISTRE.md`. Chaque tâche ferme son constat (état
 « clos », date, preuve) et suit `docs/REGLE-TRACABILITE.md`. Ordre décidé par
-Fabrice le 3 nov. (Q5) : ces cinq tâches **avant** le reste de l'app ; T52 et
-T53 plus bas, après T45 et T46.
+Fabrice le 3 nov. (Q5) : ces tâches **avant** le reste de l'app ; T52 et
+T53 plus bas, après T45 et T46. T54 à T56 (constats trouvés en écrivant le
+lot 2, le 3 nov.) sont rangées avec elles : ce sont des tâches de l'audit.
 
 | N° | Tâche | État | Preuve | Dépend | Bloqué par |
 |---|---|---|---|---|---|
@@ -37,6 +38,9 @@ T53 plus bas, après T45 et T46.
 | T50 | Constat S-004 : mentions légales sur chaque site d'abonné : raison sociale, forme, adresse du siège, SIREN et SIRET, TVA intracommunautaire, assurance décennale (assureur, contrat, zone), médiateur de la consommation, hébergeur, directeur de la publication ; une page ou une section, sur les quatre archétypes, depuis `profils` ; ce qui manque se dit (« non renseigné »), jamais inventé. Un site de prospection n'en a pas besoin (privé, non publié au nom de l'artisan) : le dire dans la spécification | à faire | un site d'abonné fabriqué depuis la base sur chacun des quatre archétypes montre chaque mention ; `verifier-site` gagne un contrôle (« mentions légales présentes sur un site d'abonné »), essayé sur une copie sans la section : rouge ; spécification écrite (`docs/specs/S-MENTIONS.md`, lot 2) | T48 | |
 | T51 | Constat S-003 : référencement d'un site d'abonné : `<title>` et description propres, données structurées `LocalBusiness` (ou le type du métier) en JSON-LD depuis Sirene et le profil, Open Graph avec une image, favicon, `sitemap.xml`, `robots.txt` qui autorise ; un site de prospection garde `noindex` et `robots.txt` qui interdit | à faire | `verifier-site` gagne les contrôles R1 (JSON-LD valide, champs tirés des données, aucun inventé), R2 (Open Graph complet), R3 (prospection : `noindex` présent ; abonné : absent), chacun essayé sur une copie cassée ; spécification écrite (`docs/specs/S-REFERENCEMENT.md`, lot 2) | T48 | |
 | T49 | Constat S-007 : Safari. `verifier-mobile.mjs`, `verifier-ordinateur.mjs` et `essai-app.mjs` acceptent `--navigateur webkit` (Playwright WebKit) ; la CI lance les trois sur WebKit en plus de Chromium | à faire | les trois verts sous WebKit sur les sites de démonstration (machine avec images) et sur l'app en démonstration ; CI verte avec l'étape WebKit ; ce qui diffère entre les deux moteurs noté dans `memoire/pieges.md` | T47 | |
+| T54 | Constat S-022 : le pied de page dépend du régime. Site de prospection : « Proposition de site », informations publiques, photos d'exemple (comme aujourd'hui). Site d'abonné : enseigne, commune, lien « Mentions légales » (T50), aucune mention « proposition » ni « exemple » sur une photo de l'artisan. Même règle pour la note « Photographies d'exemple » de la section chantier | à faire | un site d'abonné fabriqué depuis la base (photos de l'artisan) ne contient ni « Proposition de site » ni « exemple » ; un site de prospection les contient ; nouveau contrôle de `verifier-site`, essayé sur une copie cassée : rouge | | |
+| T55 | Constat S-023 : les textes alternatifs et légendes des photos (hero, chantier, détail, geste, paires) viennent du fichier du métier (`alt` dans `generateur/metiers/<clé>.json`) ou de la légende de l'artisan, jamais écrits en dur pour la façade dans `composer.mjs` et `archetypes/matiere.mjs` | à faire | un site de couverture et un de peinture ne contiennent ni « façade », ni « enduit », ni « échafaudage », ni « taloche » dans un `alt` (sauf si le fichier du métier les écrit) ; contrôle dans `verifier-site` : chaque `alt` d'image vient des données, essayé sur une copie cassée : rouge | | |
+| T56 | Constat S-024 : sur un site d'abonné, la section « avis » n'apparaît que s'il y a des avis réels (table `avis`) ; sinon elle est absente, jamais « Les avis viennent ici ». Sur un site de prospection, l'emplacement vide qui le dit reste permis | à faire | site d'abonné sans avis : pas de section ; avec deux avis en base : deux cartes, textes exacts, sans note inventée ; contre-essai : l'emplacement vide sur un site d'abonné rougit | | |
 
 ## Prospection (priorité de Fabrice du 23 oct. : avant le reste de l'app)
 

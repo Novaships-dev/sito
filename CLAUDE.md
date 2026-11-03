@@ -13,7 +13,7 @@ Ce fichier est la loi du dépôt. Claude Code le lit en premier.
 
    | Document | Pour |
    |---|---|
-   | `app/specs/01-PRD.md` | quoi et pour qui, exigences A1 à A20 |
+   | `app/specs/01-PRD.md` | quoi et pour qui : le site d'abord (S01 à S31), la prospection (P1 à P6), l'app (A1 à A20) |
    | `app/specs/02-TRD.md` | architecture, pile, sécurité, services, essais |
    | `app/specs/03-APPFLOW.md` | écrans, routes, parcours |
    | `app/specs/04-DESIGN-SYSTEM.md` | couleurs, composants, ton |

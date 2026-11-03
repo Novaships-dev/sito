@@ -6,14 +6,14 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**325 fichiers suivis, dont 145 .md ; 79026 lignes de texte.** Hors zone : 0.
+**329 fichiers suivis, dont 149 .md ; 79451 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
 | Z01 Pilotage de l agent | 27 | 2140 | 0 |
-| Z02 Mémoire du projet | 11 | 2263 | 0 |
-| Z03 Spécifications | 11 | 2267 | 0 |
-| Z04 Documentation de travail | 18 | 2826 | 0 |
+| Z02 Mémoire du projet | 11 | 2279 | 0 |
+| Z03 Spécifications | 11 | 2366 | 0 |
+| Z04 Documentation de travail | 22 | 3136 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
 | Z06 Générateur de sites | 30 | 8108 | 4 |
 | Z07 Règles | 15 | 1147 | 0 |
@@ -66,15 +66,15 @@ Un audit qui ne couvre pas toutes les zones le dit.
 |---|---|
 | `memoire/actions-fabrice.md` | 33 |
 | `memoire/comptes-essai.md` | 19 |
-| `memoire/de-cowork.md` | 28 |
-| `memoire/decisions.md` | 130 |
+| `memoire/de-cowork.md` | 30 |
+| `memoire/decisions.md` | 131 |
 | `memoire/essais/audit.txt` | 44 |
 | `memoire/essais/derniers.txt` | 24 |
 | `memoire/essais/disque.txt` | 61 |
 | `memoire/journal.md` | 1611 |
-| `memoire/maintenant.md` | 94 |
+| `memoire/maintenant.md` | 98 |
 | `memoire/pieges.md` | 112 |
-| `memoire/questions.md` | 107 |
+| `memoire/questions.md` | 116 |
 
 ## Z03 Spécifications
 
@@ -82,37 +82,41 @@ Un audit qui ne couvre pas toutes les zones le dit.
 |---|---|
 | `app/PLAN-APP.md` | 489 |
 | `app/README.md` | 150 |
-| `app/specs/01-PRD.md` | 152 |
+| `app/specs/01-PRD.md` | 236 |
 | `app/specs/02-TRD.md` | 209 |
 | `app/specs/03-APPFLOW.md` | 250 |
 | `app/specs/04-DESIGN-SYSTEM.md` | 180 |
 | `app/specs/05-SCHEMA-BACKEND.md` | 459 |
-| `app/specs/06-PLAN-IMPLEMENTATION.md` | 89 |
-| `app/specs/07-TACHES.md` | 127 |
+| `app/specs/06-PLAN-IMPLEMENTATION.md` | 93 |
+| `app/specs/07-TACHES.md` | 135 |
 | `app/specs/08-PROSPECTION.md` | 144 |
-| `app/specs/README.md` | 18 |
+| `app/specs/README.md` | 21 |
 
 ## Z04 Documentation de travail
 
 | Fichier | Lignes |
 |---|---|
-| `CHANGELOG.md` | 49 |
+| `CHANGELOG.md` | 50 |
 | `SECURITY.md` | 55 |
-| `docs/00-INDEX.md` | 108 |
+| `docs/00-INDEX.md` | 111 |
 | `docs/CONSTRAINTS.md` | 58 |
-| `docs/CONTEXT.md` | 85 |
+| `docs/CONTEXT.md` | 87 |
 | `docs/DETTE.md` | 25 |
 | `docs/REGLE-ESSAIS.md` | 47 |
 | `docs/REGLE-TRACABILITE.md` | 69 |
 | `docs/SOURCE-UNIQUE.md` | 81 |
 | `docs/TROUBLESHOOTING.md` | 45 |
 | `docs/audit-2026-09-23.md` | 146 |
-| `docs/audit/REGISTRE.md` | 47 |
+| `docs/audit/REGISTRE.md` | 50 |
 | `docs/cahier-des-charges.md` | 1448 |
 | `docs/etude-framer.md` | 105 |
 | `docs/noms-2026-10-05.md` | 75 |
 | `docs/outils-claude-code.md` | 44 |
 | `docs/prospection-script.md` | 253 |
+| `docs/specs/METIERS.md` | 55 |
+| `docs/specs/S-MENTIONS.md` | 85 |
+| `docs/specs/S-PARCOURS-VISITEUR.md` | 62 |
+| `docs/specs/S-REFERENCEMENT.md` | 99 |
 | `docs/verification-outillage-2026-10-09.md` | 86 |
 
 ## Z05 Archives (ne pas lire pour une tâche)
