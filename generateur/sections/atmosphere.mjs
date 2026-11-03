@@ -62,7 +62,7 @@ export function feuille(p, archetype = 'matiere') {
   font-family:var(--titre-police, "Display", sans-serif);font-weight:800;letter-spacing:-.045em;
   font-size:clamp(90px, ${p.marqueVw}vw, 300px);line-height:.8;white-space:nowrap;
   color:transparent;-webkit-text-fill-color:transparent;
-  background-image:url("images/mur-1500.avif");background-size:112% auto;background-position:50% 62%;
+  background-image:url("images/mur-1500.webp");background-image:image-set(url("images/mur-1500.avif") type("image/avif"), url("images/mur-1500.webp") type("image/webp"));background-size:112% auto;background-position:50% 62%;
   -webkit-background-clip:text;background-clip:text;
   opacity:.42;pointer-events:none;filter:contrast(112%) brightness(108%)}
 .atmo .marque::after{content:attr(data-mot);position:absolute;inset:0;z-index:-1;

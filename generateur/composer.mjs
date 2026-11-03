@@ -54,15 +54,21 @@ async function encoder(source, sortie, role, tailles) {
   return { role, tailles: faits, largeur: meta.width, hauteur: meta.height };
 }
 
+// Chaque image existe en AVIF et en WebP. Jusqu au 3 novembre 2026 la page ne
+// citait que l AVIF : un navigateur qui ne le lit pas (Safari avant iOS 16, le
+// WebKit des essais) montrait une image cassee de 28 px de haut, curseur du
+// comparateur compris (T49). <picture> propose l AVIF, l <img> garde le WebP.
 const jeu = (role, r, sizes, tailleDefaut) => {
   const liste = r.tailles;
-  const srcset = liste.map(w => `images/${role}-${w}.avif ${w}w`).join(', ');
-  return { src: `images/${role}-${tailleDefaut}.avif`, srcset, sizes, w: r.largeur, h: r.hauteur };
+  const srcset = liste.map(w => `images/${role}-${w}.webp ${w}w`).join(', ');
+  const srcsetAvif = liste.map(w => `images/${role}-${w}.avif ${w}w`).join(', ');
+  return { src: `images/${role}-${tailleDefaut}.webp`, srcset, srcsetAvif, sizes, w: r.largeur, h: r.hauteur };
 };
 
 const img = (j, alt, extra = '') =>
+  `<picture><source type="image/avif" srcset="${j.srcsetAvif}" sizes="${j.sizes}">` +
   `<img src="${j.src}" srcset="${j.srcset}" sizes="${j.sizes}" width="${j.w}" height="${j.h}" ` +
-  `alt="Exemple, ${echapper(alt)}" data-exemple="oui"${extra}>`;
+  `alt="Exemple, ${echapper(alt)}" data-exemple="oui"${extra}></picture>`;
 
 // -------------------------------------------------------------- morceaux
 

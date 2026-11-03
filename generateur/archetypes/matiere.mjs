@@ -81,7 +81,7 @@ ${atmosphere.feuille(p, 'matiere')}
 .ouverture .enseigne{color:var(--ta)}
 .ouverture h2.geant{margin:.45rem 0 .8rem;color:var(--t);
   font-size:clamp(38px, calc(100cqi / var(--signes) * 1.62), ${p.motMax}px)}
-.ouverture h2 .mat{background-image:url("images/mur-1500.avif");
+.ouverture h2 .mat{background-image:url("images/mur-1500.webp");background-image:image-set(url("images/mur-1500.avif") type("image/avif"), url("images/mur-1500.webp") type("image/webp"));
   background-size:120% auto;background-position:50% 56%;
   -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
 @supports not ((background-clip:text) or (-webkit-background-clip:text)){
