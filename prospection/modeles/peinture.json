@@ -1,0 +1,1396 @@
+{
+  "metier": "peinture",
+  "modeles": [
+    {
+      "id": "modele-peinture-01",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "panneau",
+      "charte": {
+        "famille": {
+          "cle": "terre-ardoise",
+          "nom": "terre cuite et ardoise : rouille chaude contre gris froid",
+          "nuit": "#111619",
+          "encre": "#1B2226",
+          "chaux": "#E6EAEC",
+          "gris": "#849098",
+          "papier": "#EEF1F2",
+          "encreClair": "#151B1E",
+          "second": "#A5482C"
+        },
+        "polices": {
+          "cle": "archivo-etroit",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "archivo-narrow-700.woff2",
+            "archivo-wght.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/archivo-narrow-700.woff2\") format(\"woff2\");font-weight:700;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/archivo-wght.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "rond",
+          "rayon": "10px",
+          "filet": "2px",
+          "etiquette": "plein",
+          "jeton": "99px"
+        },
+        "sol": "nuit",
+        "mot": "metier",
+        "structure": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "travail",
+            "prix",
+            "chantier",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "teintes": {
+          "combien": 5,
+          "depart": 2
+        },
+        "comparateur": {
+          "prise": "losange",
+          "indice": "Touchez pour comparer",
+          "etiquettes": "haut"
+        }
+      },
+      "fiche": {
+        "siren": "modele-peinture-01",
+        "nom": "modele-peinture-01",
+        "metier": "peinture",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "panneau",
+        "titre": "La peinture d’un plafond pardonne moins que celle d’un mur.",
+        "main": {
+          "hero": "hero-variante-2",
+          "chantier": "chantier-3",
+          "geste": "geste-4",
+          "detail": "detail-peinture",
+          "paire1": "02",
+          "paire2": "01"
+        },
+        "appel": {
+          "forme": "pastille",
+          "libelle": "Téléphoner",
+          "place": "nom-gauche"
+        },
+        "photos": "hero-variante-2,chantier-3,geste-4,detail-peinture,avant-02,apres-02,avant-01,apres-01",
+        "structure": "ouverture > coupure > travail > prix > chantier > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "travail",
+            "prix",
+            "chantier",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "comparateur": {
+          "prise": "losange",
+          "indice": "Touchez pour comparer",
+          "etiquettes": "haut"
+        },
+        "phrases": [
+          "La peinture d’un plafond pardonne moins que celle d’un mur.",
+          "Retrait des anciens papiers peints, ponçage complet des murs, sous-couche sur les reprises, deux couches de finition.",
+          "Trous de chevilles non rebouchés, papier peint daté, contour de prise sali.",
+          "Angles redressés, finition satinée dans la pièce humide, protections retirées.",
+          "Les chambranles sont peints avec la porte, dans la même teinte. Les derniers détails sont ceux dont le client se souvient.",
+          "La finition, mate, velours ou satinée, est choisie selon l’usage de la pièce. Le mat absorbe la lumière, le satiné la renvoie et montre tout.",
+          "Les meubles qui restent sont groupés au centre et couverts. Deux heures de protection évitent une journée de nettoyage.",
+          "Les murs sont laissés sécher après le lavage, le temps qu’il faut. Les cuisines portent une pellicule que l’œil ne voit pas.",
+          "L’enduit est appliqué en passes fines, séchées entre elles. Un trou mal rempli creuse une ombre sous la peinture.",
+          "Les rebouchages sont poncés à la cale, au grain fin. La poussière de ponçage dans la peinture fait un mur granuleux.",
+          "Le travail, poste par poste.",
+          "Pour vérifier.",
+          "Poser une question.",
+          "Dans la pièce.",
+          "Passez le doigt sur la photo pour voir le mur avant la reprise.",
+          "Même endroit, même objectif. Ce que l’on voit changer, c’est le travail.",
+          "Salle de bains, taches bloquées, plinthes laquées.",
+          "Salle de bains, taches bloquées, peinture lessivable."
+        ],
+        "intitules": [
+          "Le travail, poste par poste.",
+          "Pour vérifier.",
+          "Poser une question.",
+          "Dans la pièce."
+        ],
+        "famille": "terre-ardoise",
+        "sol": "nuit",
+        "polices": "archivo-etroit",
+        "geometrie": "rond",
+        "mot": "metier"
+      }
+    },
+    {
+      "id": "modele-peinture-02",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "elevation",
+      "charte": {
+        "famille": {
+          "cle": "olive-papier",
+          "nom": "olive, brique, papier : olive sourd plus accent brique",
+          "nuit": "#12140E",
+          "encre": "#1D2015",
+          "chaux": "#EBEDE4",
+          "gris": "#8E9182",
+          "papier": "#F0F1E9",
+          "encreClair": "#171A11",
+          "second": "#9A3B2A"
+        },
+        "polices": {
+          "cle": "archivo-plein",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "archivo-wght.woff2",
+            "public-sans.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/archivo-wght.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "vif",
+          "rayon": "0px",
+          "filet": "1px",
+          "etiquette": "plein",
+          "jeton": "2px"
+        },
+        "sol": "nuit",
+        "mot": "aucun",
+        "structure": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "prix",
+            "chantier",
+            "avis",
+            "travail",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "teintes": {
+          "combien": 4,
+          "depart": 5
+        },
+        "comparateur": {
+          "prise": "losange",
+          "indice": "Déplacez la séparation",
+          "etiquettes": "bas"
+        }
+      },
+      "fiche": {
+        "siren": "modele-peinture-02",
+        "nom": "modele-peinture-02",
+        "metier": "peinture",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "elevation",
+        "titre": "Un mur lessivé sèche avant d’être peint. Sans exception.",
+        "main": {
+          "hero": "hero",
+          "chantier": "chantier-2",
+          "geste": "geste-3",
+          "detail": "detail-peinture",
+          "paire1": "01",
+          "paire2": "02"
+        },
+        "appel": {
+          "forme": "plein",
+          "libelle": "Appeler",
+          "place": "nom-droite"
+        },
+        "photos": "hero,chantier-2,geste-3,detail-peinture,avant-01,apres-01,avant-02,apres-02",
+        "structure": "coupure > ouverture > prix > chantier > avis > travail > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "prix",
+            "chantier",
+            "avis",
+            "travail",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "comparateur": {
+          "prise": "losange",
+          "indice": "Déplacez la séparation",
+          "etiquettes": "bas"
+        },
+        "phrases": [
+          "Un mur lessivé sèche avant d’être peint. Sans exception.",
+          "Lessivage des supports, préparation des murs abîmés, finition mate, satinée ou velours, rechampissage des angles et des plinthes.",
+          "Murs griffés dans le couloir, lés mal raccordés, porte marquée par le passage.",
+          "Moisissures traitées, teinte posée en deux couches, boiseries reprises, chantier livré propre.",
+          "La sous-couche est choisie selon le support, plâtre, bois ou ancienne peinture. La sous-couche décide de l’accroche de tout ce qui vient après.",
+          "Le rouleau est égoutté sur la grille, pas sur le bord du bac. Deux couches sur un mur préparé valent mieux que trois sur un mur sale.",
+          "La pièce est inspectée mur par mur avant d’être rendue. Une laque sur bois non égrené s’écaille en quelques mois.",
+          "Deux teintes dans une pièce se séparent sur une arête, pas au milieu d’un mur. Un blanc froid dans une pièce sans soleil éteint la pièce.",
+          "Les menuiseries sont protégées au ruban avant la première passe. Les plinthes sont la première chose qu’on regarde à la fin.",
+          "Les travaux, un par un.",
+          "Ce qui se vérifie.",
+          "Appeler l’entreprise.",
+          "Au travail sur le mur.",
+          "Faites glisser le curseur pour voir la pièce avant les travaux.",
+          "Même point de vue, même cadrage. Tout le reste est à sa place.",
+          "Chambre d’enfant, angles redressés, teinte posée en deux couches.",
+          "Chambre, sous-couche appliquée, peinture mate."
+        ],
+        "intitules": [
+          "Les travaux, un par un.",
+          "Ce qui se vérifie.",
+          "Appeler l’entreprise.",
+          "Au travail sur le mur."
+        ],
+        "famille": "olive-papier",
+        "sol": "nuit",
+        "polices": "archivo-plein",
+        "geometrie": "vif",
+        "mot": "aucun"
+      }
+    },
+    {
+      "id": "modele-peinture-03",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "matiere",
+      "charte": {
+        "famille": {
+          "cle": "foret",
+          "nom": "foret : vert profond, os, ambre",
+          "nuit": "#0D1512",
+          "encre": "#152019",
+          "chaux": "#E9EDE6",
+          "gris": "#87948A",
+          "papier": "#EFF2ED",
+          "encreClair": "#111A15",
+          "second": "#C9922F"
+        },
+        "polices": {
+          "cle": "public-bricolage",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "public-sans.woff2",
+            "bricolage.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/bricolage.woff2\") format(\"woff2\");font-weight:200 800;font-display:swap}"
+        },
+        "geo": {
+          "cle": "adouci",
+          "rayon": "3px",
+          "filet": "1px",
+          "etiquette": "contour",
+          "jeton": "99px"
+        },
+        "sol": "nuit",
+        "mot": "enseigne",
+        "structure": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "travail",
+            "chantier",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": true,
+          "nuancierPlace": "atmo"
+        },
+        "teintes": {
+          "combien": 4,
+          "depart": 4
+        },
+        "comparateur": {
+          "prise": "carre",
+          "indice": "Touchez la photo",
+          "etiquettes": "haut"
+        }
+      },
+      "fiche": {
+        "siren": "modele-peinture-03",
+        "nom": "modele-peinture-03",
+        "metier": "peinture",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "matiere",
+        "titre": "Les prises et interrupteurs se démontent, et la bande reste nette.",
+        "main": {
+          "hero": "hero-variante-2",
+          "chantier": "chantier",
+          "geste": "geste",
+          "detail": "detail-peinture",
+          "paire1": "03",
+          "paire2": "02"
+        },
+        "appel": {
+          "forme": "contour",
+          "libelle": "Appeler l’entreprise",
+          "place": "nom-droite"
+        },
+        "photos": "hero-variante-2,chantier,geste,detail-peinture,avant-03,apres-03,avant-02,apres-02",
+        "structure": "coupure > ouverture > travail > chantier > prix > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "travail",
+            "chantier",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": true,
+          "nuancierPlace": "atmo"
+        },
+        "comparateur": {
+          "prise": "carre",
+          "indice": "Touchez la photo",
+          "etiquettes": "haut"
+        },
+        "phrases": [
+          "Les prises et interrupteurs se démontent, et la bande reste nette.",
+          "Protection du sol et des menuiseries, lessivage des supports, rebouchage des trous et des fissures, sous-couche bloquante sur les taches, peinture spéciale pièce humide.",
+          "Enduit décollé par plaques, deux papiers superposés, plinthes jaunies et écaillées.",
+          "Anciens papiers retirés, enduit de lissage passé, murs lessivables dans la cuisine, lignes nettes aux angles.",
+          "Les angles sont poncés à la main, sans attaquer le plâtre. La lumière de biais montre ce que la lumière de face cache.",
+          "Un support poudreux est fixé avant d’être peint. Une sous-couche trop épaisse ne remplace pas une finition.",
+          "La peinture est brassée avant chaque reprise de pot. C’est la régularité du geste qui fait la régularité du mur.",
+          "Les trous de fixation sont rebouchés et retouchés en fin de chantier. Une peinture ordinaire sur radiateur jaunit à la première chauffe.",
+          "La teinte d’origine est notée avant de peindre, pour les retouches. Une limite de teinte au milieu d’un mur se voit toujours.",
+          "Les seuils de porte sont protégés pour ne rien emporter sur le palier. Un chantier protégé se travaille sans crainte, donc plus vite.",
+          "Ce qui se fait, et dans quel ordre.",
+          "L’entreprise au registre.",
+          "Parler de vos pièces.",
+          "À dix centimètres, on voit le grain que le rouleau a laissé."
+        ],
+        "intitules": [
+          "Ce qui se fait, et dans quel ordre.",
+          "L’entreprise au registre.",
+          "Parler de vos pièces."
+        ],
+        "famille": "foret",
+        "sol": "nuit",
+        "polices": "public-bricolage",
+        "geometrie": "adouci",
+        "mot": "enseigne"
+      }
+    },
+    {
+      "id": "modele-peinture-04",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "planche",
+      "charte": {
+        "famille": {
+          "cle": "mono-vif",
+          "nom": "monochrome plus un accent sature",
+          "nuit": "#0E0E0E",
+          "encre": "#1A1A1A",
+          "chaux": "#EFEFEF",
+          "gris": "#909090",
+          "papier": "#F2F2F2",
+          "encreClair": "#141414",
+          "second": "#0E9F6E"
+        },
+        "polices": {
+          "cle": "bricolage",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "bricolage.woff2",
+            "public-sans.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/bricolage.woff2\") format(\"woff2\");font-weight:200 800;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "vif",
+          "rayon": "0px",
+          "filet": "1px",
+          "etiquette": "plein",
+          "jeton": "2px"
+        },
+        "sol": "nuit",
+        "mot": "commune",
+        "structure": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "prix",
+            "chantier",
+            "travail",
+            "avis",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "teintes": {
+          "combien": 5,
+          "depart": 2
+        },
+        "comparateur": {
+          "prise": "carre",
+          "indice": "Glissez pour voir l’avant",
+          "etiquettes": "haut"
+        }
+      },
+      "fiche": {
+        "siren": "modele-peinture-04",
+        "nom": "modele-peinture-04",
+        "metier": "peinture",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "planche",
+        "titre": "La lumière du jour montre ce que l’ampoule cache.",
+        "main": {
+          "hero": "hero",
+          "chantier": "chantier-3",
+          "geste": "geste-5",
+          "detail": "detail-peinture",
+          "paire1": "03",
+          "paire2": "01"
+        },
+        "appel": {
+          "forme": "plein",
+          "libelle": "Téléphoner",
+          "place": "nom-droite"
+        },
+        "photos": "hero,chantier-3,geste-5,detail-peinture,avant-03,apres-03,avant-01,apres-01",
+        "structure": "ouverture > coupure > prix > chantier > travail > avis > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "prix",
+            "chantier",
+            "travail",
+            "avis",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "comparateur": {
+          "prise": "carre",
+          "indice": "Glissez pour voir l’avant",
+          "etiquettes": "haut"
+        },
+        "phrases": [
+          "La lumière du jour montre ce que l’ampoule cache.",
+          "Protection du sol et des menuiseries, dégraissage avant travaux, sous-couche adaptée au support, finition appliquée au rouleau, finitions au pinceau.",
+          "Enduit décollé par plaques, traces de colle sèche, chambranle écaillé.",
+          "Supports dégraissés, murs unis, sans reprise visible, radiateur repeint, pièce nettoyée et rendue.",
+          "Les fissures sont ouvertes en V avant d’être rebouchées. L’enduit de lissage transforme un mur ancien en mur neuf.",
+          "Le ponçage se fait à la lumière rasante, lampe de côté. Cette étape décide de la finesse du résultat.",
+          "Les taches d’eau et de suie sont bloquées par une sous-couche spéciale. Une tache non bloquée traverse deux couches de blanc.",
+          "Le mur est peint en entier, sans pause au milieu. Un mur peint par morceaux garde la trace de chaque arrêt.",
+          "Ce que recouvre une mise en peinture.",
+          "Ce que dit l’administration.",
+          "Demander un avis sur la pièce.",
+          "Le chantier.",
+          "Glissez le trait pour comparer les deux états de la pièce.",
+          "Même angle, même distance. Seule la peinture a changé.",
+          "Bureau, fissures armées, plafond blanc.",
+          "Pièce complète, support poncé, plafond blanc."
+        ],
+        "intitules": [
+          "Ce que recouvre une mise en peinture.",
+          "Ce que dit l’administration.",
+          "Demander un avis sur la pièce.",
+          "Le chantier."
+        ],
+        "famille": "mono-vif",
+        "sol": "nuit",
+        "polices": "bricolage",
+        "geometrie": "vif",
+        "mot": "commune"
+      }
+    },
+    {
+      "id": "modele-peinture-05",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "matiere",
+      "charte": {
+        "famille": {
+          "cle": "noir-fauve",
+          "nom": "noir et fauve : noir casse, fauve chaud, aucun beige",
+          "nuit": "#0B0D0E",
+          "encre": "#16191B",
+          "chaux": "#EDEDEA",
+          "gris": "#8E8F8C",
+          "papier": "#F0F0EE",
+          "encreClair": "#121415",
+          "second": "#C2703C"
+        },
+        "polices": {
+          "cle": "public-bricolage",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "public-sans.woff2",
+            "bricolage.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/bricolage.woff2\") format(\"woff2\");font-weight:200 800;font-display:swap}"
+        },
+        "geo": {
+          "cle": "vif",
+          "rayon": "0px",
+          "filet": "1px",
+          "etiquette": "plein",
+          "jeton": "2px"
+        },
+        "sol": "nuit",
+        "mot": "aucun",
+        "structure": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "travail",
+            "chantier",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": true,
+          "nuancierPlace": "comparateur"
+        },
+        "teintes": {
+          "combien": 4,
+          "depart": 5
+        },
+        "comparateur": {
+          "prise": "barre",
+          "indice": "Faites glisser",
+          "etiquettes": "haut"
+        }
+      },
+      "fiche": {
+        "siren": "modele-peinture-05",
+        "nom": "modele-peinture-05",
+        "metier": "peinture",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "matiere",
+        "titre": "Les angles se coupent au pinceau, le reste se roule.",
+        "main": {
+          "hero": "hero-variante-2",
+          "chantier": "chantier-2",
+          "geste": "geste-2",
+          "detail": "detail-peinture",
+          "paire1": "01",
+          "paire2": "03"
+        },
+        "appel": {
+          "forme": "pastille",
+          "libelle": "Appeler l’entreprise",
+          "place": "nom-gauche"
+        },
+        "photos": "hero-variante-2,chantier-2,geste-2,detail-peinture,avant-01,apres-01,avant-03,apres-03",
+        "structure": "ouverture > coupure > travail > chantier > prix > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "travail",
+            "chantier",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": true,
+          "nuancierPlace": "comparateur"
+        },
+        "comparateur": {
+          "prise": "barre",
+          "indice": "Faites glisser",
+          "etiquettes": "haut"
+        },
+        "phrases": [
+          "Les angles se coupent au pinceau, le reste se roule.",
+          "Protection du sol et des menuiseries, rebouchage et enduit de lissage, impression sur plâtre neuf, peinture en deux couches, plinthes et boiseries laquées.",
+          "Murs jaunis, angles épaufrés, frise ancienne à retirer.",
+          "Anciens papiers retirés, peinture tendue du sol au plafond, portes et chambranles laqués, sol débarrassé et balayé.",
+          "Le passage reste libre pour les habitants, chaque soir. Protéger coûte du temps, repeindre un sol coûte davantage.",
+          "Les murs de cuisine sont dégraissés avant tout le reste. Une moisissure peinte revient, en plus foncé.",
+          "Les plinthes décollées sont refixées avant les finitions. Une bande d’armature empêche la fissure de traverser la peinture.",
+          "Les murs entiers sont égrenés avant la sous-couche. Un rebouchage qui se sent sous la main se verra sous la peinture.",
+          "Ce qui se passe avant la couleur.",
+          "Ce qui est public.",
+          "Faire venir quelqu’un.",
+          "La trace du pinceau d’angle se voit si le rouleau ne la recouvre pas."
+        ],
+        "intitules": [
+          "Ce qui se passe avant la couleur.",
+          "Ce qui est public.",
+          "Faire venir quelqu’un."
+        ],
+        "famille": "noir-fauve",
+        "sol": "nuit",
+        "polices": "public-bricolage",
+        "geometrie": "vif",
+        "mot": "aucun"
+      }
+    },
+    {
+      "id": "modele-peinture-06",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "elevation",
+      "charte": {
+        "famille": {
+          "cle": "cobalt-creme",
+          "nom": "cobalt et creme : bleu sature contre un seul neutre",
+          "nuit": "#0C1424",
+          "encre": "#141E32",
+          "chaux": "#E8ECF3",
+          "gris": "#828FA6",
+          "papier": "#EEF1F6",
+          "encreClair": "#101827",
+          "second": "#1D4ED8"
+        },
+        "polices": {
+          "cle": "archivo-plein",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "archivo-wght.woff2",
+            "public-sans.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/archivo-wght.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "adouci",
+          "rayon": "3px",
+          "filet": "1px",
+          "etiquette": "contour",
+          "jeton": "99px"
+        },
+        "sol": "nuit",
+        "mot": "commune",
+        "structure": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "chantier",
+            "avis",
+            "travail",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "teintes": {
+          "combien": 5,
+          "depart": 1
+        },
+        "comparateur": {
+          "prise": "rond",
+          "indice": "Comparez d’un geste",
+          "etiquettes": "haut"
+        }
+      },
+      "fiche": {
+        "siren": "modele-peinture-06",
+        "nom": "modele-peinture-06",
+        "metier": "peinture",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "elevation",
+        "titre": "Un mur fissuré se répare, puis se peint. Jamais l’inverse.",
+        "main": {
+          "hero": "hero",
+          "chantier": "chantier",
+          "geste": "geste-5",
+          "detail": "detail-peinture",
+          "paire1": "02",
+          "paire2": "03"
+        },
+        "appel": {
+          "forme": "contour",
+          "libelle": "Appeler",
+          "place": "nom-gauche"
+        },
+        "photos": "hero,chantier,geste-5,detail-peinture,avant-02,apres-02,avant-03,apres-03",
+        "structure": "ouverture > coupure > chantier > avis > travail > prix > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "chantier",
+            "avis",
+            "travail",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "comparateur": {
+          "prise": "rond",
+          "indice": "Comparez d’un geste",
+          "etiquettes": "haut"
+        },
+        "phrases": [
+          "Un mur fissuré se répare, puis se peint. Jamais l’inverse.",
+          "Protection de la pièce, retrait des anciens papiers peints, ponçage fin des rebouchages, peinture en deux couches, nettoyage du chantier.",
+          "Murs jaunis, fissure au plafond, papier gonflé par l’humidité.",
+          "Supports dégraissés, fissures ouvertes et armées, plafond blanc mat.",
+          "Les plinthes sont laquées après les murs, ligne tirée au pinceau. Une plinthe nette fait tout le travail d’une pièce.",
+          "Les teintes foncées sont réservées aux murs sans défaut. Une teinte sombre souligne chaque irrégularité du support.",
+          "Les radiateurs sont dégagés quand c’est possible. La peinture saute plus loin qu’on ne croit, surtout au rouleau.",
+          "La poussière du haut des murs est retirée à la brosse. Le plâtre détrempé met des jours à sécher, et le chantier attend.",
+          "Les reprises d’électricité sont rebouchées et affleurées au mur. Les fissures de plafond travaillent avec le plancher du dessus.",
+          "La ponceuse reste sur les grandes surfaces, la cale fait le reste. Un mur dépoussiéré se peint sans traces.",
+          "Les postes du devis.",
+          "Ce que disent les registres.",
+          "Parler du chantier.",
+          "Avant la première couche.",
+          "Déplacez le trait pour mesurer le travail fait.",
+          "Les deux images ont le même cadrage. La différence vient du chantier.",
+          "Salon, papier peint retiré, murs unis.",
+          "Porte intérieure, papier peint retiré, deux couches de finition."
+        ],
+        "intitules": [
+          "Les postes du devis.",
+          "Ce que disent les registres.",
+          "Parler du chantier.",
+          "Avant la première couche."
+        ],
+        "famille": "cobalt-creme",
+        "sol": "nuit",
+        "polices": "archivo-plein",
+        "geometrie": "adouci",
+        "mot": "commune"
+      }
+    },
+    {
+      "id": "modele-peinture-07",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "panneau",
+      "charte": {
+        "famille": {
+          "cle": "luxe-froid",
+          "nom": "luxe froid : gris argent, chrome, fumee",
+          "nuit": "#101418",
+          "encre": "#192026",
+          "chaux": "#E7ECEF",
+          "gris": "#8C99A2",
+          "papier": "#EFF2F4",
+          "encreClair": "#151A1F",
+          "second": "#9FB0BA"
+        },
+        "polices": {
+          "cle": "bricolage",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "bricolage.woff2",
+            "public-sans.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/bricolage.woff2\") format(\"woff2\");font-weight:200 800;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "rond",
+          "rayon": "10px",
+          "filet": "2px",
+          "etiquette": "plein",
+          "jeton": "99px"
+        },
+        "sol": "papier",
+        "mot": "metier",
+        "structure": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "avis",
+            "travail",
+            "chantier",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "teintes": {
+          "combien": 4,
+          "depart": 1
+        },
+        "comparateur": {
+          "prise": "double",
+          "indice": "Avant, après : glissez",
+          "etiquettes": "bas"
+        }
+      },
+      "fiche": {
+        "siren": "modele-peinture-07",
+        "nom": "modele-peinture-07",
+        "metier": "peinture",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "panneau",
+        "titre": "Le satiné renvoie la lumière, le mat l’absorbe.",
+        "main": {
+          "hero": "hero",
+          "chantier": "chantier",
+          "geste": "geste-2",
+          "detail": "detail-peinture",
+          "paire1": "02",
+          "paire2": "01"
+        },
+        "appel": {
+          "forme": "pastille",
+          "libelle": "Téléphoner",
+          "place": "nom-gauche"
+        },
+        "photos": "hero,chantier,geste-2,detail-peinture,avant-02,apres-02,avant-01,apres-01",
+        "structure": "coupure > ouverture > avis > travail > chantier > prix > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "avis",
+            "travail",
+            "chantier",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "comparateur": {
+          "prise": "double",
+          "indice": "Avant, après : glissez",
+          "etiquettes": "bas"
+        },
+        "phrases": [
+          "Le satiné renvoie la lumière, le mat l’absorbe.",
+          "Protection de la pièce, reprise des fissures à l’enduit, dépoussiérage avant mise en peinture, fixateur sur support poudreux, finition appliquée au rouleau.",
+          "Murs jaunis, papier peint décollé aux angles, boiseries ternies.",
+          "Trous rebouchés et affleurés, murs unis, sans reprise visible, contours de prises propres.",
+          "Les bâches sont fixées au ruban, pas posées seulement. Une goutte sur un parquet se voit pendant des années.",
+          "Les traces de doigts et les auréoles sont traitées une par une. Le lavage montre les fissures que la poussière cachait.",
+          "Les angles abîmés sont repris à la spatule, puis dressés. Un angle droit se voit depuis l’entrée de la pièce.",
+          "Le sol est balayé avant la peinture, pour ne pas remonter la poussière. Une ponceuse mal tenue creuse le plâtre en quelques secondes.",
+          "Les postes d’un chantier de peinture.",
+          "Les données publiques.",
+          "Demander une visite.",
+          "Entre deux couches.",
+          "Touchez la photo pour voir la différence.",
+          "Les deux prises de vue se superposent exactement. La pièce est la même, repeinte.",
+          "Entrée, trous rebouchés, peinture lessivable.",
+          "Cage d’escalier, murs lessivés, peinture mate."
+        ],
+        "intitules": [
+          "Les postes d’un chantier de peinture.",
+          "Les données publiques.",
+          "Demander une visite.",
+          "Entre deux couches."
+        ],
+        "famille": "luxe-froid",
+        "sol": "papier",
+        "polices": "bricolage",
+        "geometrie": "rond",
+        "mot": "metier"
+      }
+    },
+    {
+      "id": "modele-peinture-08",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "planche",
+      "charte": {
+        "famille": {
+          "cle": "noir-fauve",
+          "nom": "noir et fauve : noir casse, fauve chaud, aucun beige",
+          "nuit": "#0B0D0E",
+          "encre": "#16191B",
+          "chaux": "#EDEDEA",
+          "gris": "#8E8F8C",
+          "papier": "#F0F0EE",
+          "encreClair": "#121415",
+          "second": "#C2703C"
+        },
+        "polices": {
+          "cle": "archivo-etroit",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "archivo-narrow-700.woff2",
+            "archivo-wght.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/archivo-narrow-700.woff2\") format(\"woff2\");font-weight:700;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/archivo-wght.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "adouci",
+          "rayon": "3px",
+          "filet": "1px",
+          "etiquette": "contour",
+          "jeton": "99px"
+        },
+        "sol": "papier",
+        "mot": "enseigne",
+        "structure": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "travail",
+            "prix",
+            "chantier",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "teintes": {
+          "combien": 4,
+          "depart": 1
+        },
+        "comparateur": {
+          "prise": "double",
+          "indice": "Glissez ou touchez",
+          "etiquettes": "haut"
+        }
+      },
+      "fiche": {
+        "siren": "modele-peinture-08",
+        "nom": "modele-peinture-08",
+        "metier": "peinture",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "planche",
+        "titre": "Un couloir se peint dans une teinte qui supporte les frottements.",
+        "main": {
+          "hero": "hero-variante-2",
+          "chantier": "chantier-2",
+          "geste": "geste-3",
+          "detail": "detail-peinture",
+          "paire1": "03",
+          "paire2": "02"
+        },
+        "appel": {
+          "forme": "plein",
+          "libelle": "Appeler",
+          "place": "nom-droite"
+        },
+        "photos": "hero-variante-2,chantier-2,geste-3,detail-peinture,avant-03,apres-03,avant-02,apres-02",
+        "structure": "coupure > ouverture > travail > prix > chantier > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "travail",
+            "prix",
+            "chantier",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "comparateur": {
+          "prise": "double",
+          "indice": "Glissez ou touchez",
+          "etiquettes": "haut"
+        },
+        "phrases": [
+          "Un couloir se peint dans une teinte qui supporte les frottements.",
+          "Protection du sol et des menuiseries, ponçage et dépoussiérage, finition mate, satinée ou velours, rechampissage des angles et des plinthes.",
+          "Murs ternis par la fumée, fissures capillaires sur les murs, papier gonflé par l’humidité.",
+          "Supports dégraissés, trous rebouchés et affleurés, plafond blanc mat.",
+          "Le bois nu est imprimé avant la laque. Le bois sans impression avale la laque et ressort mat.",
+          "La peinture est appliquée en deux couches croisées, rouleau chargé puis tendu. Les pigments foncés couvrent moins : le nombre de couches s’adapte.",
+          "Les retouches sont faites à la lumière du jour, pas le soir. Un ruban retiré trop tard emporte la peinture avec lui.",
+          "L’essai est regardé à la lumière du matin et à celle du soir. Un plafond plus clair que les murs fait respirer la pièce.",
+          "De la protection à la finition.",
+          "Ce qu’on peut contrôler.",
+          "Faire voir la pièce à repeindre.",
+          "Pendant les travaux.",
+          "Faites glisser la couture pour passer d’un état à l’autre.",
+          "Même hauteur, même focale. Le reste de la pièce est identique.",
+          "Couloir, plafond repris, finition satinée.",
+          "Plafond, plafond repris, finition satinée."
+        ],
+        "intitules": [
+          "De la protection à la finition.",
+          "Ce qu’on peut contrôler.",
+          "Faire voir la pièce à repeindre.",
+          "Pendant les travaux."
+        ],
+        "famille": "noir-fauve",
+        "sol": "papier",
+        "polices": "archivo-etroit",
+        "geometrie": "adouci",
+        "mot": "enseigne"
+      }
+    },
+    {
+      "id": "modele-peinture-09",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "panneau",
+      "charte": {
+        "famille": {
+          "cle": "olive-papier",
+          "nom": "olive, brique, papier : olive sourd plus accent brique",
+          "nuit": "#12140E",
+          "encre": "#1D2015",
+          "chaux": "#EBEDE4",
+          "gris": "#8E9182",
+          "papier": "#F0F1E9",
+          "encreClair": "#171A11",
+          "second": "#9A3B2A"
+        },
+        "polices": {
+          "cle": "archivo-plein",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "archivo-wght.woff2",
+            "public-sans.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/archivo-wght.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "adouci",
+          "rayon": "3px",
+          "filet": "1px",
+          "etiquette": "contour",
+          "jeton": "99px"
+        },
+        "sol": "papier",
+        "mot": "aucun",
+        "structure": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "avis",
+            "travail",
+            "prix",
+            "chantier",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "teintes": {
+          "combien": 4,
+          "depart": 0
+        },
+        "comparateur": {
+          "prise": "double",
+          "indice": "Avant, après : glissez",
+          "etiquettes": "haut"
+        }
+      },
+      "fiche": {
+        "siren": "modele-peinture-09",
+        "nom": "modele-peinture-09",
+        "metier": "peinture",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "panneau",
+        "titre": "Une peinture bien tendue n’a ni traces, ni surépaisseur.",
+        "main": {
+          "hero": "hero",
+          "chantier": "chantier-3",
+          "geste": "geste-4",
+          "detail": "detail-peinture",
+          "paire1": "01",
+          "paire2": "03"
+        },
+        "appel": {
+          "forme": "contour",
+          "libelle": "Appeler l’entreprise",
+          "place": "nom-gauche"
+        },
+        "photos": "hero,chantier-3,geste-4,detail-peinture,avant-01,apres-01,avant-03,apres-03",
+        "structure": "coupure > ouverture > avis > travail > prix > chantier > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "avis",
+            "travail",
+            "prix",
+            "chantier",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "comparateur": {
+          "prise": "double",
+          "indice": "Avant, après : glissez",
+          "etiquettes": "haut"
+        },
+        "phrases": [
+          "Une peinture bien tendue n’a ni traces, ni surépaisseur.",
+          "Protection de la pièce, lavage des murs et des boiseries, reprise des fissures à l’enduit, peinture spéciale pièce humide.",
+          "Traces de doigts et frottements, faïençage au-dessus des portes, traces de colle sèche.",
+          "Supports dégraissés, peinture tendue du sol au plafond, radiateur repeint.",
+          "Les luminaires sont décrochés ou emballés. Les projections sur une vitre se retirent mal une fois sèches.",
+          "Les boiseries sont lavées et égrenées avant la première couche. Une colle de papier peint laissée en place fait cloquer la peinture.",
+          "Les trous de chevilles sont rebouchés à l’enduit, pas au mastic. L’enduit sèche au cœur, pas seulement en surface.",
+          "La poussière est aspirée, puis essuyée à l’éponge humide. Les boiseries laquées ne pardonnent aucun grain oublié.",
+          "La sous-couche est appliquée en une passe régulière, sans surcharge. Les reprises d’enduit boivent plus que le reste du mur.",
+          "Les teintes foncées demandent parfois une troisième passe. Un pinceau d’angle propre fait une ligne que le rouleau ne sait pas faire.",
+          "Le chantier, étape par étape.",
+          "Les faits, sans commentaire.",
+          "Prendre contact.",
+          "Le chantier, de près.",
+          "Déplacez la séparation pour voir la pièce avant et après.",
+          "Les deux photos sont prises du même endroit. Rien d’autre ne change que la peinture.",
+          "Cuisine, sous-couche appliquée, plinthes laquées.",
+          "Cuisine, enduit de lissage passé, plinthes laquées."
+        ],
+        "intitules": [
+          "Le chantier, étape par étape.",
+          "Les faits, sans commentaire.",
+          "Prendre contact.",
+          "Le chantier, de près."
+        ],
+        "famille": "olive-papier",
+        "sol": "papier",
+        "polices": "archivo-plein",
+        "geometrie": "adouci",
+        "mot": "aucun"
+      }
+    },
+    {
+      "id": "modele-peinture-10",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "planche",
+      "charte": {
+        "famille": {
+          "cle": "foret",
+          "nom": "foret : vert profond, os, ambre",
+          "nuit": "#0D1512",
+          "encre": "#152019",
+          "chaux": "#E9EDE6",
+          "gris": "#87948A",
+          "papier": "#EFF2ED",
+          "encreClair": "#111A15",
+          "second": "#C9922F"
+        },
+        "polices": {
+          "cle": "bricolage",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "bricolage.woff2",
+            "public-sans.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/bricolage.woff2\") format(\"woff2\");font-weight:200 800;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "adouci",
+          "rayon": "3px",
+          "filet": "1px",
+          "etiquette": "contour",
+          "jeton": "99px"
+        },
+        "sol": "papier",
+        "mot": "commune",
+        "structure": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "prix",
+            "travail",
+            "chantier",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "teintes": {
+          "combien": 5,
+          "depart": 3
+        },
+        "comparateur": {
+          "prise": "barre",
+          "indice": "Avant, après : glissez",
+          "etiquettes": "haut"
+        }
+      },
+      "fiche": {
+        "siren": "modele-peinture-10",
+        "nom": "modele-peinture-10",
+        "metier": "peinture",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "planche",
+        "titre": "Les traces de reprise viennent d’un mur peint par morceaux.",
+        "main": {
+          "hero": "hero-variante-2",
+          "chantier": "chantier-3",
+          "geste": "geste",
+          "detail": "detail-peinture",
+          "paire1": "02",
+          "paire2": "01"
+        },
+        "appel": {
+          "forme": "pastille",
+          "libelle": "Appeler",
+          "place": "nom-gauche"
+        },
+        "photos": "hero-variante-2,chantier-3,geste,detail-peinture,avant-02,apres-02,avant-01,apres-01",
+        "structure": "ouverture > coupure > prix > travail > chantier > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "prix",
+            "travail",
+            "chantier",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "comparateur": {
+          "prise": "barre",
+          "indice": "Avant, après : glissez",
+          "etiquettes": "haut"
+        },
+        "phrases": [
+          "Les traces de reprise viennent d’un mur peint par morceaux.",
+          "Protection du sol et des menuiseries, ponçage complet des murs, peinture lessivable, pièce rendue propre.",
+          "Murs griffés dans le couloir, trous de chevilles non rebouchés, radiateur jauni.",
+          "Moisissures traitées, finition satinée dans la pièce humide, lignes nettes aux angles.",
+          "Les fissures de plafond sont armées avant toute peinture. Un rebouchage trop épais se fendille en séchant.",
+          "La pièce est aérée pendant tout le ponçage. Un grain trop gros laisse des cercles visibles sous le satiné.",
+          "Le temps de séchage de la sous-couche est respecté avant la finition. La peinture posée sur une sous-couche fraîche reste collante.",
+          "Le plafond est peint avant les murs, dans la même journée. Un rouleau trop chargé coule le long des plinthes.",
+          "Les portes sont poncées, dépoussiérées, puis laquées en deux couches. Une pièce se livre finie, pas presque finie.",
+          "La teinte est essayée sur un mètre carré du mur avant d’être validée. Une peinture lessivable se nettoie sans perdre sa teinte.",
+          "Ce que comprend le chantier.",
+          "Les informations officielles.",
+          "Prendre rendez-vous.",
+          "Pièce bâchée.",
+          "Attrapez la couture pour voir ce que le chantier a changé.",
+          "Le point de vue ne bouge pas d’une photo à l’autre. Ce qui change, c’est le travail fait.",
+          "Entrée, fissures armées, peinture lessivable.",
+          "Salon, angles redressés, teinte posée en deux couches."
+        ],
+        "intitules": [
+          "Ce que comprend le chantier.",
+          "Les informations officielles.",
+          "Prendre rendez-vous.",
+          "Pièce bâchée."
+        ],
+        "famille": "foret",
+        "sol": "papier",
+        "polices": "bricolage",
+        "geometrie": "adouci",
+        "mot": "commune"
+      }
+    }
+  ]
+}

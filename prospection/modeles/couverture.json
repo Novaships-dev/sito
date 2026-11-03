@@ -1,0 +1,1389 @@
+{
+  "metier": "couverture",
+  "modeles": [
+    {
+      "id": "modele-couverture-01",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "elevation",
+      "charte": {
+        "famille": {
+          "cle": "luxe-froid",
+          "nom": "luxe froid : gris argent, chrome, fumee",
+          "nuit": "#101418",
+          "encre": "#192026",
+          "chaux": "#E7ECEF",
+          "gris": "#8C99A2",
+          "papier": "#EFF2F4",
+          "encreClair": "#151A1F",
+          "second": "#9FB0BA"
+        },
+        "polices": {
+          "cle": "bricolage",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "bricolage.woff2",
+            "public-sans.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/bricolage.woff2\") format(\"woff2\");font-weight:200 800;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "vif",
+          "rayon": "0px",
+          "filet": "1px",
+          "etiquette": "plein",
+          "jeton": "2px"
+        },
+        "sol": "nuit",
+        "mot": "enseigne",
+        "structure": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "chantier",
+            "avis",
+            "travail",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "teintes": {
+          "combien": 5,
+          "depart": 6
+        },
+        "comparateur": {
+          "prise": "double",
+          "indice": "Comparez d’un geste",
+          "etiquettes": "bas"
+        }
+      },
+      "fiche": {
+        "siren": "modele-couverture-01",
+        "nom": "modele-couverture-01",
+        "metier": "couverture",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "elevation",
+        "titre": "Une toiture mal ventilée fatigue la charpente sans rien montrer.",
+        "main": {
+          "hero": "hero",
+          "chantier": "chantier-2",
+          "geste": "geste",
+          "detail": "detail-zinc",
+          "paire1": "01",
+          "paire2": "02"
+        },
+        "appel": {
+          "forme": "plein",
+          "libelle": "Appeler l’entreprise",
+          "place": "nom-droite"
+        },
+        "photos": "hero,chantier-2,geste,detail-zinc,avant-01,apres-01,avant-02,apres-02",
+        "structure": "ouverture > coupure > chantier > avis > travail > prix > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "chantier",
+            "avis",
+            "travail",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "comparateur": {
+          "prise": "double",
+          "indice": "Comparez d’un geste",
+          "etiquettes": "bas"
+        },
+        "phrases": [
+          "Une toiture mal ventilée fatigue la charpente sans rien montrer.",
+          "Démoussage et dépose, écran sous-toiture et liteaux neufs, noues et solins en zinc neuf, couverture neuve, rang par rang, chantier nettoyé, gouttières rincées.",
+          "Génoise effritée, gouttière percée et déformée, traces d’infiltration dans la charpente.",
+          "Support assaini, ardoises neuves au crochet, zinguerie neuve en zinc, toiture nettoyée et démoussée.",
+          "Les voisins sont prévenus de la date et de la durée du chantier. Un accès dégagé fait gagner des heures sur la durée du chantier.",
+          "La dépose s’arrête à ce qu’on peut recouvrir le soir même. Les tuiles anciennes sont souvent meilleures que leurs copies récentes.",
+          "Un chevron attaqué se renforce par une pièce de bois jumelée. Poser des tuiles neuves sur un bois atteint, c’est condamner le chantier.",
+          "Le dernier rang se cale avant le faîtage, et tout le reste se répartit dessus. C’est cette étape qui rend la pose rapide et sûre.",
+          "Les tuiles de ventilation se répartissent sur la hauteur du pan. Les tuiles mélangées, anciennes et neuves, demandent un œil à chaque rang.",
+          "Le zinc se laisse travailler : dilatation prévue à chaque longueur. Une gouttière à l’horizontale garde l’eau et finit par déborder.",
+          "Ce qui se passe sur l’échafaudage.",
+          "Ce que dit l’administration.",
+          "Appeler l’entreprise.",
+          "Au-dessus de la gouttière.",
+          "Touchez la photo pour retrouver la toiture d’origine.",
+          "Même angle, même distance. Tout le reste est à sa place.",
+          "Pan de toit, support refait, tuiles mécaniques neuves.",
+          "Toiture complète, charpente reprise, tuiles mécaniques neuves."
+        ],
+        "intitules": [
+          "Ce qui se passe sur l’échafaudage.",
+          "Ce que dit l’administration.",
+          "Appeler l’entreprise.",
+          "Au-dessus de la gouttière."
+        ],
+        "famille": "luxe-froid",
+        "sol": "nuit",
+        "polices": "bricolage",
+        "geometrie": "vif",
+        "mot": "enseigne"
+      }
+    },
+    {
+      "id": "modele-couverture-02",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "planche",
+      "charte": {
+        "famille": {
+          "cle": "terre-ardoise",
+          "nom": "terre cuite et ardoise : rouille chaude contre gris froid",
+          "nuit": "#111619",
+          "encre": "#1B2226",
+          "chaux": "#E6EAEC",
+          "gris": "#849098",
+          "papier": "#EEF1F2",
+          "encreClair": "#151B1E",
+          "second": "#A5482C"
+        },
+        "polices": {
+          "cle": "archivo-plein",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "archivo-wght.woff2",
+            "public-sans.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/archivo-wght.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "rond",
+          "rayon": "10px",
+          "filet": "2px",
+          "etiquette": "plein",
+          "jeton": "99px"
+        },
+        "sol": "papier",
+        "mot": "aucun",
+        "structure": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "prix",
+            "chantier",
+            "travail",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "teintes": {
+          "combien": 5,
+          "depart": 6
+        },
+        "comparateur": {
+          "prise": "barre",
+          "indice": "Glissez le trait",
+          "etiquettes": "bas"
+        }
+      },
+      "fiche": {
+        "siren": "modele-couverture-02",
+        "nom": "modele-couverture-02",
+        "metier": "couverture",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "planche",
+        "titre": "Un toit qui bouge se réparera deux fois si on ne cherche pas pourquoi.",
+        "main": {
+          "hero": "hero-variante-2",
+          "chantier": "chantier",
+          "geste": "geste-4",
+          "detail": "detail-zinc",
+          "paire1": "02",
+          "paire2": "01"
+        },
+        "appel": {
+          "forme": "contour",
+          "libelle": "Téléphoner",
+          "place": "nom-droite"
+        },
+        "photos": "hero-variante-2,chantier,geste-4,detail-zinc,avant-02,apres-02,avant-01,apres-01",
+        "structure": "coupure > ouverture > prix > chantier > travail > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "prix",
+            "chantier",
+            "travail",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "comparateur": {
+          "prise": "barre",
+          "indice": "Glissez le trait",
+          "etiquettes": "bas"
+        },
+        "phrases": [
+          "Un toit qui bouge se réparera deux fois si on ne cherche pas pourquoi.",
+          "Démoussage et dépose, examen de la charpente, chéneaux et descentes d’eau repris, couverture posée.",
+          "Rive sans planche, tuiles en porte-à-faux, crochets tordus, charpente attaquée par les insectes.",
+          "Liteaux alignés au cordeau, tuiles neuves teinte accordée, pan balayé de haut en bas.",
+          "Les tuiles canal se posent par deux : le courant, puis le couvert. Le poids se répartit sur toute la charpente, pas sur un seul appui.",
+          "Les crochets se fixent sur la planche de rive, à écartement régulier. L’essai à l’eau se fait avant de reposer les tuiles, pas après.",
+          "Les traversées de toit se comptent au départ et se traitent une par une. Ce travail se compte en heures, pas en mètres carrés.",
+          "Le traitement s’applique par temps sec et agit plusieurs jours. Une gouttière pleine déborde sur la façade et abîme l’enduit.",
+          "Les étapes, dans l’ordre.",
+          "Les éléments vérifiables.",
+          "Parler de votre toiture.",
+          "La couverture en cours de pose.",
+          "Attrapez la couture pour passer d’un état à l’autre.",
+          "Les deux photos sont prises du même endroit. Rien d’autre ne change que le toit.",
+          "Toiture de maison de village, tuiles triées et complétées, pan entièrement recouvert.",
+          "Auvent, faîtage rescellé, tuiles canal reposées."
+        ],
+        "intitules": [
+          "Les étapes, dans l’ordre.",
+          "Les éléments vérifiables.",
+          "Parler de votre toiture.",
+          "La couverture en cours de pose."
+        ],
+        "famille": "terre-ardoise",
+        "sol": "papier",
+        "polices": "archivo-plein",
+        "geometrie": "rond",
+        "mot": "aucun"
+      }
+    },
+    {
+      "id": "modele-couverture-03",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "panneau",
+      "charte": {
+        "famille": {
+          "cle": "mono-vif",
+          "nom": "monochrome plus un accent sature",
+          "nuit": "#0E0E0E",
+          "encre": "#1A1A1A",
+          "chaux": "#EFEFEF",
+          "gris": "#909090",
+          "papier": "#F2F2F2",
+          "encreClair": "#141414",
+          "second": "#0E9F6E"
+        },
+        "polices": {
+          "cle": "archivo-etroit",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "archivo-narrow-700.woff2",
+            "archivo-wght.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/archivo-narrow-700.woff2\") format(\"woff2\");font-weight:700;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/archivo-wght.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "adouci",
+          "rayon": "3px",
+          "filet": "1px",
+          "etiquette": "contour",
+          "jeton": "99px"
+        },
+        "sol": "nuit",
+        "mot": "metier",
+        "structure": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "avis",
+            "prix",
+            "chantier",
+            "travail",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "teintes": {
+          "combien": 5,
+          "depart": 1
+        },
+        "comparateur": {
+          "prise": "rond",
+          "indice": "Glissez pour voir l’avant",
+          "etiquettes": "haut"
+        }
+      },
+      "fiche": {
+        "siren": "modele-couverture-03",
+        "nom": "modele-couverture-03",
+        "metier": "couverture",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "panneau",
+        "titre": "Une toiture-terrasse se juge à ses relevés, pas à sa surface.",
+        "main": {
+          "hero": "hero",
+          "chantier": "chantier-3",
+          "geste": "geste-3",
+          "detail": "detail-zinc",
+          "paire1": "03",
+          "paire2": "01"
+        },
+        "appel": {
+          "forme": "pastille",
+          "libelle": "Appeler",
+          "place": "nom-droite"
+        },
+        "photos": "hero,chantier-3,geste-3,detail-zinc,avant-03,apres-03,avant-01,apres-01",
+        "structure": "ouverture > coupure > avis > prix > chantier > travail > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "avis",
+            "prix",
+            "chantier",
+            "travail",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "comparateur": {
+          "prise": "rond",
+          "indice": "Glissez pour voir l’avant",
+          "etiquettes": "haut"
+        },
+        "phrases": [
+          "Une toiture-terrasse se juge à ses relevés, pas à sa surface.",
+          "Échafaudage et sécurité, remplacement des bois atteints, reprise des gouttières et des descentes, ardoises posées au crochet, faîtage et rives scellés.",
+          "Génoise effritée, zinguerie déchirée sous la lucarne, chevrons tachés par l’eau.",
+          "Support assaini, liteaux alignés au cordeau, couverture complète et alignée, raccords de cheminée repris.",
+          "Les contre-liteaux ménagent l’air entre l’écran et la tuile. Le support droit permet un alignement régulier du bas au faîtage.",
+          "La pose démarre en bas, à droite ou à gauche selon le vent dominant. La ventilation du toit passe par les tuiles, et elle garde la charpente saine.",
+          "Les gouttières se posent à la pente, vers la descente. Une soudure propre tient plus longtemps que n’importe quel mastic.",
+          "Les bavettes se glissent sous le rang supérieur, jamais par-dessus. Les rives tiennent le toit contre le vent.",
+          "Le déroulé du chantier.",
+          "L’entreprise au registre.",
+          "Faire venir quelqu’un.",
+          "Vue du chantier.",
+          "Passez le doigt sur la photo pour mesurer le travail fait.",
+          "Les deux images ont le même cadrage. Seule la toiture change.",
+          "Chéneau d’immeuble, rive fermée, zinc neuf posé.",
+          "Toit à deux pans, rive fermée, gouttière en zinc neuf."
+        ],
+        "intitules": [
+          "Le déroulé du chantier.",
+          "L’entreprise au registre.",
+          "Faire venir quelqu’un.",
+          "Vue du chantier."
+        ],
+        "famille": "mono-vif",
+        "sol": "nuit",
+        "polices": "archivo-etroit",
+        "geometrie": "adouci",
+        "mot": "metier"
+      }
+    },
+    {
+      "id": "modele-couverture-04",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "matiere",
+      "charte": {
+        "famille": {
+          "cle": "cobalt-creme",
+          "nom": "cobalt et creme : bleu sature contre un seul neutre",
+          "nuit": "#0C1424",
+          "encre": "#141E32",
+          "chaux": "#E8ECF3",
+          "gris": "#828FA6",
+          "papier": "#EEF1F6",
+          "encreClair": "#101827",
+          "second": "#1D4ED8"
+        },
+        "polices": {
+          "cle": "public-bricolage",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "public-sans.woff2",
+            "bricolage.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/bricolage.woff2\") format(\"woff2\");font-weight:200 800;font-display:swap}"
+        },
+        "geo": {
+          "cle": "adouci",
+          "rayon": "3px",
+          "filet": "1px",
+          "etiquette": "contour",
+          "jeton": "99px"
+        },
+        "sol": "papier",
+        "mot": "commune",
+        "structure": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "travail",
+            "chantier",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": true,
+          "nuancierPlace": "comparateur"
+        },
+        "teintes": {
+          "combien": 5,
+          "depart": 3
+        },
+        "comparateur": {
+          "prise": "barre",
+          "indice": "Touchez pour comparer",
+          "etiquettes": "haut"
+        }
+      },
+      "fiche": {
+        "siren": "modele-couverture-04",
+        "nom": "modele-couverture-04",
+        "metier": "couverture",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "matiere",
+        "titre": "En bord de mer, le sel décide de la durée de vie des métaux.",
+        "main": {
+          "hero": "hero-variante-2",
+          "chantier": "chantier-2",
+          "geste": "geste-2",
+          "detail": "detail-zinc",
+          "paire1": "03",
+          "paire2": "02"
+        },
+        "appel": {
+          "forme": "contour",
+          "libelle": "Appeler",
+          "place": "nom-gauche"
+        },
+        "photos": "hero-variante-2,chantier-2,geste-2,detail-zinc,avant-03,apres-03,avant-02,apres-02",
+        "structure": "coupure > ouverture > travail > chantier > prix > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "travail",
+            "chantier",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": true,
+          "nuancierPlace": "comparateur"
+        },
+        "comparateur": {
+          "prise": "barre",
+          "indice": "Touchez pour comparer",
+          "etiquettes": "haut"
+        },
+        "phrases": [
+          "En bord de mer, le sel décide de la durée de vie des métaux.",
+          "Montage de l’échafaudage et des protections, support refait à neuf, zinguerie : gouttières, noues, solins, tuiles d’origine reposées, complétées par des neuves, rives et arêtiers finis.",
+          "Arêtier disjoint, tôle rouillée en bas de pan, liteaux pourris en bas de pan.",
+          "Chevrons renforcés, support refait à neuf, couverture reposée rang par rang.",
+          "Le pureau se mesure sur le pan, tuile en main. Un liteaunage régulier fait un toit qui se regarde de loin sans défaut.",
+          "Les ardoises se posent au crochet, en quinconce. Une tuile mal calée se repère au bruit dès le premier coup de vent.",
+          "Les abergements de cheminée se font en plusieurs pièces, dans l’ordre. Un solin ouvert fait entrer l’eau au pied de la cheminée.",
+          "Les rives se ferment par une planche et une tuile adaptée. Un raccord posé dans le mauvais ordre conduit l’eau sous la couverture.",
+          "Les tuiles fendues se repèrent pendant le nettoyage et se remplacent. La visite de printemps rattrape ce que l’hiver a bougé.",
+          "Le détail des postes.",
+          "Les faits publics.",
+          "Demander un avis sur le toit.",
+          "Une tuile de récupération a une couleur qu’aucune tuile neuve n’imite."
+        ],
+        "intitules": [
+          "Le détail des postes.",
+          "Les faits publics.",
+          "Demander un avis sur le toit."
+        ],
+        "famille": "cobalt-creme",
+        "sol": "papier",
+        "polices": "public-bricolage",
+        "geometrie": "adouci",
+        "mot": "commune"
+      }
+    },
+    {
+      "id": "modele-couverture-05",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "panneau",
+      "charte": {
+        "famille": {
+          "cle": "foret",
+          "nom": "foret : vert profond, os, ambre",
+          "nuit": "#0D1512",
+          "encre": "#152019",
+          "chaux": "#E9EDE6",
+          "gris": "#87948A",
+          "papier": "#EFF2ED",
+          "encreClair": "#111A15",
+          "second": "#C9922F"
+        },
+        "polices": {
+          "cle": "bricolage",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "bricolage.woff2",
+            "public-sans.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/bricolage.woff2\") format(\"woff2\");font-weight:200 800;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "rond",
+          "rayon": "10px",
+          "filet": "2px",
+          "etiquette": "plein",
+          "jeton": "99px"
+        },
+        "sol": "papier",
+        "mot": "metier",
+        "structure": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "avis",
+            "chantier",
+            "prix",
+            "travail",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "teintes": {
+          "combien": 4,
+          "depart": 6
+        },
+        "comparateur": {
+          "prise": "fil",
+          "indice": "Glissez le trait",
+          "etiquettes": "haut"
+        }
+      },
+      "fiche": {
+        "siren": "modele-couverture-05",
+        "nom": "modele-couverture-05",
+        "metier": "couverture",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "panneau",
+        "titre": "Les tuiles de rive sont les premières à partir et les dernières qu’on regarde.",
+        "main": {
+          "hero": "hero-variante-2",
+          "chantier": "chantier-3",
+          "geste": "geste-5",
+          "detail": "detail-zinc",
+          "paire1": "02",
+          "paire2": "03"
+        },
+        "appel": {
+          "forme": "pastille",
+          "libelle": "Appeler l’entreprise",
+          "place": "nom-gauche"
+        },
+        "photos": "hero-variante-2,chantier-3,geste-5,detail-zinc,avant-02,apres-02,avant-03,apres-03",
+        "structure": "ouverture > coupure > avis > chantier > prix > travail > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "avis",
+            "chantier",
+            "prix",
+            "travail",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "comparateur": {
+          "prise": "fil",
+          "indice": "Glissez le trait",
+          "etiquettes": "haut"
+        },
+        "phrases": [
+          "Les tuiles de rive sont les premières à partir et les dernières qu’on regarde.",
+          "Dépose de la couverture ancienne, contrôle des chevrons et des voliges, ardoises posées au crochet, faîtage scellé au mortier.",
+          "Arêtier disjoint, chéneau rouillé, écran absent sous les tuiles.",
+          "Charpente traitée, tuiles saines reposées, manquantes remplacées, gouttières et descentes refaites.",
+          "La pose s’arrête quand le pan est couvert, pas à l’heure. Un pan posé droit ne demande aucune reprise ensuite.",
+          "Les descentes se fixent au mur avec des colliers, pas à la va-vite. Un écartement de crochets régulier évite les creux où l’eau stagne.",
+          "Les génoises se reprennent au mortier, en respectant le rang d’origine. Un pied de mur mal traité remonte l’humidité dans la maçonnerie.",
+          "Les chéneaux se dégagent des feuilles avant les pluies d’automne. Le nettoyage montre les tuiles à remplacer avant qu’elles ne fuient.",
+          "Les travaux, un par un.",
+          "Ce que disent les registres.",
+          "Faire monter quelqu’un voir le toit.",
+          "Le chantier.",
+          "Déplacez la séparation pour comparer l’avant et l’après.",
+          "Le point de vue ne bouge pas d’une photo à l’autre. Seule la couverture a changé.",
+          "Gouttière et descente, noue refaite, toiture démoussée.",
+          "Toiture de villa, écran posé, couverture alignée."
+        ],
+        "intitules": [
+          "Les travaux, un par un.",
+          "Ce que disent les registres.",
+          "Faire monter quelqu’un voir le toit.",
+          "Le chantier."
+        ],
+        "famille": "foret",
+        "sol": "papier",
+        "polices": "bricolage",
+        "geometrie": "rond",
+        "mot": "metier"
+      }
+    },
+    {
+      "id": "modele-couverture-06",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "elevation",
+      "charte": {
+        "famille": {
+          "cle": "olive-papier",
+          "nom": "olive, brique, papier : olive sourd plus accent brique",
+          "nuit": "#12140E",
+          "encre": "#1D2015",
+          "chaux": "#EBEDE4",
+          "gris": "#8E9182",
+          "papier": "#F0F1E9",
+          "encreClair": "#171A11",
+          "second": "#9A3B2A"
+        },
+        "polices": {
+          "cle": "public-bricolage",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "public-sans.woff2",
+            "bricolage.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/bricolage.woff2\") format(\"woff2\");font-weight:200 800;font-display:swap}"
+        },
+        "geo": {
+          "cle": "vif",
+          "rayon": "0px",
+          "filet": "1px",
+          "etiquette": "plein",
+          "jeton": "2px"
+        },
+        "sol": "nuit",
+        "mot": "aucun",
+        "structure": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "chantier",
+            "travail",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "teintes": {
+          "combien": 5,
+          "depart": 5
+        },
+        "comparateur": {
+          "prise": "losange",
+          "indice": "Comparez d’un geste",
+          "etiquettes": "haut"
+        }
+      },
+      "fiche": {
+        "siren": "modele-couverture-06",
+        "nom": "modele-couverture-06",
+        "metier": "couverture",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "elevation",
+        "titre": "Le chevron qui a pris l’eau se remplace avant la pose des tuiles.",
+        "main": {
+          "hero": "hero",
+          "chantier": "chantier",
+          "geste": "geste-3",
+          "detail": "detail-zinc",
+          "paire1": "01",
+          "paire2": "03"
+        },
+        "appel": {
+          "forme": "plein",
+          "libelle": "Téléphoner",
+          "place": "nom-droite"
+        },
+        "photos": "hero,chantier,geste-3,detail-zinc,avant-01,apres-01,avant-03,apres-03",
+        "structure": "coupure > ouverture > chantier > travail > prix > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "chantier",
+            "travail",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "comparateur": {
+          "prise": "losange",
+          "indice": "Comparez d’un geste",
+          "etiquettes": "haut"
+        },
+        "phrases": [
+          "Le chevron qui a pris l’eau se remplace avant la pose des tuiles.",
+          "Échafaudage et sécurité, dépose rang par rang, tri des tuiles saines, tuiles d’origine reposées, complétées par des neuves, ventilation du toit assurée.",
+          "Tuiles envahies d’herbe, descente d’eau arrachée du mur, voliges fendues.",
+          "Support assaini, tuiles de ventilation réparties, chantier livré propre.",
+          "Les murs de refend se recoupent avec une bande de zinc relevée. Chaque traversée est un trou dans la couverture : elle se referme avec soin.",
+          "Le faîtage se vérifie tuile à tuile pendant l’entretien. La mousse garde l’eau contre la tuile, et l’eau gelée casse la terre cuite.",
+          "Les gravats descendent par goulotte, jamais par le vide. Travailler droit demande un plancher stable, pas seulement un harnais.",
+          "Chaque tuile descend par l’échafaudage, jamais en vrac. La benne au pied du chantier évite de casser ce qu’on voulait garder.",
+          "Les bois atteints se remplacent avant la pose, pas après. C’est l’étape qui fait l’écart entre une reprise et une réfection.",
+          "L’écran se tend sans excès, pour garder sa lame d’air. L’écran reçoit l’eau que le vent fait passer sous les tuiles.",
+          "Les postes du devis.",
+          "Ce qui est public.",
+          "Demander un passage.",
+          "Pendant les travaux.",
+          "Faites glisser le curseur pour voir le toit avant les travaux.",
+          "Le cadrage est identique avant et après. La différence vient du chantier.",
+          "Petit bâtiment annexe, solin repris, pan entièrement recouvert.",
+          "Rive de toit, solin repris, tuiles canal reposées."
+        ],
+        "intitules": [
+          "Les postes du devis.",
+          "Ce qui est public.",
+          "Demander un passage.",
+          "Pendant les travaux."
+        ],
+        "famille": "olive-papier",
+        "sol": "nuit",
+        "polices": "public-bricolage",
+        "geometrie": "vif",
+        "mot": "aucun"
+      }
+    },
+    {
+      "id": "modele-couverture-07",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "matiere",
+      "charte": {
+        "famille": {
+          "cle": "noir-fauve",
+          "nom": "noir et fauve : noir casse, fauve chaud, aucun beige",
+          "nuit": "#0B0D0E",
+          "encre": "#16191B",
+          "chaux": "#EDEDEA",
+          "gris": "#8E8F8C",
+          "papier": "#F0F0EE",
+          "encreClair": "#121415",
+          "second": "#C2703C"
+        },
+        "polices": {
+          "cle": "archivo-etroit",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "archivo-narrow-700.woff2",
+            "archivo-wght.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/archivo-narrow-700.woff2\") format(\"woff2\");font-weight:700;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/archivo-wght.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "vif",
+          "rayon": "0px",
+          "filet": "1px",
+          "etiquette": "plein",
+          "jeton": "2px"
+        },
+        "sol": "papier",
+        "mot": "commune",
+        "structure": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "travail",
+            "chantier",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": true,
+          "nuancierPlace": "atmo"
+        },
+        "teintes": {
+          "combien": 5,
+          "depart": 6
+        },
+        "comparateur": {
+          "prise": "rond",
+          "indice": "Faites glisser le trait",
+          "etiquettes": "bas"
+        }
+      },
+      "fiche": {
+        "siren": "modele-couverture-07",
+        "nom": "modele-couverture-07",
+        "metier": "couverture",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "matiere",
+        "titre": "Ce qui protège une maison tient sur quelques centimètres de recouvrement.",
+        "main": {
+          "hero": "hero",
+          "chantier": "chantier-2",
+          "geste": "geste-5",
+          "detail": "detail-zinc",
+          "paire1": "02",
+          "paire2": "03"
+        },
+        "appel": {
+          "forme": "pastille",
+          "libelle": "Appeler l’entreprise",
+          "place": "nom-gauche"
+        },
+        "photos": "hero,chantier-2,geste-5,detail-zinc,avant-02,apres-02,avant-03,apres-03",
+        "structure": "ouverture > coupure > travail > chantier > prix > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "travail",
+            "chantier",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": true,
+          "nuancierPlace": "atmo"
+        },
+        "comparateur": {
+          "prise": "rond",
+          "indice": "Faites glisser le trait",
+          "etiquettes": "bas"
+        },
+        "phrases": [
+          "Ce qui protège une maison tient sur quelques centimètres de recouvrement.",
+          "Montage de l’échafaudage et des protections, diagnostic du support, pose de l’écran sous-toiture, couverture posée.",
+          "Couverture déformée par endroits, solin de cheminée ouvert, gouttière pleine de feuilles.",
+          "Bois atteints remplacés, lame d’air rétablie sous la tuile, couverture reposée rang par rang, rives fermées.",
+          "Les coupes d’écran se font à l’abri du vent pour ne rien déchirer. Un entraxe mal pris se voit sur la dernière rangée, trop tard.",
+          "Chaque tuile s’emboîte ou se cale sur celle d’en dessous. C’est le rang du bas qui décide de l’aplomb de tous les autres.",
+          "Les chéneaux se contrôlent à l’eau avant de refermer. Soixante ans de zinc, c’est possible, à condition qu’il soit posé juste.",
+          "Les fenêtres de toit se raccordent avec leur habillage complet, dans l’ordre. Une cheminée mal habillée se voit au plafond, deux hivers plus tard.",
+          "Une visite annuelle se note, avec ce qui a été vu et ce qui a été fait. Un pan au nord verdit plus vite : il demande plus d’attention.",
+          "L’échafaudage monte avant le premier outil sur le toit. Prévenir les voisins évite la moitié des problèmes de chantier.",
+          "De la dépose au nettoyage.",
+          "Ce qui se vérifie.",
+          "Prendre rendez-vous.",
+          "La mousse s’installe dans le creux de la tuile, là où l’eau s’attarde."
+        ],
+        "intitules": [
+          "De la dépose au nettoyage.",
+          "Ce qui se vérifie.",
+          "Prendre rendez-vous."
+        ],
+        "famille": "noir-fauve",
+        "sol": "papier",
+        "polices": "archivo-etroit",
+        "geometrie": "vif",
+        "mot": "commune"
+      }
+    },
+    {
+      "id": "modele-couverture-08",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "planche",
+      "charte": {
+        "famille": {
+          "cle": "olive-papier",
+          "nom": "olive, brique, papier : olive sourd plus accent brique",
+          "nuit": "#12140E",
+          "encre": "#1D2015",
+          "chaux": "#EBEDE4",
+          "gris": "#8E9182",
+          "papier": "#F0F1E9",
+          "encreClair": "#171A11",
+          "second": "#9A3B2A"
+        },
+        "polices": {
+          "cle": "archivo-plein",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "archivo-wght.woff2",
+            "public-sans.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/archivo-wght.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "rond",
+          "rayon": "10px",
+          "filet": "2px",
+          "etiquette": "plein",
+          "jeton": "99px"
+        },
+        "sol": "nuit",
+        "mot": "enseigne",
+        "structure": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "chantier",
+            "prix",
+            "travail",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "teintes": {
+          "combien": 4,
+          "depart": 6
+        },
+        "comparateur": {
+          "prise": "barre",
+          "indice": "Touchez la photo",
+          "etiquettes": "haut"
+        }
+      },
+      "fiche": {
+        "siren": "modele-couverture-08",
+        "nom": "modele-couverture-08",
+        "metier": "couverture",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "planche",
+        "titre": "On compte les tuiles d’un toit avant de commander, et on en prévoit un peu plus.",
+        "main": {
+          "hero": "hero-variante-2",
+          "chantier": "chantier-3",
+          "geste": "geste",
+          "detail": "detail-zinc",
+          "paire1": "01",
+          "paire2": "02"
+        },
+        "appel": {
+          "forme": "contour",
+          "libelle": "Appeler",
+          "place": "nom-gauche"
+        },
+        "photos": "hero-variante-2,chantier-3,geste,detail-zinc,avant-01,apres-01,avant-02,apres-02",
+        "structure": "ouverture > coupure > chantier > prix > travail > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "chantier",
+            "prix",
+            "travail",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "comparateur": {
+          "prise": "barre",
+          "indice": "Touchez la photo",
+          "etiquettes": "haut"
+        },
+        "phrases": [
+          "On compte les tuiles d’un toit avant de commander, et on en prévoit un peu plus.",
+          "Échafaudage et sécurité, dépose de la couverture ancienne, liteaux alignés et fixés, couverture neuve, rang par rang.",
+          "Rangées décalées, arêtier disjoint, descente d’eau arrachée du mur.",
+          "Bois atteints remplacés, faîtage scellé, chéneau refait, essai à l’eau fait.",
+          "L’écran sous-toiture se déroule de bas en haut, avec recouvrement à chaque passe. Une lame d’air derrière la tuile sèche le toit entre deux pluies.",
+          "Les rangées se vérifient au cordeau tous les trois ou quatre rangs. Le recouvrement, c’est ce qui fait l’étanchéité d’un toit.",
+          "Les feuilles de zinc se coupent à la cisaille et se plient à la main. Le zinc se dilate, et s’il ne peut pas bouger, il se déchire.",
+          "Les angles rentrants se soudent, pas se recouvrent. Les points singuliers font l’étanchéité du toit. Le reste n’est que de la pose.",
+          "Les gouttières se vident et se rincent à la fin de l’intervention. L’entretien coûte peu, la réfection coûte beaucoup.",
+          "Le monte-matériaux évite de porter les tuiles par l’échelle. Monter les tuiles à la main abîme le dos et les tuiles.",
+          "Les postes d’un chantier de couverture.",
+          "Les informations officielles.",
+          "Pour en parler.",
+          "Le chantier, de près.",
+          "Faites glisser la couture pour voir le pan avant et après.",
+          "Même hauteur, même focale. Ce que l’on voit changer, c’est le travail.",
+          "Souche de cheminée, liteaux neufs, toiture démoussée.",
+          "Lucarne, écran posé, gouttière en zinc neuf."
+        ],
+        "intitules": [
+          "Les postes d’un chantier de couverture.",
+          "Les informations officielles.",
+          "Pour en parler.",
+          "Le chantier, de près."
+        ],
+        "famille": "olive-papier",
+        "sol": "nuit",
+        "polices": "archivo-plein",
+        "geometrie": "rond",
+        "mot": "enseigne"
+      }
+    },
+    {
+      "id": "modele-couverture-09",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "elevation",
+      "charte": {
+        "famille": {
+          "cle": "noir-fauve",
+          "nom": "noir et fauve : noir casse, fauve chaud, aucun beige",
+          "nuit": "#0B0D0E",
+          "encre": "#16191B",
+          "chaux": "#EDEDEA",
+          "gris": "#8E8F8C",
+          "papier": "#F0F0EE",
+          "encreClair": "#121415",
+          "second": "#C2703C"
+        },
+        "polices": {
+          "cle": "bricolage",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "bricolage.woff2",
+            "public-sans.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/bricolage.woff2\") format(\"woff2\");font-weight:200 800;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "rond",
+          "rayon": "10px",
+          "filet": "2px",
+          "etiquette": "plein",
+          "jeton": "99px"
+        },
+        "sol": "nuit",
+        "mot": "metier",
+        "structure": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "chantier",
+            "prix",
+            "travail",
+            "avis",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "teintes": {
+          "combien": 4,
+          "depart": 5
+        },
+        "comparateur": {
+          "prise": "fil",
+          "indice": "Glissez ou touchez",
+          "etiquettes": "haut"
+        }
+      },
+      "fiche": {
+        "siren": "modele-couverture-09",
+        "nom": "modele-couverture-09",
+        "metier": "couverture",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "elevation",
+        "titre": "Une noue en zinc se soude. Une noue bâclée se bouche.",
+        "main": {
+          "hero": "hero-variante-2",
+          "chantier": "chantier",
+          "geste": "geste-2",
+          "detail": "detail-zinc",
+          "paire1": "03",
+          "paire2": "01"
+        },
+        "appel": {
+          "forme": "plein",
+          "libelle": "Téléphoner",
+          "place": "nom-gauche"
+        },
+        "photos": "hero-variante-2,chantier,geste-2,detail-zinc,avant-03,apres-03,avant-01,apres-01",
+        "structure": "ouverture > coupure > chantier > prix > travail > avis > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "chantier",
+            "prix",
+            "travail",
+            "avis",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "comparateur": {
+          "prise": "fil",
+          "indice": "Glissez ou touchez",
+          "etiquettes": "haut"
+        },
+        "phrases": [
+          "Une noue en zinc se soude. Une noue bâclée se bouche.",
+          "Montage de l’échafaudage et des protections, dépose des tuiles, points d’eau traités un par un, tuiles d’origine reposées, complétées par des neuves, faîtage et rives scellés.",
+          "Couverture déformée par endroits, noue percée, zinguerie déchirée sous la lucarne.",
+          "Bois atteints remplacés, tuiles saines reposées, manquantes remplacées, noues et solins soudés.",
+          "Les liteaux se fixent à l’entraxe de la tuile choisie, pas à l’œil. Un écran posé sans recouvrement conduit l’eau là où il ne faut pas.",
+          "Les coupes se font au sol, à la meuleuse, pas sur le toit. Un alignement régulier se voit de la rue, et c’est la signature du travail.",
+          "Les noues se façonnent sur place, à la longueur du pan. C’est la partie du toit qui demande le plus de métier et qu’on voit le moins.",
+          "Les souches de cheminée se reprennent avant d’habiller leur pied. Un toit neuf avec de vieux raccords n’est pas un toit neuf.",
+          "Ce que recouvre une réfection de toiture.",
+          "Ce qu’on peut contrôler.",
+          "Parler du chantier.",
+          "Le chantier en cours.",
+          "Glissez le trait pour voir la différence.",
+          "Même point de vue, même cadrage. Le toit est le seul à avoir changé.",
+          "Chéneau d’immeuble, charpente reprise, zinc neuf posé.",
+          "Pan de toit, noue refaite, ardoises neuves."
+        ],
+        "intitules": [
+          "Ce que recouvre une réfection de toiture.",
+          "Ce qu’on peut contrôler.",
+          "Parler du chantier.",
+          "Le chantier en cours."
+        ],
+        "famille": "noir-fauve",
+        "sol": "nuit",
+        "polices": "bricolage",
+        "geometrie": "rond",
+        "mot": "metier"
+      }
+    },
+    {
+      "id": "modele-couverture-10",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "matiere",
+      "charte": {
+        "famille": {
+          "cle": "foret",
+          "nom": "foret : vert profond, os, ambre",
+          "nuit": "#0D1512",
+          "encre": "#152019",
+          "chaux": "#E9EDE6",
+          "gris": "#87948A",
+          "papier": "#EFF2ED",
+          "encreClair": "#111A15",
+          "second": "#C9922F"
+        },
+        "polices": {
+          "cle": "archivo-etroit",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "archivo-narrow-700.woff2",
+            "archivo-wght.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/archivo-narrow-700.woff2\") format(\"woff2\");font-weight:700;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/archivo-wght.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "rond",
+          "rayon": "10px",
+          "filet": "2px",
+          "etiquette": "plein",
+          "jeton": "99px"
+        },
+        "sol": "nuit",
+        "mot": "aucun",
+        "structure": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "avis",
+            "prix",
+            "travail",
+            "chantier",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": true,
+          "nuancierPlace": "comparateur"
+        },
+        "teintes": {
+          "combien": 4,
+          "depart": 0
+        },
+        "comparateur": {
+          "prise": "losange",
+          "indice": "Faites glisser",
+          "etiquettes": "bas"
+        }
+      },
+      "fiche": {
+        "siren": "modele-couverture-10",
+        "nom": "modele-couverture-10",
+        "metier": "couverture",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "matiere",
+        "titre": "Une fuite se cherche en amont de la tache, jamais à l’aplomb.",
+        "main": {
+          "hero": "hero",
+          "chantier": "chantier-3",
+          "geste": "geste-4",
+          "detail": "detail-zinc",
+          "paire1": "01",
+          "paire2": "02"
+        },
+        "appel": {
+          "forme": "pastille",
+          "libelle": "Appeler l’entreprise",
+          "place": "nom-droite"
+        },
+        "photos": "hero,chantier-3,geste-4,detail-zinc,avant-01,apres-01,avant-02,apres-02",
+        "structure": "coupure > ouverture > avis > prix > travail > chantier > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "avis",
+            "prix",
+            "travail",
+            "chantier",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": true,
+          "nuancierPlace": "comparateur"
+        },
+        "comparateur": {
+          "prise": "losange",
+          "indice": "Faites glisser",
+          "etiquettes": "bas"
+        },
+        "phrases": [
+          "Une fuite se cherche en amont de la tache, jamais à l’aplomb.",
+          "Montage de l’échafaudage et des protections, démoussage et dépose, pose de l’écran sous-toiture, tuiles canal reposées.",
+          "Couverture déformée par endroits, génoise effritée, crochets tordus.",
+          "Bois atteints remplacés, couverture complète et alignée, gouttières rincées.",
+          "Le tri se fait au son : une tuile fendue ne sonne pas comme une tuile saine. Le tri décide du nombre de tuiles à commander, donc du prix.",
+          "Les appuis de pannes se regardent de près, surtout en pignon. Une charpente saine permet de garder les tuiles d’origine.",
+          "Les liteaux se clouent dans le chevron, jamais dans le vide. Le calcul du pureau évite une coupe de tuiles au mauvais endroit.",
+          "Les tuiles se montent par paquets et se posent rang par rang. Une coupe nette tient mieux qu’une tuile cassée pour entrer de force.",
+          "Ce qui se fait, et dans quel ordre.",
+          "Les données publiques.",
+          "Prendre contact.",
+          "Le grain du zinc laminé se devine sous une lumière basse."
+        ],
+        "intitules": [
+          "Ce qui se fait, et dans quel ordre.",
+          "Les données publiques.",
+          "Prendre contact."
+        ],
+        "famille": "foret",
+        "sol": "nuit",
+        "polices": "archivo-etroit",
+        "geometrie": "rond",
+        "mot": "aucun"
+      }
+    }
+  ]
+}

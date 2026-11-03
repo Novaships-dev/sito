@@ -1,0 +1,1393 @@
+{
+  "metier": "ravalement",
+  "modeles": [
+    {
+      "id": "modele-ravalement-01",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "elevation",
+      "charte": {
+        "famille": {
+          "cle": "olive-papier",
+          "nom": "olive, brique, papier : olive sourd plus accent brique",
+          "nuit": "#12140E",
+          "encre": "#1D2015",
+          "chaux": "#EBEDE4",
+          "gris": "#8E9182",
+          "papier": "#F0F1E9",
+          "encreClair": "#171A11",
+          "second": "#9A3B2A"
+        },
+        "polices": {
+          "cle": "public-bricolage",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "public-sans.woff2",
+            "bricolage.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/bricolage.woff2\") format(\"woff2\");font-weight:200 800;font-display:swap}"
+        },
+        "geo": {
+          "cle": "rond",
+          "rayon": "10px",
+          "filet": "2px",
+          "etiquette": "plein",
+          "jeton": "99px"
+        },
+        "sol": "nuit",
+        "mot": "metier",
+        "structure": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "chantier",
+            "avis",
+            "prix",
+            "travail",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "teintes": {
+          "combien": 4,
+          "depart": 4
+        },
+        "comparateur": {
+          "prise": "losange",
+          "indice": "Faites glisser",
+          "etiquettes": "bas"
+        }
+      },
+      "fiche": {
+        "siren": "modele-ravalement-01",
+        "nom": "modele-ravalement-01",
+        "metier": "ravalement",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "elevation",
+        "titre": "On ouvre une fissure pour la refermer pour de bon.",
+        "main": {
+          "hero": "hero",
+          "chantier": "chantier-3",
+          "geste": "geste-4",
+          "detail": "detail-enduit",
+          "paire1": "02",
+          "paire2": "03"
+        },
+        "appel": {
+          "forme": "pastille",
+          "libelle": "Appeler l’entreprise",
+          "place": "nom-droite"
+        },
+        "photos": "hero,chantier-3,geste-4,detail-enduit,avant-02,apres-02,avant-03,apres-03",
+        "structure": "ouverture > coupure > chantier > avis > prix > travail > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "chantier",
+            "avis",
+            "prix",
+            "travail",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "comparateur": {
+          "prise": "losange",
+          "indice": "Faites glisser",
+          "etiquettes": "bas"
+        },
+        "phrases": [
+          "On ouvre une fissure pour la refermer pour de bon.",
+          "Lavage complet de la façade, purge jusqu’au sain, reprise des corniches et bandeaux, enduit monocouche.",
+          "Fissures fines en réseau, coulures sous les bandeaux, appuis fendus.",
+          "Support assaini, enduit à la chaux, teinte choisie sur le mur.",
+          "Le pontage déborde de part et d’autre de la fissure. La forme d’une fissure dit d’où vient le mouvement.",
+          "L’enduit est dressé à la règle, puis gratté le lendemain ou le jour même selon la météo. Le gratté pardonne les petits défauts de planéité et vieillit bien en ville.",
+          "Le taloché fin s’obtient avec une taloche éponge, le taloché plus marqué avec une taloche plastique. Le taloché marque davantage les reprises : il se travaille sans s’arrêter au milieu d’un mur.",
+          "Les angles reçoivent un profilé avant l’enduit. Ce travail fait durer tout le reste.",
+          "Le chantier, dans l’ordre.",
+          "Les données officielles.",
+          "Parler de votre projet.",
+          "Au travail.",
+          "Déplacez le trait pour mesurer le travail fait.",
+          "Même point de vue, même cadrage. Ce qui change, c’est le travail fait.",
+          "Villa, purge complète, enduit à la chaux.",
+          "Mur de clôture, joints refaits, enduit gratté."
+        ],
+        "intitules": [
+          "Le chantier, dans l’ordre.",
+          "Les données officielles.",
+          "Parler de votre projet.",
+          "Au travail."
+        ],
+        "famille": "olive-papier",
+        "sol": "nuit",
+        "polices": "public-bricolage",
+        "geometrie": "rond",
+        "mot": "metier"
+      }
+    },
+    {
+      "id": "modele-ravalement-02",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "matiere",
+      "charte": {
+        "famille": {
+          "cle": "foret",
+          "nom": "foret : vert profond, os, ambre",
+          "nuit": "#0D1512",
+          "encre": "#152019",
+          "chaux": "#E9EDE6",
+          "gris": "#87948A",
+          "papier": "#EFF2ED",
+          "encreClair": "#111A15",
+          "second": "#C9922F"
+        },
+        "polices": {
+          "cle": "archivo-etroit",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "archivo-narrow-700.woff2",
+            "archivo-wght.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/archivo-narrow-700.woff2\") format(\"woff2\");font-weight:700;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/archivo-wght.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "vif",
+          "rayon": "0px",
+          "filet": "1px",
+          "etiquette": "plein",
+          "jeton": "2px"
+        },
+        "sol": "nuit",
+        "mot": "enseigne",
+        "structure": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "prix",
+            "travail",
+            "chantier",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "teintes": {
+          "combien": 4,
+          "depart": 5
+        },
+        "comparateur": {
+          "prise": "carre",
+          "indice": "Faites glisser le trait",
+          "etiquettes": "bas"
+        }
+      },
+      "fiche": {
+        "siren": "modele-ravalement-02",
+        "nom": "modele-ravalement-02",
+        "metier": "ravalement",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "matiere",
+        "titre": "Une façade bien faite se reconnaît à ses angles.",
+        "main": {
+          "hero": "hero-variante-2",
+          "chantier": "chantier-2",
+          "geste": "geste-3",
+          "detail": "detail-enduit",
+          "paire1": "03",
+          "paire2": "01"
+        },
+        "appel": {
+          "forme": "contour",
+          "libelle": "Téléphoner",
+          "place": "nom-droite"
+        },
+        "photos": "hero-variante-2,chantier-2,geste-3,detail-enduit,avant-03,apres-03,avant-01,apres-01",
+        "structure": "ouverture > coupure > prix > travail > chantier > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "prix",
+            "travail",
+            "chantier",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "comparateur": {
+          "prise": "carre",
+          "indice": "Faites glisser le trait",
+          "etiquettes": "bas"
+        },
+        "phrases": [
+          "Une façade bien faite se reconnaît à ses angles.",
+          "Protection des abords et des menuiseries, décapage des anciennes peintures, sondage au marteau, ouverture et pontage des fissures, enduit adapté au mur.",
+          "Enduit faïencé, fissures fines en réseau, efflorescences blanches.",
+          "Support purgé et réparé, enduit neuf, angles redressés, teinte choisie dans la gamme des façades voisines.",
+          "Un traitement contre les mousses agit plusieurs jours avant qu’on rince. Le choix se fait au marteau, pas au catalogue.",
+          "Les trous de purge sont humidifiés avant d’être rebouchés. Une purge incomplète se lit deux hivers plus tard, en cloques.",
+          "Une fissure au-dessus d’une ouverture se traite avec le linteau. Le diagnostic décide du traitement, pas l’inverse.",
+          "L’épaisseur reste régulière pour que le grain soit le même partout. Le gratté se reprend mal : il se fait bien du premier coup.",
+          "Le taloché demande un support parfaitement plan avant la finition. Un défaut de planéité ne se cache pas sous un taloché.",
+          "Le détail des postes.",
+          "Les informations officielles.",
+          "Faire regarder la façade.",
+          "La pierre et la chaux vieillissent ensemble, au même rythme."
+        ],
+        "intitules": [
+          "Le détail des postes.",
+          "Les informations officielles.",
+          "Faire regarder la façade."
+        ],
+        "famille": "foret",
+        "sol": "nuit",
+        "polices": "archivo-etroit",
+        "geometrie": "vif",
+        "mot": "enseigne"
+      }
+    },
+    {
+      "id": "modele-ravalement-03",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "planche",
+      "charte": {
+        "famille": {
+          "cle": "luxe-froid",
+          "nom": "luxe froid : gris argent, chrome, fumee",
+          "nuit": "#101418",
+          "encre": "#192026",
+          "chaux": "#E7ECEF",
+          "gris": "#8C99A2",
+          "papier": "#EFF2F4",
+          "encreClair": "#151A1F",
+          "second": "#9FB0BA"
+        },
+        "polices": {
+          "cle": "bricolage",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "bricolage.woff2",
+            "public-sans.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/bricolage.woff2\") format(\"woff2\");font-weight:200 800;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "vif",
+          "rayon": "0px",
+          "filet": "1px",
+          "etiquette": "plein",
+          "jeton": "2px"
+        },
+        "sol": "nuit",
+        "mot": "aucun",
+        "structure": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "avis",
+            "chantier",
+            "prix",
+            "travail",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "teintes": {
+          "combien": 4,
+          "depart": 1
+        },
+        "comparateur": {
+          "prise": "double",
+          "indice": "Comparez d’un geste",
+          "etiquettes": "haut"
+        }
+      },
+      "fiche": {
+        "siren": "modele-ravalement-03",
+        "nom": "modele-ravalement-03",
+        "metier": "ravalement",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "planche",
+        "titre": "Une façade qui respire sèche plus vite après la pluie.",
+        "main": {
+          "hero": "hero",
+          "chantier": "chantier",
+          "geste": "geste-2",
+          "detail": "detail-enduit",
+          "paire1": "01",
+          "paire2": "02"
+        },
+        "appel": {
+          "forme": "plein",
+          "libelle": "Appeler",
+          "place": "nom-droite"
+        },
+        "photos": "hero,chantier,geste-2,detail-enduit,avant-01,apres-01,avant-02,apres-02",
+        "structure": "ouverture > coupure > avis > chantier > prix > travail > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "avis",
+            "chantier",
+            "prix",
+            "travail",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "comparateur": {
+          "prise": "double",
+          "indice": "Comparez d’un geste",
+          "etiquettes": "haut"
+        },
+        "phrases": [
+          "Une façade qui respire sèche plus vite après la pluie.",
+          "Nettoyage basse pression, purge des parties creuses, reprise des angles, enduit traditionnel en trois couches, finition grattée fin.",
+          "Enduit décollé par plaques, traces vertes en pied de mur, corniche abîmée.",
+          "Support assaini, fissures ouvertes et pontées, enduit respirant, ruissellement maîtrisé.",
+          "Appuis, tableaux, angles, rives : on y passe le plus de temps. Les reprises se voient d’abord autour des détails, en lumière rasante.",
+          "Un filet couvre toute la façade pendant la purge. Les poussières de purge restent sur le chantier, pas chez les voisins.",
+          "Les échantillons sont posés côte à côte sur le mur même. Sur un écran, aucune couleur n’est juste.",
+          "Les pierres tendres se lavent à l’eau froide, sans pression forte. Le mur doit ensuite sécher avant la suite.",
+          "Ce qui sonne creux sous le marteau tombe, jusqu’au sain. La purge est le poste qui fait varier un devis du simple au double.",
+          "Du nettoyage à la finition.",
+          "Ce que disent les registres.",
+          "Joindre l’entreprise.",
+          "Le chantier.",
+          "Touchez la photo pour voir ce que le chantier a changé.",
+          "Même endroit, même objectif. Le mur est le seul à avoir changé.",
+          "Façade sur cour, reprise du support, finition grattée fin.",
+          "Pignon, appuis repris, enduit respirant."
+        ],
+        "intitules": [
+          "Du nettoyage à la finition.",
+          "Ce que disent les registres.",
+          "Joindre l’entreprise.",
+          "Le chantier."
+        ],
+        "famille": "luxe-froid",
+        "sol": "nuit",
+        "polices": "bricolage",
+        "geometrie": "vif",
+        "mot": "aucun"
+      }
+    },
+    {
+      "id": "modele-ravalement-04",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "panneau",
+      "charte": {
+        "famille": {
+          "cle": "mono-vif",
+          "nom": "monochrome plus un accent sature",
+          "nuit": "#0E0E0E",
+          "encre": "#1A1A1A",
+          "chaux": "#EFEFEF",
+          "gris": "#909090",
+          "papier": "#F2F2F2",
+          "encreClair": "#141414",
+          "second": "#0E9F6E"
+        },
+        "polices": {
+          "cle": "archivo-plein",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "archivo-wght.woff2",
+            "public-sans.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/archivo-wght.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "rond",
+          "rayon": "10px",
+          "filet": "2px",
+          "etiquette": "plein",
+          "jeton": "99px"
+        },
+        "sol": "nuit",
+        "mot": "commune",
+        "structure": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "avis",
+            "prix",
+            "travail",
+            "chantier",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "teintes": {
+          "combien": 4,
+          "depart": 1
+        },
+        "comparateur": {
+          "prise": "fil",
+          "indice": "Touchez la photo",
+          "etiquettes": "haut"
+        }
+      },
+      "fiche": {
+        "siren": "modele-ravalement-04",
+        "nom": "modele-ravalement-04",
+        "metier": "ravalement",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "panneau",
+        "titre": "Ni gel, ni plein soleil, ni pluie : l’enduit a ses jours.",
+        "main": {
+          "hero": "hero-variante-2",
+          "chantier": "chantier-2",
+          "geste": "geste",
+          "detail": "detail-enduit",
+          "paire1": "03",
+          "paire2": "02"
+        },
+        "appel": {
+          "forme": "contour",
+          "libelle": "Téléphoner",
+          "place": "nom-gauche"
+        },
+        "photos": "hero-variante-2,chantier-2,geste,detail-enduit,avant-03,apres-03,avant-02,apres-02",
+        "structure": "coupure > ouverture > avis > prix > travail > chantier > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "avis",
+            "prix",
+            "travail",
+            "chantier",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "comparateur": {
+          "prise": "fil",
+          "indice": "Touchez la photo",
+          "etiquettes": "haut"
+        },
+        "phrases": [
+          "Ni gel, ni plein soleil, ni pluie : l’enduit a ses jours.",
+          "Protection des abords et des menuiseries, nettoyage basse pression, enduit gratté ou taloché, teinte accordée à la rue.",
+          "Support fatigué, fissures reprises au mastic qui ressortent, salissures de ruissellement sous les appuis.",
+          "Support assaini, enduit taloché, appuis et rives refaits, teinte d’origine retrouvée.",
+          "La reprise se fait en couches, chaque couche sèche avant la suivante. Le reste du chantier repose sur la purge.",
+          "Le mastic de rebouchage reste souple pour suivre les mouvements du mur. Une fissure franche est un mouvement de structure : elle se ponte, ou elle se rouvre.",
+          "Le grain dépend de la granulométrie et du moment où l’on gratte. Le gratté se salit moins vite qu’un fini lisse.",
+          "Le talochage se fait sur un enduit encore frais, pan par pan. Le taloché est la finition la plus exigeante pour celui qui la pose.",
+          "Les descentes d’eau sont déposées, puis refixées après l’enduit. Le temps passé sur les détails ne se voit pas, et c’est le but.",
+          "Les étapes, dans l’ordre.",
+          "Ce que chacun peut vérifier.",
+          "Faire venir quelqu’un.",
+          "Sur la façade.",
+          "Passez le doigt sur la photo pour voir la différence.",
+          "Les deux prises de vue se superposent exactement. Rien d’autre ne change que le mur.",
+          "Immeuble de deux étages, parties creuses purgées, teinte accordée à la rue.",
+          "Immeuble de deux étages, faïençage rebouché, teinte accordée à la rue."
+        ],
+        "intitules": [
+          "Les étapes, dans l’ordre.",
+          "Ce que chacun peut vérifier.",
+          "Faire venir quelqu’un.",
+          "Sur la façade."
+        ],
+        "famille": "mono-vif",
+        "sol": "nuit",
+        "polices": "archivo-plein",
+        "geometrie": "rond",
+        "mot": "commune"
+      }
+    },
+    {
+      "id": "modele-ravalement-05",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "elevation",
+      "charte": {
+        "famille": {
+          "cle": "noir-fauve",
+          "nom": "noir et fauve : noir casse, fauve chaud, aucun beige",
+          "nuit": "#0B0D0E",
+          "encre": "#16191B",
+          "chaux": "#EDEDEA",
+          "gris": "#8E8F8C",
+          "papier": "#F0F0EE",
+          "encreClair": "#121415",
+          "second": "#C2703C"
+        },
+        "polices": {
+          "cle": "archivo-etroit",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "archivo-narrow-700.woff2",
+            "archivo-wght.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/archivo-narrow-700.woff2\") format(\"woff2\");font-weight:700;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/archivo-wght.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "adouci",
+          "rayon": "3px",
+          "filet": "1px",
+          "etiquette": "contour",
+          "jeton": "99px"
+        },
+        "sol": "papier",
+        "mot": "enseigne",
+        "structure": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "travail",
+            "prix",
+            "chantier",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "teintes": {
+          "combien": 5,
+          "depart": 3
+        },
+        "comparateur": {
+          "prise": "carre",
+          "indice": "Faites glisser",
+          "etiquettes": "bas"
+        }
+      },
+      "fiche": {
+        "siren": "modele-ravalement-05",
+        "nom": "modele-ravalement-05",
+        "metier": "ravalement",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "elevation",
+        "titre": "Sur un mur fissuré en profondeur, on regarde la structure avant l’enduit.",
+        "main": {
+          "hero": "hero-variante-2",
+          "chantier": "chantier",
+          "geste": "geste-5",
+          "detail": "detail-enduit",
+          "paire1": "01",
+          "paire2": "03"
+        },
+        "appel": {
+          "forme": "pastille",
+          "libelle": "Appeler l’entreprise",
+          "place": "nom-gauche"
+        },
+        "photos": "hero-variante-2,chantier,geste-5,detail-enduit,avant-01,apres-01,avant-03,apres-03",
+        "structure": "ouverture > coupure > travail > prix > chantier > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "travail",
+            "prix",
+            "chantier",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "comparateur": {
+          "prise": "carre",
+          "indice": "Faites glisser",
+          "etiquettes": "bas"
+        },
+        "phrases": [
+          "Sur un mur fissuré en profondeur, on regarde la structure avant l’enduit.",
+          "Protection des abords et des menuiseries, diagnostic du support, traitement des fissures, enduit de parement.",
+          "Cloques à la sous-face, fissures suivies, traces d’eau sous les rives.",
+          "Mur purgé jusqu’au sain, finition régulière sur toute la hauteur, corniche reprise.",
+          "Chaque fissure est ouverte à la disqueuse sur sa longueur. L’armature répartit l’effort au lieu de le laisser au même endroit.",
+          "Les bords et les angles sont grattés à la main, au plus près. La pluie glisse sur le grain sans laisser de coulures marquées.",
+          "L’enduit est appliqué, dressé, puis taloché quand il commence à tirer. Une façade talochée se salit plus vite qu’une façade grattée.",
+          "Les corniches sont nettoyées, réparées et protégées sur le dessus. Une façade se juge à ses détails autant qu’à ses grands pans.",
+          "Montage, filet, bâchage des menuiseries, protection du sol. Un bon montage se voit au résultat des angles et des rives.",
+          "Les gestes du chantier.",
+          "Ce qui est public.",
+          "Prendre contact.",
+          "Au pied du mur.",
+          "Glissez le trait pour comparer les deux états de la façade.",
+          "Le cadrage est identique avant et après. Seule la façade change.",
+          "Maison de village, fissure ouverte et pontée, enduit taloché.",
+          "Façade sur rue, corniche reprise, teinte d’origine retrouvée."
+        ],
+        "intitules": [
+          "Les gestes du chantier.",
+          "Ce qui est public.",
+          "Prendre contact.",
+          "Au pied du mur."
+        ],
+        "famille": "noir-fauve",
+        "sol": "papier",
+        "polices": "archivo-etroit",
+        "geometrie": "adouci",
+        "mot": "enseigne"
+      }
+    },
+    {
+      "id": "modele-ravalement-06",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "matiere",
+      "charte": {
+        "famille": {
+          "cle": "terre-ardoise",
+          "nom": "terre cuite et ardoise : rouille chaude contre gris froid",
+          "nuit": "#111619",
+          "encre": "#1B2226",
+          "chaux": "#E6EAEC",
+          "gris": "#849098",
+          "papier": "#EEF1F2",
+          "encreClair": "#151B1E",
+          "second": "#A5482C"
+        },
+        "polices": {
+          "cle": "public-bricolage",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "public-sans.woff2",
+            "bricolage.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/bricolage.woff2\") format(\"woff2\");font-weight:200 800;font-display:swap}"
+        },
+        "geo": {
+          "cle": "vif",
+          "rayon": "0px",
+          "filet": "1px",
+          "etiquette": "plein",
+          "jeton": "2px"
+        },
+        "sol": "nuit",
+        "mot": "metier",
+        "structure": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "travail",
+            "prix",
+            "chantier",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": true,
+          "nuancierPlace": "atmo"
+        },
+        "teintes": {
+          "combien": 4,
+          "depart": 2
+        },
+        "comparateur": {
+          "prise": "fil",
+          "indice": "Comparez d’un geste",
+          "etiquettes": "bas"
+        }
+      },
+      "fiche": {
+        "siren": "modele-ravalement-06",
+        "nom": "modele-ravalement-06",
+        "metier": "ravalement",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "matiere",
+        "titre": "Le ravalement protège le mur autant qu’il l’embellit.",
+        "main": {
+          "hero": "hero",
+          "chantier": "chantier-3",
+          "geste": "geste-2",
+          "detail": "detail-enduit",
+          "paire1": "02",
+          "paire2": "01"
+        },
+        "appel": {
+          "forme": "plein",
+          "libelle": "Appeler",
+          "place": "nom-droite"
+        },
+        "photos": "hero,chantier-3,geste-2,detail-enduit,avant-02,apres-02,avant-01,apres-01",
+        "structure": "coupure > ouverture > travail > prix > chantier > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "travail",
+            "prix",
+            "chantier",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": true,
+          "nuancierPlace": "atmo"
+        },
+        "comparateur": {
+          "prise": "fil",
+          "indice": "Comparez d’un geste",
+          "etiquettes": "bas"
+        },
+        "phrases": [
+          "Le ravalement protège le mur autant qu’il l’embellit.",
+          "Nettoyage du support, pontage armé des fissures actives, traitement des points singuliers, enduit monocouche.",
+          "Cloques à la sous-face, faïençage général, descentes d’eau mal fixées.",
+          "Fissures traitées une par une, parement neuf, teinte accordée aux voisines.",
+          "Le jet reste à distance de l’enduit pour ne pas le creuser. Sans cette étape, l’enduit neuf se salit par en dessous.",
+          "Les pierres déchaussées sont recalées avant tout enduit. On reprend à partir du sain, jamais par-dessus.",
+          "Les fissures franches qui traversent reçoivent un pontage avec une toile d’armature. Confondre faïençage et fissure active fait revenir la fissure en un hiver.",
+          "Une façade grattée se travaille d’un seul tenant, angle à angle. Un gratté régulier se reconnaît à vingt centimètres.",
+          "Le geste reste le même sur toute la façade pour garder un aspect uniforme. Bien fait, le taloché donne une façade calme, sans reflet.",
+          "Le pied de façade est repris avec un enduit plus résistant. L’eau entre par les détails, et le ravalement s’y juge deux ans après.",
+          "Ce qui se passe sur l’échafaudage.",
+          "Vérifiable par tous.",
+          "Demander une visite.",
+          "Le même mur peut recevoir dix textures. Une seule lui va."
+        ],
+        "intitules": [
+          "Ce qui se passe sur l’échafaudage.",
+          "Vérifiable par tous.",
+          "Demander une visite."
+        ],
+        "famille": "terre-ardoise",
+        "sol": "nuit",
+        "polices": "public-bricolage",
+        "geometrie": "vif",
+        "mot": "metier"
+      }
+    },
+    {
+      "id": "modele-ravalement-07",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "panneau",
+      "charte": {
+        "famille": {
+          "cle": "cobalt-creme",
+          "nom": "cobalt et creme : bleu sature contre un seul neutre",
+          "nuit": "#0C1424",
+          "encre": "#141E32",
+          "chaux": "#E8ECF3",
+          "gris": "#828FA6",
+          "papier": "#EEF1F6",
+          "encreClair": "#101827",
+          "second": "#1D4ED8"
+        },
+        "polices": {
+          "cle": "archivo-plein",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "archivo-wght.woff2",
+            "public-sans.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/archivo-wght.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "adouci",
+          "rayon": "3px",
+          "filet": "1px",
+          "etiquette": "contour",
+          "jeton": "99px"
+        },
+        "sol": "nuit",
+        "mot": "aucun",
+        "structure": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "travail",
+            "chantier",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "teintes": {
+          "combien": 4,
+          "depart": 6
+        },
+        "comparateur": {
+          "prise": "rond",
+          "indice": "Avant, après : glissez",
+          "etiquettes": "haut"
+        }
+      },
+      "fiche": {
+        "siren": "modele-ravalement-07",
+        "nom": "modele-ravalement-07",
+        "metier": "ravalement",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "panneau",
+        "titre": "Un monocouche se projette en une seule couche, et ne pardonne pas un mauvais support.",
+        "main": {
+          "hero": "hero",
+          "chantier": "chantier-3",
+          "geste": "geste-5",
+          "detail": "detail-enduit",
+          "paire1": "03",
+          "paire2": "02"
+        },
+        "appel": {
+          "forme": "contour",
+          "libelle": "Appeler",
+          "place": "nom-droite"
+        },
+        "photos": "hero,chantier-3,geste-5,detail-enduit,avant-03,apres-03,avant-02,apres-02",
+        "structure": "coupure > ouverture > travail > chantier > prix > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "coupure",
+            "ouverture",
+            "travail",
+            "chantier",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": false,
+          "nuancierPlace": "atmo"
+        },
+        "comparateur": {
+          "prise": "rond",
+          "indice": "Avant, après : glissez",
+          "etiquettes": "haut"
+        },
+        "phrases": [
+          "Un monocouche se projette en une seule couche, et ne pardonne pas un mauvais support.",
+          "Protection des abords et des menuiseries, nettoyage du support, rebouchage du faïençage, enduit gratté ou taloché.",
+          "Support fatigué, fissure ouverte au-dessus d’une fenêtre, reprises anciennes visibles.",
+          "Support stabilisé, fissures traitées une par une, enduit gratté fin.",
+          "Application en deux passes, puis grattage à la lame quand la prise est suffisante. Le gratté est la finition la plus courante sur les façades de ville.",
+          "Les angles et les tableaux sont dressés avant le talochage. Le rendu est plus contemporain qu’un gratté.",
+          "Appuis de fenêtre, bandeaux, corniches, descentes : chaque détail est repris à part. Un détail oublié se lit comme une tache sur le neuf.",
+          "L’échafaudage est ancré au mur et contrôlé avant chaque journée. L’échafaudage est le premier poste du devis, et le dernier démonté.",
+          "Une teinte d’origine se retrouve parfois sous les anciennes couches. La bonne teinte est celle qu’on oublie dans la rue.",
+          "Le travail du mur.",
+          "L’identité de l’entreprise.",
+          "Une visite avant tout chiffre.",
+          "Pendant la reprise.",
+          "Attrapez la couture pour voir le mur avant la reprise.",
+          "Le point de vue ne bouge pas d’une photo à l’autre. Tout le reste est à sa place.",
+          "Soubassement, fissures pontées, enduit monocouche.",
+          "Façade complète, fissures pontées, enduit respirant."
+        ],
+        "intitules": [
+          "Le travail du mur.",
+          "L’identité de l’entreprise.",
+          "Une visite avant tout chiffre.",
+          "Pendant la reprise."
+        ],
+        "famille": "cobalt-creme",
+        "sol": "nuit",
+        "polices": "archivo-plein",
+        "geometrie": "adouci",
+        "mot": "aucun"
+      }
+    },
+    {
+      "id": "modele-ravalement-08",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "planche",
+      "charte": {
+        "famille": {
+          "cle": "olive-papier",
+          "nom": "olive, brique, papier : olive sourd plus accent brique",
+          "nuit": "#12140E",
+          "encre": "#1D2015",
+          "chaux": "#EBEDE4",
+          "gris": "#8E9182",
+          "papier": "#F0F1E9",
+          "encreClair": "#171A11",
+          "second": "#9A3B2A"
+        },
+        "polices": {
+          "cle": "bricolage",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "bricolage.woff2",
+            "public-sans.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/bricolage.woff2\") format(\"woff2\");font-weight:200 800;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "rond",
+          "rayon": "10px",
+          "filet": "2px",
+          "etiquette": "plein",
+          "jeton": "99px"
+        },
+        "sol": "nuit",
+        "mot": "commune",
+        "structure": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "chantier",
+            "avis",
+            "travail",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "teintes": {
+          "combien": 4,
+          "depart": 3
+        },
+        "comparateur": {
+          "prise": "barre",
+          "indice": "Glissez ou touchez",
+          "etiquettes": "haut"
+        }
+      },
+      "fiche": {
+        "siren": "modele-ravalement-08",
+        "nom": "modele-ravalement-08",
+        "metier": "ravalement",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "planche",
+        "titre": "Une façade sale n’est pas forcément une façade malade.",
+        "main": {
+          "hero": "hero-variante-2",
+          "chantier": "chantier-2",
+          "geste": "geste-3",
+          "detail": "detail-enduit",
+          "paire1": "02",
+          "paire2": "03"
+        },
+        "appel": {
+          "forme": "pastille",
+          "libelle": "Téléphoner",
+          "place": "nom-gauche"
+        },
+        "photos": "hero-variante-2,chantier-2,geste-3,detail-enduit,avant-02,apres-02,avant-03,apres-03",
+        "structure": "ouverture > coupure > chantier > avis > travail > prix > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "chantier",
+            "avis",
+            "travail",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "comparateur": {
+          "prise": "barre",
+          "indice": "Glissez ou touchez",
+          "etiquettes": "haut"
+        },
+        "phrases": [
+          "Une façade sale n’est pas forcément une façade malade.",
+          "Lavage complet de la façade, reprise des appuis et des rives, enduit traditionnel en trois couches, finition talochée.",
+          "Joints ouverts, salissures noires en pied de mur, angles épaufrés.",
+          "Support assaini, finition régulière sur toute la hauteur, points d’eau traités.",
+          "Le mortier de reprise est choisi pour le mur : chaux sur l’ancien, ciment sur le béton. Ce qu’on laisse en place décide de la durée du ravalement.",
+          "Les fissures en escalier suivent les joints et se reprennent joint par joint. Une fissure est le premier chemin de l’eau dans le mur.",
+          "Le grattage se fait au gratton, en mouvements circulaires réguliers. Le résultat change selon l’heure du grattage : on ne s’arrête pas au milieu d’un pan.",
+          "La taloche serre la matière et ferme le grain. Sur une maison ancienne, le taloché rappelle les enduits faits à la main.",
+          "Les tableaux de fenêtres sont dressés à la règle, au plus près des menuiseries. Les détails sont l’endroit où l’eau entre.",
+          "Le chantier en détail.",
+          "Les registres publics.",
+          "Un appel suffit.",
+          "Sur l’échafaudage.",
+          "Déplacez la séparation pour retrouver la façade d’origine.",
+          "Les deux photos sont prises du même endroit. La différence vient du chantier.",
+          "Façade arrière, angles redressés, teinte d’origine retrouvée.",
+          "Angle de façade, appuis repris, teinte d’origine retrouvée."
+        ],
+        "intitules": [
+          "Le chantier en détail.",
+          "Les registres publics.",
+          "Un appel suffit.",
+          "Sur l’échafaudage."
+        ],
+        "famille": "olive-papier",
+        "sol": "nuit",
+        "polices": "bricolage",
+        "geometrie": "rond",
+        "mot": "commune"
+      }
+    },
+    {
+      "id": "modele-ravalement-09",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "elevation",
+      "charte": {
+        "famille": {
+          "cle": "terre-ardoise",
+          "nom": "terre cuite et ardoise : rouille chaude contre gris froid",
+          "nuit": "#111619",
+          "encre": "#1B2226",
+          "chaux": "#E6EAEC",
+          "gris": "#849098",
+          "papier": "#EEF1F2",
+          "encreClair": "#151B1E",
+          "second": "#A5482C"
+        },
+        "polices": {
+          "cle": "bricolage",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "bricolage.woff2",
+            "public-sans.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/bricolage.woff2\") format(\"woff2\");font-weight:200 800;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/public-sans.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "rond",
+          "rayon": "10px",
+          "filet": "2px",
+          "etiquette": "plein",
+          "jeton": "99px"
+        },
+        "sol": "nuit",
+        "mot": "commune",
+        "structure": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "prix",
+            "travail",
+            "avis",
+            "chantier",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "teintes": {
+          "combien": 4,
+          "depart": 4
+        },
+        "comparateur": {
+          "prise": "rond",
+          "indice": "Glissez pour voir l’avant",
+          "etiquettes": "bas"
+        }
+      },
+      "fiche": {
+        "siren": "modele-ravalement-09",
+        "nom": "modele-ravalement-09",
+        "metier": "ravalement",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "elevation",
+        "titre": "Ce qui se voit de la rue tient à ce qui se fait à vingt centimètres.",
+        "main": {
+          "hero": "hero-variante-2",
+          "chantier": "chantier",
+          "geste": "geste",
+          "detail": "detail-enduit",
+          "paire1": "01",
+          "paire2": "02"
+        },
+        "appel": {
+          "forme": "plein",
+          "libelle": "Appeler l’entreprise",
+          "place": "nom-droite"
+        },
+        "photos": "hero-variante-2,chantier,geste,detail-enduit,avant-01,apres-01,avant-02,apres-02",
+        "structure": "ouverture > coupure > prix > travail > avis > chantier > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "prix",
+            "travail",
+            "avis",
+            "chantier",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": true,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "comparateur": {
+          "prise": "rond",
+          "indice": "Glissez pour voir l’avant",
+          "etiquettes": "bas"
+        },
+        "phrases": [
+          "Ce qui se voit de la rue tient à ce qui se fait à vingt centimètres.",
+          "Protection des abords et des menuiseries, lavage complet de la façade, rejointoiement des pierres, enduit de parement, finition talochée.",
+          "Enduit faïencé, joints ouverts, moulures érodées.",
+          "Parties creuses reprises au mortier, parement neuf, points singuliers repris.",
+          "Menuiseries, sols et végétation sont protégés avant la première passe. Le chantier se rend propre.",
+          "La mairie valide la teinte quand la commune l’impose. Une teinte change avec la lumière du quartier.",
+          "Les mousses et les lichens se traitent avant le lavage, pas après. Un mur propre montre enfin ce qu’il faut réparer.",
+          "Le sondage se fait sur toute la surface, mètre par mètre. La purge est le seul poste qu’on ne peut pas deviner d’en bas.",
+          "Ce que comprend un ravalement.",
+          "Ce qui se vérifie.",
+          "Fixer une visite.",
+          "Le mur en cours de reprise.",
+          "Faites glisser le curseur pour comparer l’avant et l’après.",
+          "Même hauteur, même focale. Le reste de la rue est identique.",
+          "Maison de ville, fissure ouverte et pontée, enduit à la chaux.",
+          "Maison de ville, faïençage rebouché, finition grattée fin."
+        ],
+        "intitules": [
+          "Ce que comprend un ravalement.",
+          "Ce qui se vérifie.",
+          "Fixer une visite.",
+          "Le mur en cours de reprise."
+        ],
+        "famille": "terre-ardoise",
+        "sol": "nuit",
+        "polices": "bricolage",
+        "geometrie": "rond",
+        "mot": "commune"
+      }
+    },
+    {
+      "id": "modele-ravalement-10",
+      "etat": "libre",
+      "siren": null,
+      "pris_le": null,
+      "cree_le": "2026-11-03",
+      "archetype": "planche",
+      "charte": {
+        "famille": {
+          "cle": "noir-fauve",
+          "nom": "noir et fauve : noir casse, fauve chaud, aucun beige",
+          "nuit": "#0B0D0E",
+          "encre": "#16191B",
+          "chaux": "#EDEDEA",
+          "gris": "#8E8F8C",
+          "papier": "#F0F0EE",
+          "encreClair": "#121415",
+          "second": "#C2703C"
+        },
+        "polices": {
+          "cle": "archivo-etroit",
+          "titre": "Display",
+          "texte": "Texte",
+          "fichiers": [
+            "archivo-narrow-700.woff2",
+            "archivo-wght.woff2"
+          ],
+          "faces": "@font-face{font-family:\"Display\";src:url(\"polices/archivo-narrow-700.woff2\") format(\"woff2\");font-weight:700;font-display:swap}\n@font-face{font-family:\"Texte\";src:url(\"polices/archivo-wght.woff2\") format(\"woff2\");font-weight:100 900;font-display:swap}"
+        },
+        "geo": {
+          "cle": "adouci",
+          "rayon": "3px",
+          "filet": "1px",
+          "etiquette": "contour",
+          "jeton": "99px"
+        },
+        "sol": "nuit",
+        "mot": "aucun",
+        "structure": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "chantier",
+            "travail",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "teintes": {
+          "combien": 5,
+          "depart": 6
+        },
+        "comparateur": {
+          "prise": "carre",
+          "indice": "Glissez pour voir l’avant",
+          "etiquettes": "bas"
+        }
+      },
+      "fiche": {
+        "siren": "modele-ravalement-10",
+        "nom": "modele-ravalement-10",
+        "metier": "ravalement",
+        "commune": "modele",
+        "codePostal": null,
+        "departement": "modele",
+        "archetype": "planche",
+        "titre": "Plus la purge est franche, plus l’enduit tient longtemps.",
+        "main": {
+          "hero": "hero",
+          "chantier": "chantier",
+          "geste": "geste-4",
+          "detail": "detail-enduit",
+          "paire1": "02",
+          "paire2": "01"
+        },
+        "appel": {
+          "forme": "pastille",
+          "libelle": "Appeler",
+          "place": "nom-droite"
+        },
+        "photos": "hero,chantier,geste-4,detail-enduit,avant-02,apres-02,avant-01,apres-01",
+        "structure": "ouverture > coupure > chantier > travail > prix > verifiable > contact",
+        "structureDetail": {
+          "ordre": [
+            "ouverture",
+            "coupure",
+            "chantier",
+            "travail",
+            "prix",
+            "verifiable",
+            "contact"
+          ],
+          "prix": false,
+          "avis": false,
+          "page2": false,
+          "nuancierPlace": "comparateur"
+        },
+        "comparateur": {
+          "prise": "carre",
+          "indice": "Glissez pour voir l’avant",
+          "etiquettes": "bas"
+        },
+        "phrases": [
+          "Plus la purge est franche, plus l’enduit tient longtemps.",
+          "Protection des abords et des menuiseries, décapage des anciennes peintures, diagnostic du support, enduit adapté au mur.",
+          "Enduit décollé par plaques, fissures en escalier aux angles, mousses en soubassement.",
+          "Support purgé et réparé, enduit gratté fin, points d’eau traités.",
+          "Le gratté se travaille quand l’enduit a pris juste ce qu’il faut. Le grain choisi se voit sur un échantillon avant de se voir sur la façade.",
+          "Chaque pan est taloché sans interruption, d’une rive à l’autre. La finition est plus lisse, la lumière la révèle davantage.",
+          "Les appuis fendus sont repris au mortier, avec une pente vers l’extérieur. Les détails sont ce que l’œil regarde en premier.",
+          "Le passage des piétons est maintenu sous l’échafaudage quand la rue l’impose. Sans accès sûr, le haut de la façade est toujours moins bien fait.",
+          "Les postes du ravalement.",
+          "Ce que dit la base Sirene.",
+          "Parler de votre façade.",
+          "Le geste et l’outil.",
+          "Faites glisser la couture pour voir la façade avant et après.",
+          "Les deux images ont le même cadrage. Seul l’enduit a changé.",
+          "Villa, parties creuses purgées, enduit taloché.",
+          "Façade sur cour, parties creuses purgées, enduit taloché."
+        ],
+        "intitules": [
+          "Les postes du ravalement.",
+          "Ce que dit la base Sirene.",
+          "Parler de votre façade.",
+          "Le geste et l’outil."
+        ],
+        "famille": "noir-fauve",
+        "sol": "nuit",
+        "polices": "archivo-etroit",
+        "geometrie": "adouci",
+        "mot": "aucun"
+      }
+    }
+  ]
+}

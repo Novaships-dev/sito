@@ -170,17 +170,22 @@ export function fiche(e, metier, d) {
 // voisins redonnent le meme site. Un voisin de la meme commune pese cinq fois
 // plus qu un voisin du departement.
 export const ESSAIS = 12;
-export function tirerSite({ siren, metier, base, sources, voisins = [], e = {}, prix = false, charteFixee = null }) {
+// `graine` : la cle du tirage a la place du SIREN. Un modele de prospection
+// (docs/specs/S-MODELES.md, T57) donne sa cle : tous les artisans montres sur
+// ce modele recoivent les memes textes, parametres et photos ; seules les
+// donnees de l entreprise changent.
+export function tirerSite({ siren, metier, base, sources, voisins = [], e = {}, prix = false, charteFixee = null, graine: cleGraine = null }) {
   const ident = { siren, commune: e.commune, departement: e.departement, codePostal: e.codePostal, nom: e.nom || e.denomination };
+  const racine = cleGraine || siren;
   // Charte figee : un seul tirage, jamais retire pour ressembler moins a un
   // voisin — c est justement ce qu on protege (voir tirerUneFois).
   if (charteFixee) {
-    const d = tirerUneFois(siren + '|' + metier, { siren, metier, base, sources, voisins, prix, charteFixee });
+    const d = tirerUneFois(racine + '|' + metier, { siren, metier, base, sources, voisins, prix, charteFixee });
     return { ...d, fiche: fiche(ident, metier, d), essai: 0 };
   }
   let meilleur = null, coutMin = Infinity;
   for (let k = 0; k < ESSAIS; k++) {
-    const cle = siren + '|' + metier + (k ? '|essai' + k : '');
+    const cle = racine + '|' + metier + (k ? '|essai' + k : '');
     const d = tirerUneFois(cle, { siren, metier, base, sources, voisins, prix });
     const f = fiche(ident, metier, d);
     let cout = 0;

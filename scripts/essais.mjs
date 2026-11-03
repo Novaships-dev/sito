@@ -63,6 +63,7 @@ const ETAPES = [
   // La fabrication du lot sans aucune image : un métier sans images est sauté,
   // les données du générateur n'inventent rien, les slugs ne se répètent pas.
   // La fabrication réelle demande les images : elle est plus bas.
+  { nom: 'prospection : modèles (10 par métier, tous différents)', cmd: ['node', 'scripts/essai-modeles.mjs'] },
   { nom: 'prospection : fabrication du lot', cmd: ['node', 'scripts/essai-lot.mjs'] },
   // La publication privée contre un faux Cloudflare : aucun compte, aucun
   // réseau. La première publication réelle attend l'action F5.
@@ -105,6 +106,7 @@ if (COMPLET) {
     { nom: 'contre-essai : référencement', cmd: ['node', 'scripts/essai-referencement.mjs', '--contre-essai'] },
     { nom: 'contre-essai : boucle du service', cmd: ['node', 'scripts/essai-boucle.mjs', '--contre-essai'] },
     { nom: 'contre-essai : prospection', cmd: ['node', 'scripts/essai-prospection.mjs', '--contre-essai'] },
+    { nom: 'contre-essai : modèles', cmd: ['node', 'scripts/essai-modeles.mjs', '--contre-essai'] },
     { nom: 'contre-essai : fabrication du lot', cmd: ['node', 'scripts/essai-lot.mjs', '--contre-essai'] },
     { nom: 'contre-essai : publication privée', cmd: ['node', 'scripts/essai-publication-prospection.mjs', '--contre-essai'] },
     { nom: 'contre-essai : page d appels', cmd: ['node', 'scripts/essai-appels.mjs', '--contre-essai'] },

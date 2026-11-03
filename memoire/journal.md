@@ -1723,3 +1723,16 @@ deux copies cassées. Le pied de page était déjà réglé par T50. Constaté e
 route : sur un site de prospection matiere, la note « Photographies
 d'exemple » n'existe pas (alt et marquage suffisent) ; rien changé.
 TRACAGE : generateur/composer.mjs, scripts/verifier-site.mjs, scripts/essai-mentions.mjs, scripts/essai-fabrication-base.mjs, app/specs/07-TACHES.md, docs/audit/REGISTRE.md (S-022 clos), CHANGELOG.md, memoire/maintenant.md, memoire/journal.md
+
+## 4 nov. 2026 — T57 (modèles de prospection), par Cowork
+
+Plan : 1. `--graine` dans `tirage.mjs` et `composer.mjs` ; 2.
+`scripts/prospection/modeles.mjs` (compléter à 10 libres, `--verifier`) ;
+3. `essai-modeles.mjs` et les 30 modèles du dépôt.
+
+Résultat : 18 contrôles, 0 faute ; contre-essai 3 fautes. Les modèles sont
+tirés en voisins « de la même commune » les uns des autres (règle la plus
+stricte), sur les noms de photos du plan de la banque. Un modèle fixe charte
+et graine : les phrases et la main de photos ne bougent plus d'un artisan à
+l'autre.
+TRACAGE : generateur/tirage.mjs, generateur/composer.mjs, scripts/prospection/modeles.mjs, prospection/modeles/ravalement.json, prospection/modeles/couverture.json, prospection/modeles/peinture.json, scripts/essai-modeles.mjs, scripts/essais.mjs, .github/workflows/essais.yml, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
