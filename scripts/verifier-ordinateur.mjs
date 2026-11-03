@@ -17,22 +17,28 @@ const cible = resolve(arg);
 const fichier = existsSync(cible) && statSync(cible).isDirectory() ? join(cible, 'index.html') : cible;
 if (!existsSync(fichier)) { console.error('introuvable : ' + fichier); process.exit(2); }
 
+// Le moteur : chromium par défaut, `--navigateur webkit` (Safari) ou
+// SITO_NAVIGATEUR=webkit (tâche T49, constat S-007).
+const iNav = process.argv.indexOf('--navigateur');
+const MOTEUR = (iNav > -1 ? process.argv[iNav + 1] : process.env.SITO_NAVIGATEUR) || 'chromium';
+if (!['chromium', 'webkit', 'firefox'].includes(MOTEUR)) { console.error('navigateur inconnu : ' + MOTEUR); process.exit(2); }
 let chromium;
 for (const source of ['playwright', 'playwright-core', process.env.ATELIER_PLAYWRIGHT || '']) {
   if (!source) continue;
-  try { const m = await import(source); chromium = (m.default || m).chromium; if (chromium) break; } catch { /* suivant */ }
+  try { const m = await import(source); chromium = (m.default || m)[MOTEUR]; if (chromium) break; } catch { /* suivant */ }
 }
 if (!chromium) { console.log('playwright absent, controle ordinateur non execute. npm install playwright'); process.exit(3); }
 
 let navigateur = null;
 // SITO_CHROMIUM : un navigateur deja installe, quand Playwright n a pas
 // telecharge le sien (espace de travail de Claude). Sur Windows, Chrome suffit.
-const essais = [{ channel: 'chrome' }, {}, { channel: 'msedge' }];
-if (process.env.SITO_CHROMIUM) essais.unshift({ executablePath: process.env.SITO_CHROMIUM });
+const essais = MOTEUR === 'chromium' ? [{ channel: 'chrome' }, {}, { channel: 'msedge' }] : [{}];
+if (process.env.SITO_CHROMIUM && MOTEUR === 'chromium') essais.unshift({ executablePath: process.env.SITO_CHROMIUM });
 for (const opts of essais) {
   try { navigateur = await chromium.launch(opts); break; } catch { /* suivant */ }
 }
-if (!navigateur) { console.log('aucun navigateur utilisable, controle ordinateur non execute.'); process.exit(3); }
+if (!navigateur) { console.log(`aucun navigateur utilisable (${MOTEUR}), controle ordinateur non execute.`); process.exit(3); }
+console.log(`moteur : ${MOTEUR}`);
 
 const ECRANS = [{ nom: 'grand ecran', l: 1440, h: 900 }, { nom: 'portable', l: 1280, h: 800 }];
 const constats = [];
@@ -121,11 +127,23 @@ for (const e of ECRANS) {
     });
     const boutons = await page.$$('[data-essai-bouton]');
     if (boutons.length) {
-      await boutons[boutons.length - 1].click();
-      await page.waitForTimeout(200);
-      const apresBouton = await lire();
-      dire('O5', apresBouton > 90, 'les boutons avant et apres ne font rien',
-        'obtenu ' + Math.round(apresBouton) + ' %', 'voir rules/web/mouvement.md, V4');
+      // Un bouton recouvert par un autre bloc ne prend pas le clic : sans ce
+      // filet, l attente de Playwright finissait en plantage au lieu d un
+      // constat (panneau, 3 novembre 2026, T49).
+      let clique = true;
+      try { await boutons[boutons.length - 1].click({ timeout: 5000 }); }
+      catch (err) {
+        clique = false;
+        dire('O5', false, 'un bouton du comparateur est recouvert et ne prend pas le clic',
+          (err.message.match(/<[^>]+>[^<]*<\/[a-z]+> from [^\n]*intercepts/) || [err.message.split('\n')[0]])[0].slice(0, 140),
+          'aucun bloc ne se pose sur un autre, voir generateur/sections/atmosphere.mjs');
+      }
+      if (clique) {
+        await page.waitForTimeout(200);
+        const apresBouton = await lire();
+        dire('O5', apresBouton > 90, 'les boutons avant et apres ne font rien',
+          'obtenu ' + Math.round(apresBouton) + ' %', 'voir rules/web/mouvement.md, V4');
+      }
     }
 
     // O6 : aucun glissement ne doit changer de page

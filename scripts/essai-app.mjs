@@ -20,7 +20,7 @@ import { tmpdir } from 'node:os';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import sharp from 'sharp';
-import { chromium } from 'playwright';
+import { chromium, webkit } from 'playwright';
 import { RACINE } from './env.mjs';
 
 const DIST = process.env.SITO_APP_DIST || join(RACINE, 'app', 'dist'); // autre dossier : essai d'une copie cassée
@@ -36,7 +36,15 @@ const aGps = (m) => Object.keys(m).some((k) => /GPS/i.test(k) && !/^File/.test(k
 // Le Chromium de Playwright, sinon celui de la machine (SITO_CHROMIUM, ou les
 // emplacements connus) : une version de Playwright plus récente que le
 // navigateur installé ne doit pas empêcher l'essai.
+// `--navigateur webkit` (ou SITO_NAVIGATEUR=webkit) : le moteur de Safari
+// (tâche T49, constat S-007). Sans lui sur la machine : sortie 3.
+const iNav = process.argv.indexOf('--navigateur');
+const MOTEUR = (iNav > -1 ? process.argv[iNav + 1] : process.env.SITO_NAVIGATEUR) || 'chromium';
+if (!['chromium', 'webkit'].includes(MOTEUR)) { console.error('navigateur inconnu : ' + MOTEUR); process.exit(2); }
 async function lancer() {
+  if (MOTEUR === 'webkit') {
+    try { return await webkit.launch(); } catch (e) { console.log('WebKit absent : npx playwright install webkit. ' + e.message.split('\n')[0]); process.exit(3); }
+  }
   const chemins = [process.env.SITO_CHROMIUM, undefined, '/opt/pw-browsers/chromium-1194/chrome-linux/chrome', '/opt/pw-browsers/chromium/chrome-linux/chrome', '/usr/bin/chromium', '/usr/bin/google-chrome'];
   let derniere;
   for (const c of chemins) {

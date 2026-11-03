@@ -125,6 +125,16 @@ export function feuille(p, archetype = 'matiere') {
 
 ${disposition(v, p)}
 
+/* Grand ecran : le corps ne se tasse jamais sous sa hauteur. Sur un ecran de
+   900 px de haut, le cadre de la photo passait sous le titre et ses boutons
+   « Voir l avant / Voir l apres » sous l etiquette du nuancier, qui prenait
+   les clics (panneau, 3 novembre 2026, tache T49). L atmosphere grandit
+   plutot : cent pixels de trop valent mieux que deux blocs qui se recouvrent. */
+@media (min-width:901px){
+  .atmo{height:auto;min-height:100svh}
+  .atmo .corps-atmo{flex:0 0 auto}
+}
+
 /* Ecran bas (un portable en 1350x700) : la colonne se tasse et la phrase
    passait sous le nuancier. Tout redescend d un cran plutot que de se
    chevaucher. */

@@ -29,7 +29,7 @@ concurrency:
 jobs:
   essais:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
 
@@ -51,7 +51,7 @@ jobs:
         run: |
           npm ci --no-audit --no-fund
           npm --prefix app ci --no-audit --no-fund
-          npx playwright install --with-deps chromium
+          npx playwright install --with-deps chromium webkit
 
       - name: Essais
         run: node scripts/essais.mjs
@@ -64,6 +64,21 @@ jobs:
           node scripts/essai-service.mjs --contre-essai
           node scripts/essai-preparation.mjs --contre-essai
           node scripts/essai-prospection.mjs --contre-essai
+          node scripts/essai-echappement.mjs --contre-essai
+          node scripts/essai-mentions.mjs --contre-essai
+          node scripts/essai-referencement.mjs --contre-essai
+
+      # Safari (T49, constat S-007) : le moteur WebKit de Playwright, sur l'app
+      # en démonstration et sur un site d'abonné de chaque archétype. Chromium
+      # sur les mêmes sites, pour comparer.
+      - name: Rendu des sites (Chromium)
+        run: node scripts/essai-navigateurs.mjs
+
+      - name: Safari (WebKit) - sites
+        run: node scripts/essai-navigateurs.mjs --navigateur webkit
+
+      - name: Safari (WebKit) - app
+        run: node scripts/essai-app.mjs --navigateur webkit
 
       - name: Résumé
         if: always()

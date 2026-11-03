@@ -856,7 +856,7 @@ ${corps}
   // dossier reutilise par un site de prospection perd l ancienne page.
   if (ml) {
     const htmlMl = autrePage(html, 'mentions-legales.html', `${e.nomLisible}, ${mentionsSection.TITRE}`)
-      .replace(/<main id="principal">[\s\S]*?<\/main>/, `<main id="principal">\n${mentionsSection.page({ lignes: ml.lignes, e, barre: appel.barre({ e, tel, ap }) })}\n</main>`)
+      .replace(/<main id="principal">[\s\S]*?<\/main>/, `<main id="principal">\n${mentionsSection.page({ lignes: ml.lignes, e, barre: appel.barre({ e, tel, ap }), appel: appel.lien({ tel, ap }) })}\n</main>`)
       .replace(/<div class="entree"[\s\S]*?<\/div>\n/, '');
     writeFileSync(join(opts.sortie, 'mentions-legales.html'), htmlMl, 'utf8');
   } else if (existsSync(join(opts.sortie, 'mentions-legales.html'))) rmSync(join(opts.sortie, 'mentions-legales.html'));

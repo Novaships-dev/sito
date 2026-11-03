@@ -82,8 +82,17 @@ const ETAPES = [
   // qui efface, se lance à part (/fin-de-seance).
   { nom: 'audit du dépôt (sur un clone cassé exprès)', cmd: ['node', 'scripts/audit-depot.mjs', '--contre-essai'] },
 ];
+// Le moteur de Safari (T49) : installé par `npx playwright install webkit`.
+const webkitAbsent = async () => {
+  try { const { webkit } = await import('playwright'); return existsSync(webkit.executablePath()) ? [] : ['WebKit (npx playwright install webkit)']; }
+  catch { return ['playwright']; }
+};
+const manqueWebkit = await webkitAbsent();
 if (COMPLET) {
   ETAPES.push(
+    { nom: 'sites : rendu téléphone et ordinateur (Chromium)', cmd: ['node', 'scripts/essai-navigateurs.mjs'] },
+    { nom: 'sites : rendu téléphone et ordinateur (Safari, WebKit)', cmd: ['node', 'scripts/essai-navigateurs.mjs', '--navigateur', 'webkit'], manque: () => manqueWebkit },
+    { nom: 'app : parcours et rendu (Safari, WebKit)', cmd: ['node', 'scripts/essai-app.mjs', '--navigateur', 'webkit'], manque: () => [...manqueWebkit, ...outilsApp()] },
     { nom: 'contre-essai : secrets', cmd: ['node', 'scripts/verifier-secrets.mjs', '--contre-essai'] },
     { nom: 'contre-essai : outillage', cmd: ['node', 'scripts/essai-outillage.mjs', '--contre-essai'] },
     { nom: 'contre-essai : app', cmd: ['node', 'scripts/essai-app.mjs', '--contre-essai'], manque: outilsApp },

@@ -6,27 +6,27 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**336 fichiers suivis, dont 149 .md ; 80656 lignes de texte.** Hors zone : 0.
+**337 fichiers suivis, dont 149 .md ; 80826 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
 | Z01 Pilotage de l agent | 27 | 2140 | 0 |
-| Z02 Mémoire du projet | 11 | 2356 | 0 |
+| Z02 Mémoire du projet | 11 | 2373 | 0 |
 | Z03 Spécifications | 11 | 2370 | 0 |
 | Z04 Documentation de travail | 22 | 3175 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
-| Z06 Générateur de sites | 33 | 8439 | 4 |
+| Z06 Générateur de sites | 33 | 8450 | 4 |
 | Z07 Règles | 15 | 1147 | 0 |
 | Z08 App de l artisan | 35 | 9005 | 4 |
 | Z09 Service atelier et Worker | 10 | 1320 | 0 |
 | Z10 Base Supabase | 15 | 1301 | 0 |
-| Z11 Essais et vérificateurs | 33 | 7384 | 0 |
+| Z11 Essais et vérificateurs | 34 | 7511 | 0 |
 | Z12 Prospection | 18 | 19722 | 0 |
 | Z13 Autres scripts | 12 | 1356 | 0 |
 | Z14 Banque d images | 8 | 3419 | 0 |
 | Z15 Données de démonstration | 3 | 3 | 0 |
 | Z16 Lanceurs Windows et crochets Git | 13 | 359 | 0 |
-| Z17 Configuration | 6 | 799 | 0 |
+| Z17 Configuration | 6 | 814 | 0 |
 
 ## Z01 Pilotage de l agent
 
@@ -71,7 +71,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `memoire/essais/audit.txt` | 44 |
 | `memoire/essais/derniers.txt` | 24 |
 | `memoire/essais/disque.txt` | 61 |
-| `memoire/journal.md` | 1681 |
+| `memoire/journal.md` | 1698 |
 | `memoire/maintenant.md` | 101 |
 | `memoire/pieges.md` | 114 |
 | `memoire/questions.md` | 116 |
@@ -212,10 +212,10 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `generateur/registre.json` | 232 |
 | `generateur/sections/appel.mjs` | 106 |
 | `generateur/sections/arrivee.mjs` | 161 |
-| `generateur/sections/atmosphere.mjs` | 318 |
+| `generateur/sections/atmosphere.mjs` | 328 |
 | `generateur/sections/avis.mjs` | 36 |
 | `generateur/sections/comparateur.mjs` | 72 |
-| `generateur/sections/mentions.mjs` | 134 |
+| `generateur/sections/mentions.mjs` | 135 |
 | `generateur/sections/nuancier.mjs` | 28 |
 | `generateur/sections/prix.mjs` | 198 |
 | `generateur/sections/referencement.mjs` | 109 |
@@ -327,7 +327,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 |---|---|
 | `scripts/capacite-unicite.mjs` | 125 |
 | `scripts/contraste-rendu.mjs` | 120 |
-| `scripts/essai-app.mjs` | 484 |
+| `scripts/essai-app.mjs` | 492 |
 | `scripts/essai-appels.mjs` | 419 |
 | `scripts/essai-boucle.mjs` | 208 |
 | `scripts/essai-echappement.mjs` | 172 |
@@ -335,6 +335,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `scripts/essai-inscription.mjs` | 197 |
 | `scripts/essai-lot.mjs` | 257 |
 | `scripts/essai-mentions.mjs` | 190 |
+| `scripts/essai-navigateurs.mjs` | 86 |
 | `scripts/essai-outillage.mjs` | 309 |
 | `scripts/essai-photos.mjs` | 153 |
 | `scripts/essai-preparation.mjs` | 354 |
@@ -344,7 +345,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `scripts/essai-publication.mjs` | 104 |
 | `scripts/essai-referencement.mjs` | 181 |
 | `scripts/essai-service.mjs` | 161 |
-| `scripts/essais.mjs` | 141 |
+| `scripts/essais.mjs` | 150 |
 | `scripts/faux-cloudflare.mjs` | 212 |
 | `scripts/faux-recherche-entreprises.mjs` | 83 |
 | `scripts/faux-supabase.mjs` | 136 |
@@ -352,8 +353,8 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `scripts/mesure-lisibilite.mjs` | 87 |
 | `scripts/verifier-depot.mjs` | 88 |
 | `scripts/verifier-images.mjs` | 340 |
-| `scripts/verifier-mobile.mjs` | 330 |
-| `scripts/verifier-ordinateur.mjs` | 299 |
+| `scripts/verifier-mobile.mjs` | 336 |
+| `scripts/verifier-ordinateur.mjs` | 317 |
 | `scripts/verifier-secrets.mjs` | 115 |
 | `scripts/verifier-site.mjs` | 602 |
 | `scripts/verifier-textes.mjs` | 95 |
@@ -443,7 +444,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | Fichier | Lignes |
 |---|---|
 | `.env.example` | 54 |
-| `.github/workflows/essais.yml` | 70 |
+| `.github/workflows/essais.yml` | 85 |
 | `.gitignore` | 46 |
 | `.tool-versions` | 2 |
 | `package-lock.json` | 605 |

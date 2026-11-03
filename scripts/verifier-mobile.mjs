@@ -18,11 +18,16 @@ if (!existsSync(fichier)) { console.error('introuvable : ' + fichier); process.e
 
 // Playwright pilote un vrai navigateur. Sur Windows il utilise le Chrome deja
 // installe (canal chrome), donc rien a telecharger.
+// Le moteur : chromium par défaut, `--navigateur webkit` (Safari) ou
+// SITO_NAVIGATEUR=webkit (tâche T49, constat S-007).
+const iNav = process.argv.indexOf('--navigateur');
+const MOTEUR = (iNav > -1 ? process.argv[iNav + 1] : process.env.SITO_NAVIGATEUR) || 'chromium';
+if (!['chromium', 'webkit', 'firefox'].includes(MOTEUR)) { console.error('navigateur inconnu : ' + MOTEUR); process.exit(2); }
 let chromium;
 for (const source of ['playwright', 'playwright-core',
   process.env.ATELIER_PLAYWRIGHT || '']) {
   if (!source) continue;
-  try { const m = await import(source); chromium = (m.default || m).chromium; if (chromium) break; } catch { /* suivant */ }
+  try { const m = await import(source); chromium = (m.default || m)[MOTEUR]; if (chromium) break; } catch { /* suivant */ }
 }
 if (!chromium) { console.log('playwright absent, controle mobile non execute. npm install playwright'); process.exit(3); }
 
@@ -38,12 +43,13 @@ const M = { titre: 40, titrePart: 0.14, titreLarge: 0.86, imagePart: 0.22, texte
 let navigateur = null;
 // SITO_CHROMIUM : un navigateur deja installe, quand Playwright n a pas
 // telecharge le sien (espace de travail de Claude). Sur Windows, Chrome suffit.
-const essais = [{ channel: 'chrome' }, {}, { channel: 'msedge' }];
-if (process.env.SITO_CHROMIUM) essais.unshift({ executablePath: process.env.SITO_CHROMIUM });
+const essais = MOTEUR === 'chromium' ? [{ channel: 'chrome' }, {}, { channel: 'msedge' }] : [{}];
+if (process.env.SITO_CHROMIUM && MOTEUR === 'chromium') essais.unshift({ executablePath: process.env.SITO_CHROMIUM });
 for (const opts of essais) {
   try { navigateur = await chromium.launch(opts); break; } catch { /* suivant */ }
 }
-if (!navigateur) { console.log('aucun navigateur utilisable, controle mobile non execute.'); process.exit(3); }
+if (!navigateur) { console.log(`aucun navigateur utilisable (${MOTEUR}), controle mobile non execute.`); process.exit(3); }
+console.log(`moteur : ${MOTEUR}`);
 
 const constats = [];
 for (const f of FORMATS) {

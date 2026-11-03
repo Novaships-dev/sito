@@ -92,7 +92,7 @@ export const TITRE = 'informations légales';
 
 // Le contenu de la page `mentions-legales.html` (remplace <main>). `barre` :
 // la barre d'appel, que chaque page garde (contrôle T2).
-export function page({ lignes, e, barre = '' }) {
+export function page({ lignes, e, barre = '', appel = '' }) {
   let n = 0;
   const groupe = (titre, ids, apres = '') => {
     const ls = lignes.filter((l) => ids.includes(l.ml));
@@ -107,9 +107,10 @@ export function page({ lignes, e, barre = '' }) {
   };
   return `<section class="verifiable mentions" aria-labelledby="t-mentions">
   <div class="tete"><p class="enseigne">${ech(e.nomLisible)}</p>
-    <h1 id="t-mentions" class="grand">Mentions légales</h1>
+    <h1 id="t-mentions" class="grand" style="font-size:clamp(40px,6vw,72px)">Mentions légales</h1>
     <p class="note">Les informations sur l’entreprise viennent de l’annuaire des entreprises (base Sirene) et de ce qu’elle a déclaré. Une ligne marquée « ${NON} » n’a pas été fournie.</p>
-    <p class="note"><a href="index.html">Retour à l’accueil</a></p></div>
+    <p class="note"><a href="index.html">Retour à l’accueil</a></p>
+    ${appel}</div>
 </section>
 ${groupe('L’entreprise', ['ML1', 'ML2', 'ML3', 'ML4', 'ML6', 'ML7'])}
 ${groupe('Nous joindre', ['ML5'])}

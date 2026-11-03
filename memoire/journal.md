@@ -1679,3 +1679,20 @@ métier. `atelier/fabriquer.mjs` lit l'adresse principale dans `adresses` ;
 `sites` ni l'adresse offerte avant la première fabrication (D-14). Laissés pour
 plus tard, en dette : horaires, `priceRange`, redirection RS3 (D-13).
 TRACAGE : generateur/sections/referencement.mjs, generateur/composer.mjs, generateur/metiers/couverture.json, generateur/metiers/peinture.json, generateur/metiers/ravalement.json, generateur/LISEZMOI.md, atelier/fabriquer.mjs, scripts/verifier-site.mjs, scripts/essai-referencement.mjs, scripts/essais.mjs, scripts/essai-fabrication-base.mjs, scripts/essai-boucle.mjs, docs/specs/S-REFERENCEMENT.md, docs/DETTE.md (D-13, D-14), docs/audit/REGISTRE.md (S-003 clos), docs/audit/CARTE.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md
+
+## 3 nov. 2026 — T49 (Safari, WebKit), par Cowork
+
+Plan : 1. `--navigateur webkit` (ou SITO_NAVIGATEUR) dans `verifier-mobile`,
+`verifier-ordinateur`, `essai-app` ; 2. `essai-navigateurs.mjs` : un site
+d'abonné de chaque archétype, photos de synthèse, les deux vérificateurs ;
+3. la CI installe WebKit et lance les deux moteurs (WebKit ne s'installe pas
+sur la machine de Cowork : la preuve sera la CI).
+
+En route, sous Chromium déjà : sur l'archétype panneau, à 1 440 × 900, la photo
+de l'ouverture passait sous le titre et les boutons « Voir l'avant / Voir
+l'après » sous l'étiquette du nuancier, qui prenait les clics. Présent avant
+aujourd'hui (vérifié sur le commit f05f73a). `verifier-ordinateur` plantait
+dessus (attente de Playwright) au lieu d'un constat. Corrigé : le corps de
+l'atmosphère ne se tasse plus sur grand écran ; le clic recouvert devient le
+constat O5 (l'ancien site le montre, avec O15). La page des mentions légales a
+maintenant le bouton d'appel en haut et un titre de 40 px.
