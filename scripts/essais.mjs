@@ -29,6 +29,11 @@ const present = (outil, args = ['--version']) => {
 const outilsPhotos = () => [!present('exiftool', ['-ver']) && 'exiftool',
   !present('ffmpeg', ['-version']) && 'ffmpeg',
   !pythonAvecHeif() && 'python + Pillow + pillow-heif'].filter(Boolean);
+// L'essai de l'app fabrique ses photos d'essai avec exiftool et ffmpeg (pas
+// de Python) : sans eux il plantait (« spawnSync exiftool ENOENT ») au lieu de
+// dire « NON LANCÉ ». Constat S-005, tâche T47.
+const outilsApp = () => [!present('exiftool', ['-ver']) && 'exiftool',
+  !present('ffmpeg', ['-version']) && 'ffmpeg'].filter(Boolean);
 
 // Les images ne sont pas dans Git (décision de Fabrice : pas de Git LFS) :
 // hors de la machine de Fabrice, les essais qui les lisent ne peuvent pas
@@ -43,7 +48,7 @@ const ETAPES = [
   { nom: 'app : types et construction', cmd: ['npm', '--prefix', 'app', 'run', 'build'], avant: () => {
     if (!existsSync(join(RACINE, 'app', 'node_modules'))) spawnSync('npm', ['--prefix', 'app', 'ci'], { cwd: RACINE, stdio: 'inherit', shell: WIN });
   } },
-  { nom: 'app : parcours et rendu (navigateur)', cmd: ['node', 'scripts/essai-app.mjs'] },
+  { nom: 'app : parcours et rendu (navigateur)', cmd: ['node', 'scripts/essai-app.mjs'], manque: outilsApp },
   { nom: 'photos (service)', cmd: ['node', 'scripts/essai-photos.mjs'], manque: outilsPhotos },
   { nom: 'service : adaptateur Supabase', cmd: ['node', 'scripts/essai-service.mjs'] },
   // L'inscription par lien (fonction Edge) sur un faux dépôt : jamais le réseau.
@@ -78,7 +83,7 @@ if (COMPLET) {
   ETAPES.push(
     { nom: 'contre-essai : secrets', cmd: ['node', 'scripts/verifier-secrets.mjs', '--contre-essai'] },
     { nom: 'contre-essai : outillage', cmd: ['node', 'scripts/essai-outillage.mjs', '--contre-essai'] },
-    { nom: 'contre-essai : app', cmd: ['node', 'scripts/essai-app.mjs', '--contre-essai'] },
+    { nom: 'contre-essai : app', cmd: ['node', 'scripts/essai-app.mjs', '--contre-essai'], manque: outilsApp },
     { nom: 'contre-essai : service', cmd: ['node', 'scripts/essai-service.mjs', '--contre-essai'] },
     { nom: 'contre-essai : inscription par lien', cmd: ['node', 'scripts/essai-inscription.mjs', '--contre-essai'] },
     { nom: 'contre-essai : préparation des photos', cmd: ['node', 'scripts/essai-preparation.mjs', '--contre-essai'], manque: outilsPhotos },

@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 3 nov. | T47 : la suite d'essais dit « NON LANCÉ » pour l'essai de l'app quand exiftool ou ffmpeg manque, au lieu de planter. |
 | 3 nov. | Lot 2 (produit) par Cowork : PRD réécrit avec le site d'abord (S01 à S31, P1 à P6, A1 à A20 gardées) ; spécifications des mentions légales et du référencement, sourcées (Service Public, Code de la consommation, Google) ; parcours du visiteur ; fiche des 16 métiers. Lignes périmées du TRD et du plan corrigées. 3 constats nouveaux (S-022 à S-024) et leurs tâches T54 à T56. Q5 répondue : les tâches de l'audit passent avant le reste de l'app. |
 | 3 nov. | Socle de pilotage ajouté par Cowork : table unique des chiffres (`docs/SOURCE-UNIQUE.md`), règles de traçabilité et d'essais, ce CHANGELOG, registre de la dette (`docs/DETTE.md`), registre des constats d'audit (`docs/audit/REGISTRE.md`, 21 constats), carte du dépôt générée (`scripts/carte-depot.mjs`), index des documents, vocabulaire, contraintes, sécurité, dépannage. `memoire/maintenant.md` réécrit. Tâches T47 à T53 ajoutées. |
 | 3 nov. | T44 : les photos sont préparées dans l'app, sur le téléphone, avant l'envoi : version réduite redressée, original sans GPS ni appareil, aperçu des RAW ; ce qui est illisible est dit à l'artisan et n'est pas envoyé. T46 ajoutée : retirer aussi le GPS des vidéos. |

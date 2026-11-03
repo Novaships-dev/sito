@@ -42,6 +42,5 @@ Ce n'est pas une décision de Fabrice.
 ## Sur une machine sans un outil
 
 `node scripts/essais.mjs` dit « NON LANCÉ » pour l'essai qui manque d'un outil
-et sort 4. Exception relevée le 3 novembre 2026 : l'étape « app : parcours et
-rendu » n'a pas cette garde et **plante** quand exiftool manque (constat
-S-005 de `docs/audit/REGISTRE.md`, tâche T47).
+et sort 4. Toutes les étapes ont cette garde depuis le 3 novembre 2026 : celle
+de l'app plantait quand exiftool manquait (constat S-005, corrigé par T47).

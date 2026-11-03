@@ -1609,3 +1609,20 @@ envoyé, dit à l'artisan ; 3) essais (pixels, exiftool), contre-essai, specs.
   T44 (photos) ; T46 ajoutée.
 Preuve : `essai-app` 132/0 ; contre-essai 3/3 (une cassure d'abord non
 posée par un sed mal échappé, reposée et attrapée).
+
+## 3 nov. 2026 — T47 (garde de l'étape « app » de la suite), par Cowork
+
+Plan : (1) une garde `outilsApp` (exiftool, ffmpeg : ce qu'`essai-app.mjs`
+appelle) sur l'étape « app : parcours et rendu » de `scripts/essais.mjs` ;
+(2) preuve sur une machine sans exiftool : étape « NON LANCÉ », sortie 4 ;
+(3) contre-essai : garde retirée, la suite redevient rouge (sortie 1).
+
+Résultat : `scripts/essais.mjs` gagne `outilsApp` (exiftool, ffmpeg), posée
+sur l'étape « app : parcours et rendu » et sur le contre-essai de l'app.
+Preuve sur la machine de Cowork, sans exiftool : sortie 4, l'étape « NON
+LANCÉ », 0 faute (3 étapes non lancées, toutes faute d'exiftool). Contre-essai
+(copie `essais-casse-t47.mjs`, garde retirée, effacée ensuite) : sortie 1,
+« FAUTE app : parcours et rendu ». `memoire/essais/derniers.txt` laissé tel
+quel (il porte le passage complet du PC, 3 nov. 01:42) ; la preuve avec les
+outils est la CI GitHub.
+TRACAGE : scripts/essais.mjs, app/specs/07-TACHES.md, docs/audit/REGISTRE.md (S-005 clos), docs/REGLE-ESSAIS.md, docs/TROUBLESHOOTING.md, CHANGELOG.md, memoire/journal.md

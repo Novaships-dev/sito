@@ -25,7 +25,7 @@ Pour une panne nouvelle, Claude Code suit `.claude/skills/depanner/SKILL.md`
 | Ce qu'on voit | Cause | Quoi faire |
 |---|---|---|
 | `node scripts/essais.mjs` sort 4 | un outil manque (exiftool, ffmpeg, Python avec pillow-heif) | installer sans droits d'administrateur (`pip install --user`, `winget --scope user`), le noter au journal ; sinon action de Fabrice |
-| `essai-app.mjs` plante sur `spawnSync exiftool ENOENT` | exiftool manque et l'étape n'a pas de garde | installer exiftool ; correction de la garde : tâche T47 |
+| `essai-app.mjs` lancé seul plante sur `spawnSync exiftool ENOENT` | exiftool manque | installer exiftool ; dans `node scripts/essais.mjs`, l'étape dit « NON LANCÉ » depuis T47 |
 | « Executable doesn't exist » de Playwright | Chromium de Playwright absent | `npx playwright install chromium`, ou `SITO_CHROMIUM=<chemin de Chrome>` |
 | Vert sur le PC, rouge dans la CI | l'essai dépend de la machine (chemin, fichier non versionné, connexion qui expire) | lire `node scripts/ci-github.mjs --journal` ; pièges du 29 oct. dans `memoire/pieges.md` |
 | Un contre-essai sort 2 : « la cassure n'a rien changé » | la cassure vise un code qui a bougé | réviser la cassure, pas l'essai (`docs/REGLE-ESSAIS.md` E2) |
