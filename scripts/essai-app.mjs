@@ -369,7 +369,9 @@ try {
   {
     const { ctx: c, page: p, erreurs: errs } = await nouvellePage(appareils[0]);
     await p.goto(`${BASE}?demo#/inscription/demo-inscription`);
-    ok(await visible(p.getByRole('heading', { name: 'Créer votre compte' })) && await visible(p.getByText('Façades Exemple')), 'le lien ouvre l’inscription au nom de l’entreprise');
+    ok(await visible(p.getByRole('heading', { name: 'Créer votre compte' }), 10000) && await visible(p.getByText('Façades Exemple')), 'le lien ouvre l’inscription au nom de l’entreprise',
+      // ce que montre la page à la place (T49, WebKit)
+      `${p.url().split('#')[1] || ''} : ${(await p.locator('body').innerText().catch(() => '')).replace(/\s+/g, ' ').slice(0, 200)} ; console : ${errs.join(' | ').slice(0, 200)}`);
     ok(!(await p.getByText(/code/i).count()), 'aucun code demandé');
     await p.getByLabel('Votre adresse e-mail').fill(DEMO.courriel);
     await p.getByLabel('Choisissez un mot de passe').fill('echafaudage13');
