@@ -421,6 +421,25 @@ function composition(texte, fichier) {
   return c;
 }
 
+// ---------------------------------------------------------------- fichiers cites
+// R-FICHIER (T49, 3 nov. 2026) : chaque image, police ou feuille citee par la
+// page existe a cote d elle. Sans deuxieme paire de photos, la page pointait
+// 17 fichiers avant-02-* qui n existaient pas : Chromium gardait la place de
+// l image, Safari la reduisait a 28 px. Aucun controle ne le voyait.
+function fichiersCites(texte, f, fichier) {
+  if (extname(f) !== '.html') return [];
+  const dossier = join(f, '..');
+  const refs = new Set();
+  for (const m of texte.matchAll(/\b(?:src|href)="([^"]+)"/g)) refs.add(m[1]);
+  for (const m of texte.matchAll(/\bsrcset="([^"]+)"/g)) for (const x of m[1].split(',')) refs.add(x.trim().split(/\s+/)[0]);
+  for (const m of texte.matchAll(/url\("([^"]+)"\)/g)) refs.add(m[1]);
+  const manquent = [...refs].filter(r => r && !/^([a-z]+:|#|\/\/|data:)/i.test(r))
+    .map(r => r.split(/[?#]/)[0]).filter(r => /\.(avif|webp|jpe?g|png|gif|svg|ico|woff2?|css|js|html)$/i.test(r))
+    .filter(r => !existsSync(join(dossier, r)));
+  return manquent.length ? [{ fichier, num: 'R-FICHIER', gravite: 'bloquant', libelle: 'fichier cite par la page et absent',
+    detail: manquent.length + ' : ' + manquent.slice(0, 4).join(', '), remede: 'generateur/composer.mjs, jeu()' }] : [];
+}
+
 // ---------------------------------------------------------------- parcours
 function fichiers(chemin) {
   const s = statSync(chemin);
@@ -451,6 +470,7 @@ for (const f of fichiers(cible)) {
   });
 
   constats.push(...structure(texte, court));
+  constats.push(...fichiersCites(texte, f, court));
   constats.push(...composition(texte, court));
   constats.push(...vie(texte, court));
 

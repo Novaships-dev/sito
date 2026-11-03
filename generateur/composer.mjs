@@ -58,7 +58,12 @@ async function encoder(source, sortie, role, tailles) {
 // citait que l AVIF : un navigateur qui ne le lit pas (Safari avant iOS 16, le
 // WebKit des essais) montrait une image cassee de 28 px de haut, curseur du
 // comparateur compris (T49). <picture> propose l AVIF, l <img> garde le WebP.
-const jeu = (role, r, sizes, tailleDefaut) => {
+// Le nom des fichiers vient de l encodage (`r.role`), pas du role demande :
+// sans deuxieme paire, « avant-02 » reprend les fichiers de « avant-01 », et
+// la page pointait des fichiers avant-02-*.avif qui n existaient pas (images
+// cassees, vues sous WebKit le 3 novembre 2026, T49).
+const jeu = (_role, r, sizes, tailleDefaut) => {
+  const role = r.role;
   const liste = r.tailles;
   const srcset = liste.map(w => `images/${role}-${w}.webp ${w}w`).join(', ');
   const srcsetAvif = liste.map(w => `images/${role}-${w}.avif ${w}w`).join(', ');
