@@ -1947,3 +1947,18 @@ le portail revenait sur « Page introuvable », parce que le routeur prenait
 affiché. Android : 0 bouton ; copie cassée (garde retirée) : 1 bouton. Les
 contrôles de `essai-app` tournent dans la CI.
 TRACAGE : app/src/types.ts, app/src/donnees/supabase.ts, app/src/donnees/demo.ts, app/src/ecrans/Abonnement.tsx, app/src/App.tsx, scripts/essai-app.mjs, app/specs/03-APPFLOW.md, app/specs/01-PRD.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 4 nov. 2026 — T32, maçonnerie (1 sur 13), par Cowork
+
+Plan : 1. ordre de Q non posée mais réversible : maçonnerie d'abord (proposition
+de `docs/specs/METIERS.md`) ; 2. `generateur/metiers/maconnerie.json`, même
+structure que peinture, textes tirés du plan d'images ; 3. prix nationaux
+relevés le 4 nov. (travaux.com, Habitatpresto, La Maison Saint-Gobain, Obat).
+
+Résultat : `capacite-unicite --metier maconnerie --photos plan` : d'abord 25
+sites sans défaut seulement (les phrases de précision du comparateur, 6 × 6
+combinaisons), puis 100 après les avoir portées à 9 × 9 comme les autres
+métiers. Deux sites fabriqués (photos de synthèse) : `verifier-site` 0
+bloquant, `verifier-mobile` 0, aucun mot d'un autre métier. Restent les
+prompts d'images de la maçonnerie et 12 métiers.
+TRACAGE : generateur/metiers/maconnerie.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

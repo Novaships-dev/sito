@@ -22,7 +22,7 @@ fabrication (D-14), rien d'essayé sur un vrai iPhone (F14). Mentions légales
 
 ## Les tâches
 
-61 tâches : **37 faites, 16 bloquées, 8 à faire** (`app/specs/07-TACHES.md`).
+61 tâches : **37 faites, 16 bloquées, 7 à faire, 1 en cours (T32 : textes des métiers, maçonnerie faite, 12 restants)** (`app/specs/07-TACHES.md`).
 T47 à T56 viennent de l'audit du 3 novembre.
 
 **Ordre décidé par Fabrice le 3 nov. (« oui Q5 ») : les tâches de l'audit

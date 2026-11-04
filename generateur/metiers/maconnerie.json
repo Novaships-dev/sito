@@ -1,0 +1,903 @@
+{
+  "nom": "Maçonnerie",
+  "libelle": "maçonnerie générale",
+  "schemaType": "GeneralContractor",
+  "legendesPhotos": {
+    "geste": "Le joint chargé à la truelle, serré, puis brossé quand il a tiré.",
+    "chantier": "Rangs montés au cordeau, contrôlés au niveau toutes les trois rangées.",
+    "detail": "Pierre et mortier de chaux, à dix centimètres. Le joint reste en retrait de la pierre."
+  },
+  "codesApe": [
+    "43.99C",
+    "43.91B"
+  ],
+  "titres": [
+    "Un mur se juge à ses fondations, pas à son parement.",
+    "Un joint trop dur finit par casser la pierre qu’il devait tenir.",
+    "La chaux laisse respirer un vieux mur. Le ciment l’enferme.",
+    "Un linteau se pose avant d’ouvrir le mur, jamais après.",
+    "Ce qui tient cinquante ans se décide dans la tranchée.",
+    "Un mur monté au cordeau se voit de loin, un mur monté à l’œil aussi.",
+    "Une fissure en escalier dit quelque chose du sol, pas du mortier.",
+    "Un mur de pierre sèche tient par son poids et par le soin de chaque pierre.",
+    "Une dalle se ferraille avant de se couler. Le béton seul ne porte rien.",
+    "Le joint d’une pierre ancienne se refait au mortier de chaux, en retrait.",
+    "Un étai bien posé fait le travail pendant que le maçon fait le sien.",
+    "Les angles d’un mur disent tout de la main qui l’a monté.",
+    "Un parpaing posé de travers se rattrape au rang suivant, jamais au crépi.",
+    "Un mur qui penche ne se redresse pas. Il se démonte et se remonte.",
+    "Une ouverture dans un mur porteur commence par un calcul.",
+    "Un mur de clôture sans fondation bouge au premier hiver.",
+    "Le mortier se gâche à la quantité du jour, pas pour la semaine.",
+    "Une pierre se retaille pour sa place, pas pour aller plus vite.",
+    "Le niveau ne ment pas. Le maçon le pose toutes les trois rangées.",
+    "Un seuil se pose avec une pente, sinon l’eau entre.",
+    "Un chaînage d’angle tient la maison quand le sol travaille.",
+    "Un vieux mur se reprend avec les matériaux de son époque.",
+    "La dalle d’un garage se juge au premier hiver, sur ses fissures.",
+    "Une marche cassée se reprend avant qu’elle ne casse une cheville.",
+    "Un muret enduit des deux côtés vieillit deux fois moins vite.",
+    "Le chaperon protège le mur. Sans lui, l’eau descend dans les joints.",
+    "Ouvrir un mur, c’est d’abord savoir ce qu’il porte.",
+    "Un mur en pierre mal rejointoyé perd ses pierres une à une.",
+    "Le ferraillage d’une dalle se cale, sinon il finit au fond du béton.",
+    "Une tranchée de fondation se creuse jusqu’au sol dur, pas jusqu’à l’heure.",
+    "Un appui de fenêtre déborde du mur pour éloigner l’eau.",
+    "Un mur porteur ne se touche pas sans étais. Jamais.",
+    "Un coffrage mal serré se lit sur le béton pour toujours.",
+    "La pierre de taille se pose sur un lit de mortier, pas sur des cales.",
+    "Un mur de soutènement retient la terre, et l’eau qu’elle contient.",
+    "Une barbacane dans un mur de soutènement laisse sortir l’eau qui le pousserait.",
+    "Un joint creux se refait profond, sinon il retombe à la première pluie.",
+    "La brique se mouille avant la pose, le mortier la remercie.",
+    "Un mur intérieur ouvert se finit avec des tableaux droits.",
+    "Le béton se vibre, sinon l’air reste dedans.",
+    "Une reprise en sous-œuvre se fait par plots, jamais d’un seul coup.",
+    "Un enduit sur parpaing se pose sur un mur sec et propre.",
+    "Une cave voûtée se rejointoie à la chaux, pour qu’elle continue de sécher.",
+    "Le gros œuvre se voit peu une fois fini. C’est là qu’il faut le soigner.",
+    "Un pilier de portail se ferraille, sinon le portail le fait pencher.",
+    "Une dalle se coule en une fois, pas en deux jours.",
+    "Un mur de pierre se monte en croisant les joints, rang après rang.",
+    "Les gravats se trient sur place. La benne coûte moins cher.",
+    "Un mur remonté avec ses propres pierres garde l’allure de la maison.",
+    "Le cordeau se retend à chaque rang.",
+    "Une extension se raccorde au mur existant par un joint de dilatation.",
+    "Un escalier extérieur se reprend avec une pente sur chaque marche.",
+    "Le mortier de chaux prend lentement. Le maçon attend.",
+    "Une fissure se surveille avant de se reboucher.",
+    "La règle tirée sur une dalle fraîche fait sa planéité.",
+    "Un linteau porte sur au moins vingt centimètres de chaque côté.",
+    "Un mur de clôture se protège en tête, sinon il se délite.",
+    "Un mur neuf se monte sur une arase étanche, pour que l’humidité ne monte pas.",
+    "Un parpaing se pose à joints croisés, comme une brique.",
+    "La première rangée fait tout le mur. Elle se pose au niveau, au millimètre.",
+    "Un mur en pierre sèche se monte avec un fruit, légèrement penché vers la terre.",
+    "Un béton de propreté se coule avant le ferraillage.",
+    "Une semelle filante se coule en continu, sans reprise.",
+    "Une cheminée se démonte pierre par pierre si elle doit être remontée.",
+    "Les pierres déposées se numérotent pour retrouver leur place.",
+    "Un trou dans un mur se rebouche avec le même matériau que le mur.",
+    "Un mur en briques se rejointoie au fer, le joint suit la brique.",
+    "Une dalle de terrasse se pose avec une pente vers l’extérieur.",
+    "Un mur de cave humide se traite par l’extérieur quand c’est possible.",
+    "Une chape se tire à la règle sur des guides posés au niveau.",
+    "Un mur monté trop vite s’affaisse avant d’avoir séché.",
+    "Le temps de prise ne se rattrape pas. Il se prévoit.",
+    "Un pied de mur se protège des éclaboussures de la pluie.",
+    "Une ouverture se scie, elle ne se casse pas au marteau.",
+    "Un mur de pierre se nettoie à l’eau et à la brosse, pas au sablage brutal.",
+    "Un chantier de maçonnerie se range chaque soir, la sécurité aussi.",
+    "Un muret se fonde comme un mur, même s’il est petit.",
+    "Une margelle se pose à niveau sur un lit de mortier plein.",
+    "Un ancien mur de pierre a souvent un cœur de terre. On le sait avant d’ouvrir.",
+    "Les joints d’un mur ancien se dégarnissent à la main, sur deux à trois centimètres.",
+    "Un linteau en béton se coule avec ses aciers en bas, là où il travaille.",
+    "La maçonnerie se fait dans l’ordre : le sol, les murs, les ouvertures, les joints.",
+    "Un mur en parpaings de vingt porte un étage, un mur de dix une cloison.",
+    "Un acier mal enrobé rouille, et le béton éclate autour.",
+    "Une dalle de garage se dimensionne pour le poids d’une voiture, pas d’un vélo.",
+    "Le béton se commande au mètre cube près, le surplus se paie.",
+    "Un poteau en béton se coffre droit, au fil à plomb, sur ses quatre faces.",
+    "Une reprise de maçonnerie se fond dans le mur, ou elle se voit dix ans.",
+    "Un mur extérieur en pierre se rejointoie hors gel, de mars à octobre.",
+    "Un escalier se trace avant de se coffrer : giron, hauteur, nombre de marches.",
+    "Un mur se démolit du haut vers le bas, et le chantier se protège avant.",
+    "La pierre locale se trouve encore. Elle se mélange mieux au mur existant.",
+    "Un mur de soutènement se draine derrière, avec du gravier et un drain.",
+    "Une maçonnerie se finit quand les abords sont propres.",
+    "Un mortier bâtard mêle chaux et ciment. Il convient au neuf, moins à l’ancien.",
+    "Un vide sanitaire se ventile, sinon le plancher prend l’humidité.",
+    "Une dalle sur terre-plein se coule sur un film, pour bloquer l’humidité.",
+    "Un mur qui sonne creux cache un vide derrière son parement.",
+    "Le maçon pose la question du sol avant celle du mur.",
+    "Une baie se pose dans des tableaux d’équerre, sinon elle ferme mal.",
+    "Un mur ancien se reprend sans le rigidifier. Il doit encore bouger un peu.",
+    "Un coffrage se décoffre au bon jour, ni trop tôt ni trop tard.",
+    "Un plot de fondation se creuse au gabarit, pas à la louche.",
+    "Les gravats d’une démolition se descendent par goulotte, pas par la fenêtre.",
+    "Un mur se mesure deux fois, et s’ouvre une seule."
+  ],
+  "chapos": {
+    "etapes": [
+      [
+        "installation du chantier",
+        "étaiement et protection des abords",
+        "mise en sécurité avant travaux"
+      ],
+      [
+        "démolition et évacuation des gravats",
+        "dépose soignée des pierres à réemployer",
+        "sciage de l’ouverture",
+        "dégarnissage des joints"
+      ],
+      [
+        "terrassement et fondations",
+        "tranchée creusée jusqu’au sol dur",
+        "semelle filante ferraillée",
+        "plots de fondation coulés"
+      ],
+      [
+        "murs montés au cordeau et au niveau",
+        "murs en parpaings ou en briques",
+        "mur de pierre remonté",
+        "chaînages d’angle coffrés",
+        "murs à joints croisés"
+      ],
+      [
+        "linteaux posés avant ouverture",
+        "ouvertures créées dans les murs porteurs",
+        "dalles coulées et talochées",
+        "escaliers et seuils repris"
+      ],
+      [
+        "joints refaits au mortier de chaux",
+        "rejointoiement des murs anciens",
+        "enduit sur les maçonneries neuves",
+        "chaperons et couvertines posés",
+        "joints brossés et nettoyés"
+      ],
+      [
+        "gravats triés et évacués",
+        "abords nettoyés",
+        "chantier rendu propre"
+      ]
+    ],
+    "nombre": [
+      4,
+      5
+    ],
+    "toujours": [
+      3
+    ]
+  },
+  "gestes": [
+    {
+      "terme": "Installation et étaiement",
+      "textes": {
+        "combiner": [
+          [
+            "Les étais sont posés avant la première découpe, sous le plancher qui charge le mur.",
+            "Les abords sont bâchés et les menuiseries proches protégées.",
+            "Le passage est balisé pour les habitants et les voisins.",
+            "La benne est posée à l’endroit qui gêne le moins la rue.",
+            "Les réseaux enterrés sont repérés avant de creuser.",
+            "Le chantier est fermé chaque soir.",
+            "Les sols intérieurs sont protégés par des plaques, pas seulement par une bâche.",
+            "Les poussières sont confinées derrière une cloison de chantier.",
+            "Les accès sont vérifiés pour la livraison du béton.",
+            "Les étais restent en place jusqu’à la prise complète du linteau."
+          ],
+          [
+            "Un étai mal placé se voit le jour où le plancher bouge.",
+            "Une canalisation percée à la pelle arrête le chantier une semaine.",
+            "Le gros œuvre fait de la poussière, et elle voyage loin.",
+            "Un chantier rangé est un chantier où personne ne se blesse.",
+            "Les voisins acceptent mieux un chantier qu’on leur a annoncé.",
+            "Une toupie qui ne passe pas le portail coûte une journée.",
+            "Protéger avant coûte moins cher que nettoyer après.",
+            "Un plancher soutenu se travaille sans crainte.",
+            "La sécurité du chantier commence avant le premier coup de masse.",
+            "Un chantier bien installé se finit dans les temps."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Démolition et dépose",
+      "textes": {
+        "combiner": [
+          [
+            "L’ouverture est tracée au crayon, puis sciée au disque.",
+            "Le mur se démolit du haut vers le bas.",
+            "Les pierres à réemployer sont déposées à la main et rangées.",
+            "Les gravats sont triés : pierre, béton, terre, plâtre.",
+            "Les joints anciens sont dégarnis à la main sur deux à trois centimètres.",
+            "Les parties instables sont purgées avant toute reprise.",
+            "Les gaines et les tuyaux traversants sont repérés et déviés.",
+            "La découpe s’arrête aux appuis prévus pour le linteau.",
+            "Les éclats sont ramassés au fur et à mesure.",
+            "Les pierres déposées sont numérotées quand elles doivent reprendre leur place."
+          ],
+          [
+            "Une découpe sciée laisse des tableaux nets, une découpe cassée laisse des trous.",
+            "Une pierre ancienne ne se rachète pas toujours.",
+            "Le tri des gravats divise le prix de la benne.",
+            "Un joint mal dégarni retombe avec le nouveau mortier.",
+            "Ce qui est fragile se retire avant, pas pendant.",
+            "Un tuyau oublié dans un mur se découvre toujours au mauvais moment.",
+            "La démolition décide de la qualité de la reprise.",
+            "Un mur ancien cache souvent un cœur de terre et de cailloux.",
+            "Le marteau-piqueur fatigue tout le mur autour de l’ouverture.",
+            "Ce qui sort du mur dit comment il a été monté."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Fondations",
+      "textes": {
+        "combiner": [
+          [
+            "La tranchée est creusée jusqu’au sol dur, pas jusqu’à une profondeur fixée d’avance.",
+            "Un béton de propreté est coulé au fond avant le ferraillage.",
+            "Les aciers de la semelle sont posés sur cales, enrobés de béton de chaque côté.",
+            "La semelle filante est coulée en continu, sans reprise.",
+            "Les plots d’un muret ou d’un poteau sont creusés au gabarit.",
+            "Les attentes pour les chaînages sont laissées en place.",
+            "Le fond de fouille est contrôlé au niveau avant de couler.",
+            "Les réseaux qui traversent la fondation passent dans des fourreaux.",
+            "L’arase reçoit une coupure de capillarité avant le premier rang.",
+            "Le béton est vibré pour chasser l’air."
+          ],
+          [
+            "Un mur fissuré trois ans après sa construction a souvent une fondation trop courte.",
+            "Le sol commande la profondeur, pas le devis.",
+            "Un acier qui touche la terre rouille et fait éclater le béton.",
+            "Une reprise de bétonnage dans une semelle est un point faible.",
+            "Un muret sans fondation bouge au premier hiver.",
+            "Une fondation se voit peu, mais tout repose dessus.",
+            "L’humidité du sol monte dans un mur posé sans coupure.",
+            "Le gel soulève ce qui n’est pas fondé assez bas.",
+            "Couler sur un fond boueux, c’est couler sur du vide.",
+            "Une fondation se dimensionne pour ce qu’elle portera, pas pour aujourd’hui."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Montage des murs",
+      "textes": {
+        "combiner": [
+          [
+            "Le premier rang est posé au niveau, au millimètre, sur un lit de mortier plein.",
+            "Le cordeau est retendu à chaque rang.",
+            "Les joints sont croisés d’un rang à l’autre.",
+            "Le niveau est posé toutes les trois rangées, l’aplomb à chaque angle.",
+            "Les chaînages d’angle sont coffrés et ferraillés.",
+            "Les briques sont mouillées avant la pose.",
+            "Les pierres sont posées à plat, sur leur lit de carrière.",
+            "Les joints sont serrés à la truelle, puis brossés.",
+            "Les ouvertures sont réservées avec leurs appuis.",
+            "Le mortier est gâché à la quantité qui sera posée dans l’heure."
+          ],
+          [
+            "Le premier rang fait tout le mur.",
+            "Un mur monté sans cordeau ondule à la lumière rasante.",
+            "Des joints alignés font une fissure toute prête.",
+            "Un mur hors d’aplomb se voit à chaque porte et chaque fenêtre.",
+            "Le chaînage tient les angles quand le sol travaille.",
+            "Une brique sèche boit l’eau du mortier, et le joint ne prend pas.",
+            "Une pierre posée sur la tranche se délite en dix ans.",
+            "Un joint mal serré laisse entrer l’eau.",
+            "Une ouverture oubliée au montage se paie à la découpe.",
+            "Un mortier gâché trop tôt a déjà commencé à prendre."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Linteaux et ouvertures",
+      "textes": {
+        "combiner": [
+          [
+            "Le linteau est calculé pour la charge qu’il reprend.",
+            "Il porte sur au moins vingt centimètres de chaque côté de l’ouverture.",
+            "Le linteau est posé avant d’ouvrir le mur sous lui.",
+            "Les appuis sont repris en maçonnerie pleine.",
+            "Les tableaux sont dressés droits et d’équerre.",
+            "Les aciers d’un linteau coulé sont placés en bas, là où il travaille.",
+            "Le calage entre le linteau et le mur est serré au mortier sec.",
+            "Les étais sont retirés après la prise complète.",
+            "L’appui de fenêtre déborde du mur et porte une goutte d’eau.",
+            "La baie est contrôlée en diagonale avant la pose de la menuiserie."
+          ],
+          [
+            "Un mur porteur ouvert sans calcul est un pari sur la maison.",
+            "Un linteau trop court casse ses appuis.",
+            "Ouvrir avant de soutenir, c’est laisser le plancher décider.",
+            "Un appui creux s’écrase sous le linteau.",
+            "Des tableaux tordus se voient autour de chaque menuiserie.",
+            "Un béton tendu sans acier se fissure par en dessous.",
+            "Un vide entre linteau et mur fait descendre le mur de quelques millimètres.",
+            "Un étai retiré trop tôt se paie en fissures au-dessus.",
+            "L’eau qui coule sur un appui sans goutte salit et dégrade la façade.",
+            "Une baie hors d’équerre ferme mal toute sa vie."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Dalles, chapes et escaliers",
+      "textes": {
+        "combiner": [
+          [
+            "Le terrain est décapé, compacté, puis couvert d’un film.",
+            "Le ferraillage est posé sur cales, jamais à même le sol.",
+            "Le coffrage est serré et contrôlé au niveau.",
+            "La dalle est coulée en une fois, puis tirée à la règle.",
+            "La surface est talochée ou lissée selon l’usage.",
+            "Une pente est donnée aux surfaces extérieures, vers l’extérieur.",
+            "Les joints de fractionnement sont sciés au bon moment.",
+            "Les marches d’un escalier sont tracées avant le coffrage.",
+            "La dalle est arrosée ou couverte pendant les premiers jours.",
+            "Le décoffrage attend que le béton ait tiré."
+          ],
+          [
+            "Une dalle posée sur un sol mou se fissure au premier poids.",
+            "Un acier au fond du béton ne sert plus à rien.",
+            "Un coffrage qui baille se lit sur le béton pour toujours.",
+            "Une reprise de bétonnage marque la dalle d’une ligne.",
+            "Le lissage décide de ce qu’on verra pendant trente ans.",
+            "Une flaque sur une terrasse dit qu’il manquait une pente.",
+            "Une dalle sans joint fissure là où elle veut.",
+            "Un escalier mal tracé se monte avec une marche différente des autres.",
+            "Un béton qui sèche trop vite au soleil fissure en surface.",
+            "Décoffrer trop tôt arrache les arêtes."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Joints et rejointoiement",
+      "textes": {
+        "combiner": [
+          [
+            "Les joints anciens sont dégarnis à la main, jusqu’au mortier sain.",
+            "Le mur est humidifié avant le nouveau joint.",
+            "Le mortier de chaux est serré au fer dans le joint.",
+            "Le joint est tenu en retrait de la pierre, jamais par-dessus.",
+            "Le joint est brossé quand il a tiré, pour en ouvrir le grain.",
+            "La teinte du mortier est essayée sur un mètre carré avant le mur.",
+            "Les joints sont refaits du haut vers le bas.",
+            "Le mur est protégé du soleil et de la pluie pendant la prise.",
+            "Les pierres sont nettoyées des coulures avant qu’elles ne sèchent.",
+            "Le travail s’arrête par temps de gel."
+          ],
+          [
+            "Un joint posé sur un mortier pourri retombe avec lui.",
+            "Un mur sec boit l’eau du mortier, et le joint farine.",
+            "Un joint au ciment sur une pierre tendre fait éclater la pierre.",
+            "Un joint en saillie retient l’eau sur le mur.",
+            "Le brossage donne au joint l’aspect d’un joint ancien.",
+            "Une teinte se juge sur le mur, pas dans le seau.",
+            "Commencer par le bas, c’est salir ce qu’on vient de faire.",
+            "La chaux prend lentement et craint le plein soleil.",
+            "Une coulure sèche sur une pierre ne s’en va plus.",
+            "Le gel fait éclater un joint frais."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Finitions et nettoyage",
+      "textes": {
+        "combiner": [
+          [
+            "Le chaperon est posé en tête de mur, avec une pente et un débord.",
+            "L’enduit est posé sur les maçonneries neuves qui le demandent.",
+            "Les couvertines sont scellées et jointoyées.",
+            "Les seuils sont posés avec une légère pente.",
+            "Les abords sont nettoyés et les gravats évacués.",
+            "La benne repart triée.",
+            "Les traces de mortier sont lavées sur les sols et les menuiseries.",
+            "Les étais et coffrages sont démontés et repris.",
+            "Le chantier est rendu balayé.",
+            "Les points à surveiller, s’il y en a, sont dits au client avant de partir."
+          ],
+          [
+            "Un mur sans chaperon boit l’eau par la tête.",
+            "Un parpaing laissé nu vieillit mal, et vite.",
+            "Une couvertine mal scellée finit dans le jardin.",
+            "Un seuil sans pente envoie l’eau sous la porte.",
+            "Un chantier se finit quand les abords sont propres.",
+            "Le tri sur place réduit ce qui part à la décharge.",
+            "Le mortier sec sur un carrelage demande un acide pour partir.",
+            "Un étai oublié revient toujours coûter quelque chose.",
+            "La dernière impression d’un chantier, c’est son nettoyage.",
+            "Une fissure à surveiller se dit, elle ne se cache pas."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    }
+  ],
+  "coupure": {
+    "avant": {
+      "etapes": [
+        [
+          "pierres descellées",
+          "joints tombés",
+          "mur penché",
+          "brèche dans le mur",
+          "pierres tombées au pied du mur",
+          "enduit éclaté par plaques"
+        ],
+        [
+          "fissure en escalier",
+          "fissure au-dessus de l’ouverture",
+          "angle épaufré",
+          "appui de fenêtre cassé",
+          "linteau fendu",
+          "tête de mur délitée"
+        ],
+        [
+          "dalle fissurée",
+          "dalle affaissée",
+          "marches épaufrées",
+          "seuil cassé et creusé",
+          "chape fendue",
+          "terrasse en contre-pente"
+        ],
+        [
+          "parpaings nus",
+          "muret sans chaperon",
+          "pilier fendu",
+          "mur sans fondation",
+          "mortier qui farine"
+        ]
+      ],
+      "nombre": [
+        3,
+        3
+      ]
+    },
+    "apres": {
+      "etapes": [
+        [
+          "pierres reposées",
+          "mur remonté sur fondation",
+          "brèche reprise",
+          "mur redressé",
+          "pierres d’origine réemployées"
+        ],
+        [
+          "joints refaits au mortier de chaux",
+          "joints brossés",
+          "mortier teinté au mur existant",
+          "fissures reprises"
+        ],
+        [
+          "linteau neuf",
+          "ouverture créée",
+          "tableaux droits",
+          "appui neuf avec goutte d’eau",
+          "chaînage d’angle coulé"
+        ],
+        [
+          "dalle neuve talochée",
+          "marches reprises",
+          "seuil neuf en pierre",
+          "pente donnée vers l’extérieur",
+          "chape tirée à la règle"
+        ],
+        [
+          "chaperon posé",
+          "enduit sur les parpaings",
+          "couvertine scellée",
+          "abords nettoyés",
+          "gravats évacués"
+        ]
+      ],
+      "nombre": [
+        3,
+        4
+      ],
+      "toujours": [
+        1
+      ]
+    }
+  },
+  "legendes": {
+    "comparateurs": {
+      "combiner": [
+        [
+          "Muret de clôture",
+          "Mur de pierre",
+          "Mur porteur",
+          "Dalle de terrasse",
+          "Seuil de porte",
+          "Pilier de portail",
+          "Escalier extérieur",
+          "Mur intérieur",
+          "Muret de jardin",
+          "Appentis",
+          "Cave voûtée",
+          "Mur de soutènement"
+        ],
+        [
+          "pierres reposées",
+          "joints dégarnis",
+          "étais posés",
+          "linteau posé",
+          "fondation coulée",
+          "ferraillage calé",
+          "brèche purgée",
+          "tranchée creusée",
+          "gravats évacués",
+          "pierres numérotées"
+        ],
+        [
+          "joints à la chaux",
+          "mur remonté",
+          "ouverture créée",
+          "dalle talochée",
+          "seuil neuf",
+          "chaperon posé",
+          "marches reprises",
+          "enduit posé"
+        ]
+      ],
+      "joints": [
+        ", ",
+        ", "
+      ],
+      "fin": "."
+    },
+    "invitation": {
+      "combiner": [
+        [
+          "Faites glisser la couture",
+          "Déplacez la séparation",
+          "Touchez la photo",
+          "Glissez le trait",
+          "Attrapez la couture",
+          "Faites glisser le curseur",
+          "Déplacez le trait",
+          "Passez le doigt sur la photo"
+        ],
+        [
+          "pour comparer l’avant et l’après.",
+          "pour voir le mur avant les travaux.",
+          "pour passer d’un état à l’autre.",
+          "pour voir ce que le chantier a changé.",
+          "pour retrouver le mur d’origine.",
+          "pour voir la maçonnerie avant la reprise.",
+          "pour comparer les deux états du mur.",
+          "pour voir le mur avant et après.",
+          "pour mesurer le travail fait.",
+          "pour voir la différence."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    },
+    "precision": {
+      "combiner": [
+        [
+          "Même point de vue, même cadrage.",
+          "Les deux photos sont prises du même endroit.",
+          "Même angle, même distance.",
+          "Les deux images ont le même cadrage.",
+          "Même endroit, même objectif.",
+          "Le point de vue ne bouge pas d’une photo à l’autre.",
+          "Photographié deux fois, depuis le même pas de porte.",
+          "Même place, même hauteur d’objectif.",
+          "Le photographe n’a pas bougé entre les deux."
+        ],
+        [
+          "Seule la maçonnerie change.",
+          "La différence vient du chantier.",
+          "Rien d’autre ne change que le mur.",
+          "Ce qui change, c’est le travail fait.",
+          "Les abords sont les mêmes, le mur non.",
+          "Seul le mur a été repris.",
+          "Ce qui diffère, ce sont les pierres et les joints.",
+          "Entre les deux, il y a le chantier.",
+          "L’écart, c’est le travail du maçon."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    }
+  },
+  "rubriques": {
+    "gestes": [
+      "Le détail des postes.",
+      "Ce que recouvre un chantier de maçonnerie.",
+      "Ce qui se fait sur le mur.",
+      "Les étapes, dans l’ordre.",
+      "Étape par étape.",
+      "Du sol à la tête du mur.",
+      "Comment se monte un mur.",
+      "Les postes du chantier.",
+      "Ce que fait le maçon.",
+      "De la tranchée au joint.",
+      "Le travail, poste par poste.",
+      "Ce qui se fait, et pourquoi.",
+      "Les gestes du chantier.",
+      "Dans l’ordre du chantier.",
+      "Ce que le devis détaille."
+    ],
+    "chantier": [
+      "Le chantier.",
+      "Sur le mur.",
+      "En cours de travaux.",
+      "Pendant les travaux.",
+      "Sur place.",
+      "Au pied du mur.",
+      "Le chantier en cours.",
+      "Les travaux, en images.",
+      "Ce que montre le chantier.",
+      "Sur le chantier.",
+      "Pendant le montage.",
+      "Le mur en travaux.",
+      "Ce qui se voit en cours.",
+      "Au milieu du chantier.",
+      "Le gros œuvre en cours."
+    ],
+    "verifiable": [
+      "Ce qui se vérifie.",
+      "Les faits publics.",
+      "Ce que disent les registres.",
+      "Ce qui est public.",
+      "Les registres officiels.",
+      "Ce que chacun peut vérifier.",
+      "L’entreprise, dans les registres.",
+      "Les données publiques.",
+      "Les sources officielles.",
+      "Ce que disent les sources publiques.",
+      "Vérifiable par tous.",
+      "Les faits, sans commentaire.",
+      "Ce que l’État publie.",
+      "Dans les bases publiques.",
+      "Les informations légales."
+    ],
+    "contact": [
+      "Parler du chantier.",
+      "Prendre contact.",
+      "Faire venir quelqu’un.",
+      "Demander une visite.",
+      "Montrer le mur.",
+      "Parler de votre mur.",
+      "Faire voir le chantier.",
+      "Appeler l’entreprise.",
+      "Demander un passage.",
+      "Faire constater.",
+      "Prendre rendez-vous.",
+      "Une question sur un mur ?",
+      "Faire mesurer.",
+      "Parler du projet.",
+      "Joindre l’entreprise."
+    ],
+    "prix": [
+      "Ce que ça coûte.",
+      "Les tarifs, poste par poste.",
+      "Avant de demander un devis.",
+      "Combien ça coûte.",
+      "Les prix, poste par poste.",
+      "Les ordres de grandeur.",
+      "Les tarifs pratiqués.",
+      "Ce que coûte la maçonnerie.",
+      "Le prix des postes.",
+      "Avant le devis.",
+      "Les prix du métier.",
+      "Ce qui fait le prix.",
+      "Les tarifs, sans détour.",
+      "Les fourchettes de prix.",
+      "Ce que dit le devis."
+    ]
+  },
+  "mot": "Maçonnerie",
+  "matiere": [
+    "À dix centimètres, le joint de chaux montre son grain de sable.",
+    "Un joint brossé garde la trace des poils, et la lumière s’y accroche.",
+    "La pierre calcaire se patine en vingt ans. Le joint de chaux suit.",
+    "Un joint en retrait laisse la pierre dessiner le mur.",
+    "Le béton taloché garde l’empreinte circulaire de la taloche.",
+    "Un béton lissé renvoie la lumière comme une eau calme.",
+    "L’arête d’une pierre taillée se voit à la lumière rasante.",
+    "Un parpaing monté droit fait une grille parfaite, joint après joint.",
+    "La brique pleine change de rouge selon la cuisson.",
+    "Un mur de pierre sèche montre le vide entre ses pierres, et il tient.",
+    "Le mortier de chaux reste un peu tendre sous l’ongle.",
+    "Le mortier au ciment, lui, sonne sous la truelle.",
+    "Une pierre retaillée montre les coups de ciseau, réguliers.",
+    "Un béton brut de décoffrage garde le dessin des planches.",
+    "La chaux sèche pâlit, puis reprend sa teinte au bout de quelques semaines.",
+    "Un mur rejointoyé à neuf paraît plus clair, puis se fond.",
+    "Un seuil en pierre se polit sous les pas, année après année.",
+    "Une dalle balayée garde de fines stries qui accrochent sous le pied.",
+    "Le joint d’une cave voûtée sèche plus lentement que le reste.",
+    "Un enduit sur parpaing efface la grille des joints.",
+    "Une pierre de récupération porte déjà son âge. Le mur aussi.",
+    "La tête d’un mur chaperonnée reste nette après l’hiver.",
+    "Les joints d’un muret ancien sont rarement droits, et c’est voulu.",
+    "Un béton désactivé laisse affleurer les graviers.",
+    "La pierre de pays prend la couleur du terrain où elle a été tirée.",
+    "Une arête de dalle chanfreinée ne s’épaufre pas.",
+    "Le grain d’un mortier dépend du sable, plus que du liant.",
+    "Un joint frais est foncé. Sec, il prend sa vraie teinte.",
+    "Un mur ancien n’a pas deux pierres pareilles.",
+    "Une couvertine en pierre déborde, et la goutte d’eau se voit dessous."
+  ],
+  "prix": {
+    "note": "Ordres de grandeur nationaux, relevés le 4 novembre 2026. Ce ne sont pas les prix de l'entreprise et ce n'est pas un devis.",
+    "sources": [
+      {
+        "nom": "Travaux.com, guide des prix de la maçonnerie",
+        "url": "https://www.travaux.com/guide-des-prix/maconnerie"
+      },
+      {
+        "nom": "Habitatpresto, rénovation d’un mur en pierre",
+        "url": "https://www.habitatpresto.com/mag/maconnerie/prix-renovation-mur-pierre"
+      },
+      {
+        "nom": "La Maison Saint-Gobain, ouverture de mur porteur",
+        "url": "https://www.lamaisonsaintgobain.fr/guides-travaux/renovation-maison/prix-ouverture-mur-porteur"
+      },
+      {
+        "nom": "Obat, prix des travaux de maçonnerie",
+        "url": "https://travaux.obat.fr/guides/prix-travaux-maconnerie/"
+      }
+    ],
+    "postes": [
+      {
+        "poste": "Mur en parpaings, monté",
+        "bas": 55,
+        "haut": 100,
+        "unite": "€/m²",
+        "note": "Matériaux et pose. Un mur en briques monte à 120 €/m²."
+      },
+      {
+        "poste": "Rejointoiement d’un mur en pierre",
+        "bas": 30,
+        "haut": 60,
+        "unite": "€/m²",
+        "note": "Mortier de chaux. Un mur très abîmé demande aussi un piquage, autour de 15 €/m²."
+      },
+      {
+        "poste": "Chape intérieure en béton",
+        "bas": 35,
+        "haut": 45,
+        "unite": "€/m²",
+        "note": "Une dalle extérieure, avec terrassement et ferraillage, se compte plutôt entre 120 et 180 €/m²."
+      },
+      {
+        "poste": "Démolition d’un mur",
+        "bas": 20,
+        "haut": 80,
+        "unite": "€/m³",
+        "note": "Selon le matériau et l’évacuation des gravats."
+      },
+      {
+        "poste": "Ouverture dans un mur porteur, 1 m de large",
+        "bas": 1800,
+        "haut": 2400,
+        "unite": "€ l’ouverture",
+        "note": "Prix TTC, linteau et étaiement compris. Une étude de structure s’ajoute selon les étages au-dessus."
+      }
+    ],
+    "exemple": {
+      "titre": "Un muret de clôture de 20 m², fondation et enduit",
+      "bas": 2000,
+      "haut": 3500,
+      "note": "Calculé à partir des postes ci-dessus et des fourchettes des sources : murs, fondation et enduit. La longueur de la tranchée et la nature du sol font l’écart."
+    }
+  },
+  "nuancierEtiquette": "Voir le mur avec un autre joint",
+  "teintes": [
+    {
+      "nom": "D’origine",
+      "voile": "",
+      "pastille": "#C9B89C"
+    },
+    {
+      "nom": "Chaux blanche",
+      "voile": "45 25% 88% / .30",
+      "pastille": "#E6DFCF"
+    },
+    {
+      "nom": "Chaux ocrée",
+      "voile": "36 55% 70% / .32",
+      "pastille": "#D6B07C"
+    },
+    {
+      "nom": "Sable de rivière",
+      "voile": "40 35% 72% / .30",
+      "pastille": "#CDBA94"
+    },
+    {
+      "nom": "Pierre grise",
+      "voile": "30 8% 64% / .30",
+      "pastille": "#A8A39B"
+    },
+    {
+      "nom": "Terre rosée",
+      "voile": "18 38% 64% / .32",
+      "pastille": "#C69A82"
+    },
+    {
+      "nom": "Ciment gris",
+      "voile": "210 6% 58% / .30",
+      "pastille": "#8F959B"
+    },
+    {
+      "nom": "Calcaire",
+      "voile": "48 30% 82% / .30",
+      "pastille": "#DDD3B8"
+    },
+    {
+      "nom": "Grès",
+      "voile": "28 40% 56% / .32",
+      "pastille": "#B48A62"
+    },
+    {
+      "nom": "Ardoise",
+      "voile": "215 14% 52% / .30",
+      "pastille": "#7E8A96"
+    }
+  ],
+  "alt": {
+    "avant": "muret de clôture avant travaux, pierres descellées et joints tombés",
+    "apres": "le même muret remonté et rejointoyé",
+    "invitation": "Comparer le mur avant et après les travaux",
+    "avant2": "un autre chantier avant reprise de la maçonnerie",
+    "apres2": "le même chantier une fois la maçonnerie terminée",
+    "hero": "mur dont une moitié est en travaux et l’autre déjà reprise",
+    "invitation2": "Comparer un second chantier avant et après",
+    "ouverture": "geste du métier sur un mur en cours de montage",
+    "chantier": "rangs de parpaings montés au cordeau, bétonnière en fond",
+    "chantierBis": "coffrage en place, ferraillage en attente et étais",
+    "detail": "gros plan sur un joint de chaux entre deux pierres",
+    "detailBis": "gros plan sur une pierre taillée et son joint",
+    "geste": "la truelle qui charge le joint entre deux pierres"
+  },
+  "estimateur": {
+    "titre": "Votre mur",
+    "mesure": {
+      "etiquette": "Surface de mur",
+      "unite": "m²",
+      "min": 5,
+      "max": 200,
+      "pas": 5,
+      "defaut": 30,
+      "aria": "Surface de mur en mètres carrés"
+    }
+  }
+}
