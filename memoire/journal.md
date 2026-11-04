@@ -1993,3 +1993,17 @@ Résultat : 31 contrôles, 0 faute (Chromium, faux Supabase) ; contre-essai :
 aux secrets GitHub de F21 et à `refaire-site.yml`). Texte des mentions écrit
 par Claude, non relu par un juriste (S-019).
 TRACAGE : generateur/sections/formulaire.mjs, generateur/composer.mjs, generateur/sections/mentions.mjs, scripts/verifier-site.mjs, scripts/essai-formulaire.mjs, scripts/essai-fabrication-base.mjs, atelier/fabriquer.mjs, scripts/secrets-github.mjs, .github/workflows/refaire-site.yml, .github/workflows/essais.yml, scripts/essais.mjs, .env.example, app/specs/02-TRD.md, app/specs/01-PRD.md, app/specs/07-TACHES.md, docs/specs/S-MENTIONS.md, memoire/actions-fabrice.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 4 nov. 2026 — T32, menuiserie (2 sur 13), par Cowork
+
+Plan : 1. `generateur/metiers/menuiserie.json` sur la structure des autres,
+textes tirés du plan d'images (fenêtres, portes, volets, escaliers,
+placards) ; 2. prix relevés le 4 nov. (La Maison Saint-Gobain, Travaux.com,
+Habitatpresto) ; 3. capacité et fabrication.
+
+Résultat : 100 sites sans défaut du premier coup (phrases de précision déjà
+à 9 × 9). Deux sites fabriqués, formulaire compris : `verifier-site` 0
+bloquant, `verifier-mobile` 0. Relu dans les pages : « façades décollées »
+pouvait se lire comme une façade de maison, devenu « façades de placard
+décollées ». L'estimateur compte des fenêtres (unité « u »).
+TRACAGE : generateur/metiers/menuiserie.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

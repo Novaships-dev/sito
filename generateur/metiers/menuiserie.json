@@ -1,0 +1,902 @@
+{
+  "nom": "Menuiserie",
+  "libelle": "menuiserie et fenêtres",
+  "schemaType": "HomeAndConstructionBusiness",
+  "legendesPhotos": {
+    "geste": "La patte de fixation vissée dans le tableau, le dormant calé au niveau.",
+    "chantier": "Ancien dormant sorti, sol protégé, tableau nettoyé avant la pose.",
+    "detail": "Le joint de pose entre le dormant et la maçonnerie, à dix centimètres."
+  },
+  "codesApe": [
+    "43.32A",
+    "43.32B"
+  ],
+  "titres": [
+    "Une fenêtre se juge à sa pose, pas à sa fiche technique.",
+    "Un dormant mal calé fait siffler la plus belle fenêtre.",
+    "La meilleure fenêtre du monde fuit si son joint de pose est raté.",
+    "Une porte qui frotte se règle avant de se raboter.",
+    "Un double vitrage mal posé isole moins qu’un simple bien fermé.",
+    "Le joint entre la fenêtre et le mur fait la moitié de l’isolation.",
+    "Une fenêtre se mesure en tableau, à trois hauteurs.",
+    "Un volet bois vit dehors. Sa lasure se refait.",
+    "Le bois bouge avec l’humidité. Le menuisier le prévoit.",
+    "Un seuil de porte se pose de niveau et sans pont thermique.",
+    "Une paumelle bien réglée ferme une porte sans la claquer.",
+    "Le PVC, l’aluminium et le bois ne se posent pas de la même façon.",
+    "Une fenêtre de rénovation garde l’ancien dormant. Une dépose totale le retire.",
+    "Un escalier se dessine avant de se couper : hauteur, giron, trémie.",
+    "Une marche qui craque est une marche mal fixée.",
+    "Un placard sur mesure se mesure deux fois et se pose une fois.",
+    "Une porte d’entrée se choisit pour sa serrure autant que pour son bois.",
+    "Le chêne se patine. Le pin se lasure. Le menuisier sait lequel choisir.",
+    "Un ouvrant qui ne ferme plus bien a souvent juste besoin d’un réglage.",
+    "Une pose en tunnel et une pose en applique ne laissent pas le même tableau.",
+    "La mousse expansive ne remplace pas un vrai joint de pose.",
+    "Un appui de fenêtre renvoie l’eau. Sinon le mur la boit.",
+    "Une baie à galandage se prévoit dans le mur, pas après.",
+    "Un portail en bois se pose avec du jeu. Le bois le prendra.",
+    "Une fenêtre bien posée se ferme du bout des doigts.",
+    "La quincaillerie fait la durée de vie d’une fenêtre.",
+    "Le chant d’une porte se vernit aussi, sinon elle gonfle.",
+    "Une porte intérieure se pose d’aplomb, sinon elle s’ouvre toute seule.",
+    "Un volet roulant se choisit avec son coffre, pas après.",
+    "Les tableaux se reprennent après la pose, pas des mois plus tard.",
+    "Un bois sec se travaille bien. Un bois humide se venge.",
+    "Une fenêtre de toit se pose avec son raccord d’étanchéité.",
+    "Le rabot enlève un dixième de millimètre. Pas plus.",
+    "Un dressing se pense par ce qu’on y range, pas par ses portes.",
+    "Le menuisier vérifie l’équerre de la baie avant de commander.",
+    "Une rampe d’escalier tient la main. Elle se fixe comme telle.",
+    "Un double vitrage se tient par ses parcloses, et elles se posent à la main.",
+    "Une porte coupe-feu se pose avec ses joints et sa ferme-porte.",
+    "Le verre feuilleté se coupe à la commande, pas sur le chantier.",
+    "Une fenêtre neuve dans un vieux mur demande un tableau sain.",
+    "Un ouvrant oscillo-battant se règle aux quatre coins.",
+    "Le meilleur joint est celui qu’on ne voit pas.",
+    "La lasure protège le bois sans fermer ses pores.",
+    "Une pergola se fixe au sol par des platines, pas par des piquets.",
+    "Un escalier se pose sur une trémie aux bonnes cotes, sinon on s’y cogne la tête.",
+    "Les volets battants se règlent sur leurs gonds, pas à coups de marteau.",
+    "Une porte de garage se pose avec ses ressorts équilibrés.",
+    "Une marche d’escalier se ponce avant de se vernir, puis entre deux couches.",
+    "Un vitrage bien posé ne se voit pas. Une fenêtre mal posée s’entend.",
+    "Les cales de vitrage portent le verre. Sans elles, l’ouvrant s’affaisse.",
+    "Un placard sur mesure épouse les murs, même quand ils ne sont pas droits.",
+    "La largeur d’une porte se mesure au passage libre, pas au cadre.",
+    "Le bois d’un portail se protège en tête, comme un mur.",
+    "Une fenêtre se commande sur les cotes du menuisier, jamais sur un catalogue.",
+    "Le mastic d’une vieille fenêtre se refait avant qu’il ne tombe.",
+    "Un parclose qui baille laisse entrer l’eau dans la feuillure.",
+    "Les angles d’un cadre se collent et se serrent, puis attendent.",
+    "Une serrure trois points ferme une porte sur toute sa hauteur.",
+    "Un seuil en aluminium à rupture de pont thermique coupe le froid.",
+    "Une porte vitrée se pose avec un verre de sécurité.",
+    "Le bois se choisit pour sa place : dehors, dedans, humide, sec.",
+    "Un volet persienné laisse passer l’air et arrête le soleil.",
+    "Une fenêtre trop étanche dans une pièce sans aération fait de la buée.",
+    "Les entrées d’air se prévoient sur la fenêtre, pas dans le mur après.",
+    "Une porte-fenêtre se pose avec un seuil qui laisse sortir l’eau.",
+    "Un escalier quart tournant se trace marche par marche, au sol.",
+    "Le dormant se fixe dans le mur, pas dans l’enduit.",
+    "Les vis d’une paumelle se mettent toutes, même celle qu’on ne voit pas.",
+    "Un garde-corps se pose à la hauteur que la règle demande.",
+    "Une huile pour bois se repasse, un vernis se ponce.",
+    "Un menuisier laisse la pièce propre, copeaux compris.",
+    "Les portes d’un placard coulissant roulent sur un rail posé de niveau.",
+    "Un ouvrant voilé se redresse rarement. Il se remplace.",
+    "Le bois massif et le lamellé-collé ne vieillissent pas pareil.",
+    "Un chantier de fenêtres se fait pièce par pièce, une journée chacune.",
+    "La dépose d’une vieille fenêtre se fait sans casser le tableau.",
+    "Les fenêtres neuves arrivent emballées. Elles le restent jusqu’à la pose.",
+    "Un bon réglage se refait au premier hiver, quand le bâtiment a bougé.",
+    "Une porte d’entrée bien posée ne laisse passer ni l’air ni la lumière.",
+    "Le chant d’une marche s’arrondit pour ne pas s’épaufrer.",
+    "Une fenêtre en bois se repeint tous les dix ans, et elle dure cinquante.",
+    "Le PVC blanc ne se repeint pas. Il se nettoie.",
+    "L’aluminium laqué garde sa couleur, à condition de ne pas être rayé.",
+    "Un portail se dimensionne pour le vent qu’il prend.",
+    "Une porte de cave se choisit pour l’humidité, pas pour l’allure.",
+    "Une fenêtre de toit se pose au bon angle, sinon l’eau stagne.",
+    "Le menuisier vérifie l’aplomb du mur avant de promettre un placard droit.",
+    "Un tasseau bien posé porte une étagère pleine de livres.",
+    "Une fenêtre s’ouvre dans le sens qui laisse passer le meuble.",
+    "Les cotes se prennent au millimètre, et se notent tout de suite.",
+    "Une porte se règle en hauteur avant d’être réglée en largeur.",
+    "Le bois s’assemble mieux qu’il ne se visse.",
+    "Une menuiserie neuve se protège pendant la fin du chantier.",
+    "Un escalier se pose quand les murs sont finis, pas avant.",
+    "Une fenêtre bien choisie se paie une fois, une mal posée tous les hivers.",
+    "Un joint de silicone se tire d’un geste, pas en plusieurs reprises.",
+    "La couleur d’une lasure se juge sur le bois, pas sur le pot.",
+    "Une baie vitrée se pose à deux, toujours.",
+    "La fermeture d’une fenêtre se teste à la feuille de papier.",
+    "Un volet repeint tient dix ans de plus.",
+    "Les portes d’une cuisine se règlent une à une, sur leurs charnières.",
+    "Une fenêtre se pose dans un mur d’équerre, ou le mur se reprend.",
+    "Un menuisier pose la question du mur avant celle de la fenêtre."
+  ],
+  "chapos": {
+    "etapes": [
+      [
+        "prise de cotes sur place",
+        "cotes prises en tableau",
+        "relevé de la baie et de l’équerre"
+      ],
+      [
+        "dépose des anciennes menuiseries",
+        "dépose totale du dormant",
+        "dépose soignée sans casser le tableau",
+        "protection du sol et des meubles"
+      ],
+      [
+        "fenêtres neuves posées",
+        "portes posées et réglées",
+        "volets posés sur leurs gonds",
+        "baie vitrée posée"
+      ],
+      [
+        "dormant calé et fixé",
+        "pose au niveau et d’aplomb",
+        "joint de pose étanche",
+        "fixation dans la maçonnerie",
+        "seuil à rupture de pont thermique"
+      ],
+      [
+        "escaliers sur mesure",
+        "placards et dressings sur mesure",
+        "portes intérieures posées",
+        "habillages et tablettes"
+      ],
+      [
+        "ouvrants réglés",
+        "quincaillerie vérifiée",
+        "fermeture testée",
+        "lasure ou peinture des bois",
+        "tableaux repris"
+      ],
+      [
+        "anciennes menuiseries évacuées",
+        "chantier nettoyé",
+        "pièce rendue propre"
+      ]
+    ],
+    "nombre": [
+      4,
+      5
+    ],
+    "toujours": [
+      3
+    ]
+  },
+  "gestes": [
+    {
+      "terme": "Prise de cotes",
+      "textes": {
+        "combiner": [
+          [
+            "Les cotes sont prises en tableau, en haut, au milieu et en bas.",
+            "Les diagonales de la baie sont mesurées pour vérifier l’équerre.",
+            "L’aplomb du mur est relevé avant de choisir la pose.",
+            "Le type de pose est décidé sur place : rénovation, dépose totale, applique ou tunnel.",
+            "Le sens d’ouverture est choisi avec les habitants, pièce par pièce.",
+            "Les entrées d’air sont prévues dès la commande.",
+            "Le coffre du volet roulant est mesuré en même temps que la fenêtre.",
+            "Les cotes sont notées sur une fiche, baie par baie.",
+            "L’état du tableau est vérifié avant de promettre une pose propre.",
+            "La hauteur de l’allège est mesurée pour les garde-corps."
+          ],
+          [
+            "Une fenêtre commandée sur une mauvaise cote ne se rattrape pas.",
+            "Un mur hors d’équerre se voit au premier hiver, par le joint.",
+            "Le choix de la pose décide de ce qu’on gardera du vieux dormant.",
+            "Une fenêtre qui s’ouvre sur un meuble s’ouvre mal toute sa vie.",
+            "Une pièce trop étanche sans entrée d’air prend l’humidité.",
+            "Un coffre oublié se pose ensuite en applique, et se voit.",
+            "Une fiche de cotes évite les surprises à la livraison.",
+            "Un tableau abîmé doit être repris avant ou après, et c’est dit au devis.",
+            "La réglementation fixe la hauteur d’un garde-corps.",
+            "Le temps passé à mesurer est le moins cher du chantier."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Dépose des anciennes menuiseries",
+      "textes": {
+        "combiner": [
+          [
+            "Le sol et les meubles proches sont protégés avant la dépose.",
+            "Les ouvrants sont décrochés, puis le dormant est découpé.",
+            "Le dormant est sorti sans casser le tableau ni l’enduit.",
+            "Les anciens joints et la mousse sont retirés jusqu’au mur sain.",
+            "Les pattes et les clous restants sont arrachés.",
+            "Le tableau est nettoyé et dépoussiéré avant la pose.",
+            "Les vitrages anciens sont évacués à part.",
+            "La baie n’est ouverte que pour la journée, refermée le soir même.",
+            "Les volets sont déposés et stockés à plat.",
+            "Les gravats sont descendus au fur et à mesure."
+          ],
+          [
+            "Un tableau cassé à la dépose coûte une reprise de maçonnerie.",
+            "Un vieux joint laissé en place empêche le nouveau de coller.",
+            "Une pièce ouverte une nuit d’hiver se refroidit pour une semaine.",
+            "Le verre cassé se trie, il ne va pas avec le bois.",
+            "Une dépose soignée se voit à la finition des tableaux.",
+            "Une pièce protégée se rend propre sans effort.",
+            "Un dormant pourri cache parfois un appui abîmé.",
+            "Les vieux volets en bois se réparent parfois, et c’est dit avant.",
+            "Une dépose rapide est souvent une dépose brutale.",
+            "Ce qui sort du mur dit comment la fenêtre avait été posée."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Pose et calage",
+      "textes": {
+        "combiner": [
+          [
+            "Le dormant est posé sur cales, au niveau et d’aplomb.",
+            "Les diagonales sont vérifiées avant la fixation.",
+            "Le dormant est fixé dans la maçonnerie par vis ou par pattes.",
+            "Les cales restent sous les points de charge.",
+            "Le jeu entre le dormant et le mur est réglé régulier sur tout le tour.",
+            "La fenêtre est fermée et ouverte avant le serrage final.",
+            "Les seuils de porte-fenêtre sont posés de niveau, sur un lit plein.",
+            "Les volets roulants sont posés et leur coffre fixé.",
+            "La baie vitrée est posée à deux, sur son rail réglé.",
+            "Chaque fixation est serrée sans déformer le cadre."
+          ],
+          [
+            "Un dormant posé de travers fait frotter l’ouvrant.",
+            "Une fenêtre hors d’équerre laisse passer l’air en haut.",
+            "Une fixation dans l’enduit seul ne tient pas.",
+            "Sans cale, le poids du vitrage affaisse l’ouvrant.",
+            "Un jeu irrégulier se voit au joint, et laisse passer l’eau.",
+            "Un réglage se fait fenêtre en place, pas sur l’établi.",
+            "Un seuil creux se fend sous les pas.",
+            "Un coffre mal fixé vibre à chaque descente du volet.",
+            "Une baie posée seul se pose de travers.",
+            "Un cadre serré trop fort ne ferme plus bien."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Étanchéité et joint de pose",
+      "textes": {
+        "combiner": [
+          [
+            "Le joint de pose fait tout le tour, sans interruption.",
+            "Une mousse imprégnée ou un mastic adapté est posé côté extérieur.",
+            "L’intérieur reçoit un joint étanche à l’air.",
+            "L’appui reçoit une bavette qui renvoie l’eau.",
+            "Les angles sont repris à la main.",
+            "Le joint est lissé d’un seul geste.",
+            "La couleur du mastic suit celle du dormant ou de l’enduit.",
+            "Les trous d’évacuation d’eau du dormant sont dégagés.",
+            "L’étanchéité est vérifiée au jet d’eau quand c’est possible.",
+            "La mousse expansive ne sert qu’à combler, jamais à étancher."
+          ],
+          [
+            "Un joint interrompu est une fuite qui attend la pluie.",
+            "L’eau entre par l’extérieur, l’air par l’intérieur : les deux joints comptent.",
+            "Un appui sans bavette laisse l’eau couler sur la façade.",
+            "Les angles sont là où les joints lâchent d’abord.",
+            "Un joint repris trois fois se voit de loin.",
+            "Un mastic de la bonne teinte disparaît dans le mur.",
+            "Des trous bouchés font déborder l’eau dans la pièce.",
+            "Un essai d’eau évite une tache sur le mur intérieur.",
+            "La mousse seule se tasse et laisse passer l’air.",
+            "La moitié de l’isolation d’une fenêtre tient dans son joint."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Menuiserie intérieure sur mesure",
+      "textes": {
+        "combiner": [
+          [
+            "Les murs sont relevés en plusieurs points, aplomb et équerre compris.",
+            "Les panneaux sont débités à l’atelier sur les cotes du chantier.",
+            "Les placards épousent les murs, même ceux qui ne sont pas droits.",
+            "Les étagères sont portées par des tasseaux ou des crémaillères.",
+            "Les marches d’escalier sont tracées au sol avant d’être coupées.",
+            "L’escalier est posé quand la trémie est finie.",
+            "Les portes intérieures sont posées d’aplomb, huisserie calée.",
+            "Les rampes sont fixées dans la structure, pas dans le plâtre.",
+            "Les portes coulissantes roulent sur un rail posé de niveau.",
+            "Les chants visibles sont plaqués ou vernis."
+          ],
+          [
+            "Un placard posé contre un mur tordu laisse un jour qui se voit.",
+            "Le débit à l’atelier garde la poussière loin de la maison.",
+            "Le sur-mesure tient compte des murs tels qu’ils sont.",
+            "Une étagère qui fléchit a été mal portée.",
+            "Un escalier mal tracé a une marche différente des autres.",
+            "Poser un escalier avant les murs, c’est l’abîmer.",
+            "Une porte hors d’aplomb s’ouvre ou se ferme toute seule.",
+            "Une rampe se tient de tout son poids : elle se fixe comme telle.",
+            "Un rail qui penche fait courir la porte toute seule.",
+            "Un chant brut boit l’humidité et gonfle."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Réglages et quincaillerie",
+      "textes": {
+        "combiner": [
+          [
+            "Chaque ouvrant est réglé en hauteur, en largeur et en pression.",
+            "Les paumelles sont serrées, toutes les vis en place.",
+            "La serrure est essayée clé en main, plusieurs fois.",
+            "Les crémones et les gâches sont alignées.",
+            "La fermeture est testée à la feuille de papier sur tout le tour.",
+            "Les poignées sont posées à la même hauteur dans toute la maison.",
+            "Les ferme-portes sont réglés en vitesse de fermeture.",
+            "Les volets sont réglés sur leurs gonds et leurs arrêts.",
+            "Les portes de placard sont alignées une à une.",
+            "Un réglage est proposé au premier hiver."
+          ],
+          [
+            "Une fenêtre mal réglée laisse passer l’air même neuve.",
+            "Une vis oubliée sur une paumelle se paie en affaissement.",
+            "Une serrure dure finit par casser sa clé.",
+            "Une gâche décalée oblige à forcer la poignée.",
+            "La feuille de papier dit tout de l’étanchéité d’un ouvrant.",
+            "Des poignées à des hauteurs différentes se remarquent tout de suite.",
+            "Une porte qui claque abîme son cadre.",
+            "Un volet mal arrêté bat au vent toute la nuit.",
+            "Des portes mal alignées font un meuble de travers.",
+            "Le bâtiment bouge la première année : un second réglage le suit."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Finitions des bois",
+      "textes": {
+        "combiner": [
+          [
+            "Les bois extérieurs sont lasurés ou peints dès la pose.",
+            "Les chants et les coupes reçoivent la même protection que les faces.",
+            "Les bois intérieurs sont huilés, vernis ou laqués selon l’usage.",
+            "Le bois est poncé entre deux couches.",
+            "La teinte est essayée sur une chute du même bois.",
+            "Les têtes de vis sont cachées ou alignées.",
+            "Les tableaux sont repris en enduit ou en habillage.",
+            "Les tablettes intérieures sont posées et calées.",
+            "Les couvre-joints sont collés, sans clou apparent.",
+            "Les vitrages sont nettoyés de leurs étiquettes et de leurs traces."
+          ],
+          [
+            "Un bois nu dehors grise en un été.",
+            "Une coupe non protégée fait entrer l’eau dans le bois.",
+            "Un vernis dans une pièce humide se choisit pour elle.",
+            "Une couche sur une couche non poncée s’écaille.",
+            "La teinte change d’un bois à l’autre, même avec le même pot.",
+            "Des vis alignées font un travail propre.",
+            "Un tableau laissé brut gâche une fenêtre neuve.",
+            "Une tablette bien posée finit la fenêtre côté pièce.",
+            "Les clous apparents marquent un travail pressé.",
+            "Une fenêtre se livre propre, vitres comprises."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Nettoyage et évacuation",
+      "textes": {
+        "combiner": [
+          [
+            "Les anciennes menuiseries sont évacuées en filière de recyclage.",
+            "Les emballages sont repris.",
+            "Les copeaux et la poussière sont aspirés.",
+            "Les protections sont retirées en fin de journée.",
+            "Les mastics frais sont protégés pendant leur prise.",
+            "Les traces de mastic sur les vitrages sont retirées.",
+            "Les notices et garanties sont remises aux habitants.",
+            "Le fonctionnement de chaque ouvrant est montré.",
+            "L’entretien des bois et des joints est expliqué.",
+            "La pièce est rendue rangée, meubles remis en place."
+          ],
+          [
+            "Une vieille fenêtre ne finit pas dans la benne commune.",
+            "Un carton laissé sur place reste un carton à jeter pour le client.",
+            "La poussière de bois voyage loin.",
+            "Un chantier se rend propre chaque soir, pas seulement le dernier.",
+            "Un mastic touché avant sa prise se marque pour toujours.",
+            "Une trace sèche sur un vitrage demande une lame pour partir.",
+            "La garantie d’une fenêtre commence par sa notice.",
+            "Un oscillo-battant mal compris se casse vite.",
+            "Un bois entretenu dure deux fois plus.",
+            "La dernière image d’un chantier, c’est la pièce rendue."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    }
+  ],
+  "coupure": {
+    "avant": {
+      "etapes": [
+        [
+          "peinture écaillée",
+          "mastic tombé",
+          "bois gris et fendu",
+          "bois gonflé en bas",
+          "volets délavés",
+          "lasure partie"
+        ],
+        [
+          "simple vitrage",
+          "carreau fendu",
+          "buée entre les vitres",
+          "courant d’air au bas de la fenêtre",
+          "cadre aluminium terne",
+          "condensation sur le vitrage"
+        ],
+        [
+          "porte qui frotte",
+          "ouvrant voilé",
+          "serrure dure",
+          "seuil usé",
+          "paumelle affaissée",
+          "porte qui ne ferme plus"
+        ],
+        [
+          "marches usées et creusées",
+          "rampe branlante",
+          "portes de placard voilées",
+          "façades de placard décollées",
+          "niche brute"
+        ]
+      ],
+      "nombre": [
+        3,
+        3
+      ]
+    },
+    "apres": {
+      "etapes": [
+        [
+          "anciennes menuiseries déposées",
+          "tableaux nettoyés",
+          "cotes reprises en tableau",
+          "dormant sorti sans casser le mur"
+        ],
+        [
+          "fenêtres neuves posées",
+          "double vitrage",
+          "porte neuve posée",
+          "volets refaits",
+          "baie vitrée posée"
+        ],
+        [
+          "dormant calé au niveau",
+          "joint de pose étanche",
+          "seuil neuf",
+          "fixation dans la maçonnerie"
+        ],
+        [
+          "ouvrants réglés",
+          "serrure trois points",
+          "fermeture vérifiée",
+          "quincaillerie neuve"
+        ],
+        [
+          "bois lasurés",
+          "tableaux repris",
+          "pièce rendue propre",
+          "anciennes menuiseries évacuées"
+        ]
+      ],
+      "nombre": [
+        3,
+        4
+      ],
+      "toujours": [
+        2
+      ]
+    }
+  },
+  "legendes": {
+    "comparateurs": {
+      "combiner": [
+        [
+          "Fenêtre de chambre",
+          "Porte d’entrée",
+          "Volets battants",
+          "Porte-fenêtre",
+          "Escalier intérieur",
+          "Portail en bois",
+          "Placard de chambre",
+          "Fenêtre de toit",
+          "Porte de cave",
+          "Pergola",
+          "Baie vitrée",
+          "Porte de garage"
+        ],
+        [
+          "ancien dormant déposé",
+          "cotes prises en tableau",
+          "tableau nettoyé",
+          "seuil repris",
+          "bois poncé",
+          "gonds redressés",
+          "trémie vérifiée",
+          "murs relevés",
+          "rail posé de niveau",
+          "mastic retiré"
+        ],
+        [
+          "fenêtre neuve posée",
+          "double vitrage",
+          "porte neuve",
+          "volets lasurés",
+          "marches neuves",
+          "portes coulissantes",
+          "joint de pose étanche",
+          "ouvrants réglés"
+        ]
+      ],
+      "joints": [
+        ", ",
+        ", "
+      ],
+      "fin": "."
+    },
+    "invitation": {
+      "combiner": [
+        [
+          "Faites glisser la couture",
+          "Déplacez la séparation",
+          "Touchez la photo",
+          "Glissez le trait",
+          "Attrapez la couture",
+          "Faites glisser le curseur",
+          "Déplacez le trait",
+          "Passez le doigt sur la photo"
+        ],
+        [
+          "pour comparer l’avant et l’après.",
+          "pour voir la menuiserie avant les travaux.",
+          "pour passer d’un état à l’autre.",
+          "pour voir ce que le chantier a changé.",
+          "pour retrouver la menuiserie d’origine.",
+          "pour voir la baie avant la pose.",
+          "pour comparer les deux états.",
+          "pour voir l’ouverture avant et après.",
+          "pour mesurer le travail fait.",
+          "pour voir la différence."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    },
+    "precision": {
+      "combiner": [
+        [
+          "Même point de vue, même cadrage.",
+          "Les deux photos sont prises du même endroit.",
+          "Même angle, même distance.",
+          "Les deux images ont le même cadrage.",
+          "Même endroit, même objectif.",
+          "Le point de vue ne bouge pas d’une photo à l’autre.",
+          "Photographié deux fois, depuis le même pas de porte.",
+          "Même place, même hauteur d’objectif.",
+          "Le photographe n’a pas bougé entre les deux."
+        ],
+        [
+          "Seule la menuiserie change.",
+          "La différence vient du chantier.",
+          "Rien d’autre ne change que la fenêtre.",
+          "Ce qui change, c’est le travail fait.",
+          "Le mur est le même, la menuiserie non.",
+          "Seule l’ouverture a été reprise.",
+          "Ce qui diffère, ce sont le bois, le verre et les joints.",
+          "Entre les deux, il y a le chantier.",
+          "L’écart, c’est le travail du menuisier."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    }
+  },
+  "rubriques": {
+    "gestes": [
+      "Le détail des postes.",
+      "Ce que recouvre un chantier de menuiserie.",
+      "Ce qui se fait à la baie.",
+      "Les étapes, dans l’ordre.",
+      "Étape par étape.",
+      "De la cote au réglage.",
+      "Comment se pose une fenêtre.",
+      "Les postes du chantier.",
+      "Ce que fait le menuisier.",
+      "Du relevé à la finition.",
+      "Le travail, poste par poste.",
+      "Ce qui se fait, et pourquoi.",
+      "Les gestes du chantier.",
+      "Dans l’ordre du chantier.",
+      "Ce que le devis détaille."
+    ],
+    "chantier": [
+      "Le chantier.",
+      "À la baie.",
+      "En cours de travaux.",
+      "Pendant les travaux.",
+      "Sur place.",
+      "Pendant la pose.",
+      "Le chantier en cours.",
+      "Les travaux, en images.",
+      "Ce que montre le chantier.",
+      "Sur le chantier.",
+      "À l’atelier et sur place.",
+      "La baie en travaux.",
+      "Ce qui se voit en cours.",
+      "Au milieu du chantier.",
+      "La pose en cours."
+    ],
+    "verifiable": [
+      "Ce qui se vérifie.",
+      "Les faits publics.",
+      "Ce que disent les registres.",
+      "Ce qui est public.",
+      "Les registres officiels.",
+      "Ce que chacun peut vérifier.",
+      "L’entreprise, dans les registres.",
+      "Les données publiques.",
+      "Les sources officielles.",
+      "Ce que disent les sources publiques.",
+      "Vérifiable par tous.",
+      "Les faits, sans commentaire.",
+      "Ce que l’État publie.",
+      "Dans les bases publiques.",
+      "Les informations légales."
+    ],
+    "contact": [
+      "Parler du chantier.",
+      "Prendre contact.",
+      "Faire venir quelqu’un.",
+      "Demander une visite.",
+      "Faire prendre les cotes.",
+      "Parler de vos fenêtres.",
+      "Faire voir la baie.",
+      "Appeler l’entreprise.",
+      "Demander un passage.",
+      "Faire mesurer.",
+      "Prendre rendez-vous.",
+      "Une question sur une fenêtre ?",
+      "Faire constater.",
+      "Parler du projet.",
+      "Joindre l’entreprise."
+    ],
+    "prix": [
+      "Ce que ça coûte.",
+      "Les tarifs, poste par poste.",
+      "Avant de demander un devis.",
+      "Combien ça coûte.",
+      "Les prix, poste par poste.",
+      "Les ordres de grandeur.",
+      "Les tarifs pratiqués.",
+      "Ce que coûte une menuiserie.",
+      "Le prix des postes.",
+      "Avant le devis.",
+      "Les prix du métier.",
+      "Ce qui fait le prix.",
+      "Les tarifs, sans détour.",
+      "Les fourchettes de prix.",
+      "Ce que dit le devis."
+    ]
+  },
+  "mot": "Menuiserie",
+  "matiere": [
+    "À dix centimètres, le chêne huilé montre son veinage serré.",
+    "Un nœud de pin reste visible sous la lasure, et c’est voulu.",
+    "L’aluminium laqué garde une arête nette, sans bavure.",
+    "La soudure d’angle d’un cadre PVC forme une ligne fine.",
+    "Un joint de pose bien tiré se fond dans le tableau.",
+    "Les vis d’une paumelle alignées disent un travail propre.",
+    "Un vitrage feuilleté montre ses couches, vu en tranche.",
+    "Le seuil en aluminium porte une rupture de pont thermique, visible en coupe.",
+    "Une lasure fraîche fonce le bois, puis s’éclaircit au soleil.",
+    "Le copeau du rabot sort en ruban continu quand la lame est affûtée.",
+    "Un bois huilé se patine sous la main, pas un bois verni.",
+    "Le chêne grise dehors s’il n’est pas protégé.",
+    "Une marche en hêtre se marque, une marche en chêne résiste.",
+    "Un assemblage à tenon et mortaise ne montre aucune vis.",
+    "La parclose tient le verre, fine et serrée.",
+    "Un cadre bien collé ne laisse pas voir son joint d’angle.",
+    "Le grain d’un bois raboté accroche la lumière rasante.",
+    "Une peinture laquée sur bois renvoie la lumière comme un miroir doux.",
+    "Le PVC blanc reste blanc, sa surface lisse ne retient rien.",
+    "Un bois exotique change de teinte en quelques mois de lumière.",
+    "L’arête d’une tablette chanfreinée ne s’épaufre pas.",
+    "Une porte massive sonne plein quand on la frappe.",
+    "Le chant d’un panneau plaqué cache l’âme du bois.",
+    "Une huile pénètre, un vernis recouvre.",
+    "Les fibres d’un bois de fil se suivent sur toute la longueur.",
+    "Une feuillure bien taillée reçoit le joint sans jour.",
+    "Le métal d’une crémone se lit sous la peinture, en relief léger.",
+    "La lumière du matin traverse un double vitrage sans reflet double.",
+    "Un bois sec ne bouge plus. Un bois vert travaille encore.",
+    "Une moulure se dessine à la toupie, puis se ponce à la main."
+  ],
+  "prix": {
+    "note": "Ordres de grandeur nationaux, relevés le 4 novembre 2026. Ce ne sont pas les prix de l'entreprise et ce n'est pas un devis.",
+    "sources": [
+      {
+        "nom": "La Maison Saint-Gobain, prix d’une fenêtre PVC",
+        "url": "https://www.lamaisonsaintgobain.fr/guides-travaux/menuiseries-exterieures/prix-fenetre-pvc"
+      },
+      {
+        "nom": "La Maison Saint-Gobain, prix d’une fenêtre double vitrage",
+        "url": "https://www.lamaisonsaintgobain.fr/guides-travaux/menuiseries-exterieures/prix-fenetre-double-vitrage"
+      },
+      {
+        "nom": "Travaux.com, fenêtres et portes",
+        "url": "https://www.travaux.com/fenetre-porte"
+      },
+      {
+        "nom": "La Maison Saint-Gobain, prix d’un escalier",
+        "url": "https://www.lamaisonsaintgobain.fr/guides-travaux/amenagement-interieur/prix-escalier"
+      },
+      {
+        "nom": "Habitatpresto, menuiserie intérieure sur mesure",
+        "url": "https://www.habitatpresto.com/devis-travaux/devis-menuiserie-interieure-sur-mesure"
+      }
+    ],
+    "postes": [
+      {
+        "poste": "Fenêtre PVC double vitrage, fournie et posée",
+        "bas": 870,
+        "haut": 1170,
+        "unite": "€/u",
+        "note": "Prix TTC en remplacement, double vitrage standard."
+      },
+      {
+        "poste": "Fenêtre bois double vitrage, fournie et posée",
+        "bas": 1200,
+        "haut": 2100,
+        "unite": "€/u",
+        "note": "Selon les dimensions. L’aluminium tourne autour de 1 300 €."
+      },
+      {
+        "poste": "Baie vitrée posée",
+        "bas": 1500,
+        "haut": 6000,
+        "unite": "€/u",
+        "note": "Prix TTC. Coulissante, à galandage ou à frappe : le type d’ouverture fait l’écart."
+      },
+      {
+        "poste": "Escalier droit, fourni et posé",
+        "bas": 4000,
+        "haut": 5600,
+        "unite": "€",
+        "note": "Prix TTC pour un escalier droit standard. Un quart tournant peut doubler le budget."
+      },
+      {
+        "poste": "Dressing sur mesure",
+        "bas": 500,
+        "haut": 1500,
+        "unite": "€/ml",
+        "note": "Par mètre linéaire, selon les matériaux et les aménagements intérieurs."
+      }
+    ],
+    "exemple": {
+      "titre": "Une maison de six fenêtres PVC, remplacement complet",
+      "bas": 5220,
+      "haut": 7020,
+      "note": "Calculé à partir de la fourchette de la fenêtre PVC fournie et posée (870 à 1 170 € TTC l’unité). Les volets roulants et la reprise des tableaux s’ajoutent."
+    }
+  },
+  "nuancierEtiquette": "Voir la menuiserie dans une autre teinte",
+  "teintes": [
+    {
+      "nom": "D’origine",
+      "voile": "",
+      "pastille": "#B89A78"
+    },
+    {
+      "nom": "Chêne clair",
+      "voile": "34 40% 66% / .30",
+      "pastille": "#C9A57A"
+    },
+    {
+      "nom": "Chêne foncé",
+      "voile": "28 38% 38% / .34",
+      "pastille": "#7E5B3C"
+    },
+    {
+      "nom": "Blanc",
+      "voile": "40 15% 94% / .32",
+      "pastille": "#F0EDE6"
+    },
+    {
+      "nom": "Gris anthracite",
+      "voile": "210 8% 26% / .34",
+      "pastille": "#3C4146"
+    },
+    {
+      "nom": "Vert sauge",
+      "voile": "110 14% 58% / .32",
+      "pastille": "#8FA088"
+    },
+    {
+      "nom": "Bleu de Provence",
+      "voile": "205 32% 56% / .32",
+      "pastille": "#6F93AE"
+    },
+    {
+      "nom": "Rouge basque",
+      "voile": "2 52% 36% / .34",
+      "pastille": "#8A2C29"
+    },
+    {
+      "nom": "Gris clair",
+      "voile": "210 8% 74% / .30",
+      "pastille": "#B6BCC1"
+    },
+    {
+      "nom": "Noyer",
+      "voile": "24 34% 30% / .34",
+      "pastille": "#664632"
+    }
+  ],
+  "alt": {
+    "avant": "fenêtre ancienne avant travaux, peinture écaillée et mastic tombé",
+    "apres": "la même baie avec la fenêtre neuve posée",
+    "invitation": "Comparer la menuiserie avant et après les travaux",
+    "avant2": "un autre chantier avant le remplacement de la menuiserie",
+    "apres2": "le même chantier une fois la menuiserie posée",
+    "hero": "façade dont une moitié garde ses anciennes fenêtres et l’autre a les neuves",
+    "invitation2": "Comparer un second chantier avant et après",
+    "ouverture": "geste du métier pendant la pose d’une fenêtre",
+    "chantier": "ancien dormant sorti, sol protégé autour de la baie",
+    "chantierBis": "dormant neuf calé et réglé au niveau",
+    "detail": "gros plan sur le joint de pose entre le dormant et le mur",
+    "detailBis": "gros plan sur le veinage d’un chêne huilé",
+    "geste": "les mains qui vissent une patte de fixation dans le tableau"
+  },
+  "estimateur": {
+    "titre": "Vos fenêtres",
+    "mesure": {
+      "etiquette": "Nombre de fenêtres",
+      "unite": "u",
+      "min": 1,
+      "max": 30,
+      "pas": 1,
+      "defaut": 6,
+      "aria": "Nombre de fenêtres"
+    }
+  }
+}
