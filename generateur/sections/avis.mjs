@@ -1,4 +1,5 @@
 import { CONTEXTES } from '../charte.mjs';
+import { html as ech } from '../echapper.mjs';
 // Les avis, communs aux quatre archetypes.
 //
 // Aucun avis n est invente. Sur un site de prospection les emplacements sont
@@ -22,7 +23,29 @@ export function feuille() {
 .avis .vide{color:var(--t2);border:1px dashed var(--voile-2);background:var(--nuit)}`;
 }
 
-export function bloc() {
+// Les avis d un site d abonne (T56, constat S-024) : ceux de la table `avis`,
+// tels quels (texte, prenom ou nom affiche, note donnee par le client). Aucun
+// avis : aucune section. Jamais « Les avis viennent ici » sur un site publie au
+// nom de l artisan. Rien n est invente : sans note, pas d etoiles.
+export function bloc({ abonne = false, avis = [] } = {}) {
+  if (abonne) {
+    const reels = (avis || []).filter((a) => a && typeof a.texte === 'string' && a.texte.trim());
+    if (!reels.length) return '';
+    const carte = (a) => {
+      const note = Number.isInteger(a.note) && a.note >= 1 && a.note <= 5
+        ? `<p class="enseigne" aria-label="Note : ${a.note} sur 5">${'★'.repeat(a.note)}${'☆'.repeat(5 - a.note)}</p>` : '';
+      const qui = [a.auteur, a.ecrit_le ? String(a.ecrit_le).slice(0, 4) : null].filter(Boolean).map(ech).join(', ');
+      return `<div class="carte" data-avis>${note}<p>${ech(a.texte.trim())}</p>${qui ? `<p class="enseigne">${qui}</p>` : ''}</div>`;
+    };
+    return `<section class="avis" aria-labelledby="t-avis">
+  <div class="tete-r"><p class="enseigne">Ce que disent les clients</p>
+    <h2 id="t-avis" class="grand">Avis de clients</h2>
+    <p class="note">Avis publiés sur la fiche Google de l’entreprise.</p></div>
+  <div class="grille">
+    ${reels.slice(0, 6).map(carte).join('\n    ')}
+  </div>
+</section>`;
+  }
   return `<section class="avis" aria-labelledby="t-avis">
   <div class="tete-r"><p class="enseigne">Ce que disent les clients</p>
     <h2 id="t-avis" class="grand">Les avis viennent ici.</h2>

@@ -366,7 +366,7 @@ async function fabriquer(opts) {
 
   if (archetype === 'matiere') {
     im.avantOuverture = jeu('avant-01', enc['avant-01'], '100vw', 1400);
-    corps = matiere.corps({ e, t, im, img, p, base, fraction, fractionTel, illustration, ch, tel, ap, tf, presContact,
+    corps = matiere.corps({ e, t, im, img, p, base, fraction, fractionTel, illustration, ch, tel, ap, tf, presContact, abonne, avisListe: brut.avis,
       mot: motGeant(ch, base, e) });
     style = matiere.feuille(p, pal, ch);
   } else {
@@ -387,7 +387,7 @@ async function fabriquer(opts) {
       travail: gestes(t),
       chantier: chantier(t, im),
       prix: prixSection.bloc({ tarifs: tf, titre: t.rub.prix, estimation: base.estimateur }),
-      avis: avisSection.bloc(),
+      avis: avisSection.bloc({ abonne, avis: brut.avis }),
       verifiable: verifiable(t, e, illustration),
       contact: contact(t, e, tel, presContact),
     };

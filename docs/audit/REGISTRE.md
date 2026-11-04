@@ -18,7 +18,7 @@ document « Audit sito, Atelier et StructorAI : ce qui manque » (Claude Docs,
 
 ## Comptage au 3 novembre 2026 (après le lot 2)
 
-**25 constats : 13 ouverts, 12 clos, 0 refusé.**
+**25 constats : 12 ouverts, 13 clos, 0 refusé.**
 
 ## Constats
 
@@ -47,5 +47,5 @@ document « Audit sito, Atelier et StructorAI : ce qui manque » (Claude Docs,
 | S-021 | mineur | Les originaux des photos ne sont pas recopiés hors de Supabase, qui ne sauvegarde pas le stockage, même en offre Pro | `app/specs/02-TRD.md` P12 « À faire » | `docs/DETTE.md` D-01 | ouvert |
 | S-022 | majeur | Le pied de page dit « Proposition de site. Les informations proviennent de bases publiques, les photographies sont des exemples » sur **tous** les sites, abonnés compris ; la section chantier dit « Photographies d'exemple » même avec les photos de l'artisan | `generateur/composer.mjs` lignes 158 et 376 (commit `abb2cbe`) | T54 | clos le 4 nov. : pied de page (T50) et photos (T54) selon le régime ; contrôle R-EXEMPLE |
 | S-023 | majeur | Les textes alternatifs des photos sont écrits en dur pour la façade (« échafaudage monté sur une façade », « la taloche chargée d'enduit appliquée contre le mur », « gros plan sur le grain de l'enduit ») et servent pour tous les métiers : un site de couverture décrit ses photos comme une façade | `generateur/composer.mjs` lignes 95, 155, 156 ; `generateur/archetypes/matiere.mjs` lignes 374 à 477 | T55 | clos le 4 nov. : textes alternatifs et légendes depuis le fichier du métier, contrôle R-ALT (T55) |
-| S-024 | majeur | La section « avis » affiche « Les avis viennent ici » et trois emplacements vides ; rien ne la retire sur un site d'abonné sans avis | `generateur/sections/avis.mjs` | T56 | ouvert |
+| S-024 | majeur | La section « avis » affiche « Les avis viennent ici » et trois emplacements vides ; rien ne la retire sur un site d'abonné sans avis | `generateur/sections/avis.mjs` | T56 | clos le 4 nov. : avis réels de la table `avis`, ou aucune section ; contrôle R-AVIS (T56) |
 | S-025 | majeur | La deuxième page de l'archétype matiere (`le-travail.html`) rougit M2 sur téléphone (titre à 9 % de l'écran au lieu de 14 %), sous Chromium comme sous WebKit : `verifier-mobile` n'était lancé que sur l'accueil | `node scripts/verifier-mobile.mjs <site>/le-travail.html`, 3 nov. | T52 | ouvert |

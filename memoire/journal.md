@@ -1777,3 +1777,14 @@ de `avant`, `apres`, `avant2`, `apres2`, `invitation`, `invitation2`. Légendes
 de couverture et de peinture écrites par Cowork, à relire par Fabrice. T60
 passée « bloqué » sur Q6.
 TRACAGE : generateur/composer.mjs, generateur/archetypes/matiere.mjs, generateur/metiers/ravalement.json, generateur/metiers/couverture.json, generateur/metiers/peinture.json, scripts/verifier-site.mjs, scripts/essai-alt.mjs, scripts/essais.mjs, .github/workflows/essais.yml, app/specs/07-TACHES.md, docs/audit/REGISTRE.md (S-023 clos), CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 4 nov. 2026 — T56 (avis réels seulement), par Cowork
+
+Plan : 1. `avis.bloc({ abonne, avis })` : avis réels ou rien sur un site
+d'abonné ; 2. `atelier/fabriquer.mjs` lit la table `avis` ; 3. contrôle R-AVIS
+et `essai-avis.mjs`.
+
+Résultat : 18 contrôles, 0 faute ; contre-essai 4 fautes ;
+`essai-fabrication-base` (15) et `essai-boucle` (23) verts avec une table
+`avis` vide dans leur faux Supabase. Au plus 6 avis, les plus récents.
+TRACAGE : generateur/sections/avis.mjs, generateur/composer.mjs, generateur/archetypes/matiere.mjs, atelier/fabriquer.mjs, scripts/verifier-site.mjs, scripts/essai-avis.mjs, scripts/essai-fabrication-base.mjs, scripts/essai-boucle.mjs, scripts/essais.mjs, .github/workflows/essais.yml, app/specs/07-TACHES.md, docs/audit/REGISTRE.md (S-024 clos), CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

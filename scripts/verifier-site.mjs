@@ -530,7 +530,8 @@ function referencementSite(chemin) {
   const dire = (num, gravite, fichier, detail, remede) => c.push({ fichier, num, gravite,
     libelle: { 'R-REGIME': 'regime de referencement', 'R-OG': 'apercu de partage (Open Graph)', 'R-JSONLD': 'donnees structurees',
       'R-SITE': 'robots.txt et plan du site', 'R-ADRESSE': 'adresse publique', 'R-TITRE': 'titre ou description trop longs',
-      'R-EXEMPLE': 'photos de l artisan dites « exemple », ou exemples non dits' }[num],
+      'R-EXEMPLE': 'photos de l artisan dites « exemple », ou exemples non dits',
+      'R-AVIS': 'emplacement d avis vide sur un site d abonne' }[num],
     detail, remede: remede || 'docs/specs/S-REFERENCEMENT.md' });
   let regimeVu = null, adresseVue = null;
   for (const n of pages) {
@@ -557,6 +558,10 @@ function referencementSite(chemin) {
     // ne se dit pas « proposition ». Sur un site de prospection a photos
     // d illustration, chaque image le dit.
     const corps = t.replace(/<head>[\s\S]*?<\/head>/, '');
+    // R-AVIS, tache T56 (constat S-024) : un site d abonne montre des avis reels
+    // ou aucune section d avis, jamais un emplacement vide.
+    if (regime === 'abonne' && /Les avis viennent ici|class="carte vide"|À compléter/.test(corps))
+      dire('R-AVIS', 'bloquant', n, 'emplacement d avis vide (« Les avis viennent ici »)', 'generateur/sections/avis.mjs');
     if (regime === 'abonne') {
       const m = corps.match(/data-exemple="oui"|alt="Exemple|Proposition de site|Photographies d’exemple|class="marqueur">Exemple/i);
       if (m) dire('R-EXEMPLE', 'bloquant', n, 'site d abonne : « ' + m[0] + ' »', 'generateur/composer.mjs, PHOTOS_EXEMPLE');

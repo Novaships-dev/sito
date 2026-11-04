@@ -300,7 +300,7 @@ ${appel.feuille()}
 
 
 export function corps(ctx) {
-  const { e, t, im, img, p, mot, fraction, fractionTel, base, illustration, ch, tel, ap, tf, presContact = '' } = ctx;
+  const { e, t, im, img, p, mot, fraction, fractionTel, base, illustration, ch, tel, ap, tf, presContact = '', abonne = false, avisListe = [] } = ctx;
 
   const comparateur = (id, av, ap, legende, classe, altAv, altAp, aria) => `
   <figure class="comparateur ${classe}">
@@ -396,7 +396,7 @@ export function corps(ctx) {
       <figcaption class="note">${ech(base.legendesPhotos.detail)}</figcaption></figure>
   </div>
 </section>`,
-    avis: avis.bloc(),
+    avis: avis.bloc({ abonne, avis: avisListe }),
     verifiable: `<section class="verifiable" aria-labelledby="t-verifiable">
   <div class="tete-r"><p class="enseigne">Sources publiques</p>
     <h2 id="t-verifiable" class="grand">${ech(t.rub.verifiable)}</h2>

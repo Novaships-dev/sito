@@ -72,7 +72,7 @@ export function tarifsDepuisBase(profil, tarifs) {
 export const CHAMPS_MENTIONS = ['courriel', 'capital_social', 'immatriculation', 'tva_intra',
   'directeur_publication', 'decennale_assureur', 'decennale_contrat', 'decennale_zone',
   'mediateur_nom', 'mediateur_adresse', 'mediateur_site'];
-export function donneesDepuisBase(entreprise, profil, tarifs) {
+export function donneesDepuisBase(entreprise, profil, tarifs, avis = []) {
   const mentions = {};
   for (const c of CHAMPS_MENTIONS) if (profil?.[c]) mentions[c] = profil[c];
   return {
@@ -81,6 +81,9 @@ export function donneesDepuisBase(entreprise, profil, tarifs) {
     telephone: profil?.telephone || undefined,
     prix: tarifsDepuisBase(profil, tarifs || []),
     mentions,
+    // Les avis réels de la fiche Google (table `avis`), les plus récents d'abord (T56).
+    avis: [...(avis || [])].filter((a) => a.texte).sort((a, b) => String(b.ecrit_le || '').localeCompare(String(a.ecrit_le || '')))
+      .slice(0, 6).map((a) => ({ auteur: a.auteur || null, texte: a.texte, note: a.note ?? null, ecrit_le: a.ecrit_le || null })),
   };
 }
 
@@ -144,6 +147,7 @@ export async function fabriquerDepuisBase({
   if (!entreprise) return { ok: false, motif: `entreprise ${siren} introuvable` };
   const profil = await sb.lireUne('profils', { filtres: { siren: ['eq', siren] } });
   const tarifs = await sb.lire('tarifs', { filtres: { siren: ['eq', siren] } });
+  const avis = await sb.lire('avis', { filtres: { siren: ['eq', siren] } });
   const photos = await sb.lire('photos', { filtres: { siren: ['eq', siren], etat: ['eq', 'prete'] } });
   const siteExistant = await sb.lireUne('sites', { filtres: { siren: ['eq', siren], metier: ['eq', metier] } });
 
@@ -156,7 +160,7 @@ export async function fabriquerDepuisBase({
     await telechargerPhotos(sb, roles, dossierImages, { espace: espacePhotos });
 
     const fichierDonnees = join(tmp, 'donnees.json');
-    writeFileSync(fichierDonnees, JSON.stringify(donneesDepuisBase(entreprise, profil, tarifs), null, 2));
+    writeFileSync(fichierDonnees, JSON.stringify(donneesDepuisBase(entreprise, profil, tarifs, avis), null, 2));
 
     let fichierCharte = null;
     if (siteExistant?.charte) {
