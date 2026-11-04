@@ -116,7 +116,7 @@ Rien de payant : ni ordinateur loué, ni serveur d'e-mail, ni carte bancaire
 
 | N° | Tâche | État | Preuve | Dépend | Bloqué par |
 |---|---|---|---|---|---|
-| T16 | Stripe : Checkout, portail, webhook (signature vérifiée), une seule fonction écrit `abonnements`, rejeu sans double écriture ; essai sur faux Stripe | à faire | essai local : paiement simulé, rejeu, événement inconnu sans accès | T06 | |
+| T16 | Stripe : Checkout, portail, webhook (signature vérifiée), une seule fonction écrit `abonnements`, rejeu sans double écriture ; essai sur faux Stripe | fait | `node scripts/essai-stripe.mjs` (4 nov., Cowork) : 22 contrôles, 0 faute (paiement simulé écrit actif, rejeu sans écriture, signature fausse, absente, vieille ou corps changé : 400, événement inconnu sans accès, « incomplete » jamais actif, état relu chez Stripe quel que soit l'ordre, panne de la base reprise au renvoi, paiement et portail ouverts) ; contre-essai : 3 cassures sur 3. Code dans `supabase/functions/_shared/stripe.ts`, `stripe-webhook`, `stripe-session` ; **pas déployé** : pas de compte Stripe (F7, décision du 29 oct.) | T06 | |
 | T17 | Écran Abonnement relié (web seulement) : boutons Checkout et portail ; rien dans l'app Android | à faire | `essai-app` : boutons présents sur le web, absents en mode Android | T16 | |
 | T18 | Stripe en mode test réel (clés de test) | bloqué | paiement test, prix affiché = prix débité | T16 | F7 |
 | T19 | Domaines : client Gandi v5 (vérifier, acheter au nom de l'artisan, renouvellement, code de transfert, redirection) et Cloudflare for SaaS (custom hostname, état, recréation à 7 jours), avec faux serveurs | à faire | essais locaux des deux clients | | |

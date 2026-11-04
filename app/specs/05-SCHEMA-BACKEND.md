@@ -311,8 +311,9 @@ L'app additionne par jour (`app/src/jour.ts`).
 | `resiliation_prevue` | boolean | défaut `false` | L |
 | `mis_a_jour_le` | timestamptz | | |
 
-Écrite par **une seule fonction** du service, appelée par le webhook et par le
-retour de paiement.
+Écrite par **une seule fonction** : `ecrireAbonnement` de la fonction Edge
+`stripe-webhook` (T16), avec l'état relu chez Stripe. Le retour de paiement
+n'écrit rien : il attend l'événement.
 
 ### 3.17 `evenements_stripe` (service)
 

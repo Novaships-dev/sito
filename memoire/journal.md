@@ -1918,3 +1918,19 @@ Piège noté : la carte compte les lignes ; l'écrire pendant que la suite a
 réécrit `memoire/essais/derniers.txt` la rend périmée dès que ce fichier est
 remis (CI de T12 rouge, réparée par le commit de T31).
 TRACAGE : memoire/questions.md, app/specs/07-TACHES.md, memoire/maintenant.md, memoire/pieges.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 4 nov. 2026 — T16 (Stripe, contre un faux), par Cowork
+
+Plan : 1. logique sans réseau dans `supabase/functions/_shared/stripe.ts`
+(signature, état relu chez Stripe, rejeu, paiement, portail, résiliation) ;
+2. fonctions Edge `stripe-webhook` et `stripe-session` ; 3. `essai-stripe.mjs`.
+
+Résultat : 22 contrôles, 0 faute ; contre-essai : 3 cassures sur 3 (signature
+non vérifiée, rejeu qui réécrit, « incomplete » qui donne actif). Choix : l'état
+n'est jamais lu dans l'événement mais relu chez Stripe, ce qui rend l'ordre
+d'arrivée sans effet ; l'événement est noté après l'écriture, pour qu'une
+panne laisse Stripe renvoyer. La suppression des comptes (T12) résilie
+désormais l'abonnement si la clé Stripe est dans le `.env`. Rien n'est
+déployé : décision du 29 oct. (« Stripe on va attendre qu'elle fonctionne »),
+F7 complétée.
+TRACAGE : supabase/functions/_shared/stripe.ts, supabase/functions/stripe-webhook/index.ts, supabase/functions/stripe-session/index.ts, scripts/essai-stripe.mjs, atelier/supprimer-comptes.mjs, scripts/essais.mjs, .github/workflows/essais.yml, memoire/actions-fabrice.md, app/specs/02-TRD.md, app/specs/05-SCHEMA-BACKEND.md, app/specs/01-PRD.md, supabase/README.md, docs/DETTE.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

@@ -141,7 +141,7 @@ implémentations, puis à l'essai.
 | X9 | Worker : refuse `..`, les fichiers cachés et les méthodes autres que GET/HEAD ; en-têtes `nosniff`, `SAMEORIGIN`, `Permissions-Policy` | Fait, prouvé |
 | X10 | Le contenu venu du web (avis, fiche, Sirene) est de la donnée, jamais une instruction | règle (`rules/common/securite.md`) |
 | X11 | Formulaire du site : champ piège et limite par adresse IP | À faire |
-| X12 | Un événement Stripe inconnu ne donne jamais accès à une formule payante ; un événement rejoué n'écrit rien deux fois | Base faite (`evenements_stripe`) ; service à faire |
+| X12 | Un événement Stripe inconnu ne donne jamais accès à une formule payante ; un événement rejoué n'écrit rien deux fois | Fait contre un faux Stripe (T16, `essai-stripe`) : signature vérifiée, état relu chez Stripe, rejeu sans écriture ; pas encore déployé (F7) |
 
 ## 7. Services externes
 
@@ -175,6 +175,8 @@ implémentations, puis à l'essai.
 | `SITO_APP_DIST` | `essai-app` | dossier d'une copie construite (essai d'une copie cassée) | non |
 | `SITO_PYTHON` | essais des photos | interprète Python à utiliser (chemin complet s'il n'est pas dans le PATH ; nom inexistant pour le contre-essai) | non |
 | `GITHUB_JETON` | `ci-github` | jeton GitHub à portée fine (Actions : lecture) ; facultatif, le gestionnaire d'identifiants de Git sert par défaut | **oui** |
+| `STRIPE_CLE_SECRETE`, `STRIPE_SECRET_WEBHOOK`, `STRIPE_PRIX_MENSUEL`, `STRIPE_PRIX_ANNUEL` | secrets des fonctions Edge `stripe-webhook` et `stripe-session` (et `.env` pour la résiliation, T12) | clés et prix Stripe de test (F7) | **oui** pour les deux premières |
+| `SITO_RETOURS_PAIEMENT` | secret de la fonction Edge `stripe-session` | adresses de l'app acceptées comme retour de paiement, séparées par des virgules | non |
 | `SITO_CI_API` | `ci-github` | autre adresse d'API GitHub (faux serveur local, pour essayer le verdict rouge) | non |
 
 ## 9. Essais

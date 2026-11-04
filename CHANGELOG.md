@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 4 nov. | T16 : le paiement Stripe est écrit (fonctions Edge `stripe-webhook` et `stripe-session`, logique `supabase/functions/_shared/stripe.ts`) et essayé contre un faux Stripe ; rien n'est déployé ni ouvert tant que le compte Stripe n'existe pas (F7). La suppression d'un compte résilie l'abonnement dès que la clé Stripe est là. |
 | 4 nov. | T31 : les codes APE de chaque métier n'ont plus qu'une source (`prospection/metiers.json`), recopiée dans le générateur et le plan d'images ; `verifier-depot` refuse un écart ; les sites nomment l'activité pour l'isolation, la charpente et l'étanchéité. |
 | 4 nov. | T12 : `atelier/supprimer-comptes.mjs` efface un compte 30 jours après sa demande de suppression, si elle n'est pas annulée : site retiré, photos et données effacées, abonnement résilié (jamais d'effacement d'un abonné tant que Stripe n'est pas branché) ; essai `essai-suppressions.mjs`. |
 | 4 nov. | T53 : la suite d'essais refuse une tâche « fait » sans ligne de CHANGELOG ni section de journal du même jour avec `TRACAGE` (`scripts/verifier-tracabilite.mjs`), et une carte du dépôt périmée. |

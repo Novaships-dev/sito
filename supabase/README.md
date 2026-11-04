@@ -165,3 +165,10 @@ appel ; avec jeton : un appel au bon SIREN et au bon type ; photo reçue : rien 
 photo prête : un appel ; tarif supprimé : un appel). Un artisan connecté écrit
 son profil, un tarif, une photo ; il ne touche pas au profil d'un autre ; il ne
 peut pas appeler la fonction. Conseillers : rien de nouveau.
+
+**Ajout du 4 novembre 2026** (T16, pas encore déployé, attend F7) : fonctions
+Edge `stripe-webhook` (`verify_jwt` faux : la signature Stripe authentifie) et
+`stripe-session` (jeton de session exigé, membre de l'entreprise vérifié),
+logique commune dans `functions/_shared/stripe.ts`, essayée par
+`node scripts/essai-stripe.mjs`. Aucune migration : `abonnements` et
+`evenements_stripe` existent depuis le 2 octobre.

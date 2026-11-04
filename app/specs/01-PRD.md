@@ -170,7 +170,7 @@ Spécification complète : `app/specs/08-PROSPECTION.md`. Script d'appel :
 | A12 | Voir son adresse (sous-domaine offert) ; demander son propre domaine ; brancher un domaine existant | 5 oct. ; plan 4 | Partiel : affichage fait ; Gandi et branchement à faire (T19, T20) |
 | A13 | Lire ses avis Google ; relire, corriger et valider une réponse préparée ; rien n'est publié sans lui | 5 oct. | Partiel : écran prouvé (`essai-app`) ; Google à faire (T24, T25, F13) |
 | A14 | Voir l'état de sa fiche Google ; un lien direct vers la fiche en attendant ; ce qui contredit le site est montré | plan 6.4 ; `docs/specs/S-REFERENCEMENT.md` §5 | Partiel : état et lien faits ; comparaison à faire |
-| A15 | Voir sa formule, son état et son échéance ; payer et gérer en ligne sur le web | 5 et 9 oct. | Partiel : affichage fait ; Stripe à faire (T16, T17 ; repoussé le 29 oct.) |
+| A15 | Voir sa formule, son état et son échéance ; payer et gérer en ligne sur le web | 5 et 9 oct. | Partiel : affichage fait ; Stripe écrit et essayé contre un faux (T16), pas de compte ni de déploiement (F7, repoussé le 29 oct.) ; boutons à relier (T17) |
 | A16 | Dans l'app Android (Play Store) : **aucun prix, aucun achat** | règle Google Play, plan 7.2 | Fait, prouvé : `essai-app` |
 | A17 | Télécharger toutes ses données | plan 7.5 (RGPD) | Fait, prouvé : `essai-app` |
 | A18 | Supprimer son compte, avec 30 jours pour changer d'avis | plan 7.5 | Partiel : demande et annulation prouvées (`essai-app`) ; suppression effective écrite et essayée contre des faux (T12, `essai-suppressions`) ; pas encore lancée chaque nuit, résiliation Stripe réelle à T16 (D-16) |

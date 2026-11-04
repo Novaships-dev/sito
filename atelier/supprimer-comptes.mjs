@@ -102,12 +102,21 @@ export async function supprimerEchus({ sb, cloudflare, stripe = null, maintenant
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const { depuisEnv } = await import('./supabase.mjs');
-  const { exiger } = await import('../scripts/env.mjs');
+  const { exiger, chargerEnv } = await import('../scripts/env.mjs');
   const { clientCloudflare } = await import('../scripts/prospection/cloudflare-pages.mjs');
   const v = exiger(['CLOUDFLARE_COMPTE_ID', 'CLOUDFLARE_JETON_API'], 'retirer les sites des comptes supprimés');
   const rapports = await supprimerEchus({
     sb: depuisEnv(),
     cloudflare: clientCloudflare({ compte: v.CLOUDFLARE_COMPTE_ID, jeton: v.CLOUDFLARE_JETON_API }),
+    // Stripe (T16) dès que sa clé est dans le .env ; sans elle, un abonné en
+    // cours n'est pas effacé.
+    stripe: await (async () => {
+      chargerEnv();
+      if (!process.env.STRIPE_CLE_SECRETE) return null;
+      const { resilier } = await import('../supabase/functions/_shared/stripe.ts');
+      const reglages = { cle: process.env.STRIPE_CLE_SECRETE, secretWebhook: '', prix: { mensuel: '', annuel: '' } };
+      return { resilier: (id) => resilier(id, reglages) };
+    })(),
     lecture: process.argv.includes('--lecture'),
   });
   for (const r of rapports) console.log(`${r.user_id} : ${r.efface ? 'effacé' : 'pas effacé'}${r.motif ? ` (${r.motif})` : ''}\n  ${r.etapes.join('\n  ')}`);
