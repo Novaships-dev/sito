@@ -488,6 +488,7 @@ try {
     await p.goto(`${BASE}?demo#/abonnement`); await p.waitForTimeout(400);
     const texte = await p.locator('main').textContent();
     ok(!/€|HT|prix|payer|paiement en ligne/i.test(texte), 'aucun prix ni paiement affiché', texte.slice(0, 200));
+    ok(await p.locator('main button').filter({ hasText: /abonner|carte|factures|résiliation/i }).count() === 0, 'aucun bouton de paiement ni de portail (T17)');
     ok(/Formule mensuel/.test(texte), 'l’état de l’abonnement reste affiché');
     await p.goto(`${BASE}?demo#/abonnement`); await p.waitForTimeout(300);
     ok(!/€/.test(await p.locator('main').textContent()), 'reste en mode Android sans le paramètre (mémorisé)');
@@ -496,6 +497,12 @@ try {
     await connecter(p2);
     await p2.goto(`${BASE}?demo#/abonnement`); await p2.waitForTimeout(400);
     ok(/39\s€ HT par mois/.test(await p2.locator('main').textContent()), 'sur le web, le prix est affiché');
+    // T17 : sur le web, l'abonnement en cours ouvre le portail Stripe ; en
+    // démonstration, on revient sur l'écran avec le signe du portail.
+    const portail = p2.getByRole('button', { name: /Carte, factures, formule, résiliation/ });
+    ok(await portail.isVisible(), 'sur le web, le bouton du portail Stripe est là (abonnement en cours)');
+    await portail.click(); await p2.waitForTimeout(600);
+    ok(/portail Stripe/.test(await p2.locator('main').textContent()) && /#\/abonnement/.test(p2.url()), 'le bouton ouvre l adresse rendue par les données (démonstration : retour avec le signe)', p2.url());
     await c2.close();
   }
 } catch (e) {

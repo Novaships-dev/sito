@@ -192,6 +192,8 @@ export function donneesDemo(): Donnees {
     async site() { exiger(); return { id: 'demo-s1', statut: 'publie', adresse_en_ligne: 'https://exemple.domaine-sito.fr', publie_le: ilYa(1) }; },
     async adresses() { exiger(); return adresses.map((a) => ({ ...a })); },
     async abonnement() { exiger(); return { ...abonnement }; },
+    // Démonstration : pas de Stripe, on revient tout de suite avec le signe.
+    async ouvrirPaiement(action) { exiger(); return `${location.origin}${location.pathname}${location.search}#/abonnement?paiement=demo-${action}`; },
     async connexionGoogle() { exiger(); return { ...google }; },
     async suppression() { exiger(); return suppression && !suppression.annulee_le ? { ...suppression } : null; },
     async demanderSuppression() { exiger(); suppression = { demandee_le: maintenant(), effective_le: ilYa(-30), annulee_le: null }; },

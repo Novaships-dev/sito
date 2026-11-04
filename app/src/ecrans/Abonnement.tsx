@@ -1,9 +1,11 @@
-// Abonnement : formule, état, échéance.
+// Abonnement : formule, état, échéance ; payer et gérer sur le web (T17).
 // Prix acceptés par Fabrice le 9 octobre : 39 € HT par mois sans engagement, ou
 // 390 € HT par an (formule d'engagement).
-// Plus tard, le prix affiché sera lu chez Stripe (plan, 7.6).
-// Dans l'app Android (Play Store) : aucun prix, aucun lien d'achat (règle de
+// Dans l'app Android (Play Store) : aucun prix, aucun bouton d'achat (règle de
 // facturation de Google Play). L'abonnement se prend sur le site Sitô.
+// Le paiement passe par Stripe (fonction Edge `stripe-session`, T16) : l'écran
+// ne fait qu'ouvrir l'adresse rendue ; l'état revient par le webhook.
+import { useState } from 'react';
 import { useApp, useCharge, Chargement, Ecran, Pastille } from '../ui';
 import { dateLisible } from '../jour';
 
@@ -15,13 +17,37 @@ const ETATS = {
   resilie: { texte: 'Résilié', ton: 'neutre' },
 } as const;
 
+// « paiement=ok » au retour de Stripe, dans l'adresse ou après le #.
+function retourPaiement(): string | null {
+  const dansHash = location.hash.includes('?') ? new URLSearchParams(location.hash.split('?')[1]).get('paiement') : null;
+  return new URLSearchParams(location.search).get('paiement') || dansHash;
+}
+const RETOURS: Record<string, string> = {
+  ok: 'Paiement reçu. L’état de votre abonnement se met à jour dans une minute.',
+  annule: 'Paiement annulé : rien n’a été débité.',
+  'demo-paiement': 'Démonstration : la page de paiement Stripe s’ouvrirait ici.',
+  'demo-portail': 'Démonstration : le portail Stripe (carte, factures, résiliation) s’ouvrirait ici.',
+};
+
 export function Abonnement() {
-  const { android } = useApp();
+  const { android, donnees } = useApp();
   const ab = useCharge((d) => d.abonnement());
   const a = ab.valeur;
+  const [occupe, setOccupe] = useState(false);
+  const [erreur, setErreur] = useState<string | null>(null);
+  const retour = retourPaiement();
+
+  async function ouvrir(action: 'paiement' | 'portail', formule?: 'mensuel' | 'annuel') {
+    setOccupe(true); setErreur(null);
+    try { location.assign(await donnees.ouvrirPaiement(action, formule)); }
+    catch (e) { setErreur(e instanceof Error ? e.message : String(e)); }
+    finally { setOccupe(false); }
+  }
+  const enCours = !!a && a.etat !== 'resilie';
 
   return (
     <Ecran titre="Abonnement">
+      {!android && retour && RETOURS[retour] && <p className="carte" role="status">{RETOURS[retour]}</p>}
       <Chargement {...ab} />
       {ab.valeur === null && <p className="carte">Aucun abonnement pour l’instant.</p>}
       {a && (
@@ -34,14 +60,21 @@ export function Abonnement() {
         </section>
       )}
 
-      {!android && (
+      {!android && ab.valeur !== undefined && (
         <section className="carte" aria-labelledby="t-gerer">
           <h2 id="t-gerer">Gérer mon abonnement</h2>
           <ul className="puces">
             <li>{FORMULES.mensuel.nom} : {FORMULES.mensuel.prix}, sans engagement.</li>
             <li>{FORMULES.annuel.nom} : {FORMULES.annuel.prix}.</li>
           </ul>
-          <p className="aide">Le paiement en ligne (carte, factures, changement de formule, résiliation) arrive bientôt.</p>
+          {enCours
+            ? <button className="bouton" disabled={occupe} onClick={() => ouvrir('portail')}>{occupe ? 'Ouverture…' : 'Carte, factures, formule, résiliation'}</button>
+            : <p className="actions">
+                <button className="bouton" disabled={occupe} onClick={() => ouvrir('paiement', 'mensuel')}>S’abonner au mois</button>
+                <button className="bouton secondaire" disabled={occupe} onClick={() => ouvrir('paiement', 'annuel')}>S’abonner à l’année</button>
+              </p>}
+          <p className="aide">Paiement sécurisé par Stripe. Sitô ne voit jamais votre carte.</p>
+          {erreur && <p className="erreur" role="alert">{erreur}</p>}
         </section>
       )}
     </Ecran>

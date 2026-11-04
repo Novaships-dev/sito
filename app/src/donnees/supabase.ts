@@ -206,6 +206,14 @@ export function donneesSupabase(url: string, cle: string): Donnees {
       const s = await siren();
       return verifier(await sb.from('abonnements').select('formule, etat, fin_periode, resiliation_prevue').eq('siren', s).maybeSingle());
     },
+    async ouvrirPaiement(action, formule) {
+      const s = await siren();
+      // Retour sur l'écran Abonnement, qui lit « paiement=ok » ou « annule ».
+      const retour = `${location.origin}${location.pathname}#/abonnement`;
+      const { data, error } = await sb.functions.invoke('stripe-session', { body: { siren: s, action, formule, retour } });
+      if (error || !data?.url) throw new Error(data?.erreur || 'Le paiement ne répond pas. Réessayez dans un moment.');
+      return data.url as string;
+    },
     async connexionGoogle() {
       const s = await siren();
       return verifier(await sb.from('connexions_google').select('etat, fiche, derniere_synchro, motif').eq('siren', s).maybeSingle());

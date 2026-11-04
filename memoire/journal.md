@@ -1934,3 +1934,16 @@ désormais l'abonnement si la clé Stripe est dans le `.env`. Rien n'est
 déployé : décision du 29 oct. (« Stripe on va attendre qu'elle fonctionne »),
 F7 complétée.
 TRACAGE : supabase/functions/_shared/stripe.ts, supabase/functions/stripe-webhook/index.ts, supabase/functions/stripe-session/index.ts, scripts/essai-stripe.mjs, atelier/supprimer-comptes.mjs, scripts/essais.mjs, .github/workflows/essais.yml, memoire/actions-fabrice.md, app/specs/02-TRD.md, app/specs/05-SCHEMA-BACKEND.md, app/specs/01-PRD.md, supabase/README.md, docs/DETTE.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 4 nov. 2026 — T17 (écran Abonnement relié), par Cowork
+
+Plan : 1. `ouvrirPaiement` dans l'interface `Donnees` (Supabase : fonction
+Edge `stripe-session` ; démonstration : retour immédiat) ; 2. boutons sur
+l'écran, web seulement ; 3. contrôles dans `essai-app.mjs`.
+
+Résultat : build 0. Vu dans un navigateur (app construite, démonstration) :
+le portail revenait sur « Page introuvable », parce que le routeur prenait
+`?paiement=…` du `#` pour une route ; corrigé dans `App.tsx`, puis message
+affiché. Android : 0 bouton ; copie cassée (garde retirée) : 1 bouton. Les
+contrôles de `essai-app` tournent dans la CI.
+TRACAGE : app/src/types.ts, app/src/donnees/supabase.ts, app/src/donnees/demo.ts, app/src/ecrans/Abonnement.tsx, app/src/App.tsx, scripts/essai-app.mjs, app/specs/03-APPFLOW.md, app/specs/01-PRD.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

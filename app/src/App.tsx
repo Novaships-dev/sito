@@ -17,7 +17,9 @@ import { Compte } from './ecrans/Compte';
 import { Installer } from './ecrans/Installer';
 
 function useRoute(): string[] {
-  const lire = () => location.hash.replace(/^#\/?/, '').split('/').filter(Boolean);
+  // Ce qui suit « ? » dans le # (retour de Stripe : « #/abonnement?paiement=ok »)
+  // n'est pas une route : l'écran le lit lui-même.
+  const lire = () => location.hash.replace(/^#\/?/, '').split('?')[0].split('/').filter(Boolean);
   const [r, setR] = useState(lire);
   useEffect(() => {
     const f = () => { setR(lire()); window.scrollTo(0, 0); document.getElementById('contenu')?.focus({ preventScroll: true }); };

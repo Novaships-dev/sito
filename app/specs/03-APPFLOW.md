@@ -39,7 +39,7 @@ gauche. « Installer l'app » est aussi joignable sans être connecté.
 | `#/plus` | Plus (téléphone) | `App.tsx` | oui | Fait, prouvé |
 | `#/adresse` | Mon adresse | `Adresse.tsx` | oui | Fait, prouvé (affichage) |
 | `#/google` | Ma fiche Google | `Google.tsx` | oui | Fait, prouvé (affichage) |
-| `#/abonnement` | Abonnement | `Abonnement.tsx` | oui | Fait, prouvé (affichage) |
+| `#/abonnement` | Abonnement | `Abonnement.tsx` | oui | Fait : affichage prouvé ; boutons Stripe reliés (T17), prouvés en démonstration |
 | `#/compte` | Compte | `Compte.tsx` | oui | Fait, prouvé |
 | `#/installer` | Installer l'app | `Installer.tsx` | non | Fait, prouvé (rendu) |
 | `#/inscription/<jeton>` | Créer son compte (lien envoyé par SMS) | `Inscription.tsx` | non (connecté : accueil) | Fait, prouvé |
@@ -133,7 +133,8 @@ active le mode Play Store (mémorisé sur l'appareil).
 | État | Période d'essai / Actif / Paiement en échec / Résilié | idem |
 | Formule et prix | « Formule mensuel : 39 € HT par mois » | « Formule mensuel » **sans prix** |
 | Échéance | fin de l'essai, prochaine échéance, ou date de fin si résiliation demandée | idem |
-| Gérer | liste des deux formules ; paiement en ligne **À faire** (Stripe Checkout, portail) | **rien** : ni prix, ni lien, ni bouton |
+| Gérer | liste des deux formules ; abonnement en cours : bouton « Carte, factures, formule, résiliation » (portail Stripe) ; sinon « S’abonner au mois » / « à l’année » (Stripe Checkout) ; retour `#/abonnement?paiement=ok` ou `annule`, message lu par l’écran (T17) | **rien** : ni prix, ni lien, ni bouton |
+| Retour de Stripe | `?paiement=` après le `#` : n’est pas une route (`App.tsx`), l’écran affiche « Paiement reçu » ou « Paiement annulé » | — |
 
 ### 3.9 Compte
 
@@ -215,8 +216,8 @@ active le mode Play Store (mémorisé sur l'appareil).
 | # | Où | Ce qui se passe | État |
 |---|---|---|---|
 | 1 | Site Sitô ou app web | choix mensuel ou annuel → Stripe Checkout | **À faire** |
-| 2 | Service | webhook Stripe → `evenements_stripe` (une fois) → une seule fonction écrit `abonnements` | **À faire** |
-| 3 | App | Abonnement affiche l'état ; « Gérer » ouvre le portail Stripe (web seulement) | Affichage fait |
+| 2 | Service | webhook Stripe → `evenements_stripe` (une fois) → une seule fonction écrit `abonnements` | Écrit, essayé contre un faux (T16) ; pas déployé (F7) |
+| 3 | App | Abonnement affiche l'état ; « Gérer » ouvre le portail Stripe (web seulement) | Fait (T17) |
 | — | App Android | aucun prix, aucun lien d'achat | Fait, prouvé |
 
 ### 4.8 Supprimer son compte

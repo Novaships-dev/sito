@@ -95,6 +95,8 @@ export interface Donnees {
   site(): Promise<Site | null>;
   adresses(): Promise<Adresse[]>;
   abonnement(): Promise<Abonnement | null>;
+  // Web seulement (T17) : l'adresse du paiement Stripe ou du portail, à ouvrir.
+  ouvrirPaiement(action: 'paiement' | 'portail', formule?: 'mensuel' | 'annuel'): Promise<string>;
   connexionGoogle(): Promise<ConnexionGoogle | null>;
   suppression(): Promise<Suppression | null>;
   demanderSuppression(): Promise<void>;
