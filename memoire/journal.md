@@ -1962,3 +1962,6 @@ métiers. Deux sites fabriqués (photos de synthèse) : `verifier-site` 0
 bloquant, `verifier-mobile` 0, aucun mot d'un autre métier. Restent les
 prompts d'images de la maçonnerie et 12 métiers.
 TRACAGE : generateur/metiers/maconnerie.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+F22 réécrite : passage par le SQL Editor de Supabase (le mode automatique refuse `apply_migration`, 4 nov. à 17 h 40).
+TRACAGE : memoire/actions-fabrice.md, memoire/journal.md
