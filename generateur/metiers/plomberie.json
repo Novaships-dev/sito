@@ -1,0 +1,893 @@
+{
+  "nom": "Plomberie",
+  "libelle": "plomberie et chauffage",
+  "schemaType": "Plumber",
+  "legendesPhotos": {
+    "geste": "Le raccord cuivre brasé au chalumeau, cordon régulier, puis refroidi.",
+    "chantier": "Collecteur en cours de montage, vannes alignées, chaque circuit repéré.",
+    "detail": "Un cuivre brasé à dix centimètres : le cordon fait tout le tour, sans goutte."
+  },
+  "codesApe": [
+    "43.22A",
+    "43.22B"
+  ],
+  "titres": [
+    "Une installation se juge le jour où on coupe l’eau, pas le jour où on l’ouvre.",
+    "Un raccord bien brasé ne se voit plus, il ne fuit plus.",
+    "La pente d’une évacuation se règle au niveau, pas à l’œil.",
+    "Une fuite se cherche avant de casser un mur.",
+    "Le calcaire use une robinetterie plus vite que les années.",
+    "Une vanne d’arrêt par pièce évite de couper toute la maison.",
+    "Un chauffe-eau se choisit pour le nombre de douches, pas pour son prix.",
+    "Le groupe de sécurité d’un chauffe-eau goutte. C’est normal, et il se raccorde.",
+    "Un radiateur qui chauffe en bas et pas en haut demande une purge.",
+    "Un tuyau encastré se pose dans une gaine, pour pouvoir le changer.",
+    "Un WC suspendu tient par son bâti, et son bâti tient par le mur.",
+    "Une douche à l’italienne commence par l’évacuation, sous le sol.",
+    "Le sertissage se fait avec la bonne mâchoire, pas avec la pince du voisin.",
+    "Un tuyau en plomb se remplace, il ne se répare pas.",
+    "Un siphon se démonte à la main. Sinon, il a été mal posé.",
+    "Une évacuation trop plate se bouche, une trop pentue aussi.",
+    "Le cuivre se brase, le multicouche se sertit, le PER se raccorde.",
+    "Une installation se met en pression avant de refermer les cloisons.",
+    "Un robinet thermostatique règle chaque pièce à sa température.",
+    "Une chaudière s’entretient tous les ans. C’est une obligation.",
+    "Un mitigeur thermostatique évite la douche brûlante.",
+    "Le réducteur de pression protège toute l’installation des coups de bélier.",
+    "Un tuyau qui siffle dit que la pression est trop forte.",
+    "Une canalisation gelée se dégèle doucement, jamais au chalumeau.",
+    "Un collecteur bien monté se lit comme un tableau électrique.",
+    "Chaque circuit repéré, c’est une recherche de panne de dix minutes au lieu d’une journée.",
+    "Une évacuation se ventile, sinon les siphons se vident.",
+    "Une odeur d’égout dans une salle de bains vient souvent d’un siphon à sec.",
+    "Un chauffe-eau entartré consomme plus et chauffe moins.",
+    "Le désembouage d’un circuit de chauffage rend leur chaleur aux radiateurs.",
+    "Un radiateur se pose sous la fenêtre, là où le froid entre.",
+    "Une vasque se pose à la hauteur de ceux qui l’utilisent.",
+    "Le joint d’un raccord se serre, il ne s’écrase pas.",
+    "Une fuite au goutte-à-goutte coûte des mètres cubes par an.",
+    "Un compteur qui tourne robinets fermés dit qu’il y a une fuite.",
+    "Le plombier coupe l’eau, vidange, puis travaille. Dans cet ordre.",
+    "Un raccord sur un tuyau encastré se fait le moins souvent possible.",
+    "Une baignoire se pose de niveau, avec une trappe pour le siphon.",
+    "Un receveur de douche se pose sur un lit plein, jamais sur des cales.",
+    "Un ballon d’eau chaude se vidange avant d’être déposé.",
+    "La pompe à chaleur se pose loin des fenêtres des voisins.",
+    "Une installation neuve se rince avant la mise en service.",
+    "Un circuit de chauffage se remplit, se purge, puis s’équilibre.",
+    "Le téflon se pose dans le sens du filetage. Sinon il se défait.",
+    "Un tube cuivre se coupe au coupe-tube, puis s’ébavure.",
+    "Une colonne d’évacuation se fixe à chaque étage.",
+    "Un clapet anti-retour empêche l’eau sale de remonter.",
+    "Un adoucisseur se règle selon la dureté de l’eau du quartier.",
+    "Les tuyaux d’eau chaude se calorifugent, l’énergie reste dedans.",
+    "Un évier se raccorde avec un siphon accessible, pas collé au mur.",
+    "La pression se mesure au manomètre, pas au jet du robinet.",
+    "Un mitigeur qui goutte change de cartouche, pas de robinet.",
+    "Un radiateur en fonte garde la chaleur longtemps après l’arrêt.",
+    "Un plancher chauffant se règle doucement, sur plusieurs jours.",
+    "Un raccord à compression se resserre d’un quart de tour, pas plus.",
+    "Une chasse d’eau qui coule en continu se répare en une heure.",
+    "Un débouchage se fait au furet avant les produits chimiques.",
+    "Une canalisation enterrée se pose sur un lit de sable.",
+    "Le diamètre d’une évacuation se choisit pour ce qui s’y écoule.",
+    "Un tuyau en PVC se colle après ponçage et nettoyage.",
+    "Une douche se teste en eau avant d’être carrelée.",
+    "Un vase d’expansion se gonfle à la bonne pression.",
+    "Une soupape de sécurité se vérifie. C’est elle qui protège le ballon.",
+    "Une installation ancienne se découvre en l’ouvrant. Le devis le dit.",
+    "Un lavabo fendu se change avec son siphon et ses flexibles.",
+    "Les flexibles d’alimentation vieillissent. Ils se changent avec le robinet.",
+    "Un tuyau traversant un mur passe dans un fourreau.",
+    "La chaudière se raccorde à un conduit de fumée conforme.",
+    "Le thermostat d’ambiance se pose loin du radiateur et du soleil.",
+    "Un circuit mal équilibré chauffe une pièce et oublie l’autre.",
+    "Une installation se dessine sur un plan avant de se poser.",
+    "Un WC qui bouge sur le sol finit par fuir à la pipe.",
+    "La pipe d’un WC se pose avec un joint neuf, à chaque fois.",
+    "Une évacuation au sol se protège pendant le chantier, sinon les gravats y tombent.",
+    "Un plombier vérifie la pression d’arrivée avant de promettre une douche puissante.",
+    "Le cuivre ne rouille pas. Il verdit, et il tient.",
+    "Une vanne qui ne tourne plus se change avant la panne.",
+    "Une installation se rend avec le schéma des vannes.",
+    "Un chauffe-eau thermodynamique demande une pièce assez grande, ou une gaine.",
+    "Un radiateur neuf se fixe sur des pattes, au niveau.",
+    "Un circuit de chauffage se protège par un inhibiteur, contre la boue.",
+    "Une salle de bains se refait en commençant par les réseaux.",
+    "La plomberie se pose avant les cloisons, pas après.",
+    "Un raccord sous un évier se laisse accessible.",
+    "Un évier qui se vide mal a souvent un siphon encrassé.",
+    "Un mitigeur se pose avec ses clapets anti-retour.",
+    "Une installation bien faite se reconnaît à son silence.",
+    "Un dégât des eaux commence par un joint qu’on n’a pas changé.",
+    "Le plombier rouvre le compteur avant de partir, et vérifie chaque robinet.",
+    "Une bonne évacuation ne se remarque jamais.",
+    "Le chauffage se met en route en douceur, à la première saison.",
+    "Un tuyau trop serré dans un mur claque à chaque changement de température.",
+    "Un radiateur purgé chauffe de haut en bas, sur toute sa surface.",
+    "Un réseau d’eau se rince après des travaux, pour chasser les copeaux.",
+    "La robinetterie se choisit avec des pièces qu’on trouve encore dans dix ans.",
+    "Une installation se sépare en circuits, pour couper l’un sans l’autre.",
+    "Une chaudière neuve dans un vieux circuit se protège par un filtre.",
+    "Un WC suspendu se pose avec une trappe d’accès au mécanisme.",
+    "Les fuites invisibles se trouvent à la caméra thermique ou au gaz traceur.",
+    "Un plombier mesure deux fois la place du chauffe-eau, porte comprise.",
+    "Une vidange de circuit se fait dans un récipient, pas sur le sol.",
+    "Une salle d’eau sous les toits demande une pompe de relevage, parfois.",
+    "Une installation bien repérée se répare sans plombier, pour les petites choses.",
+    "Le dernier geste d’un plombier, c’est d’ouvrir les robinets un par un."
+  ],
+  "chapos": {
+    "etapes": [
+      [
+        "recherche de fuite",
+        "diagnostic de l’installation",
+        "relevé des réseaux existants"
+      ],
+      [
+        "coupure et vidange",
+        "dépose des anciens équipements",
+        "dépose des tuyaux en plomb",
+        "dépose soignée sans abîmer les murs"
+      ],
+      [
+        "alimentations en cuivre ou multicouche",
+        "évacuations à la bonne pente",
+        "collecteur avec une vanne par circuit",
+        "réseaux encastrés sous gaine"
+      ],
+      [
+        "équipements sanitaires posés",
+        "chauffe-eau remplacé",
+        "radiateurs posés et raccordés",
+        "robinetterie neuve",
+        "WC posés et raccordés"
+      ],
+      [
+        "mise en pression de l’installation",
+        "essai d’étanchéité",
+        "purge et équilibrage du chauffage",
+        "réglage de la température"
+      ],
+      [
+        "calorifugeage des tuyaux",
+        "repérage des circuits",
+        "schéma des vannes remis"
+      ],
+      [
+        "anciens équipements évacués",
+        "chantier nettoyé",
+        "installation rendue en service"
+      ]
+    ],
+    "nombre": [
+      4,
+      5
+    ],
+    "toujours": [
+      3
+    ]
+  },
+  "gestes": [
+    {
+      "terme": "Diagnostic et recherche de fuite",
+      "textes": {
+        "combiner": [
+          [
+            "Le compteur est relevé robinets fermés pour voir s’il tourne.",
+            "La pression d’arrivée est mesurée au manomètre.",
+            "Les réseaux visibles sont suivis, du compteur à chaque équipement.",
+            "Les vannes d’arrêt sont essayées une à une.",
+            "Les fuites cachées sont cherchées à la caméra thermique ou au gaz traceur.",
+            "L’état des évacuations est contrôlé, parfois à la caméra.",
+            "Les matériaux des tuyaux sont repérés : cuivre, plomb, PER, PVC.",
+            "L’âge et l’état du chauffe-eau sont notés.",
+            "Les besoins sont comptés : nombre de douches, de points d’eau, de pièces.",
+            "Le diagnostic est écrit avant le devis."
+          ],
+          [
+            "Un compteur qui tourne robinets fermés dit qu’il y a une fuite quelque part.",
+            "Une pression trop forte use tout, une trop faible déçoit.",
+            "Suivre les tuyaux évite de casser le mauvais mur.",
+            "Une vanne bloquée se découvre le jour de la fuite.",
+            "Trouver une fuite sans casser, c’est le premier service rendu.",
+            "Une évacuation fissurée se voit à la caméra, pas au plafond du voisin.",
+            "Un tuyau en plomb se repère et se remplace.",
+            "Un chauffe-eau de quinze ans se change avant de lâcher.",
+            "Un ballon trop petit fait des douches froides.",
+            "Un devis sans diagnostic chiffre au hasard."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Dépose et vidange",
+      "textes": {
+        "combiner": [
+          [
+            "L’eau est coupée au compteur ou à la vanne du circuit.",
+            "L’installation est vidangée dans un récipient.",
+            "Les anciens équipements sont déposés sans casser la faïence voisine.",
+            "Les tuyaux en plomb sont déposés et évacués à part.",
+            "Le chauffe-eau est vidangé avant d’être sorti.",
+            "Les évacuations ouvertes sont bouchées pour bloquer les odeurs et les gravats.",
+            "Les sols sont protégés sous les équipements déposés.",
+            "Les radiateurs sont déposés circuit vidangé.",
+            "Les canalisations abandonnées sont coupées et bouchées.",
+            "Les gravats sont évacués chaque jour."
+          ],
+          [
+            "Travailler sous pression, c’est inonder la pièce.",
+            "Une vidange sur le sol finit au plafond du dessous.",
+            "Une faïence cassée à la dépose est un carrelage à refaire.",
+            "Le plomb ne va pas avec les autres déchets.",
+            "Un ballon plein pèse plus de deux cents kilos.",
+            "Une évacuation ouverte remonte les odeurs dans toute la maison.",
+            "Un sol protégé ne garde pas de traces de calcaire.",
+            "Un radiateur déposé plein se vide dans le salon.",
+            "Un bout de tuyau oublié dans un mur fuira un jour.",
+            "Un chantier propre se reprend vite le lendemain."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Réseaux d’alimentation",
+      "textes": {
+        "combiner": [
+          [
+            "Les tubes sont coupés au coupe-tube, puis ébavurés.",
+            "Le cuivre est brasé, le multicouche serti, le PER raccordé.",
+            "Un collecteur distribue l’eau, une vanne par circuit.",
+            "Les tuyaux encastrés passent dans des gaines.",
+            "Les traversées de murs passent dans des fourreaux.",
+            "Les tuyaux sont fixés par des colliers à intervalles réguliers.",
+            "L’eau chaude et l’eau froide sont séparées et repérées.",
+            "Un réducteur de pression est posé si l’arrivée est trop forte.",
+            "Les tuyaux d’eau chaude sont calorifugés.",
+            "Chaque raccord encastré est photographié avant fermeture."
+          ],
+          [
+            "Un tube mal ébavuré abîme le joint.",
+            "Chaque matériau a son raccord, jamais un autre.",
+            "Une vanne par circuit, c’est couper la cuisine sans couper la salle de bains.",
+            "Un tuyau sous gaine se change sans casser le mur.",
+            "Un tuyau serré dans le béton claque à chaque variation de température.",
+            "Un tuyau mal fixé vibre et cogne.",
+            "Une eau chaude qui part dans le mauvais robinet se corrige avant les cloisons.",
+            "Une pression trop forte use les joints et les robinets.",
+            "Un tuyau calorifugé garde l’eau chaude jusqu’au robinet.",
+            "Une photo évite de percer un tuyau dans dix ans."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Évacuations",
+      "textes": {
+        "combiner": [
+          [
+            "La pente est réglée au niveau, un à trois centimètres par mètre.",
+            "Le diamètre est choisi selon l’équipement.",
+            "Les raccords PVC sont poncés, nettoyés, puis collés.",
+            "Chaque équipement a son siphon, accessible.",
+            "La colonne est ventilée en toiture ou par un clapet.",
+            "Les évacuations sont fixées par des colliers.",
+            "Les coudes à angle droit sont remplacés par deux coudes à 45 degrés.",
+            "Un clapet anti-retour est posé là où l’égout peut remonter.",
+            "Une pompe de relevage est posée quand la pente manque.",
+            "L’écoulement est essayé avant de refermer."
+          ],
+          [
+            "Une pente trop faible laisse l’eau stagner et boucher.",
+            "Un tuyau trop petit déborde au premier bain vidé.",
+            "Un collage sur un tube sale fuit au bout de quelques mois.",
+            "Un siphon inaccessible se casse le jour du débouchage.",
+            "Sans ventilation, les siphons se vident et les odeurs remontent.",
+            "Une évacuation qui pend finit par se déboîter.",
+            "Un angle droit freine l’eau et retient les déchets.",
+            "Un orage peut faire remonter l’égout dans une cave.",
+            "Une salle d’eau sous l’égout a besoin d’une pompe.",
+            "Un essai à l’eau évite un plafond taché."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Équipements sanitaires",
+      "textes": {
+        "combiner": [
+          [
+            "Le bâti du WC suspendu est fixé au sol et au mur, au niveau.",
+            "La cuvette est posée avec un joint neuf à la pipe.",
+            "Le receveur de douche est posé sur un lit plein, avec sa pente.",
+            "La baignoire est posée de niveau, avec une trappe d’accès.",
+            "La vasque est posée à la hauteur choisie avec les habitants.",
+            "La robinetterie est posée avec ses flexibles neufs.",
+            "Les joints silicone sont tirés après la pose.",
+            "Un mitigeur thermostatique est proposé pour la douche.",
+            "Le mécanisme de chasse est réglé.",
+            "Chaque équipement est essayé en eau."
+          ],
+          [
+            "Un bâti mal fixé fait bouger le WC à chaque usage.",
+            "Un vieux joint sur une pipe neuve fuit sous le carrelage.",
+            "Un receveur sur des cales se fend sous le poids.",
+            "Une baignoire sans trappe se démonte pour changer un siphon.",
+            "Une vasque trop basse fait mal au dos tous les matins.",
+            "Un vieux flexible lâche sous la pression d’un robinet neuf.",
+            "Un joint mal tiré noircit en six mois.",
+            "Un thermostatique évite l’eau brûlante pour les enfants.",
+            "Une chasse mal réglée coule en continu.",
+            "Un équipement essayé est un équipement rendu."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Eau chaude",
+      "textes": {
+        "combiner": [
+          [
+            "Le volume du chauffe-eau est choisi selon le nombre de personnes.",
+            "Le chauffe-eau est fixé sur un mur porteur, ou posé sur un trépied.",
+            "Le groupe de sécurité est posé et raccordé à une évacuation.",
+            "Un raccord diélectrique est posé entre le ballon et le cuivre.",
+            "Le ballon est rempli avant d’être mis sous tension.",
+            "Le thermostat est réglé à la bonne température.",
+            "Une pompe à chaleur est posée loin des chambres et des voisins.",
+            "Le chauffe-eau thermodynamique est raccordé à l’air extérieur si besoin.",
+            "L’ancien ballon est évacué en filière de recyclage.",
+            "Le temps de chauffe est expliqué."
+          ],
+          [
+            "Un ballon trop petit fait la dernière douche froide.",
+            "Un ballon plein accroché à une cloison finit par terre.",
+            "Un groupe de sécurité qui goutte par terre abîme le sol.",
+            "Sans raccord diélectrique, le cuivre ronge le ballon.",
+            "Une résistance allumée à sec grille en quelques secondes.",
+            "Une eau trop chaude brûle, une eau trop tiède laisse vivre les bactéries.",
+            "Une pompe à chaleur fait un bruit qu’on entend la nuit.",
+            "Un thermodynamique dans un placard fermé tourne mal.",
+            "Un vieux ballon ne finit pas dans un fossé.",
+            "Savoir combien de temps chauffe le ballon évite les mauvaises surprises."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Chauffage",
+      "textes": {
+        "combiner": [
+          [
+            "Les radiateurs sont posés sur des pattes, au niveau, sous les fenêtres.",
+            "Chaque radiateur reçoit un robinet thermostatique.",
+            "Le circuit est rempli, purgé, puis mis en pression.",
+            "Les débits sont équilibrés radiateur par radiateur.",
+            "Un désembouage est fait sur un ancien circuit.",
+            "Un filtre protège la chaudière neuve des boues du circuit.",
+            "Le vase d’expansion est gonflé à la bonne pression.",
+            "Le thermostat d’ambiance est posé loin des sources de chaleur.",
+            "Un inhibiteur est ajouté à l’eau du circuit.",
+            "La première mise en chauffe se fait doucement."
+          ],
+          [
+            "Un radiateur mal fixé finit de travers.",
+            "Un robinet thermostatique règle chaque pièce à sa température.",
+            "Un air resté dans le circuit fait glouglouter les radiateurs.",
+            "Un circuit mal équilibré chauffe une pièce et oublie l’autre.",
+            "La boue d’un vieux circuit bouche les radiateurs du bout.",
+            "Une chaudière neuve sur un circuit boueux s’abîme vite.",
+            "Un vase dégonflé fait monter la pression et cracher la soupape.",
+            "Un thermostat au soleil coupe le chauffage trop tôt.",
+            "L’inhibiteur protège le circuit de la corrosion.",
+            "Une mise en chauffe brutale fait claquer les tuyaux."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Mise en service et nettoyage",
+      "textes": {
+        "combiner": [
+          [
+            "L’installation est mise en pression avant fermeture des cloisons.",
+            "Chaque raccord est vérifié, à la main et à l’œil.",
+            "Les robinets sont ouverts un par un pour chasser l’air.",
+            "Le réseau est rincé pour chasser les copeaux.",
+            "Les circuits et les vannes sont repérés par des étiquettes.",
+            "Un schéma de l’installation est remis.",
+            "Le fonctionnement du chauffe-eau et du chauffage est montré.",
+            "Les emballages et les anciens équipements sont évacués.",
+            "Le compteur est relevé à la fin pour vérifier qu’il ne tourne plus.",
+            "Les sols et les meubles sont nettoyés."
+          ],
+          [
+            "Une fuite trouvée avant les cloisons coûte une minute.",
+            "Un raccord oublié se manifeste au premier week-end d’absence.",
+            "L’air dans les tuyaux fait cracher les robinets.",
+            "Un copeau dans un mitigeur le bloque.",
+            "Une étiquette fait gagner du temps à la prochaine intervention.",
+            "Un schéma vaut mieux qu’un souvenir.",
+            "Une installation expliquée est une installation bien utilisée.",
+            "Un carton laissé est un carton à jeter pour le client.",
+            "Un compteur immobile dit que le travail est fini.",
+            "Le dernier geste, c’est de rendre la pièce propre."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    }
+  ],
+  "coupure": {
+    "avant": {
+      "etapes": [
+        [
+          "tuyaux rouillés",
+          "raccords verdis",
+          "tuyaux en plomb",
+          "tuyaux apparents",
+          "fuite au raccord",
+          "robinetterie entartrée"
+        ],
+        [
+          "vieille chaudière entartrée",
+          "ballon rouillé",
+          "radiateur en fonte qui fuit",
+          "radiateur froid en haut",
+          "réservoir de fioul",
+          "chaudière au sol ancienne"
+        ],
+        [
+          "WC ancien jauni",
+          "lavabo fendu",
+          "receveur fêlé",
+          "baignoire ancienne",
+          "robinet qui goutte",
+          "sous-évier encombré"
+        ],
+        [
+          "évacuation lente",
+          "odeurs d’égout",
+          "joints noircis",
+          "pression trop faible"
+        ]
+      ],
+      "nombre": [
+        3,
+        3
+      ]
+    },
+    "apres": {
+      "etapes": [
+        [
+          "anciens tuyaux déposés",
+          "plomb remplacé",
+          "diagnostic fait",
+          "installation vidangée"
+        ],
+        [
+          "cuivre neuf brasé",
+          "collecteur neuf",
+          "alimentation encastrée sous gaine",
+          "évacuations à la bonne pente"
+        ],
+        [
+          "chauffe-eau neuf",
+          "radiateur neuf",
+          "chaudière neuve",
+          "pompe à chaleur posée",
+          "robinets thermostatiques"
+        ],
+        [
+          "WC suspendu",
+          "douche neuve",
+          "meuble vasque neuf",
+          "robinetterie neuve",
+          "évier neuf"
+        ],
+        [
+          "installation mise en pression",
+          "circuits repérés",
+          "purge et équilibrage",
+          "chantier rendu propre"
+        ]
+      ],
+      "nombre": [
+        3,
+        4
+      ],
+      "toujours": [
+        1
+      ]
+    }
+  },
+  "legendes": {
+    "comparateurs": {
+      "combiner": [
+        [
+          "Chaufferie",
+          "Salle d’eau",
+          "Radiateur",
+          "Douche",
+          "Cuisine",
+          "Toilettes",
+          "Placard du ballon",
+          "Sous-évier",
+          "Mur technique",
+          "Buanderie",
+          "Salle de bains",
+          "Sous-sol"
+        ],
+        [
+          "installation vidangée",
+          "plomb déposé",
+          "fuite trouvée",
+          "anciens tuyaux retirés",
+          "évacuation reprise",
+          "circuit désemboué",
+          "réseau relevé",
+          "vanne posée",
+          "pression mesurée",
+          "gaines posées"
+        ],
+        [
+          "équipement neuf",
+          "cuivre brasé",
+          "collecteur neuf",
+          "chauffe-eau neuf",
+          "WC suspendu",
+          "robinetterie neuve",
+          "radiateur neuf",
+          "douche neuve"
+        ]
+      ],
+      "joints": [
+        ", ",
+        ", "
+      ],
+      "fin": "."
+    },
+    "invitation": {
+      "combiner": [
+        [
+          "Faites glisser la couture",
+          "Déplacez la séparation",
+          "Touchez la photo",
+          "Glissez le trait",
+          "Attrapez la couture",
+          "Faites glisser le curseur",
+          "Déplacez le trait",
+          "Passez le doigt sur la photo"
+        ],
+        [
+          "pour comparer l’avant et l’après.",
+          "pour voir l’installation avant les travaux.",
+          "pour passer d’un état à l’autre.",
+          "pour voir ce que le chantier a changé.",
+          "pour retrouver l’installation d’origine.",
+          "pour voir la pièce avant la reprise.",
+          "pour comparer les deux états.",
+          "pour voir l’équipement avant et après.",
+          "pour mesurer le travail fait.",
+          "pour voir la différence."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    },
+    "precision": {
+      "combiner": [
+        [
+          "Même point de vue, même cadrage.",
+          "Les deux photos sont prises du même endroit.",
+          "Même angle, même distance.",
+          "Les deux images ont le même cadrage.",
+          "Même endroit, même objectif.",
+          "Le point de vue ne bouge pas d’une photo à l’autre.",
+          "Photographié deux fois, depuis le même pas de porte.",
+          "Même place, même hauteur d’objectif.",
+          "Le photographe n’a pas bougé entre les deux."
+        ],
+        [
+          "Seule l’installation change.",
+          "La différence vient du chantier.",
+          "Rien d’autre ne change que l’équipement.",
+          "Ce qui change, c’est le travail fait.",
+          "La pièce est la même, l’installation non.",
+          "Seuls les réseaux ont été repris.",
+          "Ce qui diffère, ce sont les tuyaux et les équipements.",
+          "Entre les deux, il y a le chantier.",
+          "L’écart, c’est le travail du plombier."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    }
+  },
+  "rubriques": {
+    "gestes": [
+      "Le détail des postes.",
+      "Ce que recouvre un chantier de plomberie.",
+      "Ce qui se fait sur l’installation.",
+      "Les étapes, dans l’ordre.",
+      "Étape par étape.",
+      "Du compteur au robinet.",
+      "Comment se refait une installation.",
+      "Les postes du chantier.",
+      "Ce que fait le plombier.",
+      "Du diagnostic à la mise en service.",
+      "Le travail, poste par poste.",
+      "Ce qui se fait, et pourquoi.",
+      "Les gestes du chantier.",
+      "Dans l’ordre du chantier.",
+      "Ce que le devis détaille."
+    ],
+    "chantier": [
+      "Le chantier.",
+      "Sur l’installation.",
+      "En cours de travaux.",
+      "Pendant les travaux.",
+      "Sur place.",
+      "Derrière les murs.",
+      "Le chantier en cours.",
+      "Les travaux, en images.",
+      "Ce que montre le chantier.",
+      "Sur le chantier.",
+      "Pendant le montage.",
+      "L’installation en travaux.",
+      "Ce qui se voit en cours.",
+      "Au milieu du chantier.",
+      "Les réseaux en cours."
+    ],
+    "verifiable": [
+      "Ce qui se vérifie.",
+      "Les faits publics.",
+      "Ce que disent les registres.",
+      "Ce qui est public.",
+      "Les registres officiels.",
+      "Ce que chacun peut vérifier.",
+      "L’entreprise, dans les registres.",
+      "Les données publiques.",
+      "Les sources officielles.",
+      "Ce que disent les sources publiques.",
+      "Vérifiable par tous.",
+      "Les faits, sans commentaire.",
+      "Ce que l’État publie.",
+      "Dans les bases publiques.",
+      "Les informations légales."
+    ],
+    "contact": [
+      "Parler du chantier.",
+      "Prendre contact.",
+      "Faire venir quelqu’un.",
+      "Demander une visite.",
+      "Montrer l’installation.",
+      "Parler de votre installation.",
+      "Faire voir la fuite.",
+      "Appeler l’entreprise.",
+      "Demander un passage.",
+      "Faire constater.",
+      "Prendre rendez-vous.",
+      "Une question sur un équipement ?",
+      "Faire chiffrer.",
+      "Parler du projet.",
+      "Joindre l’entreprise."
+    ],
+    "prix": [
+      "Ce que ça coûte.",
+      "Les tarifs, poste par poste.",
+      "Avant de demander un devis.",
+      "Combien ça coûte.",
+      "Les prix, poste par poste.",
+      "Les ordres de grandeur.",
+      "Les tarifs pratiqués.",
+      "Ce que coûte la plomberie.",
+      "Le prix des postes.",
+      "Avant le devis.",
+      "Les prix du métier.",
+      "Ce qui fait le prix.",
+      "Les tarifs, sans détour.",
+      "Les fourchettes de prix.",
+      "Ce que dit le devis."
+    ]
+  },
+  "mot": "Plomberie",
+  "matiere": [
+    "À dix centimètres, le cordon de brasure fait tout le tour du raccord.",
+    "Le cuivre neuf brille, puis brunit en quelques mois.",
+    "Un collecteur aligne ses vannes comme les touches d’un clavier.",
+    "La bague d’un multicouche serti garde la marque de la mâchoire.",
+    "Un robinet thermostatique porte ses chiffres de un à cinq.",
+    "Le calorifuge noir habille le tube d’eau chaude d’un bout à l’autre.",
+    "Le téflon enroulé blanchit le filetage avant le serrage.",
+    "Le tube PER arrive en couronne et se déroule sans couder.",
+    "Un échangeur à plaques montre ses lamelles serrées.",
+    "Le cuivre verdit avec l’humidité, sans perdre sa tenue.",
+    "Une vanne quart de tour se lit d’un regard : ouverte ou fermée.",
+    "Le chrome d’une robinetterie neuve renvoie la lumière sans tache de calcaire.",
+    "Une évacuation en PVC gris garde sa pente, collier après collier.",
+    "Un radiateur en acier se laque, un radiateur en fonte se peint.",
+    "Le manomètre de la chaudière indique la pression du circuit.",
+    "Un raccord diélectrique sépare deux métaux qui se rongeraient.",
+    "La flamme bleue du chalumeau chauffe le cuivre jusqu’au rouge sombre.",
+    "Un coude à 45 degrés guide l’eau sans la freiner.",
+    "Le groupe de sécurité porte une soupape et une évacuation.",
+    "Une cartouche de mitigeur se change en dix minutes.",
+    "Les étiquettes du collecteur nomment chaque pièce.",
+    "Une gaine annelée laisse glisser le tube qu’elle protège.",
+    "Le joint fibre d’un raccord s’écrase au serrage, juste assez.",
+    "Un siphon transparent laisse voir sa garde d’eau.",
+    "La purge d’un radiateur siffle, puis crache une goutte d’eau.",
+    "Une eau calcaire laisse des traces blanches sur l’inox.",
+    "Un tube cuivre ébavuré a une arête intérieure lisse.",
+    "La céramique d’un WC suspendu ne touche pas le sol.",
+    "Un vase d’expansion rouge se gonfle comme un pneu.",
+    "Un tuyau bien fixé ne bouge pas sous la main."
+  ],
+  "prix": {
+    "note": "Ordres de grandeur nationaux, relevés le 4 novembre 2026. Ce ne sont pas les prix de l'entreprise et ce n'est pas un devis.",
+    "sources": [
+      {
+        "nom": "Travaux.com, prix d’un plombier",
+        "url": "https://travaux.com/plomberie/guide-des-prix/prix-dun-plombier"
+      },
+      {
+        "nom": "La Prime Énergie, prix d’un chauffe-eau",
+        "url": "https://www.laprimeenergie.fr/les-travaux/le-chauffage/chauffe-eau-prix"
+      },
+      {
+        "nom": "La Maison Saint-Gobain, prix des travaux de plomberie",
+        "url": "https://www.lamaisonsaintgobain.fr/guides-travaux/plomberie-sanitaire/tarif-plombier-et-prix-des-travaux-de-plomberie"
+      }
+    ],
+    "postes": [
+      {
+        "poste": "Chauffe-eau électrique, fourni et posé",
+        "bas": 500,
+        "haut": 1500,
+        "unite": "€/u",
+        "note": "Selon le volume. Un thermodynamique coûte bien plus."
+      },
+      {
+        "poste": "WC suspendu, fourni et posé",
+        "bas": 550,
+        "haut": 850,
+        "unite": "€/u",
+        "note": "Un WC classique au sol coûte 350 à 550 €."
+      },
+      {
+        "poste": "Lavabo ou évier, fourni et posé",
+        "bas": 400,
+        "haut": 1000,
+        "unite": "€/u",
+        "note": "Prix TTC, robinetterie comprise."
+      },
+      {
+        "poste": "Mitigeur thermostatique, remplacé",
+        "bas": 220,
+        "haut": 350,
+        "unite": "€/u",
+        "note": "Un mitigeur simple coûte 100 à 200 €."
+      },
+      {
+        "poste": "Débouchage d’un évier, d’une douche ou d’une baignoire",
+        "bas": 100,
+        "haut": 200,
+        "unite": "€",
+        "note": "Hors hydrocurage de colonne."
+      }
+    ],
+    "exemple": {
+      "titre": "Des toilettes et un chauffe-eau à changer",
+      "bas": 1050,
+      "haut": 2350,
+      "note": "Calculé avec les postes ci-dessus : un WC suspendu (550 à 850 €) et un chauffe-eau électrique (500 à 1 500 €), fournis et posés. La reprise des réseaux s’ajoute si elle est nécessaire."
+    }
+  },
+  "nuancierEtiquette": "Voir la pièce dans une autre teinte",
+  "teintes": [
+    {
+      "nom": "D’origine",
+      "voile": "",
+      "pastille": "#C9C4BB"
+    },
+    {
+      "nom": "Blanc",
+      "voile": "40 12% 94% / .30",
+      "pastille": "#EFEDE8"
+    },
+    {
+      "nom": "Gris clair",
+      "voile": "210 8% 74% / .30",
+      "pastille": "#B6BCC1"
+    },
+    {
+      "nom": "Bleu glacier",
+      "voile": "200 30% 80% / .30",
+      "pastille": "#BCD3DF"
+    },
+    {
+      "nom": "Vert d’eau",
+      "voile": "160 20% 70% / .30",
+      "pastille": "#A3C1B5"
+    },
+    {
+      "nom": "Sable",
+      "voile": "40 35% 72% / .30",
+      "pastille": "#CDBA94"
+    },
+    {
+      "nom": "Terracotta",
+      "voile": "16 50% 50% / .32",
+      "pastille": "#BF6F4C"
+    },
+    {
+      "nom": "Anthracite",
+      "voile": "210 8% 26% / .34",
+      "pastille": "#3C4146"
+    },
+    {
+      "nom": "Cuivre",
+      "voile": "24 55% 48% / .32",
+      "pastille": "#B87337"
+    },
+    {
+      "nom": "Noir",
+      "voile": "0 0% 14% / .34",
+      "pastille": "#262626"
+    }
+  ],
+  "alt": {
+    "avant": "chaudière murale ancienne avant travaux, entartrée, raccords verdis",
+    "apres": "le même emplacement avec l’équipement neuf posé",
+    "invitation": "Comparer l’installation avant et après les travaux",
+    "avant2": "un autre chantier avant la reprise de la plomberie",
+    "apres2": "le même chantier une fois la plomberie terminée",
+    "hero": "pièce technique dont une moitié garde l’ancienne installation et l’autre la neuve",
+    "invitation2": "Comparer un second chantier avant et après",
+    "ouverture": "geste du métier sur une installation en cours",
+    "chantier": "collecteur en cours de montage, vannes alignées",
+    "chantierBis": "tubes cuivre coupés à longueur sur des tréteaux",
+    "detail": "gros plan sur un raccord cuivre brasé",
+    "detailBis": "gros plan sur un collecteur et ses vannes",
+    "geste": "le chalumeau qui brase un raccord cuivre"
+  },
+  "estimateur": {
+    "titre": "Vos équipements",
+    "mesure": {
+      "etiquette": "Nombre d’équipements",
+      "unite": "u",
+      "min": 1,
+      "max": 20,
+      "pas": 1,
+      "defaut": 3,
+      "aria": "Nombre d’équipements à poser ou remplacer"
+    }
+  }
+}

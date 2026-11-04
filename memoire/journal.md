@@ -2019,3 +2019,16 @@ sites (U2) ; porté à 112 titres : 100 sites sans défaut. Deux sites
 fabriqués : `verifier-site` 0 bloquant, `verifier-mobile` 0, aucun mot d'un
 autre métier. Leçon : un métier tient à 100 sites avec au moins ~105 titres.
 TRACAGE : generateur/metiers/carrelage.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 4 nov. 2026 — T32, plomberie (4 sur 13), par Cowork
+
+Plan : 1. `generateur/metiers/plomberie.json` (alimentations, évacuations,
+sanitaires, eau chaude, chauffage), textes tirés du plan d'images ; 2. prix
+relevés le 4 nov. (Travaux.com, La Prime Énergie, La Maison Saint-Gobain) ;
+3. capacité et fabrication.
+
+Résultat : 104 titres, 100 sites sans défaut du premier coup. Deux sites
+fabriqués : `verifier-site` 0 bloquant, `verifier-mobile` 0, aucun mot d'un
+autre métier. Aucune mention de qualification gaz : rien ne dit qu'un artisan
+donné l'a. L'estimateur compte des équipements (unité « u »).
+TRACAGE : generateur/metiers/plomberie.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
