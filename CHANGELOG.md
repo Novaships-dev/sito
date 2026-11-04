@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 4 nov. | T59 : `scripts/prospection/accepter.mjs` : l'artisan qui accepte garde son modèle, un nouveau le remplace ; conflit du même modèle accepté deux fois ; la préparation du soir réserve les modèles des artisans passés « essai lancé » ou « abonné ». Essai `essai-accepter.mjs`. |
 | 4 nov. | T58 : le lot du jour se fabrique sur les modèles libres du métier (`fabriquer-lot.mjs`, `repartir`) ; le modèle est noté au registre des appels ; sur un modèle, aucun voisin ne change le tirage ; plus de contrôle d'unicité du lot. `essai-lot.mjs` fabrique un vrai lot sur des images de synthèse. |
 | 4 nov. | T57 : modèles de prospection. `--graine` dans le générateur ; `scripts/prospection/modeles.mjs` tire et vérifie 10 modèles par métier ; `prospection/modeles/` (ravalement, couverture, peinture) ; essai `essai-modeles.mjs`. |
 | 4 nov. | Décision de Fabrice : modèles de prospection (`docs/specs/S-MODELES.md`, T57 à T60, Q6). |

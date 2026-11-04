@@ -38,6 +38,15 @@ cite la décision ; il n'en est pas une.
 5. `scripts/prospection/photos-artisan.mjs` et une procédure pour Fabrice :
    le dossier de photos reçues devient le site d'abonné (T60).
 
+## 3 bis. Ce qui est fait (4 nov. 2026)
+
+| Pièce | État |
+|---|---|
+| T57 modèles, `--graine` | fait : 10 modèles libres par métier pour ravalement, couverture, peinture (`prospection/modeles/`) |
+| T58 lot du jour | fait : chaque artisan reçoit un modèle libre, noté au registre des appels |
+| T59 acceptation | fait : quand Fabrice touche « Essai lancé » ou « Abonné » dans la page d'appels, la préparation du soir réserve le modèle de l'artisan et en tire un nouveau ; à la main : `node scripts/prospection/accepter.mjs --siren <SIREN>` |
+| T60 photos reçues | à faire, attend la réponse à Q6 (où garder les photos) |
+
 ## 4. Preuve attendue
 
 Voir les colonnes « Preuve » de T57 à T60 dans `app/specs/07-TACHES.md`.

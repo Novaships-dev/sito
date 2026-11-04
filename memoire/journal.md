@@ -1752,3 +1752,14 @@ encore le choix des textes ; sur un modèle, les voisins ne comptent plus
 entre modèles). Le contre-essai de `essai-lot` rate déjà sur cette machine
 (cassure du marqueur, sans images) comme avant T58 ; attrapée sur le PC.
 TRACAGE : scripts/prospection/fabriquer-lot.mjs, scripts/prospection/registre.mjs, generateur/composer.mjs, scripts/essai-lot.mjs, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md
+
+## 4 nov. 2026 — T59 (acceptation d'un site), par Cowork
+
+Plan : 1. `accepter.mjs` (`--siren`, `--tous`) ; 2. appel de `accepterTous`
+dans `preparer-appels.mjs` avant le lot ; 3. `essai-accepter.mjs`.
+
+Résultat : 13 contrôles, 0 faute ; contre-essai 7 fautes ; `essai-preparer-appels`
+toujours vert (49). Choix : pas de nouveau statut dans la page d'appels ;
+« Essai lancé » et « Abonné » valent acceptation (l'artisan a dit oui).
+Réversible ; dit à Fabrice.
+TRACAGE : scripts/prospection/accepter.mjs, scripts/prospection/preparer-appels.mjs, scripts/essai-accepter.mjs, scripts/essais.mjs, .github/workflows/essais.yml, app/specs/07-TACHES.md, docs/specs/S-MODELES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

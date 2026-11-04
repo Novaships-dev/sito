@@ -44,6 +44,7 @@ import { RACINE } from '../env.mjs';
 import * as ex from './extraire.mjs';
 import { qualifier, lot as prendreLot } from './qualifier.mjs';
 import * as registreAppels from './registre.mjs';
+import { accepterTous } from './accepter.mjs';
 import { fabriquerLot, jourDeParis } from './fabriquer-lot.mjs';
 import { page, SMS, verifier as verifierPage } from './page-appels.mjs';
 import { publier, EN_LIGNE } from './publier.mjs';
@@ -115,8 +116,17 @@ export async function preparer({
   appels = registreAppels.CHEMIN, mobile = 1, sec = false,
   projet = PROJET_DEFAUT, enLigne = EN_LIGNE, client = null,
   slugAppels = null, worker = WORKER, dire = console.log,
+  modeles = join(RACINE, 'prospection', 'modeles'),
 } = {}) {
   const reg = registreAppels.lire(appels);
+  // D'abord les artisans qui ont accepté (« essai lancé », « abonné ») : leur
+  // modèle est réservé avant que le lot du soir puise dans les modèles libres
+  // (T59, docs/specs/S-MODELES.md).
+  if (!sec) {
+    const acceptes = accepterTous(reg, { jour, modeles });
+    for (const x of acceptes) dire(`Accepté : ${x.siren} garde le modèle ${x.modele}${x.conflit ? `. ATTENTION : ${x.conflit}` : ''}`);
+    if (acceptes.length && !registreAppels.valider(reg).length) registreAppels.ecrire(reg, appels);
+  }
   const parMetier = {};
   for (const [m, d] of Object.entries(entrees.metiers)) {
     parMetier[m] = qualifier(d.entreprises, { registre: reg, sites }).retenus;
@@ -124,7 +134,7 @@ export async function preparer({
   const lot = prendreLot(parMetier, combien);
   dire(`Lot qualifié avec le web : ${lot.length} candidat(s) — ${Object.entries(parMetier).map(([m, r]) => `${m} ${Math.min(r.length, combien)}/${r.length}`).join(', ')}`);
 
-  const bilanLot = await fabriquerLot({ lot, jour, sortie, images, registre, appels, mobile, sec, dire });
+  const bilanLot = await fabriquerLot({ lot, jour, sortie, images, registre, appels, mobile, sec, dire, modeles });
 
   const dossier = bilanLot.dossier;
   const slug = slugAppels || appelsSlug();
