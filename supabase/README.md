@@ -159,6 +159,9 @@ devenues prêtes) qui appellent `repository_dispatch` de GitHub avec le SIREN.
 Sans le secret `github_dispatch` au coffre (F21), rien n'est appelé. La
 première migration faisait échouer toute écriture de `profils` (piège du
 4 nov.) ; corrigée une minute après. Essai : `essais/prevenir.sql` (rouge avant
-la migration : `net.http_request_queue` absente). Passage de l'essai sur la
-version corrigée : en attente (l'outil a posé une question restée sans
-réponse, à relancer).
+la migration : `net.http_request_queue` absente). Sur la version corrigée
+(4 nov., 13 h 30) : 5 résultats attendus, aucune « FAUTE » (sans jeton : aucun
+appel ; avec jeton : un appel au bon SIREN et au bon type ; photo reçue : rien ;
+photo prête : un appel ; tarif supprimé : un appel). Un artisan connecté écrit
+son profil, un tarif, une photo ; il ne touche pas au profil d'un autre ; il ne
+peut pas appeler la fonction. Conseillers : rien de nouveau.
