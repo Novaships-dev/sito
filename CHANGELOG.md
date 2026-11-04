@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 4 nov. | T32 (3 sur 13) : textes du carrelage et de la faïence (`generateur/metiers/carrelage.json`) ; prix nationaux sourcés ; 100 sites différents dans un département. |
 | 4 nov. | T32 (2 sur 13) : textes de la menuiserie et des fenêtres (`generateur/metiers/menuiserie.json`) ; prix nationaux sourcés ; 100 sites différents dans un département. |
 | 4 nov. | T11 : les sites d'abonnés ont un formulaire de demande (quatre archétypes), qui écrit dans la base par `deposer_demande` ; la page des mentions légales dit ce qu'il recueille ; `verifier-site` refuse un formulaire sans champ piège, sans étiquettes ou avec une clé secrète (R-FORM). En ligne dès que `SUPABASE_CLE_PUBLIQUE` est posée (F21). |
 | 4 nov. | T10 : la base reçoit les demandes du formulaire d'un site d'abonné (`deposer_demande`) : robots écartés sans rien écrire, 10 demandes par jour et par adresse, 50 par site, adresse IP jamais gardée en clair, demande comptée dans les statistiques du jour. |

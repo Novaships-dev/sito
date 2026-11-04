@@ -2007,3 +2007,15 @@ bloquant, `verifier-mobile` 0. Relu dans les pages : « façades décollées »
 pouvait se lire comme une façade de maison, devenu « façades de placard
 décollées ». L'estimateur compte des fenêtres (unité « u »).
 TRACAGE : generateur/metiers/menuiserie.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 4 nov. 2026 — T32, carrelage (3 sur 13), par Cowork
+
+Plan : 1. `generateur/metiers/carrelage.json` (sols, faïence, douches à
+l'italienne, terrasses), textes tirés du plan d'images ; 2. prix relevés le
+4 nov. (Habitatpresto, ABC Travaux) ; 3. capacité et fabrication.
+
+Résultat : avec 87 titres, 13 paires de voisins avaient le même titre à 100
+sites (U2) ; porté à 112 titres : 100 sites sans défaut. Deux sites
+fabriqués : `verifier-site` 0 bloquant, `verifier-mobile` 0, aucun mot d'un
+autre métier. Leçon : un métier tient à 100 sites avec au moins ~105 titres.
+TRACAGE : generateur/metiers/carrelage.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

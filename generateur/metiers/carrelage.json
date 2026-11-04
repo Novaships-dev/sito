@@ -1,0 +1,897 @@
+{
+  "nom": "Carrelage",
+  "libelle": "carrelage et faïence",
+  "schemaType": "HomeAndConstructionBusiness",
+  "legendesPhotos": {
+    "geste": "La colle peignée en sillons réguliers, le carreau posé puis glissé.",
+    "chantier": "Carreaux empilés, croisillons et peigne à colle, la pièce vidée.",
+    "detail": "Un joint de deux millimètres, serré, nettoyé avant qu’il ne tire."
+  },
+  "codesApe": [
+    "43.33Z"
+  ],
+  "titres": [
+    "Un carrelage se juge à son support, pas à ses carreaux.",
+    "Un sol pas plan se voit sous un grand carreau, à la lumière rasante.",
+    "Le joint fait la moitié du travail. On le regarde tous les jours.",
+    "Une douche à l’italienne commence par sa pente et son étanchéité.",
+    "Un carreau qui sonne creux finira par casser.",
+    "Le calepinage se fait avant la première goutte de colle.",
+    "La coupe se met là où on ne la regarde pas.",
+    "Un double encollage tient un grand format. Un simple, pas toujours.",
+    "Une faïence ne va jamais au sol. Elle n’est pas faite pour ça.",
+    "Une terrasse se carrelle avec une pente, sinon l’eau stagne.",
+    "Un ragréage se coule avant le carrelage, pas après les fissures.",
+    "Un joint de fractionnement évite qu’un grand sol ne se fende.",
+    "Le premier rang se pose au laser, le reste suit.",
+    "Un carreau imitation bois se pose avec un joint fin, comme un parquet.",
+    "Une crédence se pose après le plan de travail, jamais avant.",
+    "Les croisillons se retirent avant que la colle ne prenne.",
+    "Une natte d’étanchéité se pose sous la douche, et remonte sur les murs.",
+    "Le voile de ciment se nettoie à l’éponge, dans l’heure.",
+    "Une plinthe carrelée finit un sol comme un cadre finit un tableau.",
+    "Un carreau de ciment se protège avant le joint, sinon il se tache.",
+    "Un ancien carrelage peut recevoir le neuf, s’il est sain et plan.",
+    "La colle se peigne dans un seul sens, et le carreau se pose en travers.",
+    "Un grès cérame pleine masse ne montre pas l’usure.",
+    "Un sol de cuisine se choisit pour ce qui y tombe.",
+    "Les joints d’une douche se font en résine ou en ciment adapté.",
+    "Un nez de marche protège l’arête d’un escalier carrelé.",
+    "Les carreaux d’un même lot se mélangent pour éviter les nuances.",
+    "Une salle de bains se carrelle du sol au plafond, ou à une hauteur choisie.",
+    "Un seuil de douche se pose avant les murs.",
+    "Un siphon se pose à niveau avec le carrelage fini, au millimètre.",
+    "Une découpe autour d’un tuyau se fait à la scie cloche, pas à la pince.",
+    "Les angles se finissent au profilé ou en coupe à 45 degrés.",
+    "Une chape doit être sèche avant le carrelage. Elle prend son temps.",
+    "Un carreau posé sur une chape humide se décolle au premier hiver.",
+    "Le carrelage sur plots draine l’eau d’une terrasse par en dessous.",
+    "Une mosaïque se pose par trames, et les trames se raccordent sans se voir.",
+    "Le zellige a des carreaux irréguliers. Le joint les accompagne.",
+    "Les dilatations se laissent en bordure, cachées sous la plinthe.",
+    "Un mur carrelé commence par une règle posée au niveau.",
+    "Le grand format demande un sol parfaitement plan.",
+    "Les joints clairs se salissent, les joints foncés se voient sur un carreau clair.",
+    "Une coupe propre se fait à la carrelette, une coupe courbe à la meuleuse.",
+    "Une douche à l’italienne fuit rarement par le carreau, souvent par le joint de reprise.",
+    "Un carrelage antidérapant se choisit pour l’extérieur et la salle de bains.",
+    "Le carrelage d’un balcon se pose sur une étanchéité.",
+    "Une plage de piscine se pose avec une colle et un joint pour l’eau.",
+    "Un joint qui noircit dit qu’il a été mal choisi ou mal nettoyé.",
+    "Un carreau fendu se remplace seul, si on a gardé des carreaux du lot.",
+    "Le carreleur garde une boîte de carreaux pour plus tard. Le client aussi.",
+    "Une salle d’eau carrelée se rend après un essai d’eau dans la douche.",
+    "Le carrelage se pose quand les murs sont faits, et avant la peinture des boiseries.",
+    "Un sol chauffant se carrelle avec une colle souple, chauffage éteint.",
+    "La première rangée d’un mur se pose au-dessus du sol, sur une règle.",
+    "Les trous de cheville se percent au foret pour carrelage, sans percussion.",
+    "Une crédence en métro se pose en quinconce, joints alignés.",
+    "Le carrelage se commande avec dix pour cent de plus, pour les coupes.",
+    "Un carreau posé à la diagonale demande plus de coupes, et plus de temps.",
+    "Un sol en tomettes se pose à la chaux, comme autrefois.",
+    "Le joint d’un carrelage extérieur résiste au gel ou se fend.",
+    "Un carreau collé sans peigne n’adhère qu’au centre.",
+    "Les arêtes d’un escalier carrelé se protègent avant d’être utilisées.",
+    "Le niveau se vérifie carreau par carreau, pas à la fin.",
+    "Une coupe en bord de mur se fait au même côté, des deux côtés de la pièce.",
+    "Un joint sec se ponce rarement. Il se nettoie frais.",
+    "Une salle de bains rénovée commence par la dépose complète.",
+    "Un ancien carrelage déposé laisse souvent une chape à reprendre.",
+    "Les carreaux grand format se portent à deux, avec des ventouses.",
+    "Une baignoire se carrelle avec une trappe de visite.",
+    "Un carrelage mural sur plaque de plâtre demande une plaque hydrofuge en pièce humide.",
+    "Une marche carrelée se pose de l’arrière vers le nez.",
+    "Le carrelage d’une entrée se choisit pour les gravillons des chaussures.",
+    "Une pente de deux pour cent suffit à faire partir l’eau.",
+    "Le joint époxy ne craint ni l’eau ni les taches.",
+    "Un sol carrelé se protège pendant la suite du chantier.",
+    "La couleur d’un joint s’essaie sur deux carreaux, pas sur le nuancier.",
+    "Une coupe sous une porte se fait avant la pose, au niveau du sol fini.",
+    "Un seuil entre deux sols se pose au même niveau, sans marche.",
+    "Un carreau se pose en appuyant, puis en faisant glisser d’un centimètre.",
+    "La colle se gâche pour une demi-heure de pose, pas plus.",
+    "Un mur de douche se carrelle de bas en haut, au cordeau.",
+    "Un trou de siphon se découpe avant la pose du dernier carreau.",
+    "Un carrelage extérieur se pose par temps sec, hors gel.",
+    "Les carreaux d’angle se posent en premier, puis le reste.",
+    "Une crédence protège le mur. Elle se nettoie d’un coup d’éponge.",
+    "Un carreleur vérifie la planéité du sol à la règle de deux mètres.",
+    "Le joint de silicone se pose dans les angles, jamais le ciment.",
+    "La fin d’un carrelage, c’est un sol propre, sans voile.",
+    "Un carreau se choisit pour la pièce, pas pour la photo du catalogue.",
+    "Le sol d’une salle de bains se carrelle avant le meuble, pas autour.",
+    "Une douche de plain-pied se prévoit dès la chape.",
+    "Les carreaux d’une même pièce viennent du même lot de fabrication.",
+    "Un joint plus large rattrape un carreau irrégulier, pas un mauvais support.",
+    "Une ligne de joint se suit d’une pièce à l’autre, sous les portes.",
+    "Un carreau qui bouge sous le pied a été posé sur un vide.",
+    "La pose sur pose garde la hauteur d’un ancien sol, et ses défauts.",
+    "Un carreau poreux se protège avant de servir.",
+    "Le meilleur carrelage du monde se fend sur une chape qui travaille.",
+    "Une salle de bains carrelée se nettoie en dix minutes, si les joints sont bons.",
+    "Le carreleur commence par le centre de la pièce, pas par un mur.",
+    "Un escalier carrelé se fait marche après marche, contremarche comprise.",
+    "Un carrelage clair agrandit une pièce, un joint foncé la quadrille.",
+    "Un sol se mesure en carreaux entiers avant de se mesurer en mètres.",
+    "La colle se choisit pour le carreau, le support et la pièce.",
+    "Un carreau de grand format se coupe une fois, et bien.",
+    "Le joint d’une crédence se nettoie comme le plan de travail.",
+    "Un mur carrelé à mi-hauteur se finit par un profilé ou une baguette.",
+    "Un sol carrelé reste froid sans chauffage dessous. Avec, il le garde.",
+    "Une douche à l’italienne se carrelle avec des carreaux assez petits pour suivre la pente.",
+    "Un carrelage extérieur se nettoie à l’eau, pas à l’acide.",
+    "Les carreaux posés en chevron demandent deux fois plus de coupes.",
+    "Un joint fissuré laisse passer l’eau sous le carreau.",
+    "Le carrelage se pose à la fin du gros œuvre, et au début des finitions."
+  ],
+  "chapos": {
+    "etapes": [
+      [
+        "dépose de l’ancien carrelage",
+        "dépose et évacuation des gravats",
+        "préparation de la pièce"
+      ],
+      [
+        "ragréage du sol",
+        "reprise de la chape",
+        "primaire d’accrochage",
+        "murs préparés et dressés"
+      ],
+      [
+        "étanchéité sous douche",
+        "natte d’étanchéité posée",
+        "pente de douche à l’italienne",
+        "siphon posé à niveau"
+      ],
+      [
+        "carrelage de sol posé",
+        "faïence murale posée",
+        "pose au laser et à la règle",
+        "calepinage avant pose",
+        "double encollage des grands formats"
+      ],
+      [
+        "coupes nettes en bordure",
+        "découpes autour des tuyaux",
+        "plinthes carrelées",
+        "profilés d’angle"
+      ],
+      [
+        "joints serrés et nettoyés",
+        "joints adaptés aux pièces d’eau",
+        "silicone dans les angles",
+        "voile de ciment retiré"
+      ],
+      [
+        "gravats évacués",
+        "sol protégé après pose",
+        "pièce rendue propre"
+      ]
+    ],
+    "nombre": [
+      4,
+      5
+    ],
+    "toujours": [
+      3
+    ]
+  },
+  "gestes": [
+    {
+      "terme": "Dépose et préparation",
+      "textes": {
+        "combiner": [
+          [
+            "L’ancien carrelage est déposé au burineur, avec sa colle.",
+            "Les gravats sont descendus au fur et à mesure.",
+            "Les pièces voisines sont protégées de la poussière.",
+            "La chape est sondée au maillet pour trouver les zones creuses.",
+            "Les zones creuses sont reprises avant toute pose.",
+            "La planéité est vérifiée à la règle de deux mètres.",
+            "Les fissures du support sont ouvertes et rebouchées.",
+            "Le support est dépoussiéré et aspiré.",
+            "L’humidité de la chape est mesurée avant la pose.",
+            "Les seuils et les hauteurs de porte sont relevés."
+          ],
+          [
+            "Une ancienne colle laissée en place fait une bosse sous le carreau neuf.",
+            "La poussière de dépose voyage dans toute la maison.",
+            "Une chape qui sonne creux casse le carrelage posé dessus.",
+            "Ce qui est creux se reprend avant, jamais après.",
+            "Un écart de quelques millimètres se voit sous un grand format.",
+            "Une fissure du support remonte dans les joints.",
+            "Un carreau ne colle pas sur de la poussière.",
+            "Une chape humide décolle le carrelage au premier hiver.",
+            "Une porte qui frotte sur le carrelage neuf se rabote, ou se change.",
+            "La préparation fait la moitié du devis, et toute la durée."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Ragréage et support",
+      "textes": {
+        "combiner": [
+          [
+            "Un primaire d’accrochage est passé sur le support.",
+            "Le ragréage est coulé et tiré au débulleur.",
+            "Le ragréage sèche le temps indiqué avant la pose.",
+            "Les murs sont dressés quand ils ne sont pas plans.",
+            "Les pièces humides reçoivent des plaques hydrofuges.",
+            "Les angles sont renforcés par une bande.",
+            "Un sol chauffant est arrêté avant la pose.",
+            "Les joints de dilatation de la chape sont repérés.",
+            "L’ancien carrelage est poncé quand le neuf se pose dessus.",
+            "La hauteur finie est calculée avec la colle et le carreau."
+          ],
+          [
+            "Sans primaire, le ragréage se décolle par plaques.",
+            "Un ragréage tiré au débulleur ne garde pas de bulles.",
+            "Poser sur un ragréage frais, c’est poser sur de l’eau.",
+            "Un mur pas droit donne des joints qui ondulent.",
+            "Une plaque ordinaire gonfle dans une salle de bains.",
+            "Un angle sans bande fissure derrière le carreau.",
+            "Une colle sur un sol chauffant allumé sèche trop vite.",
+            "Un joint de chape oublié fend le carrelage au-dessus.",
+            "Un carrelage lisse ne retient pas la colle sans ponçage.",
+            "Une hauteur mal calculée fait une marche à la porte."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Étanchéité des pièces d’eau",
+      "textes": {
+        "combiner": [
+          [
+            "Une natte ou un système d’étanchéité liquide est posé sous la douche.",
+            "L’étanchéité remonte sur les murs de la douche.",
+            "Les angles reçoivent des bandes d’étanchéité.",
+            "Le siphon est raccordé à l’étanchéité, sans reprise.",
+            "La pente vers le siphon est faite dans la chape ou le receveur.",
+            "Les traversées de tuyaux reçoivent des manchettes.",
+            "Un essai d’eau est fait avant la pose du carrelage.",
+            "Le seuil de douche est posé avant les murs.",
+            "La zone de la baignoire est traitée comme une douche.",
+            "Les plaques de plâtre de la douche sont hydrofuges et protégées."
+          ],
+          [
+            "Un joint de carrelage n’est pas étanche. L’étanchéité est dessous.",
+            "L’eau qui coule sur un mur trouve toujours le bas.",
+            "Les angles sont les premiers à fuir.",
+            "Un siphon mal raccordé inonde l’étage du dessous.",
+            "Une douche sans pente garde une flaque.",
+            "Un tuyau traversant est un trou dans l’étanchéité.",
+            "Une fuite trouvée avant le carrelage coûte une heure, après une salle de bains.",
+            "Un seuil posé à la fin laisse un jour sous le carrelage.",
+            "Une baignoire éclabousse plus qu’on ne croit.",
+            "Une plaque qui boit l’eau finit par moisir."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Calepinage et pose",
+      "textes": {
+        "combiner": [
+          [
+            "Le calepinage est tracé avant la première goutte de colle.",
+            "Les coupes sont placées là où l’œil ne va pas.",
+            "Le premier rang est posé au laser.",
+            "La colle est peignée dans un seul sens.",
+            "Le carreau est posé en travers des sillons, puis glissé.",
+            "Les grands formats reçoivent un double encollage.",
+            "Les croisillons tiennent le joint régulier.",
+            "Le niveau est vérifié carreau par carreau.",
+            "Les carreaux de plusieurs boîtes sont mélangés.",
+            "Un carreau est décollé de temps en temps pour vérifier le transfert de colle."
+          ],
+          [
+            "Un calepinage raté se voit à la porte d’entrée, chaque jour.",
+            "Une coupe fine au milieu d’un mur gâche toute la pièce.",
+            "Un premier rang de travers décale tout le reste.",
+            "Des sillons croisés laissent de l’air sous le carreau.",
+            "Un carreau posé sans glisser n’accroche qu’aux bords.",
+            "Un grand format posé en simple encollage sonne creux.",
+            "Un joint irrégulier se voit plus qu’un carreau imparfait.",
+            "Une lèvre de deux millimètres accroche le pied nu.",
+            "Les nuances d’une boîte à l’autre font des taches sur un sol.",
+            "Ce qu’on ne vérifie pas pendant la pose se découvre au premier choc."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Coupes et finitions",
+      "textes": {
+        "combiner": [
+          [
+            "Les coupes droites sont faites à la carrelette.",
+            "Les coupes en L et les courbes sont faites à la meuleuse.",
+            "Les trous de tuyaux sont faits à la scie cloche.",
+            "Les angles sortants reçoivent un profilé ou une coupe à 45 degrés.",
+            "Les plinthes sont coupées dans les mêmes carreaux.",
+            "Les nez de marche sont posés sur les escaliers.",
+            "Les arêtes coupées sont adoucies à la pierre.",
+            "Les seuils de porte sont posés au niveau des deux sols.",
+            "Une trappe de visite est laissée sous la baignoire.",
+            "Les joints de dilatation sont laissés en bordure."
+          ],
+          [
+            "Une coupe éclatée se voit plus qu’un joint large.",
+            "Une courbe à la pince laisse un bord déchiqueté.",
+            "Un trou trop grand autour d’un tuyau ne se rattrape pas.",
+            "Un angle sans profilé s’épaufre au premier coup d’aspirateur.",
+            "Une plinthe d’un autre carreau casse l’unité de la pièce.",
+            "Une arête de marche nue casse au premier choc.",
+            "Une arête vive coupe les doigts au ménage.",
+            "Une marche entre deux pièces fait trébucher.",
+            "Une baignoire sans trappe se démonte au marteau.",
+            "Un carrelage serré contre le mur se soulève quand il chauffe."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Joints",
+      "textes": {
+        "combiner": [
+          [
+            "Les croisillons sont retirés avant que la colle ne prenne.",
+            "Le joint est poussé à la raclette, en diagonale.",
+            "Le joint est serré dans toute la profondeur.",
+            "Le voile de ciment est retiré à l’éponge, dans l’heure.",
+            "Les pièces d’eau reçoivent un joint adapté, parfois en résine.",
+            "La couleur du joint est essayée sur deux carreaux.",
+            "Les angles reçoivent un silicone sanitaire, pas un ciment.",
+            "Le joint est laissé sécher avant tout passage.",
+            "Les carreaux de ciment sont protégés avant le joint.",
+            "Un dernier lavage enlève le voile restant."
+          ],
+          [
+            "Un croisillon oublié sous le joint le fait fissurer.",
+            "Un joint tiré dans le sens des carreaux se vide.",
+            "Un joint creux retient la saleté.",
+            "Un voile sec ne part plus qu’à l’acide.",
+            "Un joint ordinaire noircit dans une douche.",
+            "La couleur du joint change toute la pièce.",
+            "Un angle en ciment se fend au premier mouvement.",
+            "Un joint piétiné frais se marque pour toujours.",
+            "Un carreau de ciment taché par le joint ne se rattrape pas.",
+            "Un sol propre se juge après le dernier lavage."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Extérieurs et terrasses",
+      "textes": {
+        "combiner": [
+          [
+            "La terrasse est carrelée avec une pente vers l’extérieur.",
+            "Les carreaux extérieurs sont antidérapants et ingélifs.",
+            "La colle et le joint sont choisis pour le gel.",
+            "Les dalles sur plots sont posées et réglées une à une.",
+            "Les joints de fractionnement sont respectés.",
+            "Le balcon reçoit une étanchéité avant le carrelage.",
+            "Les marches extérieures reçoivent un nez de marche.",
+            "La pose se fait par temps sec, hors gel.",
+            "La plage de piscine est posée avec une colle pour l’eau.",
+            "Les relevés en bordure sont faits avec une plinthe."
+          ],
+          [
+            "Une terrasse sans pente garde l’eau et gèle.",
+            "Un carreau glissant dehors est un danger, pas un détail.",
+            "Un joint qui gèle se fend et laisse entrer l’eau.",
+            "Les plots laissent l’eau partir par en dessous.",
+            "Un grand sol extérieur sans joint se fend en deux.",
+            "L’eau d’un balcon finit dans le logement du dessous.",
+            "Une marche extérieure sans nez s’épaufre en un hiver.",
+            "Une colle gelée ne colle plus.",
+            "Le chlore et l’eau abîment une colle ordinaire.",
+            "Une bordure sans relevé laisse l’eau passer sous le carrelage."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Nettoyage et protection",
+      "textes": {
+        "combiner": [
+          [
+            "Le sol neuf est protégé par un carton ou un film respirant.",
+            "Les gravats et les chutes sont évacués.",
+            "Les boîtes de carreaux restantes sont laissées au client.",
+            "Les traces de colle sont retirées sur les menuiseries.",
+            "Les silicones sont lissés et nettoyés.",
+            "Un produit de protection est passé sur les carreaux poreux.",
+            "L’entretien des joints est expliqué.",
+            "La douche est essayée en eau avant de partir.",
+            "Les meubles sont remis quand les joints ont pris.",
+            "La pièce est rendue lavée."
+          ],
+          [
+            "Un sol neuf rayé par un escabeau est un sol à refaire.",
+            "Les chutes se trient, le carrelage ne va pas dans le jardin.",
+            "Quelques carreaux de réserve sauvent un sol fendu dans dix ans.",
+            "Une trace de colle sèche sur une plinthe en bois se voit.",
+            "Un silicone bavé se voit plus qu’un joint mal fait.",
+            "Une pierre naturelle non protégée boit les taches.",
+            "Un joint entretenu reste clair.",
+            "Un essai d’eau dit si la pente fonctionne.",
+            "Un meuble posé sur un joint frais le casse.",
+            "Une pièce lavée est une pièce rendue."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    }
+  ],
+  "coupure": {
+    "avant": {
+      "etapes": [
+        [
+          "carreaux fendus",
+          "carreaux décollés",
+          "carreaux qui sonnent creux",
+          "carreaux cassés à l’entrée",
+          "sol usé et taché",
+          "carrelage daté"
+        ],
+        [
+          "joints noircis",
+          "joints vides",
+          "mousse dans les joints",
+          "moisissures dans les angles",
+          "silicone décollé",
+          "voile de ciment ancien"
+        ],
+        [
+          "faïence fendue",
+          "crédence jaunie",
+          "douche à joints noircis",
+          "receveur fissuré",
+          "support nu",
+          "chape avec plots de colle"
+        ],
+        [
+          "terrasse aux carreaux descellés",
+          "balcon aux carreaux fendus",
+          "marches extérieures décollées",
+          "plage de piscine soulevée",
+          "dalle béton nue"
+        ]
+      ],
+      "nombre": [
+        3,
+        3
+      ]
+    },
+    "apres": {
+      "etapes": [
+        [
+          "ancien carrelage déposé",
+          "sol ragréé",
+          "support plan à la règle",
+          "étanchéité sous douche"
+        ],
+        [
+          "carrelage neuf posé",
+          "faïence posée du sol au plafond",
+          "grand format au laser",
+          "douche à l’italienne",
+          "crédence carrelée"
+        ],
+        [
+          "joints serrés et nettoyés",
+          "coupes nettes en bordure",
+          "plinthes carrelées",
+          "profilés d’angle"
+        ],
+        [
+          "pente vers le siphon",
+          "nez de marche posés",
+          "terrasse en pente",
+          "dalles sur plots"
+        ],
+        [
+          "voile de ciment retiré",
+          "silicone sanitaire neuf",
+          "sol protégé",
+          "pièce rendue propre"
+        ]
+      ],
+      "nombre": [
+        3,
+        4
+      ],
+      "toujours": [
+        1
+      ]
+    }
+  },
+  "legendes": {
+    "comparateurs": {
+      "combiner": [
+        [
+          "Salle de bains",
+          "Terrasse",
+          "Cuisine",
+          "Douche",
+          "Crédence",
+          "Escalier extérieur",
+          "Entrée",
+          "Plage de piscine",
+          "Toilettes",
+          "Balcon",
+          "Séjour",
+          "Salle d’eau"
+        ],
+        [
+          "ancien carrelage déposé",
+          "chape reprise",
+          "sol ragréé",
+          "étanchéité posée",
+          "pente refaite",
+          "calepinage tracé",
+          "primaire passé",
+          "siphon repris",
+          "murs dressés",
+          "joints dégarnis"
+        ],
+        [
+          "carrelage neuf",
+          "faïence posée",
+          "grès cérame",
+          "douche à l’italienne",
+          "joints nets",
+          "carreaux de ciment",
+          "grand format",
+          "nez de marche"
+        ]
+      ],
+      "joints": [
+        ", ",
+        ", "
+      ],
+      "fin": "."
+    },
+    "invitation": {
+      "combiner": [
+        [
+          "Faites glisser la couture",
+          "Déplacez la séparation",
+          "Touchez la photo",
+          "Glissez le trait",
+          "Attrapez la couture",
+          "Faites glisser le curseur",
+          "Déplacez le trait",
+          "Passez le doigt sur la photo"
+        ],
+        [
+          "pour comparer l’avant et l’après.",
+          "pour voir la pièce avant les travaux.",
+          "pour passer d’un état à l’autre.",
+          "pour voir ce que le chantier a changé.",
+          "pour retrouver le carrelage d’origine.",
+          "pour voir le sol avant la pose.",
+          "pour comparer les deux états de la pièce.",
+          "pour voir la pièce avant et après.",
+          "pour mesurer le travail fait.",
+          "pour voir la différence."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    },
+    "precision": {
+      "combiner": [
+        [
+          "Même point de vue, même cadrage.",
+          "Les deux photos sont prises du même endroit.",
+          "Même angle, même distance.",
+          "Les deux images ont le même cadrage.",
+          "Même endroit, même objectif.",
+          "Le point de vue ne bouge pas d’une photo à l’autre.",
+          "Photographié deux fois, depuis le même pas de porte.",
+          "Même place, même hauteur d’objectif.",
+          "Le photographe n’a pas bougé entre les deux."
+        ],
+        [
+          "Seul le carrelage change.",
+          "La différence vient du chantier.",
+          "Rien d’autre ne change que le sol et les murs.",
+          "Ce qui change, c’est le travail fait.",
+          "La pièce est la même, le carrelage non.",
+          "Seul le revêtement a été repris.",
+          "Ce qui diffère, ce sont les carreaux et les joints.",
+          "Entre les deux, il y a le chantier.",
+          "L’écart, c’est le travail du carreleur."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    }
+  },
+  "rubriques": {
+    "gestes": [
+      "Le détail des postes.",
+      "Ce que recouvre un chantier de carrelage.",
+      "Ce qui se fait dans la pièce.",
+      "Les étapes, dans l’ordre.",
+      "Étape par étape.",
+      "Du support au joint.",
+      "Comment se pose un carrelage.",
+      "Les postes du chantier.",
+      "Ce que fait le carreleur.",
+      "De la dépose au dernier lavage.",
+      "Le travail, poste par poste.",
+      "Ce qui se fait, et pourquoi.",
+      "Les gestes du chantier.",
+      "Dans l’ordre du chantier.",
+      "Ce que le devis détaille."
+    ],
+    "chantier": [
+      "Le chantier.",
+      "Dans la pièce.",
+      "En cours de travaux.",
+      "Pendant les travaux.",
+      "Sur place.",
+      "Pendant la pose.",
+      "Le chantier en cours.",
+      "Les travaux, en images.",
+      "Ce que montre le chantier.",
+      "Sur le chantier.",
+      "Au ras du sol.",
+      "La pièce en travaux.",
+      "Ce qui se voit en cours.",
+      "Au milieu du chantier.",
+      "La pose en cours."
+    ],
+    "verifiable": [
+      "Ce qui se vérifie.",
+      "Les faits publics.",
+      "Ce que disent les registres.",
+      "Ce qui est public.",
+      "Les registres officiels.",
+      "Ce que chacun peut vérifier.",
+      "L’entreprise, dans les registres.",
+      "Les données publiques.",
+      "Les sources officielles.",
+      "Ce que disent les sources publiques.",
+      "Vérifiable par tous.",
+      "Les faits, sans commentaire.",
+      "Ce que l’État publie.",
+      "Dans les bases publiques.",
+      "Les informations légales."
+    ],
+    "contact": [
+      "Parler du chantier.",
+      "Prendre contact.",
+      "Faire venir quelqu’un.",
+      "Demander une visite.",
+      "Montrer la pièce.",
+      "Parler de votre carrelage.",
+      "Faire voir le sol.",
+      "Appeler l’entreprise.",
+      "Demander un passage.",
+      "Faire mesurer.",
+      "Prendre rendez-vous.",
+      "Une question sur un carrelage ?",
+      "Faire constater.",
+      "Parler du projet.",
+      "Joindre l’entreprise."
+    ],
+    "prix": [
+      "Ce que ça coûte.",
+      "Les tarifs, poste par poste.",
+      "Avant de demander un devis.",
+      "Combien ça coûte.",
+      "Les prix, poste par poste.",
+      "Les ordres de grandeur.",
+      "Les tarifs pratiqués.",
+      "Ce que coûte un carrelage.",
+      "Le prix des postes.",
+      "Avant le devis.",
+      "Les prix du métier.",
+      "Ce qui fait le prix.",
+      "Les tarifs, sans détour.",
+      "Les fourchettes de prix.",
+      "Ce que dit le devis."
+    ]
+  },
+  "mot": "Carrelage",
+  "matiere": [
+    "À dix centimètres, le grès cérame mat ne renvoie aucun reflet.",
+    "La faïence blanche brillante double la lumière d’une salle de bains.",
+    "Un joint frais est foncé. Sec, il prend sa vraie teinte.",
+    "Une coupe d’angle à 45 degrés fait disparaître l’arête du carreau.",
+    "Une plinthe carrelée prolonge le sol sur le mur, arête nette.",
+    "Une mosaïque montre plus de joints que de carreaux.",
+    "La colle peignée garde ses sillons jusqu’au carreau.",
+    "Le seuil d’une douche à l’italienne se lit à peine sous le pied.",
+    "Un carreau de ciment garde son motif dans toute son épaisseur.",
+    "Le zellige accroche la lumière sur ses bords irréguliers.",
+    "Un joint époxy reste lisse, et l’eau glisse dessus.",
+    "Le grain d’un carreau antidérapant se sent sous la main.",
+    "Un grand format laisse voir peu de joints, et tout le sol.",
+    "La tomette prend une patine en quelques années de passage.",
+    "Le voile de ciment éteint un carreau. Lavé, il retrouve sa couleur.",
+    "Un joint de deux millimètres se voit à peine, s’il est droit.",
+    "La pierre naturelle a des veines qui ne se répètent pas.",
+    "Le carreau imitation bois montre un veinage imprimé, sans relief.",
+    "Un nez de marche en aluminium protège l’arête et se voit à peine.",
+    "Un carreau brillant montre chaque trace de pas. Un mat les cache.",
+    "Le reflet de la fenêtre sur un sol neuf dit sa planéité.",
+    "Les sillons de colle écrasés montrent que le carreau a bien pris.",
+    "Une crédence en métro dessine des lignes horizontales régulières.",
+    "La texture d’un joint sablé se sent sous le doigt.",
+    "Un carreau ingélif reste entier après l’hiver.",
+    "Le bord rectifié d’un carreau permet un joint très fin.",
+    "Un sol en damier se lit de loin, et se pose de près.",
+    "L’émail d’une faïence craquelée fait partie du carreau.",
+    "Le silicone d’un angle reste souple sous l’ongle.",
+    "Une douche carrelée du sol au plafond n’a qu’une ligne de joint qui compte : la droite."
+  ],
+  "prix": {
+    "note": "Ordres de grandeur nationaux, relevés le 4 novembre 2026. Ce ne sont pas les prix de l'entreprise et ce n'est pas un devis.",
+    "sources": [
+      {
+        "nom": "Habitatpresto, prix de la pose de carrelage",
+        "url": "https://www.habitatpresto.com/mag/revetement/sol/carrelage-slim"
+      },
+      {
+        "nom": "ABC Travaux, pose de carrelage mural",
+        "url": "https://abctravaux.org/pose-carrelage-murale/"
+      }
+    ],
+    "postes": [
+      {
+        "poste": "Dépose de l’ancien carrelage",
+        "bas": 15,
+        "haut": 30,
+        "unite": "€/m²",
+        "note": "Selon la colle et l’épaisseur de l’ancien carrelage."
+      },
+      {
+        "poste": "Ragréage du sol",
+        "bas": 10,
+        "haut": 30,
+        "unite": "€/m²",
+        "note": "Selon l’épaisseur à couler."
+      },
+      {
+        "poste": "Pose de carrelage au sol",
+        "bas": 25,
+        "haut": 60,
+        "unite": "€/m²",
+        "note": "Pose seule avec colle et joints, carreaux non compris. Prix TTC."
+      },
+      {
+        "poste": "Pose de faïence murale",
+        "bas": 25,
+        "haut": 45,
+        "unite": "€/m²",
+        "note": "Format standard en pose droite. Un grand format monte à 60 €/m²."
+      },
+      {
+        "poste": "Pose de mosaïque",
+        "bas": 50,
+        "haut": 80,
+        "unite": "€/m²",
+        "note": "Trames sur filet, beaucoup de joints."
+      }
+    ],
+    "exemple": {
+      "titre": "Une salle de bains de 6 m² au sol et 15 m² de murs, pose seule",
+      "bas": 525,
+      "haut": 1035,
+      "note": "Calculé avec les postes ci-dessus : sol à 25 à 60 €/m², murs à 25 à 45 €/m². La dépose, le ragréage, l’étanchéité de la douche et les carreaux s’ajoutent."
+    }
+  },
+  "nuancierEtiquette": "Voir la pièce avec un autre joint",
+  "teintes": [
+    {
+      "nom": "D’origine",
+      "voile": "",
+      "pastille": "#C8C2B8"
+    },
+    {
+      "nom": "Blanc",
+      "voile": "40 12% 94% / .30",
+      "pastille": "#EFEDE8"
+    },
+    {
+      "nom": "Gris perle",
+      "voile": "210 6% 76% / .30",
+      "pastille": "#BCBFC2"
+    },
+    {
+      "nom": "Gris ciment",
+      "voile": "210 5% 56% / .30",
+      "pastille": "#8A8E91"
+    },
+    {
+      "nom": "Anthracite",
+      "voile": "210 8% 26% / .34",
+      "pastille": "#3C4146"
+    },
+    {
+      "nom": "Sable",
+      "voile": "40 35% 72% / .30",
+      "pastille": "#CDBA94"
+    },
+    {
+      "nom": "Terre cuite",
+      "voile": "16 50% 50% / .32",
+      "pastille": "#BF6F4C"
+    },
+    {
+      "nom": "Vert d’eau",
+      "voile": "160 20% 70% / .30",
+      "pastille": "#A3C1B5"
+    },
+    {
+      "nom": "Bleu faïence",
+      "voile": "205 40% 58% / .32",
+      "pastille": "#6C98B8"
+    },
+    {
+      "nom": "Noir",
+      "voile": "0 0% 14% / .34",
+      "pastille": "#262626"
+    }
+  ],
+  "alt": {
+    "avant": "salle de bains avant travaux, faïence fendue et joints noircis",
+    "apres": "la même salle de bains refaite",
+    "invitation": "Comparer la pièce avant et après les travaux",
+    "avant2": "un autre chantier avant la pose du carrelage",
+    "apres2": "le même chantier une fois le carrelage posé",
+    "hero": "sol dont une moitié est en travaux et l’autre déjà carrelée",
+    "invitation2": "Comparer un second chantier avant et après",
+    "ouverture": "geste du métier pendant la pose d’un carrelage",
+    "chantier": "carreaux empilés, croisillons, seau de colle et peigne",
+    "chantierBis": "niveau laser allumé dans une pièce en travaux",
+    "detail": "gros plan sur un joint frais entre deux carreaux",
+    "detailBis": "gros plan sur la surface mate d’un grès cérame",
+    "geste": "le peigne à colle tiré sur la chape, en sillons réguliers"
+  },
+  "estimateur": {
+    "titre": "Votre surface",
+    "mesure": {
+      "etiquette": "Surface à carreler",
+      "unite": "m²",
+      "min": 5,
+      "max": 200,
+      "pas": 5,
+      "defaut": 25,
+      "aria": "Surface à carreler en mètres carrés"
+    }
+  }
+}

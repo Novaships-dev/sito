@@ -22,7 +22,7 @@ Un métier est **prêt** quand ses cinq pièces existent et sont prouvées :
 | `peinture` | Peinture intérieure | 43.34Z, 43.33Z | oui | oui | 0 (F18) | oui, en projection | oui |
 | `maconnerie` | Maçonnerie générale | 43.99C, 43.91B | oui (4 nov.) | non | 0 | oui, en projection | non |
 | `menuiserie` | Menuiserie et fenêtres | 43.32A, 43.32B | oui (4 nov.) | non | 0 | oui, en projection | non |
-| `carrelage` | Carrelage et faïence | 43.33Z | non | non | 0 | non | non |
+| `carrelage` | Carrelage et faïence | 43.33Z | oui (4 nov.) | non | 0 | oui, en projection | non |
 | `platrerie` | Plâtrerie et cloisons | 43.31Z | non | non | 0 | non | non |
 | `isolation` | Isolation extérieure | 43.29A | non | non | 0 | non | non |
 | `electricite` | Électricité | 43.21A | non | non | 0 | non | non |
@@ -34,7 +34,7 @@ Un métier est **prêt** quand ses cinq pièces existent et sont prouvées :
 | `piscine` | Piscine | 43.99C | non | non | 0 | non | non |
 | `paysagiste` | Paysagiste | 81.30Z | non | non | 0 | non | non |
 
-**Prêts : 0 sur 16.** Cinq ont leurs textes (maçonnerie et menuiserie depuis le 4 nov., sans prompts encore), trois leurs prompts ; aucun n'a encore
+**Prêts : 0 sur 16.** Six ont leurs textes (maçonnerie, menuiserie et carrelage depuis le 4 nov., sans prompts encore), trois leurs prompts ; aucun n'a encore
 ses 54 images.
 
 ## Ce qui ne colle pas encore
