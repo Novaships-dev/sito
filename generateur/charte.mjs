@@ -234,8 +234,12 @@ export function jetons(ch, accent) {
     rai2: `color-mix(in oklab, ${f.second} 34%, transparent)`,
     boutonFond: clair ? melange(f.papier, '#ffffff', 0.7) : melange(f.nuit, f.chaux, 0.1),
     // la pastille flotte sur le sol : elle en prend la couleur, a peine voilee,
-    // sinon le texte gris calcule pour le sol tombe sous le seuil dessus
-    pastilleFond: clair ? 'oklch(1 0 0 / 0.82)' : nuit + 'e6',
+    // sinon le texte gris calcule pour le sol tombe sous le seuil dessus.
+    // Voilee, elle laissait passer la photo du dessous : sur une photo claire,
+    // le gris d un sol nuit tombait a 4,34:1 (planche, O13, 4 novembre 2026,
+    // T52). Le fond est donc le sol lui-meme, opaque : celui contre lequel le
+    // gris est pousse.
+    pastilleFond: nuit,
     clair,
   };
 }

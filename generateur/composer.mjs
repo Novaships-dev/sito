@@ -16,6 +16,7 @@ import { trouverCoupure } from './couture.mjs';
 import { normaliser } from './sirene.mjs';
 import { phrases as phrasesTextes, intitules as intitulesTextes } from './textes.mjs';
 import { feuille } from './style.mjs';
+import * as pageTravail from './sections/page-travail.mjs';
 import { zoneMatiere } from './zone-matiere.mjs';
 import * as arrivee from './sections/arrivee.mjs';
 import * as atmosphere from './sections/atmosphere.mjs';
@@ -394,14 +395,14 @@ async function fabriquer(opts) {
     corps = [
       arrivee.calques({ e }),
       '<div class="premier-ecran">',
-      arrivee.pastille({ e, appel: appel.lien({ tel, ap, seulNumero: true }) }),
+      arrivee.pastille({ e, page2: ch.structure.page2 ? pageTravail.LIEN : null, appel: appel.lien({ tel, ap, seulNumero: true }) }),
       atmosphere.bloc({ e, t, base, im, comparateur, mot, ans, alt, ch }),
       '</div>',
       ...ch.structure.ordre.map(k => bloc[k]).filter(Boolean),
       bloc.comparateurs,
       appel.barre({ e, tel, ap }),
     ].join('\n\n');
-    style = feuille(p, pal, archetype, ch);
+    style = feuille(p, pal, archetype, ch) + pageTravail.feuille();
   }
 
   // Le titre et l en-tete de referencement de chaque page (T51).
@@ -886,6 +887,20 @@ ${corps}
       .replace(/<main id="principal">[\s\S]*?<\/main>/, `<main id="principal">\n${corps2}\n</main>`)
       .replace(/<div class="entree"[\s\S]*?<\/div>\n/, '');
     writeFileSync(join(opts.sortie, 'le-travail.html'), comparateurVariante.appliquer(html2, ch.comparateur), 'utf8');
+  } else if (archetype !== 'matiere' && ch.structure.page2) {
+    // Les trois autres archetypes (T52, constat S-012) : un bandeau de titre
+    // compose par l archetype, puis les blocs de l accueil.
+    const vue = img(im.geste, A('geste')) + (PHOTOS_EXEMPLE ? '<p class="marqueur">Exemple</p>' : '');
+    const corps2 = [
+      pageTravail.etat({ e, appelLien: appel.lien({ tel, ap, seulNumero: true }) }),
+      pageTravail.bandeau({ archetype, e, base, vue }),
+      gestes(t), chantier(t, im), contact(t, e, tel, presContact),
+      appel.barre({ e, tel, ap }),
+    ].join('\n\n');
+    const html2 = autrePage(html, pageTravail.FICHIER, `${e.nomLisible}, le travail en détail`)
+      .replace(/<main id="principal">[\s\S]*?<\/main>/, () => `<main id="principal">\n${corps2}\n</main>`)
+      .replace(/<div class="entree"[\s\S]*?<\/div>\n/, '');
+    writeFileSync(join(opts.sortie, pageTravail.FICHIER), comparateurVariante.appliquer(html2, ch.comparateur), 'utf8');
   }
   // La page des mentions legales : la meme enveloppe, un autre contenu. Un
   // dossier reutilise par un site de prospection perd l ancienne page.

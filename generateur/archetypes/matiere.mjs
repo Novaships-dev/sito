@@ -15,6 +15,7 @@ import * as comparateurV from '../sections/comparateur.mjs';
 import * as appel from '../sections/appel.mjs';
 import { declarer, CONTEXTES } from '../charte.mjs';
 import { html as ech } from '../echapper.mjs';
+import * as pageTravail from '../sections/page-travail.mjs';
 
 export function feuille(p, pal, ch) {
   return `
@@ -285,7 +286,9 @@ ${appel.feuille()}
   .bandeau-titre .vue{order:1}
   .bandeau-titre .vue img{aspect-ratio:16/10;min-height:0;height:auto}
   .bandeau-titre .dit-titre{order:2;padding-top:clamp(22px,3vw,36px)}
-  .bandeau-titre h1{font-size:clamp(40px, calc(100cqi / var(--signes) * 1.5), 72px)}
+  /* Le titre tient la largeur sur telephone (M2) : a 40 px dans 16 signes, il
+     prenait 9 % de l ecran (constat S-025, T52). */
+  .bandeau-titre h1{font-size:clamp(48px,14.5vw,76px);max-width:none}
   .jeton.lien{min-height:44px;padding:0 14px}
   .teinte{font-size:13px}
   .geste{grid-template-columns:2.6rem 1fr;gap:.3rem .9rem}
@@ -456,7 +459,7 @@ export function corpsTravail(ctx) {
   <div class="dit-titre">
     <p class="enseigne">${ech(base.libelle)}${e.commune ? ', ' + ech(e.commune) : ''}</p>
     <h1 id="t-detail" class="geant" style="--signes:22">Le travail, poste par poste.</h1>
-    <p class="phrase">Ce que recouvre exactement le mot ravalement, dans l’ordre où les postes se font.</p>
+    <p class="phrase">${ech(pageTravail.phrase(base))}</p>
   </div>
 </section>
 

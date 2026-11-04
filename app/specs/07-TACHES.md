@@ -86,7 +86,7 @@ Rien de payant : ni ordinateur loué, ni serveur d'e-mail, ni carte bancaire
 
 | N° | Tâche | État | Preuve | Dépend | Bloqué par |
 |---|---|---|---|---|---|
-| T52 | Constat S-012 : la deuxième page (« le travail ») sur les archétypes `panneau`, `planche` et `elevation`, au même niveau que `matiere` | à faire | `fabriquer-demo` : les cinq vérificateurs à 0 sur les quatre archétypes, deuxième page comprise ; unicité à 100 sites sans défaut (`capacite-unicite --photos plan`) | | F15 (images, pour la preuve complète) |
+| T52 | Constat S-012 : la deuxième page (« le travail ») sur les archétypes `panneau`, `planche` et `elevation`, au même niveau que `matiere` | fait | `node scripts/essai-navigateurs.mjs` (4 nov., Cowork, photos de synthèse) : 25 contrôles, 0 faute ; un site d'abonné par archétype, **les quatre avec `le-travail.html`**, `verifier-mobile` (accueil et deuxième page) et `verifier-ordinateur` (accueil, deuxième page, mentions) à 0 ; `verifier-site` et `verifier-unicite` à 0 sur les quatre ; `capacite-unicite --photos plan` : 100 sites sans défaut. Contre-essai : titre de la deuxième page ramené à 18 px, M2 rouge sur les trois téléphones. `fabriquer-demo` avec les vraies photos : non lancé (pas d'`images/` hors du PC, F15) | | F15 (images, pour la preuve complète) |
 | T53 | Constat S-017 : contrôle mécanique de `docs/REGLE-TRACABILITE.md` : un essai (dans `scripts/essais.mjs`) refuse une tâche passée « fait » dans `07-TACHES.md` sans entrée datée dans `CHANGELOG.md` et sans ligne `TRACAGE` au journal ; et `node scripts/carte-depot.mjs --verifier` entre dans la suite | à faire | une tâche « fait » sans CHANGELOG ni TRACAGE dans un clone d'essai : rouge ; avec : vert ; une carte périmée : rouge | | |
 
 ## La vraie base

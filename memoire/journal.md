@@ -1840,3 +1840,18 @@ Résultat : 17 contrôles, 0 faute ; contre-essai 4 fautes. Trouvé en route :
 ffmpeg écrit la position d'une MP4 dans `loci` (3GPP), pas dans `©xyz` ; les
 deux sont effacées. La partie navigateur tourne dans la CI (exiftool).
 TRACAGE : app/src/video.ts, app/src/photo.ts, scripts/essai-video-gps.mjs, scripts/essai-app.mjs, scripts/essais.mjs, .github/workflows/essais.yml, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 4 nov. 2026 — T52 (deuxième page sur les quatre archétypes), par Cowork
+
+Plan : 1. `generateur/sections/page-travail.mjs` : barre de retour, bandeau de
+titre composé par archétype, puis postes, chantier, contact ; 2. branchement
+dans `composer.mjs`, plus de `page2 = false` hors matiere dans `tirage.mjs` ;
+3. `essai-navigateurs.mjs` juge `le-travail.html` sur les quatre archétypes.
+
+Résultat : 25 contrôles, 0 faute (Chromium). Trouvé en route : la phrase de la
+deuxième page de matiere disait « ravalement » quel que soit le métier
+(corrigé) ; la pastille voilée tombait à 4,34:1 sur une photo claire (fond
+opaque, piège noté). S-025 : avec l'ancienne règle, le titre de matiere ne
+prenait que 9 % de l'écran mais passait M2 par la largeur ; il prend
+maintenant 19 %. Les vraies photos (fabriquer-demo) attendent F15.
+TRACAGE : generateur/sections/page-travail.mjs, generateur/composer.mjs, generateur/tirage.mjs, generateur/archetypes/matiere.mjs, generateur/charte.mjs, scripts/essai-navigateurs.mjs, app/specs/07-TACHES.md, docs/audit/REGISTRE.md, CHANGELOG.md, memoire/maintenant.md, memoire/pieges.md, memoire/journal.md, docs/audit/CARTE.md

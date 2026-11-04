@@ -135,7 +135,6 @@ function tirerUneFois(cle, { siren, metier, base, sources, voisins, prix, charte
     structures: voisins.map(s => s.structureDetail).filter(Boolean),
     comparateurs: avecPoids('comparateur'),
   });
-  if (archetype !== 'matiere') ch.structure.page2 = false;
   ch.structure.prix = !!prix;
   const main = distribuerPhotos(g, sources, avecPoids('main'));
   const ouverture = g.suivant() < 0.62 ? 'geste' : 'detail';

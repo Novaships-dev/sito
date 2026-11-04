@@ -12,7 +12,7 @@
 //
 // Sortie 3 si le moteur n'est pas installé (`npx playwright install webkit`) :
 // la suite le dit « NON LANCÉ », jamais « vert ».
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -45,9 +45,10 @@ const brut = (siren) => ({
 let sortieFinale = 0;
 try {
   console.log(`\nMoteur : ${MOTEUR}`);
-  // Les quatre premiers SIREN donnent les quatre archétypes (tirage du 3 nov.).
+  // Un site par archétype, deuxième page comprise (T52) : ces SIREN donnent
+  // les quatre archétypes avec `le-travail.html` (tirage du 4 nov.).
   const vus = new Set();
-  for (const siren of ['480423623', '732829320', '443061841', '350000105', '552100554', '378901946', '642050199']) {
+  for (const siren of ['400000000', '400039595', '400047514', '400079190', '480423623', '732829320', '443061841', '350000105', '552100554', '378901946', '642050199']) {
     if (vus.size === 4) break;
     const sortie = join(travail, `site-${siren}`);
     const donnees = join(travail, `donnees-${siren}.json`);
@@ -57,15 +58,14 @@ try {
       '--publication', '--adresse', 'https://facades-essai.example.fr/'], { encoding: 'utf8', cwd: RACINE });
     if (!ok(r.status === 0, `fabrication ${siren}`, (r.stderr || '').trim().split('\n').slice(-1)[0])) continue;
     const arch = JSON.parse(readFileSync(join(sortie, 'donnees.json'), 'utf8')).archetype;
-    if (vus.has(arch)) continue;
+    if (vus.has(arch) || !existsSync(join(sortie, 'le-travail.html'))) continue;
     vus.add(arch);
     for (const v of ['verifier-mobile.mjs', 'verifier-ordinateur.mjs']) {
-      // `verifier-mobile` juge un premier écran d'accueil (titre, image, M1 à
-      // M3) : l'accueil seulement. `verifier-ordinateur` juge aussi la page
-      // des mentions (appel sur le premier écran, clavier). La deuxième page
-      // (`le-travail.html`, matiere seulement) rougit M2 sur téléphone sous
-      // les deux moteurs : constat S-025, tâche T52, pas un écart de Safari.
-      const pages = v === 'verifier-mobile.mjs' ? ['index.html'] : ['index.html', 'mentions-legales.html'];
+      // `verifier-mobile` juge un premier écran (titre, image, M1 à M3) :
+      // l'accueil et la deuxième page, qui porte son propre titre (T52,
+      // constat S-025 : elle rougissait M2 sur matiere). `verifier-ordinateur`
+      // juge aussi la page des mentions (appel sur le premier écran, clavier).
+      const pages = v === 'verifier-mobile.mjs' ? ['index.html', 'le-travail.html'] : ['index.html', 'le-travail.html', 'mentions-legales.html'];
       for (const p of pages) {
         const x = spawnSync(process.execPath, [join(RACINE, 'scripts', v), join(sortie, p), '--navigateur', MOTEUR], { encoding: 'utf8', cwd: RACINE });
         if (x.status === 3) { console.log(`  NON LANCÉ : ${MOTEUR} n est pas installé (npx playwright install ${MOTEUR})`); sortieFinale = 3; throw new Error('moteur absent'); }
@@ -79,7 +79,7 @@ try {
       }
     }
   }
-  ok(vus.size === 4, 'les quatre archétypes essayés', [...vus].join(', '));
+  ok(vus.size === 4, 'les quatre archétypes essayés, deuxième page comprise', [...vus].join(', '));
 } catch (e) {
   if (sortieFinale !== 3) { fautes++; console.log(`  FAUTE essai interrompu — ${e.message.split('\n')[0]}`); }
 } finally {

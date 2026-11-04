@@ -6,16 +6,16 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**361 fichiers suivis, dont 151 .md ; 87225 lignes de texte.** Hors zone : 0.
+**362 fichiers suivis, dont 151 .md ; 87349 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
 | Z01 Pilotage de l agent | 27 | 2141 | 0 |
-| Z02 Mémoire du projet | 11 | 2556 | 0 |
+| Z02 Mémoire du projet | 11 | 2571 | 0 |
 | Z03 Spécifications | 11 | 2383 | 0 |
-| Z04 Documentation de travail | 24 | 3285 | 0 |
+| Z04 Documentation de travail | 24 | 3286 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
-| Z06 Générateur de sites | 33 | 8524 | 4 |
+| Z06 Générateur de sites | 34 | 8632 | 4 |
 | Z07 Règles | 15 | 1147 | 0 |
 | Z08 App de l artisan | 36 | 9136 | 4 |
 | Z09 Service atelier et Worker | 11 | 1390 | 0 |
@@ -71,9 +71,9 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `memoire/essais/audit.txt` | 44 |
 | `memoire/essais/derniers.txt` | 24 |
 | `memoire/essais/disque.txt` | 61 |
-| `memoire/journal.md` | 1842 |
-| `memoire/maintenant.md` | 106 |
-| `memoire/pieges.md` | 119 |
+| `memoire/journal.md` | 1857 |
+| `memoire/maintenant.md` | 105 |
+| `memoire/pieges.md` | 120 |
 | `memoire/questions.md` | 138 |
 
 ## Z03 Spécifications
@@ -96,7 +96,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `CHANGELOG.md` | 65 |
+| `CHANGELOG.md` | 66 |
 | `SECURITY.md` | 55 |
 | `docs/00-INDEX.md` | 113 |
 | `docs/CONSTRAINTS.md` | 58 |
@@ -195,10 +195,10 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | Fichier | Lignes |
 |---|---|
 | `generateur/LISEZMOI.md` | 143 |
-| `generateur/archetypes/matiere.mjs` | 493 |
+| `generateur/archetypes/matiere.mjs` | 496 |
 | `generateur/banque/plan-images.json` | 1581 |
-| `generateur/charte.mjs` | 305 |
-| `generateur/composer.mjs` | 945 |
+| `generateur/charte.mjs` | 309 |
+| `generateur/composer.mjs` | 960 |
 | `generateur/couture.mjs` | 62 |
 | `generateur/echapper.mjs` | 32 |
 | `generateur/graine.mjs` | 29 |
@@ -219,12 +219,13 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `generateur/sections/comparateur.mjs` | 72 |
 | `generateur/sections/mentions.mjs` | 135 |
 | `generateur/sections/nuancier.mjs` | 28 |
+| `generateur/sections/page-travail.mjs` | 87 |
 | `generateur/sections/prix.mjs` | 198 |
 | `generateur/sections/referencement.mjs` | 109 |
 | `generateur/sirene.mjs` | 73 |
 | `generateur/style.mjs` | 212 |
 | `generateur/textes.mjs` | 165 |
-| `generateur/tirage.mjs` | 200 |
+| `generateur/tirage.mjs` | 199 |
 | `generateur/unicite.mjs` | 64 |
 | `generateur/zone-matiere.mjs` | 44 |
 
