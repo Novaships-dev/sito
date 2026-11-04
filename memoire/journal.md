@@ -1828,3 +1828,15 @@ appel). Essai des droits d'un artisan connecté : profil, tarif et photo
 acceptés, profil d'un autre refusé, fonction non appelable. Conseillers : rien
 de nouveau.
 TRACAGE : supabase/README.md, app/specs/07-TACHES.md, memoire/journal.md
+
+## 4 nov. 2026 — T46 (vidéos sans position GPS), par Cowork
+
+Plan : 1. `app/src/video.ts` : parcours des boîtes ISO BMFF, `©xyz`, `loci` et
+clés QuickTime `location` changées en `free` de même taille ; 2. appel dans
+`preparer()` de `photo.ts` ; 3. essai hors navigateur (`essai-video-gps.mjs`) et
+contrôles dans `essai-app.mjs`.
+
+Résultat : 17 contrôles, 0 faute ; contre-essai 4 fautes. Trouvé en route :
+ffmpeg écrit la position d'une MP4 dans `loci` (3GPP), pas dans `©xyz` ; les
+deux sont effacées. La partie navigateur tourne dans la CI (exiftool).
+TRACAGE : app/src/video.ts, app/src/photo.ts, scripts/essai-video-gps.mjs, scripts/essai-app.mjs, scripts/essais.mjs, .github/workflows/essais.yml, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

@@ -50,6 +50,7 @@ const ETAPES = [
   } },
   { nom: 'app : parcours et rendu (navigateur)', cmd: ['node', 'scripts/essai-app.mjs'], manque: outilsApp },
   { nom: 'photos (service)', cmd: ['node', 'scripts/essai-photos.mjs'], manque: outilsPhotos },
+  { nom: 'app : vidéos sans position GPS', cmd: ['node', 'scripts/essai-video-gps.mjs'], manque: () => (present('ffmpeg', ['-version']) ? [] : ['ffmpeg']) },
   { nom: 'service : adaptateur Supabase', cmd: ['node', 'scripts/essai-service.mjs'] },
   // L'inscription par lien (fonction Edge) sur un faux dépôt : jamais le réseau.
   { nom: 'inscription par lien (fonction Edge)', cmd: ['node', 'scripts/essai-inscription.mjs'] },
@@ -102,6 +103,7 @@ if (COMPLET) {
     { nom: 'contre-essai : secrets', cmd: ['node', 'scripts/verifier-secrets.mjs', '--contre-essai'] },
     { nom: 'contre-essai : outillage', cmd: ['node', 'scripts/essai-outillage.mjs', '--contre-essai'] },
     { nom: 'contre-essai : app', cmd: ['node', 'scripts/essai-app.mjs', '--contre-essai'], manque: outilsApp },
+    { nom: 'contre-essai : vidéos sans position', cmd: ['node', 'scripts/essai-video-gps.mjs', '--contre-essai'], manque: () => (present('ffmpeg', ['-version']) ? [] : ['ffmpeg']) },
     { nom: 'contre-essai : service', cmd: ['node', 'scripts/essai-service.mjs', '--contre-essai'] },
     { nom: 'contre-essai : inscription par lien', cmd: ['node', 'scripts/essai-inscription.mjs', '--contre-essai'] },
     { nom: 'contre-essai : préparation des photos', cmd: ['node', 'scripts/essai-preparation.mjs', '--contre-essai'], manque: outilsPhotos },

@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 4 nov. | T46 : l'app retire la position GPS des vidéos avant l'envoi, sans les réencoder (`app/src/video.ts` : `©xyz`, `loci`, clés QuickTime `location`) ; essai `essai-video-gps.mjs` et contrôles dans `essai-app.mjs`. |
 | 4 nov. | T45 (sans le réel) : `scripts/refaire-site.mjs` et `.github/workflows/refaire-site.yml` refont et publient un site d'abonné sur Cloudflare Pages (`atelier/publier-pages.mjs`) ; déclencheur de la base vers GitHub (pg_net, jeton au coffre) ; `lanceurs/SECRETS_GITHUB.bat` ; essai `essai-refaire-site.mjs`. Bloquée sur F21 pour le réel. |
 | 4 nov. | T60 : `scripts/prospection/photos-artisan.mjs` (`--ranger`, `--fabriquer`) et `docs/PROCEDURE-PHOTOS.md` : les photos reçues par mail ou WhatsApp deviennent le site d'abonné, sur le modèle de l'artisan ; refus tant que le dépôt est public (F20). Essai `essai-photos-artisan.mjs`. |
 | 4 nov. | T56 : sur un site d'abonné, la section des avis montre les avis réels de la table `avis` (texte exact, note seulement si donnée) ou n'existe pas ; contrôle R-AVIS ; essai `essai-avis.mjs`. |

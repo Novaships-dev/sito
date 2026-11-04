@@ -22,6 +22,7 @@
 
 import { sansMetadonnees } from './nettoyer';
 import { apercuIntegre } from './apercu-brut';
+import { retirerPosition } from './video';
 
 export const COTE_MAX = 3200;
 export const QUALITE = 0.88;
@@ -99,6 +100,11 @@ export async function preparer(fichier: File): Promise<Preparee> {
 
   if (nature.genre === 'video') {
     if (fichier.size > POIDS_MAX) return { genre: 'refuse', raison: `Vidéo trop lourde (${mo(fichier.size)}). Maximum ${mo(POIDS_MAX)} pour l’instant : envoyez un extrait plus court.` };
+    // La position GPS du tournage part avant l'envoi, sans réencoder (T46).
+    if (nature.format === 'mp4' || nature.format === 'mov' || nature.format === '3gp') {
+      const octets = new Uint8Array(await fichier.arrayBuffer());
+      if (retirerPosition(octets) > 0) return { genre: 'video', fichier: new Blob([octets], { type: TYPES[nature.format] }), format: nature.format };
+    }
     return { genre: 'video', fichier: avecType(fichier, nature.format), format: nature.format };
   }
 

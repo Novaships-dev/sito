@@ -18,7 +18,7 @@ import { existsSync } from 'node:fs';
 import { join, extname } from 'node:path';
 import { tmpdir } from 'node:os';
 import { createHash } from 'node:crypto';
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawnSync } from 'node:child_process';
 import sharp from 'sharp';
 import { chromium, webkit } from 'playwright';
 import { RACINE } from './env.mjs';
@@ -87,6 +87,11 @@ const dng = Buffer.concat([Buffer.from('II*\0'), Buffer.from([8, 0, 0, 0]), Buff
 await writeFile(F('IMG_0002.DNG'), dng);
 await writeFile(F('devis.pdf'), Buffer.from('%PDF-1.4\n1 0 obj << >> endobj\ntrailer << >>\n%%EOF\n'));
 execFileSync('ffmpeg', ['-loglevel', 'error', '-y', '-f', 'lavfi', '-i', 'testsrc=duration=1:size=320x240:rate=10', '-pix_fmt', 'yuv420p', F('video.mp4')]);
+// Vidéos avec la position du tournage (T46) : MOV d'iPhone (clé QuickTime) et MP4.
+execFileSync('ffmpeg', ['-loglevel', 'error', '-y', '-f', 'lavfi', '-i', 'testsrc=duration=1:size=320x240:rate=10', '-pix_fmt', 'yuv420p',
+  '-movflags', 'use_metadata_tags', '-metadata', 'com.apple.quicktime.location.ISO6709=+43.2965+005.3698+010.000/', F('IMG_0010.MOV')]);
+execFileSync('ffmpeg', ['-loglevel', 'error', '-y', '-f', 'lavfi', '-i', 'testsrc=duration=1:size=320x240:rate=10', '-pix_fmt', 'yuv420p',
+  '-metadata', 'location=+43.2965+005.3698/', F('VID_0011.mp4')]);
 
 // ---------------------------------------------------------------- contrôles (réutilisés par le contre-essai)
 async function controlerJpegPrepare(buf, nom) {
@@ -331,6 +336,17 @@ try {
   ok(await envois(page) === 6, 'ni le PDF, ni le HEIC, ni le DNG sans aperçu ne sont partis, et aucun original d’un RAW', String(await envois(page)));
   const partis = await page.evaluate(() => window.__sitoDemo.envois.map((e) => e.nom));
   ok(!partis.includes('IMG_0001.HEIC') && !partis.includes('IMG_0002.DNG'), 'aucun fichier illisible envoyé avec sa position', partis.join(', '));
+
+  // Vidéos avec position (T46) : elles partent sans, et se lisent encore.
+  await page.getByLabel('Ajouter des photos ou vidéos').setInputFiles([F('IMG_0010.MOV'), F('VID_0011.mp4')]);
+  ok(await attendreEnvois(page, 8), 'deux vidéos avec position envoyées');
+  for (const [i, nom] of [[6, 'IMG_0010.MOV'], [7, 'VID_0011.mp4']]) {
+    const e = await lireEnvoi(page, i);
+    await writeFile(F('recu-' + nom), e.buf);
+    const m = exif(F('recu-' + nom));
+    ok(e.genre === 'video' && !aGps(m) && !e.buf.includes('43.2965'), `${nom} : partie sans position (exiftool)`, Object.keys(m).filter((k) => /GPS|Location/i.test(k)).join(', '));
+    ok(e.buf.length === (await readFile(F(nom))).length && spawnSync('ffprobe', ['-v', 'error', F('recu-' + nom)]).status === 0, `${nom} : même taille, se lit encore (ffprobe)`);
+  }
 
   // Avis : la réponse préparée n'est publiée qu'après validation
   await page.goto(`${BASE}?demo#/avis`);

@@ -22,12 +22,12 @@ fabrication (D-14), rien d'essayé sur un vrai iPhone (F14). Mentions légales
 
 ## Les tâches
 
-61 tâches : **30 faites, 14 bloquées, 17 à faire** (`app/specs/07-TACHES.md`).
+61 tâches : **31 faites, 14 bloquées, 16 à faire** (`app/specs/07-TACHES.md`).
 T47 à T56 viennent de l'audit du 3 novembre.
 
 **Ordre décidé par Fabrice le 3 nov. (« oui Q5 ») : les tâches de l'audit
 d'abord.** T47 (garde de l'essai de l'app), T48 (échappement), T50
-(mentions légales), T51 (référencement), T49 (Safari), T54 (photos et pied de page selon le régime), T55 (textes alternatifs par métier) et T56 (avis) sont faites. T45 (GitHub Actions) est faite contre des faux et bloquée sur F21 pour le réel. Prochaine : **T46** (GPS des vidéos), T52, T53, puis
+(mentions légales), T51 (référencement), T49 (Safari), T54 (photos et pied de page selon le régime), T55 (textes alternatifs par métier) et T56 (avis) sont faites. T45 (GitHub Actions) est faite contre des faux et bloquée sur F21 pour le réel. T46 (GPS des vidéos) faite. Prochaine : **T52**, T53, puis
 T10 (formulaire des sites : brouillon de migration
 `20261029150000_deposer_demande.sql` sur le disque du PC, non appliqué, Q3).
 Depuis T50, un
@@ -94,8 +94,7 @@ Le détail, avec la preuve de chaque constat, est dans `docs/audit/REGISTRE.md`.
 3. **Formulaire de demande** sur les sites (T10, T11 ; question Q3).
 4. **13 métiers sur 16** sans textes (S-013, T32), et leurs images.
 5. **Deuxième page** sur un seul archétype sur quatre (S-012, T52).
-6. **GPS des vidéos** encore dans les fichiers envoyés (T46).
-7. **Documents** encore à écrire : technique, qualité, juridique, exploitation, commerce (lots 3 à 7, `docs/00-INDEX.md`, dernière section). Lots 1 et 2 faits le 3 nov.
+6. **Documents** encore à écrire : technique, qualité, juridique, exploitation, commerce (lots 3 à 7, `docs/00-INDEX.md`, dernière section). Lots 1 et 2 faits le 3 nov.
 
 ## Ne pas refaire
 
