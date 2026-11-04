@@ -2043,3 +2043,17 @@ ne la demande plus (il aurait refusé un `.env` sans elle).
 Résultat : `verifier-secrets` sans constat, `essai-refaire-site` 15 contrôles
 sans faute. F21 réduite d'une étape.
 TRACAGE : .github/workflows/refaire-site.yml, scripts/secrets-github.mjs, .env.example, app/specs/02-TRD.md, app/specs/01-PRD.md, memoire/actions-fabrice.md, memoire/maintenant.md, CHANGELOG.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 5 nov. 2026 — T32, électricité (5 sur 13), par Cowork
+
+Plan : 1. `generateur/metiers/electricite.json` (diagnostic, tableau,
+circuits, appareillage, mesures), textes tirés du plan d'images ; 2. prix
+relevés le 5 nov. (Ootravaux, La Maison Saint-Gobain, Obat, Habitatpresto) ;
+3. capacité et fabrication.
+
+Résultat : 103 titres, 100 sites sans défaut. Deux sites fabriqués :
+`verifier-site` 0 bloquant, `verifier-mobile` 0. Deux phrases corrigées avant
+publication pour coller à la règle : le diagnostic à la vente vaut pour une
+installation de plus de quinze ans ; le détecteur de fumée est obligatoire par
+logement, le couloir des chambres n'est qu'une recommandation.
+TRACAGE : generateur/metiers/electricite.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

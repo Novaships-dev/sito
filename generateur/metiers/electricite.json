@@ -1,0 +1,889 @@
+{
+  "nom": "Électricité",
+  "libelle": "électricité générale",
+  "schemaType": "Electrician",
+  "legendesPhotos": {
+    "geste": "Les fils peignés dans le tableau, chaque borne serrée au tournevis.",
+    "chantier": "Saignées ouvertes, gaines en attente, chaque circuit tiré jusqu’au tableau.",
+    "detail": "Un tableau repéré à dix centimètres : chaque disjoncteur porte le nom de son circuit."
+  },
+  "codesApe": [
+    "43.21A"
+  ],
+  "titres": [
+    "Une installation électrique se juge au tableau, pas aux interrupteurs.",
+    "Un tableau repéré se dépanne en dix minutes. Un tableau muet, en une journée.",
+    "La norme NF C 15-100 dit le minimum. Le bon électricien la connaît par cœur.",
+    "Un différentiel de 30 milliampères protège les personnes, pas les appareils.",
+    "Une multiprise en chaîne dit qu’il manque des prises.",
+    "Un fil qui chauffe dans un mur ne prévient pas.",
+    "La terre se mesure. Elle ne se suppose pas.",
+    "Une saignée se rebouche le jour même, pas à la fin du chantier.",
+    "Une gaine trop pleine empêche de tirer un fil de plus demain.",
+    "Chaque circuit a son disjoncteur, à la bonne intensité.",
+    "Le fil se choisit pour l’intensité qu’il porte, pas pour ce qui reste sur le touret.",
+    "Une prise de salle de bains se pose hors du volume de la douche.",
+    "Un vieux tableau à fusibles se remplace, il ne se bricole pas.",
+    "La cuisine demande ses circuits à elle : four, plaque, lave-vaisselle.",
+    "Une boîte d’encastrement scellée tient la prise pendant trente ans.",
+    "Le schéma de l’installation se remet au client, avec le tableau.",
+    "Un interrupteur se pose à la hauteur de la main, près de la porte.",
+    "L’éclairage extérieur se protège de l’eau et des chocs.",
+    "Une borne de recharge se pose sur un circuit dédié.",
+    "Un plafond qui grésille cache une connexion mal serrée.",
+    "Le courant se coupe au tableau, et se vérifie au multimètre. Toujours.",
+    "Un disjoncteur qui saute dit quelque chose. On l’écoute.",
+    "Une installation ancienne sans terre se met en sécurité en priorité.",
+    "Les gaines passent à l’horizontale ou à la verticale, jamais en diagonale.",
+    "Un détecteur de fumée est obligatoire dans chaque logement. Le couloir des chambres est sa place.",
+    "La goulotte se pose quand on ne peut pas ouvrir le mur.",
+    "Un spot encastré se pose avec une distance libre au-dessus.",
+    "Le tableau se pose à une hauteur que la norme fixe, ni trop haut ni trop bas.",
+    "Un fil dénudé trop long se voit au premier contrôle.",
+    "Une borne automatique serre le fil sans tournevis, et le tient.",
+    "L’électricien teste chaque prise avant de partir.",
+    "Un circuit spécialisé ne se partage pas avec la lampe du salon.",
+    "La VMC se raccorde sur son propre circuit.",
+    "Un parafoudre protège la maison d’un orage sur la ligne.",
+    "Le coffret de communication réunit la fibre, la box et les prises réseau.",
+    "Une prise RJ45 par pièce évite le Wi-Fi qui faiblit.",
+    "Un va-et-vient allume la lumière depuis deux endroits.",
+    "Un télérupteur commande l’éclairage d’un long couloir.",
+    "Le chauffage électrique demande un circuit et un fil à sa mesure.",
+    "Une maison bien câblée se reconnaît à son tableau propre.",
+    "Le fil de terre est vert et jaune, et seulement lui.",
+    "Les couleurs des fils ne sont pas un choix. Elles disent leur rôle.",
+    "Une connexion se fait dans une boîte, jamais dans le vide d’un mur.",
+    "Un dénudage net se fait à la pince, pas au couteau.",
+    "Le peigne d’alimentation remplace les ponts de fils dans le tableau.",
+    "Une installation se refait pièce par pièce quand la maison est habitée.",
+    "Un logement vendu dont l’installation a plus de quinze ans passe un diagnostic électrique.",
+    "Un circuit de prises se protège par un disjoncteur de 16 ou 20 ampères.",
+    "Un éclairage de jardin se tire dans une gaine enterrée, avec un grillage avertisseur.",
+    "Une prise extérieure se pose étanche, avec un clapet.",
+    "Le compteur se raccorde au tableau par un câble à sa section.",
+    "Le disjoncteur de branchement appartient au réseau, le tableau à la maison.",
+    "Un plafond refait se câble avant d’être fermé.",
+    "Les sorties de câble se laissent à la bonne longueur, ni trop courtes ni en boule.",
+    "Une installation neuve passe le contrôle du Consuel quand il est demandé.",
+    "Le multimètre dit si le courant est là. Le doute, jamais.",
+    "Un tableau trop plein n’a plus de place pour le prochain circuit.",
+    "L’électricien prévoit vingt pour cent de place libre dans le tableau.",
+    "Un luminaire lourd se fixe à un crochet, pas aux fils.",
+    "Une salle de bains se câble selon ses volumes, au centimètre.",
+    "Un appareillage neuf se pose de niveau, aligné avec ses voisins.",
+    "Une prise trop près du sol dans une cuisine finit mouillée.",
+    "Un détecteur de mouvement allume le garage sans chercher l’interrupteur.",
+    "L’éclairage de façade se pose avec son interrupteur dans l’entrée.",
+    "Une gaine annelée protège le fil dans la saignée.",
+    "Un fil dans une gaine se change sans casser le mur.",
+    "Le visiophone se câble avec un fil à part, loin du courant fort.",
+    "Une installation se pense avant les meubles, pas après.",
+    "Le nombre de prises se décide pièce par pièce, avec les habitants.",
+    "Un tableau neuf dans un vieux réseau se protège par des différentiels.",
+    "Les circuits d’une installation se nomment sur une étiquette, pas de mémoire.",
+    "Un câble tiré dans un mur se tire avec une aiguille, sans forcer.",
+    "L’électricien ouvre le mur le moins possible, et le referme proprement.",
+    "Une rallonge permanente est une prise qui manque.",
+    "Un vieux fil en tissu se remplace, il ne se prolonge pas.",
+    "Une installation sûre ne fait pas de bruit et ne chauffe pas.",
+    "Le dernier geste d’un électricien, c’est de réarmer chaque circuit et de vérifier.",
+    "Un éclairage bien placé change une pièce plus qu’une peinture.",
+    "Un spot de trop éblouit, un spot de moins laisse un coin sombre.",
+    "Le variateur se choisit avec l’ampoule, sinon elle clignote.",
+    "Un circuit de plaque de cuisson demande un fil épais et un disjoncteur de 32 ampères.",
+    "La terre d’une maison se mesure en ohms, et la valeur se note.",
+    "Une installation se rend avec ses mesures écrites.",
+    "Le chantier électrique précède le plâtrier et suit le maçon.",
+    "Un interrupteur lumineux se trouve dans le noir.",
+    "Une prise USB intégrée remplace un chargeur qui traîne.",
+    "Un tableau propre se lit comme un plan de la maison.",
+    "L’électricien mesure deux fois avant de percer près d’un tuyau.",
+    "Un garage se câble pour les outils, pas seulement pour une ampoule.",
+    "Une installation se refait en gardant le courant ailleurs, quand c’est possible.",
+    "Une maison sans différentiel est une maison à mettre en sécurité.",
+    "Le courant faible et le courant fort ne passent pas dans la même gaine.",
+    "Un câble enterré se pose à la bonne profondeur, sous un grillage rouge.",
+    "Une prise de lave-linge se pose loin du robinet.",
+    "Un luminaire de salle de bains se choisit pour l’humidité.",
+    "Le coffret extérieur se pose à l’abri, fermé, étiqueté.",
+    "Une coupure générale se fait en un geste, au tableau.",
+    "L’électricien laisse le chantier sans fil qui traîne ni boîte ouverte.",
+    "Une saignée rebouchée se repère sur le plan, pour ne pas la percer.",
+    "Une installation bien faite se voit à ce qu’on ne voit pas.",
+    "Le bon nombre de circuits évite que tout saute en même temps.",
+    "Un tableau électrique se ferme avec un capot, pas avec du ruban.",
+    "Une installation se contrôle disjoncteur par disjoncteur, différentiel par différentiel."
+  ],
+  "chapos": {
+    "etapes": [
+      [
+        "diagnostic de l’installation",
+        "relevé des circuits existants",
+        "mesure de la terre"
+      ],
+      [
+        "mise hors tension et consignation",
+        "dépose de l’ancienne installation",
+        "dépose du vieux tableau",
+        "saignées ouvertes au plus juste"
+      ],
+      [
+        "câbles tirés sous gaine",
+        "circuits spécialisés pour la cuisine",
+        "circuits d’éclairage et de prises",
+        "mise à la terre refaite"
+      ],
+      [
+        "tableau électrique neuf",
+        "différentiels de 30 milliampères",
+        "disjoncteurs repérés",
+        "peignes d’alimentation",
+        "tableau aux normes NF C 15-100"
+      ],
+      [
+        "prises et interrupteurs posés",
+        "spots et luminaires posés",
+        "éclairage extérieur",
+        "coffret de communication",
+        "détecteurs de fumée"
+      ],
+      [
+        "mesures et essais",
+        "chaque circuit vérifié",
+        "schéma de l’installation remis",
+        "saignées rebouchées"
+      ],
+      [
+        "anciens câbles évacués",
+        "chantier nettoyé",
+        "installation rendue sous tension"
+      ]
+    ],
+    "nombre": [
+      4,
+      5
+    ],
+    "toujours": [
+      3
+    ]
+  },
+  "gestes": [
+    {
+      "terme": "Diagnostic",
+      "textes": {
+        "combiner": [
+          [
+            "Le tableau est ouvert et chaque circuit est repéré.",
+            "La terre est mesurée au contrôleur.",
+            "Les différentiels sont essayés au bouton test, puis à l’appareil.",
+            "Les prises sans terre sont relevées pièce par pièce.",
+            "Les fils anciens en tissu ou sans gaine sont repérés.",
+            "Les circuits surchargés sont notés.",
+            "Les besoins sont listés avec les habitants : prises, éclairage, appareils.",
+            "L’état du branchement et du compteur est vérifié.",
+            "Les points dangereux sont mis en sécurité tout de suite.",
+            "Le diagnostic est écrit avant le devis."
+          ],
+          [
+            "Un tableau sans repères cache des surprises dans chaque mur.",
+            "Une terre trop forte ne protège plus personne.",
+            "Un différentiel qui ne déclenche pas laisse passer le danger.",
+            "Une prise sans terre ne se répare pas en changeant la prise.",
+            "Un vieux fil en tissu s’effrite dans le mur.",
+            "Un circuit surchargé chauffe avant de sauter.",
+            "Le nombre de prises se décide avec ceux qui vivent là.",
+            "Un branchement trop faible fait sauter le compteur.",
+            "Ce qui est dangereux ne peut pas attendre le devis.",
+            "Un devis sans diagnostic chiffre au hasard."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Mise hors tension et dépose",
+      "textes": {
+        "combiner": [
+          [
+            "Le courant est coupé au disjoncteur général.",
+            "L’absence de tension est vérifiée au multimètre, fil par fil.",
+            "Le tableau est consigné pour que personne ne le réarme.",
+            "Les anciens appareillages sont déposés.",
+            "Les fils inutiles sont retirés, pas laissés dans les murs.",
+            "L’ancien tableau est déposé et évacué.",
+            "Un éclairage de chantier est installé pour la suite.",
+            "Les saignées sont tracées au crayon, puis ouvertes à la rainureuse.",
+            "Les poussières sont aspirées à la source.",
+            "Les pièces voisines sont protégées."
+          ],
+          [
+            "Travailler sous tension, c’est jouer avec sa vie.",
+            "Un fil qu’on croit coupé peut être alimenté par un autre circuit.",
+            "Un tableau réarmé par erreur blesse celui qui travaille.",
+            "Une prise déposée laisse voir l’état réel des fils.",
+            "Un vieux fil laissé dans un mur trompe le prochain électricien.",
+            "Un tableau à fusibles ne mérite pas une seconde vie.",
+            "On ne câble pas bien dans le noir.",
+            "Une saignée tracée à l’œil se perce plus tard par erreur.",
+            "La poussière de saignée envahit toute la maison.",
+            "Un meuble couvert se nettoie en un geste."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Passage des câbles",
+      "textes": {
+        "combiner": [
+          [
+            "Les câbles sont tirés dans des gaines, à l’aiguille.",
+            "La section du fil est choisie pour chaque circuit.",
+            "Les gaines passent à l’horizontale et à la verticale.",
+            "Les boîtes d’encastrement sont scellées au plâtre.",
+            "Le courant faible passe dans des gaines à part.",
+            "Les sorties de câble sont laissées à la bonne longueur.",
+            "Les circuits sont repérés aux deux bouts.",
+            "Les saignées sont rebouchées le jour même.",
+            "Les traversées de murs passent dans des fourreaux.",
+            "Les câbles extérieurs sont enterrés sous un grillage avertisseur."
+          ],
+          [
+            "Un câble sans gaine ne se change qu’en cassant le mur.",
+            "Un fil trop fin chauffe sous un four.",
+            "Une gaine en diagonale se perce dix ans plus tard.",
+            "Une boîte mal scellée bouge à chaque prise branchée.",
+            "Le courant fort brouille la fibre et le téléphone.",
+            "Un fil trop court oblige à rallonger dans une boîte.",
+            "Un repère aux deux bouts évite de chercher le bon fil.",
+            "Une saignée ouverte trois semaines se remplit de gravats.",
+            "Un fil qui frotte sur une arête de béton s’abîme.",
+            "Un câble enterré sans grillage se coupe au premier coup de pioche."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Tableau électrique",
+      "textes": {
+        "combiner": [
+          [
+            "Le tableau est posé à la hauteur fixée par la norme.",
+            "Les différentiels de 30 milliampères protègent chaque rangée.",
+            "Chaque circuit a son disjoncteur, à l’intensité de son fil.",
+            "Les peignes d’alimentation remplacent les ponts de fils.",
+            "Les fils sont peignés et serrés borne par borne.",
+            "Chaque disjoncteur porte le nom de son circuit.",
+            "Vingt pour cent de place sont laissés libres.",
+            "Un parafoudre est posé quand la région le demande.",
+            "Le coffret de communication est posé à côté du tableau.",
+            "Le capot est fermé, l’étiquette collée."
+          ],
+          [
+            "Un tableau trop haut ou trop bas ne passe pas le contrôle.",
+            "Le différentiel coupe avant que le courant ne passe par quelqu’un.",
+            "Un disjoncteur trop fort laisse chauffer le fil.",
+            "Les ponts de fils se desserrent avec le temps.",
+            "Une borne mal serrée chauffe, noircit, puis casse.",
+            "Un tableau étiqueté se dépanne sans plombier ni électricien, pour le simple.",
+            "Une place libre, c’est un circuit ajouté sans tout refaire.",
+            "Un orage sur la ligne grille les appareils sans parafoudre.",
+            "La fibre et la box ont leur place, pas dans un placard humide.",
+            "Un tableau ouvert est un tableau dangereux."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Appareillage et éclairage",
+      "textes": {
+        "combiner": [
+          [
+            "Les prises sont posées en nombre, là où les meubles iront.",
+            "Les interrupteurs sont posés près des portes, à hauteur de main.",
+            "L’appareillage est aligné et posé de niveau.",
+            "Les spots encastrés sont posés avec leur distance libre.",
+            "Les luminaires lourds sont fixés à un crochet.",
+            "Les prises de salle de bains sont posées hors des volumes de la douche.",
+            "Les prises extérieures sont étanches.",
+            "Les détecteurs de fumée sont posés dans les couloirs des chambres.",
+            "Les prises RJ45 sont posées dans les pièces de vie.",
+            "Les variateurs sont choisis avec les ampoules."
+          ],
+          [
+            "Une prise derrière le canapé ne sert à rien.",
+            "Un interrupteur derrière la porte se cherche dans le noir.",
+            "Un appareillage de travers se voit sur un mur blanc.",
+            "Un spot sans espace au-dessus chauffe le plafond.",
+            "Un luminaire pendu à ses fils finit par les arracher.",
+            "L’eau et le courant ne se croisent pas dans une salle de bains.",
+            "Une prise extérieure ordinaire se remplit d’eau au premier orage.",
+            "Le détecteur réveille avant que la fumée n’arrive à la chambre.",
+            "Un câble réseau ne faiblit pas comme le Wi-Fi.",
+            "Une ampoule et un variateur mal assortis clignotent."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Circuits spécialisés",
+      "textes": {
+        "combiner": [
+          [
+            "La plaque de cuisson a son circuit et son fil de forte section.",
+            "Le four, le lave-vaisselle et le lave-linge ont chacun le leur.",
+            "Le chauffe-eau est raccordé sur un circuit avec contacteur.",
+            "La VMC a son circuit.",
+            "Les radiateurs électriques sont répartis sur plusieurs circuits.",
+            "La borne de recharge a un circuit dédié et sa protection.",
+            "Le congélateur est mis sur un circuit qu’on ne coupe pas par erreur.",
+            "Le garage reçoit des prises pour les outils.",
+            "L’éclairage extérieur est commandé depuis l’intérieur.",
+            "La pompe de la piscine a sa protection à elle."
+          ],
+          [
+            "Une plaque sur un circuit de prises fait tout sauter au premier repas.",
+            "Deux gros appareils sur le même circuit se disputent le courant.",
+            "Le contacteur fait chauffer l’eau aux heures creuses.",
+            "Une VMC coupée avec la lumière ne ventile plus.",
+            "Tous les radiateurs sur un seul circuit, c’est un circuit qui chauffe.",
+            "Une voiture se recharge des heures : le circuit doit le supporter.",
+            "Un congélateur coupé par erreur, c’est un congélateur à vider.",
+            "Une scie sur une prise de lampe fait sauter le disjoncteur.",
+            "Sortir dans le noir pour allumer dehors n’a pas de sens.",
+            "L’eau d’une piscine et le courant demandent une protection à part."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Mesures et mise en service",
+      "textes": {
+        "combiner": [
+          [
+            "Chaque circuit est mesuré avant la mise sous tension.",
+            "La terre est mesurée et sa valeur notée.",
+            "Les différentiels sont essayés un par un.",
+            "Chaque prise est essayée au testeur.",
+            "Chaque point lumineux est allumé.",
+            "Le schéma unifilaire et le plan des circuits sont remis.",
+            "L’attestation de conformité est préparée quand elle est demandée.",
+            "Le fonctionnement du tableau est expliqué aux habitants.",
+            "Les disjoncteurs sont réarmés un par un.",
+            "Les mesures sont écrites et remises."
+          ],
+          [
+            "Une erreur trouvée avant la mise sous tension ne fait pas d’étincelle.",
+            "Une terre notée se compare au prochain contrôle.",
+            "Un différentiel jamais essayé ne protège peut-être pas.",
+            "Une prise inversée se trouve au testeur, pas à l’usage.",
+            "Une lumière qui ne s’allume pas se répare avant le départ.",
+            "Un schéma remis évite de tout chercher à la prochaine panne.",
+            "Sans attestation, certains compteurs ne se raccordent pas.",
+            "Savoir couper le courant, c’est la première sécurité.",
+            "Réarmer un par un montre quel circuit pose problème.",
+            "Des mesures écrites sont une preuve du travail fait."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Finitions et nettoyage",
+      "textes": {
+        "combiner": [
+          [
+            "Les saignées sont rebouchées et lissées.",
+            "Les boîtes de dérivation sont fermées.",
+            "Les anciens câbles sont évacués en filière de recyclage.",
+            "Les chutes de gaine et de fil sont ramassées.",
+            "Les plaques d’appareillage sont posées droites.",
+            "Les poussières sont aspirées.",
+            "Les sols et les meubles sont nettoyés.",
+            "Le capot du tableau est fermé.",
+            "Les étiquettes sont lisibles.",
+            "La maison est rendue sous tension, chaque circuit vérifié."
+          ],
+          [
+            "Une saignée mal rebouchée se voit sous la peinture.",
+            "Une boîte ouverte est un danger.",
+            "Le cuivre se recycle, il ne se jette pas.",
+            "Un bout de fil oublié se retrouve dans l’aspirateur du client.",
+            "Une plaque de travers se voit de la porte.",
+            "La poussière de chantier reste des semaines si on ne l’aspire pas.",
+            "Un chantier rendu propre est un chantier fini.",
+            "Un capot ouvert invite les doigts d’un enfant.",
+            "Une étiquette effacée ne sert plus à rien.",
+            "Le dernier geste, c’est de vérifier que tout marche."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    }
+  ],
+  "coupure": {
+    "avant": {
+      "etapes": [
+        [
+          "tableau à fusibles",
+          "disjoncteurs anciens",
+          "fils en désordre",
+          "compteur sur une planche",
+          "pas de différentiel",
+          "pas de terre"
+        ],
+        [
+          "prise pendante",
+          "fils apparents",
+          "fils de plafond sans luminaire",
+          "prises sans terre",
+          "multiprises en chaîne",
+          "ampoule nue"
+        ],
+        [
+          "coffret extérieur rouillé",
+          "prise extérieure arrachée",
+          "éclairage extérieur cassé",
+          "interphone cassé",
+          "baladeuses et rallonges"
+        ],
+        [
+          "prises non conformes dans la salle de bains",
+          "circuits surchargés",
+          "fil en tissu",
+          "disjoncteur qui saute"
+        ]
+      ],
+      "nombre": [
+        3,
+        3
+      ]
+    },
+    "apres": {
+      "etapes": [
+        [
+          "ancienne installation déposée",
+          "saignées ouvertes au plus juste",
+          "câbles sous gaine",
+          "terre refaite"
+        ],
+        [
+          "tableau modulaire neuf",
+          "différentiels de 30 milliampères",
+          "disjoncteurs repérés",
+          "peignes d’alimentation"
+        ],
+        [
+          "appareillage encastré",
+          "spots posés",
+          "luminaires posés",
+          "prises en nombre",
+          "prise étanche neuve",
+          "visiophone neuf"
+        ],
+        [
+          "circuits spécialisés",
+          "coffret de communication",
+          "détecteurs de fumée",
+          "éclairage extérieur neuf"
+        ],
+        [
+          "mesures faites",
+          "schéma remis",
+          "saignées rebouchées",
+          "installation rendue sous tension"
+        ]
+      ],
+      "nombre": [
+        3,
+        4
+      ],
+      "toujours": [
+        1
+      ]
+    }
+  },
+  "legendes": {
+    "comparateurs": {
+      "combiner": [
+        [
+          "Tableau électrique",
+          "Prise de séjour",
+          "Coffret extérieur",
+          "Plafond",
+          "Cuisine",
+          "Gaine technique",
+          "Garage",
+          "Prise extérieure",
+          "Salle de bains",
+          "Entrée",
+          "Chambre",
+          "Jardin"
+        ],
+        [
+          "courant coupé",
+          "ancienne installation déposée",
+          "saignées ouvertes",
+          "câbles tirés",
+          "terre mesurée",
+          "circuits repérés",
+          "gaines posées",
+          "boîtes scellées",
+          "tableau consigné",
+          "mesures faites"
+        ],
+        [
+          "tableau neuf",
+          "appareillage neuf",
+          "prises en nombre",
+          "luminaire posé",
+          "spots encastrés",
+          "circuits repérés",
+          "prise étanche",
+          "visiophone posé"
+        ]
+      ],
+      "joints": [
+        ", ",
+        ", "
+      ],
+      "fin": "."
+    },
+    "invitation": {
+      "combiner": [
+        [
+          "Faites glisser la couture",
+          "Déplacez la séparation",
+          "Touchez la photo",
+          "Glissez le trait",
+          "Attrapez la couture",
+          "Faites glisser le curseur",
+          "Déplacez le trait",
+          "Passez le doigt sur la photo"
+        ],
+        [
+          "pour comparer l’avant et l’après.",
+          "pour voir l’installation avant les travaux.",
+          "pour passer d’un état à l’autre.",
+          "pour voir ce que le chantier a changé.",
+          "pour retrouver l’installation d’origine.",
+          "pour voir le mur avant la reprise.",
+          "pour comparer les deux états.",
+          "pour voir l’équipement avant et après.",
+          "pour mesurer le travail fait.",
+          "pour voir la différence."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    },
+    "precision": {
+      "combiner": [
+        [
+          "Même point de vue, même cadrage.",
+          "Les deux photos sont prises du même endroit.",
+          "Même angle, même distance.",
+          "Les deux images ont le même cadrage.",
+          "Même endroit, même objectif.",
+          "Le point de vue ne bouge pas d’une photo à l’autre.",
+          "Photographié deux fois, depuis le même pas de porte.",
+          "Même place, même hauteur d’objectif.",
+          "Le photographe n’a pas bougé entre les deux."
+        ],
+        [
+          "Seule l’installation change.",
+          "La différence vient du chantier.",
+          "Rien d’autre ne change que l’électricité.",
+          "Ce qui change, c’est le travail fait.",
+          "La pièce est la même, l’installation non.",
+          "Seuls les circuits ont été repris.",
+          "Ce qui diffère, ce sont les fils et les appareils.",
+          "Entre les deux, il y a le chantier.",
+          "L’écart, c’est le travail de l’électricien."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    }
+  },
+  "rubriques": {
+    "gestes": [
+      "Le détail des postes.",
+      "Ce que recouvre un chantier d’électricité.",
+      "Ce qui se fait sur l’installation.",
+      "Les étapes, dans l’ordre.",
+      "Étape par étape.",
+      "Du tableau à la prise.",
+      "Comment se refait une installation.",
+      "Les postes du chantier.",
+      "Ce que fait l’électricien.",
+      "Du diagnostic à la mise sous tension.",
+      "Le travail, poste par poste.",
+      "Ce qui se fait, et pourquoi.",
+      "Les gestes du chantier.",
+      "Dans l’ordre du chantier.",
+      "Ce que le devis détaille."
+    ],
+    "chantier": [
+      "Le chantier.",
+      "Sur l’installation.",
+      "En cours de travaux.",
+      "Pendant les travaux.",
+      "Sur place.",
+      "Dans les murs.",
+      "Le chantier en cours.",
+      "Les travaux, en images.",
+      "Ce que montre le chantier.",
+      "Sur le chantier.",
+      "Pendant le câblage.",
+      "L’installation en travaux.",
+      "Ce qui se voit en cours.",
+      "Au milieu du chantier.",
+      "Le tableau en cours."
+    ],
+    "verifiable": [
+      "Ce qui se vérifie.",
+      "Les faits publics.",
+      "Ce que disent les registres.",
+      "Ce qui est public.",
+      "Les registres officiels.",
+      "Ce que chacun peut vérifier.",
+      "L’entreprise, dans les registres.",
+      "Les données publiques.",
+      "Les sources officielles.",
+      "Ce que disent les sources publiques.",
+      "Vérifiable par tous.",
+      "Les faits, sans commentaire.",
+      "Ce que l’État publie.",
+      "Dans les bases publiques.",
+      "Les informations légales."
+    ],
+    "contact": [
+      "Parler du chantier.",
+      "Prendre contact.",
+      "Faire venir quelqu’un.",
+      "Demander une visite.",
+      "Montrer le tableau.",
+      "Parler de votre installation.",
+      "Faire voir le problème.",
+      "Appeler l’entreprise.",
+      "Demander un passage.",
+      "Faire constater.",
+      "Prendre rendez-vous.",
+      "Une question sur une installation ?",
+      "Faire chiffrer.",
+      "Parler du projet.",
+      "Joindre l’entreprise."
+    ],
+    "prix": [
+      "Ce que ça coûte.",
+      "Les tarifs, poste par poste.",
+      "Avant de demander un devis.",
+      "Combien ça coûte.",
+      "Les prix, poste par poste.",
+      "Les ordres de grandeur.",
+      "Les tarifs pratiqués.",
+      "Ce que coûte l’électricité.",
+      "Le prix des postes.",
+      "Avant le devis.",
+      "Les prix du métier.",
+      "Ce qui fait le prix.",
+      "Les tarifs, sans détour.",
+      "Les fourchettes de prix.",
+      "Ce que dit le devis."
+    ]
+  },
+  "mot": "Électricité",
+  "matiere": [
+    "À dix centimètres, les peignes en cuivre du tableau s’alignent sans un écart.",
+    "Les manettes des disjoncteurs forment une ligne droite.",
+    "Chaque fil porte une étiquette à ses deux bouts.",
+    "La gaine annelée grise suit la saignée, droite comme un fil à plomb.",
+    "Une boîte d’encastrement scellée affleure le plâtre.",
+    "La borne automatique serre le cuivre sans une vis.",
+    "Les brins d’un fil dénudé restent serrés, sans un brin qui dépasse.",
+    "Le coffret de communication range la fibre à côté du tableau.",
+    "Le fil de terre vert et jaune se reconnaît de loin.",
+    "Le bleu du neutre ne se confond avec rien d’autre.",
+    "Une plaque d’interrupteur posée de niveau suit la ligne de la porte.",
+    "Le spot encastré affleure le plafond, sans jour autour.",
+    "Un tableau peigné laisse voir chaque fil de bout en bout.",
+    "Le témoin d’un différentiel indique s’il a déclenché.",
+    "Une prise étanche se ferme d’un clapet qui claque.",
+    "Les gaines de couleurs différentes séparent le courant fort du courant faible.",
+    "Un câble rigide garde la forme qu’on lui donne.",
+    "Le capot du tableau porte la liste des circuits.",
+    "La lumière d’un variateur monte sans à-coup.",
+    "Une saignée rebouchée disparaît sous l’enduit.",
+    "Le cuivre d’un câble de forte section brille à la coupe.",
+    "Les vis de borne se serrent jusqu’au déclic du tournevis dynamométrique.",
+    "Un luminaire suspendu tombe droit, sans tirer sur ses fils.",
+    "Un détecteur de fumée porte sa petite lumière qui clignote.",
+    "Le grillage rouge au-dessus d’un câble enterré prévient la pioche.",
+    "Une prise RJ45 porte son numéro, le même qu’au coffret.",
+    "Le parafoudre affiche une fenêtre verte tant qu’il protège.",
+    "Une goulotte blanche longe la plinthe sans casser le mur.",
+    "L’étiquette du tableau se lit sans lampe.",
+    "Un tableau neuf sent encore le plastique, et ne chauffe pas."
+  ],
+  "prix": {
+    "note": "Ordres de grandeur nationaux, relevés le 5 novembre 2026. Ce ne sont pas les prix de l'entreprise et ce n'est pas un devis.",
+    "sources": [
+      {
+        "nom": "Ootravaux, tarifs d’un électricien",
+        "url": "https://www.ootravaux.fr/installation-entretien/electricite/installation-electrique/tarifs-electricien.html"
+      },
+      {
+        "nom": "La Maison Saint-Gobain, prix des travaux d’électricité",
+        "url": "https://www.lamaisonsaintgobain.fr/guides-travaux/tout-savoir-sur-l-electricite/prix-renovation-electrique-travaux-electricite"
+      },
+      {
+        "nom": "Obat, changement de tableau électrique",
+        "url": "https://travaux.obat.fr/guides/prix-mise-norme-tableau-electrique/"
+      },
+      {
+        "nom": "Habitatpresto, rénovation électrique d’une maison de 100 m²",
+        "url": "https://www.habitatpresto.com/mag/electricite/prix-renovation-electrique-maison-100m2"
+      }
+    ],
+    "postes": [
+      {
+        "poste": "Mise aux normes seule",
+        "bas": 25,
+        "haut": 50,
+        "unite": "€/m²",
+        "note": "Tableau, protection différentielle, terre."
+      },
+      {
+        "poste": "Rénovation partielle",
+        "bas": 30,
+        "haut": 70,
+        "unite": "€/m²",
+        "note": "Mise aux normes, remplacement du tableau, ajout de circuits."
+      },
+      {
+        "poste": "Rénovation complète",
+        "bas": 50,
+        "haut": 200,
+        "unite": "€/m²",
+        "note": "Selon l’état de l’existant et le nombre de points. Les sources vont de 50 à 120 €/m² pour l’une, 125 à 200 €/m² pour l’autre."
+      },
+      {
+        "poste": "Remplacement du tableau électrique",
+        "bas": 400,
+        "haut": 2500,
+        "unite": "€",
+        "note": "Prix TTC, pose comprise."
+      }
+    ],
+    "exemple": {
+      "titre": "Une maison de 100 m², électricité refaite en entier",
+      "bas": 8000,
+      "haut": 12000,
+      "note": "Fourchette donnée par Habitatpresto pour une rénovation électrique complète de 100 m² par un électricien qualifié."
+    }
+  },
+  "nuancierEtiquette": "Voir la pièce dans une autre teinte",
+  "teintes": [
+    {
+      "nom": "D’origine",
+      "voile": "",
+      "pastille": "#CFCBC3"
+    },
+    {
+      "nom": "Blanc",
+      "voile": "40 12% 94% / .30",
+      "pastille": "#EFEDE8"
+    },
+    {
+      "nom": "Gris clair",
+      "voile": "210 8% 74% / .30",
+      "pastille": "#B6BCC1"
+    },
+    {
+      "nom": "Anthracite",
+      "voile": "210 8% 26% / .34",
+      "pastille": "#3C4146"
+    },
+    {
+      "nom": "Lin",
+      "voile": "38 22% 86% / .30",
+      "pastille": "#E2DACA"
+    },
+    {
+      "nom": "Sauge",
+      "voile": "110 14% 58% / .32",
+      "pastille": "#8FA088"
+    },
+    {
+      "nom": "Bleu nuit",
+      "voile": "220 35% 28% / .34",
+      "pastille": "#2F3E5E"
+    },
+    {
+      "nom": "Terre",
+      "voile": "22 55% 48% / .34",
+      "pastille": "#B57446"
+    },
+    {
+      "nom": "Ocre",
+      "voile": "38 60% 58% / .32",
+      "pastille": "#C9A05A"
+    },
+    {
+      "nom": "Noir",
+      "voile": "0 0% 14% / .34",
+      "pastille": "#262626"
+    }
+  ],
+  "alt": {
+    "avant": "tableau électrique ancien avant travaux, fusibles porcelaine et fils en désordre",
+    "apres": "le même emplacement avec un tableau modulaire neuf, repéré",
+    "invitation": "Comparer l’installation avant et après les travaux",
+    "avant2": "un autre chantier avant la reprise de l’électricité",
+    "apres2": "le même chantier une fois l’électricité refaite",
+    "hero": "pièce dont une moitié garde l’ancienne installation et l’autre la neuve",
+    "invitation2": "Comparer un second chantier avant et après",
+    "ouverture": "geste du métier pendant le câblage d’une installation",
+    "chantier": "saignées ouvertes dans le mur, gaines en attente",
+    "chantierBis": "tableau en cours de câblage, peignes posés, fils peignés",
+    "detail": "gros plan sur un tableau câblé et repéré",
+    "detailBis": "gros plan sur des disjoncteurs alignés",
+    "geste": "les mains qui peignent les fils dans le tableau"
+  },
+  "estimateur": {
+    "titre": "Votre logement",
+    "mesure": {
+      "etiquette": "Surface du logement",
+      "unite": "m²",
+      "min": 20,
+      "max": 250,
+      "pas": 5,
+      "defaut": 80,
+      "aria": "Surface du logement en mètres carrés"
+    }
+  }
+}
