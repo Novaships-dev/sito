@@ -35,10 +35,9 @@ if (CONTRE) {
   mkdirSync(join(travail, 'p'));
   let src = readFileSync(module, 'utf8');
   const avant = src;
+  // Chaque import relatif est réécrit vers le vrai dépôt.
   src = src.replace("garde.etat = 'pris'; garde.siren = siren;", 'garde.siren = siren;')
-    .replaceAll("from '../env.mjs'", `from ${JSON.stringify(pathToFileURL(join(RACINE, 'scripts', 'env.mjs')).href)}`)
-    .replaceAll("from './registre.mjs'", `from ${JSON.stringify(pathToFileURL(join(RACINE, 'scripts', 'prospection', 'registre.mjs')).href)}`)
-    .replaceAll("from './modeles.mjs'", `from ${JSON.stringify(pathToFileURL(join(RACINE, 'scripts', 'prospection', 'modeles.mjs')).href)}`);
+    .replace(/from '(\.\.?\/[^']+)'/g, (_, rel) => `from ${JSON.stringify(pathToFileURL(join(RACINE, 'scripts', 'prospection', rel)).href)}`);
   if (src === avant || src.includes("garde.etat = 'pris'")) { console.error('la copie cassée n a rien cassé'); process.exit(2); }
   module = join(travail, 'p', 'accepter.mjs');
   writeFileSync(module, src);
