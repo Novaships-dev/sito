@@ -1872,3 +1872,15 @@ Contre-essai : 8 contrôles, 0 faute (T99 sans trace, avec une seule des deux,
 section sans TRACAGE, journal d'un autre jour : rouge ; avec les deux du même
 jour : vert).
 TRACAGE : scripts/verifier-tracabilite.mjs, scripts/essais.mjs, .github/workflows/essais.yml, docs/REGLE-TRACABILITE.md, CLAUDE.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 4 nov. 2026 — T10 (formulaire des sites, côté base), par Cowork
+
+Plan : 1. Q3 appliquée et adaptée : plus de Worker devant les sites d'abonnés
+(Pages depuis T45), donc une fonction `deposer_demande` appelée par l'API de
+Supabase avec la clé publique ; 2. migration ; 3. essai SQL.
+
+Résultat : migration écrite (`supabase/brouillons/deposer_demande.sql`), **pas
+appliquée** : `apply_migration` a demandé une confirmation que l'app a annulée
+seule en 0,4 s, trois fois (Fabrice sur iPhone, hors de chez lui). Rien n'a
+été exécuté sur la base. T10 bloquée sur F22.
+TRACAGE : supabase/brouillons/deposer_demande.sql, app/specs/07-TACHES.md, memoire/actions-fabrice.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

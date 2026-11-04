@@ -22,14 +22,15 @@ fabrication (D-14), rien d'essayé sur un vrai iPhone (F14). Mentions légales
 
 ## Les tâches
 
-61 tâches : **33 faites, 14 bloquées, 14 à faire** (`app/specs/07-TACHES.md`).
+61 tâches : **33 faites, 15 bloquées, 13 à faire** (`app/specs/07-TACHES.md`).
 T47 à T56 viennent de l'audit du 3 novembre.
 
 **Ordre décidé par Fabrice le 3 nov. (« oui Q5 ») : les tâches de l'audit
 d'abord.** T47 (garde de l'essai de l'app), T48 (échappement), T50
-(mentions légales), T51 (référencement), T49 (Safari), T54 (photos et pied de page selon le régime), T55 (textes alternatifs par métier) et T56 (avis) sont faites. T45 (GitHub Actions) est faite contre des faux et bloquée sur F21 pour le réel. T46 (GPS des vidéos), T52 (deuxième page sur les quatre archétypes) et T53 (traçabilité contrôlée par la suite) faites. Prochaine :
-T10 (formulaire des sites : brouillon de migration
-`20261029150000_deposer_demande.sql` sur le disque du PC, non appliqué, Q3).
+(mentions légales), T51 (référencement), T49 (Safari), T54 (photos et pied de page selon le régime), T55 (textes alternatifs par métier) et T56 (avis) sont faites. T45 (GitHub Actions) est faite contre des faux et bloquée sur F21 pour le réel. T46 (GPS des vidéos), T52 (deuxième page sur les quatre archétypes) et T53 (traçabilité contrôlée par la suite) faites. T10 (formulaire des sites) bloquée sur F22 : la migration
+`supabase/brouillons/deposer_demande.sql` est prête, mais la confirmation de
+Supabase s'annule seule depuis l'app ; à appliquer depuis l'ordinateur.
+Prochaine : la première tâche « à faire » dont les dépendances sont faites.
 Depuis T50, un
 site fabriqué depuis la base est un site d'abonné (`--publication`) : sans
 adresse électronique ni directeur de la publication dans `profils`, il n'est

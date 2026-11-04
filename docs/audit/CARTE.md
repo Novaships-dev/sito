@@ -6,12 +6,12 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**363 fichiers suivis, dont 151 .md ; 87498 lignes de texte.** Hors zone : 0.
+**364 fichiers suivis, dont 151 .md ; 87608 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
 | Z01 Pilotage de l agent | 27 | 2142 | 0 |
-| Z02 Mémoire du projet | 11 | 2588 | 0 |
+| Z02 Mémoire du projet | 11 | 2602 | 0 |
 | Z03 Spécifications | 11 | 2383 | 0 |
 | Z04 Documentation de travail | 24 | 3293 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
@@ -19,7 +19,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | Z07 Règles | 15 | 1147 | 0 |
 | Z08 App de l artisan | 36 | 9136 | 4 |
 | Z09 Service atelier et Worker | 11 | 1390 | 0 |
-| Z10 Base Supabase | 18 | 1434 | 0 |
+| Z10 Base Supabase | 19 | 1530 | 0 |
 | Z11 Essais et vérificateurs | 42 | 8587 | 0 |
 | Z12 Prospection | 24 | 24272 | 0 |
 | Z13 Autres scripts | 14 | 1455 | 0 |
@@ -64,15 +64,15 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `memoire/actions-fabrice.md` | 35 |
+| `memoire/actions-fabrice.md` | 36 |
 | `memoire/comptes-essai.md` | 19 |
 | `memoire/de-cowork.md` | 35 |
 | `memoire/decisions.md` | 133 |
 | `memoire/essais/audit.txt` | 44 |
 | `memoire/essais/derniers.txt` | 24 |
 | `memoire/essais/disque.txt` | 61 |
-| `memoire/journal.md` | 1874 |
-| `memoire/maintenant.md` | 105 |
+| `memoire/journal.md` | 1886 |
+| `memoire/maintenant.md` | 106 |
 | `memoire/pieges.md` | 120 |
 | `memoire/questions.md` | 138 |
 
@@ -311,6 +311,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | Fichier | Lignes |
 |---|---|
 | `supabase/README.md` | 167 |
+| `supabase/brouillons/deposer_demande.sql` | 96 |
 | `supabase/essais/droits-app.sql` | 97 |
 | `supabase/essais/droits.sql` | 58 |
 | `supabase/essais/invitations.sql` | 45 |
