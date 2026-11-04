@@ -2,6 +2,7 @@
   "nom": "Peinture",
   "libelle": "peinture intérieure",
   "schemaType": "HousePainter",
+  "legendesPhotos": {"geste": "Deux couches croisées, angles repris au pinceau.", "chantier": "Sols bâchés, plinthes et encadrements masqués.", "detail": "Le grain du rouleau, à dix centimètres. La lumière suit le doigt."},
   "codesApe": ["43.34Z"],
   "titres": [
     "Une peinture se juge sur la préparation, pas sur la couleur.",

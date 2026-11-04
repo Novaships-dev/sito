@@ -607,6 +607,32 @@ function referencementSite(chemin) {
 }
 constats.push(...referencementSite(cible));
 
+// ---------------------------------------------------------------- textes alternatifs
+// R-ALT, tache T55 (constat S-023) : chaque texte alternatif d image d un site
+// fabrique vient du fichier de son metier (`alt` de generateur/metiers/<cle>.json).
+// Un site de couverture decrivait « l echafaudage monte sur une facade ».
+function altDuMetier(chemin) {
+  const c = [];
+  if (!statSync(chemin).isDirectory() || !existsSync(join(chemin, 'donnees.json'))) return c;
+  let metier;
+  try { metier = JSON.parse(readFileSync(join(chemin, 'donnees.json'), 'utf8')).metier; } catch { return c; }
+  const fm = join(import.meta.dirname, '..', 'generateur', 'metiers', `${metier}.json`);
+  if (!metier || !existsSync(fm)) return c;
+  const permis = new Set(Object.values(JSON.parse(readFileSync(fm, 'utf8')).alt || {}).map(x => String(x).toLowerCase()));
+  const decode = (x) => x.replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+  for (const n of readdirSync(chemin).filter(f => f.endsWith('.html'))) {
+    const etrangers = new Set();
+    for (const m of readFileSync(join(chemin, n), 'utf8').matchAll(/<img\b[^>]*\balt="([^"]*)"/gi)) {
+      const a = decode(m[1]).replace(/^Exemple, /, '').trim().toLowerCase();
+      if (a && !permis.has(a)) etrangers.add(a);
+    }
+    if (etrangers.size) c.push({ fichier: n, num: 'R-ALT', gravite: 'bloquant', libelle: 'texte alternatif qui ne vient pas du fichier du metier',
+      detail: `${metier} : « ${[...etrangers].slice(0, 2).join(' » ; « ')} »`, remede: `generateur/metiers/${metier}.json, champ alt` });
+  }
+  return c;
+}
+constats.push(...altDuMetier(cible));
+
 // ---------------------------------------------------------------- sortie
 if (process.argv.includes('--json')) {
   console.log(JSON.stringify({ constats }, null, 2));

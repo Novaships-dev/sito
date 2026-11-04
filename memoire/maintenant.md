@@ -22,13 +22,12 @@ fabrication (D-14), rien d'essayé sur un vrai iPhone (F14). Mentions légales
 
 ## Les tâches
 
-61 tâches : **27 faites, 13 bloquées, 21 à faire** (`app/specs/07-TACHES.md`).
+61 tâches : **28 faites, 14 bloquées, 19 à faire** (`app/specs/07-TACHES.md`).
 T47 à T56 viennent de l'audit du 3 novembre.
 
 **Ordre décidé par Fabrice le 3 nov. (« oui Q5 ») : les tâches de l'audit
 d'abord.** T47 (garde de l'essai de l'app), T48 (échappement), T50
-(mentions légales), T51 (référencement), T49 (Safari) et T54 (photos et pied de page selon le régime) sont faites. Prochaine :
-**T55** (textes alternatifs par métier), T56
+(mentions légales), T51 (référencement), T49 (Safari), T54 (photos et pied de page selon le régime) et T55 (textes alternatifs par métier) sont faites. Prochaine : **T56**
 (avis) ; ensuite T45 (GitHub Actions), T46 (GPS des vidéos), T52, T53, puis
 T10 (formulaire des sites : brouillon de migration
 `20261029150000_deposer_demande.sql` sur le disque du PC, non appliqué, Q3).
@@ -36,6 +35,15 @@ Depuis T50, un
 site fabriqué depuis la base est un site d'abonné (`--publication`) : sans
 adresse électronique ni directeur de la publication dans `profils`, il n'est
 pas fabriqué (l'écran « Compte » de l'app le dit à l'artisan).
+
+## Modèles de prospection (décision du 4 nov.)
+
+T57 à T59 faites : 10 modèles par métier (ravalement, couverture, peinture,
+`prospection/modeles/`) ; le lot du soir remplit un modèle libre avec chaque
+artisan ; quand Fabrice touche « Essai lancé » ou « Abonné » dans la page
+d'appels, la préparation suivante réserve ce modèle à l'artisan et en tire un
+nouveau. À la main : `node scripts/prospection/accepter.mjs --siren <SIREN>`.
+T60 (photos reçues par mail ou WhatsApp) attend Q6 : où garder les photos.
 
 ## Ce qui marche, avec sa preuve
 
@@ -86,7 +94,7 @@ Le détail, avec la preuve de chaque constat, est dans `docs/audit/REGISTRE.md`.
 2. **Vrais appareils** : rien d'essayé sur un vrai iPhone ou Android, ni les gestes au doigt sous Safari (F14) ; WebKit tourne dans la CI depuis T49.
 3. **Formulaire de demande** sur les sites (T10, T11 ; question Q3).
 4. **13 métiers sur 16** sans textes (S-013, T32), et leurs images.
-5. **Textes alternatifs et avis** faux sur un site d'abonné : photos décrites comme une façade sur tous les métiers, « Les avis viennent ici » (S-023, S-024, T55, T56).
+5. **Avis** faux sur un site d'abonné : « Les avis viennent ici » (S-024, T56).
 6. **Deuxième page** sur un seul archétype sur quatre (S-012, T52).
 7. **GPS des vidéos** encore dans les fichiers envoyés (T46).
 8. **Documents** encore à écrire : technique, qualité, juridique, exploitation, commerce (lots 3 à 7, `docs/00-INDEX.md`, dernière section). Lots 1 et 2 faits le 3 nov.

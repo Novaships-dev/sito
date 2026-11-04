@@ -356,9 +356,7 @@ export function corps(ctx) {
   const bloc = {
     ouverture: `<section class="ouverture" aria-labelledby="t-ouverture">
   ${comparateur('c1b', im.avant02, im.apres02, '', 'plein',
-    'un autre chantier avant reprise',
-    'le même chantier une fois l’enduit posé',
-    'Comparer un second chantier avant et après')}
+    alt.avant2, alt.apres2, alt.invitation2)}
   <div class="dire">
     <p class="enseigne scene-1 d2">${ech(e.nomLisible)}</p>
     <h2 id="t-ouverture" class="geant scene-1 d3" style="--signes:${mot.length}"><span class="mat">${ech(mot)}</span></h2>
@@ -371,7 +369,7 @@ export function corps(ctx) {
 </section>`,
     coupure: `<section class="coupure" aria-labelledby="t-coupure"
          style="--coupure:${(fraction * 100).toFixed(1)}%;--coupure-tel:${(fractionTel * 100).toFixed(1)}%">
-  <div class="cliche">${img(im.hero, 'immeuble dont une partie est sous échafaudage et l’autre déjà reprise')}
+  <div class="cliche">${img(im.hero, base.alt.hero)}
     <span class="fil"></span>
     <span class="pastille av">Avant</span><span class="pastille ap">Après</span></div>
   <div class="socle-c">
@@ -389,13 +387,13 @@ export function corps(ctx) {
     chantier: `<section class="chantier" aria-labelledby="t-chantier">
   <h2 id="t-chantier" class="grand dit">${ech(t.matiere || t.rub.chantier)}</h2>
   <div class="paire">
-    <figure class="haute">${img(im.geste, 'la taloche chargée d’enduit appliquée contre le mur')}
-      <figcaption class="note">Application, deux passes puis grattage à la lame.</figcaption></figure>
-    <figure class="basse">${img(im.chantier, 'échafaudage monté sur une façade d’immeuble')}
-      <figcaption class="note">Montage, filet, protection des menuiseries.</figcaption></figure>
-    <figure class="basse grain-gl">${img(im.detail, 'gros plan sur le grain de l’enduit fini')}
+    <figure class="haute">${img(im.geste, base.alt.geste)}
+      <figcaption class="note">${ech(base.legendesPhotos.geste)}</figcaption></figure>
+    <figure class="basse">${img(im.chantier, base.alt.chantierBis)}
+      <figcaption class="note">${ech(base.legendesPhotos.chantier)}</figcaption></figure>
+    <figure class="basse grain-gl">${img(im.detail, base.alt.detailBis)}
       <canvas class="toile" aria-hidden="true"></canvas>
-      <figcaption class="note">Le grain, à dix centimètres. La lumière suit le doigt.</figcaption></figure>
+      <figcaption class="note">${ech(base.legendesPhotos.detail)}</figcaption></figure>
   </div>
 </section>`,
     avis: avis.bloc(),
@@ -454,7 +452,7 @@ export function corpsTravail(ctx) {
 </div>
 
 <section class="bandeau-titre" aria-labelledby="t-detail">
-  <div class="vue">${img(im.geste, 'la taloche chargée d’enduit appliquée contre le mur')}</div>
+  <div class="vue">${img(im.geste, base.alt.geste)}</div>
   <div class="dit-titre">
     <p class="enseigne">${ech(base.libelle)}${e.commune ? ', ' + ech(e.commune) : ''}</p>
     <h1 id="t-detail" class="geant" style="--signes:22">Le travail, poste par poste.</h1>
@@ -471,13 +469,13 @@ export function corpsTravail(ctx) {
 <section class="chantier" aria-labelledby="t-chantier2">
   <h2 id="t-chantier2" class="grand dit">${ech(t.matiere || 'Sur le chantier.')}</h2>
   <div class="paire">
-    <figure class="haute">${img(im.geste, 'la taloche chargée d’enduit appliquée contre le mur')}
-      <figcaption class="note">Application, deux passes puis grattage à la lame.</figcaption></figure>
-    <figure class="basse">${img(im.chantier, 'échafaudage monté sur une façade d’immeuble')}
-      <figcaption class="note">Montage, filet, protection des menuiseries.</figcaption></figure>
-    <figure class="basse grain-gl">${img(im.detail, 'gros plan sur le grain de l’enduit fini')}
+    <figure class="haute">${img(im.geste, base.alt.geste)}
+      <figcaption class="note">${ech(base.legendesPhotos.geste)}</figcaption></figure>
+    <figure class="basse">${img(im.chantier, base.alt.chantierBis)}
+      <figcaption class="note">${ech(base.legendesPhotos.chantier)}</figcaption></figure>
+    <figure class="basse grain-gl">${img(im.detail, base.alt.detailBis)}
       <canvas class="toile" aria-hidden="true"></canvas>
-      <figcaption class="note">Le grain, à dix centimètres. La lumière suit le doigt.</figcaption></figure>
+      <figcaption class="note">${ech(base.legendesPhotos.detail)}</figcaption></figure>
   </div>
 </section>
 

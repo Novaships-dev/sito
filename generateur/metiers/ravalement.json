@@ -2,6 +2,7 @@
   "nom": "ravalement",
   "libelle": "ravalement de façade",
   "schemaType": "HomeAndConstructionBusiness",
+  "legendesPhotos": {"geste": "Application, deux passes puis grattage à la lame.", "chantier": "Montage, filet, protection des menuiseries.", "detail": "Le grain, à dix centimètres. La lumière suit le doigt."},
   "codesApe": [
     "43.34Z",
     "43.33Z",

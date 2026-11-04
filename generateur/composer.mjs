@@ -75,6 +75,15 @@ const jeu = (_role, r, sizes, tailleDefaut) => {
 // refuse les photos d illustration) sont les chantiers de l artisan : rien ne
 // les dit « exemple » (T54, constat S-022). Fixe au debut de fabriquer().
 let PHOTOS_EXEMPLE = true;
+// Les textes alternatifs viennent du fichier du metier (`alt`), jamais ecrits
+// ici pour la facade : un site de couverture disait « echafaudage monte sur
+// une facade » (T55, constat S-023). Une cle absente arrete la fabrication.
+let ALT = {};
+export const altDe = (alt, cle) => {
+  if (!alt || typeof alt[cle] !== 'string' || !alt[cle].trim()) throw new Error(`texte alternatif « ${cle} » absent du fichier du metier (alt.${cle})`);
+  return alt[cle];
+};
+const A = (cle) => altDe(ALT, cle);
 const img = (j, alt, extra = '') => !PHOTOS_EXEMPLE
   ? `<picture><source type="image/avif" srcset="${j.srcsetAvif}" sizes="${j.sizes}">` +
     `<img src="${j.src}" srcset="${j.srcset}" sizes="${j.sizes}" width="${j.w}" height="${j.h}" ` +
@@ -113,7 +122,7 @@ function coupureTelephone(fraction, ratioImage, ratioBoite) {
 function coupure(t, im, fraction, ratioImage, ratioTel) {
   const ft = coupureTelephone(fraction, ratioImage, ratioTel);
   return `<section class="coupure" aria-labelledby="t-coupure" style="--coupure:${(fraction * 100).toFixed(1)}%;--coupure-tel:${(ft * 100).toFixed(1)}%">
-  <div class="cliche">${img(im.hero, 'façade dont une partie est sous échafaudage et l’autre déjà reprise')}<span class="fil"></span>
+  <div class="cliche">${img(im.hero, A('hero'))}<span class="fil"></span>
     <span class="pastille av">Avant</span><span class="pastille ap">Après</span></div>
   <div class="socle">
     <div class="gauche"><h2 id="t-coupure" class="moyen">Avant, la partie gauche</h2><p class="d">${echapper(t.avant)}</p></div>
@@ -144,9 +153,9 @@ function comparateur(id, av, ap, legende, classe, altAv, altAp, aria) {
 function comparateurs(p, t, im) {
   const c = [
     comparateur('c1', im.avant01, im.apres01, t.legendes[0], p.comparateurLarge === 0 ? 'large' : 'serre',
-      'façade complète avant travaux', 'la même façade après reprise', 'Comparer avant et après, façade complète'),
+      A('avant'), A('apres'), A('invitation')),
     comparateur('c2', im.avant02, im.apres02, t.legendes[1], p.comparateurLarge === 1 ? 'large' : 'decale',
-      'angle de façade avant travaux', 'le même angle après reprise', 'Comparer avant et après, angle de façade'),
+      A('avant2'), A('apres2'), A('invitation2')),
   ];
   return `<section class="rubrique" aria-labelledby="t-comparer">
   <div class="tete"><p class="enseigne">Deux chantiers</p>
@@ -173,8 +182,8 @@ function chantier(t, im) {
   return `<section class="rubrique" aria-labelledby="t-chantier">
   <div class="tete"><p class="enseigne">Sur place</p><h2 id="t-chantier" class="grand">${echapper(t.rub.chantier)}</h2></div>
   <div class="chantier">
-    <div class="pile">${img(im.chantier, 'échafaudage monté sur une façade')}${img(im.detail, 'gros plan sur le grain de l’enduit')}</div>
-    <div class="haut">${img(im.geste, 'la taloche chargée d’enduit appliquée contre le mur')}</div>
+    <div class="pile">${img(im.chantier, A('chantier'))}${img(im.detail, A('detail'))}</div>
+    <div class="haut">${img(im.geste, A('geste'))}</div>
   </div>
   ${PHOTOS_EXEMPLE ? '<p class="note" style="margin-top:.9rem">Photographies d’exemple. Elles seront remplacées par les chantiers de l’entreprise.</p>' : ''}
 </section>`;
@@ -247,6 +256,9 @@ async function fabriquer(opts) {
   // obligatoire pour tous qui manque arrete tout. Voir sections/mentions.mjs.
   const abonne = process.argv.includes('--publication');
   PHOTOS_EXEMPLE = !abonne;
+  ALT = base.alt || {};
+  try { for (const k of ['hero', 'ouverture', 'chantier', 'chantierBis', 'detail', 'detailBis', 'geste', 'avant', 'apres', 'invitation', 'avant2', 'apres2', 'invitation2']) altDe(ALT, k); }
+  catch (err) { console.error('Refus : ' + err.message); process.exit(2); }
   // L adresse publique du site (table adresses) : sans elle, rien d absolu ne
   // s ecrit (URL canonique, og:url, plan du site). Voir sections/referencement.mjs.
   let adresse;

@@ -2,6 +2,7 @@
   "nom": "Couverture",
   "libelle": "couverture et zinguerie",
   "schemaType": "RoofingContractor",
+  "legendesPhotos": {"geste": "Pose au liteau, rang après rang, recouvrement vérifié.", "chantier": "Échafaudage de toit, garde-corps, tuiles montées sur palette.", "detail": "Le zinc, à dix centimètres. La lumière suit le doigt."},
   "codesApe": ["43.91B", "43.91A"],
   "titres": [
     "Une toiture se juge au premier orage, pas au premier regard.",

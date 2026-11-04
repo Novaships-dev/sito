@@ -1763,3 +1763,17 @@ toujours vert (49). Choix : pas de nouveau statut dans la page d'appels ;
 « Essai lancé » et « Abonné » valent acceptation (l'artisan a dit oui).
 Réversible ; dit à Fabrice.
 TRACAGE : scripts/prospection/accepter.mjs, scripts/prospection/preparer-appels.mjs, scripts/essai-accepter.mjs, scripts/essais.mjs, .github/workflows/essais.yml, app/specs/07-TACHES.md, docs/specs/S-MODELES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 4 nov. 2026 — T55 (textes alternatifs du métier), par Cowork
+
+Plan : 1. `altDe()` et `A()` dans `composer.mjs`, `base.alt` dans
+`matiere.mjs` ; 2. légendes de matiere dans `legendesPhotos` des trois métiers ;
+3. contrôle R-ALT de `verifier-site` et `essai-alt.mjs`.
+
+Résultat : 52 contrôles, 0 faute ; contre-essai 16 fautes. R-ALT a trouvé en
+plus les textes des deux comparateurs (« façade complète avant travaux »,
+« angle de façade ») et du deuxième comparateur de matiere : tirés désormais
+de `avant`, `apres`, `avant2`, `apres2`, `invitation`, `invitation2`. Légendes
+de couverture et de peinture écrites par Cowork, à relire par Fabrice. T60
+passée « bloqué » sur Q6.
+TRACAGE : generateur/composer.mjs, generateur/archetypes/matiere.mjs, generateur/metiers/ravalement.json, generateur/metiers/couverture.json, generateur/metiers/peinture.json, scripts/verifier-site.mjs, scripts/essai-alt.mjs, scripts/essais.mjs, .github/workflows/essais.yml, app/specs/07-TACHES.md, docs/audit/REGISTRE.md (S-023 clos), CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
