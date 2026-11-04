@@ -1884,3 +1884,17 @@ appliquée** : `apply_migration` a demandé une confirmation que l'app a annulé
 seule en 0,4 s, trois fois (Fabrice sur iPhone, hors de chez lui). Rien n'a
 été exécuté sur la base. T10 bloquée sur F22.
 TRACAGE : supabase/brouillons/deposer_demande.sql, app/specs/07-TACHES.md, memoire/actions-fabrice.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 4 nov. 2026 — T12 (suppression des comptes à l'échéance), par Cowork
+
+Plan : 1. `atelier/supprimer-comptes.mjs` : demandes échues non annulées,
+Stripe d'abord (refus sans Stripe), Pages, stockage, entreprise (cascade),
+compte en dernier ; 2. l'adaptateur Supabase apprend `effacer`, `auth.supprimer`
+et `stockage.lister` ; les deux faux suivent ; 3. `essai-suppressions.mjs`.
+
+Résultat : 19 contrôles, 0 faute ; contre-essai : 3 cassures sur 3. Trouvé en
+route : le faux Supabase comparait les dates en nombres (NaN, tout filtre
+`lte` sur une date tombait) et prenait `/object/list/` pour un envoi de fichier
+(corrigés ; essai-service, boucle, refaire-site, fabrication-base, publication
+toujours verts). Pas encore lancé chaque nuit : D-16.
+TRACAGE : atelier/supprimer-comptes.mjs, atelier/supabase.mjs, atelier/LISEZMOI.md, scripts/faux-supabase.mjs, scripts/faux-cloudflare.mjs, scripts/prospection/cloudflare-pages.mjs, scripts/essai-suppressions.mjs, scripts/essais.mjs, .github/workflows/essais.yml, app/specs/07-TACHES.md, app/specs/01-PRD.md, docs/DETTE.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

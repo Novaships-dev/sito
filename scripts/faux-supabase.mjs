@@ -12,10 +12,16 @@
 // plutôt que ce que le code raconte.
 import { createServer } from 'node:http';
 
+const comparer = (l, v) => {
+  if (l === null || l === undefined) return NaN;
+  if (!Number.isNaN(Number(l)) && !Number.isNaN(Number(v))) return Number(l) - Number(v);
+  return Date.parse(l) - Date.parse(v);
+};
 const OPS = {
   eq: (l, v) => String(l) === v, neq: (l, v) => String(l) !== v,
-  gt: (l, v) => Number(l) > Number(v), gte: (l, v) => Number(l) >= Number(v),
-  lt: (l, v) => Number(l) < Number(v), lte: (l, v) => Number(l) <= Number(v),
+  // Des nombres se comparent en nombres ; des dates (texte ISO) en dates.
+  gt: (l, v) => comparer(l, v) > 0, gte: (l, v) => comparer(l, v) >= 0,
+  lt: (l, v) => comparer(l, v) < 0, lte: (l, v) => comparer(l, v) <= 0,
   like: (l, v) => new RegExp('^' + v.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/%/g, '.*') + '$').test(String(l)),
   is: (l, v) => (v === 'null' ? l === null || l === undefined : String(l) === v),
   in: (l, v) => v.replace(/^\(|\)$/g, '').split(',').map((x) => x.replace(/^"|"$/g, '')).includes(String(l)),
@@ -33,7 +39,8 @@ function filtrer(lignes, params) {
 
 // base : { <table>: [lignes] }     cles : { <table>: ['colonne', ...] }
 // objets : Map('<espace>/<chemin>' -> Buffer)
-export async function fauxSupabase({ cle, base = {}, cles = {}, objets = new Map(), jourParis = true } = {}) {
+// comptes : Set des identifiants de compte (API d'administration d'Auth)
+export async function fauxSupabase({ cle, base = {}, cles = {}, objets = new Map(), jourParis = true, comptes = new Set() } = {}) {
   const vues = [];
   const serveur = createServer((req, res) => {
     const morceaux = [];
@@ -54,6 +61,20 @@ export async function fauxSupabase({ cle, base = {}, cles = {}, objets = new Map
       const json = () => { try { return JSON.parse(corpsOctets.toString('utf8')); } catch { return null; } };
 
       // ---- stockage
+      const liste = u.pathname.match(/^\/storage\/v1\/object\/list\/([a-z0-9-]+)$/);
+      if (liste && req.method === 'POST') {
+        // Un niveau à la fois, comme le vrai : les sous-dossiers sortent sans id.
+        const { prefix = '', limit = 100, offset = 0 } = json() || {};
+        const debut = `${liste[1]}/${prefix ? prefix.replace(/\/$/, '') + '/' : ''}`;
+        const vus = new Map();
+        for (const k of objets.keys()) {
+          if (!k.startsWith(debut)) continue;
+          const reste = k.slice(debut.length);
+          const [nom, ...suite] = reste.split('/');
+          if (!vus.has(nom)) vus.set(nom, suite.length ? { name: nom, id: null } : { name: nom, id: 'id-' + nom });
+        }
+        return repondre(200, [...vus.values()].sort((a, b) => a.name.localeCompare(b.name)).slice(offset, offset + limit));
+      }
       const sign = u.pathname.match(/^\/storage\/v1\/object\/sign\/([a-z0-9-]+)\/(.+)$/);
       if (sign && req.method === 'POST') {
         const chemin = decodeURIComponent(sign[2]);
@@ -68,6 +89,15 @@ export async function fauxSupabase({ cle, base = {}, cles = {}, objets = new Map
           if (objets.has(k) && req.headers['x-upsert'] !== 'true') return repondre(409, { message: 'The resource already exists' });
           objets.set(k, corpsOctets); return repondre(200, { Key: k });
         }
+      }
+      // ---- comptes (Auth, administration) : effacer un compte efface ce qui
+      // s'y rattache, comme les ON DELETE CASCADE de la vraie base.
+      const compte = u.pathname.match(/^\/auth\/v1\/admin\/users\/([0-9a-f-]+)$/);
+      if (compte && req.method === 'DELETE') {
+        if (!comptes.has(compte[1])) return repondre(404, { message: 'User not found' });
+        comptes.delete(compte[1]);
+        for (const t of ['membres', 'suppressions', 'invitations']) if (base[t]) base[t] = base[t].filter((l) => l.user_id !== compte[1]);
+        return repondre(200, {});
       }
       const espace = u.pathname.match(/^\/storage\/v1\/object\/([a-z0-9-]+)$/);
       if (espace && req.method === 'DELETE') {
@@ -113,6 +143,14 @@ export async function fauxSupabase({ cle, base = {}, cles = {}, objets = new Map
           }
           return /return=representation/.test(prefer) ? repondre(201, ecrites) : repondre(201);
         }
+        if (req.method === 'DELETE') {
+          const parties = filtrer(base[nom], u.searchParams);
+          base[nom] = base[nom].filter((l) => !parties.includes(l));
+          // Les ON DELETE CASCADE de la vraie base, pour ce que les essais posent.
+          const cascade = { entreprises: ['siren', ['membres', 'profils', 'tarifs', 'sites', 'chantiers', 'photos', 'videos', 'avis', 'statistiques', 'demandes', 'abonnements', 'connexions_google', 'prospects', 'invitations']] };
+          if (cascade[nom]) for (const p of parties) for (const t of cascade[nom][1]) if (base[t]) base[t] = base[t].filter((l) => l[cascade[nom][0]] !== p[cascade[nom][0]]);
+          return /return=representation/.test(prefer) ? repondre(200, parties) : repondre(204);
+        }
         if (req.method === 'PATCH') {
           const champs = json() || {};
           const touchees = filtrer(base[nom], u.searchParams);
@@ -130,7 +168,7 @@ export async function fauxSupabase({ cle, base = {}, cles = {}, objets = new Map
   await new Promise((r) => serveur.listen(0, '127.0.0.1', r));
   return {
     url: `http://127.0.0.1:${serveur.address().port}`,
-    base, objets, vues,
+    base, objets, vues, comptes,
     arreter: () => serveur.close(),
   };
 }

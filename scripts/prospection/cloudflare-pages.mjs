@@ -168,6 +168,14 @@ export function clientCloudflare({ compte, jeton, fetch: aller = globalThis.fetc
       catch (e) { if (/\b8000007\b|not found|introuvable/i.test(e.message)) return null; throw e; }
     },
 
+    // Retirer un site d'abonné (T12) : le projet et tous ses dépôts. Un projet
+    // déjà absent n'est pas une faute (reprise après une panne).
+    async supprimerProjet(nom) {
+      if (!nom || nom === PROJET) throw new Error('supprimerProjet : nom de projet manquant ou projet de démonstration');
+      try { await appeler(`/accounts/${compte}/pages/projects/${nom}`, { methode: 'DELETE' }); return true; }
+      catch (e) { if (/\b8000007\b|not found|introuvable/i.test(e.message)) return false; throw e; }
+    },
+
     async creerProjet(nom = PROJET, branche = 'main') {
       return appeler(`/accounts/${compte}/pages/projects`, {
         methode: 'POST', corps: JSON.stringify({ name: nom, production_branch: branche }),

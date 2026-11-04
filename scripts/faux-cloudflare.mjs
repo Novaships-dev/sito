@@ -141,6 +141,11 @@ export function fauxCloudflare({ compte = 'f'.repeat(32), jeton = 'jeton-de-comp
       }
       return bon(f);
     }
+    if (projet && !sous && method === 'DELETE') {
+      if (!avecCompte()) return mauvais(10000, 'Authentication error', 403);
+      if (!existants.delete(projet)) return mauvais(8000007, 'Project not found', 404);
+      return bon(null);
+    }
     if (projet && !sous && method === 'GET') {
       const f = existants.get(projet);
       return f ? bon(f) : mauvais(8000007, 'Project not found', 404);

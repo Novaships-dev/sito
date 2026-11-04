@@ -122,6 +122,26 @@ export function supabase({ url, cle, fetch: f = fetch }) {
       return Array.isArray(ecrites) ? ecrites : (ecrites ? [ecrites] : []);
     },
 
+    // Efface les lignes qui passent les filtres et rend celles effacées. Comme
+    // majorer(), jamais sans filtre (T12).
+    async effacer(nom, filtres) {
+      if (!Object.keys(filtres).length) throw new Error('effacer() : au moins un filtre (jamais toute la table)');
+      const parties = await appel('DELETE', table(nom) + requete({ filtres, select: '*' }), { prefer: 'return=representation' });
+      return Array.isArray(parties) ? parties : (parties ? [parties] : []);
+    },
+
+    // Les comptes (API d'administration de Supabase Auth, clé de service).
+    auth: {
+      // Efface un compte. Supabase efface avec lui ce qui s'y rattache
+      // (`membres`, `suppressions`, `invitations` : ON DELETE CASCADE).
+      // Un compte déjà effacé (404) n'est pas une faute : une reprise repasse.
+      async supprimer(id) {
+        if (!/^[0-9a-f-]{36}$/i.test(id)) throw new Error(`identifiant de compte invalide : ${id}`);
+        try { await appel('DELETE', `/auth/v1/admin/users/${id}`); return true; }
+        catch (e) { if (e.statut === 404) return false; throw e; }
+      },
+    },
+
     // Une fonction SQL (prive.jour_paris, par exemple).
     async fonction(nom, args = {}) {
       return appel('POST', `/rest/v1/rpc/${encodeURIComponent(nom)}`, { corps: args });
@@ -144,6 +164,25 @@ export function supabase({ url, cle, fetch: f = fetch }) {
         },
 
         supprimer: (chemins) => appel('DELETE', `/storage/v1/object/${espace}`, { corps: { prefixes: chemins } }),
+
+        // Tous les fichiers sous un dossier, sous-dossiers compris. L'API de
+        // Supabase ne liste qu'un niveau à la fois : une entrée sans `id` est
+        // un dossier, qu'on parcourt à son tour (T12).
+        async lister(dossier) {
+          const trouves = [];
+          const parcourir = async (d) => {
+            for (let debut = 0; ; debut += 1000) {
+              const r = await appel('POST', `/storage/v1/object/list/${espace}`, { corps: { prefix: d, limit: 1000, offset: debut } }) || [];
+              for (const e of r) {
+                const chemin = d ? `${d.replace(/\/$/, '')}/${e.name}` : e.name;
+                if (e.id) trouves.push(chemin); else await parcourir(chemin);
+              }
+              if (r.length < 1000) break;
+            }
+          };
+          await parcourir(dossier);
+          return trouves;
+        },
 
         // Une adresse signée, pour montrer un fichier sans ouvrir l'espace.
         async urlSignee(chemin, secondes = 3600) {

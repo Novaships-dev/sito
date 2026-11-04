@@ -173,7 +173,7 @@ Spécification complète : `app/specs/08-PROSPECTION.md`. Script d'appel :
 | A15 | Voir sa formule, son état et son échéance ; payer et gérer en ligne sur le web | 5 et 9 oct. | Partiel : affichage fait ; Stripe à faire (T16, T17 ; repoussé le 29 oct.) |
 | A16 | Dans l'app Android (Play Store) : **aucun prix, aucun achat** | règle Google Play, plan 7.2 | Fait, prouvé : `essai-app` |
 | A17 | Télécharger toutes ses données | plan 7.5 (RGPD) | Fait, prouvé : `essai-app` |
-| A18 | Supprimer son compte, avec 30 jours pour changer d'avis | plan 7.5 | Partiel : demande et annulation prouvées (`essai-app`) ; suppression effective à faire (T12) |
+| A18 | Supprimer son compte, avec 30 jours pour changer d'avis | plan 7.5 | Partiel : demande et annulation prouvées (`essai-app`) ; suppression effective écrite et essayée contre des faux (T12, `essai-suppressions`) ; pas encore lancée chaque nuit, résiliation Stripe réelle à T16 (D-16) |
 | A19 | Installer l'app : Play Store sur Android, écran d'accueil sur iPhone depuis le site Sitô | 5 oct. | Partiel : page d'installation et PWA faites ; Play Store à faire (T28, T29) |
 | A20 | Essayer l'app sans compte (démonstration) | proposition de Claude | Fait, prouvé : `essai-app` |
 
