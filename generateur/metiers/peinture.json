@@ -3,7 +3,7 @@
   "libelle": "peinture intérieure",
   "schemaType": "HousePainter",
   "legendesPhotos": {"geste": "Deux couches croisées, angles repris au pinceau.", "chantier": "Sols bâchés, plinthes et encadrements masqués.", "detail": "Le grain du rouleau, à dix centimètres. La lumière suit le doigt."},
-  "codesApe": ["43.34Z"],
+  "codesApe": ["43.34Z", "43.33Z"],
   "titres": [
     "Une peinture se juge sur la préparation, pas sur la couleur.",
     "Un mur mal poncé se voit à la première lumière rasante.",

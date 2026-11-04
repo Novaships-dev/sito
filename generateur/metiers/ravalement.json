@@ -3,13 +3,7 @@
   "libelle": "ravalement de façade",
   "schemaType": "HomeAndConstructionBusiness",
   "legendesPhotos": {"geste": "Application, deux passes puis grattage à la lame.", "chantier": "Montage, filet, protection des menuiseries.", "detail": "Le grain, à dix centimètres. La lumière suit le doigt."},
-  "codesApe": [
-    "43.34Z",
-    "43.33Z",
-    "43.99C",
-    "43.99D",
-    "43.91B"
-  ],
+  "codesApe": ["43.34Z", "43.99C", "43.99D", "43.29A"],
   "titres": [
     "Le ravalement d’une façade se juge à dix mètres, et à dix centimètres.",
     "Une façade ne se repeint pas. Elle se répare, puis elle se recouvre.",

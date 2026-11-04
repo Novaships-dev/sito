@@ -5,7 +5,8 @@ const FORMES = { '5499': 'SARL, société à responsabilité limitée', '5710': 
   '5498': 'SARL unipersonnelle', '5485': 'SARL' };
 const APE = { '43.34Z': 'travaux de peinture et vitrerie', '43.33Z': 'travaux de revêtement des sols et des murs',
   '43.99C': 'travaux de maçonnerie générale et gros œuvre', '43.99D': 'autres travaux spécialisés de construction',
-  '43.91B': 'travaux de couverture par éléments', '43.29B': 'autres travaux d installation' };
+  '43.91B': 'travaux de couverture par éléments', '43.29B': 'autres travaux d installation',
+  '43.29A': 'travaux d’isolation', '43.91A': 'travaux de charpente', '43.99A': 'travaux d’étanchéité' };
 const MOIS = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
 
 export function normaliser(brut) {

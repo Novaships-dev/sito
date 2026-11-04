@@ -5,11 +5,7 @@
   {
    "cle": "ravalement",
    "nom": "Ravalement de façade",
-   "codes": [
-    "43.34Z",
-    "43.33Z",
-    "43.99C"
-   ],
+   "codes": ["43.34Z", "43.99C", "43.99D", "43.29A"],
    "mot": "Ravalement",
    "matiere_nom": "enduit",
    "detail": "detail-enduit",
@@ -105,9 +101,7 @@
   {
    "cle": "peinture",
    "nom": "Peinture intérieure",
-   "codes": [
-    "43.34Z"
-   ],
+   "codes": ["43.34Z", "43.33Z"],
    "mot": "Peinture",
    "matiere_nom": "mur fini",
    "detail": "detail-peinture",
@@ -302,10 +296,7 @@
   {
    "cle": "couverture",
    "nom": "Couverture et zinguerie",
-   "codes": [
-    "43.91B",
-    "43.91A"
-   ],
+   "codes": ["43.91B", "43.91A", "43.99A"],
    "mot": "Toiture",
    "matiere_nom": "tuile et zinc",
    "detail": "detail-zinc",

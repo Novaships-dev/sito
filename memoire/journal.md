@@ -1898,3 +1898,16 @@ route : le faux Supabase comparait les dates en nombres (NaN, tout filtre
 (corrigés ; essai-service, boucle, refaire-site, fabrication-base, publication
 toujours verts). Pas encore lancé chaque nuit : D-16.
 TRACAGE : atelier/supprimer-comptes.mjs, atelier/supabase.mjs, atelier/LISEZMOI.md, scripts/faux-supabase.mjs, scripts/faux-cloudflare.mjs, scripts/prospection/cloudflare-pages.mjs, scripts/essai-suppressions.mjs, scripts/essais.mjs, .github/workflows/essais.yml, app/specs/07-TACHES.md, app/specs/01-PRD.md, docs/DETTE.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 4 nov. 2026 — T31 (codes APE alignés), par Cowork
+
+Plan : 1. source unique : `prospection/metiers.json`, seule lue par
+l'extraction ; 2. recopier dans `generateur/metiers/*.json` et
+`plan-images.json` ; 3. contrôle dans `verifier-depot`.
+
+Résultat : ravalement 43.34Z, 43.99C, 43.99D, 43.29A ; couverture 43.91B,
+43.91A, 43.99A ; peinture 43.34Z, 43.33Z. `verifier-depot` à 0 ; copie cassée
+(un code de trop dans la fiche, deux de moins dans le plan) : 2 écarts, sortie 1.
+Libellés APE manquants ajoutés dans `generateur/sirene.mjs`. Les 13 autres
+métiers n'ont pas encore de ligne de prospection : rien à comparer.
+TRACAGE : generateur/metiers/ravalement.json, generateur/metiers/couverture.json, generateur/metiers/peinture.json, generateur/banque/plan-images.json, generateur/sirene.mjs, scripts/verifier-depot.mjs, docs/specs/METIERS.md, docs/DETTE.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

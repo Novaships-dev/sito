@@ -17,9 +17,9 @@ Un métier est **prêt** quand ses cinq pièces existent et sont prouvées :
 
 | Clé | Métier | Codes APE (plan d'images) | Textes | Prompts | Images | 100 sites | Prospection |
 |---|---|---|---|---|---|---|---|
-| `ravalement` | Ravalement de façade | 43.34Z, 43.33Z, 43.99C | oui | oui | 32 sur 54 (F15) | oui, en projection (`--photos plan`) | oui (façadiers seulement, décision du 29 oct.) |
-| `couverture` | Couverture et zinguerie | 43.91B, 43.91A | oui | oui | 0 (F18) | oui, en projection | oui |
-| `peinture` | Peinture intérieure | 43.34Z | oui | oui | 0 (F18) | oui, en projection | oui |
+| `ravalement` | Ravalement de façade | 43.34Z, 43.99C, 43.99D, 43.29A | oui | oui | 32 sur 54 (F15) | oui, en projection (`--photos plan`) | oui (façadiers seulement, décision du 29 oct.) |
+| `couverture` | Couverture et zinguerie | 43.91B, 43.91A, 43.99A | oui | oui | 0 (F18) | oui, en projection | oui |
+| `peinture` | Peinture intérieure | 43.34Z, 43.33Z | oui | oui | 0 (F18) | oui, en projection | oui |
 | `maconnerie` | Maçonnerie générale | 43.99C, 43.91B | non | non | 0 | non | non |
 | `menuiserie` | Menuiserie et fenêtres | 43.32A, 43.32B | non | non | 0 | non | non |
 | `carrelage` | Carrelage et faïence | 43.33Z | non | non | 0 | non | non |
@@ -41,7 +41,7 @@ ses 54 images.
 
 | N° | Écart | Où | Tâche |
 |---|---|---|---|
-| M1 | Codes APE du ravalement : 3 dans `plan-images.json`, 5 dans `ravalement.json`, 4 dans `prospection/metiers.json` (43.34Z, 43.99C, 43.99D, 43.29A) | trois fichiers | T31 (`docs/DETTE.md` D-10) |
+| M1 | Codes APE du ravalement : 3 dans `plan-images.json`, 5 dans `ravalement.json`, 4 dans `prospection/metiers.json` (43.34Z, 43.99C, 43.99D, 43.29A) | trois fichiers | T31 (`docs/DETTE.md` D-10) ; **réglé le 4 nov.** : une seule source, `prospection/metiers.json`, recopiée à l’identique et contrôlée par `verifier-depot` |
 | M2 | Un même code APE sert plusieurs métiers (43.34Z : ravalement et peinture ; 43.33Z : ravalement, carrelage, parquet ; 43.99C : ravalement, maçonnerie, piscine ; 43.91B : maçonnerie et couverture ; 43.32B : menuiserie et métallerie). La prospection ne peut donc pas trier par code seul | `plan-images.json` | règle du 29 oct. : nom et recherche web, `prospection/metiers.json` (`mots`, `motsAutreMetier`, `preuveDuMetier`) |
 | M3 | Le générateur décrit les photos de chaque métier comme une façade (« échafaudage », « taloche chargée d'enduit », « grain de l'enduit ») : textes alternatifs écrits en dur | `generateur/composer.mjs`, `generateur/archetypes/matiere.mjs` | constat S-023 |
 

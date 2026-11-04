@@ -141,6 +141,6 @@ Rien de payant : ni ordinateur loué, ni serveur d'e-mail, ni carte bancaire
 
 | N° | Tâche | État | Preuve | Dépend | Bloqué par |
 |---|---|---|---|---|---|
-| T31 | Aligner les codes APE du ravalement entre `ravalement.json` et `plan-images.json` | à faire | `verifier-depot` + `fabriquer-demo --rapide` (si images) | | |
+| T31 | Aligner les codes APE du ravalement entre `ravalement.json` et `plan-images.json` | fait | `node scripts/verifier-depot.mjs .` (4 nov., Cowork) : 0 ; une seule source, `prospection/metiers.json` (celle que l'extraction interroge), recopiée dans les trois fiches du générateur et dans `plan-images.json` ; `verifier-depot` refuse désormais un écart (copie cassée : 2 écarts signalés, sortie 1) ; libellés APE de 43.29A, 43.91A, 43.99A ajoutés à `generateur/sirene.mjs`. `fabriquer-demo --rapide` : non lancé (pas d'images, F15) | | |
 | T32 | Textes des 13 métiers restants, au volume du ravalement (fragments combinés), un métier par sous-tâche dans le journal (ravalement, couverture et peinture sont faits) | à faire | `node scripts/capacite-unicite.mjs --photos plan` : 100 sites sans défaut pour chaque métier | | |
 | T33 | Images des métiers : les 22 du ravalement, puis 54 par métier | bloqué | `capacite-unicite` sans `--photos plan` | | F15 |

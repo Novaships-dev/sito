@@ -73,6 +73,26 @@ const dmet = join(racine, 'generateur/metiers');
 if (!existsSync(dmet) || !readdirSync(dmet).some(n => n.endsWith('.json')))
   dire(dmet, 'generateur/metiers/*.json', 'aucune fiche metier');
 
+// Les codes APE d un metier ont une seule source : prospection/metiers.json,
+// celle que l extraction interroge. La fiche du generateur et le plan d images
+// recopient la meme liste (T31, D-10 : 5, 3 et 4 codes dans trois fichiers).
+const fProspection = join(racine, 'prospection/metiers.json');
+if (existsSync(fProspection)) {
+  const lireJson = (f) => { try { return JSON.parse(readFileSync(f, 'utf8')); } catch { return null; } };
+  const fPlan = join(racine, 'generateur/banque/plan-images.json');
+  const plan = existsSync(fPlan) ? lireJson(fPlan) : null;
+  for (const m of lireJson(fProspection)?.metiers || []) {
+    const attendu = [...m.codesApe].sort().join(',');
+    const fiche = join(dmet, `${m.nom}.json`);
+    const codesFiche = existsSync(fiche) ? lireJson(fiche)?.codesApe : null;
+    if (codesFiche && [...codesFiche].sort().join(',') !== attendu)
+      dire(fiche, `codesApe ${codesFiche.join(', ')}`, `differe de prospection/metiers.json (${m.codesApe.join(', ')})`);
+    const ligne = plan?.metiers?.find((x) => x.cle === m.nom);
+    if (ligne && [...ligne.codes].sort().join(',') !== attendu)
+      dire(fPlan, `codes de ${m.nom} : ${ligne.codes.join(', ')}`, `differe de prospection/metiers.json (${m.codesApe.join(', ')})`);
+  }
+}
+
 if (manques.length === 0) {
   console.log('Depot complet. ' + tous.length + ' fichiers, aucune piece manquante.');
   process.exit(0);

@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 4 nov. | T31 : les codes APE de chaque métier n'ont plus qu'une source (`prospection/metiers.json`), recopiée dans le générateur et le plan d'images ; `verifier-depot` refuse un écart ; les sites nomment l'activité pour l'isolation, la charpente et l'étanchéité. |
 | 4 nov. | T12 : `atelier/supprimer-comptes.mjs` efface un compte 30 jours après sa demande de suppression, si elle n'est pas annulée : site retiré, photos et données effacées, abonnement résilié (jamais d'effacement d'un abonné tant que Stripe n'est pas branché) ; essai `essai-suppressions.mjs`. |
 | 4 nov. | T53 : la suite d'essais refuse une tâche « fait » sans ligne de CHANGELOG ni section de journal du même jour avec `TRACAGE` (`scripts/verifier-tracabilite.mjs`), et une carte du dépôt périmée. |
 | 4 nov. | T52 : deuxième page « le travail en détail » sur les archétypes panneau, planche et elevation (`generateur/sections/page-travail.mjs`), titre de la deuxième page lisible sur téléphone (S-025), phrase du métier plus écrite « ravalement » en dur ; pastille du premier écran sur fond opaque (contraste O13 sur photo claire) ; `essai-navigateurs` juge la deuxième page. |
