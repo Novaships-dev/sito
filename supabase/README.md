@@ -151,3 +151,14 @@ divulgués désactivée » (réglage du tableau de bord : action de Fabrice).
 - Les images du ravalement ne sont pas encore dans l'espace `banque`.
 - Les types TypeScript de l'app se génèrent quand l'app existera :
   `supabase gen types typescript --project-id magxzrpboyrzguuocjgj`.
+
+**Ajout du 4 novembre 2026** (T45, migrations `20261104044828_prevenir_github`
+et `20261104044905_prevenir_github_correction`) : extension `pg_net` ;
+`prive.prevenir_github()` et trois déclencheurs (`profils`, `tarifs`, photos
+devenues prêtes) qui appellent `repository_dispatch` de GitHub avec le SIREN.
+Sans le secret `github_dispatch` au coffre (F21), rien n'est appelé. La
+première migration faisait échouer toute écriture de `profils` (piège du
+4 nov.) ; corrigée une minute après. Essai : `essais/prevenir.sql` (rouge avant
+la migration : `net.http_request_queue` absente). Passage de l'essai sur la
+version corrigée : en attente (l'outil a posé une question restée sans
+réponse, à relancer).

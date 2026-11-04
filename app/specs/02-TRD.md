@@ -152,7 +152,9 @@ implémentations, puis à l'essai.
 | Serveur d'e-mail (Brevo ou équivalent) | plus nécessaire pour se connecter ; seulement si un jour l'app écrit à l'artisan | prix à relever | Plus utile pour la connexion |
 | Supabase Storage | photos et vidéos d'origine, TUS | 50 Mo par fichier en gratuit ; pas dans les sauvegardes | Fait |
 | Supabase transformations d'images | HEIC → JPEG | offre Pro | Plus utilisée (T44) |
-| Cloudflare Workers + KV + R2 | servir tous les sites | KV : jusqu'à 60 s pour être vu partout ; Pages : 100 projets (non utilisé) | Fait, non déployé |
+| Cloudflare Workers + KV + R2 | servir tous les sites | KV : jusqu'à 60 s pour être vu partout ; R2 demande une carte bancaire (C23) | Fait, non déployé ; remplacé pour les abonnés par Pages (T45) |
+| Cloudflare Pages (abonnés) | un projet par site d'abonné (`sito-<siren>-<métier>`), un dépôt atomique par version (`atelier/publier-pages.mjs`, T45) | offre gratuite : 100 projets par compte, donc **100 abonnés au plus** sur ce schéma (D-15) ; 500 dépôts par mois | Fait contre faux Cloudflare ; réel : F21 |
+| GitHub Actions | refaire et publier un site à chaque changement (`refaire-site.yml`, T45) ; essais à chaque envoi (`essais.yml`) | dépôt public : minutes illimitées ; dépôt privé (F20) : **2 000 minutes par mois**. Un tour de `refaire-site` ≈ 2 à 3 min, soit ≈ 600 refabrications par mois si rien d'autre ne tourne ; `essais.yml` ≈ 10 min par envoi, rendu et Safari la nuit (≈ 15 min) | Fait (T45) ; réel : F21 |
 | Cloudflare for SaaS | domaines des artisans | 100 inclus, puis 0,10 $/mois ; domaine sans `www` impossible hors Entreprise ; domaine non validé supprimé à 7 jours | À faire |
 | Gandi API v5 | vérifier, acheter (titulaire = artisan), renouveler, code de transfert, redirection `https://domaine.fr → www` | passage revendeur irréversible ; endpoint de redirection à vérifier | À faire |
 | Google Business Profile API v4 | `reviews.list`, `updateReply`, fiche | accès sur demande, 60 jours de gestion d'une fiche | À faire |

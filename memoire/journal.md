@@ -1802,3 +1802,21 @@ un dépôt privé (minutes comptées). Le HEIC n'est pas converti (brevets HEVC,
 `atelier/heic.mjs`) : refus avec la consigne « renvoyer par WhatsApp ». Les
 rôles des photos se décident en les regardant (Claude ou Fabrice).
 TRACAGE : scripts/prospection/photos-artisan.mjs, scripts/essai-photos-artisan.mjs, docs/PROCEDURE-PHOTOS.md, .gitignore, scripts/essais.mjs, .github/workflows/essais.yml, app/specs/07-TACHES.md, docs/specs/S-MODELES.md, docs/00-INDEX.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 4 nov. 2026 — T45 (refaire et publier par GitHub Actions), par Cowork
+
+Plan : 1. `atelier/publier-pages.mjs` (un projet Pages par site, R2 étant
+exclu) et `publier` injectable dans `atelier/boucle.mjs` ; 2.
+`scripts/refaire-site.mjs`, `.github/workflows/refaire-site.yml`, lanceur des
+secrets ; 3. déclencheur de la base (pg_net) et essais.
+
+Résultat : `essai-refaire-site.mjs` 15 contrôles, 0 faute ; contre-essai rouge.
+Migration du déclencheur appliquée : la première version faisait échouer les
+écritures de `profils` (essai SQL rouge sur « new.etat »), corrigée aussitôt
+par `20261104044905`. Le passage de l'essai SQL sur la correction n'a pas
+abouti : l'outil Supabase a posé une question (sans doute la suppression d'un
+tarif d'essai dans le bloc annulé) et personne n'a répondu ; à relancer, ce qui
+compte avant tout appel réel. Pages limite à 100 projets : D-15. Minutes de
+GitHub Actions comptées dans `02-TRD.md` §7. T45 bloquée sur F21 (secrets du
+dépôt, jeton GitHub au coffre de Supabase).
+TRACAGE : atelier/publier-pages.mjs, atelier/boucle.mjs, scripts/refaire-site.mjs, scripts/essai-refaire-site.mjs, scripts/secrets-github.mjs, lanceurs/SECRETS_GITHUB.bat, .github/workflows/refaire-site.yml, .github/workflows/essais.yml, scripts/essais.mjs, supabase/migrations/20261104044828_prevenir_github.sql, supabase/migrations/20261104044905_prevenir_github_correction.sql, supabase/essais/prevenir.sql, supabase/README.md, app/specs/02-TRD.md, app/specs/07-TACHES.md, docs/DETTE.md (D-15), memoire/actions-fabrice.md (F21), memoire/pieges.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

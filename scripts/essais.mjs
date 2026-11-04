@@ -61,6 +61,7 @@ const ETAPES = [
   { nom: 'générateur : textes alternatifs et légendes du métier', cmd: ['node', 'scripts/essai-alt.mjs'] },
   { nom: 'générateur : avis réels seulement sur un site d abonné', cmd: ['node', 'scripts/essai-avis.mjs'] },
   { nom: 'service : boucle (refaire, vérifier, publier par version)', cmd: ['node', 'scripts/essai-boucle.mjs'] },
+  { nom: 'service : refaire et publier par GitHub Actions (Cloudflare Pages)', cmd: ['node', 'scripts/essai-refaire-site.mjs'] },
   { nom: 'prospection : extraction, note, registre', cmd: ['node', 'scripts/essai-prospection.mjs'] },
   // La fabrication du lot sans aucune image : un métier sans images est sauté,
   // les données du générateur n'inventent rien, les slugs ne se répètent pas.
@@ -111,6 +112,7 @@ if (COMPLET) {
     { nom: 'contre-essai : textes alternatifs', cmd: ['node', 'scripts/essai-alt.mjs', '--contre-essai'] },
     { nom: 'contre-essai : avis', cmd: ['node', 'scripts/essai-avis.mjs', '--contre-essai'] },
     { nom: 'contre-essai : boucle du service', cmd: ['node', 'scripts/essai-boucle.mjs', '--contre-essai'] },
+    { nom: 'contre-essai : refaire par GitHub Actions', cmd: ['node', 'scripts/essai-refaire-site.mjs', '--contre-essai'] },
     { nom: 'contre-essai : prospection', cmd: ['node', 'scripts/essai-prospection.mjs', '--contre-essai'] },
     { nom: 'contre-essai : modèles', cmd: ['node', 'scripts/essai-modeles.mjs', '--contre-essai'] },
     { nom: 'contre-essai : acceptation', cmd: ['node', 'scripts/essai-accepter.mjs', '--contre-essai'] },

@@ -65,6 +65,10 @@ export async function aRefaire(sb, site) {
 export async function refaireSite({
   sb, site, registre, stockage, adresses, hotes, verifier = verifierSite,
   maintenant = () => new Date(), dire = () => {},
+  // `publier({ site, dossier, verifier })` : la publication. Par défaut le
+  // stockage par versions (R2 et KV) ; GitHub Actions passe Cloudflare Pages
+  // (atelier/publier-pages.mjs, T45), R2 demandant une carte bancaire.
+  publier = null,
 }) {
   const debut = maintenant().toISOString();
   const tmp = mkdtempSync(join(tmpdir(), 'sito-boucle-'));
@@ -83,7 +87,9 @@ export async function refaireSite({
 
     let verdict = null;
     const verifierEtGarder = async (d) => (verdict = await verifier(d));
-    const pub = await publierVersion({ site: site.id, dossier: sortie, stockage, adresses, hotes, verifier: verifierEtGarder });
+    const pub = publier
+      ? await publier({ site, dossier: sortie, verifier: verifierEtGarder })
+      : await publierVersion({ site: site.id, dossier: sortie, stockage, adresses, hotes, verifier: verifierEtGarder });
     const fin = maintenant().toISOString();
     const verifications = { ok: Boolean(verdict?.ok), bloquants: verdict?.bloquants || [], constats: (verdict?.constats || []).length };
 
@@ -97,7 +103,7 @@ export async function refaireSite({
     await sb.majorer('versions_site', { site_id: ['eq', site.id], en_ligne: ['eq', 'true'] }, { en_ligne: false });
     await sb.inserer('versions_site', [{ site_id: site.id, numero: pub.version, fabrication_id: fab.id,
       fichiers: pub.fichiers, octets: pub.octets, en_ligne: true, publiee_le: fin }]);
-    await sb.majorer('sites', { id: ['eq', site.id] }, { version: pub.version, publie_le: fin, adresse_en_ligne: hotes[0] });
+    await sb.majorer('sites', { id: ['eq', site.id] }, { version: pub.version, publie_le: fin, adresse_en_ligne: (hotes && hotes[0]) || pub.url || null });
     dire(`site ${site.siren}/${site.metier} : version ${pub.version} en ligne (${pub.envoyes} envoyés, ${pub.recopies} recopiés)`);
     return { publie: true, statut: 'reussie', version: pub.version };
   } catch (e) {

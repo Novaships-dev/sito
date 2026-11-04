@@ -1,0 +1,52 @@
+# Refaire et publier le site d'un abonné (tâche T45).
+#
+# Décision de Fabrice du 29 oct. 2026 : pas de serveur loué ; le site est
+# refait et publié par GitHub Actions, gratuitement. La base prévient GitHub
+# quand une photo est prête, ou que le profil ou les tarifs changent
+# (migration du déclencheur, `repository_dispatch` de type « refaire-site »,
+# avec le SIREN). Se lance aussi à la main (onglet Actions, « Run workflow »).
+#
+# Les clés viennent des secrets du dépôt, posés par lanceurs/SECRETS_GITHUB.bat
+# depuis le .env de Fabrice. Claude ne les lit jamais.
+name: refaire-site
+
+on:
+  repository_dispatch:
+    types: [refaire-site]
+  workflow_dispatch:
+    inputs:
+      siren:
+        description: "SIREN de l'abonné (vide : tous les sites)"
+        required: false
+
+permissions:
+  contents: read
+
+# Un tour à la fois par site. Un nouvel appel pendant un tour attend le suivant
+# (GitHub n'en garde qu'un en attente) : dix photos envoyées d'un coup font
+# deux tours, pas dix. On ne coupe jamais un tour en route : une publication
+# interrompue laisserait le site à moitié refait.
+concurrency:
+  group: refaire-site-${{ github.event.client_payload.siren || inputs.siren || 'tous' }}
+  cancel-in-progress: false
+
+jobs:
+  refaire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Refaire, vérifier, publier
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_CLE_SERVICE: ${{ secrets.SUPABASE_CLE_SERVICE }}
+          CLOUDFLARE_COMPTE_ID: ${{ secrets.CLOUDFLARE_COMPTE_ID }}
+          CLOUDFLARE_JETON_API: ${{ secrets.CLOUDFLARE_JETON_API }}
+          SIREN: ${{ github.event.client_payload.siren || inputs.siren }}
+        run: |
+          if [ -n "$SIREN" ]; then node scripts/refaire-site.mjs --siren "$SIREN"; else node scripts/refaire-site.mjs --tous; fi
