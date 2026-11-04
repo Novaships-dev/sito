@@ -1858,3 +1858,17 @@ TRACAGE : generateur/sections/page-travail.mjs, generateur/composer.mjs, generat
 
 T52, complément : la ligne S11 de `app/specs/01-PRD.md` passe à « fait ».
 TRACAGE : app/specs/01-PRD.md, memoire/journal.md
+
+## 4 nov. 2026 — T53 (contrôle mécanique de la traçabilité), par Cowork
+
+Plan : 1. `scripts/verifier-tracabilite.mjs` : pour chaque tâche « fait », une
+ligne datée de CHANGELOG et une section de journal du même jour à son nom avec
+`TRACAGE` ; 2. `carte-depot --verifier` et ce contrôle dans `essais.mjs` ;
+3. contre-essais dans la suite complète et la CI.
+
+Résultat : sur le dépôt, 32 tâches « fait », toutes tracées ; les 18 finies
+avant la règle (3 nov.) sont listées dans le script, liste fermée.
+Contre-essai : 8 contrôles, 0 faute (T99 sans trace, avec une seule des deux,
+section sans TRACAGE, journal d'un autre jour : rouge ; avec les deux du même
+jour : vert).
+TRACAGE : scripts/verifier-tracabilite.mjs, scripts/essais.mjs, .github/workflows/essais.yml, docs/REGLE-TRACABILITE.md, CLAUDE.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

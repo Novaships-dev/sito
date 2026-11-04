@@ -43,6 +43,10 @@ const imagesRavalement = () => (existsSync(join(RACINE, 'images', 'ravalement', 
 const ETAPES = [
   { nom: 'dépôt complet', cmd: ['node', 'scripts/verifier-depot.mjs', '.'] },
   { nom: 'règles de rédaction (sites et app)', cmd: ['node', 'scripts/verifier-textes.mjs', '.'] },
+  // T53 (constat S-017) : la carte des fichiers à jour, et chaque tâche « fait »
+  // avec sa ligne de CHANGELOG et sa section de journal (REGLE-TRACABILITE).
+  { nom: 'carte du dépôt à jour', cmd: ['node', 'scripts/carte-depot.mjs', '--verifier'] },
+  { nom: 'traçabilité des tâches faites', cmd: ['node', 'scripts/verifier-tracabilite.mjs'] },
   { nom: 'aucun secret', cmd: ['node', 'scripts/verifier-secrets.mjs', '.'] },
   { nom: 'outillage de Claude Code', cmd: ['node', 'scripts/essai-outillage.mjs'] },
   { nom: 'app : types et construction', cmd: ['npm', '--prefix', 'app', 'run', 'build'], avant: () => {
@@ -103,6 +107,8 @@ if (COMPLET) {
     { nom: 'contre-essai : secrets', cmd: ['node', 'scripts/verifier-secrets.mjs', '--contre-essai'] },
     { nom: 'contre-essai : outillage', cmd: ['node', 'scripts/essai-outillage.mjs', '--contre-essai'] },
     { nom: 'contre-essai : app', cmd: ['node', 'scripts/essai-app.mjs', '--contre-essai'], manque: outilsApp },
+    { nom: 'contre-essai : traçabilité', cmd: ['node', 'scripts/verifier-tracabilite.mjs', '--contre-essai'] },
+    { nom: 'contre-essai : carte du dépôt', cmd: ['node', 'scripts/carte-depot.mjs', '--contre-essai'] },
     { nom: 'contre-essai : vidéos sans position', cmd: ['node', 'scripts/essai-video-gps.mjs', '--contre-essai'], manque: () => (present('ffmpeg', ['-version']) ? [] : ['ffmpeg']) },
     { nom: 'contre-essai : service', cmd: ['node', 'scripts/essai-service.mjs', '--contre-essai'] },
     { nom: 'contre-essai : inscription par lien', cmd: ['node', 'scripts/essai-inscription.mjs', '--contre-essai'] },

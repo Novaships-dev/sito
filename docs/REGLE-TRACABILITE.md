@@ -63,7 +63,13 @@ Si l'une manque, la tâche reste « en cours ». Ce qui n'a pas tourné se dit
 ## Ce que ce fichier ne fait pas
 
 Une règle qui demande un jugement ne se déclenche jamais (`memoire/pieges.md`,
-en tête). Le contrôle mécanique de cette règle (un essai qui refuse une tâche
-« fait » sans ligne `TRACAGE` et sans entrée de CHANGELOG du même jour) est la
-tâche T53 de `app/specs/07-TACHES.md`. Tant qu'il n'existe pas, cette règle
-tient par la seule lecture.
+en tête). Depuis T53 (4 nov. 2026), deux étapes de `node scripts/essais.mjs`
+la tiennent mécaniquement :
+
+- `node scripts/verifier-tracabilite.mjs` refuse une tâche « fait » sans
+  ligne datée dans `CHANGELOG.md` ou sans section de journal du même jour, à
+  son nom, avec une ligne `TRACAGE` (les 18 tâches finies avant la règle sont
+  listées dans le script, liste fermée) ;
+- `node scripts/carte-depot.mjs --verifier` refuse une carte périmée.
+
+Le reste (SOURCE-UNIQUE, specs, DETTE, REGISTRE) tient encore par la lecture.

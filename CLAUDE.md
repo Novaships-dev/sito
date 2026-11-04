@@ -152,6 +152,7 @@ bloquer la tâche.
 | `node scripts/verifier-secrets.mjs .` | aucun secret dans ce qui part sur GitHub |
 | `node scripts/verifier-textes.mjs .` | règles de rédaction (sites et textes de l'app) |
 | `node scripts/audit-depot.mjs` | doublons, fichiers morts, temporaires, place libre : trouve et corrige (`--lecture` : trouve seulement), rapport dans `memoire/essais/audit.txt` |
+| `node scripts/verifier-tracabilite.mjs` | chaque tâche « fait » a sa ligne de `CHANGELOG.md` et sa section de journal du même jour avec `TRACAGE` (`--contre-essai`) |
 | `node scripts/carte-depot.mjs --ecrire` | la carte de tous les fichiers par zone, dans `docs/audit/CARTE.md` (`--verifier` : sort 1 si elle est périmée ; `--contre-essai`) |
 | `node scripts/mesure-disque.mjs` | ce qui prend la place sur C: (lecture seule, ≈ 5 min), tableau dans `memoire/essais/disque.txt` |
 | `node scripts/compte-essai.mjs` | compte d'essai dans la vraie base (besoin du `.env`) |
