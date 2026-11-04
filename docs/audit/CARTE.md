@@ -6,27 +6,27 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**372 fichiers suivis, dont 151 .md ; 89678 lignes de texte.** Hors zone : 0.
+**374 fichiers suivis, dont 151 .md ; 90022 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
 | Z01 Pilotage de l agent | 27 | 2142 | 0 |
-| Z02 Mémoire du projet | 11 | 2720 | 0 |
-| Z03 Spécifications | 11 | 2393 | 0 |
-| Z04 Documentation de travail | 24 | 3300 | 0 |
+| Z02 Mémoire du projet | 11 | 2736 | 0 |
+| Z03 Spécifications | 11 | 2394 | 0 |
+| Z04 Documentation de travail | 24 | 3301 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
-| Z06 Générateur de sites | 35 | 9521 | 4 |
+| Z06 Générateur de sites | 36 | 9624 | 4 |
 | Z07 Règles | 15 | 1147 | 0 |
 | Z08 App de l artisan | 36 | 9183 | 4 |
-| Z09 Service atelier et Worker | 12 | 1555 | 0 |
+| Z09 Service atelier et Worker | 12 | 1561 | 0 |
 | Z10 Base Supabase | 23 | 1940 | 0 |
-| Z11 Essais et vérificateurs | 44 | 9001 | 0 |
+| Z11 Essais et vérificateurs | 45 | 9213 | 0 |
 | Z12 Prospection | 24 | 24280 | 0 |
 | Z13 Autres scripts | 14 | 1455 | 0 |
 | Z14 Banque d images | 8 | 3419 | 0 |
 | Z15 Données de démonstration | 3 | 3 | 0 |
 | Z16 Lanceurs Windows et crochets Git | 14 | 373 | 0 |
-| Z17 Configuration | 7 | 885 | 0 |
+| Z17 Configuration | 7 | 890 | 0 |
 
 ## Z01 Pilotage de l agent
 
@@ -71,8 +71,8 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `memoire/essais/audit.txt` | 44 |
 | `memoire/essais/derniers.txt` | 24 |
 | `memoire/essais/disque.txt` | 61 |
-| `memoire/journal.md` | 1980 |
-| `memoire/maintenant.md` | 110 |
+| `memoire/journal.md` | 1995 |
+| `memoire/maintenant.md` | 111 |
 | `memoire/pieges.md` | 121 |
 | `memoire/questions.md` | 157 |
 
@@ -83,7 +83,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `app/PLAN-APP.md` | 489 |
 | `app/README.md` | 150 |
 | `app/specs/01-PRD.md` | 236 |
-| `app/specs/02-TRD.md` | 213 |
+| `app/specs/02-TRD.md` | 214 |
 | `app/specs/03-APPFLOW.md` | 251 |
 | `app/specs/04-DESIGN-SYSTEM.md` | 180 |
 | `app/specs/05-SCHEMA-BACKEND.md` | 470 |
@@ -96,7 +96,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `CHANGELOG.md` | 73 |
+| `CHANGELOG.md` | 74 |
 | `SECURITY.md` | 55 |
 | `docs/00-INDEX.md` | 113 |
 | `docs/CONSTRAINTS.md` | 58 |
@@ -198,7 +198,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `generateur/archetypes/matiere.mjs` | 496 |
 | `generateur/banque/plan-images.json` | 1572 |
 | `generateur/charte.mjs` | 309 |
-| `generateur/composer.mjs` | 960 |
+| `generateur/composer.mjs` | 965 |
 | `generateur/couture.mjs` | 62 |
 | `generateur/echapper.mjs` | 32 |
 | `generateur/graine.mjs` | 29 |
@@ -218,6 +218,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `generateur/sections/atmosphere.mjs` | 332 |
 | `generateur/sections/avis.mjs` | 59 |
 | `generateur/sections/comparateur.mjs` | 72 |
+| `generateur/sections/formulaire.mjs` | 98 |
 | `generateur/sections/mentions.mjs` | 135 |
 | `generateur/sections/nuancier.mjs` | 28 |
 | `generateur/sections/page-travail.mjs` | 87 |
@@ -297,7 +298,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 |---|---|
 | `atelier/LISEZMOI.md` | 28 |
 | `atelier/boucle.mjs` | 130 |
-| `atelier/fabriquer.mjs` | 205 |
+| `atelier/fabriquer.mjs` | 211 |
 | `atelier/heic.mjs` | 32 |
 | `atelier/photos.mjs` | 198 |
 | `atelier/preparer-recues.mjs` | 136 |
@@ -349,7 +350,8 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `scripts/essai-avis.mjs` | 104 |
 | `scripts/essai-boucle.mjs` | 209 |
 | `scripts/essai-echappement.mjs` | 172 |
-| `scripts/essai-fabrication-base.mjs` | 178 |
+| `scripts/essai-fabrication-base.mjs` | 185 |
+| `scripts/essai-formulaire.mjs` | 189 |
 | `scripts/essai-inscription.mjs` | 197 |
 | `scripts/essai-lot.mjs` | 323 |
 | `scripts/essai-mentions.mjs` | 196 |
@@ -369,7 +371,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `scripts/essai-stripe.mjs` | 180 |
 | `scripts/essai-suppressions.mjs` | 160 |
 | `scripts/essai-video-gps.mjs` | 84 |
-| `scripts/essais.mjs` | 174 |
+| `scripts/essais.mjs` | 176 |
 | `scripts/faux-cloudflare.mjs` | 217 |
 | `scripts/faux-recherche-entreprises.mjs` | 83 |
 | `scripts/faux-supabase.mjs` | 174 |
@@ -380,7 +382,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `scripts/verifier-mobile.mjs` | 348 |
 | `scripts/verifier-ordinateur.mjs` | 317 |
 | `scripts/verifier-secrets.mjs` | 115 |
-| `scripts/verifier-site.mjs` | 666 |
+| `scripts/verifier-site.mjs` | 680 |
 | `scripts/verifier-textes.mjs` | 95 |
 | `scripts/verifier-tracabilite.mjs` | 116 |
 | `scripts/verifier-unicite.mjs` | 64 |
@@ -477,9 +479,9 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `.env.example` | 54 |
-| `.github/workflows/essais.yml` | 103 |
-| `.github/workflows/refaire-site.yml` | 52 |
+| `.env.example` | 57 |
+| `.github/workflows/essais.yml` | 104 |
+| `.github/workflows/refaire-site.yml` | 53 |
 | `.gitignore` | 47 |
 | `.tool-versions` | 2 |
 | `package-lock.json` | 605 |

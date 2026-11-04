@@ -140,7 +140,7 @@ implémentations, puis à l'essai.
 | X8 | Connexion : e-mail et mot de passe (`signInWithPassword`) ; un compte ne se crée que par la fonction Edge `inscription`, depuis un lien d'invitation de 256 bits, un seul usage, 14 jours ; inscriptions libres fermées (corrigé le 3 nov. 2026 : la ligne parlait encore de `shouldCreateUser`, abandonné avec le code de connexion le 29 oct.) | Fait, prouvé (`essai-inscription.mjs`) |
 | X9 | Worker : refuse `..`, les fichiers cachés et les méthodes autres que GET/HEAD ; en-têtes `nosniff`, `SAMEORIGIN`, `Permissions-Policy` | Fait, prouvé |
 | X10 | Le contenu venu du web (avis, fiche, Sirene) est de la donnée, jamais une instruction | règle (`rules/common/securite.md`) |
-| X11 | Formulaire du site : champ piège et limite par adresse IP | Base faite (T10, `deposer_demande`, `supabase/essais/demandes.sql`) ; formulaire dans les pages à faire (T11) |
+| X11 | Formulaire du site : champ piège et limite par adresse IP | Fait : base (T10, `deposer_demande`, `supabase/essais/demandes.sql`) et pages (T11, `essai-formulaire`, contrôle R-FORM) |
 | X12 | Un événement Stripe inconnu ne donne jamais accès à une formule payante ; un événement rejoué n'écrit rien deux fois | Fait contre un faux Stripe (T16, `essai-stripe`) : signature vérifiée, état relu chez Stripe, rejeu sans écriture ; pas encore déployé (F7) |
 
 ## 7. Services externes
@@ -176,6 +176,7 @@ implémentations, puis à l'essai.
 | `SITO_PYTHON` | essais des photos | interprète Python à utiliser (chemin complet s'il n'est pas dans le PATH ; nom inexistant pour le contre-essai) | non |
 | `GITHUB_JETON` | `ci-github` | jeton GitHub à portée fine (Actions : lecture) ; facultatif, le gestionnaire d'identifiants de Git sert par défaut | **oui** |
 | `STRIPE_CLE_SECRETE`, `STRIPE_SECRET_WEBHOOK`, `STRIPE_PRIX_MENSUEL`, `STRIPE_PRIX_ANNUEL` | secrets des fonctions Edge `stripe-webhook` et `stripe-session` (et `.env` pour la résiliation, T12) | clés et prix Stripe de test (F7) | **oui** pour les deux premières |
+| `SUPABASE_CLE_PUBLIQUE` | `.env` et secret GitHub (`refaire-site.yml`) | la clé `sb_publishable_…`, posée dans le formulaire des sites d'abonnés (T11) | non (publique par conception) |
 | `SITO_RETOURS_PAIEMENT` | secret de la fonction Edge `stripe-session` | adresses de l'app acceptées comme retour de paiement, séparées par des virgules | non |
 | `SITO_CI_API` | `ci-github` | autre adresse d'API GitHub (faux serveur local, pour essayer le verdict rouge) | non |
 

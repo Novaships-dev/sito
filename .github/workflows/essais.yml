@@ -81,6 +81,7 @@ jobs:
           node scripts/verifier-tracabilite.mjs --contre-essai
           node scripts/essai-suppressions.mjs --contre-essai
           node scripts/essai-stripe.mjs --contre-essai
+          node scripts/essai-formulaire.mjs --contre-essai
           node scripts/carte-depot.mjs --contre-essai
 
       # Safari (T49, constat S-007) : le moteur WebKit de Playwright, sur l'app

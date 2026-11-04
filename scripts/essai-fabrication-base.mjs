@@ -109,6 +109,8 @@ try {
   const registre = join(dossierRegistre, 'registre.json');
   dossier1 = mkdtempSync(join(tmpdir(), 'sito-site1-'));
 
+  // Première fabrication sans clé publique : pas de formulaire (T11).
+  delete process.env.SUPABASE_CLE_PUBLIQUE;
   const r1 = await fabriquerDepuisBase({ sb, siren: SIREN, metier: 'ravalement', sortie: dossier1, registre });
   if (!ok(r1.ok === true, 'fabrication depuis entreprise + profil + tarifs + photos prêtes', JSON.stringify(r1).slice(0, 300))) throw new Error('fabrication 1 refusée');
   ok(existsSync(join(dossier1, 'index.html')), 'un index.html est écrit');
@@ -143,6 +145,10 @@ try {
   // porte l'URL canonique et le plan du site.
   lignes.adresses.push({ id: 'a1', site_id: site1.id, hote: 'facades-essai.example.fr', genre: 'offerte', principale: true, etat: 'active' });
   dossier2 = mkdtempSync(join(tmpdir(), 'sito-site2-'));
+  ok(!readFileSync(join(dossier1, 'index.html'), 'utf8').includes('data-formulaire'), 'sans clé publique : pas de formulaire de demande (T11)');
+  // Deuxième fabrication avec l'adresse et la clé publique : le formulaire.
+  process.env.SUPABASE_URL = 'https://essai.supabase.co';
+  process.env.SUPABASE_CLE_PUBLIQUE = 'sb_publishable_essai';
   const r2 = await fabriquerDepuisBase({ sb, siren: SIREN, metier: 'ravalement', sortie: dossier2, registre });
   if (!ok(r2.ok === true, 'deuxième fabrication : réussie', JSON.stringify(r2).slice(0, 300))) throw new Error('fabrication 2 refusée');
   ok(r2.archetype === r1.archetype, 'archétype gardé malgré le concurrent jumeau', `${r1.archetype} puis ${r2.archetype}`);
@@ -154,6 +160,7 @@ try {
   ok(readFileSync(join(dossier2, 'index.html'), 'utf8').includes('<link rel="canonical" href="https://facades-essai.example.fr/">')
     && existsSync(join(dossier2, 'sitemap.xml')), 'deuxième fabrication : URL canonique et plan du site depuis l adresse principale (T51)');
   const v2 = spawnSync(process.execPath, [join(RACINE, 'scripts', 'verifier-site.mjs'), dossier2], { encoding: 'utf8' });
+  ok(readFileSync(join(dossier2, 'index.html'), 'utf8').includes('data-formulaire'), 'avec SUPABASE_URL et SUPABASE_CLE_PUBLIQUE : le formulaire de demande est là (T11)');
   ok(v2.status === 0, 'le site de la deuxième fabrication passe aussi verifier-site', (v2.stdout || v2.stderr || '').trim().split('\n').slice(-3).join(' | '));
 
   console.log('\nSans aucune photo prête');

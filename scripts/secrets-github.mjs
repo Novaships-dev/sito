@@ -9,7 +9,7 @@
 import { spawnSync } from 'node:child_process';
 import { chargerEnv } from './env.mjs';
 
-export const NOMS = ['SUPABASE_URL', 'SUPABASE_CLE_SERVICE', 'CLOUDFLARE_COMPTE_ID', 'CLOUDFLARE_JETON_API'];
+export const NOMS = ['SUPABASE_URL', 'SUPABASE_CLE_SERVICE', 'SUPABASE_CLE_PUBLIQUE', 'CLOUDFLARE_COMPTE_ID', 'CLOUDFLARE_JETON_API'];
 const DEPOT = 'Novaships-dev/sito';
 
 chargerEnv();

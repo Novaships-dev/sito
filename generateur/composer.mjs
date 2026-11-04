@@ -17,6 +17,7 @@ import { normaliser } from './sirene.mjs';
 import { phrases as phrasesTextes, intitules as intitulesTextes } from './textes.mjs';
 import { feuille } from './style.mjs';
 import * as pageTravail from './sections/page-travail.mjs';
+import * as formulaire from './sections/formulaire.mjs';
 import { zoneMatiere } from './zone-matiere.mjs';
 import * as arrivee from './sections/arrivee.mjs';
 import * as atmosphere from './sections/atmosphere.mjs';
@@ -270,7 +271,10 @@ async function fabriquer(opts) {
     console.error('Refus : mentions légales manquantes pour un site d abonné : ' + ml.manque.join(', '));
     process.exit(2);
   }
-  const presContact = ml ? mentionsSection.pres(ml) : '';
+  // Le formulaire de demande (T11) : site d'abonné, et adresse de Supabase
+  // avec sa clé publique donnée. Il suit les coordonnées du médiateur.
+  const blocFormulaire = formulaire.bloc({ abonne, url: arg('formulaire-url'), cle: arg('formulaire-cle'), siren: e.siren });
+  const presContact = (ml ? mentionsSection.pres(ml) : '') + blocFormulaire;
 
   // Le registre : les sites deja fabriques. Leurs voisins (meme metier, meme
   // departement, la commune comptant cinq fois plus) ne doivent pas leur
@@ -369,7 +373,7 @@ async function fabriquer(opts) {
     im.avantOuverture = jeu('avant-01', enc['avant-01'], '100vw', 1400);
     corps = matiere.corps({ e, t, im, img, p, base, fraction, fractionTel, illustration, ch, tel, ap, tf, presContact, abonne, avisListe: brut.avis,
       mot: motGeant(ch, base, e) });
-    style = matiere.feuille(p, pal, ch);
+    style = matiere.feuille(p, pal, ch) + (blocFormulaire ? formulaire.feuille() : '');
   } else {
     // Les trois autres archetypes recoivent le meme socle que le vaisseau
     // amiral : ecran d ambiance, pastille d etat, nuancier. Chacun dans sa
@@ -402,7 +406,7 @@ async function fabriquer(opts) {
       bloc.comparateurs,
       appel.barre({ e, tel, ap }),
     ].join('\n\n');
-    style = feuille(p, pal, archetype, ch) + pageTravail.feuille();
+    style = feuille(p, pal, archetype, ch) + pageTravail.feuille() + (blocFormulaire ? formulaire.feuille() : '');
   }
 
   // Le titre et l en-tete de referencement de chaque page (T51).
@@ -875,6 +879,7 @@ ${corps}
 
 })();
 </script>
+${blocFormulaire ? formulaire.script() : ''}
 </body>
 </html>`;
 
@@ -906,7 +911,7 @@ ${corps}
   // dossier reutilise par un site de prospection perd l ancienne page.
   if (ml) {
     const htmlMl = autrePage(html, 'mentions-legales.html', `${e.nomLisible}, ${mentionsSection.TITRE}`)
-      .replace(/<main id="principal">[\s\S]*?<\/main>/, `<main id="principal">\n${mentionsSection.page({ lignes: ml.lignes, e, barre: appel.barre({ e, tel, ap }), appel: appel.lien({ tel, ap }) })}\n</main>`)
+      .replace(/<main id="principal">[\s\S]*?<\/main>/, `<main id="principal">\n${mentionsSection.page({ lignes: ml.lignes, e, barre: appel.barre({ e, tel, ap }), appel: appel.lien({ tel, ap }), formulaire: !!blocFormulaire })}\n</main>`)
       .replace(/<div class="entree"[\s\S]*?<\/div>\n/, '');
     writeFileSync(join(opts.sortie, 'mentions-legales.html'), htmlMl, 'utf8');
   } else if (existsSync(join(opts.sortie, 'mentions-legales.html'))) rmSync(join(opts.sortie, 'mentions-legales.html'));

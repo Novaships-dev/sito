@@ -45,6 +45,7 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_CLE_SERVICE: ${{ secrets.SUPABASE_CLE_SERVICE }}
+          SUPABASE_CLE_PUBLIQUE: ${{ secrets.SUPABASE_CLE_PUBLIQUE }}
           CLOUDFLARE_COMPTE_ID: ${{ secrets.CLOUDFLARE_COMPTE_ID }}
           CLOUDFLARE_JETON_API: ${{ secrets.CLOUDFLARE_JETON_API }}
           SIREN: ${{ github.event.client_payload.siren || inputs.siren }}

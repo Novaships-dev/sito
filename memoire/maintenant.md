@@ -22,7 +22,7 @@ fabrication (D-14), rien d'essayé sur un vrai iPhone (F14). Mentions légales
 
 ## Les tâches
 
-61 tâches : **38 faites, 15 bloquées, 7 à faire, 1 en cours (T32 : textes des métiers, maçonnerie faite, 12 restants)** (`app/specs/07-TACHES.md`).
+61 tâches : **39 faites, 15 bloquées, 6 à faire, 1 en cours (T32 : textes des métiers, maçonnerie faite, 12 restants)** (`app/specs/07-TACHES.md`).
 T47 à T56 viennent de l'audit du 3 novembre.
 
 **Ordre décidé par Fabrice le 3 nov. (« oui Q5 ») : les tâches de l'audit
@@ -33,8 +33,9 @@ et T53 sont faites. Le 4 nov. aussi : T10 (formulaire, côté base), T12
 D-16), T16 et T17 (Stripe écrit et relié, rien de déployé : F7), T31 (codes
 APE), et la maçonnerie pour T32. T45 est faite contre des faux, bloquée sur
 F21 pour le réel ; T13 est sans objet (Q7).
-**Prochaine : T11** (le formulaire dans les pages des sites d'abonnés), puis
-la suite de T32 (menuiserie, carrelage, plomberie, électricité…).
+T11 (formulaire dans les pages) faite aussi : en ligne dès que la clé publique
+est posée (F21). **Prochaine : la suite de T32** (menuiserie, carrelage,
+plomberie, électricité…).
 Depuis T50, un
 site fabriqué depuis la base est un site d'abonné (`--publication`) : sans
 adresse électronique ni directeur de la publication dans `profils`, il n'est
@@ -96,7 +97,7 @@ Le détail, avec la preuve de chaque constat, est dans `docs/audit/REGISTRE.md`.
 
 1. **Adresse publique** d'un abonné jamais posée avant sa première fabrication (D-14) ; horaires, prix et redirection du sous-domaine absents du référencement (D-13).
 2. **Vrais appareils** : rien d'essayé sur un vrai iPhone ou Android, ni les gestes au doigt sous Safari (F14) ; WebKit tourne dans la CI depuis T49.
-3. **Formulaire de demande** dans les pages des sites (T11 ; la base est prête depuis T10).
+3. **Formulaire de demande** : fait (T10, T11) ; attend la clé publique dans les secrets GitHub (F21).
 4. **12 métiers sur 16** sans textes (S-013, T32 ; maçonnerie faite le 4 nov.), et les images de 13 d'entre eux.
 5. **Documents** encore à écrire : technique, qualité, juridique, exploitation, commerce (lots 3 à 7, `docs/00-INDEX.md`, dernière section). Lots 1 et 2 faits le 3 nov.
 

@@ -1978,3 +1978,18 @@ site et contre-essai (copie temporaire sans champ piège : le robot est écrit)
 justes. `droits.sql` 11 et `droits-app.sql` 23 sans faute. Conseillers :
 `deposer_demande` appelable par `anon`, voulu. Q3 notée appliquée.
 TRACAGE : supabase/migrations/20261104174705_deposer_demande.sql, supabase/essais/demandes.sql, supabase/README.md, app/specs/05-SCHEMA-BACKEND.md, app/specs/02-TRD.md, app/specs/01-PRD.md, app/specs/07-TACHES.md, memoire/actions-fabrice.md, memoire/questions.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 4 nov. 2026 — T11 (formulaire dans les pages), par Cowork
+
+Plan : 1. `generateur/sections/formulaire.mjs` (champs, champ piège, script
+qui appelle `rpc/deposer_demande` avec la clé publique) dans le contact des
+quatre archétypes ; 2. mentions légales ML11 selon la présence du
+formulaire ; 3. R-FORM dans `verifier-site`, `essai-formulaire.mjs`.
+
+Résultat : 31 contrôles, 0 faute (Chromium, faux Supabase) ; contre-essai :
+3 cassures attrapées par R-FORM. Le générateur refuse une clé qui n'est pas
+`sb_publishable_`. `fabriquer.mjs` passe l'adresse et la clé publique quand
+`SUPABASE_CLE_PUBLIQUE` est dans l'environnement (ajoutée à `.env.example`,
+aux secrets GitHub de F21 et à `refaire-site.yml`). Texte des mentions écrit
+par Claude, non relu par un juriste (S-019).
+TRACAGE : generateur/sections/formulaire.mjs, generateur/composer.mjs, generateur/sections/mentions.mjs, scripts/verifier-site.mjs, scripts/essai-formulaire.mjs, scripts/essai-fabrication-base.mjs, atelier/fabriquer.mjs, scripts/secrets-github.mjs, .github/workflows/refaire-site.yml, .github/workflows/essais.yml, scripts/essais.mjs, .env.example, app/specs/02-TRD.md, app/specs/01-PRD.md, app/specs/07-TACHES.md, docs/specs/S-MENTIONS.md, memoire/actions-fabrice.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
