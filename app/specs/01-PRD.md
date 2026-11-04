@@ -111,7 +111,7 @@ S7 → S22. Ne pas confondre une exigence (S05) et un constat d'audit
 
 | N° | Exigence | Source | État et preuve |
 |---|---|---|---|
-| S21 | Formulaire de demande qui écrit dans la base, protégé des robots (champ piège, limite par adresse IP), et que l'artisan lit dans l'app | plan 7.1 ; `02-TRD.md` X11 | Fait (T10 et T11, 4 nov.) : formulaire sur les quatre archétypes des sites d'abonnés, la base reçoit et protège ; en ligne dès que la clé publique est posée (F21) |
+| S21 | Formulaire de demande qui écrit dans la base, protégé des robots (champ piège, limite par adresse IP), et que l'artisan lit dans l'app | plan 7.1 ; `02-TRD.md` X11 | Fait (T10 et T11, 4 nov.) : formulaire sur les quatre archétypes des sites d'abonnés, la base reçoit et protège ; en ligne avec la refabrication automatique (F21) |
 | S22 | Avis Google réels de l'artisan sur son site ; jamais inventés ; sur un site d'abonné sans avis, pas de section « avis » | 23 sept. ; `rules/common/ne-pas-fabriquer.md` | **À faire** : un site d'abonné afficherait « Les avis viennent ici » (constat S-024, T56) ; avis réels : T24, T25 |
 | S23 | Tout marche pareil sur Safari et sur un vrai iPhone | sept. | **À faire** : jamais essayé (constat S-007, T49 ; T30, F14) |
 

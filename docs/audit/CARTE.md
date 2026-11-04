@@ -6,14 +6,14 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**377 fichiers suivis, dont 151 .md ; 92756 lignes de texte.** Hors zone : 0.
+**377 fichiers suivis, dont 151 .md ; 92770 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
 | Z01 Pilotage de l agent | 27 | 2142 | 0 |
-| Z02 Mémoire du projet | 11 | 2775 | 0 |
+| Z02 Mémoire du projet | 11 | 2786 | 0 |
 | Z03 Spécifications | 11 | 2394 | 0 |
-| Z04 Documentation de travail | 24 | 3304 | 0 |
+| Z04 Documentation de travail | 24 | 3305 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
 | Z06 Générateur de sites | 39 | 12316 | 4 |
 | Z07 Règles | 15 | 1147 | 0 |
@@ -26,7 +26,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | Z14 Banque d images | 8 | 3419 | 0 |
 | Z15 Données de démonstration | 3 | 3 | 0 |
 | Z16 Lanceurs Windows et crochets Git | 14 | 373 | 0 |
-| Z17 Configuration | 7 | 890 | 0 |
+| Z17 Configuration | 7 | 892 | 0 |
 
 ## Z01 Pilotage de l agent
 
@@ -71,7 +71,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `memoire/essais/audit.txt` | 44 |
 | `memoire/essais/derniers.txt` | 24 |
 | `memoire/essais/disque.txt` | 61 |
-| `memoire/journal.md` | 2034 |
+| `memoire/journal.md` | 2045 |
 | `memoire/maintenant.md` | 111 |
 | `memoire/pieges.md` | 121 |
 | `memoire/questions.md` | 157 |
@@ -96,7 +96,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `CHANGELOG.md` | 77 |
+| `CHANGELOG.md` | 78 |
 | `SECURITY.md` | 55 |
 | `docs/00-INDEX.md` | 113 |
 | `docs/CONSTRAINTS.md` | 58 |
@@ -484,7 +484,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 |---|---|
 | `.env.example` | 57 |
 | `.github/workflows/essais.yml` | 104 |
-| `.github/workflows/refaire-site.yml` | 53 |
+| `.github/workflows/refaire-site.yml` | 55 |
 | `.gitignore` | 47 |
 | `.tool-versions` | 2 |
 | `package-lock.json` | 605 |

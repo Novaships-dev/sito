@@ -33,8 +33,8 @@ et T53 sont faites. Le 4 nov. aussi : T10 (formulaire, côté base), T12
 D-16), T16 et T17 (Stripe écrit et relié, rien de déployé : F7), T31 (codes
 APE), la maçonnerie, la menuiserie, le carrelage et la plomberie pour T32. T45 est faite contre des faux, bloquée sur
 F21 pour le réel ; T13 est sans objet (Q7).
-T11 (formulaire dans les pages) faite aussi : en ligne dès que la clé publique
-est posée (F21). **Prochaine : la suite de T32** (électricité, plâtrerie,
+T11 (formulaire dans les pages) faite aussi : la clé publique est dans le
+dépôt ; en ligne avec la refabrication automatique (F21). **Prochaine : la suite de T32** (électricité, plâtrerie,
 isolation…).
 Depuis T50, un
 site fabriqué depuis la base est un site d'abonné (`--publication`) : sans
@@ -97,7 +97,7 @@ Le détail, avec la preuve de chaque constat, est dans `docs/audit/REGISTRE.md`.
 
 1. **Adresse publique** d'un abonné jamais posée avant sa première fabrication (D-14) ; horaires, prix et redirection du sous-domaine absents du référencement (D-13).
 2. **Vrais appareils** : rien d'essayé sur un vrai iPhone ou Android, ni les gestes au doigt sous Safari (F14) ; WebKit tourne dans la CI depuis T49.
-3. **Formulaire de demande** : fait (T10, T11) ; attend la clé publique dans les secrets GitHub (F21).
+3. **Formulaire de demande** : fait (T10, T11) ; en ligne quand la refabrication automatique tourne (F21).
 4. **9 métiers sur 16** sans textes (S-013, T32 ; maçonnerie, menuiserie, carrelage et plomberie faits le 4 nov.), et les images de 13 d'entre eux.
 5. **Documents** encore à écrire : technique, qualité, juridique, exploitation, commerce (lots 3 à 7, `docs/00-INDEX.md`, dernière section). Lots 1 et 2 faits le 3 nov.
 

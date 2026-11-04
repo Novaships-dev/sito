@@ -176,7 +176,7 @@ implémentations, puis à l'essai.
 | `SITO_PYTHON` | essais des photos | interprète Python à utiliser (chemin complet s'il n'est pas dans le PATH ; nom inexistant pour le contre-essai) | non |
 | `GITHUB_JETON` | `ci-github` | jeton GitHub à portée fine (Actions : lecture) ; facultatif, le gestionnaire d'identifiants de Git sert par défaut | **oui** |
 | `STRIPE_CLE_SECRETE`, `STRIPE_SECRET_WEBHOOK`, `STRIPE_PRIX_MENSUEL`, `STRIPE_PRIX_ANNUEL` | secrets des fonctions Edge `stripe-webhook` et `stripe-session` (et `.env` pour la résiliation, T12) | clés et prix Stripe de test (F7) | **oui** pour les deux premières |
-| `SUPABASE_CLE_PUBLIQUE` | `.env` et secret GitHub (`refaire-site.yml`) | la clé `sb_publishable_…`, posée dans le formulaire des sites d'abonnés (T11) | non (publique par conception) |
+| `SUPABASE_CLE_PUBLIQUE` | écrite en clair dans `refaire-site.yml` et `.env.example` | la clé `sb_publishable_…`, posée dans le formulaire des sites d'abonnés (T11) | non (publique par conception) |
 | `SITO_RETOURS_PAIEMENT` | secret de la fonction Edge `stripe-session` | adresses de l'app acceptées comme retour de paiement, séparées par des virgules | non |
 | `SITO_CI_API` | `ci-github` | autre adresse d'API GitHub (faux serveur local, pour essayer le verdict rouge) | non |
 

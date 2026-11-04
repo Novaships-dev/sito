@@ -2032,3 +2032,14 @@ fabriqués : `verifier-site` 0 bloquant, `verifier-mobile` 0, aucun mot d'un
 autre métier. Aucune mention de qualification gaz : rien ne dit qu'un artisan
 donné l'a. L'estimateur compte des équipements (unité « u »).
 TRACAGE : generateur/metiers/plomberie.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 5 nov. 2026 — T11, complément (clé publique dans le dépôt), par Cowork
+
+Plan : la clé publique (`sb_publishable_…`, lue par l'outil Supabase
+`get_publishable_keys`) n'est pas un secret : l'écrire dans `refaire-site.yml`
+et `.env.example` plutôt que la faire poser à Fabrice. `secrets-github.mjs`
+ne la demande plus (il aurait refusé un `.env` sans elle).
+
+Résultat : `verifier-secrets` sans constat, `essai-refaire-site` 15 contrôles
+sans faute. F21 réduite d'une étape.
+TRACAGE : .github/workflows/refaire-site.yml, scripts/secrets-github.mjs, .env.example, app/specs/02-TRD.md, app/specs/01-PRD.md, memoire/actions-fabrice.md, memoire/maintenant.md, CHANGELOG.md, memoire/journal.md, docs/audit/CARTE.md
