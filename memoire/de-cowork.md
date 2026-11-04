@@ -32,3 +32,4 @@ section 2, « Deux sessions ».
 | 3 nov. 2026 | T51 faite par Cowork sur GitHub (commit « T51 : … ») | suite de « Ok continue » et « Go » (Fabrice, 3 nov.). Prochaine : T49 |
 | 3 nov. 2026 | T49 faite par Cowork sur GitHub (commits « T49 … ») ; `CLAUDE.md` §4 : deux lignes de commandes | suite de « Go » (Fabrice, 3 nov.). Prochaine : T54 |
 | 4 nov. 2026 | `memoire/decisions.md` (4 nov., modèles de prospection, mot pour mot), `docs/specs/S-MODELES.md` (nouveau), `app/specs/07-TACHES.md` (section « Modèles de prospection », T57 à T60), `memoire/questions.md` (Q6) | décision et réponses de Fabrice du 4 nov. |
+| 4 nov. 2026 | `memoire/decisions.md` (Q6 mot pour mot), `memoire/questions.md` (Q6 répondue), `memoire/actions-fabrice.md` (F20), `.github/workflows/essais.yml` (rendu et Safari la nuit si dépôt privé) | réponse de Fabrice à Q6 : « Le repo github Sito sera privé donc sur Sito github » |

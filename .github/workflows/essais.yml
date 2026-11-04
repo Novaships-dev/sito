@@ -18,6 +18,10 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  # Une fois par nuit (3 h 17 UTC) : le rendu et Safari, qui ne tournent plus à
+  # chaque envoi quand le dépôt est privé (minutes gratuites comptées, F20).
+  schedule:
+    - cron: "17 3 * * *"
 
 permissions:
   contents: read
@@ -76,12 +80,15 @@ jobs:
       # en démonstration et sur un site d'abonné de chaque archétype. Chromium
       # sur les mêmes sites, pour comparer.
       - name: Rendu des sites (Chromium)
+        if: ${{ !github.event.repository.private || github.event_name != 'push' }}
         run: node scripts/essai-navigateurs.mjs
 
       - name: Safari (WebKit) - sites
+        if: ${{ !github.event.repository.private || github.event_name != 'push' }}
         run: node scripts/essai-navigateurs.mjs --navigateur webkit
 
       - name: Safari (WebKit) - app
+        if: ${{ !github.event.repository.private || github.event_name != 'push' }}
         run: node scripts/essai-app.mjs --navigateur webkit
 
       - name: Résumé

@@ -126,3 +126,13 @@ garde tout pour toujours (pas de Git LFS, ta décision).
 gratuit (un dossier par SIREN), que Claude lit pour refaire le site. Sinon le
 stockage Supabase, gratuit jusqu'à 1 Go, déjà prévu pour l'app.
 **En attendant** : T60 est bloquée sur Q6 ; T57 à T59 avancent.
+
+## Q6 (répondue), 4 novembre 2026
+
+Fabrice : « Le repo github Sito sera privé donc sur Sito github ». Appliqué :
+les photos d'un artisan vont dans `clients/<SIREN>/` du dépôt `sito`. Tant que
+le dépôt est public, `scripts/prospection/photos-artisan.mjs` refuse d'y
+écrire une photo (il demande à GitHub si le dépôt est public). Passer le dépôt
+en privé : action F20. Conséquence notée en F20 : un dépôt privé consomme les
+minutes gratuites de GitHub Actions (2 000 par mois) ; les étapes longues de
+la CI (rendu et Safari) ne tournent alors qu'une fois par nuit.
