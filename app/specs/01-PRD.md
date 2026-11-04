@@ -91,7 +91,7 @@ S7 → S22. Ne pas confondre une exigence (S05) et un constat d'audit
 | S08 | Les photos de l'artisan remplacent les exemples ; le site se refait et se republie à chaque ajout | 23 sept. | Partiel : fabrication depuis la base (T08) et boucle (T09) prouvées ; déclenchement par GitHub Actions à faire (T45) |
 | S09 | Comparateur avant / après qui marche au doigt et à la souris | sept. | Fait, prouvé : M7 à M11, O5 |
 | S10 | Section « vérifiable » : SIREN, SIRET, forme, création, siège, activité, effectif, RGE, depuis Sirene ; une ligne vide dans la source reste vide | sept. | Fait |
-| S11 | Deuxième page (« le travail ») sur les quatre archétypes | 23 sept. (archétypes au même niveau) | Partiel : `matiere` seulement (constat S-012, T52) |
+| S11 | Deuxième page (« le travail ») sur les quatre archétypes | 23 sept. (archétypes au même niveau) | Fait sur les quatre archétypes (T52, 4 nov.) ; tirée pour 60 % des sites ; vraies photos non essayées (F15) |
 | S12 | Textes alternatifs des photos propres au métier et à la photo, jamais écrits pour un autre métier | accessibilité ; `rules/web/accessibilite.md` | **À faire** : écrits en dur pour la façade sur tous les métiers (constat S-023, T55) |
 | S13 | Tous les textes de l'artisan sont échappés partout (contenu, attributs, JSON) | sécurité | **À faire** : guillemets non échappés (constat S-006, T48) |
 | S14 | 16 métiers, chacun prêt (textes, prompts, 54 images, 100 sites, règle de prospection) | 23 sept. | Partiel : 0 sur 16 prêts, 3 avec textes et prompts (`docs/specs/METIERS.md`, T32, T33) |

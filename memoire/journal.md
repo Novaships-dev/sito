@@ -1855,3 +1855,6 @@ opaque, piège noté). S-025 : avec l'ancienne règle, le titre de matiere ne
 prenait que 9 % de l'écran mais passait M2 par la largeur ; il prend
 maintenant 19 %. Les vraies photos (fabriquer-demo) attendent F15.
 TRACAGE : generateur/sections/page-travail.mjs, generateur/composer.mjs, generateur/tirage.mjs, generateur/archetypes/matiere.mjs, generateur/charte.mjs, scripts/essai-navigateurs.mjs, app/specs/07-TACHES.md, docs/audit/REGISTRE.md, CHANGELOG.md, memoire/maintenant.md, memoire/pieges.md, memoire/journal.md, docs/audit/CARTE.md
+
+T52, complément : la ligne S11 de `app/specs/01-PRD.md` passe à « fait ».
+TRACAGE : app/specs/01-PRD.md, memoire/journal.md
