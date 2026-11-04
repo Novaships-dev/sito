@@ -136,3 +136,14 @@ le dépôt est public, `scripts/prospection/photos-artisan.mjs` refuse d'y
 en privé : action F20. Conséquence notée en F20 : un dépôt privé consomme les
 minutes gratuites de GitHub Actions (2 000 par mois) ; les étapes longues de
 la CI (rendu et Safari) ne tournent alors qu'une fois par nuit.
+
+## Q7 (ouverte), 4 novembre 2026
+
+**T13 (adaptateurs R2 et KV) a-t-elle encore un sens ?** R2 demande une carte
+bancaire (contrainte C23) et, depuis T45, un site d'abonné est publié sur
+Cloudflare Pages, sans R2 ni Worker. L'adaptateur KV ne servirait qu'à la
+solution de D-15 (un seul projet Pages et un Worker au-delà de 100 abonnés).
+
+**Réponse recommandée** : T13 sans objet ; elle passe « bloqué » avec ce motif,
+et revient avec D-15 si Sitô approche 100 abonnés. Choix réversible et sans
+coût : appliqué.

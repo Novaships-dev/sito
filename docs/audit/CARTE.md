@@ -6,12 +6,12 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**366 fichiers suivis, dont 151 .md ; 88016 lignes de texte.** Hors zone : 0.
+**366 fichiers suivis, dont 151 .md ; 88035 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
 | Z01 Pilotage de l agent | 27 | 2142 | 0 |
-| Z02 Mémoire du projet | 11 | 2631 | 0 |
+| Z02 Mémoire du projet | 11 | 2650 | 0 |
 | Z03 Spécifications | 11 | 2383 | 0 |
 | Z04 Documentation de travail | 24 | 3296 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
@@ -71,10 +71,10 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `memoire/essais/audit.txt` | 44 |
 | `memoire/essais/derniers.txt` | 24 |
 | `memoire/essais/disque.txt` | 61 |
-| `memoire/journal.md` | 1913 |
+| `memoire/journal.md` | 1920 |
 | `memoire/maintenant.md` | 108 |
-| `memoire/pieges.md` | 120 |
-| `memoire/questions.md` | 138 |
+| `memoire/pieges.md` | 121 |
+| `memoire/questions.md` | 149 |
 
 ## Z03 Spécifications
 

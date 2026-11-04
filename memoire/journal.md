@@ -1911,3 +1911,10 @@ Résultat : ravalement 43.34Z, 43.99C, 43.99D, 43.29A ; couverture 43.91B,
 Libellés APE manquants ajoutés dans `generateur/sirene.mjs`. Les 13 autres
 métiers n'ont pas encore de ligne de prospection : rien à comparer.
 TRACAGE : generateur/metiers/ravalement.json, generateur/metiers/couverture.json, generateur/metiers/peinture.json, generateur/banque/plan-images.json, generateur/sirene.mjs, scripts/verifier-depot.mjs, docs/specs/METIERS.md, docs/DETTE.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+T13 passée « bloqué » (Q7, recommandation appliquée) : R2 exclu (C23), Pages
+depuis T45 ; l'adaptateur KV revient avec D-15.
+Piège noté : la carte compte les lignes ; l'écrire pendant que la suite a
+réécrit `memoire/essais/derniers.txt` la rend périmée dès que ce fichier est
+remis (CI de T12 rouge, réparée par le commit de T31).
+TRACAGE : memoire/questions.md, app/specs/07-TACHES.md, memoire/maintenant.md, memoire/pieges.md, memoire/journal.md, docs/audit/CARTE.md
