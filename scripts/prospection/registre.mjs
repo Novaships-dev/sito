@@ -98,11 +98,13 @@ export function relancesDues(registre, jour) {
 }
 
 // Range une entreprise du lot du jour (site fabriqué, pas encore appelée).
-export function inscrire(registre, e, { jour, slug }) {
+export function inscrire(registre, e, { jour, slug, modele = null }) {
   const deja = registre.fiches[e.siren] || {};
   registre.fiches[e.siren] = {
     metier: e.metier, nom: e.nom, commune: e.commune,
     site_le: jour, slug,
+    // le modèle montré à l'artisan (T58) : celui qu'il gardera s'il accepte
+    modele,
     statut: deja.statut && deja.statut !== 'a-appeler' ? deja.statut : 'a-appeler',
     appele_le: deja.appele_le ?? null,
     relance_le: deja.relance_le ?? null,

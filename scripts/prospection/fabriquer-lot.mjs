@@ -61,6 +61,7 @@ import { randomBytes } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 import { RACINE } from '../env.mjs';
 import { verifier as verifierImages } from '../verifier-images.mjs';
+import { lire as lireModeles, charteDe } from './modeles.mjs';
 import * as registreAppels from './registre.mjs';
 
 export const SLUG_LONGUEUR = 16;
@@ -124,10 +125,21 @@ function lancer(cmd, args, dire) {
   return { ok: r.status === 0, sortie };
 }
 
+// Les modèles (T58, docs/specs/S-MODELES.md, décision de Fabrice du 4 nov.) :
+// chaque artisan du lot reçoit un modèle libre de son métier, à tour de rôle
+// (MO4 : le même modèle peut servir plusieurs artisans le même jour). Rend
+// [{ ...artisan, modele }] ; une liste vide de modèles libres est une faute.
+export function repartir(liste, modeles) {
+  const libres = modeles.filter((m) => m.etat === 'libre');
+  if (!libres.length) throw new Error('aucun modèle libre');
+  return liste.map((e, k) => ({ ...e, modele: libres[k % libres.length] }));
+}
+
 export async function fabriquerLot({
   lot, jour = jourDeParis(), sortie = null, images = join(RACINE, 'images'),
   registre = join(RACINE, 'prospection', 'registre-sites.json'),
   appels = registreAppels.CHEMIN, mobile = 1, sec = false, dire = console.log,
+  modeles = join(RACINE, 'prospection', 'modeles'),
 } = {}) {
   const dossier = sortie || join(RACINE, 'sites', 'prospection', jour);
   const parMetier = {};
@@ -147,27 +159,38 @@ export async function fabriquerLot({
       dire(`    puis mesurer : node scripts/verifier-images.mjs ${metier}`);
       continue;
     }
-    dire(`\n  ${metier} : images prêtes, ${liste.length} site(s)`);
+    let reparti;
+    try { reparti = repartir(liste, lireModeles(metier, modeles).modeles); }
+    catch {
+      bilan.sautes.push(...liste.map((e) => ({ ...e, motif: `aucun modèle libre pour « ${metier} »` })));
+      dire(`\n  ${metier} : SAUTÉ, aucun modèle libre. À faire : node scripts/prospection/modeles.mjs --metier ${metier}`);
+      continue;
+    }
+    dire(`\n  ${metier} : images prêtes, ${liste.length} site(s) sur ${new Set(reparti.map((e) => e.modele.id)).size} modèle(s)`);
     const dossierImages = join(images, metier, 'sources');
 
-    for (const e of liste) {
+    for (const e of reparti) {
       const cible = join(dossier, e.siren);
-      dire(`    ${e.siren}  ${String(e.nom).slice(0, 34).padEnd(36)} note ${String(e.note ?? '?').padStart(3)}`);
-      if (sec) { bilan.fabriques.push({ ...e, dossier: cible, slug: null }); bilan.metiers[metier].fabriques++; continue; }
+      dire(`    ${e.siren}  ${String(e.nom).slice(0, 34).padEnd(36)} note ${String(e.note ?? '?').padStart(3)}  ${e.modele.id}`);
+      const fiche = { ...e, modele: e.modele.id };
+      if (sec) { bilan.fabriques.push({ ...fiche, dossier: cible, slug: null }); bilan.metiers[metier].fabriques++; continue; }
 
       mkdirSync(cible, { recursive: true });
       const fichierDonnees = join(cible, 'sirene.json');
       writeFileSync(fichierDonnees, JSON.stringify(donneesSirene(e), null, 2) + '\n', 'utf8');
 
+      const fichierCharte = join(cible, 'modele.json');
+      writeFileSync(fichierCharte, JSON.stringify(charteDe(e.modele)) + '\n', 'utf8');
       const fait = lancer('le générateur', [join(RACINE, 'generateur', 'composer.mjs'),
         '--siren', e.siren, '--metier', metier, '--images', dossierImages,
-        '--sortie', cible, '--donnees', fichierDonnees, '--registre', registre], dire);
-      if (!fait.ok) { bilan.echecs.push({ ...e, motif: 'fabrication' }); rmSync(cible, { recursive: true, force: true }); continue; }
+        '--sortie', cible, '--donnees', fichierDonnees, '--registre', registre,
+        '--charte', fichierCharte, '--graine', e.modele.id], dire);
+      if (!fait.ok) { bilan.echecs.push({ ...fiche, motif: 'fabrication' }); rmSync(cible, { recursive: true, force: true }); continue; }
 
       const plancher = lancer('verifier-site', [join(RACINE, 'scripts', 'verifier-site.mjs'), cible], dire);
-      if (!plancher.ok) { bilan.echecs.push({ ...e, motif: 'plancher de la page' }); continue; }
+      if (!plancher.ok) { bilan.echecs.push({ ...fiche, motif: 'plancher de la page' }); continue; }
 
-      bilan.fabriques.push({ ...e, dossier: cible, slug: slug() });
+      bilan.fabriques.push({ ...fiche, dossier: cible, slug: slug() });
       bilan.metiers[metier].fabriques++;
     }
   }
@@ -184,22 +207,17 @@ export async function fabriquerLot({
     if (!r.ok) bilan.echecs.push({ ...f, motif: 'rendu sur téléphone' });
   }
 
-  // L'unicité se mesure sur le lot entier, pas site par site : c'est la
-  // distance entre voisins qui compte (U1 à U4).
-  if (!sec && bilan.fabriques.length > 1) {
-    dire('\n  unicité du lot');
-    const r = lancer('verifier-unicite', [join(RACINE, 'scripts', 'verifier-unicite.mjs'), dossier], dire);
-    bilan.unicite = r.ok;
-    if (!r.ok) bilan.echecs.push({ motif: 'unicité du lot' });
-    else dire(`    ${r.sortie.trim().split('\n').slice(-1)[0]}`);
-  }
+  // L'unicité ne se mesure plus sur le lot : depuis la décision du 4 nov. 2026
+  // (« 100 site différent mais valider »), deux sites du même modèle se
+  // ressemblent exprès. Elle se mesure entre les modèles
+  // (`modeles.mjs --verifier`) et entre les sites acceptés (T59).
 
   // Les artisans entrent au registre une fois leur site fabriqué et vérifié,
   // avec leur slug. Le registre refuse l'écriture s'il trouve un numéro de
   // téléphone, où que ce soit dans le fichier.
   if (!sec && bilan.fabriques.length) {
     const reg = registreAppels.lire(appels);
-    for (const f of bilan.fabriques) registreAppels.inscrire(reg, f, { jour, slug: f.slug });
+    for (const f of bilan.fabriques) registreAppels.inscrire(reg, f, { jour, slug: f.slug, modele: f.modele });
     const fautes = registreAppels.valider(reg);
     if (fautes.length) {
       bilan.echecs.push({ motif: `registre refusé : ${fautes[0]}` });
@@ -213,7 +231,7 @@ export async function fabriquerLot({
     // cette machine ; la vérité versionnée, c'est le registre.
     writeFileSync(join(dossier, 'lot.json'), JSON.stringify({ jour, sites: bilan.fabriques.map((f) => ({
       siren: f.siren, nom: f.nom, metier: f.metier, commune: f.commune, note: f.note ?? null,
-      pourquoi: f.pourquoi ?? [], slug: f.slug, dossier: f.dossier.replace(RACINE, '').replace(/^[\\/]/, ''),
+      pourquoi: f.pourquoi ?? [], slug: f.slug, modele: f.modele, dossier: f.dossier.replace(RACINE, '').replace(/^[\\/]/, ''),
     })) }, null, 2) + '\n', 'utf8');
   }
 

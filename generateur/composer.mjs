@@ -282,7 +282,10 @@ async function fabriquer(opts) {
 
   // Tout ce qui decide de l apparence du site : voir generateur/tirage.mjs.
   const { archetype, p, t, ap, ch, main, ouverture: roleOuverture, fiche, essai } =
-    tirerSite({ siren: e.siren, metier: opts.metier, base, sources, voisins, e, prix: !!tf, charteFixee, graine: opts.graine });
+    tirerSite({ siren: e.siren, metier: opts.metier, base, sources,
+      // Sur un modele (--graine), aucun voisin ne compte : deux artisans montres
+      // sur le meme modele recoivent le meme site, c est voulu (S-MODELES, MO2).
+      voisins: opts.graine ? [] : voisins, e, prix: !!tf, charteFixee, graine: opts.graine });
   // Un dossier de sortie reutilise garde l ancienne deuxieme page si celle-ci
   // n est plus produite : le lien disparait mais la page reste en ligne.
   if (existsSync(join(opts.sortie, 'le-travail.html')) && !ch.structure.page2)

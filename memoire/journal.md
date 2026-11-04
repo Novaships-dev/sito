@@ -1736,3 +1736,19 @@ stricte), sur les noms de photos du plan de la banque. Un modèle fixe charte
 et graine : les phrases et la main de photos ne bougent plus d'un artisan à
 l'autre.
 TRACAGE : generateur/tirage.mjs, generateur/composer.mjs, scripts/prospection/modeles.mjs, prospection/modeles/ravalement.json, prospection/modeles/couverture.json, prospection/modeles/peinture.json, scripts/essai-modeles.mjs, scripts/essais.mjs, .github/workflows/essais.yml, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 4 nov. 2026 — T58 (lot du jour sur les modèles), par Cowork
+
+Plan : 1. `repartir()` dans `fabriquer-lot.mjs`, `--charte` et `--graine` du
+modèle ; 2. modèle au registre des appels ; 3. un vrai lot sur images de
+synthèse dans `essai-lot.mjs`.
+
+Résultat : 34 contrôles, 0 faute ; suite complète sans faute. Panne trouvée
+par le vrai lot : deux artisans sur le même modèle recevaient des titres et un
+bouton d'appel différents, parce que les voisins du registre changeaient
+encore le choix des textes ; sur un modèle, les voisins ne comptent plus
+(`composer.mjs`). Le contrôle d'unicité du lot est retiré, par la décision du
+4 nov. (pas un contrôle affaibli : l'exigence a changé, l'unicité se mesure
+entre modèles). Le contre-essai de `essai-lot` rate déjà sur cette machine
+(cassure du marqueur, sans images) comme avant T58 ; attrapée sur le PC.
+TRACAGE : scripts/prospection/fabriquer-lot.mjs, scripts/prospection/registre.mjs, generateur/composer.mjs, scripts/essai-lot.mjs, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md

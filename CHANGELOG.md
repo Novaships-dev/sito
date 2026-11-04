@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 4 nov. | T58 : le lot du jour se fabrique sur les modèles libres du métier (`fabriquer-lot.mjs`, `repartir`) ; le modèle est noté au registre des appels ; sur un modèle, aucun voisin ne change le tirage ; plus de contrôle d'unicité du lot. `essai-lot.mjs` fabrique un vrai lot sur des images de synthèse. |
 | 4 nov. | T57 : modèles de prospection. `--graine` dans le générateur ; `scripts/prospection/modeles.mjs` tire et vérifie 10 modèles par métier ; `prospection/modeles/` (ravalement, couverture, peinture) ; essai `essai-modeles.mjs`. |
 | 4 nov. | Décision de Fabrice : modèles de prospection (`docs/specs/S-MODELES.md`, T57 à T60, Q6). |
 | 4 nov. | T54 : sur un site d'abonné, les photos sont celles de l'artisan : ni « Exemple » dans les textes alternatifs, ni marqueur, ni note « Photographies d'exemple ». Contrôle R-EXEMPLE dans `verifier-site`. |

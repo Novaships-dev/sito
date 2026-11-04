@@ -33,7 +33,8 @@ import { fauxRecherche } from './faux-recherche-entreprises.mjs';
 import * as ex from './prospection/extraire.mjs';
 import { qualifier, lot as prendreLot } from './prospection/qualifier.mjs';
 import * as reg from './prospection/registre.mjs';
-import { fabriquerLot, donneesSirene, slug, imagesPretes, jourDeParis } from './prospection/fabriquer-lot.mjs';
+import { fabriquerLot, donneesSirene, slug, imagesPretes, jourDeParis, repartir } from './prospection/fabriquer-lot.mjs';
+import { lire as lireModeles } from './prospection/modeles.mjs';
 
 const COMPLET = process.argv.includes('--complet');
 const AUJOURDHUI = new Date('2026-10-24T12:00:00Z');
@@ -142,6 +143,71 @@ if (existsSync(IMAGES_RAVALEMENT)) {
   console.log('  NON ESSAYÉ : le marqueur (images/ravalement/sources absent, hors de Git)');
 }
 
+// ------------------------------------------- les modèles du lot (T58)
+console.log('\nLes artisans du lot sur les modèles libres');
+{
+  const modeles = lireModeles('ravalement').modeles;
+  const artisans = Array.from({ length: 12 }, (_, k) => ({ siren: String(100000000 + k), metier: 'ravalement' }));
+  const r = repartir(artisans, modeles);
+  const libres = modeles.filter((m) => m.etat === 'libre').map((m) => m.id);
+  ok(r.every((e) => libres.includes(e.modele.id)), 'chaque artisan reçoit un modèle libre du métier');
+  ok(r[0].modele.id === libres[0] && r[9].modele.id === libres[9] && r[10].modele.id === libres[0], 'à tour de rôle, et le 11e reprend le premier');
+  const unPris = modeles.map((m, k) => (k === 0 ? { ...m, etat: 'pris', siren: '999999999' } : m));
+  ok(repartir(artisans, unPris).every((e) => e.modele.id !== modeles[0].id), 'un modèle pris ne sert plus jamais');
+  let refus = null; try { repartir(artisans, modeles.map((m) => ({ ...m, etat: 'pris' }))); } catch (e) { refus = e.message; }
+  ok(refus === 'aucun modèle libre', 'sans modèle libre : refus nommé', refus || 'aucun refus');
+  const rg = reg.vide();
+  reg.inscrire(rg, { siren: '480423623', nom: 'Façades Essai', metier: 'ravalement', commune: 'Marseille', note: 70 }, { jour: JOUR, slug: slug(), modele: r[0].modele.id });
+  ok(rg.fiches['480423623'].modele === r[0].modele.id && reg.valider(rg).length === 0, 'le registre note le modèle montré, sans faute', reg.valider(rg).join(' ; '));
+}
+
+// ------------- un vrai lot, sur des images de synthèse au plan de la banque (T58)
+// Les images réelles ne sont pas dans Git : ici, une image de synthèse par
+// fichier du plan, au bon cadrage et à la bonne largeur, marquée
+// SOURCE-ILLUSTRATION. La fabrication est la vraie : modèles, générateur,
+// plancher, registre ; elle tourne donc aussi dans la CI.
+console.log('\nUn vrai lot de trois ravaleurs sur des images de synthèse');
+{
+  const { images: planImages } = await import('./plan-images.mjs');
+  const sharp = (await import('sharp')).default;
+  const racineImages = temp('images-synthese');
+  for (const im of planImages('ravalement', { jeu: 'demarrage' })) {
+    const d = join(racineImages, 'ravalement', im.dossier);
+    mkdirSync(d, { recursive: true });
+    const l = im.large, h = Math.round(l * im.rapport[1] / im.rapport[0]);
+    const teinte = 60 + (im.n * 37) % 160;
+    await sharp({ create: { width: l, height: h, channels: 3, background: { r: teinte, g: 200 - teinte / 2, b: 120 } } })
+      .jpeg({ quality: 70 }).toFile(join(d, im.fichier));
+  }
+  writeFileSync(join(racineImages, 'ravalement', 'sources', 'SOURCE-ILLUSTRATION'), '');
+  const pretes = await imagesPretes('ravalement', { racine: racineImages });
+  ok(pretes.pretes, 'les images de synthèse sont prêtes au plan', pretes.fautes[0] || '');
+  const trois = [
+    { siren: '480423623', nom: 'Façades Durand', metier: 'ravalement', commune: 'Marseille', codePostal: '13004', note: 80 },
+    { siren: '732829320', nom: 'Ravalement Martin', metier: 'ravalement', commune: 'Aubagne', codePostal: '13400', note: 75 },
+    { siren: '443061841', nom: 'Enduits Petit', metier: 'ravalement', commune: 'Cassis', codePostal: '13260', note: 70 },
+  ];
+  const dossierModeles = temp('modeles');
+  const etatM = lireModeles('ravalement');
+  // deux modèles libres seulement : le troisième artisan reprend le premier
+  writeFileSync(join(dossierModeles, 'ravalement.json'), JSON.stringify({ ...etatM, modeles: etatM.modeles.map((m, k) => (k < 2 ? m : { ...m, etat: 'pris', siren: '999999999' })) }));
+  const appels = join(temp('appels-synthese'), 'registre.json');
+  const bilan = await fabriquerLot({ lot: trois, jour: JOUR, sortie: temp('lot-synthese'), images: racineImages,
+    registre: join(temp('reg-synthese'), 'sites.json'), appels, mobile: 0, modeles: dossierModeles, dire: () => {} });
+  ok(bilan.fabriques.length === 3 && bilan.echecs.length === 0, 'les trois sites sont fabriqués et passent le plancher',
+    `${bilan.fabriques.length} fabriqués, échecs : ${bilan.echecs.map((x) => x.motif).join(', ')}`);
+  const ids = bilan.fabriques.map((f) => f.modele);
+  ok(ids[0] === etatM.modeles[0].id && ids[1] === etatM.modeles[1].id && ids[2] === etatM.modeles[0].id, 'modèles libres à tour de rôle', ids.join(', '));
+  const d = bilan.fabriques.map((f) => JSON.parse(readFileSync(join(f.dossier, 'donnees.json'), 'utf8')));
+  ok(d[0].titre === d[2].titre && JSON.stringify(d[0].charte) === JSON.stringify(d[2].charte) && d[0].entreprise.siren !== d[2].entreprise.siren,
+    'même modèle : même site, autre entreprise', `titres ${d[0].titre} / ${d[2].titre} ; chartes ${JSON.stringify(d[0].charte) === JSON.stringify(d[2].charte)} ; ${Object.keys(d[0].charte).filter((k) => JSON.stringify(d[0].charte[k]) !== JSON.stringify(d[2].charte[k])).join(',')}`);
+  ok(JSON.stringify(d[0].charte) !== JSON.stringify(d[1].charte), 'autre modèle : autre apparence');
+  const r = JSON.parse(readFileSync(appels, 'utf8'));
+  ok(trois.every((e, k) => r.fiches[e.siren]?.modele === ids[k]), 'le registre des appels note le modèle de chacun');
+  const tous = JSON.stringify(etatM.modeles.slice(2).map((m) => m.id));
+  ok(!ids.some((x) => tous.includes(x)), 'aucun modèle pris n est servi');
+}
+
 // ----------------------------------- le registre refuse un numéro de téléphone
 console.log('\nLe registre des artisans refuse un numéro de téléphone');
 const dossierAppels = temp('appels-refus');
@@ -163,7 +229,7 @@ if (COMPLET && existsSync(IMAGES_RAVALEMENT)) {
 
   ok(bilan.fabriques.length === 2, 'les deux sites sont fabriqués', `${bilan.fabriques.length}`);
   ok(bilan.echecs.length === 0, 'aucun échec', bilan.echecs.map((x) => x.motif).join(', '));
-  ok(bilan.unicite === true, 'les deux sites passent le contrôle d unicité');
+  ok(bilan.fabriques.every((f) => /^modele-ravalement-\d{2}$/.test(f.modele)), 'chaque site porte un modèle du ravalement (T58)', bilan.fabriques.map((f) => f.modele).join(', '));
   for (const f of bilan.fabriques) {
     const page = join(f.dossier, 'index.html');
     ok(existsSync(page), `${f.siren} : la page est écrite`);
