@@ -75,6 +75,7 @@ jobs:
           node scripts/essai-accepter.mjs --contre-essai
           node scripts/essai-alt.mjs --contre-essai
           node scripts/essai-avis.mjs --contre-essai
+          node scripts/essai-photos-artisan.mjs --contre-essai
 
       # Safari (T49, constat S-007) : le moteur WebKit de Playwright, sur l'app
       # en démonstration et sur un site d'abonné de chaque archétype. Chromium

@@ -6,27 +6,27 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**347 fichiers suivis, dont 150 .md ; 86126 lignes de texte.** Hors zone : 0.
+**350 fichiers suivis, dont 151 .md ; 86485 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
 | Z01 Pilotage de l agent | 27 | 2141 | 0 |
-| Z02 Mémoire du projet | 11 | 2490 | 0 |
+| Z02 Mémoire du projet | 11 | 2517 | 0 |
 | Z03 Spécifications | 11 | 2381 | 0 |
-| Z04 Documentation de travail | 23 | 3237 | 0 |
+| Z04 Documentation de travail | 24 | 3282 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
 | Z06 Générateur de sites | 33 | 8524 | 4 |
 | Z07 Règles | 15 | 1147 | 0 |
 | Z08 App de l artisan | 35 | 9042 | 4 |
 | Z09 Service atelier et Worker | 10 | 1324 | 0 |
 | Z10 Base Supabase | 15 | 1301 | 0 |
-| Z11 Essais et vérificateurs | 38 | 8104 | 0 |
-| Z12 Prospection | 23 | 24119 | 0 |
+| Z11 Essais et vérificateurs | 39 | 8229 | 0 |
+| Z12 Prospection | 24 | 24272 | 0 |
 | Z13 Autres scripts | 12 | 1356 | 0 |
 | Z14 Banque d images | 8 | 3419 | 0 |
 | Z15 Données de démonstration | 3 | 3 | 0 |
 | Z16 Lanceurs Windows et crochets Git | 13 | 359 | 0 |
-| Z17 Configuration | 6 | 818 | 0 |
+| Z17 Configuration | 6 | 827 | 0 |
 
 ## Z01 Pilotage de l agent
 
@@ -64,17 +64,17 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `memoire/actions-fabrice.md` | 33 |
+| `memoire/actions-fabrice.md` | 34 |
 | `memoire/comptes-essai.md` | 19 |
-| `memoire/de-cowork.md` | 34 |
-| `memoire/decisions.md` | 132 |
+| `memoire/de-cowork.md` | 35 |
+| `memoire/decisions.md` | 133 |
 | `memoire/essais/audit.txt` | 44 |
 | `memoire/essais/derniers.txt` | 24 |
 | `memoire/essais/disque.txt` | 61 |
-| `memoire/journal.md` | 1790 |
+| `memoire/journal.md` | 1804 |
 | `memoire/maintenant.md` | 107 |
 | `memoire/pieges.md` | 118 |
-| `memoire/questions.md` | 128 |
+| `memoire/questions.md` | 138 |
 
 ## Z03 Spécifications
 
@@ -96,12 +96,13 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `CHANGELOG.md` | 62 |
+| `CHANGELOG.md` | 63 |
 | `SECURITY.md` | 55 |
-| `docs/00-INDEX.md` | 112 |
+| `docs/00-INDEX.md` | 113 |
 | `docs/CONSTRAINTS.md` | 58 |
 | `docs/CONTEXT.md` | 87 |
 | `docs/DETTE.md` | 27 |
+| `docs/PROCEDURE-PHOTOS.md` | 43 |
 | `docs/REGLE-ESSAIS.md` | 46 |
 | `docs/REGLE-TRACABILITE.md` | 69 |
 | `docs/SOURCE-UNIQUE.md` | 82 |
@@ -342,6 +343,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `scripts/essai-modeles.mjs` | 106 |
 | `scripts/essai-navigateurs.mjs` | 91 |
 | `scripts/essai-outillage.mjs` | 309 |
+| `scripts/essai-photos-artisan.mjs` | 123 |
 | `scripts/essai-photos.mjs` | 153 |
 | `scripts/essai-preparation.mjs` | 354 |
 | `scripts/essai-preparer-appels.mjs` | 278 |
@@ -350,7 +352,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `scripts/essai-publication.mjs` | 104 |
 | `scripts/essai-referencement.mjs` | 181 |
 | `scripts/essai-service.mjs` | 161 |
-| `scripts/essais.mjs` | 158 |
+| `scripts/essais.mjs` | 160 |
 | `scripts/faux-cloudflare.mjs` | 212 |
 | `scripts/faux-recherche-entreprises.mjs` | 83 |
 | `scripts/faux-supabase.mjs` | 136 |
@@ -386,6 +388,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `scripts/prospection/modeles.mjs` | 105 |
 | `scripts/prospection/noms.mjs` | 78 |
 | `scripts/prospection/page-appels.mjs` | 280 |
+| `scripts/prospection/photos-artisan.mjs` | 153 |
 | `scripts/prospection/preparer-appels.mjs` | 222 |
 | `scripts/prospection/publier.mjs` | 309 |
 | `scripts/prospection/qualifier.mjs` | 136 |
@@ -454,8 +457,8 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | Fichier | Lignes |
 |---|---|
 | `.env.example` | 54 |
-| `.github/workflows/essais.yml` | 89 |
-| `.gitignore` | 46 |
+| `.github/workflows/essais.yml` | 97 |
+| `.gitignore` | 47 |
 | `.tool-versions` | 2 |
 | `package-lock.json` | 605 |
 | `package.json` | 22 |

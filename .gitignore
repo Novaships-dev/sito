@@ -44,3 +44,4 @@ installation.log
 .playwright-mcp/
 # depot temporaire de l outillage avant installation (lanceurs/INSTALLER_OUTILLAGE.bat)
 _installation/
+clients/*/.travail/

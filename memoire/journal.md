@@ -1788,3 +1788,17 @@ Résultat : 18 contrôles, 0 faute ; contre-essai 4 fautes ;
 `essai-fabrication-base` (15) et `essai-boucle` (23) verts avec une table
 `avis` vide dans leur faux Supabase. Au plus 6 avis, les plus récents.
 TRACAGE : generateur/sections/avis.mjs, generateur/composer.mjs, generateur/archetypes/matiere.mjs, atelier/fabriquer.mjs, scripts/verifier-site.mjs, scripts/essai-avis.mjs, scripts/essai-fabrication-base.mjs, scripts/essai-boucle.mjs, scripts/essais.mjs, .github/workflows/essais.yml, app/specs/07-TACHES.md, docs/audit/REGISTRE.md (S-024 clos), CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 4 nov. 2026 — T60 (photos reçues par mail ou WhatsApp), par Cowork
+
+Plan : 1. `photos-artisan.mjs` : `--ranger` (préparation par
+`atelier/photos.mjs`, manifeste), `--fabriquer` (modèle réservé, `--publication`) ;
+2. garde du dépôt public (`gh api`, refus sans réponse sûre) ; 3. essai et
+procédure pour Fabrice.
+
+Résultat : 12 contrôles, 0 faute ; contre-essai rouge. Q6 répondue par Fabrice
+(dépôt privé, photos dedans) ; F20 ajoutée ; CI : rendu et Safari la nuit sur
+un dépôt privé (minutes comptées). Le HEIC n'est pas converti (brevets HEVC,
+`atelier/heic.mjs`) : refus avec la consigne « renvoyer par WhatsApp ». Les
+rôles des photos se décident en les regardant (Claude ou Fabrice).
+TRACAGE : scripts/prospection/photos-artisan.mjs, scripts/essai-photos-artisan.mjs, docs/PROCEDURE-PHOTOS.md, .gitignore, scripts/essais.mjs, .github/workflows/essais.yml, app/specs/07-TACHES.md, docs/specs/S-MODELES.md, docs/00-INDEX.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

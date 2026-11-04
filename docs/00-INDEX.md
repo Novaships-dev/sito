@@ -47,6 +47,7 @@ Claude et n'est pas validé par Fabrice.
 | `app/specs/README.md` | l'ordre des spécifications |
 | `app/specs/01-PRD.md` | le produit, pour qui : le site d'abord (S01 à S31), la prospection (P1 à P6), l'app (A1 à A20) |
 | `docs/specs/S-MENTIONS.md` | les mentions légales d'un site d'artisan, sourcées (T50) |
+| `docs/PROCEDURE-PHOTOS.md` | pour Fabrice : mettre les photos reçues d'un artisan sur son site (T60) |
 | `docs/specs/S-MODELES.md` | les modèles de prospection : 10 par métier, le site accepté devient unique (décision du 4 nov., T57 à T60) |
 | `docs/specs/S-REFERENCEMENT.md` | le référencement d'un site d'artisan : régimes, données structurées, plan du site (T51) |
 | `docs/specs/S-PARCOURS-VISITEUR.md` | la page de haut en bas et les parcours du visiteur |

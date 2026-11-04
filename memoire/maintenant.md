@@ -22,7 +22,7 @@ fabrication (D-14), rien d'essayé sur un vrai iPhone (F14). Mentions légales
 
 ## Les tâches
 
-61 tâches : **29 faites, 14 bloquées, 18 à faire** (`app/specs/07-TACHES.md`).
+61 tâches : **30 faites, 13 bloquées, 18 à faire** (`app/specs/07-TACHES.md`).
 T47 à T56 viennent de l'audit du 3 novembre.
 
 **Ordre décidé par Fabrice le 3 nov. (« oui Q5 ») : les tâches de l'audit
@@ -42,7 +42,7 @@ T57 à T59 faites : 10 modèles par métier (ravalement, couverture, peinture,
 artisan ; quand Fabrice touche « Essai lancé » ou « Abonné » dans la page
 d'appels, la préparation suivante réserve ce modèle à l'artisan et en tire un
 nouveau. À la main : `node scripts/prospection/accepter.mjs --siren <SIREN>`.
-T60 (photos reçues par mail ou WhatsApp) attend Q6 : où garder les photos.
+T60 faite : les photos reçues par mail ou WhatsApp deviennent le site d'abonné (`docs/PROCEDURE-PHOTOS.md`). Elles vont dans `clients/<SIREN>/`, seulement une fois le dépôt privé (F20, à faire par Fabrice).
 
 ## Ce qui marche, avec sa preuve
 

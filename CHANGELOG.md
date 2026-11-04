@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 4 nov. | T60 : `scripts/prospection/photos-artisan.mjs` (`--ranger`, `--fabriquer`) et `docs/PROCEDURE-PHOTOS.md` : les photos reçues par mail ou WhatsApp deviennent le site d'abonné, sur le modèle de l'artisan ; refus tant que le dépôt est public (F20). Essai `essai-photos-artisan.mjs`. |
 | 4 nov. | T56 : sur un site d'abonné, la section des avis montre les avis réels de la table `avis` (texte exact, note seulement si donnée) ou n'existe pas ; contrôle R-AVIS ; essai `essai-avis.mjs`. |
 | 4 nov. | T55 : textes alternatifs et légendes des photos tirés du fichier du métier (`alt`, nouveau `legendesPhotos`) ; plus aucun texte de façade écrit en dur ; contrôle R-ALT ; essai `essai-alt.mjs`. T60 bloquée sur Q6. |
 | 4 nov. | T59 : `scripts/prospection/accepter.mjs` : l'artisan qui accepte garde son modèle, un nouveau le remplace ; conflit du même modèle accepté deux fois ; la préparation du soir réserve les modèles des artisans passés « essai lancé » ou « abonné ». Essai `essai-accepter.mjs`. |
