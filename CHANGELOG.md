@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 4 nov. | T10 : la base reçoit les demandes du formulaire d'un site d'abonné (`deposer_demande`) : robots écartés sans rien écrire, 10 demandes par jour et par adresse, 50 par site, adresse IP jamais gardée en clair, demande comptée dans les statistiques du jour. |
 | 4 nov. | T32 (1 sur 13) : textes de la maçonnerie générale (`generateur/metiers/maconnerie.json`), au volume des trois premiers métiers ; prix nationaux sourcés ; 100 sites différents dans un département. |
 | 4 nov. | T17 : l'écran Abonnement, sur le web, ouvre le paiement Stripe ou le portail (carte, factures, formule, résiliation) et affiche le retour ; rien dans l'app Android. |
 | 4 nov. | T16 : le paiement Stripe est écrit (fonctions Edge `stripe-webhook` et `stripe-session`, logique `supabase/functions/_shared/stripe.ts`) et essayé contre un faux Stripe ; rien n'est déployé ni ouvert tant que le compte Stripe n'existe pas (F7). La suppression d'un compte résilie l'abonnement dès que la clé Stripe est là. |

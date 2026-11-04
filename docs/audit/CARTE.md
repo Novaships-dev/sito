@@ -6,20 +6,20 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**371 fichiers suivis, dont 151 .md ; 89531 lignes de texte.** Hors zone : 0.
+**372 fichiers suivis, dont 151 .md ; 89678 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
 | Z01 Pilotage de l agent | 27 | 2142 | 0 |
-| Z02 Mémoire du projet | 11 | 2697 | 0 |
-| Z03 Spécifications | 11 | 2387 | 0 |
-| Z04 Documentation de travail | 24 | 3299 | 0 |
+| Z02 Mémoire du projet | 11 | 2720 | 0 |
+| Z03 Spécifications | 11 | 2393 | 0 |
+| Z04 Documentation de travail | 24 | 3300 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
 | Z06 Générateur de sites | 35 | 9521 | 4 |
 | Z07 Règles | 15 | 1147 | 0 |
 | Z08 App de l artisan | 36 | 9183 | 4 |
 | Z09 Service atelier et Worker | 12 | 1555 | 0 |
-| Z10 Base Supabase | 22 | 1823 | 0 |
+| Z10 Base Supabase | 23 | 1940 | 0 |
 | Z11 Essais et vérificateurs | 44 | 9001 | 0 |
 | Z12 Prospection | 24 | 24280 | 0 |
 | Z13 Autres scripts | 14 | 1455 | 0 |
@@ -71,10 +71,10 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `memoire/essais/audit.txt` | 44 |
 | `memoire/essais/derniers.txt` | 24 |
 | `memoire/essais/disque.txt` | 61 |
-| `memoire/journal.md` | 1967 |
-| `memoire/maintenant.md` | 108 |
+| `memoire/journal.md` | 1980 |
+| `memoire/maintenant.md` | 110 |
 | `memoire/pieges.md` | 121 |
-| `memoire/questions.md` | 149 |
+| `memoire/questions.md` | 157 |
 
 ## Z03 Spécifications
 
@@ -86,7 +86,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `app/specs/02-TRD.md` | 213 |
 | `app/specs/03-APPFLOW.md` | 251 |
 | `app/specs/04-DESIGN-SYSTEM.md` | 180 |
-| `app/specs/05-SCHEMA-BACKEND.md` | 464 |
+| `app/specs/05-SCHEMA-BACKEND.md` | 470 |
 | `app/specs/06-PLAN-IMPLEMENTATION.md` | 93 |
 | `app/specs/07-TACHES.md` | 146 |
 | `app/specs/08-PROSPECTION.md` | 144 |
@@ -96,7 +96,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `CHANGELOG.md` | 72 |
+| `CHANGELOG.md` | 73 |
 | `SECURITY.md` | 55 |
 | `docs/00-INDEX.md` | 113 |
 | `docs/CONSTRAINTS.md` | 58 |
@@ -312,8 +312,8 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `supabase/README.md` | 174 |
-| `supabase/brouillons/deposer_demande.sql` | 96 |
+| `supabase/README.md` | 183 |
+| `supabase/essais/demandes.sql` | 108 |
 | `supabase/essais/droits-app.sql` | 97 |
 | `supabase/essais/droits.sql` | 58 |
 | `supabase/essais/invitations.sql` | 45 |
@@ -334,6 +334,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `supabase/migrations/20261103143933_mentions_legales.sql` | 27 |
 | `supabase/migrations/20261104044828_prevenir_github.sql` | 46 |
 | `supabase/migrations/20261104044905_prevenir_github_correction.sql` | 34 |
+| `supabase/migrations/20261104174705_deposer_demande.sql` | 96 |
 
 ## Z11 Essais et vérificateurs
 

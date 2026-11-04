@@ -172,3 +172,12 @@ Edge `stripe-webhook` (`verify_jwt` faux : la signature Stripe authentifie) et
 logique commune dans `functions/_shared/stripe.ts`, essayée par
 `node scripts/essai-stripe.mjs`. Aucune migration : `abonnements` et
 `evenements_stripe` existent depuis le 2 octobre.
+
+**Ajout du 4 novembre 2026** (T10, migration `20261104174705_deposer_demande`,
+appliquée par Cowork avec `apply_migration`, confirmée par Fabrice) : fonction
+`public.deposer_demande` (le formulaire d'un site, appelable sans compte) et
+table `prive.compteurs_demandes`. `essais/demandes.sql` : 17 résultats puis 4
+(limite de 50 par site, contre-essai sur une copie temporaire), tous justes.
+`droits.sql` (11) et `droits-app.sql` (23) rejoués : aucune « FAUTE ».
+Conseillers : `deposer_demande` signalée appelable par `anon` (voulu) ;
+`compteurs_demandes` sans politique (service seulement, voulu).

@@ -299,6 +299,11 @@ L'app additionne par jour (`app/src/jour.ts`).
 | `recue_le` | timestamptz | |
 | `lue_le` | timestamptz | **seule colonne modifiable par l'app** |
 
+Écrite par le formulaire du site via `public.deposer_demande` (§4, T10) ; les
+compteurs de la limite par adresse vivent dans `prive.compteurs_demandes`
+(`cle` : empreinte SHA-256 de l'adresse IP et du jour, `jour`, `n` ; effacés
+après deux jours ; service seulement).
+
 ### 3.16 `abonnements` — une seule source pour l'état du paiement (service)
 
 | Colonne | Type | Contrainte | App |
@@ -394,6 +399,7 @@ MCP) ; il ne sert que par la fonction Edge `inscription`
 | `prive.est_membre(siren)` | `security definer` : l'utilisateur connecté est-il membre ? Base de toutes les politiques |
 | `prive.jour_paris(instant)` | date du jour à Paris (la base tourne en UTC) |
 | `public.creer_invitation(siren, genre)` | `security definer`, clé de service seulement : fabrique un lien d'inscription ou de reprise (§3.22) et rend son jeton |
+| `public.deposer_demande(siren, message, nom, telephone, courriel, page, piege)` | `security definer`, appelable par un visiteur (`anon`, voulu) : le formulaire d'un site d'abonné ; champ piège (rien d'écrit), site `abonne` ou `publie` seulement, longueurs, téléphone ou courriel exigé, 10 par jour et par adresse IP, 50 par site ; écrit `demandes` et compte `statistiques.demandes` du jour de Paris ; rend `recue`, `inconnu`, `invalide` ou `trop` (T10, migration `20261104174705`) |
 | `prive.maj_horodatage()` | pose `mis_a_jour_le` à chaque modification (entreprises, profils, tarifs, sites, chantiers, adresses, abonnements, connexions_google, prospects) |
 
 Le schéma `prive` n'est pas exposé par l'API.

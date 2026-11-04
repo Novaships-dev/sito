@@ -147,3 +147,11 @@ solution de D-15 (un seul projet Pages et un Worker au-delà de 100 abonnés).
 **Réponse recommandée** : T13 sans objet ; elle passe « bloqué » avec ce motif,
 et revient avec D-15 si Sitô approche 100 abonnés. Choix réversible et sans
 coût : appliqué.
+
+## Q3 (appliquée, adaptée), 4 novembre 2026
+
+La recommandation (Worker Cloudflare devant la base) est appliquée en
+l'adaptant : depuis T45, les sites d'abonnés sont sur Cloudflare Pages, sans
+Worker. Le formulaire appelle donc directement la fonction de la base
+`deposer_demande` avec la clé publique ; mêmes contrôles (champ piège, 10 par
+adresse IP, 50 par site), 0 €, aucune clé secrète dans une page. T10 faite.
