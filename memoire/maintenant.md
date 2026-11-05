@@ -22,7 +22,7 @@ fabrication (D-14), rien d'essayé sur un vrai iPhone (F14). Mentions légales
 
 ## Les tâches
 
-61 tâches : **40 faites, 15 bloquées, 6 à faire, 0 en cours** (`app/specs/07-TACHES.md`).
+61 tâches : **41 faites, 15 bloquées, 5 à faire, 0 en cours** (`app/specs/07-TACHES.md`).
 T47 à T56 viennent de l'audit du 3 novembre.
 
 **Ordre décidé par Fabrice le 3 nov. (« oui Q5 ») : les tâches de l'audit
@@ -31,11 +31,11 @@ d'abord.** T47 (garde de l'essai de l'app), T48 (échappement), T50
 et T53 sont faites. Le 4 nov. aussi : T10 (formulaire, côté base), T12
 (suppression des comptes, contre des faux, pas encore lancée chaque nuit :
 D-16), T16 et T17 (Stripe écrit et relié, rien de déployé : F7), T31 (codes
-APE), la maçonnerie, la menuiserie, le carrelage, la plomberie et (le 5) l’électricité, la plâtrerie, l’isolation, la métallerie, le terrassement, l’étanchéité, le parquet, la piscine et le paysagiste : T32 est faite, les 16 métiers ont leurs textes. T45 est faite contre des faux, bloquée sur
+APE), la maçonnerie, la menuiserie, le carrelage, la plomberie et (le 5) l’électricité, la plâtrerie, l’isolation, la métallerie, le terrassement, l’étanchéité, le parquet, la piscine et le paysagiste : T32 est faite, les 16 métiers ont leurs textes. T19 aussi (domaines, contre des faux serveurs ; réel : F8, F6, F5). T45 est faite contre des faux, bloquée sur
 F21 pour le réel ; T13 est sans objet (Q7).
 T11 (formulaire dans les pages) faite aussi : la clé publique est dans le
-dépôt ; en ligne avec la refabrication automatique (F21). **Prochaine : T19**
-(domaines, Gandi et Cloudflare contre des faux serveurs), puis T28 (Android).
+dépôt ; en ligne avec la refabrication automatique (F21). **Prochaine : T28**
+(Android : TWA et `assetlinks.json`), puis T20 (écran Mon adresse, sur T19).
 Depuis T50, un
 site fabriqué depuis la base est un site d'abonné (`--publication`) : sans
 adresse électronique ni directeur de la publication dans `profils`, il n'est

@@ -2171,3 +2171,30 @@ contrôle désormais que chaque code d'une fiche a le sien (rouge sur une copie
 sans 81.30Z, vert sur le dépôt). Les 16 métiers ont leurs textes ; S-013 clos.
 Reste pour eux : les images de 13 métiers (F15).
 TRACAGE : generateur/metiers/paysagiste.json, generateur/sirene.mjs, scripts/verifier-depot.mjs, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/REGISTRE.md, docs/audit/CARTE.md
+
+## 5 nov. 2026 — T19, domaines (Gandi v5 et Cloudflare for SaaS), par Cowork
+
+Plan : 1. deux clients, `atelier/gandi.mjs` (vérifier, acheter au nom de
+l'artisan, renouveler, code de transfert, redirection vers www) et
+`atelier/cloudflare-saas.mjs` (custom hostname, état, recréation après les 7
+jours) ; 2. deux faux serveurs qui refont les règles des API ; 3. un essai et
+son contre-essai, branchés dans `essais.mjs`.
+
+Résultat : `atelier/gandi.mjs` et `atelier/cloudflare-saas.mjs`, avec
+`scripts/faux-gandi.mjs` et `scripts/faux-cloudflare-saas.mjs`.
+`node scripts/essai-domaines.mjs` : 33 contrôles, 0 faute ; `--contre-essai` :
+7 cassures sur 7 attrapées (Dry-Run oublié, achat sans confirmation, verrou
+non levé, SIREN perdu, hostname effacé non recréé, actif sans certificat,
+hostname doublé). Un premier contre-essai s'arrêtait sur une exception de la
+copie cassée au lieu de la compter : corrigé, une exception compte comme une
+faute.
+Sources : la documentation de Gandi (api.gandi.net/docs) n'a pas pu être
+ouverte depuis la session (demande d'autorisation restée sans réponse) ; les
+chemins et champs viennent de `go-gandi` (client du fournisseur Terraform) et
+de `gandi_v5` (Ruby), clonés pour lecture, et pour Cloudflare des types du SDK
+officiel `cloudflare` 7.3.0. Écrit comme tel en tête des fichiers ; à
+vérifier au premier appel : téléphone EPP du titulaire, forme de `url` d'une
+redirection, droit du jeton Cloudflare sur les custom hostnames. Dette D-17.
+Règle tenue : hors bac à sable, un achat ou un renouvellement sans
+confirmation de l'artisan est refusé avant tout appel.
+TRACAGE : atelier/gandi.mjs, atelier/cloudflare-saas.mjs, scripts/faux-gandi.mjs, scripts/faux-cloudflare-saas.mjs, scripts/essai-domaines.mjs, scripts/essais.mjs, .github/workflows/essais.yml, app/specs/02-TRD.md, app/specs/05-SCHEMA-BACKEND.md, app/specs/07-TACHES.md, docs/DETTE.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

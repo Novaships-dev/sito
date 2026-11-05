@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 5 nov. | T19 : clients des domaines contre des faux serveurs, Gandi v5 (vérifier, acheter au nom de l'artisan avec sa confirmation, renouveler, code de transfert, redirection vers www) et Cloudflare for SaaS (hostname, état, recréation après 7 jours) ; `essai-domaines` et son contre-essai. |
 | 5 nov. | T32 faite (13 sur 13) : textes du paysagiste (`generateur/metiers/paysagiste.json`) ; les 16 métiers ont leurs textes, 100 sites différents par département pour chacun. Libellés NAF des 9 codes APE qui n'en avaient pas (`generateur/sirene.mjs`), contrôlés par `verifier-depot`. |
 | 5 nov. | T32 (12 sur 13) : textes de la piscine (`generateur/metiers/piscine.json`) ; prix nationaux sourcés ; 100 sites différents dans un département. |
 | 5 nov. | T32 (11 sur 13) : textes du parquet et des sols souples (`generateur/metiers/parquet.json`) ; prix nationaux sourcés ; 100 sites différents dans un département. |

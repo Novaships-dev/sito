@@ -436,7 +436,7 @@ doit offrir pour que l'app soit complète. Les noms sont proposés.
 | Recevoir une demande | POST du formulaire du site | — | `demandes`, `statistiques` |
 | Statistiques | chaque nuit (heure de Paris) | Umami | `statistiques` |
 | Stripe | webhook | — | `evenements_stripe`, `abonnements` |
-| Domaines | demande de l'artisan | Gandi, Cloudflare | `adresses` |
+| Domaines (clients écrits, T19 : `atelier/gandi.mjs`, `atelier/cloudflare-saas.mjs` ; reste à les appeler depuis la demande de l'artisan, T20) | demande de l'artisan | Gandi, Cloudflare | `adresses` (`cloudflare_id`, `etat`, `motif`, `echeance`) |
 | Google | après consentement, puis périodiquement | API GBP | `connexions_google`, `prive.jetons_google`, `avis` |
 | Publier une réponse validée | `avis.valide_le` posé, `reponse` vide | — | Google, `avis.reponse/repondu_le` |
 | Supprimer un compte | `suppressions.effective_le` atteinte, non annulée | tout | efface tout, résilie, retire le site |
