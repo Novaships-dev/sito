@@ -2371,3 +2371,25 @@ copie cassée (prix à 39 €) : 6 fautes, rouge juste. `essai-mentions` : 62, 0
 Aperçu privé publié pour Fabrice (claude.ai, artifact « MonSiteArtisan.com,
 aperçu de la page »).
 TRACAGE : app/src/vitrine/Vitrine.tsx, app/src/vitrine/vitrine.css, app/src/vitrine/offre.ts, app/src/App.tsx, app/src/ui.tsx, app/src/donnees/supabase.ts, app/src/ecrans/Connexion.tsx, app/src/ecrans/Installer.tsx, app/src/ecrans/Abonnement.tsx, app/src/ecrans/Adresse.tsx, app/src/ecrans/Compte.tsx, app/src/ecrans/Google.tsx, app/vite.config.ts, app/index.html, app/package.json, app/package-lock.json, generateur/sections/mentions.mjs, scripts/essai-app.mjs, docs/SOURCE-UNIQUE.md, memoire/decisions.md, memoire/de-cowork.md, CHANGELOG.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 6 nov. 2026 — Page refaite (version 2), par Cowork
+
+Avis de Fabrice sur la version 1 : « horrible », « pas d'image », « amplia est
+100 fois mieux niveau design » (decisions.md). Regardé : amplia-digital.fr
+dans le navigateur (page claire, grande photo d'artisan, cartes arrondies,
+WhatsApp toujours visible) ; trois dépôts de règles UI (taste-skill,
+impeccable, ui-ux-pro-max-skill), clonés dans un dossier à part et lus
+seulement, rien d'exécuté. Retenu : montrer le vrai produit (des sites dans
+un ordinateur et un téléphone), des photos partout, pas de petit titre
+au-dessus des titres, pas de cartes toutes pareilles, pas d'étoiles en
+caractères, survols discrets, une seule animation (la notification).
+Fait : `Vitrine.tsx` et `vitrine.css` réécrits (Plus Jakarta Sans, OFL,
+servie par le site) ; `offre.ts` : TVA en franchise en base (seuil de 37 500 €
+pour les services, sources dans la réponse à Fabrice), `PHOTOS` à null tant
+que les fichiers manquent (aucune requête vers une image absente). Les photos
+ne peuvent pas venir d'une banque d'images : le réseau de la machine refuse
+Unsplash et Wikimedia ; commande à ChatGPT écrite dans
+`docs/vitrine-images.md` (une direction commune, 6 images).
+Preuve : `essai-app` : 169 contrôles, 0 faute. L'aperçu n'est pas republié :
+sans les photos, il redonnerait l'impression « pas d'image ».
+TRACAGE : app/src/vitrine/Vitrine.tsx, app/src/vitrine/vitrine.css, app/src/vitrine/offre.ts, app/package.json, app/package-lock.json, scripts/essai-app.mjs, docs/vitrine-images.md, CHANGELOG.md, memoire/journal.md, memoire/decisions.md, memoire/de-cowork.md, docs/audit/CARTE.md

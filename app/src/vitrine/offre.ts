@@ -10,10 +10,11 @@ export const OFFRE = {
   placesVitrine: 3,
 };
 
-// Ce qui suit le prix. Vide tant que Fabrice n'a pas dit s'il facture la TVA
-// (question posée le 5 nov.) : « HT » s'il la facture, sinon la mention de la
-// franchise en base.
-export const MENTION_TVA = '';
+// La TVA. Fabrice a demandé de trancher (6 nov. 2026) : sa micro-entreprise
+// est sous le seuil de la franchise en base (37 500 € de chiffre d'affaires
+// de services), donc pas de TVA, et la mention obligatoire est celle-ci. À
+// changer pour « HT » le jour où il dépasse le seuil ou choisit la TVA.
+export const MENTION_TVA = 'TVA non applicable, art. 293 B du CGI';
 
 // Numéro WhatsApp de MonSiteArtisan, au format international sans « + » ni espace
 // (33612345678). Vide : les boutons mènent à la section « Contact », qui le dit.
@@ -25,4 +26,17 @@ export function lienWhatsApp(message = MESSAGE_MAQUETTE): string {
   return WHATSAPP ? `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}` : '#contact';
 }
 
-export const euros = (n: number) => `${n.toLocaleString('fr-FR')} €`;
+export const euros = (n: number) => `${n.toLocaleString('fr-FR')}\u00a0€`;
+
+// Les photos de la page (docs/vitrine-images.md), dans app/public/vitrine/.
+// null tant que le fichier n'est pas livré : son cadre garde un fond sobre et
+// le navigateur ne demande rien (pas d'image cassée). Le jour où la photo
+// arrive, on met son chemin ici ('vitrine/1.webp').
+export const PHOTOS: Record<'facadier' | 'telephone' | 'avant' | 'apres' | 'couvreur' | 'peintre', string | null> = {
+  facadier: null,
+  telephone: null,
+  avant: null,
+  apres: null,
+  couvreur: null,
+  peintre: null,
+};

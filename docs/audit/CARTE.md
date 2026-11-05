@@ -6,18 +6,18 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**412 fichiers suivis, dont 151 .md ; 103894 lignes de texte.** Hors zone : 0.
+**413 fichiers suivis, dont 152 .md ; 104213 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
 | Z01 Pilotage de l agent | 27 | 2142 | 0 |
-| Z02 Mémoire du projet | 11 | 3147 | 0 |
+| Z02 Mémoire du projet | 11 | 3171 | 0 |
 | Z03 Spécifications | 11 | 2288 | 0 |
-| Z04 Documentation de travail | 24 | 3326 | 0 |
+| Z04 Documentation de travail | 25 | 3388 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
 | Z06 Générateur de sites | 49 | 20291 | 4 |
 | Z07 Règles | 15 | 1147 | 0 |
-| Z08 App de l artisan | 38 | 9692 | 4 |
+| Z08 App de l artisan | 38 | 9925 | 4 |
 | Z09 Service atelier et Worker | 16 | 1988 | 0 |
 | Z10 Base Supabase | 32 | 2709 | 0 |
 | Z11 Essais et vérificateurs | 52 | 10258 | 0 |
@@ -66,12 +66,12 @@ Un audit qui ne couvre pas toutes les zones le dit.
 |---|---|
 | `memoire/actions-fabrice.md` | 37 |
 | `memoire/comptes-essai.md` | 18 |
-| `memoire/de-cowork.md` | 39 |
-| `memoire/decisions.md` | 139 |
+| `memoire/de-cowork.md` | 40 |
+| `memoire/decisions.md` | 140 |
 | `memoire/essais/audit.txt` | 44 |
 | `memoire/essais/derniers.txt` | 24 |
 | `memoire/essais/disque.txt` | 61 |
-| `memoire/journal.md` | 2373 |
+| `memoire/journal.md` | 2395 |
 | `memoire/maintenant.md` | 112 |
 | `memoire/pieges.md` | 121 |
 | `memoire/questions.md` | 179 |
@@ -96,7 +96,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `CHANGELOG.md` | 95 |
+| `CHANGELOG.md` | 96 |
 | `SECURITY.md` | 55 |
 | `docs/00-INDEX.md` | 113 |
 | `docs/CONSTRAINTS.md` | 58 |
@@ -120,6 +120,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `docs/specs/S-PARCOURS-VISITEUR.md` | 62 |
 | `docs/specs/S-REFERENCEMENT.md` | 114 |
 | `docs/verification-outillage-2026-10-09.md` | 86 |
+| `docs/vitrine-images.md` | 61 |
 
 ## Z05 Archives (ne pas lire pour une tâche)
 
@@ -270,8 +271,8 @@ Un audit qui ne couvre pas toutes les zones le dit.
 |---|---|
 | `app/.env.example` | 4 |
 | `app/index.html` | 19 |
-| `app/package-lock.json` | 6524 |
-| `app/package.json` | 26 |
+| `app/package-lock.json` | 6534 |
+| `app/package.json` | 27 |
 | `app/public/apple-touch-icon.png` | binaire |
 | `app/public/icone-192.png` | binaire |
 | `app/public/icone-512.png` | binaire |
@@ -301,9 +302,9 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `app/src/types.ts` | 108 |
 | `app/src/ui.tsx` | 86 |
 | `app/src/video.ts` | 88 |
-| `app/src/vitrine/Vitrine.tsx` | 169 |
-| `app/src/vitrine/offre.ts` | 28 |
-| `app/src/vitrine/vitrine.css` | 231 |
+| `app/src/vitrine/Vitrine.tsx` | 326 |
+| `app/src/vitrine/offre.ts` | 42 |
+| `app/src/vitrine/vitrine.css` | 282 |
 | `app/tsconfig.json` | 14 |
 | `app/vite.config.ts` | 37 |
 
