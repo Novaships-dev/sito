@@ -2069,3 +2069,18 @@ Résultat : 101 titres, 100 sites sans défaut. Deux sites fabriqués :
 une plaque pesait « quatre-vingts kilos » ; une BA13 de 2,50 m en pèse
 environ vingt-cinq.
 TRACAGE : generateur/metiers/platrerie.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 5 nov. 2026 — T32, isolation extérieure (7 sur 13), par Cowork
+
+Plan : 1. `generateur/metiers/isolation.json` sur le plan d'images (isolation
+par l'extérieur : rail de départ, panneaux, chevilles, sous-enduit armé,
+points singuliers, finition) ; 2. prix relevés le 5 nov. (QuelleEnergie, La
+Maison Saint-Gobain) ; 3. capacité et fabrication.
+
+Résultat : 95 titres d'abord, 5 paires de voisins au même titre à 100 sites ;
+porté à 110 : 100 sites sans défaut. Deux sites fabriqués : `verifier-site` 0
+bloquant, `verifier-mobile` 0. Aucune aide chiffrée (elles changent, et
+l'isolation des murs est sortie de MaPrimeRénov' par geste en 2026) ; la page
+renvoie aux registres pour le RGE. Une phrase retirée : elle promettait un
+radiateur de moins sans calcul.
+TRACAGE : generateur/metiers/isolation.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

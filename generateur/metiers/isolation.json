@@ -1,0 +1,884 @@
+{
+  "nom": "Isolation",
+  "libelle": "isolation extérieure",
+  "schemaType": "HomeAndConstructionBusiness",
+  "legendesPhotos": {
+    "geste": "Le panneau collé, puis chevillé, joints serrés et décalés d’un rang à l’autre.",
+    "chantier": "Façade à mi-parcours, panneaux posés en quinconce depuis le rail de départ.",
+    "detail": "Le treillis noyé dans le sous-enduit, à dix centimètres : aucune maille ne dépasse."
+  },
+  "codesApe": [
+    "43.29A"
+  ],
+  "titres": [
+    "Une isolation se juge au premier hiver, sur la facture et sur les murs.",
+    "L’isolant ne sert à rien s’il laisse passer l’air entre ses panneaux.",
+    "Un pont thermique se voit à la caméra, puis sur le mur en moisissure.",
+    "Le rail de départ fixe toute la façade. Il se pose au niveau, au millimètre.",
+    "Les panneaux se posent en quinconce, jamais joints alignés.",
+    "Un panneau se colle puis se cheville. L’un ne remplace pas l’autre.",
+    "Le treillis se noie dans le sous-enduit, il ne se pose pas dessus.",
+    "Les angles reçoivent une cornière, sinon ils s’épaufrent au premier choc.",
+    "Un tableau de fenêtre non isolé reste un mur froid au milieu d’un mur chaud.",
+    "Les appuis de fenêtre se prolongent au nu de l’isolant.",
+    "L’eau ne doit jamais entrer derrière l’isolant.",
+    "Un soubassement s’isole avec un panneau qui supporte l’humidité.",
+    "L’isolation par l’extérieur garde la surface intérieure intacte.",
+    "Un mur isolé dehors garde sa chaleur dedans.",
+    "La laine de roche ne brûle pas. Le polystyrène se protège en conséquence.",
+    "Un panneau mal collé sonne creux sous la main.",
+    "L’épaisseur d’isolant se décide au calcul, pas au stock.",
+    "La planéité des panneaux se vérifie à la règle avant le sous-enduit.",
+    "Un joint ouvert entre deux panneaux se remplit de mousse, pas d’enduit.",
+    "Un coffre de volet roulant se traite, sinon il reste une passoire.",
+    "Une descente d’eau se décale avant l’isolation, puis se repose.",
+    "Un bardage sur isolant se ventile par l’arrière.",
+    "Le pignon nord est celui qui gagne le plus à être isolé.",
+    "Une façade isolée se finit par un enduit qui respire.",
+    "Le sous-enduit armé fait la solidité de l’ensemble.",
+    "Une isolation se pose par temps sec, hors gel.",
+    "La finition d’une isolation extérieure est un enduit, et elle se soigne comme tel.",
+    "Les fixations des luminaires et des boîtes aux lettres se prévoient dans l’isolant.",
+    "Un mur humide se traite avant d’être isolé.",
+    "L’isolant ne cache pas une fissure. Il la reprend.",
+    "Un échafaudage bien monté fait une isolation bien posée.",
+    "Chaque cheville passe à travers l’isolant et tient dans le mur.",
+    "Le nombre de chevilles se calcule selon la hauteur et le vent.",
+    "Un panneau coupé se coupe net, au couteau chaud ou à la scie.",
+    "Les arrêts d’enduit se posent au bas de la façade et autour des fenêtres.",
+    "La couleur de la finition se choisit claire : une teinte sombre chauffe l’isolant.",
+    "Une façade isolée ne transpire plus de froid.",
+    "Une maison isolée par l’extérieur change d’épaisseur, pas d’allure.",
+    "Les débords de toit se vérifient : l’isolant ne doit pas dépasser l’abri.",
+    "Le premier rang de panneaux s’appuie sur le rail, les autres sur le premier.",
+    "Une isolation bien posée ne laisse aucun jour entre les panneaux.",
+    "Un enduit de finition se pose en deux passes, sur un sous-enduit sec.",
+    "La mousse expansive se coupe à ras avant le sous-enduit.",
+    "Une isolation sans soin des détails perd une grande part de son effet.",
+    "Les points singuliers font la qualité : angles, tableaux, appuis, toiture.",
+    "Un appui trop court laisse l’eau couler sur l’isolant.",
+    "Les volets battants se refixent sur des pattes à travers l’isolant.",
+    "Une isolation par l’extérieur traite aussi les fissures de la façade.",
+    "Un mur en parpaings nus perd sa chaleur comme une vitre.",
+    "Une façade isolée se nettoie comme une façade enduite.",
+    "L’humidité qui reste dans le mur doit pouvoir sortir.",
+    "Une isolation se pense avec la ventilation du logement.",
+    "Un logement mieux isolé demande une ventilation qui marche.",
+    "L’enduit sur isolant est plus mince qu’un enduit traditionnel, et plus technique.",
+    "Un choc de ballon contre une façade isolée ne doit rien casser : le soubassement se renforce.",
+    "Les panneaux se stockent à l’abri, debout, sans être écrasés.",
+    "Un panneau mouillé se laisse sécher avant la pose.",
+    "L’isolation se pose de bas en haut, rang par rang.",
+    "Une façade à mi-parcours montre déjà la différence à la main.",
+    "Le treillis se recouvre de dix centimètres d’un lé à l’autre.",
+    "Une maison de plain-pied s’isole en quelques semaines, échafaudage compris.",
+    "Le bardage bois se pose sur des tasseaux, pas directement sur l’isolant.",
+    "Une isolation se rend avec les appuis et les tableaux finis.",
+    "Les seuils de porte se traitent pour ne pas laisser de pont thermique.",
+    "Un isolant tassé par une cheville trop serrée fait une cuvette.",
+    "La cheville se pose affleurante, ni enfoncée ni saillante.",
+    "L’isolation des murs se complète par celle des combles.",
+    "Une toiture non isolée laisse partir la chaleur que les murs ont gardée.",
+    "Les combles perdus s’isolent par soufflage, en une journée.",
+    "Une façade isolée se lit au calme qu’elle donne aux pièces.",
+    "Le bruit de la rue passe moins à travers un mur isolé.",
+    "Une isolation se commence par un diagnostic, pas par une palette de panneaux.",
+    "Les fenêtres anciennes se changent avant ou avec l’isolation, pas après.",
+    "Une isolation par l’extérieur se déclare à la mairie, comme un changement de façade.",
+    "La teinte de l’enduit se choisit avec le règlement de la commune.",
+    "Un mur isolé ne fait plus de condensation dans les angles.",
+    "Les angles de fenêtre reçoivent une bande de renfort en diagonale.",
+    "Une fissure en diagonale à l’angle d’une fenêtre dit qu’il manquait ce renfort.",
+    "Une isolation mince se voit sur la facture, pas sur la façade.",
+    "Un panneau de laine de bois isole aussi de la chaleur d’été.",
+    "L’isolation se finit au ras du toit, sous une bande de protection.",
+    "Une maison mitoyenne s’isole sur ses façades libres.",
+    "Un isolant ne se pose jamais sur un enduit qui se décolle.",
+    "L’ancien enduit se sonde, se purge, puis reçoit l’isolant.",
+    "Un mur droit fait une isolation droite. Un mur tordu se rattrape à la colle.",
+    "Le rail de départ se pose au-dessus du sol, à l’abri des éclaboussures.",
+    "Un profilé goutte d’eau protège le bas de l’isolant.",
+    "Un chantier d’isolation se protège de la pluie chaque soir.",
+    "La façade se rend propre, échafaudage démonté, abords nettoyés.",
+    "Une isolation se juge aussi à sa finition, de près.",
+    "Le gain d’une isolation se mesure, il ne se promet pas.",
+    "Les aides demandent une entreprise RGE. La page dit ce que disent les registres.",
+    "Une maison isolée garde ses volets, ses fenêtres et ses habitudes.",
+    "Un mur isolé par l’extérieur garde son inertie à l’intérieur.",
+    "Une façade isolée et enduite tient des dizaines d’années, entretenue.",
+    "Un mur isolé par l’extérieur ne perd pas un centimètre à l’intérieur.",
+    "Le confort d’été compte autant que la chaleur d’hiver.",
+    "Une isolation posée en hiver attend les jours sans gel.",
+    "Un pignon aveugle s’isole plus vite qu’une façade percée de fenêtres.",
+    "Le prix d’une isolation tient autant à l’échafaudage qu’à l’isolant.",
+    "Une façade isolée ne montre pas l’isolant : elle montre son enduit.",
+    "Le choix de l’isolant se fait avec le mur : brique, parpaing, pierre.",
+    "Un mur ancien en pierre s’isole avec un isolant qui laisse passer la vapeur.",
+    "L’isolant se pose sans interruption, du soubassement au toit.",
+    "Un chantier d’isolation se prépare plus longtemps qu’il ne se pose.",
+    "Une isolation réussie se sent avant de se voir.",
+    "Les panneaux arrivent sur palettes, et repartent sur le mur.",
+    "Une cheville par panneau ne suffit jamais.",
+    "L’angle d’une maison est le premier endroit où l’isolation se juge.",
+    "Une maison isolée garde la chaleur du soir plus longtemps dans la nuit."
+  ],
+  "chapos": {
+    "etapes": [
+      [
+        "diagnostic des murs",
+        "échafaudage et protection des abords",
+        "dépose des descentes d’eau et des équipements"
+      ],
+      [
+        "support sondé et purgé",
+        "fissures reprises",
+        "traitement de l’humidité"
+      ],
+      [
+        "rail de départ posé au niveau",
+        "panneaux collés et chevillés",
+        "pose en quinconce",
+        "cornières d’angle"
+      ],
+      [
+        "isolation des murs par l’extérieur",
+        "isolant posé sur toute la façade",
+        "retours d’isolant dans les tableaux",
+        "soubassement isolé",
+        "appuis de fenêtre prolongés"
+      ],
+      [
+        "sous-enduit armé",
+        "treillis noyé dans l’enduit",
+        "renforts aux angles des fenêtres",
+        "bardage sur isolant"
+      ],
+      [
+        "enduit de finition",
+        "teinte choisie avec le client",
+        "équipements reposés"
+      ],
+      [
+        "échafaudage démonté",
+        "abords nettoyés",
+        "façade rendue propre"
+      ]
+    ],
+    "nombre": [
+      4,
+      5
+    ],
+    "toujours": [
+      3
+    ]
+  },
+  "gestes": [
+    {
+      "terme": "Diagnostic et préparation",
+      "textes": {
+        "combiner": [
+          [
+            "Les murs sont relevés : nature, état, humidité, fissures.",
+            "Les ponts thermiques sont repérés autour des fenêtres et des planchers.",
+            "L’épaisseur d’isolant est calculée pour la performance voulue.",
+            "Les débords de toit sont mesurés pour couvrir le nouvel isolant.",
+            "Les descentes d’eau, luminaires et boîtes aux lettres sont déposés.",
+            "L’échafaudage est monté et les abords protégés.",
+            "Les menuiseries sont protégées avant le premier coup de taloche.",
+            "La déclaration en mairie est vérifiée avant de commencer.",
+            "Les fenêtres à changer sont repérées avant l’isolation.",
+            "Le calendrier tient compte de la météo."
+          ],
+          [
+            "Un mur mal connu réserve des surprises à la première cheville.",
+            "Un pont thermique oublié reste un mur froid.",
+            "Trop mince, l’isolant n’apporte pas le gain promis.",
+            "Un débord trop court laisse la pluie couler sur l’isolant.",
+            "Une descente d’eau laissée en place empêche l’isolant de passer.",
+            "Un échafaudage instable fait une pose approximative.",
+            "Une fenêtre éclaboussée d’enduit se nettoie mal.",
+            "Une façade qui change d’épaisseur change d’aspect : la mairie le sait.",
+            "Changer une fenêtre après l’isolation abîme les tableaux neufs.",
+            "Le gel et la pluie arrêtent un chantier d’isolation."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Préparation du support",
+      "textes": {
+        "combiner": [
+          [
+            "L’ancien enduit est sondé au marteau.",
+            "Les parties qui sonnent creux sont purgées.",
+            "Les fissures sont ouvertes et reprises.",
+            "Le mur est brossé et dépoussiéré.",
+            "L’humidité est traitée à sa source avant l’isolation.",
+            "Les défauts de planéité sont mesurés à la règle.",
+            "Les supports fragiles reçoivent un primaire.",
+            "Les mousses et les lichens sont traités.",
+            "Les anciennes fixations sont retirées.",
+            "Le pied de mur est dégagé pour le rail de départ."
+          ],
+          [
+            "Coller sur un enduit qui se décolle, c’est tout faire tomber avec lui.",
+            "Une fissure sous l’isolant continue de travailler.",
+            "La colle ne tient pas sur la poussière.",
+            "Enfermer l’humidité derrière un isolant abîme le mur.",
+            "Un mur très tordu se rattrape à la colle, un peu tordu se voit.",
+            "Un support farineux ne retient rien.",
+            "Les mousses repoussent sous un isolant mal préparé.",
+            "Une vieille cheville gêne la pose du panneau.",
+            "Un pied de mur encombré ne permet pas de poser le rail droit.",
+            "La préparation fait la tenue de tout le reste."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Pose des panneaux",
+      "textes": {
+        "combiner": [
+          [
+            "Le rail de départ est posé au niveau, au-dessus du sol.",
+            "Les panneaux sont encollés en boudin périphérique et en plots.",
+            "Chaque panneau est posé en quinconce sur le précédent.",
+            "Les joints sont serrés, les vides comblés à la mousse.",
+            "Les panneaux sont chevillés à travers l’isolant, dans le mur.",
+            "Les chevilles sont posées affleurantes.",
+            "La planéité est vérifiée à la règle, rang après rang.",
+            "Les découpes sont faites net, au couteau chaud ou à la scie.",
+            "Les angles sont posés en harpage, un panneau sur l’autre.",
+            "Les panneaux du soubassement sont choisis pour l’humidité."
+          ],
+          [
+            "Un rail de travers décale toute la façade.",
+            "Un panneau collé seulement au centre bascule.",
+            "Des joints alignés font une ligne froide sur le mur.",
+            "Un joint ouvert laisse passer l’air et le froid.",
+            "La colle seule ne tient pas une façade au vent.",
+            "Une cheville trop enfoncée creuse l’isolant.",
+            "Une bosse sous l’enduit se voit en lumière rasante.",
+            "Une coupe déchiquetée laisse des vides.",
+            "Un angle sans harpage fissure à la jonction.",
+            "Un panneau ordinaire au contact du sol boit l’eau."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Points singuliers",
+      "textes": {
+        "combiner": [
+          [
+            "Les tableaux de fenêtre reçoivent un retour d’isolant.",
+            "Les appuis sont prolongés au nu de l’isolant, avec une goutte d’eau.",
+            "Les coffres de volets roulants sont traités.",
+            "Les angles reçoivent une cornière d’angle.",
+            "Les angles de fenêtre reçoivent une bande de renfort en diagonale.",
+            "Le haut de l’isolant est protégé sous le débord de toit.",
+            "Les fixations futures sont prévues par des cales dans l’isolant.",
+            "Les seuils sont traités pour éviter le pont thermique.",
+            "Un profilé goutte d’eau protège le bas de la façade.",
+            "Les jonctions avec les menuiseries reçoivent un joint étanche."
+          ],
+          [
+            "Un tableau nu reste un pont thermique au milieu d’une façade isolée.",
+            "Un appui trop court envoie l’eau sur l’isolant.",
+            "Un coffre non traité laisse passer le froid par le haut de la fenêtre.",
+            "Un angle sans cornière s’épaufre au premier choc.",
+            "Sans renfort, l’angle d’une fenêtre fissure en diagonale.",
+            "L’eau qui entre par le haut descend derrière tout l’isolant.",
+            "Une applique vissée dans l’isolant seul finit par tomber.",
+            "Un seuil oublié fait un courant d’air sous la porte.",
+            "Les éclaboussures de pluie abîment le bas d’une façade.",
+            "L’eau trouve toujours la jonction mal faite."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Sous-enduit armé",
+      "textes": {
+        "combiner": [
+          [
+            "Une première couche de sous-enduit est tirée sur les panneaux.",
+            "Le treillis est déroulé et noyé dans l’enduit frais.",
+            "Les lés de treillis se recouvrent de dix centimètres.",
+            "Une deuxième couche couvre entièrement le treillis.",
+            "Le soubassement reçoit un treillis renforcé.",
+            "Les arêtes sont prises dans le treillis.",
+            "La surface est lissée à la taloche.",
+            "Le sous-enduit sèche le temps qu’il faut avant la finition.",
+            "La planéité est contrôlée à la règle.",
+            "Le travail s’arrête par temps de gel ou de pluie."
+          ],
+          [
+            "Un treillis posé à sec ne renforce rien.",
+            "Un treillis qui affleure se voit sous la finition.",
+            "Sans recouvrement, chaque lé fait une fissure.",
+            "Une couche trop mince laisse deviner la trame.",
+            "Un soubassement non renforcé casse au premier choc.",
+            "Une arête sans treillis se fend.",
+            "Une surface mal lissée fait une finition irrégulière.",
+            "Une finition sur un sous-enduit frais cloque.",
+            "Une bosse au sous-enduit reste une bosse à la fin.",
+            "Un enduit gelé ne prend jamais."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Finition",
+      "textes": {
+        "combiner": [
+          [
+            "L’enduit de finition est posé en deux passes.",
+            "La teinte est choisie claire, avec le règlement de la commune.",
+            "Un échantillon est posé sur un mètre carré avant la façade.",
+            "La finition est talochée, grattée ou ribbée selon le choix.",
+            "Le bardage est posé sur tasseaux, ventilé par l’arrière.",
+            "Les reprises sont faites aux arrêts naturels de la façade.",
+            "Les descentes d’eau et les équipements sont reposés sur des fixations prévues.",
+            "Les volets battants sont refixés sur des pattes longues.",
+            "Les joints avec les menuiseries sont repris.",
+            "La façade est contrôlée de près et de loin."
+          ],
+          [
+            "Une seule passe épaisse fissure en séchant.",
+            "Une teinte sombre chauffe l’isolant au soleil.",
+            "La couleur se juge sur le mur, pas sur le nuancier.",
+            "Chaque finition a son aspect, et sa résistance.",
+            "Un bardage sans lame d’air pourrit par l’arrière.",
+            "Une reprise au milieu d’un mur se voit toujours.",
+            "Un équipement mal refixé arrache l’enduit.",
+            "Un volet sur une patte trop courte ne ferme plus.",
+            "Une jonction ouverte laisse entrer l’eau.",
+            "Une façade se regarde depuis la rue, et à un mètre."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Combles et compléments",
+      "textes": {
+        "combiner": [
+          [
+            "Les combles perdus sont isolés par soufflage, sur toute la surface.",
+            "Les trappes et les spots du plafond sont traités.",
+            "Un pare-vapeur est posé du côté chaud quand il le faut.",
+            "La ventilation du logement est vérifiée après l’isolation.",
+            "Les entrées d’air des fenêtres sont gardées.",
+            "Les planchers bas sont isolés quand ils sont accessibles.",
+            "La jonction entre murs et toiture est traitée.",
+            "Les gaines qui traversent l’isolant sont rendues étanches.",
+            "Les épaisseurs posées sont notées et mesurées.",
+            "Le gain attendu est expliqué, sans promesse chiffrée sans calcul."
+          ],
+          [
+            "Une maison isolée aux murs mais pas au toit perd sa chaleur par le haut.",
+            "Un spot sans capot fait un trou dans l’isolant.",
+            "Sans pare-vapeur, l’humidité se condense dans l’isolant.",
+            "Une maison étanche sans ventilation prend l’humidité.",
+            "Boucher les entrées d’air abîme les murs.",
+            "Un plancher froid refroidit les pieds, même dans une pièce chaude.",
+            "La jonction mur-toit est souvent le plus gros pont thermique.",
+            "Chaque gaine non traitée laisse passer l’air.",
+            "Une épaisseur mesurée se vérifie, une épaisseur supposée non.",
+            "Un gain annoncé sans calcul n’est qu’un espoir."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Fin de chantier",
+      "textes": {
+        "combiner": [
+          [
+            "L’échafaudage est démonté sans heurter la façade neuve.",
+            "Les abords et les sols sont nettoyés.",
+            "Les chutes d’isolant sont triées et évacuées.",
+            "Les menuiseries sont débarrassées de leurs protections.",
+            "Les vitres et les appuis sont nettoyés.",
+            "Les traces d’enduit sur les sols sont retirées.",
+            "Les épaisseurs et les produits posés sont remis par écrit.",
+            "L’entretien de la façade est expliqué.",
+            "La façade est vérifiée avec le client.",
+            "Le jardin est rendu comme il était."
+          ],
+          [
+            "Un échafaudage cogné laisse une marque sur un enduit neuf.",
+            "Un chantier se finit quand les abords sont propres.",
+            "L’isolant se trie, il ne va pas dans la benne commune.",
+            "Une protection oubliée colle aux menuiseries au soleil.",
+            "Une trace d’enduit sur une vitre se voit de l’intérieur.",
+            "Une coulure sèche sur une terrasse ne part plus.",
+            "Savoir ce qui a été posé sert le jour de la vente.",
+            "Une façade entretenue dure longtemps.",
+            "Vérifier ensemble évite les malentendus.",
+            "Un jardin piétiné est un jardin à refaire."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    }
+  ],
+  "coupure": {
+    "avant": {
+      "etapes": [
+        [
+          "murs nus",
+          "enduit ancien fatigué",
+          "enduit fissuré",
+          "parpaings nus",
+          "briques ternes",
+          "façade tachée d’humidité"
+        ],
+        [
+          "tableaux sans isolation",
+          "appuis trop courts",
+          "soubassement dégradé",
+          "angle fissuré",
+          "coffres de volets non traités"
+        ],
+        [
+          "murs froids au toucher",
+          "condensation dans les angles",
+          "pignon nord exposé",
+          "mur fin"
+        ],
+        [
+          "bardage déposé",
+          "rails de départ posés",
+          "panneaux en attente",
+          "échafaudage monté"
+        ]
+      ],
+      "nombre": [
+        3,
+        3
+      ]
+    },
+    "apres": {
+      "etapes": [
+        [
+          "support purgé",
+          "fissures reprises",
+          "rail de départ au niveau"
+        ],
+        [
+          "panneaux collés et chevillés",
+          "pose en quinconce",
+          "retours dans les tableaux",
+          "soubassement isolé",
+          "appuis prolongés"
+        ],
+        [
+          "sous-enduit armé",
+          "treillis noyé",
+          "cornières d’angle",
+          "renforts aux fenêtres"
+        ],
+        [
+          "enduit neuf",
+          "bardage bois neuf",
+          "teinte claire",
+          "coffres repris"
+        ],
+        [
+          "échafaudage démonté",
+          "abords nettoyés",
+          "façade rendue propre"
+        ]
+      ],
+      "nombre": [
+        3,
+        4
+      ],
+      "toujours": [
+        1
+      ]
+    }
+  },
+  "legendes": {
+    "comparateurs": {
+      "combiner": [
+        [
+          "Maison",
+          "Tableau de fenêtre",
+          "Soubassement",
+          "Façade nord",
+          "Pignon",
+          "Maison de plain-pied",
+          "Angle de façade",
+          "Garage",
+          "Appuis de fenêtre",
+          "Maison en briques",
+          "Immeuble",
+          "Façade sur rue"
+        ],
+        [
+          "support purgé",
+          "fissures reprises",
+          "rail de départ posé",
+          "panneaux collés",
+          "panneaux chevillés",
+          "treillis noyé",
+          "cornières posées",
+          "appuis prolongés",
+          "retours d’isolant posés",
+          "échafaudage monté"
+        ],
+        [
+          "isolée par l’extérieur",
+          "enduit neuf",
+          "bardage neuf",
+          "sous-enduit armé",
+          "angle protégé",
+          "coffres repris",
+          "appuis prolongés",
+          "teinte claire"
+        ]
+      ],
+      "joints": [
+        ", ",
+        ", "
+      ],
+      "fin": "."
+    },
+    "invitation": {
+      "combiner": [
+        [
+          "Faites glisser la couture",
+          "Déplacez la séparation",
+          "Touchez la photo",
+          "Glissez le trait",
+          "Attrapez la couture",
+          "Faites glisser le curseur",
+          "Déplacez le trait",
+          "Passez le doigt sur la photo"
+        ],
+        [
+          "pour comparer l’avant et l’après.",
+          "pour voir le mur avant l’isolation.",
+          "pour passer d’un état à l’autre.",
+          "pour voir ce que le chantier a changé.",
+          "pour retrouver le mur d’origine.",
+          "pour voir la maison avant les travaux.",
+          "pour comparer les deux états.",
+          "pour voir le mur avant et après.",
+          "pour mesurer le travail fait.",
+          "pour voir la différence."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    },
+    "precision": {
+      "combiner": [
+        [
+          "Même point de vue, même cadrage.",
+          "Les deux photos sont prises du même endroit.",
+          "Même angle, même distance.",
+          "Les deux images ont le même cadrage.",
+          "Même endroit, même objectif.",
+          "Le point de vue ne bouge pas d’une photo à l’autre.",
+          "Photographié deux fois, depuis le même trottoir.",
+          "Même place, même hauteur d’objectif.",
+          "Le photographe n’a pas bougé entre les deux."
+        ],
+        [
+          "Seul le mur change.",
+          "La différence vient du chantier.",
+          "Rien d’autre ne change que l’isolation.",
+          "Ce qui change, c’est le travail fait.",
+          "La maison est la même, son épaisseur non.",
+          "Seuls les murs ont été repris.",
+          "Ce qui diffère, ce sont l’isolant et l’enduit.",
+          "Entre les deux, il y a le chantier.",
+          "L’écart, c’est le travail de l’entreprise."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    }
+  },
+  "rubriques": {
+    "gestes": [
+      "Le détail des postes.",
+      "Ce que recouvre une isolation par l’extérieur.",
+      "Ce qui se fait sur les murs.",
+      "Les étapes, dans l’ordre.",
+      "Étape par étape.",
+      "Du rail de départ à l’enduit.",
+      "Comment s’isole une maison.",
+      "Les postes du chantier.",
+      "Ce que fait l’entreprise.",
+      "Du diagnostic à la finition.",
+      "Le travail, poste par poste.",
+      "Ce qui se fait, et pourquoi.",
+      "Les gestes du chantier.",
+      "Dans l’ordre du chantier.",
+      "Ce que le devis détaille."
+    ],
+    "chantier": [
+      "Le chantier.",
+      "Sur la façade.",
+      "En cours de travaux.",
+      "Pendant les travaux.",
+      "Sur place.",
+      "Depuis l’échafaudage.",
+      "Le chantier en cours.",
+      "Les travaux, en images.",
+      "Ce que montre le chantier.",
+      "Sur le chantier.",
+      "Pendant la pose.",
+      "Le mur en travaux.",
+      "Ce qui se voit en cours.",
+      "Au milieu du chantier.",
+      "Les panneaux en cours."
+    ],
+    "verifiable": [
+      "Ce qui se vérifie.",
+      "Les faits publics.",
+      "Ce que disent les registres.",
+      "Ce qui est public.",
+      "Les registres officiels.",
+      "Ce que chacun peut vérifier.",
+      "L’entreprise, dans les registres.",
+      "Les données publiques.",
+      "Les sources officielles.",
+      "Ce que disent les sources publiques.",
+      "Vérifiable par tous.",
+      "Les faits, sans commentaire.",
+      "Ce que l’État publie.",
+      "Dans les bases publiques.",
+      "Les informations légales."
+    ],
+    "contact": [
+      "Parler du chantier.",
+      "Prendre contact.",
+      "Faire venir quelqu’un.",
+      "Demander une visite.",
+      "Montrer la maison.",
+      "Parler de vos murs.",
+      "Faire voir la façade.",
+      "Appeler l’entreprise.",
+      "Demander un passage.",
+      "Faire mesurer.",
+      "Prendre rendez-vous.",
+      "Une question sur l’isolation ?",
+      "Faire constater.",
+      "Parler du projet.",
+      "Joindre l’entreprise."
+    ],
+    "prix": [
+      "Ce que ça coûte.",
+      "Les tarifs, poste par poste.",
+      "Avant de demander un devis.",
+      "Combien ça coûte.",
+      "Les prix, poste par poste.",
+      "Les ordres de grandeur.",
+      "Les tarifs pratiqués.",
+      "Ce que coûte une isolation.",
+      "Le prix des postes.",
+      "Avant le devis.",
+      "Les prix du métier.",
+      "Ce qui fait le prix.",
+      "Les tarifs, sans détour.",
+      "Les fourchettes de prix.",
+      "Ce que dit le devis."
+    ]
+  },
+  "mot": "Isolation",
+  "matiere": [
+    "À dix centimètres, un panneau de polystyrène montre ses billes serrées.",
+    "La laine de roche laisse voir ses fibres, brunes et denses.",
+    "Le treillis noyé dans le sous-enduit dessine une trame à peine visible.",
+    "Une cheville affleurante laisse une rondelle à fleur du panneau.",
+    "La cornière d’angle trace une arête droite du sol au toit.",
+    "Le rail de départ aluminium court au bas de la façade, au niveau.",
+    "Un joint de panneaux comblé à la mousse jaunit avant d’être recouvert.",
+    "L’enduit de finition taloché garde de fines stries circulaires.",
+    "Un enduit gratté accroche la lumière rasante en mille points.",
+    "Le bardage bois montre ses lames posées sur leur lame d’air.",
+    "La laine de bois a la couleur et l’odeur du bois.",
+    "Un panneau coupé au couteau chaud a une tranche lisse.",
+    "Le retour d’isolant dans un tableau épaissit l’embrasure de la fenêtre.",
+    "Un appui prolongé déborde de l’isolant et porte sa goutte d’eau.",
+    "Le profilé goutte d’eau du bas éloigne l’eau du pied de mur.",
+    "Une bande de renfort en diagonale se devine sous l’enduit, à l’angle d’une fenêtre.",
+    "Le sous-enduit gris s’éclaircit en séchant.",
+    "Une façade isolée est plus épaisse de quinze centimètres, et ça se voit aux fenêtres.",
+    "La teinte claire d’un enduit renvoie la chaleur du soleil.",
+    "Un panneau de soubassement est plus dur sous le doigt.",
+    "La colle en boudin et en plots laisse une empreinte au dos du panneau.",
+    "Le recouvrement de deux lés de treillis se sent sous la taloche.",
+    "La mousse coupée à ras ne laisse aucune bosse.",
+    "Un mur isolé reste tiède au toucher, même en hiver.",
+    "Les chevilles posées en grille se devinent avant l’enduit.",
+    "Une arête de tableau prise dans le treillis ne se fend pas.",
+    "L’enduit ribbé dessine des grains réguliers.",
+    "Le haut de l’isolant disparaît sous la bande de protection du toit.",
+    "Une descente d’eau reposée s’écarte du mur sur des pattes longues.",
+    "La façade finie ne montre ni panneau ni cheville : seulement l’enduit."
+  ],
+  "prix": {
+    "note": "Ordres de grandeur nationaux, relevés le 5 novembre 2026. Ce ne sont pas les prix de l'entreprise et ce n'est pas un devis.",
+    "sources": [
+      {
+        "nom": "QuelleEnergie, prix de l’isolation",
+        "url": "https://www.quelleenergie.fr/prix-travaux/isolation"
+      },
+      {
+        "nom": "QuelleEnergie, isolation des combles perdus par soufflage",
+        "url": "https://www.quelleenergie.fr/prix-travaux/isolation/isolation-combles-perdus-soufflage"
+      },
+      {
+        "nom": "La Maison Saint-Gobain, prix de l’isolation par l’intérieur",
+        "url": "https://www.lamaisonsaintgobain.fr/guides-travaux/isolation/prix-isolation-par-l-interieur-iti"
+      }
+    ],
+    "postes": [
+      {
+        "poste": "Isolation des murs par l’extérieur, finition enduit",
+        "bas": 120,
+        "haut": 220,
+        "unite": "€/m²",
+        "note": "Isolant, sous-enduit armé et finition. L’échafaudage pèse sur le prix."
+      },
+      {
+        "poste": "Isolation des murs par l’extérieur, finition bardage",
+        "bas": 180,
+        "haut": 270,
+        "unite": "€/m²",
+        "note": "Selon le bardage choisi."
+      },
+      {
+        "poste": "Isolation des murs par l’intérieur",
+        "bas": 80,
+        "haut": 130,
+        "unite": "€/m²",
+        "note": "Prix TTC hors peinture. Réduit la surface habitable."
+      },
+      {
+        "poste": "Combles perdus par soufflage",
+        "bas": 20,
+        "haut": 50,
+        "unite": "€/m²",
+        "note": "Isolant en vrac soufflé sur le plancher des combles."
+      }
+    ],
+    "exemple": {
+      "titre": "Une maison de 100 m² de façade isolée par l’extérieur, finition enduit",
+      "bas": 12000,
+      "haut": 22000,
+      "note": "Calculé avec le premier poste ci-dessus (120 à 220 €/m²). Les aides possibles ne sont pas déduites."
+    }
+  },
+  "nuancierEtiquette": "Voir la façade dans une autre teinte",
+  "teintes": [
+    {
+      "nom": "D’origine",
+      "voile": "",
+      "pastille": "#CDBFA6"
+    },
+    {
+      "nom": "Blanc cassé",
+      "voile": "40 25% 92% / .30",
+      "pastille": "#EDE6D8"
+    },
+    {
+      "nom": "Ton pierre",
+      "voile": "40 22% 76% / .32",
+      "pastille": "#CBC0A8"
+    },
+    {
+      "nom": "Sable",
+      "voile": "42 42% 74% / .32",
+      "pastille": "#D6C39B"
+    },
+    {
+      "nom": "Ocre clair",
+      "voile": "35 78% 62% / .34",
+      "pastille": "#D8A05C"
+    },
+    {
+      "nom": "Gris clair",
+      "voile": "210 8% 74% / .30",
+      "pastille": "#B6BCC1"
+    },
+    {
+      "nom": "Lin",
+      "voile": "38 22% 86% / .30",
+      "pastille": "#E2DACA"
+    },
+    {
+      "nom": "Rosé",
+      "voile": "14 40% 78% / .30",
+      "pastille": "#DDB6A7"
+    },
+    {
+      "nom": "Vert tilleul",
+      "voile": "70 24% 76% / .30",
+      "pastille": "#CFCFAE"
+    },
+    {
+      "nom": "Gris ardoise",
+      "voile": "215 14% 52% / .30",
+      "pastille": "#7E8A96"
+    }
+  ],
+  "alt": {
+    "avant": "maison aux murs nus avant travaux, enduit ancien fatigué",
+    "apres": "la même maison isolée par l’extérieur, enduit neuf",
+    "invitation": "Comparer le mur avant et après l’isolation",
+    "avant2": "un autre chantier avant l’isolation",
+    "apres2": "le même chantier une fois isolé et enduit",
+    "hero": "mur dont une moitié montre les panneaux isolants et l’autre l’enduit fini",
+    "invitation2": "Comparer un second chantier avant et après",
+    "ouverture": "geste du métier pendant la pose de l’isolant",
+    "chantier": "panneaux isolants empilés au pied de l’échafaudage",
+    "chantierBis": "façade à mi-parcours, panneaux posés en quinconce",
+    "detail": "gros plan sur le treillis noyé dans le sous-enduit",
+    "detailBis": "gros plan sur la tranche d’un panneau isolant",
+    "geste": "les mains qui chevillent un panneau isolant"
+  },
+  "estimateur": {
+    "titre": "Vos murs",
+    "mesure": {
+      "etiquette": "Surface de façade à isoler",
+      "unite": "m²",
+      "min": 30,
+      "max": 300,
+      "pas": 10,
+      "defaut": 100,
+      "aria": "Surface de façade à isoler en mètres carrés"
+    }
+  }
+}
