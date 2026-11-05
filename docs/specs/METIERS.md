@@ -28,13 +28,13 @@ Un métier est **prêt** quand ses cinq pièces existent et sont prouvées :
 | `electricite` | Électricité | 43.21A | oui (5 nov.) | non | 0 | oui, en projection | non |
 | `plomberie` | Plomberie et chauffage | 43.22A, 43.22B | oui (4 nov.) | non | 0 | oui, en projection | non |
 | `metallerie` | Serrurerie et portails | 43.32B, 25.11Z | oui (5 nov.) | non | 0 | oui, en projection | non |
-| `terrassement` | Terrassement et VRD | 43.12A | non | non | 0 | non | non |
+| `terrassement` | Terrassement et VRD | 43.12A | oui (5 nov.) | non | 0 | oui, en projection | non |
 | `etancheite` | Étanchéité toiture-terrasse | 43.99A | non | non | 0 | non | non |
 | `parquet` | Parquet et sols souples | 43.33Z | non | non | 0 | non | non |
 | `piscine` | Piscine | 43.99C | non | non | 0 | non | non |
 | `paysagiste` | Paysagiste | 81.30Z | non | non | 0 | non | non |
 
-**Prêts : 0 sur 16.** Onze ont leurs textes (maçonnerie, menuiserie, carrelage, plomberie, électricité, plâtrerie, isolation et métallerie depuis les 4 et 5 nov., sans prompts encore), trois leurs prompts ; aucun n'a encore
+**Prêts : 0 sur 16.** Douze ont leurs textes (maçonnerie, menuiserie, carrelage, plomberie, électricité, plâtrerie, isolation, métallerie et terrassement depuis les 4 et 5 nov., sans prompts encore), trois leurs prompts ; aucun n'a encore
 ses 54 images.
 
 ## Ce qui ne colle pas encore

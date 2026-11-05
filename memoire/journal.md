@@ -2099,3 +2099,16 @@ dans les pages sont des commentaires du code commun, pas du texte affiché.
 Aucune cote de norme chiffrée (hauteur de garde-corps, écart des barreaux) :
 la page dit qu'une norme la fixe, sans la citer de mémoire.
 TRACAGE : generateur/metiers/metallerie.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 5 nov. 2026 — T32, terrassement (9 sur 13), par Cowork
+
+Plan : 1. `generateur/metiers/terrassement.json` sur le plan d'images
+(implantation, décapage, déblais et remblais, tranchées, drainage, structure
+de l'allée, revêtements) ; 2. prix relevés le 5 nov. (Prix-travaux-m2.com,
+Habitatpresto) ; 3. capacité et fabrication.
+
+Résultat : 109 titres, 100 sites sans défaut du premier coup. Deux sites
+fabriqués (APE 43.12A) : `verifier-site` 0 bloquant, `verifier-mobile` 0,
+aucun mot d'un autre métier dans le texte affiché. Trois des quatre prix
+sont hors taxes dans la source : la page le dit poste par poste.
+TRACAGE : generateur/metiers/terrassement.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

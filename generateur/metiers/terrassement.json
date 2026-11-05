@@ -1,0 +1,881 @@
+{
+  "nom": "Terrassement",
+  "libelle": "terrassement et VRD",
+  "schemaType": "HomeAndConstructionBusiness",
+  "legendesPhotos": {
+    "geste": "La bordure posée au cordeau, calée, vérifiée au niveau.",
+    "chantier": "La plateforme en cours : grave étalée, plaque vibrante, piquets de niveau.",
+    "detail": "Une grave compactée à dix centimètres : des cailloux serrés, sans vide."
+  },
+  "codesApe": [
+    "43.12A"
+  ],
+  "titres": [
+    "Une allée se juge à ce qu’on ne voit pas : sa couche de forme.",
+    "Un enrobé posé sur de la terre fait des ornières en un hiver.",
+    "L’eau décide de tout sur un terrain. Le terrassier lui trace un chemin.",
+    "Une plateforme se règle au laser, pas à l’œil.",
+    "Une tranchée se referme par couches, compactées une à une.",
+    "La terre végétale se met de côté. Elle resservira.",
+    "Un remblai qui n’est pas compacté descend tout seul.",
+    "Le géotextile sépare la grave de la terre. Sans lui, elles se mélangent.",
+    "Une bordure se pose au cordeau, sur un lit de béton.",
+    "Une pente de deux pour cent suffit à chasser l’eau.",
+    "Un terrain se pique avant le premier coup de godet.",
+    "Les réseaux enterrés se repèrent avant de creuser.",
+    "Une déclaration de travaux se fait avant d’ouvrir une tranchée près des réseaux.",
+    "Le fond de forme se règle, puis se compacte.",
+    "Une grave se compacte en couches de vingt centimètres, pas d’un coup.",
+    "La plaque vibrante passe plusieurs fois, en croisant.",
+    "Une allée carrossable demande plus d’épaisseur qu’un chemin à pied.",
+    "Un enrobé se pose chaud, et se cylindre tout de suite.",
+    "Une cour qui garde l’eau avait une pente à l’envers.",
+    "Un drain se pose en pente, dans du gravier, entouré de géotextile.",
+    "Un regard se pose au bon niveau, pour ne pas faire de marche.",
+    "Un talus nu glisse à la première grosse pluie.",
+    "Les gabions tiennent un talus en laissant passer l’eau.",
+    "Un mur de soutènement se draine derrière, sinon l’eau le pousse.",
+    "Les fouilles de fondations se creusent à la cote du plan.",
+    "Un fond de fouille se protège de la pluie avant le béton.",
+    "La terre argileuse gonfle l’hiver et se rétracte l’été.",
+    "Un terrain se décape sur l’épaisseur de la terre végétale, pas plus.",
+    "Les déblais en trop s’évacuent en décharge agréée.",
+    "Un camion de terre se charge sans déborder sur la route.",
+    "Les souches s’arrachent avec leurs racines, sinon elles repoussent ou pourrissent.",
+    "Un terrain nivelé garde une légère pente, vers l’endroit voulu.",
+    "Une tranchée de raccordement se fait droite, à la bonne profondeur.",
+    "Les gaines reposent sur un lit de sable, pas sur des cailloux.",
+    "Un grillage avertisseur se pose au-dessus des réseaux, avant de refermer.",
+    "La bonne couleur du grillage dit ce qui passe dessous.",
+    "Un raccordement à l’égout se fait en pente régulière.",
+    "Une allée en grave se borde, sinon les cailloux partent dans la pelouse.",
+    "Le gravier sans bordure se disperse en une saison.",
+    "Des dalles alvéolées tiennent un stationnement sur l’herbe.",
+    "Un parking en terre battue se creuse d’ornières dès les premières pluies.",
+    "Une pente forte se terrasse en paliers.",
+    "Le terrassier lit le terrain avant de lire le plan.",
+    "Une étude de sol évite de couler des fondations sur une mauvaise couche.",
+    "Une pelle trop grosse pour le terrain abîme plus qu’elle ne creuse.",
+    "Un engin sur chenilles marque moins le terrain qu’un engin sur roues.",
+    "La circulation du chantier se prévoit, pour ne pas tout tasser.",
+    "Un arbre à garder se protège à sa ramure, pas à son tronc.",
+    "Les racines d’un arbre se coupent net, jamais arrachées.",
+    "Un caniveau à grille recueille l’eau devant un garage.",
+    "Un puisard se dimensionne pour la surface qu’il reçoit.",
+    "L’eau de pluie d’une allée ne se rejette pas chez le voisin.",
+    "Une allée imperméable de plus, c’est de l’eau de plus à gérer.",
+    "Un enrobé drainant laisse passer l’eau.",
+    "Une grave non traitée se pose sur une forme saine.",
+    "La couche de base porte, la couche de surface protège.",
+    "Un bord d’enrobé se taille net, ou se borde.",
+    "Un enrobé neuf se laisse refroidir avant d’y rouler.",
+    "Une allée se trace en courbes douces pour une voiture.",
+    "L’accès d’un chantier se fait avant le chantier.",
+    "Une plateforme de maison se fait plus grande que la maison.",
+    "Un vide sanitaire se terrasse avec sa ventilation en tête.",
+    "Un terrain en friche se débroussaille avant d’être décapé.",
+    "Un sondage à la pelle montre ce que cache la surface.",
+    "Le rocher se casse au brise-roche, pas au godet.",
+    "Une nappe d’eau proche oblige à pomper pendant les travaux.",
+    "Les terres d’un chantier se trient : végétale, déblais, gravats.",
+    "Une butte de terre se tasse : on la laisse reposer.",
+    "Le compactage se vérifie, il ne se suppose pas.",
+    "Une tranchée ouverte se balise, le soir aussi.",
+    "Un trou sur un chantier se protège avant de partir.",
+    "Les piquets de niveau restent jusqu’à la fin.",
+    "Un niveau laser sur trépied donne la cote à tout le chantier.",
+    "La règle tire le sable à la bonne hauteur, d’un seul geste.",
+    "Une bordure qui bouge a été posée sans béton.",
+    "Les joints d’une bordure se font serrés et réguliers.",
+    "Une entrée de propriété se raccorde au trottoir sans marche.",
+    "Le terrassier rend la voirie propre chaque soir.",
+    "Une route salie par les camions se nettoie avant de partir.",
+    "Un chemin raviné a souvent une pente sans caniveau.",
+    "Une ornière pleine d’eau dit où passe l’eau.",
+    "Une cour en grave se recharge tous les quelques années.",
+    "La terre végétale se régale en dernier, sur une forme réglée.",
+    "Un gazon pousse sur vingt centimètres de bonne terre, pas sur des gravats.",
+    "Les gravats enterrés ressortent toujours.",
+    "Un remblai se fait avec de la bonne terre, pas avec des déchets.",
+    "La tranchée de drainage se remplit de gravier lavé.",
+    "Un drain se termine quelque part : dans un regard, un puisard, un fossé.",
+    "Le terrassement d’une piscine se fait à la cote du fond, plus le lit de pose.",
+    "Une fosse se creuse avec ses talus, pour ne pas s’effondrer.",
+    "Une tranchée profonde se blinde avant d’y descendre.",
+    "Le terrassier ne descend jamais dans une fouille instable.",
+    "Un engin se manœuvre avec quelqu’un qui guide, près d’une maison.",
+    "Les clôtures du voisin se protègent avant de manœuvrer.",
+    "Un chantier de terrassement se termine propre, réglé, sans tas oublié.",
+    "La fin d’un terrassement, c’est une surface qui ne bouge plus et qui ne garde pas l’eau.",
+    "Un devis de terrassement détaille les volumes, pas seulement le prix.",
+    "Les mètres cubes se comptent en place, puis foisonnés dans le camion.",
+    "La terre remuée prend plus de place qu’en place.",
+    "Une allée bien faite ne se voit plus : on oublie qu’elle a été boue.",
+    "Un terrain plat ne l’est jamais tout à fait. Le laser le dit.",
+    "Le terrassier pose les fondations de tout ce qui viendra après.",
+    "Un regard de visite se laisse accessible, jamais sous l’enrobé.",
+    "L’enrobé se pose par temps sec, jamais sous la pluie.",
+    "Une bordure de trottoir se pose à la hauteur qui convient aux roues.",
+    "Une rampe d’accès se terrasse avec une pente qu’une poussette peut monter.",
+    "Le géotextile se chevauche aux raccords.",
+    "Un terrain déblayé se rend sans une pierre en surface.",
+    "Le chantier commence par une visite, à pied, avec le propriétaire."
+  ],
+  "chapos": {
+    "etapes": [
+      [
+        "visite du terrain",
+        "piquetage et niveaux",
+        "repérage des réseaux enterrés"
+      ],
+      [
+        "débroussaillage",
+        "arrachage des souches",
+        "décapage de la terre végétale",
+        "démolition de l’ancienne allée"
+      ],
+      [
+        "déblais et remblais",
+        "fouilles de fondations",
+        "tranchées de réseaux",
+        "plateforme réglée au laser"
+      ],
+      [
+        "géotextile",
+        "couche de grave compactée",
+        "drainage et regards",
+        "caniveau devant le garage"
+      ],
+      [
+        "bordures posées au cordeau",
+        "enrobé à chaud",
+        "allée en grave",
+        "dalles alvéolées"
+      ],
+      [
+        "compactage par couches",
+        "pentes vers les évacuations",
+        "terre végétale régalée",
+        "talus stabilisé"
+      ],
+      [
+        "déblais évacués en décharge",
+        "voirie nettoyée",
+        "chantier rendu réglé"
+      ]
+    ],
+    "nombre": [
+      4,
+      5
+    ],
+    "toujours": [
+      3
+    ]
+  },
+  "gestes": [
+    {
+      "terme": "Visite et implantation",
+      "textes": {
+        "combiner": [
+          [
+            "Le terrain est parcouru à pied avec le propriétaire.",
+            "Les niveaux sont relevés au laser.",
+            "L’ouvrage est piqueté sur le terrain.",
+            "Les réseaux enterrés sont repérés et déclarés avant de creuser.",
+            "L’accès des engins est étudié.",
+            "Le sol est sondé à la pelle là où il faut.",
+            "Les arbres à garder sont signalés et protégés.",
+            "L’endroit où l’eau doit partir est décidé.",
+            "Les volumes de déblais et de remblais sont calculés.",
+            "Le chantier est balisé."
+          ],
+          [
+            "Un terrain vu sur plan ne montre ni la pente ni la boue.",
+            "Une cote prise à l’œil fait une plateforme en pente.",
+            "Sans piquets, la pelle creuse là où elle se trouve.",
+            "Une conduite de gaz arrachée arrête tout, et plus.",
+            "Un engin qui ne passe pas reste au portail.",
+            "La surface ne dit rien de ce qu’il y a vingt centimètres dessous.",
+            "Un arbre dont on écrase les racines meurt deux ans après.",
+            "L’eau qui n’a pas de chemin s’en trouve un, souvent le mauvais.",
+            "Des volumes justes évitent des camions en trop.",
+            "Un chantier balisé, c’est un chantier où personne ne tombe."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Préparation du terrain",
+      "textes": {
+        "combiner": [
+          [
+            "Le terrain est débroussaillé.",
+            "Les souches sont arrachées avec leurs racines.",
+            "L’ancienne allée est démolie et ses gravats triés.",
+            "La terre végétale est décapée et mise en tas à part.",
+            "Les gravats et les déchets sont évacués en décharge agréée.",
+            "Les clôtures et les murets voisins sont protégés.",
+            "Les racines des arbres gardés sont coupées net.",
+            "La circulation des engins est tracée.",
+            "Les eaux de pluie du chantier sont détournées.",
+            "Les tas sont placés loin des fouilles."
+          ],
+          [
+            "Une broussaille laissée cache un trou.",
+            "Une souche enterrée pourrit et fait un creux.",
+            "Un vieux revêtement sous le neuf fait des fissures.",
+            "La terre végétale mélangée aux déblais est perdue.",
+            "Un gravat enterré ressort toujours.",
+            "Un godet qui touche un muret le fend.",
+            "Une racine arrachée blesse l’arbre plus qu’une coupe nette.",
+            "Des engins partout tassent tout le terrain.",
+            "Une fouille qui se remplit d’eau arrête le chantier.",
+            "Un tas trop près du bord fait s’effondrer la fouille."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Déblais et remblais",
+      "textes": {
+        "combiner": [
+          [
+            "Les terres sont déblayées jusqu’à la cote prévue.",
+            "Les fouilles de fondations sont creusées à la cote du plan.",
+            "Les fonds de fouille sont réglés et protégés de la pluie.",
+            "Les remblais sont montés en couches successives.",
+            "Chaque couche est compactée avant la suivante.",
+            "Les terres en trop sont chargées et évacuées.",
+            "Les pentes fortes sont terrassées en paliers.",
+            "Les parois des fouilles profondes sont talutées ou blindées.",
+            "La plateforme est réglée au laser.",
+            "Le compactage est vérifié avant la suite."
+          ],
+          [
+            "Creuser trop profond oblige à remblayer, et à recompacter.",
+            "Une fondation hors cote se paie toute la vie de la maison.",
+            "Un fond de fouille détrempé ne porte plus.",
+            "Un remblai monté d’un coup se tasse pendant des années.",
+            "Une couche non compactée laisse un creux sous l’allée.",
+            "Des terres laissées sur place encombrent pour longtemps.",
+            "Une pente trop raide ravine à chaque orage.",
+            "Une paroi verticale s’effondre sans prévenir.",
+            "Une plateforme réglée à l’œil garde l’eau au mauvais endroit.",
+            "Ce qui n’est pas vérifié se découvre au premier tassement."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Réseaux et tranchées",
+      "textes": {
+        "combiner": [
+          [
+            "La tranchée est ouverte droite, à la bonne profondeur.",
+            "Le fond est dressé et garni d’un lit de sable.",
+            "Les gaines et les canalisations sont posées en pente là où il le faut.",
+            "Le grillage avertisseur de la bonne couleur est posé au-dessus.",
+            "La tranchée est refermée par couches compactées.",
+            "Les regards sont posés au niveau fini.",
+            "Le raccordement à l’égout est fait en pente régulière.",
+            "Les tranchées ouvertes sont balisées chaque soir.",
+            "Les tranchées profondes sont blindées avant d’y descendre.",
+            "Le tracé des réseaux est noté pour plus tard."
+          ],
+          [
+            "Une tranchée tordue fait des coudes inutiles.",
+            "Un caillou sous une gaine finit par la percer.",
+            "Une évacuation sans pente garde l’eau et bouche.",
+            "Sans grillage, le prochain qui creuse coupe le câble.",
+            "Une tranchée refermée d’un coup fait une rigole dans l’allée.",
+            "Un regard trop haut fait une marche, trop bas une flaque.",
+            "Un raccordement en contre-pente remonte.",
+            "Une tranchée ouverte la nuit fait tomber quelqu’un.",
+            "Une tranchée profonde non blindée s’effondre sur celui qui y travaille.",
+            "Un réseau dont on ne connaît pas le tracé se retrouve à la pelle."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Drainage et gestion de l’eau",
+      "textes": {
+        "combiner": [
+          [
+            "Les pentes de la plateforme sont orientées vers les évacuations.",
+            "Un drain est posé en pente dans du gravier lavé, entouré de géotextile.",
+            "Le drain aboutit à un regard, un puisard ou un fossé.",
+            "Un caniveau à grille est posé devant le garage.",
+            "Le puisard est dimensionné pour la surface qu’il reçoit.",
+            "Le mur de soutènement est drainé à l’arrière.",
+            "Les talus sont stabilisés ou soutenus par des gabions.",
+            "L’eau de l’allée reste sur la parcelle.",
+            "Les ornières existantes sont reprises dans leur fond.",
+            "Un enrobé drainant est proposé quand le sol le permet."
+          ],
+          [
+            "Une plateforme sans pente devient une mare.",
+            "Un drain posé à plat se bouche en silence.",
+            "Un drain qui ne mène nulle part déplace l’eau sans l’évacuer.",
+            "Sans caniveau, l’eau de l’allée entre dans le garage.",
+            "Un puisard trop petit déborde au premier orage.",
+            "Un mur qui retient l’eau finit par basculer.",
+            "Un talus nu glisse à la première grosse pluie.",
+            "L’eau rejetée chez le voisin finit en litige.",
+            "Une ornière bouchée en surface revient l’hiver suivant.",
+            "Une surface imperméable de plus, c’est de l’eau de plus à gérer."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Structure de l’allée",
+      "textes": {
+        "combiner": [
+          [
+            "Le fond de forme est réglé puis compacté.",
+            "Un géotextile est déroulé, chevauché aux raccords.",
+            "La grave est étalée en couches d’une vingtaine de centimètres.",
+            "Chaque couche est compactée à la plaque ou au rouleau, en croisant.",
+            "L’épaisseur est adaptée au passage des voitures.",
+            "Les bordures sont posées au cordeau sur un lit de béton.",
+            "Les joints des bordures sont serrés et réguliers.",
+            "Les niveaux finis sont repris au laser.",
+            "L’entrée est raccordée au trottoir sans marche.",
+            "La couche de surface est posée sur une base sèche."
+          ],
+          [
+            "Une forme molle fait onduler l’allée.",
+            "Sans géotextile, la grave s’enfonce dans la terre.",
+            "Une couche trop épaisse ne se compacte qu’en surface.",
+            "Un seul passage de plaque laisse des vides dessous.",
+            "Une allée pour piétons ne porte pas une voiture.",
+            "Une bordure posée sur du sable se couche.",
+            "Des joints irréguliers se voient de la rue.",
+            "Un niveau repris évite une flaque devant la porte.",
+            "Une marche au portail râpe les bas de caisse.",
+            "Une surface posée sur une base mouillée ne colle pas."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Revêtements",
+      "textes": {
+        "combiner": [
+          [
+            "L’enrobé est posé chaud, par temps sec.",
+            "Il est cylindré tout de suite, en plusieurs passes.",
+            "Les bords d’enrobé sont taillés net ou bordés.",
+            "L’allée en grave est bordée pour tenir ses cailloux.",
+            "Les dalles alvéolées sont posées sur un lit réglé, puis remplies.",
+            "Les raccords avec l’existant sont faits sans ressaut.",
+            "Les regards restent accessibles, jamais sous l’enrobé.",
+            "L’enrobé neuf refroidit avant qu’on y roule.",
+            "La terre végétale est régalée en dernier sur les espaces verts.",
+            "Les abords sont repris au râteau."
+          ],
+          [
+            "Un enrobé posé tiède ne se compacte plus.",
+            "Un enrobé pas cylindré s’use en un été.",
+            "Un bord d’enrobé laissé libre s’effrite.",
+            "Le gravier sans bordure part dans la pelouse.",
+            "Des dalles mal calées se soulèvent sous les roues.",
+            "Un ressaut au raccord se sent à chaque passage.",
+            "Un regard recouvert ne se retrouve qu’en cassant.",
+            "Une roue sur un enrobé chaud y laisse sa trace.",
+            "Un gazon ne pousse pas sur des gravats.",
+            "Des abords soignés font une allée finie."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Fin de chantier",
+      "textes": {
+        "combiner": [
+          [
+            "Les déblais restants sont évacués.",
+            "La voirie est nettoyée des traces de camions.",
+            "Les piquets et le balisage sont retirés.",
+            "Les clôtures et les accès voisins sont vérifiés.",
+            "Les niveaux et les pentes sont contrôlés une dernière fois.",
+            "Un arrosage montre où va l’eau.",
+            "Le tracé des réseaux est remis au propriétaire.",
+            "Les regards sont ouverts et refermés devant lui.",
+            "Les conseils sont donnés : délai avant de rouler, entretien.",
+            "Le chantier est parcouru à pied, ensemble."
+          ],
+          [
+            "Un tas oublié reste des années.",
+            "Une route sale devant chez soi, les voisins s’en souviennent.",
+            "Un piquet oublié dans l’herbe casse une tondeuse.",
+            "Un dégât chez le voisin se règle avant de partir.",
+            "Un contrôle final évite une flaque au premier orage.",
+            "L’eau montre la pente mieux qu’un discours.",
+            "Un plan des réseaux évite de les couper plus tard.",
+            "Un regard qui s’ouvre sert le jour où il faut.",
+            "Rouler trop tôt sur un enrobé le marque.",
+            "Ce qui se voit ensemble ne se discute pas ensuite."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    }
+  ],
+  "coupure": {
+    "avant": {
+      "etapes": [
+        [
+          "terrain en pente",
+          "terre nue",
+          "broussailles",
+          "souches et racines",
+          "terrain en friche"
+        ],
+        [
+          "allée défoncée",
+          "chemin boueux",
+          "ornières pleines d’eau",
+          "gravier dispersé",
+          "cour en terre battue"
+        ],
+        [
+          "tranchée ouverte",
+          "talus qui s’effondre",
+          "cour inondée",
+          "gravats en tas",
+          "fouilles ouvertes"
+        ],
+        [
+          "eau qui stagne",
+          "accès impraticable",
+          "bordures absentes"
+        ]
+      ],
+      "nombre": [
+        3,
+        3
+      ]
+    },
+    "apres": {
+      "etapes": [
+        [
+          "terrain décapé",
+          "souches arrachées",
+          "réseaux repérés",
+          "niveaux piquetés"
+        ],
+        [
+          "plateforme réglée",
+          "allée en grave",
+          "entrée en enrobé",
+          "talus soutenu",
+          "dalles alvéolées",
+          "tranchée refermée"
+        ],
+        [
+          "grave compactée",
+          "géotextile posé",
+          "bordures au cordeau",
+          "caniveau posé"
+        ],
+        [
+          "pentes vers les évacuations",
+          "drain posé",
+          "regards au niveau",
+          "eau évacuée"
+        ],
+        [
+          "chantier nettoyé",
+          "voirie propre",
+          "déblais évacués"
+        ]
+      ],
+      "nombre": [
+        3,
+        4
+      ],
+      "toujours": [
+        1
+      ]
+    }
+  },
+  "legendes": {
+    "comparateurs": {
+      "combiner": [
+        [
+          "Allée",
+          "Entrée de propriété",
+          "Cour",
+          "Terrain",
+          "Plateforme",
+          "Talus",
+          "Chemin d’accès",
+          "Stationnement",
+          "Tranchée",
+          "Accès de garage",
+          "Parcelle",
+          "Jardin en pente"
+        ],
+        [
+          "terrain décapé",
+          "souches arrachées",
+          "réseaux repérés",
+          "fond de forme réglé",
+          "géotextile posé",
+          "grave compactée",
+          "bordures posées",
+          "drain posé",
+          "regards au niveau",
+          "pentes reprises"
+        ],
+        [
+          "enrobé neuf",
+          "grave bordurée",
+          "plateforme réglée",
+          "talus soutenu",
+          "cour drainée",
+          "tranchée refermée",
+          "dalles alvéolées",
+          "terre végétale régalée"
+        ]
+      ],
+      "joints": [
+        ", ",
+        ", "
+      ],
+      "fin": "."
+    },
+    "invitation": {
+      "combiner": [
+        [
+          "Faites glisser la couture",
+          "Déplacez la séparation",
+          "Touchez la photo",
+          "Glissez le trait",
+          "Attrapez la couture",
+          "Faites glisser le curseur",
+          "Déplacez le trait",
+          "Passez le doigt sur la photo"
+        ],
+        [
+          "pour comparer l’avant et l’après.",
+          "pour voir le terrain avant les travaux.",
+          "pour passer d’un état à l’autre.",
+          "pour voir ce que le chantier a changé.",
+          "pour retrouver le terrain d’origine.",
+          "pour voir le sol avant le terrassement.",
+          "pour comparer les deux états.",
+          "pour voir l’accès avant et après.",
+          "pour mesurer le travail fait.",
+          "pour voir la différence."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    },
+    "precision": {
+      "combiner": [
+        [
+          "Même point de vue, même cadrage.",
+          "Les deux photos sont prises du même endroit.",
+          "Même angle, même distance.",
+          "Les deux images ont le même cadrage.",
+          "Même endroit, même objectif.",
+          "Le point de vue ne bouge pas d’une photo à l’autre.",
+          "Photographié deux fois, depuis le même piquet.",
+          "Même place, même hauteur d’objectif.",
+          "Le photographe n’a pas bougé entre les deux."
+        ],
+        [
+          "Seul le sol change.",
+          "La différence vient du chantier.",
+          "Rien d’autre ne change que le terrain.",
+          "Ce qui change, c’est le travail fait.",
+          "Les abords sont les mêmes, le sol non.",
+          "Seul le terrain a été repris.",
+          "Ce qui diffère, c’est la surface et ce qu’il y a dessous.",
+          "Entre les deux, il y a les engins et la grave.",
+          "L’écart, c’est le travail du terrassier."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    }
+  },
+  "rubriques": {
+    "gestes": [
+      "Le détail des postes.",
+      "Ce que recouvre un terrassement.",
+      "Ce qui se fait sous la surface.",
+      "Les étapes, dans l’ordre.",
+      "Étape par étape.",
+      "Du piquet à l’enrobé.",
+      "Comment se fait une allée.",
+      "Les postes du chantier.",
+      "Ce que fait le terrassier.",
+      "Du décapage au réglage.",
+      "Le travail, poste par poste.",
+      "Ce qui se fait, et pourquoi.",
+      "Les gestes du métier.",
+      "Dans l’ordre du chantier.",
+      "Ce que le devis détaille."
+    ],
+    "chantier": [
+      "Le chantier.",
+      "Sur le terrain.",
+      "En cours de travaux.",
+      "Pendant les travaux.",
+      "Sur place.",
+      "Engins au travail.",
+      "Le chantier en cours.",
+      "Les travaux, en images.",
+      "Ce que montre le chantier.",
+      "Sur le chantier.",
+      "Pendant le terrassement.",
+      "Le terrain en travaux.",
+      "Ce qui se voit en cours.",
+      "Au milieu du chantier.",
+      "La plateforme en cours."
+    ],
+    "verifiable": [
+      "Ce qui se vérifie.",
+      "Les faits publics.",
+      "Ce que disent les registres.",
+      "Ce qui est public.",
+      "Les registres officiels.",
+      "Ce que chacun peut vérifier.",
+      "L’entreprise, dans les registres.",
+      "Les données publiques.",
+      "Les sources officielles.",
+      "Ce que disent les sources publiques.",
+      "Vérifiable par tous.",
+      "Les faits, sans commentaire.",
+      "Ce que l’État publie.",
+      "Dans les bases publiques.",
+      "Les informations légales."
+    ],
+    "contact": [
+      "Parler du chantier.",
+      "Prendre contact.",
+      "Faire venir quelqu’un.",
+      "Demander une visite.",
+      "Montrer le terrain.",
+      "Parler de votre allée.",
+      "Faire voir la cour.",
+      "Appeler l’entreprise.",
+      "Demander un passage.",
+      "Faire mesurer.",
+      "Prendre rendez-vous.",
+      "Une question sur un terrain ?",
+      "Faire constater.",
+      "Parler du projet.",
+      "Joindre l’entreprise."
+    ],
+    "prix": [
+      "Ce que ça coûte.",
+      "Les tarifs, poste par poste.",
+      "Avant de demander un devis.",
+      "Combien ça coûte.",
+      "Les prix, poste par poste.",
+      "Les ordres de grandeur.",
+      "Les tarifs pratiqués.",
+      "Ce que coûte un terrassement.",
+      "Le prix des travaux.",
+      "Avant le devis.",
+      "Les prix du métier.",
+      "Ce qui fait le prix.",
+      "Les tarifs, sans détour.",
+      "Les fourchettes de prix.",
+      "Ce que dit le devis."
+    ]
+  },
+  "mot": "Terrassement",
+  "matiere": [
+    "À dix centimètres, une grave compactée montre des cailloux serrés, sans vide.",
+    "Une bordure béton posée au cordeau dessine une ligne sans ressaut.",
+    "Le sable réglé à la règle garde une surface lisse comme un drap.",
+    "Le géotextile déroulé montre sa trame blanche sous la poussière.",
+    "Un enrobé chaud fume encore et sent le bitume.",
+    "Un regard scellé affleure au niveau exact de l’allée.",
+    "Le gravier lavé brille au fond de la tranchée, autour du drain.",
+    "La terre végétale régalée est sombre, meuble, sans un caillou.",
+    "Les traces de chenilles dessinent des barres régulières dans la terre.",
+    "Une tranchée droite file sur toute la longueur du terrain.",
+    "Un fond de forme compacté résonne sous le pied.",
+    "La plaque vibrante laisse une surface mate et serrée.",
+    "Le cylindre laisse l’enrobé lisse, d’un noir uniforme.",
+    "Les joints des bordures font des traits fins et égaux.",
+    "Une dalle alvéolée laisse l’herbe passer entre ses cases.",
+    "Un gabion montre ses pierres serrées derrière la maille.",
+    "La grave mouillée fonce et sent la pierre.",
+    "Un talus réglé garde la trace du godet, en stries obliques.",
+    "L’argile luisante colle à la botte et à la pelle.",
+    "Un piquet de niveau porte son trait de peinture à la bonne cote.",
+    "Le faisceau du laser fait le tour du chantier, invisible au soleil.",
+    "Une grille de caniveau aligne ses fentes devant le garage.",
+    "La terre décapée fait un tas brun, à part des déblais clairs.",
+    "Un grillage avertisseur coloré disparaît sous la première couche.",
+    "Le bord taillé d’un enrobé fait une arête nette contre la pelouse.",
+    "Une flaque disparue, c’est une pente qui travaille.",
+    "Le godet gratte la roche avec un bruit sec.",
+    "La poussière de la grave sèche se dépose sur tout, et part à la première pluie.",
+    "Une allée finie ne garde aucune empreinte de pas.",
+    "Une plateforme vide, réglée, attend la maison."
+  ],
+  "prix": {
+    "note": "Ordres de grandeur nationaux, relevés le 5 novembre 2026. Ce ne sont pas les prix de l'entreprise et ce n'est pas un devis.",
+    "sources": [
+      {
+        "nom": "Prix-travaux-m2.com, prix d’un terrassement",
+        "url": "https://www.prix-travaux-m2.com/prix-terrassement.php"
+      },
+      {
+        "nom": "Habitatpresto, prix de l’enrobé",
+        "url": "https://www.habitatpresto.com/mag/maconnerie/prix-enrobe"
+      }
+    ],
+    "postes": [
+      {
+        "poste": "Décapage de la terre végétale sur 30 cm",
+        "bas": 4,
+        "haut": 7,
+        "unite": "€/m²",
+        "note": "Prix hors taxes."
+      },
+      {
+        "poste": "Nivellement d’un terrain",
+        "bas": 8,
+        "haut": 11,
+        "unite": "€/m²",
+        "note": "Prix hors taxes. Un remblai de terre rapportée s’ajoute au mètre cube."
+      },
+      {
+        "poste": "Tranchée à l’engin, moins de 50 cm de profondeur",
+        "bas": 9,
+        "haut": 11,
+        "unite": "€/ml",
+        "note": "Prix hors taxes."
+      },
+      {
+        "poste": "Enrobé de 5 à 6 cm, fourni et posé",
+        "bas": 26,
+        "haut": 72,
+        "unite": "€/m²",
+        "note": "La préparation du sol et les bordures peuvent s’ajouter."
+      }
+    ],
+    "exemple": {
+      "titre": "Une allée de 40 m² en enrobé",
+      "bas": 1040,
+      "haut": 2880,
+      "note": "Calculé avec le dernier poste ci-dessus (26 à 72 €/m²). Le terrassement et les bordures s’ajoutent s’ils ne sont pas compris."
+    }
+  },
+  "nuancierEtiquette": "Voir l’allée dans une autre teinte",
+  "teintes": [
+    {
+      "nom": "D’origine",
+      "voile": "",
+      "pastille": "#7A6E62"
+    },
+    {
+      "nom": "Enrobé noir",
+      "voile": "0 0% 16% / .32",
+      "pastille": "#2A2A2A"
+    },
+    {
+      "nom": "Enrobé rouge",
+      "voile": "8 40% 34% / .32",
+      "pastille": "#7A3B30"
+    },
+    {
+      "nom": "Grave calcaire",
+      "voile": "40 18% 78% / .30",
+      "pastille": "#D2C9B6"
+    },
+    {
+      "nom": "Grave grise",
+      "voile": "30 6% 58% / .30",
+      "pastille": "#9A958F"
+    },
+    {
+      "nom": "Gravier ocre",
+      "voile": "36 46% 58% / .30",
+      "pastille": "#C69E62"
+    },
+    {
+      "nom": "Béton désactivé",
+      "voile": "34 14% 64% / .30",
+      "pastille": "#ADA392"
+    },
+    {
+      "nom": "Schiste",
+      "voile": "220 8% 34% / .32",
+      "pastille": "#4F535C"
+    },
+    {
+      "nom": "Sable",
+      "voile": "42 38% 72% / .30",
+      "pastille": "#DBC498"
+    },
+    {
+      "nom": "Pelouse",
+      "voile": "100 30% 34% / .32",
+      "pastille": "#4E6F3C"
+    }
+  ],
+  "alt": {
+    "avant": "allée défoncée et boueuse avant travaux, ornières pleines d’eau",
+    "apres": "la même allée en grave compactée et bordurée",
+    "invitation": "Comparer le terrain avant et après les travaux",
+    "avant2": "un autre terrain avant le terrassement",
+    "apres2": "le même terrain une fois réglé",
+    "hero": "terrain dont une moitié garde la terre remuée et l’autre la surface finie",
+    "invitation2": "Comparer un second chantier avant et après",
+    "ouverture": "geste du métier sur un chantier de terrassement",
+    "chantier": "pelle mécanique en action, godet chargé",
+    "chantierBis": "plaque vibrante sur une couche de grave",
+    "detail": "gros plan sur une grave compactée",
+    "detailBis": "gros plan sur une bordure béton posée",
+    "geste": "mains qui posent une bordure au cordeau"
+  },
+  "estimateur": {
+    "titre": "Votre terrain",
+    "mesure": {
+      "etiquette": "Surface à terrasser",
+      "unite": "m²",
+      "min": 10,
+      "max": 2000,
+      "pas": 10,
+      "defaut": 100,
+      "aria": "Surface en mètres carrés"
+    }
+  }
+}
