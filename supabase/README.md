@@ -132,6 +132,12 @@ information de plus, voulue (`invitations` sans politique). Le code déployé
 est une copie de `functions/inscription/` : après une modification, le
 redéployer (mêmes deux fichiers).
 
+**5 novembre 2026** : l'inscription par lien ne sert plus (décision de
+Fabrice : il crée les comptes, `atelier/comptes.mjs`). `functions/inscription/`
+et `essais/invitations.sql` sont retirés du dépôt ; la table `invitations`,
+`public.creer_invitation` et la fonction Edge déployée restent en base en
+attendant que Fabrice les retire (F23).
+
 **Ajout du 3 novembre 2026** (T50, migration `20261103143933_mentions_legales`,
 appliquée par Cowork avec l'outil MCP `apply_migration`) : quatre colonnes de
 `profils` pour les mentions légales (`capital_social`, `immatriculation`,
@@ -146,8 +152,8 @@ divulgués désactivée » (réglage du tableau de bord : action de Fabrice).
 
 - Le générateur lit encore `generateur/registre.json`. Le brancher sur la
   table `sites` demande la clé de service sur l'ordinateur qui fabrique.
-- L'inscription d'un artisan (création du compte, vérification qu'il
-  représente l'entreprise, ligne dans `membres`) n'existe pas.
+- La création d'un compte (`atelier/comptes.mjs`) n'a pas encore tourné
+  contre la vraie base (clé de service : F1).
 - Les images du ravalement ne sont pas encore dans l'espace `banque`.
 - Les types TypeScript de l'app se génèrent quand l'app existera :
   `supabase gen types typescript --project-id magxzrpboyrzguuocjgj`.

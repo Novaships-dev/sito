@@ -6,27 +6,27 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**410 fichiers suivis, dont 151 .md ; 103639 lignes de texte.** Hors zone : 0.
+**409 fichiers suivis, dont 151 .md ; 103378 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
 | Z01 Pilotage de l agent | 27 | 2142 | 0 |
-| Z02 Mémoire du projet | 11 | 3079 | 0 |
-| Z03 Spécifications | 11 | 2395 | 0 |
-| Z04 Documentation de travail | 24 | 3321 | 0 |
+| Z02 Mémoire du projet | 11 | 3119 | 0 |
+| Z03 Spécifications | 11 | 2288 | 0 |
+| Z04 Documentation de travail | 24 | 3322 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
 | Z06 Générateur de sites | 49 | 20291 | 4 |
 | Z07 Règles | 15 | 1147 | 0 |
-| Z08 App de l artisan | 36 | 9383 | 4 |
-| Z09 Service atelier et Worker | 15 | 1799 | 0 |
-| Z10 Base Supabase | 34 | 2910 | 0 |
-| Z11 Essais et vérificateurs | 52 | 10286 | 0 |
+| Z08 App de l artisan | 35 | 9244 | 4 |
+| Z09 Service atelier et Worker | 16 | 1988 | 0 |
+| Z10 Base Supabase | 32 | 2709 | 0 |
+| Z11 Essais et vérificateurs | 52 | 10222 | 0 |
 | Z12 Prospection | 24 | 24280 | 0 |
 | Z13 Autres scripts | 14 | 1458 | 0 |
 | Z14 Banque d images | 8 | 3419 | 0 |
 | Z15 Données de démonstration | 3 | 3 | 0 |
-| Z16 Lanceurs Windows et crochets Git | 14 | 373 | 0 |
-| Z17 Configuration | 9 | 992 | 0 |
+| Z16 Lanceurs Windows et crochets Git | 15 | 389 | 0 |
+| Z17 Configuration | 9 | 996 | 0 |
 
 ## Z01 Pilotage de l agent
 
@@ -64,17 +64,17 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `memoire/actions-fabrice.md` | 36 |
-| `memoire/comptes-essai.md` | 19 |
-| `memoire/de-cowork.md` | 36 |
-| `memoire/decisions.md` | 136 |
+| `memoire/actions-fabrice.md` | 37 |
+| `memoire/comptes-essai.md` | 18 |
+| `memoire/de-cowork.md` | 37 |
+| `memoire/decisions.md` | 137 |
 | `memoire/essais/audit.txt` | 44 |
 | `memoire/essais/derniers.txt` | 24 |
 | `memoire/essais/disque.txt` | 61 |
-| `memoire/journal.md` | 2316 |
-| `memoire/maintenant.md` | 111 |
+| `memoire/journal.md` | 2349 |
+| `memoire/maintenant.md` | 112 |
 | `memoire/pieges.md` | 121 |
-| `memoire/questions.md` | 175 |
+| `memoire/questions.md` | 179 |
 
 ## Z03 Spécifications
 
@@ -84,9 +84,9 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `app/README.md` | 150 |
 | `app/specs/01-PRD.md` | 236 |
 | `app/specs/02-TRD.md` | 216 |
-| `app/specs/03-APPFLOW.md` | 249 |
+| `app/specs/03-APPFLOW.md` | 155 |
 | `app/specs/04-DESIGN-SYSTEM.md` | 180 |
-| `app/specs/05-SCHEMA-BACKEND.md` | 471 |
+| `app/specs/05-SCHEMA-BACKEND.md` | 458 |
 | `app/specs/06-PLAN-IMPLEMENTATION.md` | 93 |
 | `app/specs/07-TACHES.md` | 146 |
 | `app/specs/08-PROSPECTION.md` | 144 |
@@ -96,7 +96,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `CHANGELOG.md` | 93 |
+| `CHANGELOG.md` | 94 |
 | `SECURITY.md` | 55 |
 | `docs/00-INDEX.md` | 113 |
 | `docs/CONSTRAINTS.md` | 58 |
@@ -277,21 +277,20 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `app/public/icone-512.png` | binaire |
 | `app/public/icone-masque-512.png` | binaire |
 | `app/public/icone.svg` | 1 |
-| `app/src/App.tsx` | 152 |
+| `app/src/App.tsx` | 148 |
 | `app/src/apercu-brut.ts` | 61 |
 | `app/src/attente.ts` | 123 |
-| `app/src/donnees/demo.ts` | 254 |
+| `app/src/donnees/demo.ts` | 217 |
 | `app/src/donnees/index.ts` | 14 |
-| `app/src/donnees/supabase.ts` | 267 |
+| `app/src/donnees/supabase.ts` | 242 |
 | `app/src/ecrans/Abonnement.tsx` | 80 |
 | `app/src/ecrans/Accueil.tsx` | 84 |
 | `app/src/ecrans/Adresse.tsx` | 151 |
 | `app/src/ecrans/Avis.tsx` | 62 |
 | `app/src/ecrans/Chantiers.tsx` | 168 |
 | `app/src/ecrans/Compte.tsx` | 147 |
-| `app/src/ecrans/Connexion.tsx` | 45 |
+| `app/src/ecrans/Connexion.tsx` | 46 |
 | `app/src/ecrans/Google.tsx` | 55 |
-| `app/src/ecrans/Inscription.tsx` | 65 |
 | `app/src/ecrans/Installer.tsx` | 57 |
 | `app/src/ecrans/MonSite.tsx` | 148 |
 | `app/src/jour.ts` | 46 |
@@ -299,7 +298,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `app/src/nettoyer.ts` | 113 |
 | `app/src/photo.ts` | 193 |
 | `app/src/style.css` | 180 |
-| `app/src/types.ts` | 117 |
+| `app/src/types.ts` | 108 |
 | `app/src/ui.tsx` | 86 |
 | `app/src/video.ts` | 88 |
 | `app/tsconfig.json` | 14 |
@@ -312,6 +311,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `atelier/LISEZMOI.md` | 28 |
 | `atelier/avis.mjs` | 55 |
 | `atelier/boucle.mjs` | 130 |
+| `atelier/comptes.mjs` | 163 |
 | `atelier/fabriquer.mjs` | 217 |
 | `atelier/heic.mjs` | 32 |
 | `atelier/photos.mjs` | 198 |
@@ -319,7 +319,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `atelier/publier-pages.mjs` | 60 |
 | `atelier/publier.mjs` | 162 |
 | `atelier/statistiques.mjs` | 76 |
-| `atelier/supabase.mjs` | 201 |
+| `atelier/supabase.mjs` | 227 |
 | `atelier/supprimer-comptes.mjs` | 125 |
 | `atelier/umami.mjs` | 101 |
 | `worker/appels.js` | 177 |
@@ -329,11 +329,11 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `supabase/README.md` | 197 |
+| `supabase/README.md` | 203 |
+| `supabase/brouillons/retrait_invitations.sql` | 19 |
 | `supabase/essais/demandes.sql` | 108 |
 | `supabase/essais/droits-app.sql` | 116 |
 | `supabase/essais/droits.sql` | 58 |
-| `supabase/essais/invitations.sql` | 45 |
 | `supabase/essais/prevenir.sql` | 39 |
 | `supabase/functions/_shared/avis-google.mjs` | 74 |
 | `supabase/functions/_shared/chiffre.mjs` | 77 |
@@ -345,8 +345,6 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `supabase/functions/domaines/index.ts` | 85 |
 | `supabase/functions/google-lien/index.ts` | 45 |
 | `supabase/functions/google-retour/index.ts` | 48 |
-| `supabase/functions/inscription/index.ts` | 79 |
-| `supabase/functions/inscription/logique.ts` | 102 |
 | `supabase/functions/stripe-session/index.ts` | 50 |
 | `supabase/functions/stripe-webhook/index.ts` | 48 |
 | `supabase/migrations/20261002194303_schema.sql` | 248 |
@@ -372,16 +370,16 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `scripts/contraste-rendu.mjs` | 120 |
 | `scripts/essai-accepter.mjs` | 102 |
 | `scripts/essai-alt.mjs` | 110 |
-| `scripts/essai-app.mjs` | 566 |
+| `scripts/essai-app.mjs` | 520 |
 | `scripts/essai-appels.mjs` | 419 |
 | `scripts/essai-avis.mjs` | 104 |
 | `scripts/essai-boucle.mjs` | 209 |
+| `scripts/essai-comptes.mjs` | 153 |
 | `scripts/essai-domaines.mjs` | 266 |
 | `scripts/essai-echappement.mjs` | 172 |
 | `scripts/essai-fabrication-base.mjs` | 185 |
 | `scripts/essai-formulaire.mjs` | 189 |
 | `scripts/essai-google.mjs` | 156 |
-| `scripts/essai-inscription.mjs` | 197 |
 | `scripts/essai-lot.mjs` | 323 |
 | `scripts/essai-mentions.mjs` | 196 |
 | `scripts/essai-modeles.mjs` | 106 |
@@ -406,8 +404,8 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `scripts/faux-cloudflare.mjs` | 217 |
 | `scripts/faux-gandi.mjs` | 129 |
 | `scripts/faux-google.mjs` | 82 |
-| `scripts/faux-recherche-entreprises.mjs` | 83 |
-| `scripts/faux-supabase.mjs` | 180 |
+| `scripts/faux-recherche-entreprises.mjs` | 85 |
+| `scripts/faux-supabase.mjs` | 204 |
 | `scripts/faux-umami.mjs` | 52 |
 | `scripts/mesure-disque.mjs` | 117 |
 | `scripts/mesure-lisibilite.mjs` | 87 |
@@ -499,6 +497,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `lanceurs/CLAUDE_AUTONOME.bat` | 33 |
 | `lanceurs/CLE_CLOUDFLARE.bat` | 29 |
 | `lanceurs/CLE_SUPABASE.bat` | 29 |
+| `lanceurs/COMPTE_ARTISAN.bat` | 16 |
 | `lanceurs/FABRIQUER_DEMO.bat` | 22 |
 | `lanceurs/INSTALLER_CLAUDE_CODE.bat` | 24 |
 | `lanceurs/INSTALLER_OUTILLAGE.bat` | 28 |
@@ -513,8 +512,8 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `.env.example` | 59 |
-| `.github/workflows/essais.yml` | 107 |
+| `.env.example` | 62 |
+| `.github/workflows/essais.yml` | 108 |
 | `.github/workflows/google.yml` | 44 |
 | `.github/workflows/refaire-site.yml` | 57 |
 | `.github/workflows/statistiques.yml` | 49 |

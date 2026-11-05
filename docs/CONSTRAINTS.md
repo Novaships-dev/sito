@@ -22,7 +22,7 @@ pas.
 | C08 | Toutes les photos de tous les appareils sont acceptées | décision, 3 oct. 2026 |
 | C09 | Tout marche pareil sur iPhone et sur ordinateur | décision, sept. 2026 |
 | C10 | Pas d'app sur le Play Store : l'app s'installe sur l'écran d'accueil depuis le site Sitô (iPhone, Android, ordinateur) | décision, 5 nov. 2026 (remplace celle du 5 oct.) |
-| C11 | Inscription par lien, e-mail et mot de passe, une seule fois, sans code | décision, 29 oct. 2026 |
+| C11 | Fabrice crée chaque compte : identifiant = e-mail de l'artisan, mot de passe donné par lui ; pas d'inscription par l'artisan, pas de code | décision, 5 nov. 2026 (remplace celle du 29 oct.) |
 | C12 | Réponses aux avis Google préparées, publiées seulement après validation de l'artisan | décision, 5 oct. 2026 |
 | C13 | Ravalement : façadiers seulement | décision, 29 oct. 2026 |
 | C14 | Artisans réels pour la prospection ; aucun numéro de téléphone dans le registre ni dans la page d'appels | décision, 24 oct. 2026 ; `worker/appels.js` |

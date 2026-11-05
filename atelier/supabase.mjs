@@ -132,8 +132,34 @@ export function supabase({ url, cle, fetch: f = fetch }) {
 
     // Les comptes (API d'administration de Supabase Auth, clé de service).
     auth: {
+      // Le compte qui porte cette adresse, ou null. L'API ne filtre pas par
+      // adresse : on parcourt les pages (1 000 comptes par page).
+      async chercher(courriel) {
+        const voulu = String(courriel).trim().toLowerCase();
+        for (let page = 1; ; page++) {
+          const r = await appel('GET', `/auth/v1/admin/users?page=${page}&per_page=1000`);
+          const lot = r?.users || [];
+          const trouve = lot.find((u) => (u.email || '').toLowerCase() === voulu);
+          if (trouve) return { id: trouve.id, courriel: trouve.email };
+          if (lot.length < 1000) return null;
+        }
+      },
+
+      // Crée un compte déjà confirmé (aucun e-mail n'est envoyé). Le mot de
+      // passe n'apparaît jamais dans une erreur : le message ne porte que le
+      // chemin, le code et la réponse de Supabase.
+      async creer(courriel, mdp) {
+        const r = await appel('POST', '/auth/v1/admin/users', { corps: { email: courriel, password: mdp, email_confirm: true } });
+        return { id: r.id, courriel: r.email };
+      },
+
+      async changerMotDePasse(id, mdp) {
+        if (!/^[0-9a-f-]{36}$/i.test(id)) throw new Error(`identifiant de compte invalide : ${id}`);
+        await appel('PUT', `/auth/v1/admin/users/${id}`, { corps: { password: mdp } });
+      },
+
       // Efface un compte. Supabase efface avec lui ce qui s'y rattache
-      // (`membres`, `suppressions`, `invitations` : ON DELETE CASCADE).
+      // (`membres`, `suppressions` : ON DELETE CASCADE).
       // Un compte déjà effacé (404) n'est pas une faute : une reprise repasse.
       async supprimer(id) {
         if (!/^[0-9a-f-]{36}$/i.test(id)) throw new Error(`identifiant de compte invalide : ${id}`);

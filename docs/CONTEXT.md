@@ -69,8 +69,8 @@ dans le dépôt.
 
 | Mot | Sens | Où |
 |---|---|---|
-| lien d'inscription | le lien envoyé par SMS par Fabrice ; crée le compte et le rattache à l'entreprise ; un seul usage, 14 jours | table `invitations` (genre `inscription`) |
-| lien de reprise | le lien qui remplace « mot de passe oublié » | table `invitations` (genre `reprise`) |
+| identifiant | l'adresse e-mail de l'artisan, donnée par Fabrice avec le mot de passe | `atelier/comptes.mjs` |
+| nouveau mot de passe | ce que Fabrice pose quand l'artisan a oublié le sien (`comptes.mjs mot-de-passe`) | `atelier/comptes.mjs` |
 | démonstration | l'app sans compte, sur des données inventées (`?demo`) | `app/src/donnees/demo.ts` |
 
 ## Le travail

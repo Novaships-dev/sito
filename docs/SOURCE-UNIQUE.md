@@ -54,8 +54,8 @@ recopiée (liste « Recopiée dans »). Une valeur sans source n'entre pas.
 | Taille maximale d'un fichier envoyé | 50 Mo (offre gratuite) ; 150 Mo prévus en offre Pro | `app/specs/02-TRD.md` P7 ; migration `20261005014022_app.sql` | `app/src/photo.ts` (`POIDS_MAX`) |
 | Taille d'un morceau d'envoi TUS | 6 Mo exactement | `app/specs/02-TRD.md` P8 | `app/src/donnees/supabase.ts` |
 | Côté maximal d'une photo préparée | 3 200 px, JPEG qualité 0,88 | `app/specs/02-TRD.md` P3 | `app/src/photo.ts` |
-| Lien d'inscription | jeton de 256 bits, un seul usage, valable 14 jours | migration `20261029181645_invitations.sql` | `supabase/functions/inscription/` |
-| Mot de passe | 8 à 72 caractères | `supabase/functions/inscription/logique.ts` | |
+| Mot de passe donné à l'artisan | 12 caractères tirés au sort, trois groupes de quatre, sans 0/O/1/l/I (≈ 59 bits) | décision du 5 nov. 2026 | `atelier/comptes.mjs` |
+| Création d'un compte | par Fabrice seulement : e-mail + SIREN, entreprise lue dans l'annuaire public, refus si fermée | décision du 5 nov. 2026 | `atelier/comptes.mjs`, `scripts/essai-comptes.mjs` |
 | Délai de suppression d'un compte | 30 jours, réversible | `app/specs/01-PRD.md` A18 | |
 | Hébergeur des sites d'abonnés (mentions légales, ML8) | Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, États-Unis ; +1 888 993 5273 | dépôt de Cloudflare à la SEC (EDGAR, CIK 1477333, « Business Address »), relevé le 3 nov. 2026 | `generateur/sections/mentions.mjs` (`HEBERGEUR`) |
 | Délai de diffusion d'une nouvelle version (KV) | jusqu'à 60 s | `app/specs/02-TRD.md` §7 | `worker/routeur.js` |

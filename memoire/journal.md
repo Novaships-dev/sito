@@ -2314,3 +2314,36 @@ l'app doit marcher dessus.
 Preuve : `npm run build` : 0 ; `node scripts/essai-app.mjs` : 150 contrôles,
 0 faute (155 avant, 5 contrôles Play Store retirés).
 TRACAGE : app/src/donnees/index.ts, app/src/main.tsx, app/src/App.tsx, app/src/ui.tsx, app/src/ecrans/Abonnement.tsx, app/src/ecrans/Adresse.tsx, app/src/ecrans/Installer.tsx, app/vite.config.ts, app/README.md, app/package.json, worker/routeur.js, atelier/publier.mjs, supabase/functions/stripe-session/index.ts, scripts/android.mjs, scripts/essai-android.mjs, scripts/essai-app.mjs, scripts/essais.mjs, .github/workflows/essais.yml, app/specs/01-PRD.md, app/specs/02-TRD.md, app/specs/03-APPFLOW.md, app/specs/06-PLAN-IMPLEMENTATION.md, app/specs/07-TACHES.md, docs/CONSTRAINTS.md, .claude/skills/sito-app/SKILL.md, memoire/questions.md, memoire/actions-fabrice.md, memoire/maintenant.md, CHANGELOG.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 5 nov. 2026 — Nettoyage 2 : comptes créés par Fabrice, par Cowork
+
+Plan : un outil local qui crée le compte (e-mail + SIREN) et pose un nouveau
+mot de passe ; retirer l'inscription par lien de l'app, du dépôt et de la
+base ; specs et mémoire d'accord.
+
+Fait : `atelier/comptes.mjs` (créer : entreprise lue en base sinon dans
+recherche-entreprises.api.gouv.fr, fermée refusée, profil, compte confirmé,
+`membres` titulaire, compte effacé si `membres` échoue ; `mot-de-passe` ;
+mot de passe de 12 caractères en trois groupes, sans 0/O/1/l/I) ;
+`lanceurs/COMPTE_ARTISAN.bat` (pose les questions, affiche une fois). Le
+dépôt est **public** (vérifié par l'API GitHub) : aucun mot de passe ne passe
+par GitHub Actions. `atelier/supabase.mjs` : `auth.chercher`, `auth.creer`,
+`auth.changerMotDePasse`. Faux Supabase : création, liste et mise à jour des
+comptes ; faux annuaire : `q` (SIREN). App : écran Inscription, routes
+`#/inscription` et `#/reprise`, `lireLien`, `sInscrire`, `reprendre` retirés ;
+la connexion dit « Sitô vous donne votre identifiant et votre mot de passe ».
+Retirés : `supabase/functions/inscription/`, `scripts/essai-inscription.mjs`,
+`supabase/essais/invitations.sql`.
+Base : la migration qui supprime `invitations` et `creer_invitation` a été
+**refusée par le mode automatique** ; pas de contournement. La table ne
+contient que deux liens servis du compte d'essai (vérifié). Brouillon
+`supabase/brouillons/retrait_invitations.sql` et action F23 (supprimer aussi
+la fonction Edge déployée). Contrôle « invitations retirée » essayé rouge sur
+la vraie base avant, puis retiré de `droits-app.sql` en attendant F23.
+Preuve : `node scripts/essai-comptes.mjs` : 25 contrôles, 0 faute ;
+`--contre-essai` : 7 cassures sur 7. `essai-app` : 138 contrôles, 0 faute ;
+avec l'ancien texte d'inscription remis dans la connexion : 2 fautes (rouge
+juste), puis remis.
+Offre de Fabrice reçue pendant ce travail (22 h 56) : écrite mot pour mot
+dans `memoire/decisions.md` ; étapes 4 et 5 (vitrine, paiement) à faire.
+TRACAGE : atelier/comptes.mjs, atelier/supabase.mjs, scripts/essai-comptes.mjs, scripts/faux-supabase.mjs, scripts/faux-recherche-entreprises.mjs, scripts/essais.mjs, scripts/essai-app.mjs, scripts/essai-inscription.mjs, lanceurs/COMPTE_ARTISAN.bat, .github/workflows/essais.yml, .env.example, app/src/App.tsx, app/src/types.ts, app/src/donnees/demo.ts, app/src/donnees/supabase.ts, app/src/ecrans/Connexion.tsx, app/src/ecrans/Inscription.tsx, app/README.md, supabase/functions/inscription/index.ts, supabase/functions/inscription/logique.ts, supabase/essais/invitations.sql, supabase/brouillons/retrait_invitations.sql, supabase/README.md, SECURITY.md, app/specs/01-PRD.md, app/specs/02-TRD.md, app/specs/03-APPFLOW.md, app/specs/05-SCHEMA-BACKEND.md, app/specs/06-PLAN-IMPLEMENTATION.md, docs/SOURCE-UNIQUE.md, docs/CONTEXT.md, docs/CONSTRAINTS.md, docs/prospection-script.md, memoire/comptes-essai.md, memoire/questions.md, memoire/actions-fabrice.md, memoire/maintenant.md, memoire/decisions.md, memoire/de-cowork.md, CHANGELOG.md, memoire/journal.md, docs/audit/CARTE.md

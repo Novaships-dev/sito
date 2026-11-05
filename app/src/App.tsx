@@ -5,7 +5,6 @@ import { Ctx, useApp, type Contexte } from './ui';
 import { creerFile, type Etat } from './attente';
 import type { Donnees } from './types';
 import { Connexion } from './ecrans/Connexion';
-import { Inscription } from './ecrans/Inscription';
 import { Accueil } from './ecrans/Accueil';
 import { Chantiers, Chantier } from './ecrans/Chantiers';
 import { MonSite } from './ecrans/MonSite';
@@ -25,8 +24,7 @@ function useRoute(): string[] {
     const f = () => { setR(lire()); window.scrollTo(0, 0); document.getElementById('contenu')?.focus({ preventScroll: true }); };
     addEventListener('hashchange', f);
     // L'adresse a pu changer entre le premier rendu et cet abonnement (WebKit
-    // pose le « #/inscription/… » après le chargement : le lien d'inscription
-    // ouvrait la connexion, T49, 3 nov. 2026). On la relit une fois.
+    // pose le « # » après le chargement, T49, 3 nov. 2026). On la relit une fois.
     setR(lire());
     return () => removeEventListener('hashchange', f);
   }, []);
@@ -64,7 +62,6 @@ export function App({ donnees }: { donnees: Donnees }) {
   let page;
   if (connecte === null) page = <main className="ecran" id="contenu" tabIndex={-1}><p className="discret">Chargement…</p></main>;
   else if (route[0] === 'installer') page = <Installer />;
-  else if (!connecte && (route[0] === 'inscription' || route[0] === 'reprise') && route[1]) page = <Inscription key={route[1]} jeton={decodeURIComponent(route[1])} />;
   else if (!connecte) page = <Connexion />;
   else page = <Page route={route} />;
 
@@ -83,8 +80,7 @@ export function App({ donnees }: { donnees: Donnees }) {
 
 function Page({ route }: { route: string[] }) {
   switch (route[0] || '') {
-    // un lien d'inscription rouvert une fois connecté : rien à faire, l'accueil
-    case '': case 'inscription': case 'reprise': return <Accueil />;
+    case '': return <Accueil />;
     case 'chantiers': return route[1] ? <Chantier id={decodeURIComponent(route[1])} /> : <Chantiers />;
     case 'site': return <MonSite />;
     case 'adresse': return <Adresse />;

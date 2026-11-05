@@ -42,8 +42,6 @@ gauche. « Installer l'app » est aussi joignable sans être connecté.
 | `#/abonnement` | Abonnement | `Abonnement.tsx` | oui | Fait : affichage prouvé ; boutons Stripe reliés (T17), prouvés en démonstration |
 | `#/compte` | Compte | `Compte.tsx` | oui | Fait, prouvé |
 | `#/installer` | Installer l'app | `Installer.tsx` | non | Fait, prouvé (rendu) |
-| `#/inscription/<jeton>` | Créer son compte (lien envoyé par SMS) | `Inscription.tsx` | non (connecté : accueil) | Fait, prouvé |
-| `#/reprise/<jeton>` | Nouveau mot de passe (lien envoyé par SMS) | `Inscription.tsx` | non (connecté : accueil) | Fait, prouvé |
 | autre | Page introuvable | `App.tsx` | oui | Fait |
 
 Paramètre d'adresse : `?demo` force la démonstration.
@@ -56,101 +54,9 @@ Paramètre d'adresse : `?demo` force la démonstration.
 |---|---|
 | Champs | « Votre adresse e-mail » (`autocomplete="username"`), « Votre mot de passe » (`current-password`), case « Afficher le mot de passe » → « Me connecter » → `seConnecter` |
 | Erreurs | « Adresse e-mail ou mot de passe incorrect. » sous le champ |
-| Mot de passe oublié | bouton qui dit : demander à Sitô un nouveau lien, reçu par SMS (aucun e-mail : voir 02-TRD §7) |
-| Pas de compte | « Ouvrez le lien d'inscription que Sitô vous a envoyé par SMS. » |
-| Démonstration | bandeau avec l'adresse et le mot de passe du compte de démonstration ; liens `#/inscription/demo-inscription`, `#/reprise/demo-reprise`, `#/inscription/demo-deja-servi` (déjà servi) |
-
-### 3.1 bis Inscription et reprise (`#/inscription/<jeton>`, `#/reprise/<jeton>`)
-
-| Élément | Détail |
-|---|---|
-| Lecture du lien | `lireLien` : nom de l'entreprise ; pour une reprise, l'adresse du compte. Lien inconnu, expiré ou déjà servi : écran « Lien refusé » avec la raison, aucun formulaire |
-| Inscription | « Votre adresse e-mail », « Choisissez un mot de passe » (8 caractères au moins), « Créer mon compte » → `sInscrire` → connecté, accueil |
-| Reprise | « Nouveau mot de passe » → « Enregistrer et me connecter » → `reprendre` |
-| Erreurs | adresse qui a déjà un compte : « Cette adresse a déjà un compte Sitô… » ; le lien reste valable |
-| Lien | « Installer l'app sur mon téléphone » |
-
-### 3.2 Accueil
-
-| Bloc | Lit | Action | Écrit |
-|---|---|---|---|
-| Titre | `entreprise().nom_affiche` | — | — |
-| Ces 7 derniers jours | `statistiques(28)` → somme des 7 derniers jours : visites, appels, demandes | — | — |
-| Courbe | les 28 jours ; tableau « Voir les chiffres » pour les lecteurs d'écran | dérouler | — |
-| Demandes | `demandes()`, 20 dernières, les non lues marquées et comptées | Appeler (`tel:`), Répondre par e-mail (`mailto:`), Marquer comme lue | `demandes.lue_le` |
-| Vide | « Aucune demande reçue pour l'instant. » | — | — |
-
-### 3.3 Mes chantiers et un chantier
-
-| Bloc | Lit | Action | Écrit |
-|---|---|---|---|
-| Nouveau chantier | — | « Ce qui a été fait » (obligatoire, 140 car.), « Commune » → Créer, ouvre le chantier | `chantiers` |
-| Liste | `chantiers()` | ouvrir | — |
-| Avant / après | `photos(id)` + la file d'envoi | une case « Photo avant » et « Photo après » par paire ; une paire vide de plus en bas | file d'envoi → `photos` |
-| Autres photos et vidéos | idem | « Ajouter des photos ou vidéos » (plusieurs) | file → `photos` (rôle `chantier`) ou `videos` |
-| État d'une photo | `photos.etat` | « Prête » / « Reçue, en préparation » / « Illisible : motif » / « En attente d'envoi » | — |
-| Refus | — | « devis.pdf : Un PDF n'est pas une photo… » | — |
-
-### 3.4 Mon site
-
-| Bloc | Lit | Action | Écrit |
-|---|---|---|---|
-| État | `site()` : En ligne / En préparation / Pas encore en ligne / Suspendu / Archivé, date de mise à jour | « Voir mon site » | — |
-| Ce que le site affiche | `profil()` | Téléphone (10 chiffres, contrôlé avant envoi) ; case « Afficher mes prix sur le site » ; phrase sous les prix (280 car.) → Enregistrer | `profils` |
-| Mes tarifs (si la case est cochée) | `tarifs()` | Ajouter, Modifier, Retirer ; prestation, de (€), à (€, facultatif, ≥ de), par (m², ml, unité, heure, jour, forfait) | `tarifs` |
-
-### 3.5 Mes avis
-
-| Bloc | Lit | Action | Écrit |
-|---|---|---|---|
-| Moyenne | `avis()` | — | — |
-| Un avis | auteur, date, étoiles (texte « 4 étoiles sur 5 » pour les lecteurs d'écran), texte | — | — |
-| Réponse | si `reponse` : « Votre réponse publiée » ; si `valide_le` : « Validée, en cours de publication » ; sinon zone de texte remplie avec le `brouillon` | Valider et publier | `avis.brouillon`, `valide_par`, `valide_le` |
-| Vide | « Aucun avis récupéré » + renvoi vers « Ma fiche Google » si non reliée | — | — |
-
-### 3.6 Mon adresse
-
-| Bloc | Lit | État |
-|---|---|---|
-| Adresses | `adresses()` : hôte, principale, genre (offerte / mon domaine / existant), état (Active / En cours / Problème / Retirée), motif ; « Ouvrir » si active | Fait |
-| « Je veux mon propre nom de domaine » | explication ; recherche (.fr ou .com, Q9) ; si libre et abonnement en cours, confirmation du représentant (prérempli depuis « Directeur de la publication ») et réservation ; aucun prix | Fait sur la démonstration (T20, `essai-app`) ; réel : fonction Edge `domaines` à déployer (F8, F6, F5) |
-| « J'ai déjà un nom de domaine » | explication ; « Brancher mon domaine » donne le CNAME `www` à poser (type, nom, valeur) ; « Vérifier maintenant » sur l'adresse en attente | Fait sur la démonstration (T20, `essai-app`) ; réel : même fonction |
-
-### 3.7 Ma fiche Google
-
-| Bloc | Lit | État |
-|---|---|---|
-| État | `connexionGoogle()` : Pas encore reliée / Reliée / Accès retiré / Problème ; fiche, dernière mise à jour, motif | Fait |
-| Lien | « Ouvrir ma fiche chez Google » (business.google.com) | Fait |
-| Relier | « Relier ma fiche Google » : consentement Google (fonction Edge `google-lien`), retour sur l'écran avec `google=ok` ou `google=erreur` ; « Relier à nouveau » si l'accès a été retiré | Fait sur la démonstration (T24, `essai-app`) ; réel : F13 |
-| Comparer fiche et site | nom, adresse, téléphone | **À faire** |
-
-### 3.8 Abonnement
-
-| Bloc | Contenu |
-|---|---|
-| État | Période d'essai / Actif / Paiement en échec / Résilié |
-| Formule et prix | « Formule mensuel : 39 € HT par mois » |
-| Échéance | fin de l'essai, prochaine échéance, ou date de fin si résiliation demandée |
-| Gérer | liste des deux formules ; abonnement en cours : bouton « Carte, factures, formule, résiliation » (portail Stripe) ; sinon « S’abonner au mois » / « à l’année » (Stripe Checkout) ; retour `#/abonnement?paiement=ok` ou `annule`, message lu par l’écran (T17) |
-| Retour de Stripe | `?paiement=` après le `#` : n’est pas une route (`App.tsx`), l’écran affiche « Paiement reçu » ou « Paiement annulé » |
-
-### 3.9 Compte
-
-| Bloc | Lit | Action | Écrit |
-|---|---|---|---|
-| Identité | entreprise (nom, SIREN, commune), adresse de connexion | Me déconnecter | session |
-| Mentions légales | `profil()` | TVA (FR + 11 car.), assureur décennale, contrat, zone, médiateur, site du médiateur (`https://`) → Enregistrer | `profils` |
-| Mes données | toutes les tables de l'artisan | Télécharger mes données (`sito-mes-donnees-AAAA-MM-JJ.json`) | — |
-| Supprimer mon compte | `suppression()` | écrire SUPPRIMER → Demander ; puis Annuler la suppression | `suppressions` |
-
-### 3.10 Installer l'app
-
-| Appareil | Ce qui s'affiche |
-|---|---|
-| iPhone / iPad | trois étapes : Safari → Partager → Sur l'écran d'accueil → Ajouter |
-| Android / ordinateur | bouton « Installer Sitô » si le navigateur le propose ; sinon le chemin dans le menu |
-| Déjà installée | « L'app est déjà installée sur cet appareil. » |
+| Mot de passe oublié | bouton qui dit : en demander un nouveau à Sitô, reçu par SMS (aucun e-mail : voir 02-TRD §7) |
+| Pas de compte | « Sitô vous donne votre identifiant et votre mot de passe. » |
+| Démonstration | bandeau avec l'adresse et le mot de passe du compte de démonstration |
 
 ## 4. Les parcours de bout en bout
 
@@ -158,9 +64,9 @@ Paramètre d'adresse : `?demo` force la démonstration.
 
 | # | Qui | Ce qui se passe | État |
 |---|---|---|---|
-| 1 | Fabrice | l'entreprise existe (Sirene) ; `select public.creer_invitation('<siren>')` (outil MCP) donne le jeton ; il envoie par SMS `<adresse de l'app>/#/inscription/<jeton>` | Fait (fonction) ; l'adresse de l'app attend sa mise en ligne |
-| 2 | Artisan | ouvre le lien, tape son e-mail et choisit un mot de passe, une fois | Fait, prouvé (T43) |
-| 3 | Fonction Edge | crée le compte déjà confirmé, le rattache dans `membres`, marque le lien servi ; l'app se connecte (`signInWithPassword`), session gardée sur l'appareil | Fait, prouvé sur le compte d'essai |
+| 1 | Fabrice | sur son PC, `lanceurs\COMPTE_ARTISAN.bat` : e-mail et SIREN de l'artisan ; l'entreprise est lue dans l'annuaire, le compte créé, le mot de passe affiché une fois | Fait contre des faux (`essai-comptes`) ; réel : F1 |
+| 2 | Fabrice | donne à l'artisan, par SMS, l'adresse de l'app, son identifiant et son mot de passe | — |
+| 3 | Artisan | ouvre l'app, se connecte une fois (`signInWithPassword`) ; la session reste sur l'appareil | Fait, prouvé (démonstration) |
 | 4 | App | lit `membres` → SIREN ; toutes les lectures suivantes en dépendent | Fait, non prouvé |
 
 ### 4.2 Ajouter une photo depuis un chantier

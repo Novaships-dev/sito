@@ -93,9 +93,9 @@ Tu te tais. Le premier qui parle après cette question perd.
 
 ### 6. Verrouiller (30 secondes)
 
-> « Parfait. Je vous envoie le lien d'inscription par SMS, ça prend deux minutes. \[Si annuel :\] Et on fixe les photos : vous êtes sur quel chantier cette semaine ? Mardi ou jeudi ? »
+> « Parfait. Je vous envoie par SMS votre identifiant et votre mot de passe pour l'app. \[Si annuel :\] Et on fixe les photos : vous êtes sur quel chantier cette semaine ? Mardi ou jeudi ? »
 
-Tu restes en ligne pendant qu'il s'inscrit. Tant qu'il n'a pas validé, l'appel n'est pas fini.
+Tu restes en ligne pendant qu'il se connecte. Tant qu'il n'est pas entré dans l'app, l'appel n'est pas fini.
 
 ### 7. Il ne signe pas aujourd'hui
 

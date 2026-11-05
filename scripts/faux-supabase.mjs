@@ -43,9 +43,11 @@ function filtrer(lignes, params) {
 
 // base : { <table>: [lignes] }     cles : { <table>: ['colonne', ...] }
 // objets : Map('<espace>/<chemin>' -> Buffer)
-// comptes : Set des identifiants de compte (API d'administration d'Auth)
+// comptes : Set des identifiants de compte (API d'administration d'Auth) ;
+// infos : Map id -> { email, password, confirme }, pour que l'essai mesure ce
+// que le code a réellement posé.
 // fonctions : { <nom>: (args, base) => résultat } — d'autres fonctions SQL que jour_paris.
-export async function fauxSupabase({ cle, base = {}, cles = {}, objets = new Map(), jourParis = true, comptes = new Set(), fonctions = {} } = {}) {
+export async function fauxSupabase({ cle, base = {}, cles = {}, objets = new Map(), jourParis = true, comptes = new Set(), infos = new Map(), fonctions = {} } = {}) {
   const vues = [];
   const serveur = createServer((req, res) => {
     const morceaux = [];
@@ -97,10 +99,32 @@ export async function fauxSupabase({ cle, base = {}, cles = {}, objets = new Map
       }
       // ---- comptes (Auth, administration) : effacer un compte efface ce qui
       // s'y rattache, comme les ON DELETE CASCADE de la vraie base.
+      if (u.pathname === '/auth/v1/admin/users' && req.method === 'GET') {
+        const page = Number(u.searchParams.get('page') || 1), par = Number(u.searchParams.get('per_page') || 50);
+        const tous = [...comptes].map((id) => ({ id, email: infos.get(id)?.email ?? null }));
+        return repondre(200, { users: tous.slice((page - 1) * par, page * par) });
+      }
+      if (u.pathname === '/auth/v1/admin/users' && req.method === 'POST') {
+        const c = json() || {};
+        const email = String(c.email || '').toLowerCase();
+        if ([...infos.values()].some((i) => i.email === email)) return repondre(422, { code: 'email_exists', message: 'A user with this email address has already been registered' });
+        if (typeof c.password !== 'string' || c.password.length < 6) return repondre(422, { code: 'weak_password', message: 'Password should be at least 6 characters.' });
+        const id = `00000000-0000-4000-8000-${String(comptes.size + 1).padStart(12, '0')}`;
+        const mdp = c.password;
+        comptes.add(id); infos.set(id, { email, password: mdp, confirme: c.email_confirm === true });
+        return repondre(200, { id, email });
+      }
       const compte = u.pathname.match(/^\/auth\/v1\/admin\/users\/([0-9a-f-]+)$/);
+      if (compte && req.method === 'PUT') {
+        if (!comptes.has(compte[1])) return repondre(404, { message: 'User not found' });
+        const c = json() || {};
+        const mdp = c.password;
+        if (typeof mdp === 'string') infos.get(compte[1]).password = mdp;
+        return repondre(200, { id: compte[1], email: infos.get(compte[1]).email });
+      }
       if (compte && req.method === 'DELETE') {
         if (!comptes.has(compte[1])) return repondre(404, { message: 'User not found' });
-        comptes.delete(compte[1]);
+        comptes.delete(compte[1]); infos.delete(compte[1]);
         for (const t of ['membres', 'suppressions', 'invitations']) if (base[t]) base[t] = base[t].filter((l) => l.user_id !== compte[1]);
         return repondre(200, {});
       }
@@ -174,7 +198,7 @@ export async function fauxSupabase({ cle, base = {}, cles = {}, objets = new Map
   await new Promise((r) => serveur.listen(0, '127.0.0.1', r));
   return {
     url: `http://127.0.0.1:${serveur.address().port}`,
-    base, objets, vues, comptes,
+    base, objets, vues, comptes, infos,
     arreter: () => serveur.close(),
   };
 }

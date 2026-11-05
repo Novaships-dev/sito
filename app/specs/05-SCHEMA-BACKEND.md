@@ -371,27 +371,14 @@ depuis l'app.
 `reponse`, `relance_prevue`, `statut` (`a_envoyer` … `ne_plus_contacter`).
 Aucune politique : invisible pour les artisans.
 
-### 3.22 `invitations` — liens d'inscription et de reprise (service seulement)
+### 3.22 `invitations` — retirée de l'usage (5 nov. 2026)
 
-Décision de Fabrice du 29 oct. 2026 : inscription par e-mail et mot de passe,
-une seule fois, sans code ; Fabrice envoie le lien par SMS. Migration
-`20261029181645_invitations`.
-
-| Colonne | Type | Contrainte |
-|---|---|---|
-| `jeton` | text | **PK**, 64 caractères hexadécimaux (256 bits tirés par la base) |
-| `siren` | text | FK `entreprises` (suppression en cascade) ; index |
-| `genre` | text | `inscription` (crée le compte) ou `reprise` (nouveau mot de passe) |
-| `user_id` | uuid | FK `auth.users` ; posé à l'inscription ; obligatoire pour une reprise |
-| `cree_le`, `expire_le` | timestamptz | `expire_le` = création + 14 jours |
-| `utilisee_le` | timestamptz | posé d'un coup par la fonction Edge (un seul usage) |
-
-Aucune politique, aucun droit pour l'app ni pour un visiteur. Un lien se
-fabrique par `public.creer_invitation(siren, genre)` (clé de service ou outil
-MCP) ; il ne sert que par la fonction Edge `inscription`
-(`supabase/functions/inscription/`), qui crée le compte déjà confirmé
-(aucun e-mail envoyé) et le rattache dans `membres`. Essai :
-`supabase/essais/invitations.sql`, `scripts/essai-inscription.mjs`.
+Les liens d'inscription et de reprise (migration `20261029181645_invitations`,
+décision du 29 oct.) ne servent plus : Fabrice crée les comptes lui-même
+(décision du 5 nov. 2026, `atelier/comptes.mjs`). La table et
+`public.creer_invitation` sont encore en base, sans droit pour l'app ni pour
+un visiteur, et ne contiennent que deux liens déjà servis du compte d'essai.
+Leur retrait par une nouvelle migration attend l'accord de Fabrice (F23).
 
 ## 4. Fonctions et déclencheurs
 
@@ -399,7 +386,7 @@ MCP) ; il ne sert que par la fonction Edge `inscription`
 |---|---|
 | `prive.est_membre(siren)` | `security definer` : l'utilisateur connecté est-il membre ? Base de toutes les politiques |
 | `prive.jour_paris(instant)` | date du jour à Paris (la base tourne en UTC) |
-| `public.creer_invitation(siren, genre)` | `security definer`, clé de service seulement : fabrique un lien d'inscription ou de reprise (§3.22) et rend son jeton |
+| `public.creer_invitation(siren, genre)` | ne sert plus (§3.22) ; retrait : F23 |
 | `public.deposer_demande(siren, message, nom, telephone, courriel, page, piege)` | `security definer`, appelable par un visiteur (`anon`, voulu) : le formulaire d'un site d'abonné ; champ piège (rien d'écrit), site `abonne` ou `publie` seulement, longueurs, téléphone ou courriel exigé, 10 par jour et par adresse IP, 50 par site ; écrit `demandes` et compte `statistiques.demandes` du jour de Paris ; rend `recue`, `inconnu`, `invalide` ou `trop` (T10, migration `20261104174705`) |
 | `prive.maj_horodatage()` | pose `mis_a_jour_le` à chaque modification (entreprises, profils, tarifs, sites, chantiers, adresses, abonnements, connexions_google, prospects) |
 
@@ -431,7 +418,7 @@ doit offrir pour que l'app soit complète. Les noms sont proposés.
 
 | Besoin | Déclencheur | Lit | Écrit |
 |---|---|---|---|
-| Inscrire un artisan (fonction Edge `inscription`, faite le 29 oct.) | lien envoyé par Fabrice (`creer_invitation`) | `invitations` | `auth.users` (par l'API d'administration), `membres`, `invitations` ; restent à poser : `profils`, `sites`, `adresses` (offerte) |
+| Créer le compte d'un artisan (`atelier/comptes.mjs`, 5 nov.) | Fabrice, sur son PC (`lanceurs\COMPTE_ARTISAN.bat`) | `entreprises`, annuaire public des entreprises | `entreprises` (si absente), `profils`, `auth.users` (API d'administration), `membres` ; restent à poser : `sites`, `adresses` |
 | Préparer les photos reçues (`atelier/preparer-recues.mjs`, fait) | nouvelle ligne `photos.etat = recue` | stockage | `photos.chemin/largeur/hauteur/etat/motif/format_origine` |
 | Refabriquer et publier | photo prête, profil ou tarifs modifiés | tout le site | `fabrications`, `versions_site`, `sites`, R2, KV |
 | Recevoir une demande | POST du formulaire du site | — | `demandes`, `statistiques` |

@@ -1,6 +1,7 @@
-// Connexion par e-mail et mot de passe (décision du 29 octobre 2026 : on
-// s'inscrit une fois, c'est fini). Le compte se crée par le lien que Sitô
-// envoie par SMS (Inscription.tsx) ; la session reste ouverte sur le téléphone.
+// Connexion par e-mail et mot de passe. Le compte est créé par Fabrice, qui
+// donne à l'artisan son identifiant (son e-mail) et son mot de passe
+// (décision du 5 nov. 2026, atelier/comptes.mjs) ; la session reste ouverte
+// sur le téléphone.
 import { useState } from 'react';
 import { useApp, useAction, Message } from '../ui';
 import { COMPTE_DEMO } from '../donnees/demo';
@@ -36,9 +37,9 @@ export function Connexion() {
       </form>
       <button type="button" className="lien" aria-expanded={oubli} onClick={() => setOubli(!oubli)}>Mot de passe oublié ?</button>
       {oubli && (
-        <p className="aide">Demandez à Sitô un nouveau lien : vous le recevez par SMS, il vous fait choisir un nouveau mot de passe. Vos chantiers et votre site ne bougent pas.</p>
+        <p className="aide">Demandez-en un nouveau à Sitô : vous le recevez par SMS. Vos chantiers et votre site ne bougent pas.</p>
       )}
-      <p className="aide">Pas encore de compte ? Ouvrez le lien d’inscription que Sitô vous a envoyé par SMS.</p>
+      <p className="aide">Pas encore de compte ? Sitô vous donne votre identifiant et votre mot de passe.</p>
       <p className="pied"><a href="#/installer">Installer l’app sur mon téléphone</a></p>
     </main>
   );

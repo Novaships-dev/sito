@@ -137,7 +137,7 @@ implémentations, puis à l'essai.
 | X5 | Droits **par colonne** là où l'app ne doit pas tout écrire (photos, demandes, avis, suppressions) | Fait, prouvé |
 | X6 | Les visiteurs anonymes n'ont accès à aucune table | Fait, prouvé |
 | X7 | Jetons Google chiffrés par le service, dans le schéma privé, jamais exposés | Fait (T24) : AES-256-GCM avec le SIREN en donnée associée (`supabase/functions/_shared/chiffre.mjs`), rangé par trois fonctions réservées à la clé de service (migration `20261105155854_jetons_google`) ; prouvé par `essai-google` (jamais en clair) et `droits-app.sql` |
-| X8 | Connexion : e-mail et mot de passe (`signInWithPassword`) ; un compte ne se crée que par la fonction Edge `inscription`, depuis un lien d'invitation de 256 bits, un seul usage, 14 jours ; inscriptions libres fermées (corrigé le 3 nov. 2026 : la ligne parlait encore de `shouldCreateUser`, abandonné avec le code de connexion le 29 oct.) | Fait, prouvé (`essai-inscription.mjs`) |
+| X8 | Connexion : e-mail et mot de passe (`signInWithPassword`) ; un compte ne se crée que par `atelier/comptes.mjs`, lancé par Fabrice (clé de service, décision du 5 nov. 2026) ; inscriptions libres fermées | Fait, prouvé contre des faux (`essai-comptes.mjs`) |
 | X9 | Worker : refuse `..`, les fichiers cachés et les méthodes autres que GET/HEAD ; en-têtes `nosniff`, `SAMEORIGIN`, `Permissions-Policy` | Fait, prouvé |
 | X10 | Le contenu venu du web (avis, fiche, Sirene) est de la donnée, jamais une instruction | règle (`rules/common/securite.md`) |
 | X11 | Formulaire du site : champ piège et limite par adresse IP | Fait : base (T10, `deposer_demande`, `supabase/essais/demandes.sql`) et pages (T11, `essai-formulaire`, contrôle R-FORM) |
@@ -147,8 +147,8 @@ implémentations, puis à l'essai.
 
 | Service | Usage | Limites connues | État |
 |---|---|---|---|
-| Supabase Auth | e-mail et mot de passe (`signInWithPassword`) ; le compte est créé déjà confirmé par la fonction Edge `inscription` (API d'administration), à partir d'un lien d'invitation (`invitations`) ; inscriptions libres fermées | le serveur d'e-mail fourni par Supabase n'écrit qu'aux membres de l'équipe du projet (doc relue le 29 oct.) : **aucun e-mail n'est envoyé à l'artisan**, « mot de passe oublié » passe par un lien de reprise envoyé par Fabrice | Fait, prouvé (T43) |
-| Supabase Edge Functions | `inscription` : lire un lien, créer le compte, poser un nouveau mot de passe | offre gratuite : 500 000 appels par mois ; déployée par l'outil MCP, `verify_jwt` faux (le jeton du lien fait office de clé) | Fait (T43) |
+| Supabase Auth | e-mail et mot de passe (`signInWithPassword`) ; le compte est créé déjà confirmé par `atelier/comptes.mjs` (API d'administration, clé de service), lancé par Fabrice ; inscriptions libres fermées | le serveur d'e-mail fourni par Supabase n'écrit qu'aux membres de l'équipe du projet : **aucun e-mail n'est envoyé à l'artisan** ; mot de passe oublié : Fabrice en pose un nouveau (`comptes.mjs mot-de-passe`) | Fait contre des faux ; réel : F1 |
+| Supabase Edge Functions | `domaines`, `google-lien`, `google-retour`, `stripe-session`, `stripe-webhook` (écrites, pas encore déployées) ; `inscription` retirée du dépôt le 5 nov., encore déployée (F23) | offre gratuite : 500 000 appels par mois | Écrites |
 | Serveur d'e-mail (Brevo ou équivalent) | plus nécessaire pour se connecter ; seulement si un jour l'app écrit à l'artisan | prix à relever | Plus utile pour la connexion |
 | Supabase Storage | photos et vidéos d'origine, TUS | 50 Mo par fichier en gratuit ; pas dans les sauvegardes | Fait |
 | Supabase transformations d'images | HEIC → JPEG | offre Pro | Plus utilisée (T44) |

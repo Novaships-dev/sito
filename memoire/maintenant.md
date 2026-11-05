@@ -13,7 +13,7 @@ chiffres viennent de
 
 ## En une phrase
 
-Le générateur de sites, la base, l'inscription, la préparation des photos dans
+Le générateur de sites, la base, la connexion, la préparation des photos dans
 l'app, la publication par versions et la prospection marchent et sont prouvés
 par des essais ; **aucun site d'abonné n'est encore vendable** : le formulaire de
 demande pas encore en ligne (F21), les images de 13 métiers sur 16, pas d'adresse publique posée avant la première
@@ -31,11 +31,11 @@ d'abord.** T47 (garde de l'essai de l'app), T48 (échappement), T50
 et T53 sont faites. Le 4 nov. aussi : T10 (formulaire, côté base), T12
 (suppression des comptes, contre des faux, pas encore lancée chaque nuit :
 D-16), T16 et T17 (Stripe écrit et relié, rien de déployé : F7), T31 (codes
-APE), la maçonnerie, la menuiserie, le carrelage, la plomberie et (le 5) l’électricité, la plâtrerie, l’isolation, la métallerie, le terrassement, l’étanchéité, le parquet, la piscine et le paysagiste : T32 est faite, les 16 métiers ont leurs textes. T19 aussi (domaines, contre des faux serveurs ; réel : F8, F6, F5), T20 (écran Mon adresse sur la démonstration ; fonction Edge `domaines` écrite, à déployer avec F8), T22 (statistiques Umami, contre un faux ; réel : F9) et T24 (Google : jeton chiffré, avis, réponses validées, contre un faux ; réel : F13). Le 5 nov., Fabrice a simplifié Sitô : pas d'app Android (T28, T29 abandonnées), comptes créés par lui, espace de l'artisan réduit aux photos, chantiers et compte ; nettoyage en 8 étapes, l'étape 1 (Android) est faite, l'offre et la page vitrine attendent sa description. T45 est faite contre des faux, bloquée sur
+APE), la maçonnerie, la menuiserie, le carrelage, la plomberie et (le 5) l’électricité, la plâtrerie, l’isolation, la métallerie, le terrassement, l’étanchéité, le parquet, la piscine et le paysagiste : T32 est faite, les 16 métiers ont leurs textes. T19 aussi (domaines, contre des faux serveurs ; réel : F8, F6, F5), T20 (écran Mon adresse sur la démonstration ; fonction Edge `domaines` écrite, à déployer avec F8), T22 (statistiques Umami, contre un faux ; réel : F9) et T24 (Google : jeton chiffré, avis, réponses validées, contre un faux ; réel : F13). Le 5 nov., Fabrice a simplifié Sitô : pas d'app Android (T28, T29 abandonnées), comptes créés par lui, espace de l'artisan réduit aux photos, chantiers et compte ; nettoyage en 8 étapes, les étapes 1 (Android) et 2 (comptes créés par Fabrice) sont faites, l'offre et la page vitrine attendent sa description. T45 est faite contre des faux, bloquée sur
 F21 pour le réel ; T13 est sans objet (Q7).
 T11 (formulaire dans les pages) faite aussi : la clé publique est dans le
 dépôt ; en ligne avec la refabrication automatique (F21). **Plus de tâche « à faire » ouverte** hors T04 (attend T03, donc F1).
-Le reste attend une action de Fabrice : F1, F5, F6, F7, F8, F9, F13, F15, F20, F21.
+Le reste attend une action de Fabrice : F1, F5, F6, F7, F8, F9, F13, F15, F20, F21, F23.
 Depuis T50, un
 site fabriqué depuis la base est un site d'abonné (`--publication`) : sans
 adresse électronique ni directeur de la publication dans `profils`, il n'est
@@ -57,20 +57,21 @@ T60 faite : les photos reçues par mail ou WhatsApp deviennent le site d'abonné
 | Générateur | un site complet depuis un SIREN, un métier et des photos, en 1 min 30 environ ; 4 archétypes ; bouton « Appeler » ; prix et estimateur seulement sur les tarifs de l'artisan ; un seul échappement (T48) ; mentions légales sur un site d'abonné (T50) ; référencement (T51) | `essai-echappement.mjs` (101), `essai-mentions.mjs` (56), `essai-referencement.mjs` (94) ; les cinq vérificateurs à 0 sur les trois sites de démonstration (`node scripts/fabriquer-demo.mjs`, machine avec images) |
 | Unicité | 100 sites d'un même métier tous différents dans un département, pour ravalement, couverture et peinture | `node scripts/capacite-unicite.mjs --photos plan` (projection avec les 54 images prévues par métier) |
 | Base Supabase | projet `sito`, Paris, gratuit ; droits par ligne sur toutes les tables, droits par colonne ; 9 migrations (la dernière : mentions légales, 3 nov.) | `droits-app.sql` rejoué le 3 nov. après la migration de T50, aucune faute ; `droits.sql` le 29 oct. (T05) |
-| Inscription (T43) | par le lien que Fabrice envoie par SMS, e-mail et mot de passe, une seule fois, sans code ; l'artisan reste connecté | `essai-inscription.mjs` (23 contrôles) ; essayée en vrai sur le compte d'essai (inscription, puis reprise) |
+| Comptes (5 nov.) | Fabrice crée le compte (e-mail + SIREN, entreprise lue dans l'annuaire public) et donne le mot de passe tiré au sort ; l'artisan se connecte et reste connecté | `essai-comptes.mjs` (25 contrôles, 7 cassures sur 7), contre des faux ; réel : F1 |
 | Photos dans l'app (T44) | sur le téléphone, avant l'envoi : version réduite redressée, original nettoyé (sans GPS ni appareil, mêmes pixels), aperçu des RAW ; ce qui est illisible est dit à l'artisan et n'est pas envoyé | `node scripts/essai-app.mjs` : 132 contrôles, 0 faute ; 3 copies cassées attrapées |
 | App de l'artisan | React, installable ; tous les écrans en démonstration | `essai-app.mjs` sur iPhone 390, Android 360, ordinateur 1 280, sous Chromium et WebKit (Safari, CI) |
 | Service atelier | photos reçues préparées (T07) ; site fabriqué depuis la base (T08) ; boucle qui refait, vérifie et publie par version (T09) | `essai-preparation.mjs` (77), `essai-fabrication-base.mjs` (12), `essai-boucle.mjs` (23) |
 | Prospection | artisans réels du 13 trouvés et notés ; lot du jour fabriqué, publié en privé ; page d'appels | `essai-prospection.mjs` (122), `essai-publication-prospection.mjs` (68), `essai-appels.mjs` (79), `essai-preparer-appels.mjs` (49) |
 | Suite d'essais | 23 étapes ; toutes vertes le 3 nov. à 01:42 sur le PC (commit `85bba53`, 20 étapes alors) ; sur la machine de Cowork, sans exiftool, les 3 étapes qui en ont besoin disent « NON LANCÉ » (T47) | `memoire/essais/derniers.txt` ; CI GitHub |
 
-## Pour Fabrice : fabriquer un lien d'inscription
+## Pour Fabrice : créer le compte d'un artisan
 
-Demander à Claude `select public.creer_invitation('<siren>');` : le lien vaut
-14 jours et sert une fois. Mot de passe oublié : un lien de reprise,
-`creer_invitation('<siren>', 'reprise')` (Q4, appliquée). Pour qu'un artisan
-s'inscrive pour de vrai, il manque encore l'app en ligne (son adresse, pour le
-lien) et une entreprise réelle dans la base.
+Sur le PC, double-clic sur `lanceurs\COMPTE_ARTISAN.bat` : choisir 1, taper
+l'e-mail de l'artisan et son SIREN. La fenêtre affiche son identifiant et son
+mot de passe, une seule fois : les lui envoyer par SMS. Mot de passe oublié :
+même lanceur, choix 2. Il faut la clé de service dans `.env` (F1) et
+`SITO_ADRESSE_APP` quand l'app sera en ligne. Jamais par GitHub : le dépôt est
+public.
 
 ## Ce qui est en ligne
 

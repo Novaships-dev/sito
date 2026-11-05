@@ -77,7 +77,11 @@ change pas si la demande part ailleurs plus tard.
 Choix réversible et sans coût : il sera appliqué à T10 si personne ne dit
 autre chose, et la ligne de T10 réécrite en conséquence.
 
-## Q4 (ouverte), 29 octobre 2026
+## Q4 (sans objet depuis le 5 nov.), 29 octobre 2026
+
+Depuis le 5 nov. 2026, Fabrice crée les comptes et pose lui-même un nouveau
+mot de passe (`node atelier/comptes.mjs mot-de-passe <adresse>`, ou
+`lanceurs\COMPTE_ARTISAN.bat`). Le texte ci-dessous est l'historique.
 
 **« Mot de passe oublié » : par e-mail ou par un nouveau lien SMS ?** T43
 prévoyait l'e-mail fourni avec Supabase. La documentation de Supabase (relue

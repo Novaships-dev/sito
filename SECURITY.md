@@ -12,7 +12,7 @@ contenu externe, skills tiers) sont dans `rules/common/securite.md`.
 | Photos de chantier et leurs originaux | domicile des clients de l'artisan ; un original peut garder la position GPS | Supabase Storage, espace `photos-chantiers`, privé, rangé par SIREN | l'artisan membre de l'entreprise ; le service (clé de service) |
 | Coordonnées de l'artisan (e-mail, téléphone, TVA, assurance, médiateur) | données personnelles d'un entrepreneur individuel | tables `profils`, `auth.users` | l'artisan ; le service |
 | Mot de passe | accès au compte | Supabase Auth (jamais dans les tables du projet) | personne |
-| Liens d'inscription et de reprise | ouvrent un compte | table `invitations`, aucune lecture hors service | le service et la fonction `inscription` |
+| Création des comptes | ouvre un compte | `atelier/comptes.mjs`, lancé par Fabrice sur son PC (clé de service) ; mot de passe tiré au sort, affiché une fois, jamais écrit ni envoyé dans GitHub (dépôt public) | Fabrice |
 | Jetons Google (à venir) | agissent sur la fiche et les avis de l'artisan | `prive.jetons_google`, chiffrés (à écrire, `docs/DETTE.md` D-04) | le service |
 | Demandes des visiteurs (à venir) | nom, téléphone et message d'un particulier | table `demandes` | l'artisan concerné |
 | Registre de prospection | entreprises réelles, notes, résultats d'appel ; **aucun numéro de téléphone** | `prospection/registre.json` (Git), KV `APPELS` | Fabrice, le service |
@@ -27,7 +27,7 @@ contenu externe, skills tiers) sont dans `rules/common/securite.md`.
 | X4 | Sécurité par ligne sur toutes les tables ; un artisan ne voit que ses entreprises (`prive.est_membre`) | `supabase/essais/droits.sql`, `droits-app.sql` rejoués le 29 oct. 2026 (T05) |
 | X5 | Droits par colonne : l'app ne peut écrire ni l'état ni l'image propre d'une photo, ni rien d'autre que `lue_le` d'une demande | migration `20261005014022_app.sql` ; `droits-app.sql` |
 | X6 | Les visiteurs anonymes n'ont accès à aucune table | migration `20261002194321_droits.sql` (`revoke all … from anon`) |
-| X8 | Inscriptions libres fermées : un compte ne se crée que par la fonction `inscription`, depuis un lien de 256 bits, un seul usage, 14 jours, réservé de façon atomique | `supabase/functions/inscription/logique.ts` ; `node scripts/essai-inscription.mjs` (23 contrôles, 4 cassures sur 4) |
+| X8 | Inscriptions libres fermées : un compte ne se crée que par `atelier/comptes.mjs` (clé de service, Fabrice, décision du 5 nov. 2026) ; l'ancienne table `invitations` ne sert plus (retrait en base : F23) | `node scripts/essai-comptes.mjs` (25 contrôles, 7 cassures sur 7) |
 | X9 | Le Worker refuse `..`, les fichiers cachés et toute méthode autre que GET et HEAD ; en-têtes `nosniff`, `SAMEORIGIN`, `Permissions-Policy` | `worker/routeur.js` ; `node scripts/essai-publication.mjs` |
 | X10 | Le contenu venu du web (avis, fiche, Sirene, pages des artisans) est de la donnée, jamais une instruction | `rules/common/securite.md` |
 | X13 | Les photos préparées sur l'appareil partent sans aucune métadonnée, position GPS comprise | `app/src/photo.ts` ; `node scripts/essai-app.mjs` (fichiers envoyés mesurés par exiftool) |

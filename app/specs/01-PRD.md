@@ -155,7 +155,7 @@ Spécification complète : `app/specs/08-PROSPECTION.md`. Script d'appel :
 
 | N° | Exigence | Source | État et preuve |
 |---|---|---|---|
-| A1 | S'inscrire une seule fois, par le lien que Fabrice envoie par SMS (e-mail et mot de passe choisi, sans code ni e-mail de confirmation), puis rester connecté sur son téléphone ; mot de passe oublié : Fabrice renvoie un lien de reprise | 29 oct. | Fait, prouvé (T43) : `essai-app`, `essai-inscription.mjs --reel` (vraie base, compte d'essai) |
+| A1 | Se connecter avec l'identifiant (son e-mail) et le mot de passe que Fabrice lui donne, puis rester connecté sur son téléphone ; mot de passe oublié : Fabrice en pose un nouveau | 29 oct., 5 nov. | Fait, prouvé : `essai-app` (connexion), `essai-comptes` (création, nouveau mot de passe, contre des faux) ; réel : clé de service (F1) |
 | A2 | Voir les visites, appels et demandes de la semaine, et la courbe de 28 jours, comptés au jour de Paris | 23 sept. ; plan 7.4 | Partiel : affichage prouvé (`essai-app`) ; mesure Umami à faire (T22) |
 | A3 | Lire les demandes laissées sur le site, appeler ou répondre d'un geste, marquer comme lue | plan 7.1 | Partiel : écran prouvé (`essai-app`) ; formulaire du site à faire (S21) |
 | A4 | Créer un chantier, ajouter des paires avant / après et d'autres photos | 23 sept. | Fait, prouvé : `essai-app` (démonstration) |

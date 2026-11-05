@@ -28,6 +28,8 @@ const CODE_APE = /^\d{2}\.\d{2}[A-Z]$/;
 
 // Les filtres que le vrai serveur connaît. Tout le reste est ignoré.
 const FILTRES = {
+  // Recherche libre : un SIREN rend cette entreprise ; un mot, les noms qui le portent.
+  q: (e, v) => (/^\d{9}$/.test(v) ? e.siren === v : String(e.nom_complet || '').toLowerCase().includes(v.toLowerCase())),
   activite_principale: (e, v) => v.split(',').includes(e.activite_principale),
   // Volontairement sur TOUS les établissements, comme le vrai.
   departement: (e, v) => (e.departements_etablissements || []).includes(v),

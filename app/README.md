@@ -21,11 +21,11 @@ n'a pas encore tourné contre la vraie base (voir « Ce qui n'est pas prouvé »
 | Fichier | Rôle |
 |---|---|
 | `src/types.ts` | les données, telles que la base les décrit, et l'interface `Donnees` |
-| `src/donnees/supabase.ts` | la vraie base : connexion par e-mail et mot de passe, inscription par lien (fonction Edge `inscription`), envoi reprenable (TUS, 6 Mo) |
+| `src/donnees/supabase.ts` | la vraie base : connexion par e-mail et mot de passe (compte créé par Fabrice), envoi reprenable (TUS, 6 Mo) |
 | `src/donnees/demo.ts` | la démonstration, en mémoire ; garde les fichiers « envoyés » pour l'essai |
 | `src/photo.ts` | préparation sur l'appareil : redressée, 3 200 px au plus, JPEG sans métadonnées ; RAW, DNG et HEIC illisibles partent tels quels ; vidéos à part ; PDF refusé |
 | `src/attente.ts` | file d'envoi gardée dans l'appareil (IndexedDB) jusqu'à la fin de l'envoi |
-| `src/ecrans/` | Connexion, Inscription (lien d'inscription ou de reprise), Accueil, Chantiers, Mon site, Mon adresse, Avis, Fiche Google, Abonnement, Compte, Installer |
+| `src/ecrans/` | Connexion, Accueil, Chantiers, Mon site, Mon adresse, Avis, Fiche Google, Abonnement, Compte, Installer |
 
 Pas d'app sur le Play Store (décision du 5 nov. 2026) : l'app s'installe
 sur l'écran d'accueil depuis le site Sitô, sur iPhone comme sur Android.

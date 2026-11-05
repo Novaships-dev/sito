@@ -3,7 +3,7 @@
 // permet, quoi qu'elle demande. Essais : supabase/essais/droits*.sql.
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import * as tus from 'tus-js-client';
-import type { Donnees, LienCompte, Profil, Tarif, Photo, EnvoiPhoto, EnvoiOriginal, JourStat, Adresse, Branchement, RechercheDomaine } from '../types';
+import type { Donnees, Profil, Tarif, Photo, EnvoiPhoto, EnvoiOriginal, JourStat, Adresse, Branchement, RechercheDomaine } from '../types';
 import { jourParis, decalerJour, sommeParJour } from '../jour';
 
 const ESPACE = 'photos-chantiers';
@@ -71,19 +71,6 @@ export function donneesSupabase(url: string, cle: string): Donnees {
     });
   }
 
-  // La fonction Edge « inscription » : elle crée le compte déjà confirmé, sans
-  // e-mail, et le rattache à l'entreprise du lien. Ses refus sont des phrases
-  // pour l'artisan.
-  async function lien(corps: Record<string, unknown>): Promise<Record<string, unknown>> {
-    let r: Response;
-    try {
-      r = await fetch(`${url}/functions/v1/inscription`, { method: 'POST', headers: { apikey: cle, 'content-type': 'application/json' }, body: JSON.stringify(corps) });
-    } catch { throw new Error('Pas de réseau. Réessayez quand le téléphone capte.'); }
-    const c = await r.json().catch(() => null) as Record<string, unknown> | null;
-    if (!c?.ok) throw new Error((c?.erreur as string) || 'Sitô ne répond pas. Réessayez dans un moment.');
-    return c;
-  }
-
   // L'extension suit le fichier envoyé (photo.ts met .jpg quand l'appareil a réencodé),
   // format_origine garde ce que l'appareil avait produit (heic, dng…).
   const extension = (nom: string, format: string) => ((nom.includes('.') ? nom.split('.').pop() : format) || 'bin').toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 8) || 'bin';
@@ -100,18 +87,6 @@ export function donneesSupabase(url: string, cle: string): Donnees {
       if (r.error) throw new Error(/invalid login credentials/i.test(r.error.message)
         ? 'Adresse e-mail ou mot de passe incorrect.'
         : r.error.message);
-    },
-    async lireLien(jeton) {
-      const c = await lien({ action: 'lire', jeton });
-      return { genre: c.genre, entreprise: c.entreprise, courriel: c.courriel ?? null } as LienCompte;
-    },
-    async sInscrire(jeton, courriel, mdp) {
-      const c = await lien({ action: 'inscrire', jeton, courriel, motDePasse: mdp });
-      await this.seConnecter(c.courriel as string, mdp);
-    },
-    async reprendre(jeton, mdp) {
-      const c = await lien({ action: 'reprendre', jeton, motDePasse: mdp });
-      await this.seConnecter(c.courriel as string, mdp);
     },
     async deconnecter() { sirenMemo = null; await sb.auth.signOut(); },
     surChangementSession(rappel) {
