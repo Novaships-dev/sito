@@ -188,6 +188,12 @@ export async function fabriquerDepuisBase({
     if (process.env.SUPABASE_URL && process.env.SUPABASE_CLE_PUBLIQUE)
       args.push('--formulaire-url', process.env.SUPABASE_URL, '--formulaire-cle', process.env.SUPABASE_CLE_PUBLIQUE);
     else dire('formulaire de demande absent : SUPABASE_CLE_PUBLIQUE manque (.env ou secret GitHub)');
+    // La mesure d'audience (T22) : le site Umami de ce site, posé par le
+    // service dans `sites.umami_id`. Sans lui, pas de mesure (rien d'inventé).
+    if (siteExistant?.umami_id) {
+      args.push('--umami-id', siteExistant.umami_id);
+      if (process.env.UMAMI_SCRIPT) args.push('--umami-script', process.env.UMAMI_SCRIPT);
+    }
     // Asynchrone : un `spawnSync` gelait la boucle d'événements le temps de la
     // fabrication, et les connexions ouvertes vers Supabase mouraient dessous.
     const r = await lancer(process.execPath, args, { cwd: RACINE });

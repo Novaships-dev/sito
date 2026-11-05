@@ -1,4 +1,4 @@
--- Essai des droits des tables de l'app (migration 20261005014022_app), à
+-- Essai des droits des tables de l'app (migration 20261005014022_app, et T22 : sites.umami_id), à
 -- rejouer après chaque migration qui y touche. Même principe que droits.sql :
 -- deux artisans fictifs A et B, tout est annulé à la fin par une erreur qui
 -- porte le résultat. Aucune ligne « FAUTE » attendue.
@@ -22,6 +22,8 @@ begin
   insert into public.avis (siren, ref_externe, note, texte) values ('480423623', 'essai-1', 5, 'Très bon travail') returning id into a;
   insert into prive.jetons_google (siren, jeton_chiffre, portee) values ('480423623', '\x00'::bytea, 'business.manage');
   insert into public.profils (siren) values ('849891528') on conflict (siren) do nothing;
+  -- T22 : le site Umami d'un site d'abonné, posé par le service.
+  insert into public.sites (siren, metier, archetype, charte, titre, umami_id) values ('480423623', 'ravalement', 'matiere', '{}'::jsonb, 'Essai', '0000aaaa-0000-4000-8000-0000000000aa');
 
   perform set_config('request.jwt.claims', json_build_object('sub', ua, 'role', 'authenticated')::text, true);
   set local role authenticated;
@@ -85,6 +87,10 @@ begin
   exception when others then r := r || 'A demande la suppression : REFUSE (FAUTE) ' || sqlerrm || ' ; '; end;
   begin insert into public.suppressions (user_id) values (ub); r := r || 'A supprime B : ACCEPTE (FAUTE) ; ';
   exception when others then r := r || 'A supprime B : refuse ; '; end;
+  select count(*) into n from public.sites where umami_id = '0000aaaa-0000-4000-8000-0000000000aa'; r := r || 'A lit l identifiant Umami de son site : ' || n || ' ; ';
+  begin update public.sites set umami_id = 'pirate' where siren = '480423623'; get diagnostics n = row_count;
+    r := r || 'A change l identifiant Umami : ' || case when n = 0 then 'refuse' else 'ACCEPTE (FAUTE)' end || ' ; ';
+  exception when others then r := r || 'A change l identifiant Umami : refuse ; '; end;
   reset role;
 
   set local role anon;

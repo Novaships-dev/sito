@@ -30,6 +30,7 @@ import { roles as rolesPhotos, manquants as manquantsPhotos } from './main-photo
 import * as matiere from './archetypes/matiere.mjs';
 import * as appel from './sections/appel.mjs';
 import * as mentionsSection from './sections/mentions.mjs';
+import * as mesure from './sections/mesure.mjs';
 import * as referencement from './sections/referencement.mjs';
 import { html as echapper } from './echapper.mjs';
 
@@ -274,6 +275,8 @@ async function fabriquer(opts) {
   // Le formulaire de demande (T11) : site d'abonné, et adresse de Supabase
   // avec sa clé publique donnée. Il suit les coordonnées du médiateur.
   const blocFormulaire = formulaire.bloc({ abonne, url: arg('formulaire-url'), cle: arg('formulaire-cle'), siren: e.siren });
+  // La mesure d'audience (T22) : site d'abonné qui a son identifiant Umami.
+  const mes = mesure.reglage({ abonne, id: arg('umami-id'), script: arg('umami-script') });
   const presContact = (ml ? mentionsSection.pres(ml) : '') + blocFormulaire;
 
   // Le registre : les sites deja fabriques. Leurs voisins (meme metier, meme
@@ -911,7 +914,7 @@ ${blocFormulaire ? formulaire.script() : ''}
   // dossier reutilise par un site de prospection perd l ancienne page.
   if (ml) {
     const htmlMl = autrePage(html, 'mentions-legales.html', `${e.nomLisible}, ${mentionsSection.TITRE}`)
-      .replace(/<main id="principal">[\s\S]*?<\/main>/, `<main id="principal">\n${mentionsSection.page({ lignes: ml.lignes, e, barre: appel.barre({ e, tel, ap }), appel: appel.lien({ tel, ap }), formulaire: !!blocFormulaire })}\n</main>`)
+      .replace(/<main id="principal">[\s\S]*?<\/main>/, `<main id="principal">\n${mentionsSection.page({ lignes: ml.lignes, e, barre: appel.barre({ e, tel, ap }), appel: appel.lien({ tel, ap }), formulaire: !!blocFormulaire, ml12: mesure.mention(mes) })}\n</main>`)
       .replace(/<div class="entree"[\s\S]*?<\/div>\n/, '');
     writeFileSync(join(opts.sortie, 'mentions-legales.html'), htmlMl, 'utf8');
   } else if (existsSync(join(opts.sortie, 'mentions-legales.html'))) rmSync(join(opts.sortie, 'mentions-legales.html'));
@@ -922,6 +925,10 @@ ${blocFormulaire ? formulaire.script() : ''}
   await referencement.icones({ sortie: opts.sortie, initiale: (e.nomLisible || e.denomination || '?').trim()[0],
     fond: pal.accent, encre: clair(pal.accent) ? '#111111' : '#ffffff' });
   const pagesSite = ['index.html', 'le-travail.html', 'mentions-legales.html'].filter(f => existsSync(join(opts.sortie, f)));
+  if (mes) for (const f of pagesSite) {
+    const p = join(opts.sortie, f);
+    writeFileSync(p, mesure.marquerAppels(readFileSync(p, 'utf8'), mes).replace('</head>', `${mesure.balise(mes)}\n</head>`), 'utf8');
+  }
   if (abonne) referencement.fichiersSite({ sortie: opts.sortie, adresse, pages: pagesSite, jour: new Date().toISOString().slice(0, 10) });
   else for (const f of ['robots.txt', 'sitemap.xml']) if (existsSync(join(opts.sortie, f))) rmSync(join(opts.sortie, f));
   writeFileSync(join(opts.sortie, 'donnees.json'), JSON.stringify({

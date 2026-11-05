@@ -31,7 +31,7 @@ export class ErreurSupabase extends Error {
 
 // Les filtres PostgREST acceptés, écrits en clair pour qu'un appel se relise :
 //   { siren: ['eq', '480423623'], etat: ['in', ['recue', 'prete']] }
-const OPERATEURS = new Set(['eq', 'neq', 'gt', 'gte', 'lt', 'lte', 'like', 'ilike', 'is', 'in']);
+const OPERATEURS = new Set(['eq', 'neq', 'gt', 'gte', 'lt', 'lte', 'like', 'ilike', 'is', 'not.is', 'in']);
 
 function requete({ select, filtres = {}, ordre, limite }) {
   const p = new URLSearchParams();

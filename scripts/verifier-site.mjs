@@ -532,7 +532,7 @@ function referencementSite(chemin) {
       'R-SITE': 'robots.txt et plan du site', 'R-ADRESSE': 'adresse publique', 'R-TITRE': 'titre ou description trop longs',
       'R-EXEMPLE': 'photos de l artisan dites « exemple », ou exemples non dits',
       'R-AVIS': 'emplacement d avis vide sur un site d abonne',
-      'R-FORM': 'formulaire de demande' }[num],
+      'R-FORM': 'formulaire de demande', 'R-MESURE': 'mesure d audience' }[num],
     detail, remede: remede || 'docs/specs/S-REFERENCEMENT.md' });
   let regimeVu = null, adresseVue = null;
   for (const n of pages) {
@@ -576,6 +576,23 @@ function referencementSite(chemin) {
     }
     if (/sb_secret_[A-Za-z0-9_-]{6,}/.test(t)) dire('R-FORM', 'bloquant', n, 'cle secrete Supabase dans la page', 'generateur/sections/formulaire.mjs');
     if (forms.length && !/formulaire-reglages/.test(corps)) dire('R-FORM', 'bloquant', n, 'formulaire sans ses reglages (adresse et cle publique)', 'generateur/sections/formulaire.mjs');
+    // R-MESURE, tache T22 : aucun script tiers, sauf la mesure Umami d'un site
+    // d'abonne ; quand elle est la, chaque lien d'appel est compte et les
+    // mentions legales disent ce qui est mesure (ML12).
+    const externes = [...t.matchAll(/<script\b[^>]*\bsrc="(?:https?:)?\/\/[^"]*"[^>]*>/g)].map(m => m[0]);
+    for (const sc of externes) {
+      const umami = /data-website-id="[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"/.test(sc);
+      if (!umami) dire('R-MESURE', 'bloquant', n, 'script tiers : ' + sc.slice(0, 120), 'generateur/sections/mesure.mjs');
+      else if (regime !== 'abonne') dire('R-MESURE', 'bloquant', n, 'mesure d audience sur un site de prospection', 'generateur/sections/mesure.mjs');
+    }
+    if (externes.length) {
+      const nonComptes = (t.match(/<a\b[^>]*data-appel="numero"[^>]*>/g) || []).filter(a => !/data-umami-event="Appeler"/.test(a)).length;
+      if (nonComptes) dire('R-MESURE', 'bloquant', n, `${nonComptes} lien(s) d appel non compte(s)`, 'generateur/sections/mesure.mjs, marquerAppels');
+      if (pages.includes('mentions-legales.html')) {
+        const ml12 = (lire('mentions-legales.html').match(/data-ml="ML12">([^<]*)</) || [])[1] || '';
+        if (!/Umami/.test(ml12) || /aucun traceur/.test(ml12)) dire('R-MESURE', 'bloquant', 'mentions-legales.html', 'la mesure d audience n est pas dite (ML12)', 'generateur/sections/mesure.mjs, mention');
+      }
+    }
     if (regime === 'abonne') {
       const m = corps.match(/data-exemple="oui"|alt="Exemple|Proposition de site|Photographies d’exemple|class="marqueur">Exemple/i);
       if (m) dire('R-EXEMPLE', 'bloquant', n, 'site d abonne : « ' + m[0] + ' »', 'generateur/composer.mjs, PHOTOS_EXEMPLE');

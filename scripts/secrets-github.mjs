@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-// Pose dans les secrets du dépôt GitHub les clés dont le workflow
-// `refaire-site.yml` a besoin (tâche T45), lues dans le .env de cet
+// Pose dans les secrets du dépôt GitHub les clés dont les workflows
+// `refaire-site.yml` et `statistiques.yml` ont besoin (tâche T45), lues dans le .env de cet
 // ordinateur. Lancé par `lanceurs/SECRETS_GITHUB.bat` (action F21).
 //
 // Aucune valeur n'est affichée : chaque clé passe par l'entrée standard de
@@ -10,6 +10,9 @@ import { spawnSync } from 'node:child_process';
 import { chargerEnv } from './env.mjs';
 
 export const NOMS = ['SUPABASE_URL', 'SUPABASE_CLE_SERVICE', 'CLOUDFLARE_COMPTE_ID', 'CLOUDFLARE_JETON_API'];
+// Posés s'ils sont dans le .env, sans bloquer les autres : la mesure
+// d'audience (T22, `statistiques.yml`) attend le compte Umami (F9).
+export const FACULTATIFS = ['UMAMI_JETON', 'UMAMI_URL', 'UMAMI_SCRIPT'];
 const DEPOT = 'Novaships-dev/sito';
 
 chargerEnv();
@@ -23,7 +26,7 @@ if (spawnSync('gh', ['--version'], { stdio: 'ignore', shell: process.platform ==
   process.exit(3);
 }
 let fautes = 0;
-for (const n of NOMS) {
+for (const n of [...NOMS, ...FACULTATIFS.filter((f) => process.env[f])]) {
   const r = spawnSync('gh', ['secret', 'set', n, '--repo', DEPOT], { input: process.env[n], stdio: ['pipe', 'ignore', 'pipe'], shell: process.platform === 'win32' });
   if (r.status === 0) console.log(`  ${n} : posé`);
   else { fautes++; console.log(`  ${n} : REFUSÉ (${String(r.stderr || '').trim().split('\n')[0].slice(0, 120)})`); }

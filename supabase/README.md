@@ -181,3 +181,9 @@ table `prive.compteurs_demandes`. `essais/demandes.sql` : 17 résultats puis 4
 `droits.sql` (11) et `droits-app.sql` (23) rejoués : aucune « FAUTE ».
 Conseillers : `deposer_demande` signalée appelable par `anon` (voulu) ;
 `compteurs_demandes` sans politique (service seulement, voulu).
+
+**Ajout du 5 novembre 2026** (T22, migration `20261105143953_umami`, appliquée
+par Cowork avec `apply_migration`) : colonne `sites.umami_id` (UUID ou vide),
+écrite par le service seul. `droits-app.sql` étendu (A lit l'identifiant de
+son site : 1 ; A le change : refuse) ; lancé avant d'appliquer, il rougissait
+(colonne absente), après : aucune « FAUTE ». Conseillers : rien de nouveau.

@@ -147,6 +147,7 @@ seulement si `profils.prix_affiches`.
 | `version` | integer | ≥ 1 | |
 | `adresse_en_ligne` | text | | L |
 | `publie_le` | timestamptz | | L |
+| `umami_id` | text | identifiant du site Umami (UUID) ; posé par le service (T22, migration `20261105143953_umami`), lu par le générateur et l'import des statistiques | |
 | `cree_le`, `mis_a_jour_le` | timestamptz | | |
 
 ### 3.7 `fabrications` — chaque fabrication et ses vérifications (service)
@@ -434,7 +435,7 @@ doit offrir pour que l'app soit complète. Les noms sont proposés.
 | Préparer les photos reçues (`atelier/preparer-recues.mjs`, fait) | nouvelle ligne `photos.etat = recue` | stockage | `photos.chemin/largeur/hauteur/etat/motif/format_origine` |
 | Refabriquer et publier | photo prête, profil ou tarifs modifiés | tout le site | `fabrications`, `versions_site`, `sites`, R2, KV |
 | Recevoir une demande | POST du formulaire du site | — | `demandes`, `statistiques` |
-| Statistiques | chaque nuit (heure de Paris) | Umami | `statistiques` |
+| Statistiques (T22 : `atelier/statistiques.mjs`, lancé par `.github/workflows/statistiques.yml` à 3 h 17 UTC) | chaque nuit, la veille de Paris | Umami (`atelier/umami.mjs`) ; `sites.umami_id`, `adresses` | `sites.umami_id` (site Umami créé pour un abonné qui a une adresse principale), `statistiques` (visites, appels ; les demandes restent celles de `deposer_demande`) |
 | Stripe | webhook | — | `evenements_stripe`, `abonnements` |
 | Domaines : fonction Edge `domaines` (T20 ; logique `_shared/domaines.mjs`, clients `_shared/gandi.mjs` et `_shared/cloudflare-saas.mjs`, T19). Écrite, pas encore déployée (secrets : F8, F6, F5) | écran Mon adresse : chercher, acheter (abonnement `actif`, .fr ou .com : Q9), brancher, vérifier | `sites`, `abonnements`, `entreprises`, `profils`, `adresses` ; Gandi, Cloudflare | `adresses` (ligne écrite avant l'achat ; `cloudflare_id`, `etat`, `motif`, `echeance`, `registrar`) |
 | Google | après consentement, puis périodiquement | API GBP | `connexions_google`, `prive.jetons_google`, `avis` |

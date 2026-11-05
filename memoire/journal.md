@@ -2243,3 +2243,27 @@ pour montrer la réservation. Installé pour lancer `essai-app` ici : ExifTool
 /tmp, hors du dépôt. Pas de vérification de types Deno pour la fonction
 (comme les autres) : à voir au déploiement.
 TRACAGE : supabase/functions/_shared/gandi.mjs, supabase/functions/_shared/cloudflare-saas.mjs, supabase/functions/_shared/domaines.mjs, supabase/functions/domaines/index.ts, scripts/faux-gandi.mjs, scripts/faux-cloudflare-saas.mjs, scripts/essai-domaines.mjs, scripts/essai-app.mjs, scripts/essais.mjs, app/src/types.ts, app/src/donnees/supabase.ts, app/src/donnees/demo.ts, app/src/ecrans/Adresse.tsx, app/specs/02-TRD.md, app/specs/03-APPFLOW.md, app/specs/05-SCHEMA-BACKEND.md, app/specs/07-TACHES.md, docs/DETTE.md, memoire/questions.md, memoire/actions-fabrice.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 5 nov. 2026 — T22, statistiques (Umami), par Cowork
+
+Plan : 1. migration `sites.umami_id` (procédure sito-base : essai de droits
+rouge avant, appliquée, vert après) ; 2. `atelier/umami.mjs` (chemins du
+client officiel `@umami/api-client` 0.81.0, lu le 5 nov.) et l'import de la
+nuit `atelier/statistiques.mjs`, lancé par `statistiques.yml` ; 3. la mesure
+dans les pages d'abonnés (`generateur/sections/mesure.mjs`), les mentions et
+le contrôle R-MESURE ; essai et contre-essai.
+
+Résultat : migration `20261105143953_umami` appliquée (Fabrice présent) ;
+`droits-app.sql` rougissait avant (colonne absente), aucune « FAUTE » après ;
+conseillers : rien de nouveau. `node scripts/essai-statistiques.mjs` : 29
+contrôles, 0 faute ; `--contre-essai` : 7 cassures sur 7. Les bornes du jour
+de Paris tiennent les changements d'heure (23 h et 25 h). L'import écrit
+seulement visites et appels (les demandes, comptées par `deposer_demande`,
+restent), rejouer un jour ne double rien, un site en panne n'écrit pas de
+zéro inventé. Un abonné qui a une adresse principale reçoit son site Umami à
+l'import suivant ; la mesure arrive dans ses pages à la refabrication
+suivante. Ajouts nécessaires : l'opérateur `not.is` (adaptateur et faux
+Supabase) ; `secrets-github.mjs` pose les clés Umami si elles sont dans le
+`.env`, sans bloquer les autres. Reste réel : compte Umami (F9, T23) ;
+l'adresse exacte du script d'Umami Cloud est à vérifier avec le compte.
+TRACAGE : supabase/migrations/20261105143953_umami.sql, supabase/essais/droits-app.sql, supabase/README.md, atelier/umami.mjs, atelier/statistiques.mjs, atelier/fabriquer.mjs, atelier/supabase.mjs, generateur/sections/mesure.mjs, generateur/sections/mentions.mjs, generateur/composer.mjs, scripts/verifier-site.mjs, scripts/faux-umami.mjs, scripts/faux-supabase.mjs, scripts/essai-statistiques.mjs, scripts/essais.mjs, scripts/secrets-github.mjs, .github/workflows/statistiques.yml, .github/workflows/refaire-site.yml, .github/workflows/essais.yml, .env.example, app/specs/02-TRD.md, app/specs/05-SCHEMA-BACKEND.md, app/specs/07-TACHES.md, docs/specs/S-MENTIONS.md, memoire/actions-fabrice.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

@@ -83,6 +83,7 @@ jobs:
           node scripts/essai-stripe.mjs --contre-essai
           node scripts/essai-domaines.mjs --contre-essai
           node scripts/essai-android.mjs --contre-essai
+          node scripts/essai-statistiques.mjs --contre-essai
           node scripts/essai-formulaire.mjs --contre-essai
           node scripts/carte-depot.mjs --contre-essai
 

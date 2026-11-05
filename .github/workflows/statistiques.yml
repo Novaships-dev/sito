@@ -1,0 +1,49 @@
+# L'import de la nuit des statistiques (tâche T22) : visites et touches
+# « Appeler » de la veille (jour de Paris), lues chez Umami, rangées dans la
+# table `statistiques`. Même parti que refaire-site.yml : pas de serveur loué,
+# GitHub Actions le fait, gratuitement.
+#
+# Clés : secrets du dépôt, posés par lanceurs/SECRETS_GITHUB.bat depuis le .env
+# de Fabrice (UMAMI_JETON après le compte Umami, action F9). Sans UMAMI_JETON,
+# le script s'arrête avec le code 3 et le dit : rien n'est écrit.
+name: statistiques
+
+on:
+  schedule:
+    # 3 h 17 UTC : 4 h 17 ou 5 h 17 à Paris, la veille est finie dans les
+    # deux saisons. Minute décalée pour éviter la foule de l'heure pile.
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+    inputs:
+      jour:
+        description: "Jour de Paris à importer, AAAA-MM-JJ (vide : hier)"
+        required: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: statistiques
+  cancel-in-progress: false
+
+jobs:
+  importer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Importer la veille
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_CLE_SERVICE: ${{ secrets.SUPABASE_CLE_SERVICE }}
+          UMAMI_JETON: ${{ secrets.UMAMI_JETON }}
+          UMAMI_URL: ${{ secrets.UMAMI_URL }}
+          JOUR: ${{ inputs.jour }}
+        run: |
+          if [ -z "$UMAMI_JETON" ]; then echo "Umami n'est pas encore branché (action F9) : rien à importer."; exit 0; fi
+          if [ -n "$JOUR" ]; then node atelier/statistiques.mjs --jour "$JOUR"; else node atelier/statistiques.mjs; fi

@@ -92,7 +92,7 @@ export const TITRE = 'informations légales';
 
 // Le contenu de la page `mentions-legales.html` (remplace <main>). `barre` :
 // la barre d'appel, que chaque page garde (contrôle T2).
-export function page({ lignes, e, barre = '', appel = '', formulaire = false }) {
+export function page({ lignes, e, barre = '', appel = '', formulaire = false, ml12 = 'Ce site ne dépose aucun cookie ni aucun traceur.' }) {
   let n = 0;
   const groupe = (titre, ids, apres = '') => {
     const ls = lignes.filter((l) => ids.includes(l.ml));
@@ -119,7 +119,7 @@ ${groupe('Médiation de la consommation', ['ML10'])}
 ${groupe('Assurance', ['MR1'])}
 ${groupe('Données personnelles', [], `
   ${formulaire ? `<p class="note" data-ml="ML11">Le formulaire de demande recueille votre nom, votre téléphone ou votre adresse électronique, et votre message. L’entreprise ci-dessus en est responsable et s’en sert seulement pour vous répondre, parce que vous le lui demandez (mesures préalables à un contrat, article 6.1.b du RGPD) ; personne d’autre ne les reçoit. Ils sont hébergés pour elle par Sitô chez Supabase (serveurs dans l’Union européenne), gardés tant que l’entreprise utilise Sitô, et effacés à la fermeture de son compte. Pour limiter les envois abusifs, une empreinte de votre adresse IP est gardée deux jours, jamais l’adresse elle-même. Vous pouvez demander à l’entreprise d’accéder à vos données, de les corriger ou de les effacer, et saisir la CNIL (cnil.fr) pour toute réclamation.</p>` : `<p class="note" data-ml="ML11">Ce site n’a ni formulaire ni compte : il ne recueille aucune donnée personnelle vous concernant. Si vous écrivez ou téléphonez à l’entreprise, elle seule garde ce que vous lui transmettez. Vous pouvez saisir la CNIL (cnil.fr) pour toute réclamation.</p>`}
-  <p class="note" data-ml="ML12">Ce site ne dépose aucun cookie ni aucun traceur.</p>`)}
+  <p class="note" data-ml="ML12">${ech(ml12)}</p>`)}
 ${barre}`;
 }
 

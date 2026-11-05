@@ -31,9 +31,13 @@ const RESERVES = ['select', 'order', 'limit', 'on_conflict'];
 function filtrer(lignes, params) {
   return lignes.filter((l) => [...params].every(([k, v]) => {
     if (RESERVES.includes(k)) return true;
-    const i = v.indexOf('.');
-    const op = v.slice(0, i), val = v.slice(i + 1);
-    return OPS[op] ? OPS[op](l[k], val) : false;
+    // « not.is.null » : la négation de PostgREST, devant n'importe quel opérateur.
+    const non = v.startsWith('not.');
+    const w = non ? v.slice(4) : v;
+    const i = w.indexOf('.');
+    const op = w.slice(0, i), val = w.slice(i + 1);
+    if (!OPS[op]) return false;
+    return non ? !OPS[op](l[k], val) : OPS[op](l[k], val);
   }));
 }
 

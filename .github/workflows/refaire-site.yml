@@ -50,6 +50,8 @@ jobs:
           SUPABASE_CLE_PUBLIQUE: sb_publishable_Soi-8VlJuoGQCuctPooaOw_0ku20F8b
           CLOUDFLARE_COMPTE_ID: ${{ secrets.CLOUDFLARE_COMPTE_ID }}
           CLOUDFLARE_JETON_API: ${{ secrets.CLOUDFLARE_JETON_API }}
+          # Adresse du script de mesure (T22), si Umami n'est pas Umami Cloud.
+          UMAMI_SCRIPT: ${{ secrets.UMAMI_SCRIPT }}
           SIREN: ${{ github.event.client_payload.siren || inputs.siren }}
         run: |
           if [ -n "$SIREN" ]; then node scripts/refaire-site.mjs --siren "$SIREN"; else node scripts/refaire-site.mjs --tous; fi
