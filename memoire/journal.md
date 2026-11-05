@@ -2140,3 +2140,16 @@ Résultat : 102 titres, 100 sites sans défaut. Deux sites fabriqués (APE
 publication : « la préparation fait la moitié du travail » et « le chêne, bois
 le plus posé », sans source.
 TRACAGE : generateur/metiers/parquet.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 5 nov. 2026 — T32, piscine (12 sur 13), par Cowork
+
+Plan : 1. `generateur/metiers/piscine.json` sur le plan d'images (diagnostic,
+préparation du bassin, construction, revêtement, filtration, margelles et
+abords, sécurité, mise en eau) ; 2. prix relevés le 5 nov. (Prix-travaux-m2.com,
+Prix-pose.com, Guide-piscine.fr) ; 3. capacité et fabrication.
+
+Résultat : 103 titres, 100 sites sans défaut. Deux sites fabriqués (APE
+43.99C) : `verifier-site` 0 bloquant, `verifier-mobile` 0. Les prix du liner
+sont hors taxes dans la source : la page le dit. L'exemple compte la surface
+de liner avec les parois (8 × 4 m sur 1,50 m : environ 70 m², pas 32).
+TRACAGE : generateur/metiers/piscine.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
