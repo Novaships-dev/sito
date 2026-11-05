@@ -2293,3 +2293,24 @@ comparaison nom, adresse, téléphone. Si un compte a plusieurs fiches, la
 première est reliée et le motif le dit. Fonctions Edge écrites, pas
 déployées : F13.
 TRACAGE : supabase/migrations/20261105155854_jetons_google.sql, supabase/essais/droits-app.sql, supabase/README.md, supabase/functions/_shared/chiffre.mjs, supabase/functions/_shared/google.mjs, supabase/functions/_shared/avis-google.mjs, supabase/functions/google-lien/index.ts, supabase/functions/google-retour/index.ts, atelier/avis.mjs, scripts/faux-google.mjs, scripts/faux-supabase.mjs, scripts/essai-google.mjs, scripts/essai-app.mjs, scripts/essais.mjs, scripts/secrets-github.mjs, .github/workflows/google.yml, .github/workflows/essais.yml, app/src/types.ts, app/src/donnees/demo.ts, app/src/donnees/supabase.ts, app/src/ecrans/Google.tsx, app/specs/02-TRD.md, app/specs/03-APPFLOW.md, app/specs/05-SCHEMA-BACKEND.md, app/specs/07-TACHES.md, docs/DETTE.md, memoire/actions-fabrice.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 5 nov. 2026 — Nettoyage 1 : app Android retirée, par Cowork
+
+Plan : retirer le mode Play Store de l'app, du Worker et de la publication ;
+supprimer `scripts/android.mjs` et son essai ; remettre specs, tâches,
+questions et actions d'accord avec la décision du 5 nov.
+
+Fait : `?source=android` et le contexte `android` retirés de l'app
+(`donnees/index.ts`, `main.tsx`, `App.tsx`, `ui.tsx`, Abonnement, Adresse,
+Installer) ; exception `assetlinks.json` retirée du Worker et de
+`atelier/publier.mjs` ; `scripts/android.mjs` et `scripts/essai-android.mjs`
+supprimés, retirés de `essais.mjs` et de la CI ; bloc Play Store de
+`essai-app` retiré (les contrôles du prix et du portail sur le web restent).
+T28 et T29 passées « bloqué » avec motif « décision du 5 nov. » (même forme
+que T15 et T26 : les quatre états du tableau ne changent pas). Q8 et F12
+sans objet ; C10 réécrite ; PRD A16 retiré, A19 réécrit ; TRD, APPFLOW,
+PLAN, skill `sito-app` corrigés. Les mentions de téléphones Android restent :
+l'app doit marcher dessus.
+Preuve : `npm run build` : 0 ; `node scripts/essai-app.mjs` : 150 contrôles,
+0 faute (155 avant, 5 contrôles Play Store retirés).
+TRACAGE : app/src/donnees/index.ts, app/src/main.tsx, app/src/App.tsx, app/src/ui.tsx, app/src/ecrans/Abonnement.tsx, app/src/ecrans/Adresse.tsx, app/src/ecrans/Installer.tsx, app/vite.config.ts, app/README.md, app/package.json, worker/routeur.js, atelier/publier.mjs, supabase/functions/stripe-session/index.ts, scripts/android.mjs, scripts/essai-android.mjs, scripts/essai-app.mjs, scripts/essais.mjs, .github/workflows/essais.yml, app/specs/01-PRD.md, app/specs/02-TRD.md, app/specs/03-APPFLOW.md, app/specs/06-PLAN-IMPLEMENTATION.md, app/specs/07-TACHES.md, docs/CONSTRAINTS.md, .claude/skills/sito-app/SKILL.md, memoire/questions.md, memoire/actions-fabrice.md, memoire/maintenant.md, CHANGELOG.md, memoire/journal.md, docs/audit/CARTE.md

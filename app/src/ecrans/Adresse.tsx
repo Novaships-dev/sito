@@ -51,9 +51,9 @@ export function Adresse() {
 }
 
 // Cas B : chercher, puis réserver. Aucun prix : le domaine est compris dans
-// l'abonnement (et l'app Android n'affiche aucun prix).
+// l'abonnement.
 function MonDomaine({ apres }: { apres: () => void }) {
-  const { donnees, android } = useApp();
+  const { donnees } = useApp();
   const abonnement = useCharge((d) => d.abonnement());
   const profil = useCharge((d) => d.profil());
   const entreprise = useCharge((d) => d.entreprise());
@@ -90,7 +90,7 @@ function MonDomaine({ apres }: { apres: () => void }) {
       {trouve && trouve.disponible && (
         <div role="status">
           <p className="succes"><span className="hote">{trouve.hote}</span> est libre.</p>
-          {!enCours && <p className="aide">Il pourra être réservé à votre nom une fois votre abonnement en cours{android ? '.' : ' (écran Abonnement).'}</p>}
+          {!enCours && <p className="aide">Il pourra être réservé à votre nom une fois votre abonnement en cours{' (écran Abonnement).'}</p>}
           {enCours && (
             <form onSubmit={async (e) => {
               e.preventDefault();

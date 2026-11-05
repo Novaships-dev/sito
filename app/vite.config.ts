@@ -1,6 +1,6 @@
-// L'app de l'artisan Sitô. Un seul code pour trois formes (app/PLAN-APP.md,
-// section 7.2) : web installable sur iPhone, ordinateur, et Play Store
-// (même app emballée en « Trusted Web Activity »).
+// L'app de l'artisan Sitô : un site installable sur l'écran d'accueil du
+// téléphone (iPhone, Android) ou de l'ordinateur. Pas d'app sur le Play Store
+// (décision du 5 nov. 2026).
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';

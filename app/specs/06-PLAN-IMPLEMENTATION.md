@@ -41,7 +41,7 @@ affirmation.** Rien de payant ne s'ouvre sans l'accord de Fabrice.
 | 15 | Abonnement | Stripe Checkout, portail, webhook, une seule fonction d'écriture | paiement test ; événement rejoué sans double écriture ; prix affiché = prix débité | 8 ; compte Stripe | Claude | **À faire** |
 | 16 | Facture électronique | plateforme agréée (ex. Billit) | facture test émise au format exigé | 15 | Claude | **À faire** (avant le 1er sept. 2027) |
 | 17 | Compte : fin de vie | suppression effective à 30 jours, export complet | suppression annulée puis menée à terme sur un compte d'essai | 8 | Claude | **À faire** (app faite) |
-| 18 | Play Store | app TWA (Bubblewrap), `assetlinks.json`, fiche du store | l'app installée depuis le Play Store s'ouvre sans barre d'adresse, sans prix | 7 ; compte Google Play | Fabrice + Claude | **À faire** |
+| 18 | ~~Play Store~~ | abandonné (décision du 5 nov. 2026) : l'app s'installe depuis le site Sitô | — | — | — | **Abandonné** |
 | 19 | iPhone | essai réel : installation, HEIC, ProRAW, Live Photo, zones sûres, envoi coupé puis repris | les fichiers du plan 5.4 passent tous depuis un iPhone | 5 ; photos réelles F4 | Fabrice + Claude | **À faire** |
 | 20 | Google | demande d'accès, consentement, avis, réponses, fiche | un avis réel lu et une réponse publiée avec l'accord de l'artisan pilote | artisan pilote (O4), domaine et e-mail de Sitô | Fabrice + Claude | **À faire** |
 | 21 | Les 15 autres métiers | textes, images (54 par métier), plan d'images | `capacite-unicite` : 100 sites différents par métier et département | images générées par Fabrice | Fabrice + Claude | **À faire** |

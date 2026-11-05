@@ -1,5 +1,5 @@
-// Installer l'app. Décision du 5 octobre : sur le Play Store pour Android ;
-// pour l'iPhone, ajoutée à l'écran d'accueil depuis le site Sitô.
+// Installer l'app : ajoutée à l'écran d'accueil du téléphone depuis le site
+// Sitô (décision du 5 nov. 2026 : pas d'app Android sur le Play Store).
 import { useEffect, useState } from 'react';
 import { Ecran } from '../ui';
 
@@ -50,7 +50,6 @@ export function Installer() {
           ) : (
             <p>Ouvrez le menu du navigateur (⋮), puis <strong>{quoi === 'android' ? 'Ajouter à l’écran d’accueil' : 'Installer Sitô'}</strong>.</p>
           )}
-          {quoi === 'android' && <p className="aide">L’app sera aussi sur le Play Store.</p>}
         </section>
       )}
     </Ecran>

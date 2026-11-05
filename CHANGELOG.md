@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 5 nov. 2026 | Nettoyage 1 : plus d'app Android (décision de Fabrice du 5 nov.). L'app s'installe sur l'écran d'accueil depuis le site Sitô ; mode Play Store, `assetlinks.json` et leurs essais retirés ; T28 et T29 abandonnées, Q8 et F12 sans objet. |
 | 5 nov. | T24 : Google. Jeton chiffré (AES-256-GCM, SIREN lié) rangé par trois fonctions réservées au service ; liaison par consentement (fonctions Edge `google-lien`, `google-retour`, état signé) ; chaque nuit, avis importés et réponses validées publiées (`atelier/avis.mjs`, `google.yml`) ; bouton « Relier ma fiche Google ». |
 | 5 nov. | T22 : statistiques. Client Umami, import de la nuit (jour de Paris, demandes gardées, rejouable), site Umami créé pour chaque abonné, script et événement « Appeler » dans les pages d'abonnés, mentions légales et contrôle R-MESURE ; migration `sites.umami_id` ; `statistiques.yml`. |
 | 5 nov. | T20 : écran Mon adresse, cas B (chercher, réserver au nom de l'artisan, abonnement en cours, .fr ou .com) et C (brancher son domaine, CNAME guidé, vérifier) ; fonction Edge `domaines` (écrite, pas déployée) ; les clients de T19 passent dans `supabase/functions/_shared/`. |

@@ -46,8 +46,7 @@ gauche. « Installer l'app » est aussi joignable sans être connecté.
 | `#/reprise/<jeton>` | Nouveau mot de passe (lien envoyé par SMS) | `Inscription.tsx` | non (connecté : accueil) | Fait, prouvé |
 | autre | Page introuvable | `App.tsx` | oui | Fait |
 
-Paramètres d'adresse : `?demo` force la démonstration ; `?source=android`
-active le mode Play Store (mémorisé sur l'appareil).
+Paramètre d'adresse : `?demo` force la démonstration.
 
 ## 3. Les écrans en détail
 
@@ -128,13 +127,13 @@ active le mode Play Store (mémorisé sur l'appareil).
 
 ### 3.8 Abonnement
 
-| Bloc | Web | App Android |
-|---|---|---|
-| État | Période d'essai / Actif / Paiement en échec / Résilié | idem |
-| Formule et prix | « Formule mensuel : 39 € HT par mois » | « Formule mensuel » **sans prix** |
-| Échéance | fin de l'essai, prochaine échéance, ou date de fin si résiliation demandée | idem |
-| Gérer | liste des deux formules ; abonnement en cours : bouton « Carte, factures, formule, résiliation » (portail Stripe) ; sinon « S’abonner au mois » / « à l’année » (Stripe Checkout) ; retour `#/abonnement?paiement=ok` ou `annule`, message lu par l’écran (T17) | **rien** : ni prix, ni lien, ni bouton |
-| Retour de Stripe | `?paiement=` après le `#` : n’est pas une route (`App.tsx`), l’écran affiche « Paiement reçu » ou « Paiement annulé » | — |
+| Bloc | Contenu |
+|---|---|
+| État | Période d'essai / Actif / Paiement en échec / Résilié |
+| Formule et prix | « Formule mensuel : 39 € HT par mois » |
+| Échéance | fin de l'essai, prochaine échéance, ou date de fin si résiliation demandée |
+| Gérer | liste des deux formules ; abonnement en cours : bouton « Carte, factures, formule, résiliation » (portail Stripe) ; sinon « S’abonner au mois » / « à l’année » (Stripe Checkout) ; retour `#/abonnement?paiement=ok` ou `annule`, message lu par l’écran (T17) |
+| Retour de Stripe | `?paiement=` après le `#` : n’est pas une route (`App.tsx`), l’écran affiche « Paiement reçu » ou « Paiement annulé » |
 
 ### 3.9 Compte
 
@@ -217,8 +216,7 @@ active le mode Play Store (mémorisé sur l'appareil).
 |---|---|---|---|
 | 1 | Site Sitô ou app web | choix mensuel ou annuel → Stripe Checkout | **À faire** |
 | 2 | Service | webhook Stripe → `evenements_stripe` (une fois) → une seule fonction écrit `abonnements` | Écrit, essayé contre un faux (T16) ; pas déployé (F7) |
-| 3 | App | Abonnement affiche l'état ; « Gérer » ouvre le portail Stripe (web seulement) | Fait (T17) |
-| — | App Android | aucun prix, aucun lien d'achat | Fait, prouvé |
+| 3 | App | Abonnement affiche l'état ; « Gérer » ouvre le portail Stripe | Fait (T17) |
 
 ### 4.8 Supprimer son compte
 
@@ -233,7 +231,7 @@ active le mode Play Store (mémorisé sur l'appareil).
 
 | Appareil | Parcours | État |
 |---|---|---|
-| Android | Play Store (app TWA qui ouvre l'app avec `?source=android`) | fichiers prêts (T28, `scripts/android.mjs`) ; construction et publication : T29 (compte Google Play, F12) |
+| Android | depuis le site Sitô : menu du navigateur → Ajouter à l'écran d'accueil (pas de Play Store, décision du 5 nov. 2026) | Page faite ; non essayé sur un vrai téléphone |
 | iPhone | depuis le site Sitô : Partager → Sur l'écran d'accueil | Page faite ; non essayé sur iPhone |
 | Ordinateur | bouton d'installation du navigateur | Fait |
 

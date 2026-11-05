@@ -27,8 +27,8 @@ n'a pas encore tourné contre la vraie base (voir « Ce qui n'est pas prouvé »
 | `src/attente.ts` | file d'envoi gardée dans l'appareil (IndexedDB) jusqu'à la fin de l'envoi |
 | `src/ecrans/` | Connexion, Inscription (lien d'inscription ou de reprise), Accueil, Chantiers, Mon site, Mon adresse, Avis, Fiche Google, Abonnement, Compte, Installer |
 
-Dans l'app Android (Play Store, ouverte avec `?source=android`) : aucun prix,
-aucun achat (règle de facturation de Google Play).
+Pas d'app sur le Play Store (décision du 5 nov. 2026) : l'app s'installe
+sur l'écran d'accueil depuis le site Sitô, sur iPhone comme sur Android.
 
 ## Ce qui n'est pas prouvé
 

@@ -1,8 +1,6 @@
 // Abonnement : formule, état, échéance ; payer et gérer sur le web (T17).
 // Prix acceptés par Fabrice le 9 octobre : 39 € HT par mois sans engagement, ou
 // 390 € HT par an (formule d'engagement).
-// Dans l'app Android (Play Store) : aucun prix, aucun bouton d'achat (règle de
-// facturation de Google Play). L'abonnement se prend sur le site Sitô.
 // Le paiement passe par Stripe (fonction Edge `stripe-session`, T16) : l'écran
 // ne fait qu'ouvrir l'adresse rendue ; l'état revient par le webhook.
 import { useState } from 'react';
@@ -30,7 +28,7 @@ const RETOURS: Record<string, string> = {
 };
 
 export function Abonnement() {
-  const { android, donnees } = useApp();
+  const { donnees } = useApp();
   const ab = useCharge((d) => d.abonnement());
   const a = ab.valeur;
   const [occupe, setOccupe] = useState(false);
@@ -47,20 +45,20 @@ export function Abonnement() {
 
   return (
     <Ecran titre="Abonnement">
-      {!android && retour && RETOURS[retour] && <p className="carte" role="status">{RETOURS[retour]}</p>}
+      {retour && RETOURS[retour] && <p className="carte" role="status">{RETOURS[retour]}</p>}
       <Chargement {...ab} />
       {ab.valeur === null && <p className="carte">Aucun abonnement pour l’instant.</p>}
       {a && (
         <section className="carte">
           <p><Pastille ton={ETATS[a.etat].ton}>{ETATS[a.etat].texte}</Pastille></p>
-          <p>Formule <strong>{FORMULES[a.formule].nom.toLowerCase()}</strong>{!android && <> : {FORMULES[a.formule].prix}</>}</p>
+          <p>Formule <strong>{FORMULES[a.formule].nom.toLowerCase()}</strong><> : {FORMULES[a.formule].prix}</></p>
           {a.fin_periode && <p>{a.etat === 'essai' ? 'Fin de l’essai' : a.resiliation_prevue ? 'Se termine le' : 'Prochaine échéance'} : <strong>{dateLisible(a.fin_periode)}</strong></p>}
           {a.resiliation_prevue && <p className="aide">Résiliation demandée : votre site reste en ligne jusqu’à cette date.</p>}
           {a.etat === 'impaye' && <p className="erreur">Le dernier paiement n’est pas passé.</p>}
         </section>
       )}
 
-      {!android && ab.valeur !== undefined && (
+      {ab.valeur !== undefined && (
         <section className="carte" aria-labelledby="t-gerer">
           <h2 id="t-gerer">Gérer mon abonnement</h2>
           <ul className="puces">

@@ -171,10 +171,10 @@ Spécification complète : `app/specs/08-PROSPECTION.md`. Script d'appel :
 | A13 | Lire ses avis Google ; relire, corriger et valider une réponse préparée ; rien n'est publié sans lui | 5 oct. | Partiel : écran prouvé (`essai-app`) ; Google à faire (T24, T25, F13) |
 | A14 | Voir l'état de sa fiche Google ; un lien direct vers la fiche en attendant ; ce qui contredit le site est montré | plan 6.4 ; `docs/specs/S-REFERENCEMENT.md` §5 | Partiel : état et lien faits ; comparaison à faire |
 | A15 | Voir sa formule, son état et son échéance ; payer et gérer en ligne sur le web | 5 et 9 oct. | Partiel : affichage fait ; Stripe écrit et essayé contre un faux (T16), pas de compte ni de déploiement (F7, repoussé le 29 oct.) ; boutons reliés (T17), essayés en démonstration |
-| A16 | Dans l'app Android (Play Store) : **aucun prix, aucun achat** | règle Google Play, plan 7.2 | Fait, prouvé : `essai-app` |
+| A16 | ~~App Android sur le Play Store, sans prix~~ | abandonné, décision du 5 nov. 2026 | Retiré : pas d'app Android |
 | A17 | Télécharger toutes ses données | plan 7.5 (RGPD) | Fait, prouvé : `essai-app` |
 | A18 | Supprimer son compte, avec 30 jours pour changer d'avis | plan 7.5 | Partiel : demande et annulation prouvées (`essai-app`) ; suppression effective écrite et essayée contre des faux (T12, `essai-suppressions`) ; pas encore lancée chaque nuit, résiliation Stripe réelle à T16 (D-16) |
-| A19 | Installer l'app : Play Store sur Android, écran d'accueil sur iPhone depuis le site Sitô | 5 oct. | Partiel : page d'installation et PWA faites ; Play Store à faire (T28, T29) |
+| A19 | Installer l'app sur l'écran d'accueil depuis le site Sitô (iPhone, Android, ordinateur) | 5 oct., 5 nov. | Partiel : page d'installation et PWA faites ; non essayé sur un vrai iPhone |
 | A20 | Essayer l'app sans compte (démonstration) | proposition de Claude | Fait, prouvé : `essai-app` |
 
 ---

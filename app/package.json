@@ -2,7 +2,7 @@
   "name": "sito-app",
   "private": true,
   "type": "module",
-  "description": "L'app de l'artisan Sitô : web installable (iPhone, ordinateur) et Play Store (Android).",
+  "description": "L'app de l'artisan Sitô : web installable sur l'écran d'accueil (iPhone, Android, ordinateur).",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",

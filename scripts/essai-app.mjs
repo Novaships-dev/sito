@@ -535,21 +535,9 @@ try {
     await c.close();
   }
 
-  // ------------------------------------------------ app Android (Play Store) : aucun prix, aucun achat
-  console.log('\nApp Android (Play Store)');
+  // ------------------------------------------------ Abonnement sur le web (T17)
+  console.log('\nAbonnement');
   {
-    const { ctx: c, page: p } = await nouvellePage(appareils[1], '&source=android');
-    await connecter(p);
-    await p.goto(`${BASE}?demo#/abonnement`); await p.waitForTimeout(400);
-    const texte = await p.locator('main').textContent();
-    ok(!/€|HT|prix|payer|paiement en ligne/i.test(texte), 'aucun prix ni paiement affiché', texte.slice(0, 200));
-    ok(await p.locator('main button').filter({ hasText: /abonner|carte|factures|résiliation/i }).count() === 0, 'aucun bouton de paiement ni de portail (T17)');
-    ok(/Formule mensuel/.test(texte), 'l’état de l’abonnement reste affiché');
-    await p.goto(`${BASE}?demo#/abonnement`); await p.waitForTimeout(300);
-    ok(!/€/.test(await p.locator('main').textContent()), 'reste en mode Android sans le paramètre (mémorisé)');
-    await p.goto(`${BASE}?demo#/adresse`); await p.waitForTimeout(300);
-    ok(!/€|prix/i.test(await p.locator('main').textContent()), 'Mon adresse : aucun prix sur Android');
-    await c.close();
     const { ctx: c2, page: p2 } = await nouvellePage(appareils[0]);
     await connecter(p2);
     await p2.goto(`${BASE}?demo#/abonnement`); await p2.waitForTimeout(400);

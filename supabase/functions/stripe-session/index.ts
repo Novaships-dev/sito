@@ -1,7 +1,7 @@
 // Fonction Edge « stripe-session » (T16) : l'artisan connecté ouvre le
 // paiement de sa formule ou le portail Stripe (changer de carte, résilier).
 // Déployée AVEC contrôle du jeton de session : seul un membre de l'entreprise
-// passe. Web seulement : l'app Android n'affiche aucun bouton de paiement (T17).
+// passe (T17).
 // Corps : { siren, action: 'paiement' | 'portail', formule?, retour }.
 import { createClient } from 'npm:@supabase/supabase-js@2';
 import { ouvrirPaiement, ouvrirPortail, type Formule, type Reglages } from '../_shared/stripe.ts';

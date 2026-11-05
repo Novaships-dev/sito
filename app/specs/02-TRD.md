@@ -76,7 +76,7 @@ Pas de cadriciel CSS : une feuille `app/src/style.css` avec des variables
 | `src/types.ts` | types des données (suivent le schéma) et interface `Donnees` : **tout** accès aux données passe par elle |
 | `src/donnees/supabase.ts` | implémentation réelle |
 | `src/donnees/demo.ts` | implémentation en mémoire ; garde les fichiers « envoyés » dans `window.__sitoDemo` pour les essais |
-| `src/donnees/index.ts` | choix : Supabase si `VITE_SUPABASE_URL` et `VITE_SUPABASE_CLE_PUBLIQUE`, sinon démonstration ; `?demo` force la démonstration ; mode Android (`?source=android`, mémorisé) |
+| `src/donnees/index.ts` | choix : Supabase si `VITE_SUPABASE_URL` et `VITE_SUPABASE_CLE_PUBLIQUE`, sinon démonstration ; `?demo` force la démonstration |
 | `src/photo.ts` | reconnaissance par les premiers octets, préparation sur l'appareil |
 | `src/nettoyer.ts` | l'original sans métadonnées, sans perte (JPEG : segments Exif, XMP, IPTC, commentaires retirés, orientation gardée ; PNG : eXIf, tEXt, zTXt, iTXt, tIME retirés) |
 | `src/apercu-brut.ts` | l'aperçu JPEG rangé dans un RAW (DNG, NEF, CR2…), le plus grand, avec l'orientation du RAW |
@@ -161,7 +161,6 @@ implémentations, puis à l'essai.
 | Umami (hébergé) | visites, clics « Appeler » (`atelier/umami.mjs`, import `atelier/statistiques.mjs`, mesure dans les pages `generateur/sections/mesure.mjs`, contrôle R-MESURE ; T22) | CNIL : un site par artisan, 13 mois / 25 mois | Fait contre faux Umami (`essai-statistiques`) ; réel : compte Umami (F9, T23) |
 | Stripe | Checkout, portail client | 1,5 % + 0,25 € par carte, + 0,7 % abonnements | À faire |
 | Plateforme de facture électronique (ex. Billit) | émission conforme | obligation PME au 1er sept. 2027 | À faire |
-| Google Play | app Android en TWA (Bubblewrap), `assetlinks.json` (`scripts/android.mjs`, T28 : les deux fichiers, servis par le Worker) | compte personnel : 12 testeurs pendant 14 jours ; organisation : D-U-N-S | Fichiers prêts et essayés (`essai-android`) ; manquent l'adresse de l'app (F6, T27), le nom du paquet (Q8) et l'empreinte de la clé (F12) |
 
 ## 8. Variables d'environnement
 

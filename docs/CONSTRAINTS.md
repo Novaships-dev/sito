@@ -21,7 +21,7 @@ pas.
 | C07 | Une image de la banque reste marquée « Exemple » jusqu'à ce que l'artisan mette les siennes ; aucune photo de l'artisan sur un site de prospection | décisions, sept. et 2 oct. 2026 |
 | C08 | Toutes les photos de tous les appareils sont acceptées | décision, 3 oct. 2026 |
 | C09 | Tout marche pareil sur iPhone et sur ordinateur | décision, sept. 2026 |
-| C10 | App Android sur le Play Store, sans prix ni achat ; iPhone : installée depuis le site Sitô | décision, 5 oct. 2026 ; règle Google Play (`app/PLAN-APP.md` §7.2) |
+| C10 | Pas d'app sur le Play Store : l'app s'installe sur l'écran d'accueil depuis le site Sitô (iPhone, Android, ordinateur) | décision, 5 nov. 2026 (remplace celle du 5 oct.) |
 | C11 | Inscription par lien, e-mail et mot de passe, une seule fois, sans code | décision, 29 oct. 2026 |
 | C12 | Réponses aux avis Google préparées, publiées seulement après validation de l'artisan | décision, 5 oct. 2026 |
 | C13 | Ravalement : façadiers seulement | décision, 29 oct. 2026 |

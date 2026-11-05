@@ -156,15 +156,10 @@ Worker. Le formulaire appelle donc directement la fonction de la base
 `deposer_demande` avec la clé publique ; mêmes contrôles (champ piège, 10 par
 adresse IP, 50 par site), 0 €, aucune clé secrète dans une page. T10 faite.
 
-## Q8 (ouverte), 5 novembre 2026
+## Q8 (sans objet), 5 novembre 2026
 
-Le nom du paquet de l'app Android (par exemple `fr.sito.app`). Il ne change
-plus une fois l'app publiée sur Google Play : une autre valeur, c'est une
-autre app, avec ses avis et ses installations repartis de zéro.
-
-**Réponse recommandée** : `fr.<nom de Sitô>.app`, décidé en même temps que le
-nom et le domaine (F6). Rien n'est publié avant : T28 est faite avec un nom
-d'essai, `scripts/android.mjs --paquet` prendra le vrai (T29).
+Le nom du paquet de l'app Android. Sans objet : pas d'app Android
+(décision du 5 nov. 2026).
 
 ## Q9 (appliquée), 5 novembre 2026
 

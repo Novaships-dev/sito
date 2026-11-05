@@ -12,15 +12,3 @@ export function choisirDonnees(): Donnees {
   if (demoDemandee || !url || !cle) return donneesDemo();
   return donneesSupabase(url, cle);
 }
-
-// Mode Play Store (application Android, TWA) : aucune vente ni aucun prix dans
-// l'app (règle de facturation de Google Play). Le site Sitô s'en charge.
-// L'application Android ouvre l'app avec ?source=android ; on s'en souvient.
-export function modeAndroid(): boolean {
-  try {
-    if (new URLSearchParams(location.search).get('source') === 'android') localStorage.setItem('sito-android', '1');
-    return localStorage.getItem('sito-android') === '1' || document.referrer.startsWith('android-app://');
-  } catch {
-    return document.referrer.startsWith('android-app://');
-  }
-}

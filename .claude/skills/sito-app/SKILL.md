@@ -24,8 +24,8 @@ description: Règles pour coder l'app de l'artisan Sitô (app/, React, PWA). À 
 4. **Photos** : `app/src/photo.ts`. La nature d'un fichier se lit dans ses
    octets. Ce qui est lisible est réduit à 3 200 px, sans métadonnées ; le
    reste part tel quel ; l'original suit la version réduite.
-5. **Android (Play Store)** : aucun prix, aucun lien d'achat (`android` dans le
-   contexte). L'essai le vérifie.
+5. **Pas d'app Android** (décision du 5 nov. 2026) : une seule app web,
+   installée sur l'écran d'accueil depuis le site Sitô.
 6. **Textes** : français, vouvoiement, règles de `rules/common/redaction-fr.md`
    (pas de tiret cadratin, pas de point médian séparateur). Le contrôle
    `verifier-textes` lit `app/src/`.

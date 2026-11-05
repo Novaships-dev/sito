@@ -48,9 +48,9 @@ const PLUS = [
   { lien: 'installer', texte: 'Installer l’app' },
 ];
 
-export function App({ donnees, android }: { donnees: Donnees; android: boolean }) {
+export function App({ donnees }: { donnees: Donnees }) {
   const file = useMemo(() => creerFile(donnees), [donnees]);
-  const ctx: Contexte = useMemo(() => ({ donnees, file, android }), [donnees, file, android]);
+  const ctx: Contexte = useMemo(() => ({ donnees, file }), [donnees, file]);
   const [connecte, setConnecte] = useState<boolean | null>(null);
   const route = useRoute();
 

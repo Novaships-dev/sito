@@ -3,7 +3,7 @@ import { createContext, useCallback, useContext, useEffect, useRef, useState, ty
 import type { Donnees } from './types';
 import type { File_ } from './attente';
 
-export type Contexte = { donnees: Donnees; file: File_; android: boolean };
+export type Contexte = { donnees: Donnees; file: File_ };
 export const Ctx = createContext<Contexte | null>(null);
 export function useApp(): Contexte {
   const c = useContext(Ctx);
