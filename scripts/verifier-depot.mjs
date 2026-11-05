@@ -93,6 +93,23 @@ if (existsSync(fProspection)) {
   }
 }
 
+// Chaque code APE d une fiche metier a son libelle dans generateur/sirene.mjs :
+// sinon la page affiche « Activité déclarée 43.12A » sans dire ce que c est
+// (constaté le 5 nov. sur sept codes).
+const fSirene = join(racine, 'generateur/sirene.mjs');
+if (existsSync(fSirene) && existsSync(dmet)) {
+  const texte = readFileSync(fSirene, 'utf8');
+  const debut = texte.indexOf('const APE = {');
+  const bloc = debut > -1 ? texte.slice(debut, texte.indexOf('};', debut)) : '';
+  const connus = new Set([...bloc.matchAll(/'(\d{2}\.\d{2}[A-Z])'\s*:/g)].map((m) => m[1]));
+  for (const n of readdirSync(dmet).filter((x) => x.endsWith('.json'))) {
+    let codes = [];
+    try { codes = JSON.parse(readFileSync(join(dmet, n), 'utf8')).codesApe || []; } catch { continue; }
+    for (const c of codes) if (!connus.has(c))
+      dire(join(dmet, n), `code APE ${c}`, 'sans libelle dans generateur/sirene.mjs (APE)');
+  }
+}
+
 if (manques.length === 0) {
   console.log('Depot complet. ' + tous.length + ' fichiers, aucune piece manquante.');
   process.exit(0);

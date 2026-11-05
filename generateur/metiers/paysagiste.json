@@ -1,0 +1,871 @@
+{
+  "nom": "Paysagiste",
+  "libelle": "aménagement et entretien de jardins",
+  "schemaType": "HomeAndConstructionBusiness",
+  "legendesPhotos": {
+    "geste": "L’arbuste mis en terre : la motte au bon niveau, la terre tassée autour, l’arrosage aussitôt.",
+    "chantier": "Les plants en godets alignés sur une terre préparée, avant la plantation.",
+    "detail": "Un pavé engazonné à dix centimètres : la pierre, le joint vert, la terre fine."
+  },
+  "codesApe": [
+    "81.30Z"
+  ],
+  "titres": [
+    "Un jardin se juge l’année d’après, quand tout a pris.",
+    "Une plante se choisit pour la place qu’elle aura dans dix ans.",
+    "La terre se prépare avant de planter. Elle décide de tout le reste.",
+    "Un arbre se plante au niveau de son collet, jamais plus bas.",
+    "Un trou de plantation se fait deux fois plus large que la motte.",
+    "Une plante arrosée le jour de la plantation part mieux.",
+    "Le paillage garde l’eau au pied et décourage les herbes.",
+    "Une haie se plante à distance de la limite, comme le prévoit la loi.",
+    "Une haie de plusieurs essences résiste mieux qu’une haie d’une seule.",
+    "La taille se fait à la bonne saison, pas à la bonne envie.",
+    "Une coupe nette cicatrise. Une coupe arrachée pourrit.",
+    "Le sécateur se coupe au-dessus d’un bourgeon tourné vers l’extérieur.",
+    "Un gazon se sème sur une terre fine, nivelée, roulée.",
+    "Le gazon en rouleau se pose le jour où il arrive.",
+    "Une pelouse jaunie a souvent soif ou trop de passage.",
+    "La mousse dans une pelouse dit l’ombre, l’humidité ou un sol tassé.",
+    "Un gazon se regarnit au bon moment, en automne ou au printemps.",
+    "La première tonte se fait haut.",
+    "Un massif se dessine avec des floraisons qui se relaient.",
+    "Les vivaces reviennent chaque année. Les annuelles, non.",
+    "Une plante du pays demande moins d’eau qu’une plante qui n’en est pas.",
+    "Un jardin sec se pense avec des plantes qui supportent l’été.",
+    "L’arrosage goutte-à-goutte donne l’eau au pied, pas aux feuilles.",
+    "Un arrosage automatique se règle selon la saison.",
+    "Une allée se trace là où l’on passe vraiment.",
+    "Un pas japonais se pose à la longueur d’un pas.",
+    "Une bordure tient le gravier hors de la pelouse.",
+    "Les pavés se posent sur un lit de sable réglé et compacté.",
+    "Un pavé se cale au maillet, jamais au marteau.",
+    "Une terrasse sur plots se règle au niveau, plot par plot.",
+    "Les racines d’un arbre soulèvent une dalle posée trop près.",
+    "Un arbre mort se retire avant qu’il ne tombe.",
+    "Un abattage se fait par morceaux quand la place manque.",
+    "Une souche se rogne pour replanter à la place.",
+    "Un talus se tient par des plantes à racines profondes.",
+    "Une toile de paillage se cache sous l’écorce.",
+    "Le compost nourrit la terre plus doucement qu’un engrais.",
+    "Une terre lourde s’allège avec du sable et de la matière organique.",
+    "Une terre trop sableuse retient mieux l’eau avec du compost.",
+    "Le bon arbre au bon endroit ne se taille presque pas.",
+    "Un arbre trop grand pour sa place se taille toute sa vie.",
+    "Les distances de plantation se respectent avec le voisin.",
+    "Un potager se place au soleil, près du robinet.",
+    "Les carrés potagers se font à hauteur de main.",
+    "Un bassin de jardin se cure en automne.",
+    "Les plantes d’un bassin se taillent avant de l’envahir.",
+    "Une clôture végétale met quelques saisons à se fermer.",
+    "Un grillage se cache derrière une haie qui pousse.",
+    "La taille de formation se fait jeune, la taille d’entretien chaque année.",
+    "Une haie taillée en trapèze garde le pied garni.",
+    "Le taille-haie suit un cordeau pour une arête droite.",
+    "Les déchets verts se broient, se compostent ou s’évacuent en déchetterie.",
+    "Le brûlage des déchets verts est interdit dans la plupart des communes.",
+    "Le désherbage se fait à la main, à la binette ou à chaud.",
+    "Un sol nu se couvre vite d’herbes. Un sol paillé, non.",
+    "Une terrasse en bois se nettoie avant de se huiler.",
+    "Le bois grisé se rénove, il n’est pas forcément abîmé.",
+    "Un dallage envahi de mousse glisse.",
+    "Une plante se plante en automne pour profiter de l’hiver aux racines.",
+    "Une plantation en plein été demande deux fois plus d’eau.",
+    "Un arbre fruitier se taille pour la lumière et la récolte.",
+    "Les rosiers se taillent à la fin de l’hiver.",
+    "Les arbustes à floraison de printemps se taillent après la floraison.",
+    "Le paysagiste lit le soleil, le vent et la pente avant de dessiner.",
+    "Un plan de jardin se fait avant d’acheter les plantes.",
+    "Un jardin se pense avec ses vues depuis la maison.",
+    "L’ombre d’un arbre se calcule sur la terrasse à midi.",
+    "Une pergola se couvre d’une plante grimpante qui lui convient.",
+    "La glycine pousse fort : elle demande un support solide.",
+    "Le lierre accroché à un mur abîme parfois les joints.",
+    "Une plante grimpante se guide, elle ne se force pas.",
+    "Un éclairage de jardin se pose avec des gaines enterrées.",
+    "Les gaines se posent avant le gazon, pas après.",
+    "La terre végétale se régale en dernier, sur une forme réglée.",
+    "Une pelouse ne pousse pas sur des gravats.",
+    "Un jardin de lotissement cache souvent des gravats sous dix centimètres de terre.",
+    "Le paysagiste sonde le sol avant de promettre une pelouse.",
+    "Un tuteur tient un jeune arbre deux ou trois ans, pas plus.",
+    "Un lien de tuteur se desserre avant d’étrangler le tronc.",
+    "La cuvette d’arrosage autour d’un arbre garde l’eau au pied.",
+    "Un arbre neuf s’arrose longtemps, même quand il pleut un peu.",
+    "Les plants en godets se mettent en terre sans tarder.",
+    "Une motte sèche se trempe avant la plantation.",
+    "Les racines qui tournent dans le pot se démêlent avant de planter.",
+    "Un massif paillé se désherbe trois fois moins.",
+    "Le paysagiste laisse le jardin propre, outils et déchets ramassés.",
+    "Un jardin se rend avec un calendrier d’entretien.",
+    "La fin d’un chantier de jardin, c’est une terre propre, des plantes arrosées, et la patience.",
+    "Un devis de jardin détaille la préparation, les végétaux et la pose.",
+    "Le prix des plantes dépend de leur taille à la plantation.",
+    "Une petite plante grandit plus vite qu’on ne pense, et coûte moins.",
+    "Un gazon en rouleau se paie plus cher, mais se marche plus tôt.",
+    "Un semis demande quelques semaines avant d’être foulé.",
+    "Une haie de troènes coûte moins qu’une haie de grands sujets.",
+    "L’entretien d’un jardin se prévoit dès sa création.",
+    "Un jardin sans entretien retourne à la friche en deux ou trois saisons.",
+    "Le jardinier passe régulièrement, le jardin le montre.",
+    "Une tonte régulière fait un gazon plus dense.",
+    "Les bords de pelouse se recoupent à la bêche.",
+    "Un arbre élagué en hauteur se confie à un élagueur équipé.",
+    "Une branche qui touche le toit se coupe avant la tempête.",
+    "Le jardin d’hiver se prépare en automne : paillage, tailles, protections.",
+    "Un jardin bien fait ne se voit pas fait : il a l’air d’avoir toujours été là."
+  ],
+  "chapos": {
+    "etapes": [
+      [
+        "visite du jardin",
+        "lecture du soleil et du sol",
+        "plan d’aménagement"
+      ],
+      [
+        "débroussaillage",
+        "abattage d’un arbre mort",
+        "dessouchage",
+        "retrait des gravats"
+      ],
+      [
+        "terre préparée",
+        "amendement au compost",
+        "terre végétale régalée",
+        "gaines et arrosage enterrés"
+      ],
+      [
+        "arbres et arbustes plantés",
+        "haie plantée",
+        "massifs de vivaces",
+        "gazon semé",
+        "gazon en rouleau"
+      ],
+      [
+        "allée en pavés",
+        "pas japonais",
+        "bordures posées",
+        "terrasse sur plots"
+      ],
+      [
+        "paillage d’écorce",
+        "tuteurs posés",
+        "arrosage aussitôt",
+        "haie taillée au cordeau"
+      ],
+      [
+        "déchets verts évacués",
+        "jardin rendu propre",
+        "calendrier d’entretien remis"
+      ]
+    ],
+    "nombre": [
+      4,
+      5
+    ],
+    "toujours": [
+      3
+    ]
+  },
+  "gestes": [
+    {
+      "terme": "Visite et plan",
+      "textes": {
+        "combiner": [
+          [
+            "Le jardin est parcouru avec le propriétaire.",
+            "Le soleil, l’ombre et le vent sont notés.",
+            "Le sol est sondé à la bêche.",
+            "Les arbres à garder sont repérés.",
+            "Les vues depuis la maison sont regardées.",
+            "Les passages réels sont observés.",
+            "Les limites et les distances avec le voisin sont relevées.",
+            "Le temps d’entretien voulu est discuté.",
+            "Un plan est dessiné avant d’acheter les plantes.",
+            "Le devis détaille la préparation, les végétaux et la pose."
+          ],
+          [
+            "Un jardin dessiné sans le propriétaire ne lui ressemble pas.",
+            "Une plante de soleil à l’ombre végète.",
+            "Un sol de gravats ne nourrit pas une pelouse.",
+            "Un bel arbre se garde, il met des années à pousser.",
+            "Un jardin se regarde d’abord par la fenêtre.",
+            "Une allée qui ne suit pas les pas est contournée.",
+            "Une haie trop près de la limite se discute avec le voisin.",
+            "Un jardin trop exigeant finit en friche.",
+            "Des plantes achetées sans plan se retrouvent au mauvais endroit.",
+            "Un devis détaillé se compare ligne par ligne."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Préparation du terrain",
+      "textes": {
+        "combiner": [
+          [
+            "Les broussailles et les ronces sont arrachées.",
+            "Les arbres morts sont abattus, par morceaux si la place manque.",
+            "Les souches sont rognées.",
+            "Les gravats enfouis sont retirés.",
+            "La terre est décompactée et ameublie.",
+            "Elle est amendée au compost.",
+            "Les gaines d’éclairage et d’arrosage sont posées.",
+            "La terre végétale est régalée sur une forme réglée.",
+            "Les pentes sont reprises pour l’écoulement de l’eau.",
+            "Les déchets verts sont broyés ou évacués."
+          ],
+          [
+            "Une ronce coupée sans sa racine repousse.",
+            "Un arbre mort finit par tomber, souvent du mauvais côté.",
+            "Une souche laissée empêche de replanter.",
+            "Un gravat enterré ressort toujours.",
+            "Une terre tassée étouffe les racines.",
+            "Une terre pauvre fait des plantes chétives.",
+            "Une gaine posée après le gazon oblige à le rouvrir.",
+            "Une terre végétale sur une forme bosselée fait une pelouse bosselée.",
+            "Une pelouse en creux garde l’eau et la mousse.",
+            "Le brûlage des déchets verts est interdit dans la plupart des communes."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Plantations",
+      "textes": {
+        "combiner": [
+          [
+            "Le trou est creusé deux fois plus large que la motte.",
+            "Les racines qui tournent sont démêlées.",
+            "La motte sèche est trempée avant de planter.",
+            "L’arbre est planté au niveau de son collet.",
+            "La terre est tassée autour, sans écraser.",
+            "Une cuvette est formée pour l’arrosage.",
+            "La plante est arrosée aussitôt, abondamment.",
+            "Le jeune arbre est tuteuré.",
+            "Les distances de plantation sont respectées.",
+            "La haie mélange plusieurs essences."
+          ],
+          [
+            "Une motte serrée dans un trou étroit ne s’étale pas.",
+            "Des racines qui tournent étranglent l’arbre en grandissant.",
+            "Une motte sèche ne boit plus, même plantée.",
+            "Un collet enterré pourrit.",
+            "Une terre trop tassée chasse l’air des racines.",
+            "Sans cuvette, l’eau file à côté.",
+            "Une plantation sans arrosage sèche en quelques jours.",
+            "Un arbre secoué par le vent ne s’enracine pas.",
+            "Des plantes trop serrées se gênent dans trois ans.",
+            "Une haie d’une seule essence tombe malade d’un coup."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Gazon",
+      "textes": {
+        "combiner": [
+          [
+            "La terre est affinée au râteau.",
+            "Elle est nivelée et roulée.",
+            "Le gazon est semé à la volée, en croisant.",
+            "Les graines sont enfouies au râteau, légèrement.",
+            "Le gazon en rouleau est posé le jour de sa livraison.",
+            "Les rouleaux sont posés en quinconce, joints serrés.",
+            "Le gazon est roulé puis arrosé.",
+            "La première tonte est faite haut.",
+            "Les zones clairsemées sont regarnies.",
+            "Les bords sont recoupés à la bêche."
+          ],
+          [
+            "Une terre en mottes fait un gazon en mottes.",
+            "Un sol non roulé se creuse sous les pieds.",
+            "Un semis dans un seul sens laisse des bandes.",
+            "Des graines trop enterrées ne lèvent pas.",
+            "Un rouleau qui attend jaunit sur la palette.",
+            "Des joints alignés se voient longtemps.",
+            "Un gazon non roulé ne touche pas la terre et sèche.",
+            "Une première tonte trop rase arrache les jeunes pousses.",
+            "Un trou dans la pelouse se remplit d’herbes.",
+            "Un bord net fait un jardin soigné."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Allées et terrasses",
+      "textes": {
+        "combiner": [
+          [
+            "L’allée est tracée là où l’on passe.",
+            "Le fond de forme est décaissé et compacté.",
+            "Un géotextile est posé sous le lit de pose.",
+            "Le sable est réglé à la règle.",
+            "Les pavés sont posés et calés au maillet.",
+            "Les bordures tiennent le gravier.",
+            "Les pas japonais sont posés à la longueur d’un pas.",
+            "Les plots de terrasse sont réglés au niveau.",
+            "Les dalles sont posées avec un léger écoulement.",
+            "Les joints sont garnis de sable ou de gazon."
+          ],
+          [
+            "Une allée tracée au hasard est contournée.",
+            "Un fond mou fait onduler l’allée.",
+            "Sans géotextile, la terre remonte entre les pavés.",
+            "Un sable mal réglé fait des pavés qui bougent.",
+            "Un pavé frappé au marteau éclate.",
+            "Le gravier sans bordure part dans la pelouse.",
+            "Des pas trop espacés obligent à sauter.",
+            "Un plot mal réglé fait basculer une dalle.",
+            "Une terrasse à plat garde les flaques.",
+            "Des joints vides se remplissent d’herbes."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Massifs et paillage",
+      "textes": {
+        "combiner": [
+          [
+            "Le massif est dessiné au sol avant de planter.",
+            "Les floraisons sont choisies pour se relayer.",
+            "Les plantes hautes vont au fond, les basses devant.",
+            "Les vivaces sont plantées en groupes.",
+            "Les plantes du pays sont préférées pour l’eau.",
+            "Le goutte-à-goutte est posé au pied des plantes.",
+            "Une toile est posée là où il le faut.",
+            "Le paillage d’écorce couvre le sol.",
+            "Le paillage s’arrête avant le collet des plantes.",
+            "Le massif est arrosé une dernière fois."
+          ],
+          [
+            "Un massif planté sans dessin finit en fouillis.",
+            "Des floraisons en même temps laissent un massif vide le reste de l’année.",
+            "Une plante haute devant cache tout le massif.",
+            "Une vivace seule se perd dans le massif.",
+            "Une plante qui vient d’ailleurs réclame de l’eau tout l’été.",
+            "L’eau au pied ne se perd pas sur les feuilles.",
+            "Une toile visible fait un massif en plastique.",
+            "Un sol paillé garde l’eau et décourage les herbes.",
+            "Un paillage contre le collet le fait pourrir.",
+            "Un massif arrosé à la plantation reprend vite."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Taille et entretien",
+      "textes": {
+        "combiner": [
+          [
+            "La taille est faite à la bonne saison pour chaque plante.",
+            "Les coupes sont nettes, au sécateur affûté.",
+            "La coupe est faite au-dessus d’un bourgeon tourné vers l’extérieur.",
+            "La haie est taillée au cordeau, en trapèze.",
+            "Les arbustes à floraison de printemps sont taillés après la floraison.",
+            "Les rosiers sont taillés à la fin de l’hiver.",
+            "Le bois mort est retiré.",
+            "Les liens des tuteurs sont desserrés.",
+            "Les branches qui touchent le toit sont coupées.",
+            "Les déchets de taille sont broyés ou évacués."
+          ],
+          [
+            "Une taille à contretemps supprime les fleurs de l’année.",
+            "Une coupe arrachée laisse entrer les maladies.",
+            "Un bourgeon vers l’intérieur fait une plante emmêlée.",
+            "Une haie taillée droite se dégarnit du pied.",
+            "Tailler avant la floraison, c’est couper les fleurs.",
+            "Un rosier taillé trop tôt gèle sur ses coupes.",
+            "Le bois mort abrite les maladies.",
+            "Un lien serré étrangle le tronc qui grossit.",
+            "Une branche sur le toit l’abîme au premier vent.",
+            "Un tas de branches laissé attire les nuisibles."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Fin de chantier",
+      "textes": {
+        "combiner": [
+          [
+            "Les déchets verts sont évacués.",
+            "Les allées et la terrasse sont balayées.",
+            "Les outils et les godets vides sont ramassés.",
+            "Toutes les plantes sont arrosées une dernière fois.",
+            "L’arrosage automatique est réglé et montré.",
+            "Le calendrier d’entretien est remis.",
+            "Les noms des plantes sont laissés au propriétaire.",
+            "Les conseils d’arrosage des premières semaines sont donnés.",
+            "Les garanties de reprise sont expliquées.",
+            "Le jardin est parcouru ensemble."
+          ],
+          [
+            "Un tas de déchets verts oublié reste tout l’été.",
+            "Une allée terreuse salit la maison.",
+            "Un godet oublié dans un massif se voit pendant des années.",
+            "Un arrosage final aide les plantes à passer la première semaine.",
+            "Un arrosage qu’on ne sait pas régler arrose sous la pluie.",
+            "Un calendrier évite de tailler au mauvais moment.",
+            "Connaître le nom d’une plante, c’est savoir la soigner.",
+            "Les premières semaines décident de la reprise.",
+            "Une plante morte se remplace selon ce qui a été convenu.",
+            "Un jardin vu ensemble est un jardin rendu."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    }
+  ],
+  "coupure": {
+    "avant": {
+      "etapes": [
+        [
+          "jardin en friche",
+          "herbes hautes",
+          "ronces",
+          "terre nue",
+          "arbre mort"
+        ],
+        [
+          "pelouse jaunie",
+          "pelouse moussue",
+          "massif envahi",
+          "haie dépérie",
+          "haie clairsemée"
+        ],
+        [
+          "allée défoncée",
+          "dalles soulevées",
+          "terrasse moussue",
+          "bois grisé"
+        ],
+        [
+          "clôture nue",
+          "bassin vaseux",
+          "talus raviné"
+        ]
+      ],
+      "nombre": [
+        3,
+        3
+      ]
+    },
+    "apres": {
+      "etapes": [
+        [
+          "terrain débroussaillé",
+          "arbre mort abattu",
+          "souche rognée",
+          "terre préparée"
+        ],
+        [
+          "gazon neuf",
+          "massif replanté",
+          "haie plantée",
+          "arbres plantés",
+          "potager en carrés",
+          "talus planté"
+        ],
+        [
+          "allée pavée",
+          "pas japonais",
+          "bordures posées",
+          "terrasse reposée"
+        ],
+        [
+          "paillage d’écorce",
+          "arrosage goutte-à-goutte",
+          "haie taillée",
+          "bois huilé"
+        ],
+        [
+          "jardin nettoyé",
+          "plantes arrosées",
+          "déchets évacués"
+        ]
+      ],
+      "nombre": [
+        3,
+        4
+      ],
+      "toujours": [
+        1
+      ]
+    }
+  },
+  "legendes": {
+    "comparateurs": {
+      "combiner": [
+        [
+          "Jardin",
+          "Pelouse",
+          "Massif",
+          "Haie",
+          "Allée",
+          "Terrasse",
+          "Potager",
+          "Talus",
+          "Cour",
+          "Clôture végétale",
+          "Bassin de jardin",
+          "Entrée de jardin"
+        ],
+        [
+          "friche débroussaillée",
+          "souches rognées",
+          "gravats retirés",
+          "terre amendée",
+          "terre régalée",
+          "gaines posées",
+          "plantes en place",
+          "gazon semé",
+          "pavés calés",
+          "paillage posé"
+        ],
+        [
+          "jardin planté",
+          "gazon neuf",
+          "haie dense",
+          "allée pavée",
+          "massif fleuri",
+          "terrasse reposée",
+          "bassin curé",
+          "talus tenu"
+        ]
+      ],
+      "joints": [
+        ", ",
+        ", "
+      ],
+      "fin": "."
+    },
+    "invitation": {
+      "combiner": [
+        [
+          "Faites glisser la couture",
+          "Déplacez la séparation",
+          "Touchez la photo",
+          "Glissez le trait",
+          "Attrapez la couture",
+          "Faites glisser le curseur",
+          "Déplacez le trait",
+          "Passez le doigt sur la photo"
+        ],
+        [
+          "pour comparer l’avant et l’après.",
+          "pour voir le jardin avant les travaux.",
+          "pour passer d’un état à l’autre.",
+          "pour voir ce que le chantier a changé.",
+          "pour retrouver le jardin d’origine.",
+          "pour voir le terrain avant les plantations.",
+          "pour comparer les deux états.",
+          "pour voir l’allée avant et après.",
+          "pour mesurer le travail fait.",
+          "pour voir la différence."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    },
+    "precision": {
+      "combiner": [
+        [
+          "Même point de vue, même cadrage.",
+          "Les deux photos sont prises du même endroit.",
+          "Même angle, même distance.",
+          "Les deux images ont le même cadrage.",
+          "Même endroit, même objectif.",
+          "Le point de vue ne bouge pas d’une photo à l’autre.",
+          "Photographié deux fois, depuis la même fenêtre.",
+          "Même place, même hauteur d’objectif.",
+          "Le photographe n’a pas bougé entre les deux."
+        ],
+        [
+          "Seul le jardin change.",
+          "La différence vient du chantier.",
+          "Rien d’autre ne change que le jardin.",
+          "Ce qui change, c’est le travail fait.",
+          "La maison est la même, le jardin non.",
+          "Seul le terrain a été repris.",
+          "Ce qui diffère, ce sont les plantes et les allées.",
+          "Entre les deux, il y a la bêche et l’arrosoir.",
+          "L’écart, c’est le travail du paysagiste."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    }
+  },
+  "rubriques": {
+    "gestes": [
+      "Le détail des postes.",
+      "Ce que recouvre un aménagement de jardin.",
+      "Ce qui se fait sous la terre.",
+      "Les étapes, dans l’ordre.",
+      "Étape par étape.",
+      "De la friche au gazon.",
+      "Comment se crée un jardin.",
+      "Les postes du chantier.",
+      "Ce que fait le paysagiste.",
+      "De la bêche à l’arrosoir.",
+      "Le travail, poste par poste.",
+      "Ce qui se fait, et pourquoi.",
+      "Les gestes du métier.",
+      "Dans l’ordre du chantier.",
+      "Ce que le devis détaille."
+    ],
+    "chantier": [
+      "Le chantier.",
+      "Au jardin.",
+      "En cours de travaux.",
+      "Pendant les travaux.",
+      "Sur place.",
+      "Les mains dans la terre.",
+      "Le chantier en cours.",
+      "Les travaux, en images.",
+      "Ce que montre le chantier.",
+      "Sur le chantier.",
+      "Pendant les plantations.",
+      "Le jardin en travaux.",
+      "Ce qui se voit en cours.",
+      "Au milieu du chantier.",
+      "La plantation en cours."
+    ],
+    "verifiable": [
+      "Ce qui se vérifie.",
+      "Les faits publics.",
+      "Ce que disent les registres.",
+      "Ce qui est public.",
+      "Les registres officiels.",
+      "Ce que chacun peut vérifier.",
+      "L’entreprise, dans les registres.",
+      "Les données publiques.",
+      "Les sources officielles.",
+      "Ce que disent les sources publiques.",
+      "Vérifiable par tous.",
+      "Les faits, sans commentaire.",
+      "Ce que l’État publie.",
+      "Dans les bases publiques.",
+      "Les informations légales."
+    ],
+    "contact": [
+      "Parler du jardin.",
+      "Prendre contact.",
+      "Faire venir quelqu’un.",
+      "Demander une visite.",
+      "Montrer le jardin.",
+      "Parler de votre haie.",
+      "Faire voir la pelouse.",
+      "Appeler l’entreprise.",
+      "Demander un passage.",
+      "Faire mesurer.",
+      "Prendre rendez-vous.",
+      "Une question sur un jardin ?",
+      "Faire constater.",
+      "Parler du projet.",
+      "Joindre l’entreprise."
+    ],
+    "prix": [
+      "Ce que ça coûte.",
+      "Les tarifs, poste par poste.",
+      "Avant de demander un devis.",
+      "Combien ça coûte.",
+      "Les prix, poste par poste.",
+      "Les ordres de grandeur.",
+      "Les tarifs pratiqués.",
+      "Ce que coûte un jardin.",
+      "Le prix des travaux.",
+      "Avant le devis.",
+      "Les prix du métier.",
+      "Ce qui fait le prix.",
+      "Les tarifs, sans détour.",
+      "Les fourchettes de prix.",
+      "Ce que dit le devis."
+    ]
+  },
+  "mot": "Jardin",
+  "matiere": [
+    "À dix centimètres, un pavé engazonné montre sa pierre et son joint vert.",
+    "Le gazon fraîchement tondu dessine des bandes claires et foncées.",
+    "Le paillage d’écorce fait un tapis brun autour du pied.",
+    "La bordure posée trace une ligne nette entre gravier et pelouse.",
+    "La terre fine régalée est sombre, meuble, sans un caillou.",
+    "Une haie taillée au cordeau garde une arête droite.",
+    "La dalle sur plots laisse une ombre fine sous son bord.",
+    "Le goutte-à-goutte perle au pied de l’arbuste.",
+    "Une motte bien plantée affleure juste au niveau du sol.",
+    "Les feuilles d’une vivace neuve se dressent dès le lendemain de l’arrosage.",
+    "Le sable de pose réglé garde la trace de la règle.",
+    "Un pas japonais s’enfonce juste assez dans la pelouse.",
+    "La coupe nette d’un sécateur laisse un bois clair et lisse.",
+    "Un tuteur et son lien souple tiennent le tronc sans le serrer.",
+    "Les rouleaux de gazon posés en quinconce montrent leurs joints, qui disparaissent en quelques semaines.",
+    "La cuvette d’arrosage garde un reflet d’eau autour de l’arbre.",
+    "Un massif paillé reste brun et propre entre les plantes.",
+    "La terre retournée sent l’humus et la pluie.",
+    "Un gravier ratissé garde des sillons réguliers.",
+    "Les godets alignés attendent en rangs, chacun sa place.",
+    "Un bassin curé laisse voir le fond et les nénuphars.",
+    "La mousse arrachée laisse une dalle claire et rugueuse.",
+    "Un bois de terrasse huilé fonce et fait ressortir ses veines.",
+    "La lumière du soir traverse les graminées.",
+    "Un jeune arbre porte ses premières feuilles l’année d’après.",
+    "Un pavé calé ne bouge pas sous le talon.",
+    "Les fleurs d’un massif se relaient du printemps à l’automne.",
+    "La haie neuve laisse encore voir la clôture, puis la cache.",
+    "Une pelouse dense ne laisse plus voir la terre.",
+    "Un jardin fini sent l’herbe coupée et la terre arrosée."
+  ],
+  "prix": {
+    "note": "Ordres de grandeur nationaux, relevés le 5 novembre 2026. Ce ne sont pas les prix de l'entreprise et ce n'est pas un devis.",
+    "sources": [
+      {
+        "nom": "Prix-travaux-m2.com, prix d’un aménagement de jardin",
+        "url": "https://www.prix-travaux-m2.com/prix-amenagement-jardin.php"
+      }
+    ],
+    "postes": [
+      {
+        "poste": "Engazonnement par semis",
+        "bas": 3,
+        "haut": 4,
+        "unite": "€/m²",
+        "note": "Gazon standard."
+      },
+      {
+        "poste": "Gazon en rouleau, posé",
+        "bas": 12,
+        "haut": 25,
+        "unite": "€/m²",
+        "note": "Se marche plus tôt qu’un semis."
+      },
+      {
+        "poste": "Aménagement de massifs",
+        "bas": 36,
+        "haut": 40,
+        "unite": "€/m²",
+        "note": "Hors fleurs et plantes, qui dépendent de ce qu’on choisit."
+      },
+      {
+        "poste": "Arrosage automatique",
+        "bas": 10,
+        "haut": 12,
+        "unite": "€/m²",
+        "note": "Posé."
+      }
+    ],
+    "exemple": {
+      "titre": "Une pelouse de 200 m² en gazon en rouleau",
+      "bas": 2400,
+      "haut": 5000,
+      "note": "Calculé avec le deuxième poste ci-dessus (12 à 25 €/m²). La préparation de la terre s’ajoute si elle n’est pas comprise."
+    }
+  },
+  "nuancierEtiquette": "Voir l’allée dans une autre teinte",
+  "teintes": [
+    {
+      "nom": "D’origine",
+      "voile": "",
+      "pastille": "#7F8B62"
+    },
+    {
+      "nom": "Gravier blanc",
+      "voile": "40 12% 86% / .30",
+      "pastille": "#E0DCD2"
+    },
+    {
+      "nom": "Gravier ocre",
+      "voile": "36 46% 58% / .30",
+      "pastille": "#C69E62"
+    },
+    {
+      "nom": "Schiste",
+      "voile": "220 8% 34% / .32",
+      "pastille": "#4F535C"
+    },
+    {
+      "nom": "Pavé gris",
+      "voile": "30 4% 52% / .30",
+      "pastille": "#8A8682"
+    },
+    {
+      "nom": "Pavé grès",
+      "voile": "24 34% 56% / .30",
+      "pastille": "#B98A65"
+    },
+    {
+      "nom": "Écorce",
+      "voile": "20 34% 28% / .32",
+      "pastille": "#5F4130"
+    },
+    {
+      "nom": "Bois huilé",
+      "voile": "30 40% 42% / .30",
+      "pastille": "#96703F"
+    },
+    {
+      "nom": "Pierre calcaire",
+      "voile": "42 24% 78% / .30",
+      "pastille": "#D5CAB0"
+    },
+    {
+      "nom": "Pelouse",
+      "voile": "100 30% 34% / .32",
+      "pastille": "#4E6F3C"
+    }
+  ],
+  "alt": {
+    "avant": "jardin en friche avant travaux, herbes hautes, clôture affaissée",
+    "apres": "le même jardin aménagé",
+    "invitation": "Comparer le jardin avant et après les travaux",
+    "avant2": "un autre jardin avant l’aménagement",
+    "apres2": "le même jardin une fois aménagé",
+    "hero": "jardin dont une moitié garde la friche et l’autre l’aménagement planté",
+    "invitation2": "Comparer un second chantier avant et après",
+    "ouverture": "geste du métier dans un jardin",
+    "chantier": "plants en godets alignés avant plantation, terre préparée",
+    "chantierBis": "pavés empilés et sable de pose étalé",
+    "detail": "gros plan sur un pavé engazonné",
+    "detailBis": "gros plan sur un paillage d’écorce au pied d’un arbuste",
+    "geste": "mains qui plantent un arbuste"
+  },
+  "estimateur": {
+    "titre": "Votre jardin",
+    "mesure": {
+      "etiquette": "Surface du jardin",
+      "unite": "m²",
+      "min": 20,
+      "max": 3000,
+      "pas": 10,
+      "defaut": 200,
+      "aria": "Surface du jardin en mètres carrés"
+    }
+  }
+}

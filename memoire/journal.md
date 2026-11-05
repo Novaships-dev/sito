@@ -2153,3 +2153,21 @@ Résultat : 103 titres, 100 sites sans défaut. Deux sites fabriqués (APE
 sont hors taxes dans la source : la page le dit. L'exemple compte la surface
 de liner avec les parois (8 × 4 m sur 1,50 m : environ 70 m², pas 32).
 TRACAGE : generateur/metiers/piscine.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 5 nov. 2026 — T32, paysagiste (13 sur 13), T32 faite, par Cowork
+
+Plan : 1. `generateur/metiers/paysagiste.json` sur le plan d'images (plan,
+préparation, plantations, gazon, allées, massifs, taille) ; 2. prix relevés le
+5 nov. (Prix-travaux-m2.com) ; 3. capacité, fabrication, puis clore T32.
+
+Résultat : 103 titres, 100 sites sans défaut. Deux sites fabriqués (APE
+81.30Z) : `verifier-site` 0 bloquant, `verifier-mobile` 0. Retirée avant
+publication : une phrase sur l'écorce de pin qui acidifie le sol (discuté).
+Trouvé en relisant les pages : « Activité déclarée 81.30Z » sans libellé.
+Neuf codes des fiches n'avaient pas de libellé dans `generateur/sirene.mjs`
+(43.12A, 43.21A, 43.22A, 43.22B, 43.31Z, 43.32A, 43.32B, 25.11Z, 81.30Z) :
+ajoutés d'après la nomenclature NAF rév. 2 de l'Insee, et `verifier-depot`
+contrôle désormais que chaque code d'une fiche a le sien (rouge sur une copie
+sans 81.30Z, vert sur le dépôt). Les 16 métiers ont leurs textes ; S-013 clos.
+Reste pour eux : les images de 13 métiers (F15).
+TRACAGE : generateur/metiers/paysagiste.json, generateur/sirene.mjs, scripts/verifier-depot.mjs, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/REGISTRE.md, docs/audit/CARTE.md

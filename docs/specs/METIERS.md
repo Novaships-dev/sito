@@ -32,9 +32,9 @@ Un métier est **prêt** quand ses cinq pièces existent et sont prouvées :
 | `etancheite` | Étanchéité toiture-terrasse | 43.99A | oui (5 nov.) | non | 0 | oui, en projection | non |
 | `parquet` | Parquet et sols souples | 43.33Z | oui (5 nov.) | non | 0 | oui, en projection | non |
 | `piscine` | Piscine | 43.99C | oui (5 nov.) | non | 0 | oui, en projection | non |
-| `paysagiste` | Paysagiste | 81.30Z | non | non | 0 | non | non |
+| `paysagiste` | Paysagiste | 81.30Z | oui (5 nov.) | non | 0 | oui, en projection | non |
 
-**Prêts : 0 sur 16.** Quinze ont leurs textes (maçonnerie, menuiserie, carrelage, plomberie, électricité, plâtrerie, isolation, métallerie, terrassement, étanchéité, parquet et piscine depuis les 4 et 5 nov., sans prompts encore), trois leurs prompts ; aucun n'a encore
+**Prêts : 0 sur 16.** Les seize ont leurs textes (maçonnerie, menuiserie, carrelage, plomberie, électricité, plâtrerie, isolation, métallerie, terrassement, étanchéité, parquet, piscine et paysagiste depuis les 4 et 5 nov., sans prompts encore), trois leurs prompts ; aucun n'a encore
 ses 54 images.
 
 ## Ce qui ne colle pas encore
