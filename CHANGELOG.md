@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 5 nov. | T32 (6 sur 13) : textes de la plâtrerie et des cloisons (`generateur/metiers/platrerie.json`) ; prix nationaux sourcés ; 100 sites différents dans un département. |
 | 5 nov. | T32 (5 sur 13) : textes de l'électricité (`generateur/metiers/electricite.json`) ; prix nationaux sourcés ; 100 sites différents dans un département. |
 | 5 nov. | T11, complément : la clé publique de Supabase est écrite dans `refaire-site.yml` et `.env.example` (elle n'est pas un secret) ; Fabrice n'a plus à la poser, F21 perd une étape. |
 | 4 nov. | T32 (4 sur 13) : textes de la plomberie et du chauffage (`generateur/metiers/plomberie.json`) ; prix nationaux sourcés ; 100 sites différents dans un département. |

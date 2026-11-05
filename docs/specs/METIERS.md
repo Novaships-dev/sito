@@ -23,7 +23,7 @@ Un métier est **prêt** quand ses cinq pièces existent et sont prouvées :
 | `maconnerie` | Maçonnerie générale | 43.99C, 43.91B | oui (4 nov.) | non | 0 | oui, en projection | non |
 | `menuiserie` | Menuiserie et fenêtres | 43.32A, 43.32B | oui (4 nov.) | non | 0 | oui, en projection | non |
 | `carrelage` | Carrelage et faïence | 43.33Z | oui (4 nov.) | non | 0 | oui, en projection | non |
-| `platrerie` | Plâtrerie et cloisons | 43.31Z | non | non | 0 | non | non |
+| `platrerie` | Plâtrerie et cloisons | 43.31Z | oui (5 nov.) | non | 0 | oui, en projection | non |
 | `isolation` | Isolation extérieure | 43.29A | non | non | 0 | non | non |
 | `electricite` | Électricité | 43.21A | oui (5 nov.) | non | 0 | oui, en projection | non |
 | `plomberie` | Plomberie et chauffage | 43.22A, 43.22B | oui (4 nov.) | non | 0 | oui, en projection | non |
@@ -34,7 +34,7 @@ Un métier est **prêt** quand ses cinq pièces existent et sont prouvées :
 | `piscine` | Piscine | 43.99C | non | non | 0 | non | non |
 | `paysagiste` | Paysagiste | 81.30Z | non | non | 0 | non | non |
 
-**Prêts : 0 sur 16.** Huit ont leurs textes (maçonnerie, menuiserie, carrelage, plomberie et électricité depuis les 4 et 5 nov., sans prompts encore), trois leurs prompts ; aucun n'a encore
+**Prêts : 0 sur 16.** Neuf ont leurs textes (maçonnerie, menuiserie, carrelage, plomberie, électricité et plâtrerie depuis les 4 et 5 nov., sans prompts encore), trois leurs prompts ; aucun n'a encore
 ses 54 images.
 
 ## Ce qui ne colle pas encore

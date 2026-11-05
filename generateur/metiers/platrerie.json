@@ -1,0 +1,880 @@
+{
+  "nom": "Plâtrerie",
+  "libelle": "plâtrerie et cloisons",
+  "schemaType": "HomeAndConstructionBusiness",
+  "legendesPhotos": {
+    "geste": "La bande posée dans l’enduit frais, tirée au couteau en une passe.",
+    "chantier": "Ossature montée, rails et montants alignés au laser avant la première plaque.",
+    "detail": "Un joint de plaques enduit à dix centimètres : sous la lumière rasante, il ne se voit plus."
+  },
+  "codesApe": [
+    "43.31Z"
+  ],
+  "titres": [
+    "Une cloison se juge à la lumière rasante, pas à la lumière du plafonnier.",
+    "Un joint de plaques réussi ne se voit plus sous la peinture.",
+    "L’ossature fait la cloison. La plaque ne fait que la couvrir.",
+    "Un rail mal fixé au sol fait une cloison qui sonne creux.",
+    "Une vis enfoncée trop loin déchire le carton. Une vis trop haute fait une bosse.",
+    "Un plafond se pose au laser, pas au niveau à bulle.",
+    "Une plaque hydrofuge se pose dans la salle de bains, pas une plaque ordinaire.",
+    "L’isolant se glisse entre les montants sans être tassé.",
+    "Une bande de joint se pose dans l’enduit frais, jamais à sec.",
+    "L’angle sortant se protège par une baguette, sinon il s’épaufre.",
+    "Un doublage collé se pose sur un mur sain, pas sur un mur humide.",
+    "Le ponçage fin se fait à la lumière, joint par joint.",
+    "Une cloison phonique se désolidarise du sol et des murs.",
+    "Un faux plafond cache les gaines sans les écraser.",
+    "Les spots se prévoient avant de fermer le plafond, pas après.",
+    "Une plaque se coupe au cutter le long d’une règle, puis se casse net.",
+    "Le plâtre se gâche à la quantité qu’on étale avant qu’il ne prenne.",
+    "Une fissure en toile d’araignée dit que le plafond a travaillé.",
+    "Un plafond fissuré se reprend avec une bande armée, pas avec un rebouchage.",
+    "Les combles s’aménagent en commençant par l’isolation, puis les rampants.",
+    "Un renfort se pose derrière la plaque avant d’y accrocher un meuble.",
+    "Une cloison se pose d’aplomb, sinon chaque porte le montre.",
+    "Les montants se posent tous les soixante centimètres, ou moins.",
+    "Une plaque se visse tous les trente centimètres, pas au hasard.",
+    "L’enduit de finition se tire en deux passes fines plutôt qu’une épaisse.",
+    "Un mur bosselé se double. Un mur droit se ratisse.",
+    "Une corniche se reprend au plâtre, dans son profil d’origine.",
+    "Une arche se cintre avec des plaques mouillées ou rainurées.",
+    "Le plâtrier laisse un support prêt à peindre, rien d’autre.",
+    "Une cloison neuve attend que son enduit soit sec avant la peinture.",
+    "Les plaques se stockent à plat, au sec, jamais debout contre un mur.",
+    "Une saignée dans une cloison sèche se fait avant la pose de la plaque.",
+    "Une gaine électrique passe dans les trous des montants.",
+    "Une porte se pose dans une cloison avec un montant renforcé.",
+    "Une niche murale se dessine dans l’ossature, avant les plaques.",
+    "Le joint entre la cloison et le plafond se fait avec une bande, ou un joint souple.",
+    "Un plafond rampant se pose avec des suspentes réglées une à une.",
+    "Une plaque de plâtre ne supporte pas l’eau qui stagne.",
+    "Le plâtre traditionnel se tire à la règle sur des repères.",
+    "Un enduit trop épais fissure en séchant.",
+    "Un angle rentrant se fait au couteau d’angle, d’un seul geste.",
+    "La poussière de ponçage se capte à l’aspirateur, à la source.",
+    "Un mur en plâtre ancien se sonde avant d’être repris.",
+    "Un lattis apparent dans un vieux plafond se reprend au plâtre, ou se double.",
+    "L’humidité d’un mur se traite avant de le doubler, jamais après.",
+    "Un pare-vapeur se pose côté chaud de l’isolant, sans trou.",
+    "Une cloison isolée se pose avec un isolant qui remplit tout le vide.",
+    "Un faux plafond se suspend au plancher, pas aux gaines.",
+    "Les fourrures d’un plafond se posent perpendiculaires aux plaques.",
+    "Une trappe de visite se prévoit dans le faux plafond, au-dessus de la VMC.",
+    "La première plaque fixe toutes les autres.",
+    "Les joints de plaques se décalent d’un rang à l’autre.",
+    "Une plaque se pose à un centimètre du sol, pour éviter l’humidité.",
+    "Une vis affleurante se reconnaît au toucher, pas seulement à l’œil.",
+    "Un ponçage trop fort creuse le joint au lieu de le lisser.",
+    "La bande armée renforce les angles et les joints qui travaillent.",
+    "Un enduit de rebouchage et un enduit de finition ne font pas le même travail.",
+    "Un trou de cheville se rebouche en deux fois, pour ne pas creuser.",
+    "Un placard maçonné bancal se remplace par une cloison et une niche droites.",
+    "Une sous-pente s’habille et se transforme en rangement.",
+    "Le plafond d’une salle de bains se pose en plaques hydrofuges.",
+    "Une cloison de séparation entre deux chambres se fait phonique.",
+    "L’ossature se monte au laser, la pièce entière d’un coup.",
+    "Une plaque coupée se pose côté carton vers la pièce.",
+    "Un chantier de plâtrerie fait de la poussière. On la prévoit.",
+    "Un mur doublé gagne en isolation, et perd quelques centimètres.",
+    "Une cloison légère se monte en une journée, et se finit en trois.",
+    "Le temps de séchage d’un enduit ne se rattrape pas.",
+    "Une plaque abîmée se remplace, elle ne se rafistole pas.",
+    "Un plafond voûté se reprend en suivant sa courbe, pas en l’aplatissant.",
+    "Le plâtrier repère les tuyaux avant de visser.",
+    "Un enduit lisse se juge en promenant la main à plat.",
+    "La pose d’un plafond se fait à deux, ou avec un lève-plaque.",
+    "Une plaque de vingt-cinq kilos ne se tient pas longtemps au-dessus de sa tête.",
+    "Les découpes autour des prises se font à la scie cloche.",
+    "Une gaine qui sort d’un plafond se repère avant la pose.",
+    "Un doublage se colle par plots, pas sur toute la surface.",
+    "Une cloison neuve se raccorde au mur existant par une bande.",
+    "Un angle droit se vérifie à l’équerre avant de poser la baguette.",
+    "Le plâtre se travaille vite. Le plâtrier aussi.",
+    "Un mur ratissé se peint sans surprise.",
+    "Les joints se poncent, se dépoussièrent, puis s’impriment.",
+    "Un plafond fini se regarde depuis la porte, lumière allumée.",
+    "Une ossature métallique ne pourrit pas et ne gondole pas.",
+    "Un isolant tassé isole moins. Il se pose sans forcer.",
+    "Une cloison bien montée ne bouge pas quand on claque la porte.",
+    "Une fente entre deux plaques se remplit avant la bande.",
+    "Le plâtrier laisse la pièce balayée, gravats sortis.",
+    "Un plafond refait change une pièce plus qu’une couleur.",
+    "Les rampants d’une chambre sous les toits se posent avec soin : on les voit du lit.",
+    "Une cloison se trace au sol, au cordeau, avant le premier rail.",
+    "La hauteur d’un faux plafond se décide avec les fenêtres et les portes.",
+    "Un enduit projeté se lisse dans le quart d’heure.",
+    "Une bande papier se mouille avant la pose, une bande à joint non.",
+    "Un bon joint se fait en trois passes : bande, remplissage, finition.",
+    "Le chant d’une plaque aminci reçoit la bande, le chant coupé demande plus d’enduit.",
+    "La plaque se pose en quinconce, jamais en croix.",
+    "Une cloison légère ne porte pas un ballon d’eau chaude sans renfort.",
+    "Un plafond qui tombe a souvent un problème de fixation, rarement de plaque.",
+    "Un plâtrier mesure deux fois, et coupe une fois.",
+    "La fin d’un chantier de plâtrerie, c’est un mur prêt pour le peintre."
+  ],
+  "chapos": {
+    "etapes": [
+      [
+        "protection de la pièce",
+        "dépose des anciennes cloisons",
+        "dépose du faux plafond abîmé"
+      ],
+      [
+        "traçage au sol et au laser",
+        "rails et montants posés",
+        "ossature de plafond suspendue",
+        "renforts pour les meubles"
+      ],
+      [
+        "isolant posé entre montants",
+        "pare-vapeur continu",
+        "gaines électriques passées"
+      ],
+      [
+        "plaques de plâtre vissées",
+        "cloisons montées d’aplomb",
+        "doublage des murs",
+        "faux plafond posé",
+        "plaques hydrofuges en pièce humide"
+      ],
+      [
+        "bandes posées dans l’enduit",
+        "joints enduits en trois passes",
+        "angles protégés par baguette",
+        "fissures reprises à la bande armée"
+      ],
+      [
+        "ponçage fin à la lumière rasante",
+        "ratissage des murs",
+        "support prêt à peindre"
+      ],
+      [
+        "chutes et gravats évacués",
+        "poussière aspirée",
+        "pièce rendue balayée"
+      ]
+    ],
+    "nombre": [
+      4,
+      5
+    ],
+    "toujours": [
+      3
+    ]
+  },
+  "gestes": [
+    {
+      "terme": "Préparation et dépose",
+      "textes": {
+        "combiner": [
+          [
+            "La pièce est vidée ou les meubles regroupés et couverts.",
+            "Les sols sont protégés par une bâche et des plaques.",
+            "Les anciennes cloisons sont déposées et évacuées.",
+            "Le faux plafond abîmé est déposé avec son ossature.",
+            "Les murs sont sondés pour trouver le plâtre qui sonne creux.",
+            "L’humidité des murs est mesurée avant tout doublage.",
+            "Les gaines et les tuyaux sont repérés.",
+            "Les hauteurs sont relevées pour les portes et les fenêtres.",
+            "Les poussières sont confinées derrière une bâche.",
+            "Les gravats sont descendus au fur et à mesure."
+          ],
+          [
+            "La poussière de plâtre passe sous les portes.",
+            "Un parquet protégé reste un parquet sans rayure.",
+            "Une vieille cloison cache souvent des fils à reprendre.",
+            "Une ossature rouillée ne se garde pas.",
+            "Un plâtre qui sonne creux finira par tomber.",
+            "Doubler un mur humide, c’est enfermer l’humidité.",
+            "Un tuyau percé par une vis se découvre au plafond du dessous.",
+            "Un faux plafond trop bas coupe la fenêtre.",
+            "Une bâche bien posée vaut une journée de ménage.",
+            "Un chantier encombré est un chantier lent."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Ossature",
+      "textes": {
+        "combiner": [
+          [
+            "La cloison est tracée au sol au cordeau, puis reportée au plafond au laser.",
+            "Les rails sont fixés au sol et au plafond.",
+            "Les montants sont posés tous les soixante centimètres, ou moins.",
+            "Les huisseries de porte reçoivent des montants renforcés.",
+            "Des renforts sont posés là où un meuble ou une télévision sera fixé.",
+            "Les suspentes du plafond sont réglées une à une.",
+            "Les fourrures sont posées perpendiculairement aux futures plaques.",
+            "Une bande résiliente isole l’ossature du sol pour une cloison phonique.",
+            "Les niches et les retours sont dessinés dans l’ossature.",
+            "L’ossature est vérifiée au laser avant la première plaque."
+          ],
+          [
+            "Une cloison tracée à l’œil se voit de travers depuis la porte.",
+            "Un rail mal fixé fait trembler la cloison.",
+            "Des montants trop espacés laissent la plaque fléchir.",
+            "Une porte dans une cloison faible fait vibrer tout le mur.",
+            "Sans renfort, une étagère arrache la plaque.",
+            "Un plafond mal réglé ondule à la lumière.",
+            "Une fourrure dans le mauvais sens laisse la plaque sans appui.",
+            "Le bruit passe par le sol si l’ossature le touche.",
+            "Une niche pensée avant se pose droite.",
+            "Une erreur d’ossature ne se rattrape plus une fois les plaques posées."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Isolation et réseaux",
+      "textes": {
+        "combiner": [
+          [
+            "L’isolant est glissé entre les montants, sans être tassé.",
+            "L’isolant remplit tout le vide, sans trou ni recouvrement.",
+            "Le pare-vapeur est posé côté chaud, joints scotchés.",
+            "Les gaines électriques passent dans les trous des montants.",
+            "Les boîtes d’encastrement sont prévues avant la pose des plaques.",
+            "Les spots sont positionnés avant de fermer le plafond.",
+            "La VMC reçoit une trappe de visite dans le faux plafond.",
+            "Les tuyaux d’eau sont protégés et repérés.",
+            "Un isolant phonique remplit les cloisons entre chambres.",
+            "Les traversées du pare-vapeur sont rendues étanches."
+          ],
+          [
+            "Un isolant tassé isole moitié moins.",
+            "Un trou dans l’isolant fait un point froid sur le mur.",
+            "Un pare-vapeur percé laisse la condensation entrer dans l’isolant.",
+            "Une gaine coincée dans une cloison ne se tire plus.",
+            "Une prise oubliée se découpe ensuite dans une plaque finie.",
+            "Un spot ajouté après coup abîme un plafond neuf.",
+            "Une VMC sans trappe se répare en cassant le plafond.",
+            "Un tuyau percé par une vis inonde la cloison.",
+            "Le bruit d’une chambre passe par une cloison vide.",
+            "Chaque trou mal bouché est une fuite d’air."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Pose des plaques",
+      "textes": {
+        "combiner": [
+          [
+            "Les plaques sont coupées au cutter le long d’une règle.",
+            "Les plaques sont posées en quinconce, joints décalés.",
+            "Chaque plaque est vissée tous les trente centimètres.",
+            "Les vis sont affleurantes, sans déchirer le carton.",
+            "Les plaques sont posées à un centimètre du sol.",
+            "Les plaques hydrofuges vont dans les pièces humides.",
+            "Le plafond est posé à deux ou avec un lève-plaque.",
+            "Les découpes de prises sont faites à la scie cloche.",
+            "Les arches sont cintrées avec des plaques rainurées.",
+            "Le doublage collé est posé par plots sur un mur sain."
+          ],
+          [
+            "Une coupe nette se pose sans retouche.",
+            "Des joints alignés font une fissure qui court sur tout le mur.",
+            "Une plaque mal vissée sonne et bouge.",
+            "Une vis trop enfoncée ne tient plus rien.",
+            "Une plaque qui touche le sol boit l’humidité.",
+            "Une plaque ordinaire gonfle dans une salle de bains.",
+            "Une plaque de plafond tenue à bout de bras se pose de travers.",
+            "Une découpe au cutter autour d’une prise laisse un trou trop grand.",
+            "Une arche forcée se fend.",
+            "Un doublage collé sur un mur humide se décolle."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Bandes et joints",
+      "textes": {
+        "combiner": [
+          [
+            "Une première passe d’enduit remplit le joint.",
+            "La bande est posée dans l’enduit frais, puis tirée au couteau.",
+            "Une deuxième passe couvre la bande.",
+            "Une troisième passe, plus large, fond le joint dans la plaque.",
+            "Les têtes de vis reçoivent deux passes.",
+            "Les angles sortants reçoivent une baguette d’angle.",
+            "Les angles rentrants sont faits au couteau d’angle.",
+            "Les fissures d’un vieux plafond reçoivent une bande armée.",
+            "Le joint entre cloison et plafond reçoit une bande.",
+            "Chaque passe sèche avant la suivante."
+          ],
+          [
+            "Une bande posée à sec cloque et se décolle.",
+            "Une bande mal tirée garde une bulle d’air.",
+            "Une seule passe épaisse fissure en séchant.",
+            "Un joint étroit se voit, un joint étalé disparaît.",
+            "Une tête de vis mal couverte réapparaît sous la peinture.",
+            "Un angle sans baguette s’épaufre au premier choc.",
+            "Un angle rentrant tiré en deux fois garde une marche.",
+            "Une fissure rebouchée sans bande revient au premier hiver.",
+            "Le raccord au plafond fissure s’il n’est pas armé.",
+            "Un enduit posé sur une passe humide craquelle."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Plâtre et ratissage",
+      "textes": {
+        "combiner": [
+          [
+            "Le mur est dépoussiéré et imprimé avant le ratissage.",
+            "L’enduit est tiré en passes fines, au couteau large ou au platoir.",
+            "Les trous de chevilles sont rebouchés en deux fois.",
+            "Le plâtre traditionnel est tiré à la règle sur des repères.",
+            "Les angles anciens sont redressés.",
+            "Les corniches sont reprises dans leur profil.",
+            "Les plafonds voûtés sont repris en suivant leur courbe.",
+            "La surface est contrôlée à la main et à la lumière rasante.",
+            "Le plâtre est gâché en petite quantité.",
+            "Les reprises se raccordent à l’ancien sans surépaisseur."
+          ],
+          [
+            "Un enduit sur la poussière se décolle par plaques.",
+            "Plusieurs passes fines font une surface plane, une épaisse fait des vagues.",
+            "Un rebouchage en une fois se creuse en séchant.",
+            "Sans repères, un plâtre tiré ondule.",
+            "Un angle redressé change toute la pièce.",
+            "Une corniche refaite à côté de son profil se remarque.",
+            "Un plafond voûté aplati perd son caractère.",
+            "La main sent ce que l’œil ne voit pas encore.",
+            "Un plâtre gâché trop tôt prend dans le seau.",
+            "Une reprise trop épaisse fait une bosse sous la peinture."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Ponçage et finition",
+      "textes": {
+        "combiner": [
+          [
+            "Les joints secs sont poncés à la cale ou à la ponceuse girafe.",
+            "Le ponçage est fait à la lumière rasante, joint par joint.",
+            "La poussière est aspirée à la source.",
+            "Les défauts restants reçoivent une passe de finition.",
+            "Les murs sont dépoussiérés avant la peinture.",
+            "Une impression est proposée avant la peinture.",
+            "Les angles sont vérifiés à l’équerre.",
+            "Les surfaces sont livrées prêtes à peindre.",
+            "Les plinthes sont laissées libres pour la suite.",
+            "Le plafond est contrôlé depuis la porte, lumière allumée."
+          ],
+          [
+            "Un ponçage trop fort creuse le joint.",
+            "Ce que la lumière rasante montre, la peinture le montrera.",
+            "La poussière de ponçage est fine et voyage loin.",
+            "Une petite passe vaut mieux qu’un défaut sous la peinture.",
+            "Une peinture sur poussière ne tient pas.",
+            "Une plaque non imprimée boit la peinture de façon inégale.",
+            "Un angle faux se voit dès que les meubles sont posés.",
+            "Le peintre commence là où le plâtrier s’est arrêté.",
+            "Une plinthe posée trop tôt se salit d’enduit.",
+            "Un plafond se regarde depuis l’entrée de la pièce."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Nettoyage et évacuation",
+      "textes": {
+        "combiner": [
+          [
+            "Les chutes de plaques sont triées et évacuées.",
+            "Les rails et montants restants sont repris.",
+            "Les sacs d’enduit vides sont évacués.",
+            "La poussière est aspirée sur tous les sols.",
+            "Les protections sont retirées en fin de chantier.",
+            "Les fenêtres et les menuiseries sont essuyées.",
+            "Les surfaces sont montrées au client avant le départ.",
+            "Les temps de séchage avant peinture sont expliqués.",
+            "Les renforts posés sont indiqués sur un plan.",
+            "La pièce est rendue balayée."
+          ],
+          [
+            "Le plâtre se recycle quand il est trié.",
+            "Un rail oublié traîne des mois dans un garage.",
+            "Un sac vide est un déchet de chantier.",
+            "La poussière de plâtre raye les parquets.",
+            "Un chantier se finit quand les protections sont parties.",
+            "Les traces blanches sur une fenêtre se voient de loin.",
+            "Montrer le travail, c’est le faire valider.",
+            "Peindre trop tôt fait cloquer l’enduit.",
+            "Savoir où sont les renforts évite de chercher le montant.",
+            "Une pièce balayée est une pièce rendue."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    }
+  ],
+  "coupure": {
+    "avant": {
+      "etapes": [
+        [
+          "cloison fissurée",
+          "plâtre gonflé",
+          "mur bosselé",
+          "trous de chevilles",
+          "angle épaufré",
+          "plâtre qui sonne creux"
+        ],
+        [
+          "plafond taché",
+          "plafond fissuré en toile d’araignée",
+          "faux plafond affaissé",
+          "lattis apparent",
+          "corniche cassée"
+        ],
+        [
+          "doublage décollé et bombé",
+          "combles nus",
+          "rampants bruts",
+          "niche brute",
+          "placard maçonné bancal"
+        ],
+        [
+          "ossature nue",
+          "rails apparents",
+          "arche abîmée",
+          "murs ouverts"
+        ]
+      ],
+      "nombre": [
+        3,
+        3
+      ]
+    },
+    "apres": {
+      "etapes": [
+        [
+          "anciennes cloisons déposées",
+          "ossature montée au laser",
+          "isolant posé",
+          "gaines passées"
+        ],
+        [
+          "plaques vissées",
+          "cloison neuve",
+          "doublage neuf",
+          "plafond neuf",
+          "rampants habillés"
+        ],
+        [
+          "bandes invisibles",
+          "joints enduits",
+          "arêtes droites",
+          "angles protégés"
+        ],
+        [
+          "corniche reprise",
+          "arche reprise",
+          "niche habillée",
+          "plafond voûté repris"
+        ],
+        [
+          "surface plane",
+          "support prêt à peindre",
+          "pièce rendue balayée"
+        ]
+      ],
+      "nombre": [
+        3,
+        4
+      ],
+      "toujours": [
+        2
+      ]
+    }
+  },
+  "legendes": {
+    "comparateurs": {
+      "combiner": [
+        [
+          "Cloison",
+          "Plafond",
+          "Angle de mur",
+          "Mur doublé",
+          "Combles",
+          "Corniche",
+          "Arche de passage",
+          "Placard",
+          "Sous-pente",
+          "Salle de bains",
+          "Couloir",
+          "Niche murale"
+        ],
+        [
+          "ancienne cloison déposée",
+          "ossature montée",
+          "isolant posé",
+          "rails posés",
+          "gaines passées",
+          "plâtre sondé",
+          "fissures ouvertes",
+          "renforts posés",
+          "plafond déposé",
+          "laser posé"
+        ],
+        [
+          "cloison refaite",
+          "surface plane",
+          "bandes invisibles",
+          "arête droite",
+          "plafond neuf",
+          "doublage neuf",
+          "rampants habillés",
+          "corniche reprise"
+        ]
+      ],
+      "joints": [
+        ", ",
+        ", "
+      ],
+      "fin": "."
+    },
+    "invitation": {
+      "combiner": [
+        [
+          "Faites glisser la couture",
+          "Déplacez la séparation",
+          "Touchez la photo",
+          "Glissez le trait",
+          "Attrapez la couture",
+          "Faites glisser le curseur",
+          "Déplacez le trait",
+          "Passez le doigt sur la photo"
+        ],
+        [
+          "pour comparer l’avant et l’après.",
+          "pour voir la pièce avant les travaux.",
+          "pour passer d’un état à l’autre.",
+          "pour voir ce que le chantier a changé.",
+          "pour retrouver le mur d’origine.",
+          "pour voir le plafond avant la reprise.",
+          "pour comparer les deux états de la pièce.",
+          "pour voir la pièce avant et après.",
+          "pour mesurer le travail fait.",
+          "pour voir la différence."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    },
+    "precision": {
+      "combiner": [
+        [
+          "Même point de vue, même cadrage.",
+          "Les deux photos sont prises du même endroit.",
+          "Même angle, même distance.",
+          "Les deux images ont le même cadrage.",
+          "Même endroit, même objectif.",
+          "Le point de vue ne bouge pas d’une photo à l’autre.",
+          "Photographié deux fois, depuis le même pas de porte.",
+          "Même place, même hauteur d’objectif.",
+          "Le photographe n’a pas bougé entre les deux."
+        ],
+        [
+          "Seuls les murs et le plafond changent.",
+          "La différence vient du chantier.",
+          "Rien d’autre ne change que le plâtre.",
+          "Ce qui change, c’est le travail fait.",
+          "La pièce est la même, les surfaces non.",
+          "Seules les cloisons ont été reprises.",
+          "Ce qui diffère, ce sont les plaques et les joints.",
+          "Entre les deux, il y a le chantier.",
+          "L’écart, c’est le travail du plâtrier."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    }
+  },
+  "rubriques": {
+    "gestes": [
+      "Le détail des postes.",
+      "Ce que recouvre un chantier de plâtrerie.",
+      "Ce qui se fait dans la pièce.",
+      "Les étapes, dans l’ordre.",
+      "Étape par étape.",
+      "De l’ossature au ponçage.",
+      "Comment se monte une cloison.",
+      "Les postes du chantier.",
+      "Ce que fait le plâtrier.",
+      "Du traçage à la finition.",
+      "Le travail, poste par poste.",
+      "Ce qui se fait, et pourquoi.",
+      "Les gestes du chantier.",
+      "Dans l’ordre du chantier.",
+      "Ce que le devis détaille."
+    ],
+    "chantier": [
+      "Le chantier.",
+      "Dans la pièce.",
+      "En cours de travaux.",
+      "Pendant les travaux.",
+      "Sur place.",
+      "Entre les montants.",
+      "Le chantier en cours.",
+      "Les travaux, en images.",
+      "Ce que montre le chantier.",
+      "Sur le chantier.",
+      "Pendant le montage.",
+      "La pièce en travaux.",
+      "Ce qui se voit en cours.",
+      "Au milieu du chantier.",
+      "Les plaques en cours."
+    ],
+    "verifiable": [
+      "Ce qui se vérifie.",
+      "Les faits publics.",
+      "Ce que disent les registres.",
+      "Ce qui est public.",
+      "Les registres officiels.",
+      "Ce que chacun peut vérifier.",
+      "L’entreprise, dans les registres.",
+      "Les données publiques.",
+      "Les sources officielles.",
+      "Ce que disent les sources publiques.",
+      "Vérifiable par tous.",
+      "Les faits, sans commentaire.",
+      "Ce que l’État publie.",
+      "Dans les bases publiques.",
+      "Les informations légales."
+    ],
+    "contact": [
+      "Parler du chantier.",
+      "Prendre contact.",
+      "Faire venir quelqu’un.",
+      "Demander une visite.",
+      "Montrer la pièce.",
+      "Parler de vos murs.",
+      "Faire voir le plafond.",
+      "Appeler l’entreprise.",
+      "Demander un passage.",
+      "Faire mesurer.",
+      "Prendre rendez-vous.",
+      "Une question sur une cloison ?",
+      "Faire constater.",
+      "Parler du projet.",
+      "Joindre l’entreprise."
+    ],
+    "prix": [
+      "Ce que ça coûte.",
+      "Les tarifs, poste par poste.",
+      "Avant de demander un devis.",
+      "Combien ça coûte.",
+      "Les prix, poste par poste.",
+      "Les ordres de grandeur.",
+      "Les tarifs pratiqués.",
+      "Ce que coûte la plâtrerie.",
+      "Le prix des postes.",
+      "Avant le devis.",
+      "Les prix du métier.",
+      "Ce qui fait le prix.",
+      "Les tarifs, sans détour.",
+      "Les fourchettes de prix.",
+      "Ce que dit le devis."
+    ]
+  },
+  "mot": "Plâtrerie",
+  "matiere": [
+    "À dix centimètres, une bande bien enduite ne laisse aucune marche.",
+    "La baguette d’angle dessine une arête nette comme un trait de règle.",
+    "Une vis affleurante laisse à peine un creux sous le doigt.",
+    "La découpe d’une plaque montre le plâtre blanc entre deux cartons.",
+    "L’isolant jaune remplit le vide entre deux montants, sans un jour.",
+    "Le rail au sol laisse voir ses fixations, alignées.",
+    "Un enduit de finition sec a la douceur d’une craie.",
+    "La plaque hydrofuge se reconnaît à son carton vert.",
+    "La plaque phonique est plus lourde, et ça se sent au port.",
+    "Une cloison neuve sonne plein sous le poing.",
+    "Le joint fraîchement enduit est plus gris que la plaque.",
+    "Une fois sec, il blanchit et se fond dans la surface.",
+    "La lumière rasante fait apparaître la moindre bosse.",
+    "Un ratissage réussi donne une surface lisse comme une feuille.",
+    "Le plâtre frais tiédit en prenant.",
+    "Une corniche refaite reprend la moulure d’origine au millimètre.",
+    "Un plafond voûté garde sa courbe sous le plâtre neuf.",
+    "Le carton d’une plaque se déchire si la vis va trop loin.",
+    "La ponceuse girafe laisse une surface régulière, sans rayure.",
+    "Une arête de niche bien droite accroche la lumière.",
+    "L’ossature métallique brille, droite, avant d’être cachée.",
+    "Une bande armée se sent sous l’enduit, comme une trame.",
+    "Un mur doublé sonne mat, avec son isolant derrière.",
+    "Les suspentes d’un plafond s’alignent comme des fils à plomb.",
+    "Un enduit projeté lissé ne garde aucune trace de lame.",
+    "Un trou de cheville rebouché disparaît sous la deuxième passe.",
+    "L’angle rentrant tiré d’un geste n’a ni bourrelet ni creux.",
+    "Une impression sur plaque uniformise le blanc.",
+    "Le plâtre ancien est plus jaune, plus dur, plus lourd.",
+    "Un plafond neuf est blanc d’un bout à l’autre, sans ombre de joint."
+  ],
+  "prix": {
+    "note": "Ordres de grandeur nationaux, relevés le 5 novembre 2026. Ce ne sont pas les prix de l'entreprise et ce n'est pas un devis.",
+    "sources": [
+      {
+        "nom": "Travaux.com, prix d’un plaquiste",
+        "url": "https://www.travaux.com/platre/guide-des-prix/prix-plaquiste"
+      },
+      {
+        "nom": "La Maison Saint-Gobain, prix d’un ratissage",
+        "url": "https://www.lamaisonsaintgobain.fr/guides-travaux/amenagement-interieur/prix-ratissage-m2"
+      }
+    ],
+    "postes": [
+      {
+        "poste": "Cloison en plaques de plâtre",
+        "bas": 20,
+        "haut": 40,
+        "unite": "€/m²",
+        "note": "Plaque, ossature et joints. Une cloison isolante monte de 45 à 110 €/m²."
+      },
+      {
+        "poste": "Doublage de mur avec isolant",
+        "bas": 35,
+        "haut": 60,
+        "unite": "€/m²",
+        "note": "Selon l’isolant et son épaisseur."
+      },
+      {
+        "poste": "Faux plafond en plaques",
+        "bas": 30,
+        "haut": 70,
+        "unite": "€/m²",
+        "note": "Suspentes, fourrures, plaques et joints."
+      },
+      {
+        "poste": "Plaques hydrofuges, pièce humide",
+        "bas": 39,
+        "haut": 67,
+        "unite": "€/m²",
+        "note": "Salle de bains et cuisine."
+      },
+      {
+        "poste": "Ratissage d’un mur en bon état",
+        "bas": 10,
+        "haut": 20,
+        "unite": "€/m²",
+        "note": "Un mur abîmé tourne autour de 35 €/m², un plafond de 30 à 40 €/m²."
+      }
+    ],
+    "exemple": {
+      "titre": "Une cloison de 10 m² et un faux plafond de 15 m²",
+      "bas": 650,
+      "haut": 1450,
+      "note": "Calculé avec les postes ci-dessus : cloison à 20 à 40 €/m², faux plafond à 30 à 70 €/m². L’isolation et la peinture s’ajoutent."
+    }
+  },
+  "nuancierEtiquette": "Voir la pièce dans une autre teinte",
+  "teintes": [
+    {
+      "nom": "D’origine",
+      "voile": "",
+      "pastille": "#DCD8D0"
+    },
+    {
+      "nom": "Blanc pur",
+      "voile": "0 0% 97% / .30",
+      "pastille": "#F7F7F7"
+    },
+    {
+      "nom": "Blanc cassé",
+      "voile": "40 25% 92% / .30",
+      "pastille": "#EDE6D8"
+    },
+    {
+      "nom": "Lin",
+      "voile": "38 22% 86% / .30",
+      "pastille": "#E2DACA"
+    },
+    {
+      "nom": "Gris perle",
+      "voile": "210 6% 76% / .30",
+      "pastille": "#BCBFC2"
+    },
+    {
+      "nom": "Argile",
+      "voile": "24 30% 72% / .32",
+      "pastille": "#CDB2A0"
+    },
+    {
+      "nom": "Vert de gris",
+      "voile": "150 12% 62% / .32",
+      "pastille": "#93AA9E"
+    },
+    {
+      "nom": "Bleu poudre",
+      "voile": "210 30% 80% / .30",
+      "pastille": "#BACCE0"
+    },
+    {
+      "nom": "Ocre doux",
+      "voile": "38 50% 70% / .32",
+      "pastille": "#D6B98A"
+    },
+    {
+      "nom": "Anthracite",
+      "voile": "210 8% 26% / .34",
+      "pastille": "#3C4146"
+    }
+  ],
+  "alt": {
+    "avant": "cloison ancienne avant travaux, fissurée, plâtre gonflé",
+    "apres": "la même cloison refaite, surface plane",
+    "invitation": "Comparer la pièce avant et après les travaux",
+    "avant2": "un autre chantier avant la reprise de la plâtrerie",
+    "apres2": "le même chantier une fois la plâtrerie terminée",
+    "hero": "pièce dont une moitié est en ossature et l’autre déjà en plaques enduites",
+    "invitation2": "Comparer un second chantier avant et après",
+    "ouverture": "geste du métier pendant la pose des plaques",
+    "chantier": "ossature métallique montée, rails et montants alignés",
+    "chantierBis": "plaques stockées à plat, visseuse posée dessus",
+    "detail": "gros plan sur un joint de plaques enduit",
+    "detailBis": "gros plan sur un angle protégé par une baguette",
+    "geste": "le couteau à enduire qui tire une bande sur un joint"
+  },
+  "estimateur": {
+    "titre": "Votre surface",
+    "mesure": {
+      "etiquette": "Surface de cloisons et plafonds",
+      "unite": "m²",
+      "min": 5,
+      "max": 200,
+      "pas": 5,
+      "defaut": 30,
+      "aria": "Surface de cloisons et plafonds en mètres carrés"
+    }
+  }
+}

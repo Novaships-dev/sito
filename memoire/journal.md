@@ -2057,3 +2057,15 @@ publication pour coller à la règle : le diagnostic à la vente vaut pour une
 installation de plus de quinze ans ; le détecteur de fumée est obligatoire par
 logement, le couloir des chambres n'est qu'une recommandation.
 TRACAGE : generateur/metiers/electricite.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 5 nov. 2026 — T32, plâtrerie (6 sur 13), par Cowork
+
+Plan : 1. `generateur/metiers/platrerie.json` (ossature, isolation, plaques,
+bandes, ratissage, ponçage), textes tirés du plan d'images ; 2. prix relevés
+le 5 nov. (Travaux.com, La Maison Saint-Gobain) ; 3. capacité et fabrication.
+
+Résultat : 101 titres, 100 sites sans défaut. Deux sites fabriqués :
+`verifier-site` 0 bloquant, `verifier-mobile` 0. Corrigé avant publication :
+une plaque pesait « quatre-vingts kilos » ; une BA13 de 2,50 m en pèse
+environ vingt-cinq.
+TRACAGE : generateur/metiers/platrerie.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
