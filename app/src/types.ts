@@ -108,6 +108,9 @@ export interface Donnees {
   // Web seulement (T17) : l'adresse du paiement Stripe ou du portail, à ouvrir.
   ouvrirPaiement(action: 'paiement' | 'portail', formule?: 'mensuel' | 'annuel'): Promise<string>;
   connexionGoogle(): Promise<ConnexionGoogle | null>;
+  // T24 : l'adresse du consentement Google (fonction Edge `google-lien`) ;
+  // Google ramène ensuite sur l'écran Ma fiche Google avec « google=ok ».
+  lienGoogle(): Promise<string>;
   suppression(): Promise<Suppression | null>;
   demanderSuppression(): Promise<void>;
   annulerSuppression(): Promise<void>;

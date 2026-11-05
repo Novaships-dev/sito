@@ -44,7 +44,8 @@ function filtrer(lignes, params) {
 // base : { <table>: [lignes] }     cles : { <table>: ['colonne', ...] }
 // objets : Map('<espace>/<chemin>' -> Buffer)
 // comptes : Set des identifiants de compte (API d'administration d'Auth)
-export async function fauxSupabase({ cle, base = {}, cles = {}, objets = new Map(), jourParis = true, comptes = new Set() } = {}) {
+// fonctions : { <nom>: (args, base) => résultat } — d'autres fonctions SQL que jour_paris.
+export async function fauxSupabase({ cle, base = {}, cles = {}, objets = new Map(), jourParis = true, comptes = new Set(), fonctions = {} } = {}) {
   const vues = [];
   const serveur = createServer((req, res) => {
     const morceaux = [];
@@ -112,6 +113,7 @@ export async function fauxSupabase({ cle, base = {}, cles = {}, objets = new Map
       // ---- fonctions
       const rpc = u.pathname.match(/^\/rest\/v1\/rpc\/(\w+)$/);
       if (rpc && req.method === 'POST') {
+        if (fonctions[rpc[1]]) return repondre(200, fonctions[rpc[1]](json() || {}, base) ?? null);
         if (rpc[1] !== 'jour_paris' || !jourParis) return repondre(404, { message: `function ${rpc[1]} does not exist` });
         const d = new Date(json()?.quand || Date.now());
         return repondre(200, new Date(d.getTime() + 2 * 3600 * 1000).toISOString().slice(0, 10));

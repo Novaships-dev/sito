@@ -520,6 +520,21 @@ try {
     await c.close();
   }
 
+  // ------------------------------------------------ Ma fiche Google (T24) : relier
+  console.log('\nMa fiche Google (T24)');
+  {
+    const { ctx: c, page: p, erreurs: errsG } = await nouvellePage(appareils[0]);
+    await connecter(p);
+    await p.goto(`${BASE}?demo#/google`); await p.getByRole('button', { name: 'Relier ma fiche Google' }).waitFor();
+    ok(/Pas encore reliée/.test(await p.locator('main').textContent()), 'avant : pas encore reliée, avec le bouton pour relier');
+    await p.getByRole('button', { name: 'Relier ma fiche Google' }).click(); await p.waitForTimeout(600);
+    const t = await p.locator('main').textContent();
+    ok(/Reliée/.test(t) && /Façades Exemple/.test(t) && /Démonstration/.test(t) && /#\/google/.test(p.url()), 'relier : retour sur l écran, fiche reliée et nommée', t.slice(0, 200));
+    ok(await p.getByRole('button', { name: /Relier/ }).count() === 0, 'une fiche reliée n affiche plus le bouton');
+    ok(errsG.length === 0, 'Ma fiche Google : aucune erreur dans la console', errsG.join(' | '));
+    await c.close();
+  }
+
   // ------------------------------------------------ app Android (Play Store) : aucun prix, aucun achat
   console.log('\nApp Android (Play Store)');
   {

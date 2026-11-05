@@ -75,6 +75,7 @@ export function donneesDemo(): Donnees {
   ];
   const adresses: Adresse[] = [{ hote: 'exemple.domaine-sito.fr', genre: 'offerte', principale: true, etat: 'active', motif: null }];
   const abonnement: Abonnement = { formule: 'mensuel', etat: 'actif', fin_periode: ilYa(-14), resiliation_prevue: false };
+  // `let`-like : la liaison de démonstration la change (T24).
   const google: ConnexionGoogle = { etat: 'a_connecter', fiche: null, derniere_synchro: null, motif: null };
   let suppression: Suppression | null = null;
 
@@ -239,6 +240,13 @@ export function donneesDemo(): Donnees {
     // Démonstration : pas de Stripe, on revient tout de suite avec le signe.
     async ouvrirPaiement(action) { exiger(); return `${location.origin}${location.pathname}${location.search}#/abonnement?paiement=demo-${action}`; },
     async connexionGoogle() { exiger(); return { ...google }; },
+    // Démonstration : pas de Google ; la fiche est dite reliée, et on revient
+    // tout de suite sur l'écran avec le signe.
+    async lienGoogle() {
+      exiger();
+      Object.assign(google, { etat: 'connectee', fiche: 'Façades Exemple', derniere_synchro: maintenant(), motif: null });
+      return `${location.origin}${location.pathname}${location.search}#/google?google=demo`;
+    },
     async suppression() { exiger(); return suppression && !suppression.annulee_le ? { ...suppression } : null; },
     async demanderSuppression() { exiger(); suppression = { demandee_le: maintenant(), effective_le: ilYa(-30), annulee_le: null }; },
     async annulerSuppression() { exiger(); if (suppression) suppression.annulee_le = maintenant(); },

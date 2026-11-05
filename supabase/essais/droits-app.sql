@@ -1,4 +1,4 @@
--- Essai des droits des tables de l'app (migration 20261005014022_app, et T22 : sites.umami_id), à
+-- Essai des droits des tables de l'app (migration 20261005014022_app ; T22 : sites.umami_id ; T24 : jetons Google), à
 -- rejouer après chaque migration qui y touche. Même principe que droits.sql :
 -- deux artisans fictifs A et B, tout est annulé à la fin par une erreur qui
 -- porte le résultat. Aucune ligne « FAUTE » attendue.
@@ -91,6 +91,19 @@ begin
   begin update public.sites set umami_id = 'pirate' where siren = '480423623'; get diagnostics n = row_count;
     r := r || 'A change l identifiant Umami : ' || case when n = 0 then 'refuse' else 'ACCEPTE (FAUTE)' end || ' ; ';
   exception when others then r := r || 'A change l identifiant Umami : refuse ; '; end;
+  -- T24 : les jetons Google ne passent que par le service.
+  begin perform public.lire_jeton_google('480423623'); r := r || 'A lit le jeton Google par la fonction : ACCEPTE (FAUTE) ; ';
+  exception when others then r := r || 'A lit le jeton Google par la fonction : refuse ; '; end;
+  begin perform public.poser_jeton_google('480423623', 'AAAA', 'business.manage'); r := r || 'A pose un jeton Google : ACCEPTE (FAUTE) ; ';
+  exception when others then r := r || 'A pose un jeton Google : refuse ; '; end;
+  reset role;
+  -- Le service (clé de service) : pose, relit, oublie.
+  set local role service_role;
+  perform public.poser_jeton_google('849891528', 'AQID', 'business.manage');
+  select count(*) into n from public.lire_jeton_google('849891528') where jeton = 'AQID';
+  r := r || 'le service pose et relit un jeton : ' || n || ' ; ';
+  perform public.oublier_jeton_google('849891528');
+  select count(*) into n from public.lire_jeton_google('849891528'); r := r || 'le service l oublie : ' || n || ' restant ; ';
   reset role;
 
   set local role anon;

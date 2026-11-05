@@ -187,3 +187,11 @@ par Cowork avec `apply_migration`) : colonne `sites.umami_id` (UUID ou vide),
 écrite par le service seul. `droits-app.sql` étendu (A lit l'identifiant de
 son site : 1 ; A le change : refuse) ; lancé avant d'appliquer, il rougissait
 (colonne absente), après : aucune « FAUTE ». Conseillers : rien de nouveau.
+
+**Ajout du 5 novembre 2026** (T24, migration `20261105155854_jetons_google`,
+appliquée par Cowork) : `poser_jeton_google`, `lire_jeton_google`,
+`oublier_jeton_google`, « security definer », exécutables par `service_role`
+seul (le schéma `prive` n'est pas servi par l'API). Le jeton y passe chiffré,
+en base64. `droits-app.sql` étendu : l'artisan et l'anonyme sont refusés, le
+service pose, relit, oublie ; lancé avant d'appliquer, il rougissait
+(fonctions absentes). Conseillers : rien de nouveau.

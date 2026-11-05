@@ -123,7 +123,7 @@ active le mode Play Store (mémorisé sur l'appareil).
 |---|---|---|
 | État | `connexionGoogle()` : Pas encore reliée / Reliée / Accès retiré / Problème ; fiche, dernière mise à jour, motif | Fait |
 | Lien | « Ouvrir ma fiche chez Google » (business.google.com) | Fait |
-| Relier | consentement Google | **À faire** (accès Google) |
+| Relier | « Relier ma fiche Google » : consentement Google (fonction Edge `google-lien`), retour sur l'écran avec `google=ok` ou `google=erreur` ; « Relier à nouveau » si l'accès a été retiré | Fait sur la démonstration (T24, `essai-app`) ; réel : F13 |
 | Comparer fiche et site | nom, adresse, téléphone | **À faire** |
 
 ### 3.8 Abonnement

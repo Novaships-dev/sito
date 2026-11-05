@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Pose dans les secrets du dépôt GitHub les clés dont les workflows
-// `refaire-site.yml` et `statistiques.yml` ont besoin (tâche T45), lues dans le .env de cet
+// `refaire-site.yml`, `statistiques.yml` et `google.yml` ont besoin (tâche T45), lues dans le .env de cet
 // ordinateur. Lancé par `lanceurs/SECRETS_GITHUB.bat` (action F21).
 //
 // Aucune valeur n'est affichée : chaque clé passe par l'entrée standard de
@@ -12,7 +12,7 @@ import { chargerEnv } from './env.mjs';
 export const NOMS = ['SUPABASE_URL', 'SUPABASE_CLE_SERVICE', 'CLOUDFLARE_COMPTE_ID', 'CLOUDFLARE_JETON_API'];
 // Posés s'ils sont dans le .env, sans bloquer les autres : la mesure
 // d'audience (T22, `statistiques.yml`) attend le compte Umami (F9).
-export const FACULTATIFS = ['UMAMI_JETON', 'UMAMI_URL', 'UMAMI_SCRIPT'];
+export const FACULTATIFS = ['UMAMI_JETON', 'UMAMI_URL', 'UMAMI_SCRIPT', 'GOOGLE_CLIENT_ID', 'GOOGLE_CLIENT_SECRET', 'GOOGLE_CLE_CHIFFREMENT'];
 const DEPOT = 'Novaships-dev/sito';
 
 chargerEnv();

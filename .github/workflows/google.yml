@@ -1,0 +1,44 @@
+# Les avis Google de chaque nuit (tâche T24) : pour chaque fiche reliée, les
+# avis récupérés et les réponses validées par l'artisan publiées
+# (`atelier/avis.mjs`). Même parti que statistiques.yml : GitHub Actions, sans
+# serveur loué. Se lance aussi à la main (onglet Actions, « Run workflow »).
+#
+# Clés : secrets du dépôt, posés par lanceurs/SECRETS_GITHUB.bat depuis le .env
+# de Fabrice (GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_CLE_CHIFFREMENT,
+# après l'accès à l'API Google, action F13). Sans eux, rien ne tourne.
+name: google
+
+on:
+  schedule:
+    # 3 h 47 UTC, après les statistiques : 4 h 47 ou 5 h 47 à Paris.
+    - cron: "47 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: google
+  cancel-in-progress: false
+
+jobs:
+  avis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Lire les avis, publier les réponses validées
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_CLE_SERVICE: ${{ secrets.SUPABASE_CLE_SERVICE }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_CLE_CHIFFREMENT: ${{ secrets.GOOGLE_CLE_CHIFFREMENT }}
+        run: |
+          if [ -z "$GOOGLE_CLIENT_ID" ]; then echo "Google n'est pas encore branché (action F13) : rien à faire."; exit 0; fi
+          node atelier/avis.mjs

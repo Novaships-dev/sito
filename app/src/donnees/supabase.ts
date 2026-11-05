@@ -232,6 +232,17 @@ export function donneesSupabase(url: string, cle: string): Donnees {
       if (error || !data?.url) throw new Error(data?.erreur || 'Le paiement ne répond pas. Réessayez dans un moment.');
       return data.url as string;
     },
+    async lienGoogle() {
+      const s = await siren();
+      const retour = `${location.origin}${location.pathname}#/google`;
+      const { data, error } = await sb.functions.invoke('google-lien', { body: { siren: s, retour } });
+      if (error || !data?.url) {
+        let dit: string | null = null;
+        try { dit = (await (error as { context?: Response } | null)?.context?.json())?.erreur ?? null; } catch { /* corps illisible */ }
+        throw new Error(dit || data?.erreur || 'Google ne répond pas. Réessayez dans un moment.');
+      }
+      return data.url as string;
+    },
     async connexionGoogle() {
       const s = await siren();
       return verifier(await sb.from('connexions_google').select('etat, fiche, derniere_synchro, motif').eq('siren', s).maybeSingle());

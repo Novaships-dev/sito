@@ -2267,3 +2267,29 @@ Supabase) ; `secrets-github.mjs` pose les clés Umami si elles sont dans le
 `.env`, sans bloquer les autres. Reste réel : compte Umami (F9, T23) ;
 l'adresse exacte du script d'Umami Cloud est à vérifier avec le compte.
 TRACAGE : supabase/migrations/20261105143953_umami.sql, supabase/essais/droits-app.sql, supabase/README.md, atelier/umami.mjs, atelier/statistiques.mjs, atelier/fabriquer.mjs, atelier/supabase.mjs, generateur/sections/mesure.mjs, generateur/sections/mentions.mjs, generateur/composer.mjs, scripts/verifier-site.mjs, scripts/faux-umami.mjs, scripts/faux-supabase.mjs, scripts/essai-statistiques.mjs, scripts/essais.mjs, scripts/secrets-github.mjs, .github/workflows/statistiques.yml, .github/workflows/refaire-site.yml, .github/workflows/essais.yml, .env.example, app/specs/02-TRD.md, app/specs/05-SCHEMA-BACKEND.md, app/specs/07-TACHES.md, docs/specs/S-MENTIONS.md, memoire/actions-fabrice.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 5 nov. 2026 — T24, Google (jeton chiffré, avis, réponses), par Cowork
+
+Plan : 1. migration des trois fonctions du coffre à jetons (procédure
+sito-base) ; 2. `_shared/chiffre.mjs` (WebCrypto, Deno et Node),
+`_shared/google.mjs` (chemins relus le 5 nov. sur la référence v4 de Google
+et le guide « location data »), `_shared/avis-google.mjs`, fonctions Edge
+`google-lien` et `google-retour`, passage de la nuit `atelier/avis.mjs` et
+`google.yml` ; 3. bouton « Relier ma fiche Google », essais et contre-essais.
+
+Résultat : migration `20261105155854_jetons_google` appliquée (Fabrice
+présent) ; droits : rouge avant (fonctions absentes), après l'artisan et
+l'anonyme sont refusés, le service pose, relit, oublie ; conseillers : rien de
+nouveau. `node scripts/essai-google.mjs` : 23 contrôles, 0 faute ;
+contre-essai 6 sur 6. `essai-app` : 155 contrôles, 0 faute ; un premier
+passage avait 2 fautes sur une app construite avant le rechargement de
+l'écran (la démonstration ne montrait pas « Reliée ») : c'était le bon rouge,
+corrigé. Le jeton en base n'est jamais en clair (ni en base64), il est lié au
+SIREN ; l'état du consentement est signé et expire à 15 minutes ; un accès
+retiré chez Google fait « Accès retiré » et oublie le jeton ; rien ne se
+publie sans `valide_le`. Ajout au faux Supabase : des fonctions SQL au choix
+de l'essai. Pas fait (laissé à « Comparer fiche et site », APPFLOW §3.7) : la
+comparaison nom, adresse, téléphone. Si un compte a plusieurs fiches, la
+première est reliée et le motif le dit. Fonctions Edge écrites, pas
+déployées : F13.
+TRACAGE : supabase/migrations/20261105155854_jetons_google.sql, supabase/essais/droits-app.sql, supabase/README.md, supabase/functions/_shared/chiffre.mjs, supabase/functions/_shared/google.mjs, supabase/functions/_shared/avis-google.mjs, supabase/functions/google-lien/index.ts, supabase/functions/google-retour/index.ts, atelier/avis.mjs, scripts/faux-google.mjs, scripts/faux-supabase.mjs, scripts/essai-google.mjs, scripts/essai-app.mjs, scripts/essais.mjs, scripts/secrets-github.mjs, .github/workflows/google.yml, .github/workflows/essais.yml, app/src/types.ts, app/src/donnees/demo.ts, app/src/donnees/supabase.ts, app/src/ecrans/Google.tsx, app/specs/02-TRD.md, app/specs/03-APPFLOW.md, app/specs/05-SCHEMA-BACKEND.md, app/specs/07-TACHES.md, docs/DETTE.md, memoire/actions-fabrice.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

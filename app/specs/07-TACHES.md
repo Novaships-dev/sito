@@ -124,7 +124,7 @@ Rien de payant : ni ordinateur loué, ni serveur d'e-mail, ni carte bancaire
 | T21 | Domaines en réel (bac à sable Gandi, puis zone Cloudflare) | bloqué | un domaine d'essai branché, certificat valide, `https://domaine.fr` redirigé | T19 | F5, F8 |
 | T22 | Statistiques : import nocturne Umami → `statistiques` (jour de Paris), événement « Appeler » dans les sites | fait | essai sur faux Umami : chiffres de l'accueil = source pour un même jour de Paris : `node scripts/essai-statistiques.mjs`, 29 contrôles, 0 faute ; `--contre-essai` : 7 cassures sur 7. Migration `20261105143953_umami` appliquée, droits rejoués. Réel : F9 (T23) | T06 | |
 | T23 | Umami en réel | bloqué | chiffres réels d'un site d'essai | T22 | F9 |
-| T24 | Google : OAuth, jeton chiffré (`prive.jetons_google`), avis (`reviews.list`, `updateReply`) et fiche, avec faux serveur Google | à faire | essai local : avis importés, réponse validée publiée, jeton jamais en clair | T06 | |
+| T24 | Google : OAuth, jeton chiffré (`prive.jetons_google`), avis (`reviews.list`, `updateReply`) et fiche, avec faux serveur Google | fait | essai local : avis importés, réponse validée publiée, jeton jamais en clair : `node scripts/essai-google.mjs`, 23 contrôles, 0 faute ; `--contre-essai` : 6 cassures sur 6 ; `essai-app` (Ma fiche Google, 4 contrôles). Migration `20261105155854_jetons_google` appliquée, droits rejoués. Fonctions Edge `google-lien`, `google-retour` écrites, pas déployées ; réel : F13 (T25) | T06 | |
 | T25 | Google en réel | bloqué | un avis réel lu, une réponse publiée avec l'accord de l'artisan pilote | T24 | F13 |
 | T26 | E-mail des codes de connexion : **abandonné** le 29 oct. (plus de code, décision de Fabrice) ; remplacé par T43 | bloqué | — | T43 | décision du 29 oct. |
 
