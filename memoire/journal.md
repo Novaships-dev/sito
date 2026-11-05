@@ -2112,3 +2112,18 @@ fabriqués (APE 43.12A) : `verifier-site` 0 bloquant, `verifier-mobile` 0,
 aucun mot d'un autre métier dans le texte affiché. Trois des quatre prix
 sont hors taxes dans la source : la page le dit poste par poste.
 TRACAGE : generateur/metiers/terrassement.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 5 nov. 2026 — T32, étanchéité (10 sur 13), par Cowork
+
+Plan : 1. `generateur/metiers/etancheite.json` sur le plan d'images
+(diagnostic, support, isolant et pente, membrane, relevés et points
+singuliers, protection, mise en eau) ; 2. prix relevés le 5 nov.
+(Prix-pose.com, Habitatpresto) ; 3. capacité et fabrication.
+
+Résultat : 103 titres, 100 sites sans défaut. Deux sites fabriqués (APE
+43.99A) : `verifier-site` 0 bloquant, `verifier-mobile` 0 ; le seul mot d'un
+autre métier affiché est « Résine tuile », un nom de teinte. Retiré avant
+publication : une phrase disait que relevés et évacuations font « le tiers du
+prix », sans source. Les deux sources ne s'accordent pas sur l'EPDM (55 à 80
+contre 80 à 130 €/m²) : la page donne la première et cite l'écart.
+TRACAGE : generateur/metiers/etancheite.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

@@ -1,0 +1,874 @@
+{
+  "nom": "Étanchéité",
+  "libelle": "étanchéité des toitures-terrasses",
+  "schemaType": "RoofingContractor",
+  "legendesPhotos": {
+    "geste": "Le lé de bitume soudé au chalumeau : la flamme, puis le bourrelet de fusion.",
+    "chantier": "La terrasse en cours : une moitié couverte, la ligne de recouvrement, les rouleaux en attente.",
+    "detail": "Un recouvrement soudé à dix centimètres : un bourrelet continu, sans une bulle."
+  },
+  "codesApe": [
+    "43.99A"
+  ],
+  "titres": [
+    "Une terrasse fuit presque toujours par un relevé, rarement au milieu.",
+    "Un relevé se monte assez haut pour que l’eau ne passe pas par-dessus.",
+    "L’eau d’un toit plat doit partir. La pente la conduit, l’évacuation la sort.",
+    "Une flaque qui reste trois jours sur une terrasse dit que la pente manque.",
+    "Une étanchéité se pose sur un support sec, propre et sain.",
+    "Le primaire d’accrochage se pose avant le bitume, et sèche avant lui.",
+    "Deux lés se recouvrent, jamais bord à bord.",
+    "Un recouvrement soudé laisse sortir un bourrelet régulier. C’est la preuve.",
+    "Une cloque dans une membrane, c’est de l’eau ou de l’air enfermé dessous.",
+    "Une rustine sur une vieille membrane gagne un hiver, pas dix ans.",
+    "L’évacuation se pose avec sa platine, soudée dans l’étanchéité.",
+    "Une crapaudine arrête les feuilles avant qu’elles ne bouchent la descente.",
+    "Un trop-plein évite à la terrasse de devenir une piscine.",
+    "Une évacuation bouchée se voit en été, et se paie en hiver.",
+    "L’acrotère se protège sur le dessus, pas seulement sur le côté.",
+    "Une bande de solin tient le haut du relevé contre le mur.",
+    "Un joint de dilatation se traite à part, avec de la souplesse.",
+    "La membrane bitumineuse se soude à la flamme, l’EPDM se colle ou se lest.",
+    "Un chalumeau sur un chantier oblige à surveiller le feu après le départ.",
+    "Une bicouche de bitume dure plus qu’une monocouche.",
+    "Les granulés en surface protègent le bitume du soleil.",
+    "Une terrasse accessible ne se traite pas comme une terrasse qu’on ne visite jamais.",
+    "Les dalles sur plots protègent la membrane et laissent passer l’eau.",
+    "Une terrasse végétalisée commence par une étanchéité qui résiste aux racines.",
+    "L’isolant se pose sous la membrane, ou au-dessus selon le procédé, jamais au hasard.",
+    "Un isolant mouillé n’isole plus. Il se remplace.",
+    "Le pare-vapeur se pose côté chaud, avant l’isolant.",
+    "Une ancienne étanchéité se dépose ou se garde : on le décide après un sondage.",
+    "Un support béton fissuré se reprend avant d’être recouvert.",
+    "Les angles se renforcent par une pièce découpée à part.",
+    "Une membrane se recoupe au cutter le long d’un relevé, d’un trait net.",
+    "Le marouflage chasse l’air du recouvrement.",
+    "Le bitume se soude par temps sec, jamais sur un support mouillé.",
+    "Une coupole se pose sur une costière étanche, pas sur la membrane seule.",
+    "Les traversées de toiture se traitent une par une.",
+    "Une antenne vissée dans la terrasse fait un trou dans l’étanchéité.",
+    "Une terrasse s’entretient : on nettoie les évacuations deux fois par an.",
+    "La mousse sur un toit plat garde l’humidité contre la membrane.",
+    "Les gravillons se retirent pour voir l’état de la membrane dessous.",
+    "Un balcon qui fuit mouille l’étage du dessous, et ses plafonds.",
+    "Une résine d’étanchéité se pose en plusieurs couches, avec une armature.",
+    "Le carrelage d’un balcon n’est pas une étanchéité.",
+    "Un toit de garage se refait avec ses rives et sa gouttière.",
+    "Une planche de rive pourrie se change avant de poser la membrane.",
+    "Le feutre ancien se déchire au premier gel ; la membrane moderne se dilate.",
+    "Une membrane EPDM d’une seule pièce n’a presque pas de raccord.",
+    "Un raccord EPDM se fait à la bande adhésive prévue pour lui.",
+    "Le bitume fondu sent fort, et refroidit vite.",
+    "Une terrasse refaite se teste à l’eau avant de partir.",
+    "Une mise en eau montre la fuite mieux qu’une inspection.",
+    "Un relevé décollé se refait sur toute sa longueur, pas par morceaux.",
+    "Les seuils de porte-fenêtre sur une terrasse se traitent avec leur relevé.",
+    "Une terrasse sans pente se reprend avec un isolant à pente ou une forme.",
+    "La pente d’une toiture-terrasse se mesure, elle ne se devine pas.",
+    "L’étancheur commence par regarder où va l’eau.",
+    "Une fuite au plafond ne se trouve pas toujours juste au-dessus.",
+    "L’eau voyage sous une membrane avant de percer.",
+    "Un sondage à cœur dit si l’isolant est encore sec.",
+    "Une toiture-terrasse se refait en surface, puis se vérifie aux points singuliers.",
+    "Les points singuliers font l’étanchéité : angles, relevés, évacuations, traversées.",
+    "Un garde-corps fixé dans la terrasse se fixe avec une platine étanchée.",
+    "Une terrasse se protège pendant les travaux des autres corps de métier.",
+    "Une échelle posée sur une membrane neuve se pose sur une planche.",
+    "Un coup de talon pointu dans une membrane chaude laisse un trou.",
+    "L’étanchéité se pose avant le carrelage, pas après.",
+    "Le dessus d’un muret s’abrite sous une couvertine.",
+    "Une couvertine déborde et goutte loin du mur.",
+    "La goutte d’eau sous une couvertine empêche l’eau de revenir.",
+    "Une terrasse se pense avec les descentes qui l’évacuent.",
+    "Une descente trop petite déborde au premier orage.",
+    "Une étanchéité se garantit dix ans par la décennale.",
+    "Le DTU de la toiture-terrasse fixe les règles de pose.",
+    "Un procédé d’étanchéité se pose selon son avis technique.",
+    "Les rouleaux se stockent debout, à l’abri du soleil.",
+    "Un lé se déroule d’abord à sec pour l’aligner, puis se resoude.",
+    "Le bord d’une membrane se fixe mécaniquement en rive.",
+    "Une étanchéité sous protection lourde se lest au gravier.",
+    "Un lestage de gravier propre laisse passer l’eau jusqu’à l’évacuation.",
+    "L’herbe dans les gravillons dit que l’eau y reste.",
+    "Une étanchéité vieillie craquelle comme une peau sèche.",
+    "Une membrane qui se rétracte tire sur ses relevés.",
+    "Un toit plat refait se reconnaît à son silence sous la pluie.",
+    "L’étancheur laisse la terrasse sans une chute de membrane.",
+    "Un chalumeau éteint et une zone vérifiée : c’est la fin de journée.",
+    "Une terrasse refaite se rend avec un plan des évacuations.",
+    "Le propriétaire sait où sont les évacuations à nettoyer.",
+    "Une membrane neuve ne craint ni le gel ni le soleil, si elle est bien posée.",
+    "Les angles rentrants se soudent avec une pièce en plus.",
+    "Les angles sortants se découpent et se renforcent.",
+    "Un cordon de fusion régulier vaut toutes les promesses.",
+    "Une soudure à l’air chaud se fait sans flamme, près du bois.",
+    "Une terrasse en bois sur plots se démonte pour voir l’étanchéité.",
+    "Une infiltration lente pourrit un plancher en quelques années.",
+    "Le béton boit l’eau qui passe par une fissure de la membrane.",
+    "Une étanchéité qui tient se fait oublier.",
+    "La fin d’un chantier d’étanchéité, c’est une terrasse sans une flaque.",
+    "Un devis d’étanchéité détaille les relevés au mètre, pas seulement la surface.",
+    "Une petite terrasse coûte plus cher au mètre carré qu’une grande.",
+    "Une coupole fissurée se remplace avec sa costière si elle est usée.",
+    "Un puits de lumière se traite comme une traversée.",
+    "Les relevés se protègent du soleil par une finition minérale ou métallique.",
+    "Un toit plat se monte sur l’échafaudage ou par l’intérieur, jamais à l’improviste.",
+    "Le chantier d’étanchéité se travaille attaché, au bord d’une terrasse sans garde-corps."
+  ],
+  "chapos": {
+    "etapes": [
+      [
+        "visite de la terrasse",
+        "sondage de l’ancienne étanchéité",
+        "relevé des pentes et des évacuations"
+      ],
+      [
+        "dépose de l’ancienne membrane",
+        "retrait des gravillons",
+        "reprise du support",
+        "nettoyage et séchage"
+      ],
+      [
+        "primaire d’accrochage",
+        "pare-vapeur et isolant",
+        "isolant à pente"
+      ],
+      [
+        "membrane bitumineuse soudée",
+        "bicouche de bitume",
+        "membrane EPDM",
+        "résine d’étanchéité armée"
+      ],
+      [
+        "relevés d’acrotère",
+        "bandes de solin",
+        "évacuations et platines",
+        "traversées et coupoles",
+        "angles renforcés"
+      ],
+      [
+        "recouvrements soudés",
+        "mise en eau",
+        "protection par gravillons ou dalles",
+        "couvertines posées"
+      ],
+      [
+        "chutes évacuées",
+        "zone de chantier vérifiée",
+        "terrasse rendue propre"
+      ]
+    ],
+    "nombre": [
+      4,
+      5
+    ],
+    "toujours": [
+      3
+    ]
+  },
+  "gestes": [
+    {
+      "terme": "Diagnostic",
+      "textes": {
+        "combiner": [
+          [
+            "La terrasse est parcourue avec le propriétaire.",
+            "L’ancienne étanchéité est sondée à plusieurs endroits.",
+            "L’état de l’isolant est vérifié par carottage.",
+            "Les pentes sont relevées.",
+            "Les évacuations sont ouvertes et contrôlées.",
+            "Les relevés et les acrotères sont examinés de près.",
+            "Les traversées et les coupoles sont comptées.",
+            "L’origine des fuites est recherchée côté intérieur aussi.",
+            "Le procédé le plus adapté est choisi avec le client.",
+            "Le devis détaille la surface, les relevés et les points singuliers."
+          ],
+          [
+            "Une fuite se raconte mieux sur place qu’au téléphone.",
+            "Une membrane peut tenir en surface et être morte dessous.",
+            "Un isolant gorgé d’eau ne se voit pas d’en haut.",
+            "Une terrasse sans pente garde l’eau quoi qu’on pose dessus.",
+            "Une évacuation bouchée suffit à faire déborder un relevé.",
+            "Le relevé est l’endroit où la plupart des terrasses fuient.",
+            "Chaque traversée oubliée est une fuite programmée.",
+            "L’eau entre à un endroit et ressort plus loin.",
+            "Un procédé mal choisi vieillit mal.",
+            "Un devis à la surface seule cache souvent les relevés."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Préparation du support",
+      "textes": {
+        "combiner": [
+          [
+            "L’ancienne membrane est déposée quand elle ne peut pas être gardée.",
+            "Les gravillons sont retirés et mis à part.",
+            "Le support est nettoyé, brossé, débarrassé des mousses.",
+            "Les fissures du béton sont reprises.",
+            "Les planches de rive pourries sont changées.",
+            "Le support est laissé sécher avant tout.",
+            "Les bords et les angles sont dressés.",
+            "Les anciennes rustines sont arrachées.",
+            "Les évacuations sont dégagées jusqu’à la descente.",
+            "Les abords et la façade sont protégés."
+          ],
+          [
+            "Une membrane neuve sur une ancienne cloquée reprend ses cloques.",
+            "Des gravillons laissés sous la membrane la percent.",
+            "Le bitume ne colle pas sur la mousse ou la poussière.",
+            "Une fissure du béton traverse la membrane qui la couvre.",
+            "Une rive pourrie ne tient plus la membrane.",
+            "Un support humide fait des bulles sous la soudure.",
+            "Un angle vif coupe la membrane en se dilatant.",
+            "Une vieille rustine fait une bosse sous le neuf.",
+            "Une descente bouchée plus bas rend l’évacuation inutile.",
+            "Une coulure de bitume sur un enduit ne s’enlève plus."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Isolation et pente",
+      "textes": {
+        "combiner": [
+          [
+            "Le pare-vapeur est posé côté chaud.",
+            "L’isolant est posé jointif, en quinconce.",
+            "Un isolant à pente est posé là où l’eau stagnait.",
+            "L’isolant mouillé de l’ancienne toiture est remplacé.",
+            "Les panneaux sont fixés ou collés selon le procédé.",
+            "Les relevés reçoivent leur isolant quand il le faut.",
+            "Les épaisseurs sont adaptées à la hauteur des seuils.",
+            "Le primaire d’accrochage est passé au pinceau sur le béton.",
+            "Le primaire sèche avant la membrane.",
+            "Les zones de circulation sont protégées."
+          ],
+          [
+            "Sans pare-vapeur, l’humidité de la maison mouille l’isolant.",
+            "Un joint ouvert entre deux panneaux fait un pont froid.",
+            "L’isolant à pente rend à la terrasse la pente qu’elle n’avait pas.",
+            "Un isolant mouillé n’isole plus et pourrit le support.",
+            "Un panneau qui bouge déchire la membrane au-dessus.",
+            "Un relevé froid fait de la condensation à l’intérieur.",
+            "Un isolant trop épais fait passer l’eau sous la porte-fenêtre.",
+            "Sans primaire, le bitume se décolle du béton.",
+            "Un primaire encore frais s’enflamme au chalumeau.",
+            "On marche moins sur une terrasse protégée, et on la perce moins."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Pose de la membrane",
+      "textes": {
+        "combiner": [
+          [
+            "Le lé est déroulé à sec pour l’aligner.",
+            "Il est réenroulé, puis soudé au chalumeau en se déroulant.",
+            "Les lés se recouvrent sur la largeur prévue par le fabricant.",
+            "Les recouvrements sont soudés et marouflés.",
+            "Un bourrelet de fusion régulier sort de chaque recouvrement.",
+            "La seconde couche est décalée par rapport à la première.",
+            "L’EPDM est posé d’une pièce quand c’est possible, collé ou lesté.",
+            "La résine est appliquée en couches croisées, avec son armature.",
+            "La soudure à l’air chaud remplace la flamme près du bois.",
+            "Le feu est surveillé après chaque arrêt du chalumeau."
+          ],
+          [
+            "Un lé posé de travers fait des recouvrements trop maigres.",
+            "Un rouleau soudé d’un coup sans essai part en biais.",
+            "Un recouvrement trop court laisse passer l’eau poussée par le vent.",
+            "Une bulle dans un recouvrement devient une fuite.",
+            "Le bourrelet prouve que les deux couches ont fondu ensemble.",
+            "Deux joints superposés font un chemin pour l’eau.",
+            "Moins de raccords, c’est moins de points faibles.",
+            "Une couche de résine trop épaisse fissure en séchant.",
+            "Une flamme près d’une rive en bois est un risque d’incendie.",
+            "Un bois qui couve peut prendre feu une heure après."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Relevés et points singuliers",
+      "textes": {
+        "combiner": [
+          [
+            "Les relevés sont montés assez haut contre l’acrotère et les murs.",
+            "Les angles rentrants et sortants sont renforcés par une pièce à part.",
+            "Le haut du relevé est tenu par une bande de solin.",
+            "Les évacuations sont posées avec leur platine soudée.",
+            "Une crapaudine est posée sur chaque évacuation.",
+            "Un trop-plein est prévu.",
+            "Les coupoles sont posées sur une costière étanche.",
+            "Les traversées de tuyaux sont traitées une par une.",
+            "Les seuils de porte-fenêtre reçoivent leur relevé.",
+            "Les joints de dilatation sont traités à part, en souplesse."
+          ],
+          [
+            "Un relevé trop bas laisse passer l’eau d’une averse.",
+            "Un angle sans renfort se fend au premier hiver.",
+            "Un relevé sans solin se décolle par le haut.",
+            "Une évacuation sans platine fuit tout autour.",
+            "Les feuilles bouchent une descente en une saison.",
+            "Sans trop-plein, une évacuation bouchée inonde la terrasse.",
+            "Une coupole posée sur la membrane seule fuit par sa base.",
+            "Une traversée bâclée suffit à ruiner toute la terrasse.",
+            "Un seuil oublié fait entrer l’eau dans la pièce.",
+            "Un joint de dilatation rigide se déchire."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Protection et finitions",
+      "textes": {
+        "combiner": [
+          [
+            "Les relevés sont protégés par une finition minérale ou métallique.",
+            "Les gravillons propres sont remis en lestage.",
+            "Les dalles sur plots sont posées sur une terrasse accessible.",
+            "Le dessus des acrotères est couvert d’une couvertine.",
+            "La couvertine déborde et porte sa goutte d’eau.",
+            "Les gardes-corps sont fixés sur des platines étanchées.",
+            "La terrasse végétalisée reçoit sa couche anti-racines.",
+            "Les rives sont fixées mécaniquement.",
+            "Les descentes sont vérifiées jusqu’en bas.",
+            "Les chutes de membrane sont ramassées."
+          ],
+          [
+            "Un relevé au soleil sans protection vieillit deux fois plus vite.",
+            "Des gravillons sales gardent l’eau et les graines.",
+            "Une membrane piétinée sans protection se perce.",
+            "Un muret sans couvertine boit l’eau et la rend dans le mur.",
+            "Sans goutte d’eau, l’eau revient sous la couvertine.",
+            "Une fixation vissée à travers la membrane fait un trou.",
+            "Les racines trouvent la moindre faiblesse d’une membrane.",
+            "Une rive non fixée se soulève au vent.",
+            "Une descente bouchée plus bas fait déborder la terrasse.",
+            "Une chute de membrane laissée bouche une évacuation."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Mise en eau et contrôle",
+      "textes": {
+        "combiner": [
+          [
+            "Les évacuations sont obturées pour une mise en eau.",
+            "La terrasse est remplie de quelques centimètres d’eau.",
+            "Les plafonds du dessous sont surveillés pendant l’essai.",
+            "Les recouvrements sont contrôlés à la pointe.",
+            "Les relevés sont examinés un par un.",
+            "Les évacuations sont rouvertes et l’écoulement vérifié.",
+            "Les flaques résiduelles sont repérées.",
+            "Les reprises éventuelles sont faites dans la journée.",
+            "La zone du chalumeau est surveillée avant de partir.",
+            "Le résultat est montré au propriétaire."
+          ],
+          [
+            "Une mise en eau trouve la fuite que l’œil ne voit pas.",
+            "Quelques centimètres d’eau suffisent à charger les points faibles.",
+            "Une tache au plafond pendant l’essai dit où chercher.",
+            "Une pointe glissée dans un recouvrement trouve le défaut de soudure.",
+            "Un relevé se contrôle sur toute sa hauteur.",
+            "Une évacuation qui avale lentement est à reprendre.",
+            "Une flaque qui reste dit que la pente est à reprendre.",
+            "Une reprise faite tout de suite ne coûte rien.",
+            "Un feu qui couve sous une rive se déclare après le départ.",
+            "Ce qui est vu ensemble se discute avant, pas après."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Fin de chantier",
+      "textes": {
+        "combiner": [
+          [
+            "Le chantier est débarrassé des chutes et des rouleaux vides.",
+            "La terrasse est balayée.",
+            "Les abords et la façade sont vérifiés.",
+            "Le plan des évacuations est remis au propriétaire.",
+            "L’entretien est expliqué : évacuations, crapaudines, mousses.",
+            "Les références du procédé sont notées.",
+            "Les garanties sont remises.",
+            "Les accès à la terrasse sont refermés.",
+            "Le matériel de sécurité est retiré en dernier.",
+            "La terrasse est parcourue ensemble."
+          ],
+          [
+            "Une chute de membrane oubliée finit dans une descente.",
+            "Une terrasse propre se contrôle mieux.",
+            "Une coulure de bitume se nettoie avant de durcir.",
+            "Savoir où sont les évacuations, c’est pouvoir les nettoyer.",
+            "Une terrasse entretenue garde son étanchéité plus longtemps.",
+            "Un procédé connu se répare avec le bon produit.",
+            "La décennale couvre l’étanchéité, si elle est bien posée.",
+            "Un accès laissé ouvert laisse passer l’eau ou un enfant.",
+            "On retire la sécurité quand plus personne ne travaille au bord.",
+            "Une terrasse vue ensemble est une terrasse rendue."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    }
+  ],
+  "coupure": {
+    "avant": {
+      "etapes": [
+        [
+          "membrane cloquée",
+          "membrane fissurée",
+          "flaques stagnantes",
+          "rustines superposées",
+          "feutre déchiré"
+        ],
+        [
+          "relevé décollé",
+          "acrotère fissuré",
+          "solin absent",
+          "angle fendu"
+        ],
+        [
+          "évacuation bouchée",
+          "crapaudine absente",
+          "coupole fissurée",
+          "descente obstruée"
+        ],
+        [
+          "mousse et herbes",
+          "gravillons sales",
+          "infiltration au plafond",
+          "balcon qui fuit"
+        ]
+      ],
+      "nombre": [
+        3,
+        3
+      ]
+    },
+    "apres": {
+      "etapes": [
+        [
+          "ancienne membrane déposée",
+          "support repris",
+          "primaire posé",
+          "isolant remplacé"
+        ],
+        [
+          "membrane soudée",
+          "bicouche posée",
+          "membrane EPDM",
+          "résine armée",
+          "membrane continue"
+        ],
+        [
+          "relevés neufs",
+          "solins posés",
+          "évacuations reprises",
+          "coupole remplacée",
+          "angles renforcés"
+        ],
+        [
+          "pentes reprises",
+          "mise en eau faite",
+          "gravillons propres",
+          "couvertines posées"
+        ],
+        [
+          "chantier nettoyé",
+          "terrasse sèche",
+          "évacuations libres"
+        ]
+      ],
+      "nombre": [
+        3,
+        4
+      ],
+      "toujours": [
+        1
+      ]
+    }
+  },
+  "legendes": {
+    "comparateurs": {
+      "combiner": [
+        [
+          "Toiture-terrasse",
+          "Toit de garage",
+          "Balcon",
+          "Terrasse accessible",
+          "Relevé d’acrotère",
+          "Évacuation",
+          "Auvent plat",
+          "Terrasse végétalisée",
+          "Coupole",
+          "Toit plat",
+          "Seuil de terrasse",
+          "Acrotère"
+        ],
+        [
+          "ancienne membrane déposée",
+          "support repris",
+          "primaire posé",
+          "isolant remplacé",
+          "pentes reprises",
+          "lés soudés",
+          "recouvrements marouflés",
+          "relevés refaits",
+          "platines posées",
+          "angles renforcés"
+        ],
+        [
+          "membrane neuve",
+          "bicouche soudée",
+          "EPDM posé",
+          "résine armée",
+          "gravillons propres",
+          "dalles sur plots",
+          "couvertine posée",
+          "terrasse sèche"
+        ]
+      ],
+      "joints": [
+        ", ",
+        ", "
+      ],
+      "fin": "."
+    },
+    "invitation": {
+      "combiner": [
+        [
+          "Faites glisser la couture",
+          "Déplacez la séparation",
+          "Touchez la photo",
+          "Glissez le trait",
+          "Attrapez la couture",
+          "Faites glisser le curseur",
+          "Déplacez le trait",
+          "Passez le doigt sur la photo"
+        ],
+        [
+          "pour comparer l’avant et l’après.",
+          "pour voir la terrasse avant les travaux.",
+          "pour passer d’un état à l’autre.",
+          "pour voir ce que le chantier a changé.",
+          "pour retrouver la terrasse d’origine.",
+          "pour voir la membrane avant la réfection.",
+          "pour comparer les deux états.",
+          "pour voir le toit avant et après.",
+          "pour mesurer le travail fait.",
+          "pour voir la différence."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    },
+    "precision": {
+      "combiner": [
+        [
+          "Même point de vue, même cadrage.",
+          "Les deux photos sont prises du même endroit.",
+          "Même angle, même distance.",
+          "Les deux images ont le même cadrage.",
+          "Même endroit, même objectif.",
+          "Le point de vue ne bouge pas d’une photo à l’autre.",
+          "Photographié deux fois, depuis le même angle de terrasse.",
+          "Même place, même hauteur d’objectif.",
+          "Le photographe n’a pas bougé entre les deux."
+        ],
+        [
+          "Seule l’étanchéité change.",
+          "La différence vient du chantier.",
+          "Rien d’autre ne change que la membrane.",
+          "Ce qui change, c’est le travail fait.",
+          "Les abords sont les mêmes, la terrasse non.",
+          "Seule la surface a été refaite.",
+          "Ce qui diffère, ce sont la membrane et ses relevés.",
+          "Entre les deux, il y a le chalumeau et les rouleaux.",
+          "L’écart, c’est le travail de l’étancheur."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    }
+  },
+  "rubriques": {
+    "gestes": [
+      "Le détail des postes.",
+      "Ce que recouvre une étanchéité.",
+      "Ce qui se fait sur la terrasse.",
+      "Les étapes, dans l’ordre.",
+      "Étape par étape.",
+      "Du sondage à la mise en eau.",
+      "Comment se refait une terrasse.",
+      "Les postes du chantier.",
+      "Ce que fait l’étancheur.",
+      "Du support aux relevés.",
+      "Le travail, poste par poste.",
+      "Ce qui se fait, et pourquoi.",
+      "Les gestes du métier.",
+      "Dans l’ordre du chantier.",
+      "Ce que le devis détaille."
+    ],
+    "chantier": [
+      "Le chantier.",
+      "Sur la terrasse.",
+      "En cours de travaux.",
+      "Pendant les travaux.",
+      "Sur place.",
+      "Sur le toit.",
+      "Le chantier en cours.",
+      "Les travaux, en images.",
+      "Ce que montre le chantier.",
+      "Sur le chantier.",
+      "Pendant la pose.",
+      "La terrasse en travaux.",
+      "Ce qui se voit en cours.",
+      "Au milieu du chantier.",
+      "La membrane en cours."
+    ],
+    "verifiable": [
+      "Ce qui se vérifie.",
+      "Les faits publics.",
+      "Ce que disent les registres.",
+      "Ce qui est public.",
+      "Les registres officiels.",
+      "Ce que chacun peut vérifier.",
+      "L’entreprise, dans les registres.",
+      "Les données publiques.",
+      "Les sources officielles.",
+      "Ce que disent les sources publiques.",
+      "Vérifiable par tous.",
+      "Les faits, sans commentaire.",
+      "Ce que l’État publie.",
+      "Dans les bases publiques.",
+      "Les informations légales."
+    ],
+    "contact": [
+      "Parler du chantier.",
+      "Prendre contact.",
+      "Faire venir quelqu’un.",
+      "Demander une visite.",
+      "Montrer la terrasse.",
+      "Parler de votre toit plat.",
+      "Faire voir la fuite.",
+      "Appeler l’entreprise.",
+      "Demander un passage.",
+      "Faire mesurer.",
+      "Prendre rendez-vous.",
+      "Une question sur une terrasse ?",
+      "Faire constater.",
+      "Parler du projet.",
+      "Joindre l’entreprise."
+    ],
+    "prix": [
+      "Ce que ça coûte.",
+      "Les tarifs, poste par poste.",
+      "Avant de demander un devis.",
+      "Combien ça coûte.",
+      "Les prix, poste par poste.",
+      "Les ordres de grandeur.",
+      "Les tarifs pratiqués.",
+      "Ce que coûte une étanchéité.",
+      "Le prix des travaux.",
+      "Avant le devis.",
+      "Les prix du métier.",
+      "Ce qui fait le prix.",
+      "Les tarifs, sans détour.",
+      "Les fourchettes de prix.",
+      "Ce que dit le devis."
+    ]
+  },
+  "mot": "Étanchéité",
+  "matiere": [
+    "À dix centimètres, un recouvrement soudé montre un bourrelet continu, sans une bulle.",
+    "Le bitume fondu brille un instant, puis se fige en noir mat.",
+    "Deux lés superposés dessinent une marche fine et régulière.",
+    "Le relevé d’acrotère monte droit et se termine sous son solin.",
+    "La platine d’évacuation s’enfonce dans la membrane comme dans du cuir.",
+    "Les granulés minéraux couvrent le bitume d’un gris clair et rugueux.",
+    "Le primaire noir sur le béton sèche en un voile mat.",
+    "Une membrane soudée à l’air chaud garde une couture lisse.",
+    "Le joint de dilatation forme une boucle souple sous la membrane.",
+    "L’EPDM noir a l’aspect d’une chambre à air, sans un pli.",
+    "La crapaudine dresse son dôme de grillage sur l’évacuation.",
+    "Un angle renforcé montre sa pièce découpée, soudée par-dessus.",
+    "La flamme du chalumeau rend le bitume brillant sur une bande étroite.",
+    "Le rouleau déroulé au pied laisse une membrane bien à plat.",
+    "La couvertine déborde du muret et goutte loin de lui.",
+    "Une résine fraîche brille, puis sèche en une peau uniforme.",
+    "L’armature noyée dans la résine laisse voir sa trame sous la lumière.",
+    "Les gravillons propres roulent sous le pied sans coller.",
+    "Une dalle sur plot laisse filer l’eau dans ses joints ouverts.",
+    "L’isolant à pente se pose en dégradé, panneau après panneau.",
+    "La bande de solin fait une ligne droite sur le mur.",
+    "Un bord recoupé au cutter suit le relevé à un millimètre près.",
+    "Une terrasse neuve sèche en quelques minutes après une averse.",
+    "Le marouflage laisse la trace du rouleau sur la surface.",
+    "L’odeur du bitume chaud reste sur le chantier jusqu’au soir.",
+    "Une costière enveloppe la base d’une coupole.",
+    "Une membrane vieillie craquelle en écailles, comme une terre sèche.",
+    "Une mise en eau fait de la terrasse un miroir sans une fuite.",
+    "La pointe glisse sur un recouvrement bien soudé sans entrer.",
+    "Les rouleaux debout attendent à l’ombre de l’acrotère."
+  ],
+  "prix": {
+    "note": "Ordres de grandeur nationaux, relevés le 5 novembre 2026. Ce ne sont pas les prix de l'entreprise et ce n'est pas un devis.",
+    "sources": [
+      {
+        "nom": "Prix-pose.com, étanchéité de toit-terrasse",
+        "url": "https://www.prix-pose.com/etancheite-toit-terrasse"
+      },
+      {
+        "nom": "Habitatpresto, étanchéité de toit-terrasse en EPDM",
+        "url": "https://www.habitatpresto.com/mag/toiture/toiture-epdm"
+      }
+    ],
+    "postes": [
+      {
+        "poste": "Étanchéité en membrane bitumineuse, posée",
+        "bas": 37,
+        "haut": 65,
+        "unite": "€/m²",
+        "note": "Sans isolation ni dépose."
+      },
+      {
+        "poste": "Étanchéité en EPDM, posée",
+        "bas": 55,
+        "haut": 80,
+        "unite": "€/m²",
+        "note": "D’autres relevés vont jusqu’à 80 à 130 €/m²."
+      },
+      {
+        "poste": "Isolation ajoutée à l’étanchéité",
+        "bas": 60,
+        "haut": 100,
+        "unite": "€/m²",
+        "note": "En plus du prix de la membrane."
+      },
+      {
+        "poste": "EPDM avec isolation, posé",
+        "bas": 140,
+        "haut": 230,
+        "unite": "€/m²",
+        "note": "Fourni et posé."
+      }
+    ],
+    "exemple": {
+      "titre": "Un toit de garage de 30 m² en membrane bitumineuse",
+      "bas": 1110,
+      "haut": 1950,
+      "note": "Calculé avec le premier poste ci-dessus (37 à 65 €/m²). La dépose de l’ancienne étanchéité et les relevés s’ajoutent s’ils ne sont pas compris."
+    }
+  },
+  "nuancierEtiquette": "Voir la terrasse dans une autre finition",
+  "teintes": [
+    {
+      "nom": "D’origine",
+      "voile": "",
+      "pastille": "#5C5853"
+    },
+    {
+      "nom": "Bitume noir",
+      "voile": "0 0% 14% / .32",
+      "pastille": "#262626"
+    },
+    {
+      "nom": "Ardoisé",
+      "voile": "215 10% 36% / .32",
+      "pastille": "#535A64"
+    },
+    {
+      "nom": "Granulés gris",
+      "voile": "30 4% 62% / .30",
+      "pastille": "#A29F9B"
+    },
+    {
+      "nom": "Granulés blancs",
+      "voile": "40 10% 88% / .30",
+      "pastille": "#E6E2DA"
+    },
+    {
+      "nom": "Gravillons roulés",
+      "voile": "36 20% 66% / .30",
+      "pastille": "#B9A98E"
+    },
+    {
+      "nom": "Résine grise",
+      "voile": "210 6% 52% / .30",
+      "pastille": "#7F858B"
+    },
+    {
+      "nom": "Résine tuile",
+      "voile": "14 46% 42% / .32",
+      "pastille": "#9C5139"
+    },
+    {
+      "nom": "Sedum",
+      "voile": "90 30% 36% / .32",
+      "pastille": "#5A7740"
+    },
+    {
+      "nom": "Dalles claires",
+      "voile": "38 14% 76% / .30",
+      "pastille": "#CCC3B3"
+    }
+  ],
+  "alt": {
+    "avant": "toiture-terrasse fissurée avant travaux, cloques et flaques stagnantes",
+    "apres": "la même terrasse refaite, surface nette",
+    "invitation": "Comparer la terrasse avant et après les travaux",
+    "avant2": "une autre terrasse avant la réfection de l’étanchéité",
+    "apres2": "la même terrasse une fois l’étanchéité refaite",
+    "hero": "toiture-terrasse dont une moitié garde l’ancienne membrane et l’autre la neuve",
+    "invitation2": "Comparer un second chantier avant et après",
+    "ouverture": "geste du métier sur une toiture-terrasse",
+    "chantier": "rouleaux de membrane en attente, chalumeau à proximité",
+    "chantierBis": "acrotère préparé, primaire appliqué",
+    "detail": "gros plan sur un recouvrement de bitume soudé",
+    "detailBis": "gros plan sur un relevé d’acrotère terminé",
+    "geste": "chalumeau qui soude un lé de bitume"
+  },
+  "estimateur": {
+    "titre": "Votre terrasse",
+    "mesure": {
+      "etiquette": "Surface de la terrasse",
+      "unite": "m²",
+      "min": 5,
+      "max": 500,
+      "pas": 5,
+      "defaut": 40,
+      "aria": "Surface de la terrasse en mètres carrés"
+    }
+  }
+}
