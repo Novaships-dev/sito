@@ -1,0 +1,886 @@
+{
+  "nom": "Métallerie",
+  "libelle": "métallerie et portails",
+  "schemaType": "HomeAndConstructionBusiness",
+  "legendesPhotos": {
+    "geste": "Le cordon de soudure tiré d’un geste, puis ébavuré à la meuleuse.",
+    "chantier": "L’ouvrage monté sur gabarit à l’atelier, pièces en attente, avant la peinture.",
+    "detail": "Un cordon de soudure à dix centimètres : régulier, sans trou, meulé à ras."
+  },
+  "codesApe": [
+    "43.32B",
+    "25.11Z"
+  ],
+  "titres": [
+    "Un portail se juge à ses gonds, pas à ses volutes.",
+    "Une soudure bien faite ne se voit plus une fois meulée et peinte.",
+    "L’acier rouille par où l’eau reste. Le métallier lui laisse une sortie.",
+    "Un garde-corps se mesure à la règle, et se fixe pour retenir quelqu’un.",
+    "La hauteur d’un garde-corps n’est pas un choix. La norme la fixe.",
+    "Un poteau de portail se scelle profond, et droit.",
+    "Un portail qui frotte au sol avait un poteau qui a bougé.",
+    "Le thermolaquage protège mieux qu’une peinture au pinceau.",
+    "L’acier galvanisé se peint avec un primaire fait pour lui.",
+    "Un ouvrage sur mesure se mesure deux fois sur place.",
+    "Une grille de défense se fixe dans la maçonnerie, pas dans l’enduit.",
+    "Les barreaux d’un garde-corps laissent passer l’air, pas la tête d’un enfant.",
+    "Un escalier métallique se dessine marche par marche avant la première coupe.",
+    "Le gabarit fait que tous les barreaux sont à la même distance.",
+    "Une rampe se tient de toute sa force : elle se fixe en conséquence.",
+    "Un portail coulissant roule sur un rail posé de niveau.",
+    "Le corten se patine et se protège tout seul, à condition d’être bien drainé.",
+    "Une pergola métallique se pose sur des platines scellées.",
+    "Un auvent de porte se fixe dans le mur porteur.",
+    "Le métal se coupe à la scie à ruban, pas au chalumeau, pour une coupe nette.",
+    "Un tube coupé net s’assemble sans jour.",
+    "Un assemblage boulonné se démonte, un assemblage soudé non.",
+    "Un portail se règle sur ses gonds réglables, pas à coups de marteau.",
+    "La rouille se brosse jusqu’au métal sain avant de repeindre.",
+    "Un apprêt antirouille se pose sur un métal propre et sec.",
+    "Une soudure sur un métal rouillé est une soudure fragile.",
+    "Le métallier ébavure chaque coupe, sinon elle coupe la main.",
+    "Une clôture se pose avec des poteaux tous les deux mètres environ.",
+    "Un rideau métallique de vitrine se règle pour remonter sans forcer.",
+    "Le fer forgé se travaille à chaud. Les volutes ne s’achètent pas toutes faites.",
+    "Un garde-corps en verre se pose avec un verre feuilleté de sécurité.",
+    "Une main courante se fixe à la bonne hauteur, sur toute la longueur.",
+    "Un portail battant s’ouvre vers l’intérieur de la propriété.",
+    "Une butée de portail l’empêche de s’ouvrir trop loin.",
+    "Un portillon se ferme seul quand ses gonds sont bien réglés.",
+    "Un balcon repeint dure dix ans de plus, s’il est bien préparé.",
+    "La peinture sur métal se pose en couches fines.",
+    "L’acier se dilate au soleil : un portail long garde du jeu.",
+    "Un escalier extérieur métallique se protège de la corrosion dès l’atelier.",
+    "Une verrière d’atelier se fabrique en profils fins et droits.",
+    "Un garde-corps de terrasse se fixe en nez de dalle ou sur dalle, selon le support.",
+    "La fixation compte autant que l’ouvrage.",
+    "Un soupirail se protège d’une grille qui laisse passer l’air.",
+    "Le métallier vérifie le support avant de promettre une fixation.",
+    "Une soudure se fait en plusieurs passes sur un acier épais.",
+    "Un ouvrage galvanisé à chaud dure des décennies dehors.",
+    "La motorisation d’un portail se prévoit avec ses gaines, avant de couler.",
+    "Un portail lourd se pose sur des poteaux à sa mesure.",
+    "Les gonds d’un vieux portail descellés se rescellent, ou se remplacent.",
+    "Un portail neuf sur des piliers fendus ne tient pas longtemps.",
+    "Une grille tordue se redresse rarement. Elle se refait.",
+    "Le métallier coupe, assemble, soude, meule, puis peint. Dans cet ordre.",
+    "La couleur d’un ouvrage métallique se choisit dans un nuancier RAL.",
+    "Un noir mat montre moins les traces qu’un noir brillant.",
+    "Un portail se dessine avec la largeur de passage d’une voiture, et un peu plus.",
+    "Les pointes d’un portail découragent, mais ne doivent blesser personne.",
+    "Un garde-corps intérieur se fixe dans le plancher, pas dans la plinthe.",
+    "La tôle perforée laisse passer la lumière et arrête les regards.",
+    "Une pergola se pense avec l’ombre qu’elle fait à midi.",
+    "Un escalier hélicoïdal se pose autour de son fût, au centimètre.",
+    "Les marches d’un escalier métallique sont couvertes ou striées pour ne pas glisser.",
+    "Un ouvrage métallique se transporte protégé, pour ne pas rayer sa peinture.",
+    "La pose d’un portail se fait à deux, avec des cales et un niveau.",
+    "Un serre-joint tient l’assemblage pendant la soudure.",
+    "L’équerre se vérifie avant de souder, après il est trop tard.",
+    "Un cadre soudé se contrôle en diagonale.",
+    "Le métallier meule à ras sans creuser le métal.",
+    "Une charnière massive se graisse une fois par an.",
+    "Une serrure de portail se choisit pour l’extérieur.",
+    "Un portail en fer qui grince réclame de la graisse, pas un nouveau portail.",
+    "Une clôture affaissée a souvent un poteau qui a pourri au pied.",
+    "Le pied d’un poteau se protège de l’eau stagnante.",
+    "Un garde-corps de balcon ancien se teste à la main avant d’être gardé.",
+    "Une rampe branlante se refixe avant qu’on ne s’y appuie de tout son poids.",
+    "L’acier brossé garde le grain du meulage sous le vernis.",
+    "Un ouvrage thermolaqué se retouche avec la même teinte, livrée avec lui.",
+    "Un portail se ferme sans claquer quand sa butée est bien placée.",
+    "Un escalier métallique se pose quand le support est fini.",
+    "La platine d’un poteau se cheville dans le béton sain.",
+    "Un scellement chimique tient là où une cheville ordinaire tourne.",
+    "Le métallier repère les réseaux avant de creuser un pied de poteau.",
+    "Une barrière de piscine répond à une norme. Elle ne s’improvise pas.",
+    "Les vitrines se protègent par un rideau qui se lève sans bruit.",
+    "Un portail de jardin se pose avec un jour sous la traverse basse.",
+    "Une grille de fenêtre se pose de l’intérieur ou de l’extérieur, selon l’ouverture.",
+    "Une porte métallique se règle sur ses paumelles comme une porte en bois.",
+    "Un ouvrage sur mesure se fabrique en semaines, et se pose en heures.",
+    "La peinture sèche dans l’atelier, pas sur le chantier.",
+    "Une retouche de peinture se fait au pinceau fin, pas à la bombe.",
+    "Le métallier laisse le chantier sans éclat de soudure ni chute de métal.",
+    "Un garde-corps neuf se vérifie en poussant dessus, fort.",
+    "Un ouvrage bien conçu se reconnaît à ses fixations discrètes.",
+    "Une soudure invisible et une fixation solide font un bon ouvrage.",
+    "Le métal se recycle, les chutes aussi.",
+    "Un portail se rend avec ses clés, ses réglages et ses conseils d’entretien.",
+    "Une clôture droite se tire au cordeau, poteau par poteau.",
+    "La fin d’un chantier de métallerie, c’est un ouvrage qui ne bouge pas.",
+    "Un garde-corps se pose avant que la terrasse serve, pas après.",
+    "Une grille neuve se peint dans la teinte des volets, ou du portail.",
+    "Le métallier règle un portail par temps chaud et par temps froid de la même façon : avec du jeu.",
+    "Un escalier métallique sonne moins quand ses marches sont bien fixées.",
+    "Une verrière se vitre une fois le cadre posé d’équerre.",
+    "Un ouvrage léger se fixe avec des chevilles, un ouvrage lourd avec un scellement.",
+    "La peinture d’un portail se refait avant que la rouille ne perce.",
+    "Un portail coulissant demande un dégagement le long de la clôture.",
+    "Le métallier note la teinte RAL sur la facture.",
+    "Une rampe extérieure se fait en acier galvanisé ou en inox.",
+    "L’inox se nettoie à l’eau claire, sans paille de fer.",
+    "Un garde-corps de mezzanine se fixe dans la structure, pas dans le plancher seul.",
+    "Les soudures se font à l’atelier. Sur place, on boulonne.",
+    "Un portail ancien se restaure quand ses montants sont sains.",
+    "Une clôture rigide se tend moins qu’un grillage, et dure plus."
+  ],
+  "chapos": {
+    "etapes": [
+      [
+        "prise de cotes sur place",
+        "relevé du support et des fixations",
+        "dessin de l’ouvrage"
+      ],
+      [
+        "dépose de l’ancien ouvrage",
+        "brossage de la rouille",
+        "reprise des piliers et des scellements"
+      ],
+      [
+        "découpe à la scie à ruban",
+        "montage sur gabarit",
+        "assemblage soudé ou boulonné",
+        "cordons meulés et ébavurés"
+      ],
+      [
+        "ouvrage fabriqué sur mesure à l’atelier",
+        "portail neuf",
+        "garde-corps neuf",
+        "grille de défense neuve",
+        "escalier métallique"
+      ],
+      [
+        "apprêt antirouille",
+        "thermolaquage",
+        "peinture en couches fines",
+        "galvanisation à chaud"
+      ],
+      [
+        "poteaux scellés droits",
+        "fixations dans la maçonnerie saine",
+        "réglage des gonds et des butées",
+        "essai de chaque ouverture"
+      ],
+      [
+        "chutes de métal évacuées",
+        "chantier nettoyé",
+        "ouvrage rendu réglé"
+      ]
+    ],
+    "nombre": [
+      4,
+      5
+    ],
+    "toujours": [
+      3
+    ]
+  },
+  "gestes": [
+    {
+      "terme": "Relevé et dessin",
+      "textes": {
+        "combiner": [
+          [
+            "Les cotes sont prises sur place, deux fois.",
+            "Le support est sondé : béton, pierre, parpaing, enduit.",
+            "Les aplombs et les niveaux sont relevés.",
+            "La largeur de passage est mesurée pour un portail.",
+            "La hauteur réglementaire est vérifiée pour un garde-corps.",
+            "L’ouvrage est dessiné à l’échelle, avec ses fixations.",
+            "La teinte est choisie dans un nuancier RAL.",
+            "La motorisation éventuelle est prévue avec ses gaines.",
+            "Les réseaux enterrés sont repérés avant les scellements.",
+            "Le dessin est validé avec le client avant la fabrication."
+          ],
+          [
+            "Une cote fausse se découvre au moment de la pose, trop tard.",
+            "Une fixation dans un enduit seul ne tient rien.",
+            "Un mur hors d’aplomb se rattrape à la conception, pas à la pose.",
+            "Un portail trop étroit oblige à manœuvrer chaque jour.",
+            "Un garde-corps trop bas ne protège personne.",
+            "Un dessin évite les surprises de l’atelier.",
+            "Une teinte choisie sur écran ne ressemble pas au métal peint.",
+            "Une gaine oubliée oblige à casser l’allée.",
+            "Un câble coupé au pied d’un poteau arrête le chantier.",
+            "Ce qui est validé avant ne se discute pas après."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Dépose et préparation",
+      "textes": {
+        "combiner": [
+          [
+            "L’ancien ouvrage est déposé, découpé si besoin.",
+            "Les vieux scellements sont purgés.",
+            "Les piliers fendus sont repris en maçonnerie.",
+            "La rouille est brossée jusqu’au métal sain.",
+            "Les parties trop corrodées sont découpées et remplacées.",
+            "Le métal est dégraissé avant toute peinture.",
+            "Les gonds descellés sont rescellés ou remplacés.",
+            "Les abords sont protégés des étincelles.",
+            "Les chutes et la ferraille sont triées.",
+            "Les poteaux pourris au pied sont remplacés."
+          ],
+          [
+            "Un vieux scellement fissuré ne retient plus le neuf.",
+            "Un portail neuf sur un pilier fendu le fait tomber.",
+            "Une peinture sur la rouille cloque en un hiver.",
+            "Un métal rongé ne se soude pas proprement.",
+            "La peinture ne tient pas sur une surface grasse.",
+            "Un gond descellé fait pencher tout le portail.",
+            "Une étincelle sur une bâche fait un trou.",
+            "La ferraille se revend et se recycle.",
+            "Une clôture tombe toujours par son poteau le plus faible.",
+            "La préparation fait la durée de l’ouvrage."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Fabrication à l’atelier",
+      "textes": {
+        "combiner": [
+          [
+            "Les profils sont coupés à la scie à ruban, à longueur exacte.",
+            "Chaque coupe est ébavurée.",
+            "L’ouvrage est monté sur un gabarit.",
+            "Les assemblages sont tenus au serre-joint et vérifiés à l’équerre.",
+            "Les cadres sont contrôlés en diagonale avant soudure.",
+            "Les soudures sont faites en plusieurs passes sur les épaisseurs.",
+            "Les cordons sont meulés à ras sans creuser le métal.",
+            "Les trous de fixation sont percés avant la peinture.",
+            "Les écoulements d’eau sont prévus dans les profils creux.",
+            "L’ouvrage est essayé à blanc avant la peinture."
+          ],
+          [
+            "Une coupe à la bonne longueur s’assemble sans forcer.",
+            "Une bavure coupe la main qui touche la rampe.",
+            "Sans gabarit, deux barreaux ne sont jamais à la même distance.",
+            "Un assemblage hors d’équerre fait un portail qui ferme mal.",
+            "Un cadre vrillé ne se redresse plus une fois soudé.",
+            "Une soudure en une passe sur un acier épais ne tient pas.",
+            "Un cordon meulé trop fort affaiblit l’assemblage.",
+            "Percer après la peinture fait rouiller le trou.",
+            "L’eau enfermée dans un tube le fait rouiller de l’intérieur.",
+            "Un essai à blanc évite une retouche sur le chantier."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Protection du métal",
+      "textes": {
+        "combiner": [
+          [
+            "L’acier est sablé ou brossé avant le traitement.",
+            "Un apprêt antirouille est posé sur métal nu.",
+            "L’ouvrage est thermolaqué ou peint en couches fines.",
+            "Les ouvrages extérieurs exposés sont galvanisés à chaud.",
+            "L’acier galvanisé reçoit un primaire adapté avant peinture.",
+            "Les intérieurs des tubes sont protégés quand c’est possible.",
+            "La peinture sèche à l’atelier, à l’abri.",
+            "L’ouvrage est emballé pour le transport.",
+            "Une retouche de la même teinte est livrée avec l’ouvrage.",
+            "Le corten est laissé brut, avec un drainage soigné."
+          ],
+          [
+            "Un apprêt sur un métal sale se décolle.",
+            "La rouille commence toujours par une rayure.",
+            "Une couche épaisse coule et craquelle.",
+            "La galvanisation protège même là où la peinture s’abîme.",
+            "Une peinture ordinaire sur du galvanisé s’écaille.",
+            "Un tube rouille aussi par l’intérieur.",
+            "Une peinture séchée au vent se couvre de poussière.",
+            "Un ouvrage rayé au transport arrive déjà abîmé.",
+            "Une retouche dans la bonne teinte ne se voit pas.",
+            "Le corten qui garde l’eau rouille au lieu de se patiner."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Scellement et pose",
+      "textes": {
+        "combiner": [
+          [
+            "Les poteaux sont scellés profond, au niveau et d’aplomb.",
+            "Les platines sont chevillées dans le béton sain.",
+            "Le scellement chimique est utilisé sur les supports fragiles.",
+            "Le portail est posé à deux, sur cales, au niveau.",
+            "Les gonds réglables sont ajustés en hauteur et en aplomb.",
+            "Le rail du portail coulissant est posé de niveau.",
+            "Les butées et l’arrêt au sol sont posés.",
+            "Le garde-corps est fixé en nez de dalle ou sur dalle selon le support.",
+            "La main courante est posée à la bonne hauteur, sur toute la longueur.",
+            "La pose se fait après la prise complète des scellements."
+          ],
+          [
+            "Un poteau qui bouge fait frotter le portail.",
+            "Une cheville dans un béton fissuré tourne dans son trou.",
+            "Une cheville ordinaire dans une brique creuse ne tient pas.",
+            "Un portail posé seul se pose de travers.",
+            "Un gond fixe ne se rattrape pas après la pose.",
+            "Un rail qui penche fait partir le portail tout seul.",
+            "Sans butée, un portail battant cogne le mur au vent.",
+            "Une fixation mal choisie arrache le nez de dalle.",
+            "Une main courante qui s’arrête avant la dernière marche fait tomber.",
+            "Un ouvrage posé sur un scellement frais se décale."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Garde-corps et escaliers",
+      "textes": {
+        "combiner": [
+          [
+            "La hauteur du garde-corps respecte la norme.",
+            "L’écartement des barreaux ne laisse passer ni une tête ni un pied d’enfant.",
+            "Le verre est feuilleté et pincé dans ses fixations.",
+            "Les marches sont striées ou couvertes pour ne pas glisser.",
+            "L’escalier est tracé avant d’être fabriqué : hauteur, giron, nombre de marches.",
+            "L’escalier hélicoïdal est monté autour de son fût, au centimètre.",
+            "Les limons sont fixés dans la structure.",
+            "La rampe est fixée tous les mètres environ.",
+            "Le garde-corps est éprouvé à la main avant la livraison.",
+            "La barrière de piscine répond à sa norme."
+          ],
+          [
+            "Un garde-corps trop bas ne retient pas une chute.",
+            "Un barreau trop écarté laisse passer un enfant.",
+            "Un verre ordinaire se brise en lames.",
+            "Une marche lisse mouillée devient une patinoire.",
+            "Une marche différente des autres fait trébucher.",
+            "Un hélicoïdal mal centré se monte de travers.",
+            "Un limon mal fixé fait vibrer tout l’escalier.",
+            "Une rampe fixée trop rarement plie sous le poids.",
+            "On teste un garde-corps avant qu’un enfant ne le fasse.",
+            "Une barrière de piscine non conforme ne protège pas."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Portails et motorisation",
+      "textes": {
+        "combiner": [
+          [
+            "La largeur de passage est prévue pour une voiture, et un peu plus.",
+            "Le sens d’ouverture est choisi selon la pente de l’allée.",
+            "Le portail coulissant reçoit un rail et un guide.",
+            "La motorisation est raccordée sur des gaines prévues à l’avance.",
+            "Les cellules de sécurité sont posées et essayées.",
+            "La serrure est choisie pour l’extérieur.",
+            "Le portillon est assorti au portail.",
+            "Un jour est laissé sous la traverse basse.",
+            "Les gonds sont graissés à la pose.",
+            "Chaque ouverture est essayée plusieurs fois."
+          ],
+          [
+            "Un portail trop juste raye les rétroviseurs.",
+            "Un battant qui s’ouvre vers une pente frotte au sol.",
+            "Sans guide, un coulissant se couche au vent.",
+            "Une motorisation sans gaine laisse traîner un câble.",
+            "Une cellule mal posée laisse le portail se fermer sur une voiture.",
+            "Une serrure d’intérieur rouille en un hiver dehors.",
+            "Un portillon différent du portail se remarque.",
+            "Une traverse au ras du sol frotte sur les graviers.",
+            "Un gond sec grince et s’use.",
+            "Un essai unique ne montre pas un frottement."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Finitions et nettoyage",
+      "textes": {
+        "combiner": [
+          [
+            "Les rayures de pose sont retouchées au pinceau fin.",
+            "Les éclats de soudure et les chutes sont ramassés.",
+            "Les scellements sont lissés et nettoyés.",
+            "Les protections sont retirées.",
+            "Les réglages sont vérifiés une dernière fois.",
+            "Les clés et les télécommandes sont remises.",
+            "L’entretien est expliqué : graissage, nettoyage, retouches.",
+            "La teinte et les références sont notées pour plus tard.",
+            "Les abords sont balayés.",
+            "L’ouvrage est éprouvé devant le client."
+          ],
+          [
+            "Une rayure non retouchée rouille la première.",
+            "Un éclat de soudure dans une pelouse blesse un pied nu.",
+            "Un scellement bavé gâche une belle pose.",
+            "Un film de protection oublié colle au soleil.",
+            "Un réglage vérifié évite un retour.",
+            "Un portail sans sa télécommande ne s’ouvre pas.",
+            "Un ouvrage entretenu dure deux fois plus longtemps.",
+            "Une teinte notée se retrouve dans dix ans.",
+            "Un chantier balayé est un chantier fini.",
+            "Un garde-corps éprouvé devant le client rassure tout le monde."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    }
+  ],
+  "coupure": {
+    "avant": {
+      "etapes": [
+        [
+          "portail rouillé",
+          "gonds descellés",
+          "portail déformé",
+          "portillon tordu",
+          "clôture affaissée",
+          "poteau pourri au pied"
+        ],
+        [
+          "garde-corps corrodé",
+          "rampe branlante",
+          "barreaudage piqué",
+          "escalier métallique corrodé",
+          "balcon rouillé"
+        ],
+        [
+          "grille de fenêtre piquée",
+          "barreaux tordus",
+          "grille de soupirail rouillée",
+          "rideau métallique tagué",
+          "auvent déformé"
+        ],
+        [
+          "peinture écaillée",
+          "rouille aux soudures",
+          "pilier fendu"
+        ]
+      ],
+      "nombre": [
+        3,
+        3
+      ]
+    },
+    "apres": {
+      "etapes": [
+        [
+          "ancien ouvrage déposé",
+          "rouille brossée",
+          "piliers repris",
+          "cotes prises sur place"
+        ],
+        [
+          "portail neuf",
+          "garde-corps neuf",
+          "grille neuve",
+          "rampe neuve",
+          "escalier repris",
+          "clôture neuve"
+        ],
+        [
+          "soudures meulées",
+          "apprêt antirouille",
+          "thermolaqué",
+          "galvanisé"
+        ],
+        [
+          "poteaux scellés droits",
+          "gonds réglés",
+          "fixations dans le béton sain",
+          "butées posées"
+        ],
+        [
+          "chantier nettoyé",
+          "ouvrage éprouvé",
+          "retouches faites"
+        ]
+      ],
+      "nombre": [
+        3,
+        4
+      ],
+      "toujours": [
+        1
+      ]
+    }
+  },
+  "legendes": {
+    "comparateurs": {
+      "combiner": [
+        [
+          "Portail",
+          "Garde-corps de balcon",
+          "Grille de fenêtre",
+          "Rampe d’escalier",
+          "Portillon de jardin",
+          "Pergola",
+          "Auvent de porte",
+          "Grille de soupirail",
+          "Escalier extérieur",
+          "Clôture",
+          "Rideau de vitrine",
+          "Verrière"
+        ],
+        [
+          "ancien ouvrage déposé",
+          "rouille brossée",
+          "gonds rescellés",
+          "piliers repris",
+          "cotes prises",
+          "poteaux scellés",
+          "platines chevillées",
+          "gabarit monté",
+          "soudures meulées",
+          "apprêt posé"
+        ],
+        [
+          "ouvrage neuf",
+          "thermolaqué",
+          "galvanisé",
+          "repeint",
+          "portail posé",
+          "garde-corps fixé",
+          "grille neuve",
+          "rampe neuve"
+        ]
+      ],
+      "joints": [
+        ", ",
+        ", "
+      ],
+      "fin": "."
+    },
+    "invitation": {
+      "combiner": [
+        [
+          "Faites glisser la couture",
+          "Déplacez la séparation",
+          "Touchez la photo",
+          "Glissez le trait",
+          "Attrapez la couture",
+          "Faites glisser le curseur",
+          "Déplacez le trait",
+          "Passez le doigt sur la photo"
+        ],
+        [
+          "pour comparer l’avant et l’après.",
+          "pour voir l’ouvrage avant les travaux.",
+          "pour passer d’un état à l’autre.",
+          "pour voir ce que le chantier a changé.",
+          "pour retrouver l’ouvrage d’origine.",
+          "pour voir le métal avant la reprise.",
+          "pour comparer les deux états.",
+          "pour voir l’accès avant et après.",
+          "pour mesurer le travail fait.",
+          "pour voir la différence."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    },
+    "precision": {
+      "combiner": [
+        [
+          "Même point de vue, même cadrage.",
+          "Les deux photos sont prises du même endroit.",
+          "Même angle, même distance.",
+          "Les deux images ont le même cadrage.",
+          "Même endroit, même objectif.",
+          "Le point de vue ne bouge pas d’une photo à l’autre.",
+          "Photographié deux fois, depuis le même trottoir.",
+          "Même place, même hauteur d’objectif.",
+          "Le photographe n’a pas bougé entre les deux."
+        ],
+        [
+          "Seul l’ouvrage change.",
+          "La différence vient du chantier.",
+          "Rien d’autre ne change que le métal.",
+          "Ce qui change, c’est le travail fait.",
+          "Les abords sont les mêmes, l’ouvrage non.",
+          "Seul le métal a été repris.",
+          "Ce qui diffère, ce sont l’acier et sa peinture.",
+          "Entre les deux, il y a l’atelier et la pose.",
+          "L’écart, c’est le travail du métallier."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    }
+  },
+  "rubriques": {
+    "gestes": [
+      "Le détail des postes.",
+      "Ce que recouvre un ouvrage de métallerie.",
+      "Ce qui se fait à l’atelier et sur place.",
+      "Les étapes, dans l’ordre.",
+      "Étape par étape.",
+      "De la cote à la pose.",
+      "Comment se fabrique un portail.",
+      "Les postes du chantier.",
+      "Ce que fait le métallier.",
+      "Du dessin au réglage.",
+      "Le travail, poste par poste.",
+      "Ce qui se fait, et pourquoi.",
+      "Les gestes du métier.",
+      "Dans l’ordre du chantier.",
+      "Ce que le devis détaille."
+    ],
+    "chantier": [
+      "Le chantier.",
+      "À l’atelier.",
+      "En cours de travaux.",
+      "Pendant les travaux.",
+      "Sur place.",
+      "Sur le gabarit.",
+      "Le chantier en cours.",
+      "Les travaux, en images.",
+      "Ce que montre le chantier.",
+      "Sur le chantier.",
+      "Pendant la fabrication.",
+      "L’ouvrage en travaux.",
+      "Ce qui se voit en cours.",
+      "Au milieu du chantier.",
+      "La pose en cours."
+    ],
+    "verifiable": [
+      "Ce qui se vérifie.",
+      "Les faits publics.",
+      "Ce que disent les registres.",
+      "Ce qui est public.",
+      "Les registres officiels.",
+      "Ce que chacun peut vérifier.",
+      "L’entreprise, dans les registres.",
+      "Les données publiques.",
+      "Les sources officielles.",
+      "Ce que disent les sources publiques.",
+      "Vérifiable par tous.",
+      "Les faits, sans commentaire.",
+      "Ce que l’État publie.",
+      "Dans les bases publiques.",
+      "Les informations légales."
+    ],
+    "contact": [
+      "Parler du chantier.",
+      "Prendre contact.",
+      "Faire venir quelqu’un.",
+      "Demander une visite.",
+      "Montrer l’ouvrage.",
+      "Parler de votre portail.",
+      "Faire voir le garde-corps.",
+      "Appeler l’entreprise.",
+      "Demander un passage.",
+      "Faire mesurer.",
+      "Prendre rendez-vous.",
+      "Une question sur un ouvrage ?",
+      "Faire constater.",
+      "Parler du projet.",
+      "Joindre l’entreprise."
+    ],
+    "prix": [
+      "Ce que ça coûte.",
+      "Les tarifs, poste par poste.",
+      "Avant de demander un devis.",
+      "Combien ça coûte.",
+      "Les prix, poste par poste.",
+      "Les ordres de grandeur.",
+      "Les tarifs pratiqués.",
+      "Ce que coûte la métallerie.",
+      "Le prix des ouvrages.",
+      "Avant le devis.",
+      "Les prix du métier.",
+      "Ce qui fait le prix.",
+      "Les tarifs, sans détour.",
+      "Les fourchettes de prix.",
+      "Ce que dit le devis."
+    ]
+  },
+  "mot": "Métallerie",
+  "matiere": [
+    "À dix centimètres, l’acier brossé garde le grain fin du meulage.",
+    "Un cordon de soudure régulier dessine des écailles serrées.",
+    "Le thermolaquage noir mat ne renvoie aucun reflet.",
+    "L’acier corten prend une patine orangée, puis brune.",
+    "Un assemblage boulonné montre ses têtes alignées.",
+    "Une charnière massive graissée tourne sans un bruit.",
+    "Un tube carré coupé net montre une section sans bavure.",
+    "L’apprêt gris couvre l’acier nu d’un voile uniforme.",
+    "La galvanisation laisse des fleurs de zinc à la surface.",
+    "Une volute forgée garde la trace du marteau.",
+    "La tôle perforée découpe la lumière en points réguliers.",
+    "Un garde-corps en verre feuilleté montre sa tranche verte.",
+    "La main courante polie s’use sous les mains, et brille.",
+    "Une soudure meulée à ras disparaît sous la peinture.",
+    "Un gond réglable porte son écrou et sa contre-écrou.",
+    "Le pied d’un poteau scellé sort du béton sans un jeu.",
+    "La platine chevillée montre quatre têtes au carré.",
+    "Un barreau plein sonne autrement qu’un tube creux.",
+    "L’acier brut bleuit autour d’une soudure, puis se meule.",
+    "Un ouvrage neuf sent encore la peinture cuite.",
+    "Une gerbe d’étincelles accompagne chaque passe de meuleuse.",
+    "Un noir sablé se touche comme une pierre fine.",
+    "Le rail d’un portail coulissant brille là où passent les roues.",
+    "Une marche striée accroche la semelle.",
+    "La rouille commence par un point, toujours au même endroit : là où l’eau reste.",
+    "Un serre-joint laisse une marque légère, effacée au meulage.",
+    "Le métal chaud a une couleur que le forgeron lit.",
+    "Un ouvrage thermolaqué a une teinte égale d’un bout à l’autre.",
+    "Les angles d’un cadre soudé ne montrent aucune fente.",
+    "Une grille bien posée ne vibre pas quand on la secoue."
+  ],
+  "prix": {
+    "note": "Ordres de grandeur nationaux, relevés le 5 novembre 2026. Ce ne sont pas les prix de l'entreprise et ce n'est pas un devis.",
+    "sources": [
+      {
+        "nom": "Habitatpresto, devis de ferronnerie",
+        "url": "https://www.habitatpresto.com/devis-travaux/devis-ferronnerie-forge"
+      },
+      {
+        "nom": "Travaux.com, prix d’un garde-corps en inox",
+        "url": "https://www.travaux.com/fenetre-porte/guide-des-prix/garde-corps-cable"
+      }
+    ],
+    "postes": [
+      {
+        "poste": "Garde-corps en fer forgé, fourni et posé",
+        "bas": 200,
+        "haut": 700,
+        "unite": "€/ml",
+        "note": "Selon le dessin et le travail de forge."
+      },
+      {
+        "poste": "Garde-corps à câbles inox, fourni et posé",
+        "bas": 160,
+        "haut": 300,
+        "unite": "€/ml",
+        "note": "Un remplissage en verre feuilleté monte de 360 à 600 €/ml."
+      },
+      {
+        "poste": "Portail battant en fer forgé, fourni et posé",
+        "bas": 2500,
+        "haut": 8000,
+        "unite": "€",
+        "note": "Sur mesure, selon la largeur et les motifs."
+      },
+      {
+        "poste": "Pergola ou marquise en fer forgé",
+        "bas": 300,
+        "haut": 900,
+        "unite": "€/m²",
+        "note": "Fournie et posée."
+      }
+    ],
+    "exemple": {
+      "titre": "Un balcon de 6 mètres, garde-corps en fer forgé",
+      "bas": 1200,
+      "haut": 4200,
+      "note": "Calculé avec le premier poste ci-dessus (200 à 700 €/ml). La reprise des fixations sur un balcon ancien s’ajoute."
+    }
+  },
+  "nuancierEtiquette": "Voir l’ouvrage dans une autre teinte",
+  "teintes": [
+    {
+      "nom": "D’origine",
+      "voile": "",
+      "pastille": "#5E5A55"
+    },
+    {
+      "nom": "Noir sablé",
+      "voile": "0 0% 14% / .34",
+      "pastille": "#262626"
+    },
+    {
+      "nom": "Gris anthracite",
+      "voile": "210 8% 26% / .34",
+      "pastille": "#3C4146"
+    },
+    {
+      "nom": "Gris clair",
+      "voile": "210 8% 74% / .30",
+      "pastille": "#B6BCC1"
+    },
+    {
+      "nom": "Vert sapin",
+      "voile": "150 30% 24% / .34",
+      "pastille": "#2B4A3B"
+    },
+    {
+      "nom": "Bleu acier",
+      "voile": "210 22% 40% / .34",
+      "pastille": "#50647D"
+    },
+    {
+      "nom": "Rouge oxyde",
+      "voile": "6 48% 34% / .34",
+      "pastille": "#80362D"
+    },
+    {
+      "nom": "Corten",
+      "voile": "20 60% 38% / .34",
+      "pastille": "#9C5A27"
+    },
+    {
+      "nom": "Blanc",
+      "voile": "40 12% 94% / .30",
+      "pastille": "#EFEDE8"
+    },
+    {
+      "nom": "Bronze",
+      "voile": "30 30% 30% / .34",
+      "pastille": "#64503A"
+    }
+  ],
+  "alt": {
+    "avant": "portail en fer rouillé et déformé avant travaux, gonds descellés",
+    "apres": "le même accès avec le portail neuf posé",
+    "invitation": "Comparer l’ouvrage avant et après les travaux",
+    "avant2": "un autre chantier avant la reprise de la métallerie",
+    "apres2": "le même chantier une fois l’ouvrage posé",
+    "hero": "accès dont une moitié garde l’ancien ouvrage et l’autre le neuf",
+    "invitation2": "Comparer un second chantier avant et après",
+    "ouverture": "geste du métier à l’atelier de métallerie",
+    "chantier": "atelier avec gabarit de montage, pièces en attente",
+    "chantierBis": "portail posé sur tréteaux avant peinture",
+    "detail": "gros plan sur un cordon de soudure meulé",
+    "detailBis": "gros plan sur un acier thermolaqué noir mat",
+    "geste": "le poste à souder en action, main gantée"
+  },
+  "estimateur": {
+    "titre": "Votre ouvrage",
+    "mesure": {
+      "etiquette": "Longueur de garde-corps ou de clôture",
+      "unite": "ml",
+      "min": 1,
+      "max": 60,
+      "pas": 1,
+      "defaut": 6,
+      "aria": "Longueur en mètres linéaires"
+    }
+  }
+}

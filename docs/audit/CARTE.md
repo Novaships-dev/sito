@@ -6,16 +6,16 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**380 fichiers suivis, dont 151 .md ; 95467 lignes de texte.** Hors zone : 0.
+**381 fichiers suivis, dont 151 .md ; 96369 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
 | Z01 Pilotage de l agent | 27 | 2142 | 0 |
-| Z02 Mémoire du projet | 11 | 2827 | 0 |
+| Z02 Mémoire du projet | 11 | 2842 | 0 |
 | Z03 Spécifications | 11 | 2394 | 0 |
-| Z04 Documentation de travail | 24 | 3308 | 0 |
+| Z04 Documentation de travail | 24 | 3309 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
-| Z06 Générateur de sites | 42 | 14969 | 4 |
+| Z06 Générateur de sites | 43 | 15855 | 4 |
 | Z07 Règles | 15 | 1147 | 0 |
 | Z08 App de l artisan | 36 | 9183 | 4 |
 | Z09 Service atelier et Worker | 12 | 1561 | 0 |
@@ -71,7 +71,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `memoire/essais/audit.txt` | 44 |
 | `memoire/essais/derniers.txt` | 24 |
 | `memoire/essais/disque.txt` | 61 |
-| `memoire/journal.md` | 2086 |
+| `memoire/journal.md` | 2101 |
 | `memoire/maintenant.md` | 111 |
 | `memoire/pieges.md` | 121 |
 | `memoire/questions.md` | 157 |
@@ -96,7 +96,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `CHANGELOG.md` | 81 |
+| `CHANGELOG.md` | 82 |
 | `SECURITY.md` | 55 |
 | `docs/00-INDEX.md` | 113 |
 | `docs/CONSTRAINTS.md` | 58 |
@@ -209,6 +209,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `generateur/metiers/isolation.json` | 884 |
 | `generateur/metiers/maconnerie.json` | 903 |
 | `generateur/metiers/menuiserie.json` | 902 |
+| `generateur/metiers/metallerie.json` | 886 |
 | `generateur/metiers/peinture.json` | 818 |
 | `generateur/metiers/platrerie.json` | 880 |
 | `generateur/metiers/plomberie.json` | 893 |

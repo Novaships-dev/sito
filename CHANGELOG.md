@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 5 nov. | T32 (8 sur 13) : textes de la métallerie, serrurerie et portails (`generateur/metiers/metallerie.json`) ; prix nationaux sourcés ; 100 sites différents dans un département. |
 | 5 nov. | T32 (7 sur 13) : textes de l'isolation par l'extérieur (`generateur/metiers/isolation.json`) ; prix nationaux sourcés ; 100 sites différents dans un département. |
 | 5 nov. | T32 (6 sur 13) : textes de la plâtrerie et des cloisons (`generateur/metiers/platrerie.json`) ; prix nationaux sourcés ; 100 sites différents dans un département. |
 | 5 nov. | T32 (5 sur 13) : textes de l'électricité (`generateur/metiers/electricite.json`) ; prix nationaux sourcés ; 100 sites différents dans un département. |
