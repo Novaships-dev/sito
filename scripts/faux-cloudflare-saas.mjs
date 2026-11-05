@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Un faux Cloudflare for SaaS (custom hostnames), pour essayer
-// `atelier/cloudflare-saas.mjs` sans compte : un `fetch` passé au vrai client.
+// `supabase/functions/_shared/cloudflare-saas.mjs` sans compte : un `fetch` passé au vrai client.
 //
 // Les règles refaites ici :
 //

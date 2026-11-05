@@ -2216,3 +2216,30 @@ vu. Valeurs réelles absentes et non devinées : adresse de l'app (F6, T27),
 nom du paquet (Q8, ouverte), empreinte de la clé (F12). À vérifier à T27 :
 que Vite recopie bien `app/public/.well-known/` dans `dist`.
 TRACAGE : scripts/android.mjs, scripts/essai-android.mjs, worker/routeur.js, atelier/publier.mjs, scripts/essais.mjs, .github/workflows/essais.yml, app/specs/02-TRD.md, app/specs/03-APPFLOW.md, app/specs/07-TACHES.md, memoire/questions.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 5 nov. 2026 — T20, écran Mon adresse (cas B et C), par Cowork
+
+Plan : 1. les deux clients de T19 passent dans `supabase/functions/_shared/`
+(une seule source pour le service Node et la fonction Edge), Gandi gagne le
+CNAME `www` (LiveDNS) ; 2. `_shared/domaines.mjs` (chercher, acheter,
+brancher, vérifier) et la fonction Edge `domaines` ; 3. l'écran (recherche,
+confirmation, CNAME guidé) dans les deux implémentations de `Donnees`, et
+`essai-app` sur la démonstration.
+
+Résultat : `supabase/functions/_shared/domaines.mjs` (chercher, acheter,
+brancher, vérifier) et la fonction Edge `domaines` ; Gandi gagne
+`pointerWww` (LiveDNS, chemin de `go-gandi`). Règles (Q9, appliquée) : .fr et
+.com, achat seulement abonnement `actif` ; la ligne `adresses` est écrite
+avant l'achat, un refus du registre la passe en échec, une étape ratée après
+l'achat la laisse en attente avec ce qui reste. `essai-domaines` : 50
+contrôles, 0 faute ; contre-essai 11 sur 11. Écran : recherche, confirmation
+du représentant (prérempli depuis « Directeur de la publication »), CNAME
+guidé, « Vérifier maintenant ». `essai-app` : 151 contrôles, 0 faute, dont 10
+pour Mon adresse et 1 pour Android (aucun prix) ; une copie cassée de la
+démonstration (extension non contrôlée, domaine branché non rangé, vérifier
+sans effet) donne 2 fautes. La démonstration passe en abonnement `actif`
+pour montrer la réservation. Installé pour lancer `essai-app` ici : ExifTool
+13.60 (paquet npm `exiftool-vendored.pl`, Perl, gratuit et libre) dans
+/tmp, hors du dépôt. Pas de vérification de types Deno pour la fonction
+(comme les autres) : à voir au déploiement.
+TRACAGE : supabase/functions/_shared/gandi.mjs, supabase/functions/_shared/cloudflare-saas.mjs, supabase/functions/_shared/domaines.mjs, supabase/functions/domaines/index.ts, scripts/faux-gandi.mjs, scripts/faux-cloudflare-saas.mjs, scripts/essai-domaines.mjs, scripts/essai-app.mjs, scripts/essais.mjs, app/src/types.ts, app/src/donnees/supabase.ts, app/src/donnees/demo.ts, app/src/ecrans/Adresse.tsx, app/specs/02-TRD.md, app/specs/03-APPFLOW.md, app/specs/05-SCHEMA-BACKEND.md, app/specs/07-TACHES.md, docs/DETTE.md, memoire/questions.md, memoire/actions-fabrice.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

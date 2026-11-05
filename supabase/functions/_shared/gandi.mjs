@@ -14,6 +14,7 @@
 //   GET    /v5/domain/domains/<fqdn>            détail, dont `authinfo`
 //   PATCH  /v5/domain/domains/<fqdn>/status     { clientTransferProhibited }
 //   POST   /v5/domain/domains/<fqdn>/webredirs  { host, url, type, protocol, override }
+//   PUT    /v5/livedns/domains/<fqdn>/records/www/CNAME  { rrset_ttl, rrset_values }
 //
 // Jeton : `Authorization: Bearer <jeton d'accès personnel>`. `Dry-Run: 1`
 // fait vérifier un achat ou un renouvellement sans rien faire. Le bac à sable
@@ -168,6 +169,19 @@ export function clientGandi({ jeton, bacASable = true, fetch: aller = globalThis
       const { corps } = await appeler(`/domain/domains/${fqdn}`);
       if (!corps?.authinfo) throw new Error(`Gandi n'a pas rendu de code de transfert pour ${fqdn}`);
       return { code: corps.authinfo, expire: corps?.dates?.authinfo_expires_at || null };
+    },
+
+    // `www.<domaine>` en CNAME vers la cible de Sitô (la zone de Cloudflare
+    // for SaaS), dans le DNS de Gandi (LiveDNS, celui d'un domaine acheté
+    // chez Gandi) : PUT /v5/livedns/domains/<fqdn>/records/www/CNAME
+    // { rrset_ttl, rrset_values } (chemin et champs : `go-gandi/livedns`).
+    async pointerWww(fqdn, cible) {
+      exigerNom(fqdn);
+      if (!nomValide(cible)) throw new Error(`cible refusée : ${cible}`);
+      await appeler(`/livedns/domains/${fqdn}/records/www/CNAME`, {
+        methode: 'PUT', corps: { rrset_ttl: 300, rrset_values: [`${cible}.`] },
+      });
+      return { nom: `www.${fqdn}`, cible };
     },
 
     // `https://domaine.fr` → `https://www.domaine.fr` : Cloudflare for SaaS

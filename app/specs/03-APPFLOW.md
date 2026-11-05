@@ -114,8 +114,8 @@ active le mode Play Store (mémorisé sur l'appareil).
 | Bloc | Lit | État |
 |---|---|---|
 | Adresses | `adresses()` : hôte, principale, genre (offerte / mon domaine / existant), état (Active / En cours / Problème / Retirée), motif ; « Ouvrir » si active | Fait |
-| « Je veux mon propre nom de domaine » | explication ; recherche et achat dans l'app | Recherche et achat **À faire** (Gandi) |
-| « J'ai déjà un nom de domaine » | explication ; CNAME `www` guidé et vérifié | **À faire** (Cloudflare for SaaS) |
+| « Je veux mon propre nom de domaine » | explication ; recherche (.fr ou .com, Q9) ; si libre et abonnement en cours, confirmation du représentant (prérempli depuis « Directeur de la publication ») et réservation ; aucun prix | Fait sur la démonstration (T20, `essai-app`) ; réel : fonction Edge `domaines` à déployer (F8, F6, F5) |
+| « J'ai déjà un nom de domaine » | explication ; « Brancher mon domaine » donne le CNAME `www` à poser (type, nom, valeur) ; « Vérifier maintenant » sur l'adresse en attente | Fait sur la démonstration (T20, `essai-app`) ; réel : même fonction |
 
 ### 3.7 Ma fiche Google
 

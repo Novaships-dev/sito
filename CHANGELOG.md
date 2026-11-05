@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 5 nov. | T20 : écran Mon adresse, cas B (chercher, réserver au nom de l'artisan, abonnement en cours, .fr ou .com) et C (brancher son domaine, CNAME guidé, vérifier) ; fonction Edge `domaines` (écrite, pas déployée) ; les clients de T19 passent dans `supabase/functions/_shared/`. |
 | 5 nov. | T28 : app Android préparée, `scripts/android.mjs` écrit `twa-manifest.json` (Bubblewrap, ouverture sur `/?source=android`) et `.well-known/assetlinks.json` ; le Worker et la publication laissent passer ce seul fichier caché ; `essai-android` et son contre-essai. |
 | 5 nov. | T19 : clients des domaines contre des faux serveurs, Gandi v5 (vérifier, acheter au nom de l'artisan avec sa confirmation, renouveler, code de transfert, redirection vers www) et Cloudflare for SaaS (hostname, état, recréation après 7 jours) ; `essai-domaines` et son contre-essai. |
 | 5 nov. | T32 faite (13 sur 13) : textes du paysagiste (`generateur/metiers/paysagiste.json`) ; les 16 métiers ont leurs textes, 100 sites différents par département pour chacun. Libellés NAF des 9 codes APE qui n'en avaient pas (`generateur/sirene.mjs`), contrôlés par `verifier-depot`. |

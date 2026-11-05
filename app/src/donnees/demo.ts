@@ -74,11 +74,19 @@ export function donneesDemo(): Donnees {
     { id: 'demo-a2', auteur: 'Nadia B.', note: 4, texte: 'Bon résultat, un peu de retard au démarrage.', ecrit_le: ilYa(15), reponse: 'Merci Nadia, et désolé pour le démarrage : la météo ne nous a pas aidés.', brouillon: null, valide_le: ilYa(14) },
   ];
   const adresses: Adresse[] = [{ hote: 'exemple.domaine-sito.fr', genre: 'offerte', principale: true, etat: 'active', motif: null }];
-  const abonnement: Abonnement = { formule: 'mensuel', etat: 'essai', fin_periode: ilYa(-14), resiliation_prevue: false };
+  const abonnement: Abonnement = { formule: 'mensuel', etat: 'actif', fin_periode: ilYa(-14), resiliation_prevue: false };
   const google: ConnexionGoogle = { etat: 'a_connecter', fiche: null, derniere_synchro: null, motif: null };
   let suppression: Suppression | null = null;
 
   const exiger = () => { if (!connecte) throw new Error('Session expirée : reconnectez-vous.'); };
+  // « https://www.Facades-Martin.fr/ » → « facades-martin.fr », comme le service.
+  const nomDomaine = (brut: string) => {
+    const n = brut.trim().toLowerCase().replace(/^https?:\/\//, '').replace(/\/.*$/, '').replace(/^www\./, '').replace(/\.$/, '');
+    if (!n) throw new Error('Tapez le nom voulu, par exemple facades-martin.fr.');
+    if (/[^a-z0-9.-]/.test(n)) throw new Error('Lettres sans accent, chiffres et tirets seulement, par exemple facades-martin.fr.');
+    if (!n.includes('.')) throw new Error('Ajoutez l’extension, par exemple .fr : facades-martin.fr.');
+    return n;
+  };
 
   return {
     demo: true,
@@ -191,6 +199,42 @@ export function donneesDemo(): Donnees {
 
     async site() { exiger(); return { id: 'demo-s1', statut: 'publie', adresse_en_ligne: 'https://exemple.domaine-sito.fr', publie_le: ilYa(1) }; },
     async adresses() { exiger(); return adresses.map((a) => ({ ...a })); },
+    // Mon adresse (T20), sans Gandi ni Cloudflare. Mêmes règles que le service
+    // (`supabase/functions/_shared/domaines.mjs`) : .fr ou .com, un nom qui
+    // contient « pris » est déjà pris, réservation seulement abonnement en
+    // cours ; un domaine branché devient actif à la première vérification.
+    async chercherDomaine(brut) {
+      exiger(); await attendre(200);
+      const nom = nomDomaine(brut);
+      if (!/\.(fr|com)$/.test(nom)) return { hote: nom, disponible: false, motif: 'Le domaine compris dans l’abonnement finit en .fr ou .com.' };
+      const pris = nom.includes('pris') || adresses.some((a) => a.hote === `www.${nom}`);
+      return { hote: nom, disponible: !pris, motif: pris ? 'Ce nom est déjà pris. Essayez une variante.' : null };
+    },
+    async acheterDomaine(brut, representant) {
+      exiger(); await attendre(200);
+      const nom = nomDomaine(brut);
+      if (abonnement.etat !== 'actif') throw new Error('Le domaine est compris dans l’abonnement : il se réserve une fois l’abonnement en cours.');
+      if (!representant.prenom.trim() || !representant.nom.trim()) throw new Error('Indiquez le prénom et le nom de la personne qui représente l’entreprise.');
+      if (adresses.some((a) => a.genre === 'achetee' && a.etat !== 'retiree')) throw new Error('Un domaine est déjà réservé pour votre site.');
+      const a: Adresse = { hote: `www.${nom}`, genre: 'achetee', principale: false, etat: 'en_attente', motif: null };
+      adresses.push(a);
+      return { ...a };
+    },
+    async brancherDomaine(brut) {
+      exiger(); await attendre(200);
+      const nom = nomDomaine(brut);
+      if (adresses.some((a) => a.hote === `www.${nom}` && a.etat !== 'retiree')) throw new Error('Ce domaine est déjà branché sur votre site.');
+      const a: Adresse = { hote: `www.${nom}`, genre: 'existante', principale: false, etat: 'en_attente', motif: null };
+      adresses.push(a);
+      return { adresse: { ...a }, cname: { nom: 'www', valeur: 'sites.domaine-sito.fr' } };
+    },
+    async verifierDomaine(hote) {
+      exiger(); await attendre(200);
+      const a = adresses.find((x) => x.hote === hote && x.genre !== 'offerte');
+      if (!a) throw new Error('Cette adresse n’est pas branchée sur votre site.');
+      a.etat = 'active'; a.motif = null;
+      return { ...a };
+    },
     async abonnement() { exiger(); return { ...abonnement }; },
     // Démonstration : pas de Stripe, on revient tout de suite avec le signe.
     async ouvrirPaiement(action) { exiger(); return `${location.origin}${location.pathname}${location.search}#/abonnement?paiement=demo-${action}`; },

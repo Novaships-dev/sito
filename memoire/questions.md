@@ -165,3 +165,16 @@ autre app, avec ses avis et ses installations repartis de zéro.
 **Réponse recommandée** : `fr.<nom de Sitô>.app`, décidé en même temps que le
 nom et le domaine (F6). Rien n'est publié avant : T28 est faite avec un nom
 d'essai, `scripts/android.mjs --paquet` prendra le vrai (T29).
+
+## Q9 (appliquée), 5 novembre 2026
+
+Quels domaines l'abonnement comprend-il, et à partir de quand ? Un domaine
+acheté coûte à Sitô (environ 10 à 15 € par an pour un .fr, à relever chez
+Gandi), et il reste à l'artisan s'il part.
+
+**Réponse recommandée, appliquée (réversible, sans coût) :** les extensions
+.fr et .com seulement, et seulement quand l'abonnement est en cours
+(`actif`), pas pendant l'essai. Un domaine déjà à l'artisan (cas C) se
+branche à tout moment : il ne coûte rien. Pour changer : la constante
+`EXTENSIONS_INCLUSES` et la condition sur `abonnements.etat` de
+`supabase/functions/_shared/domaines.mjs`.

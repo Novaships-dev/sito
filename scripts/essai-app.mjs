@@ -480,6 +480,46 @@ try {
     await c.close();
   }
 
+  // ------------------------------------------------ Mon adresse (T20) : chercher, réserver, brancher, vérifier
+  console.log('\nMon adresse (T20)');
+  {
+    const { ctx: c, page: p, erreurs: errsA } = await nouvellePage(appareils[0]);
+    await connecter(p);
+    await p.goto(`${BASE}?demo#/adresse`); await p.getByLabel('Le nom voulu').waitFor();
+    const chercher = async (nom) => {
+      await p.getByLabel('Le nom voulu').fill(nom);
+      await p.getByRole('button', { name: 'Vérifier s’il est libre' }).click();
+      await p.waitForTimeout(450);
+      return p.locator('section[aria-labelledby="t-domaine"]').textContent();
+    };
+    ok(/finit en \.fr ou \.com/.test(await chercher('facades-martin.de')), 'une autre extension : refusée, avec la raison');
+    ok(/déjà pris/.test(await chercher('deja-pris.fr')), 'un nom pris : dit pris');
+    const libre = await chercher('https://www.Facades-Martin.fr/');
+    ok(/facades-martin\.fr est libre/.test(libre), 'une adresse tapée avec https et www est lue comme le nom de domaine', libre.slice(0, 160));
+    ok(!/€/.test(libre), 'aucun prix : le domaine est compris dans l abonnement');
+    await p.getByLabel('Prénom').fill('Jeanne');
+    await p.getByLabel('Nom', { exact: true }).fill('Martin');
+    await p.getByRole('button', { name: 'Réserver facades-martin.fr' }).click(); await p.waitForTimeout(600);
+    const apres = await p.locator('main').textContent();
+    ok(/réservé à votre nom/.test(apres) && /www\.facades-martin\.fr/.test(apres) && /Mon domaine,\s*En cours de mise en place/.test(apres),
+      'réservé : l adresse www apparaît, en cours de mise en place', apres.slice(0, 300));
+    await chercher('un-second.fr');
+    await p.getByLabel('Prénom').fill('Jeanne'); await p.getByLabel('Nom', { exact: true }).fill('Martin');
+    await p.getByRole('button', { name: 'Réserver un-second.fr' }).click(); await p.waitForTimeout(500);
+    ok(/déjà réservé/.test(await p.locator('main').textContent()), 'un second domaine est refusé');
+
+    await p.getByLabel('Votre nom de domaine').fill('mon-ancien-site.com');
+    await p.getByRole('button', { name: 'Brancher mon domaine' }).click(); await p.waitForTimeout(600);
+    const dns = await p.locator('table.dns').textContent().catch(() => '');
+    ok(/CNAME/.test(dns) && /www/.test(dns) && /sites\.domaine-sito\.fr/.test(dns), 'domaine existant : le CNAME à poser est donné (type, nom, valeur)', dns);
+    const carte = p.locator('li.carte', { hasText: 'www.mon-ancien-site.com' });
+    ok(/En cours de mise en place/.test(await carte.textContent()), 'le domaine branché apparaît, en attente');
+    await carte.getByRole('button', { name: 'Vérifier maintenant' }).click(); await p.waitForTimeout(600);
+    ok(/Active/.test(await p.locator('li.carte', { hasText: 'www.mon-ancien-site.com' }).textContent()), 'vérifié : l adresse passe active');
+    ok(errsA.length === 0, 'Mon adresse : aucune erreur dans la console', errsA.join(' | '));
+    await c.close();
+  }
+
   // ------------------------------------------------ app Android (Play Store) : aucun prix, aucun achat
   console.log('\nApp Android (Play Store)');
   {
@@ -492,6 +532,8 @@ try {
     ok(/Formule mensuel/.test(texte), 'l’état de l’abonnement reste affiché');
     await p.goto(`${BASE}?demo#/abonnement`); await p.waitForTimeout(300);
     ok(!/€/.test(await p.locator('main').textContent()), 'reste en mode Android sans le paramètre (mémorisé)');
+    await p.goto(`${BASE}?demo#/adresse`); await p.waitForTimeout(300);
+    ok(!/€|prix/i.test(await p.locator('main').textContent()), 'Mon adresse : aucun prix sur Android');
     await c.close();
     const { ctx: c2, page: p2 } = await nouvellePage(appareils[0]);
     await connecter(p2);

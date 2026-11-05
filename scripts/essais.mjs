@@ -68,7 +68,7 @@ const ETAPES = [
   { nom: 'service : boucle (refaire, vérifier, publier par version)', cmd: ['node', 'scripts/essai-boucle.mjs'] },
   { nom: 'service : comptes supprimés à l échéance', cmd: ['node', 'scripts/essai-suppressions.mjs'] },
   { nom: 'Stripe : webhook signé, rejeu, paiement et portail (faux Stripe)', cmd: ['node', 'scripts/essai-stripe.mjs'] },
-  { nom: 'domaines : Gandi et Cloudflare for SaaS (faux serveurs)', cmd: ['node', 'scripts/essai-domaines.mjs'] },
+  { nom: 'domaines : Gandi, Cloudflare for SaaS et Mon adresse (faux serveurs)', cmd: ['node', 'scripts/essai-domaines.mjs'] },
   { nom: 'Android : twa-manifest, assetlinks.json servi par le Worker', cmd: ['node', 'scripts/essai-android.mjs'] },
   { nom: 'sites : formulaire de demande (navigateur, faux Supabase)', cmd: ['node', 'scripts/essai-formulaire.mjs'] },
   { nom: 'service : refaire et publier par GitHub Actions (Cloudflare Pages)', cmd: ['node', 'scripts/essai-refaire-site.mjs'] },

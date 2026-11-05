@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Un faux Gandi (API v5, domaines), pour essayer `atelier/gandi.mjs` sans
+// Un faux Gandi (API v5, domaines), pour essayer `supabase/functions/_shared/gandi.mjs` sans
 // compte. Même parti que `faux-cloudflare.mjs` : un `fetch` que l'on passe au
 // vrai client, inchangé.
 //
@@ -19,7 +19,8 @@
 //      EPP « +33.612345678 » ;
 //   5. **une redirection existe une fois** par hôte, sauf `override` ;
 //      `protocol` et `type` ne prennent que les valeurs de Gandi ;
-//   6. **le faux ne rend le code de transfert que verrou levé.** Ce n'est
+//   6. **un CNAME LiveDNS finit par un point** (nom absolu) ;
+//   7. **le faux ne rend le code de transfert que verrou levé.** Ce n'est
 //      pas une règle relevée chez Gandi : c'est ce qui oblige le client à
 //      lever le verrou, car un domaine `clientTransferProhibited` ne se
 //      transfère pas, et un code donné seul ne servirait à rien à l'artisan.
@@ -73,6 +74,18 @@ export function fauxGandi({ jeton = 'jeton-de-test-gandi', pris = [], prixHT = 1
       if (essai) return JSONR({ status: 'success' });
       registre.set(fqdn, { owner, fin: plusAns(AUJOURDHUI, duration), verrou: true, authinfo: `CODE-${fqdn.length}-${registre.size}` });
       return JSONR({ message: 'Confirmation e-mail sent' }, 202);
+    }
+
+    // LiveDNS : l'enregistrement www d'un domaine à nous. Une valeur de CNAME
+    // finit par un point (nom absolu), sinon le DNS la complète de travers.
+    if ((m = p.match(/^\/livedns\/domains\/([^/]+)\/records\/([^/]+)\/([A-Z]+)$/)) && methode === 'PUT') {
+      const d = registre.get(m[1]);
+      if (!d || d.autrui) return erreur(404, 'Not Found');
+      const vals = corps?.rrset_values;
+      if (!Array.isArray(vals) || !vals.length) return erreur(400, 'Invalid rrset_values');
+      if (m[3] === 'CNAME' && !vals.every((v) => typeof v === 'string' && v.endsWith('.'))) return erreur(400, 'CNAME value must be an absolute name');
+      d.dns = { ...(d.dns || {}), [`${m[2]}/${m[3]}`]: vals };
+      return JSONR({ message: 'DNS Record Created' }, 201);
     }
 
     if ((m = p.match(/^\/domain\/domains\/([^/]+)(\/.*)?$/))) {

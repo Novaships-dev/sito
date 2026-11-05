@@ -3,7 +3,7 @@
 // permet, quoi qu'elle demande. Essais : supabase/essais/droits*.sql.
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import * as tus from 'tus-js-client';
-import type { Donnees, LienCompte, Profil, Tarif, Photo, EnvoiPhoto, EnvoiOriginal, JourStat } from '../types';
+import type { Donnees, LienCompte, Profil, Tarif, Photo, EnvoiPhoto, EnvoiOriginal, JourStat, Adresse, Branchement, RechercheDomaine } from '../types';
 import { jourParis, decalerJour, sommeParJour } from '../jour';
 
 const ESPACE = 'photos-chantiers';
@@ -31,6 +31,20 @@ export function donneesSupabase(url: string, cle: string): Donnees {
     if (!lignes.length) throw new Error("Ce compte n'est relié à aucune entreprise. Contactez Sitô.");
     sirenMemo = lignes[0].siren as string;
     return sirenMemo;
+  }
+
+  // La fonction Edge `domaines` (T20). Une réponse en erreur porte sa phrase
+  // dans `erreur` : on la montre telle quelle, elle est écrite pour l'artisan.
+  async function domaines(corps: Record<string, unknown>): Promise<unknown> {
+    const s = await siren();
+    const { data, error } = await sb.functions.invoke('domaines', { body: { siren: s, ...corps } });
+    if (error) {
+      let dit: string | null = null;
+      try { dit = (await (error as { context?: Response }).context?.json())?.erreur ?? null; } catch { /* corps illisible */ }
+      throw new Error(dit || 'Le service des domaines ne répond pas. Réessayez dans un moment.');
+    }
+    if (!data?.ok) throw new Error(data?.erreur || 'Le service des domaines ne répond pas. Réessayez dans un moment.');
+    return data;
   }
 
   async function envoyerReprenable(chemin: string, fichier: Blob, type: string, progression?: (p: number) => void) {
@@ -195,13 +209,17 @@ export function donneesSupabase(url: string, cle: string): Donnees {
 
     async site() {
       const s = await siren();
-      return verifier(await sb.from('sites').select('id, statut, adresse_en_ligne, publie_le').eq('siren', s).limit(1).maybeSingle());
+      return verifier(await sb.from('sites').select('id, statut, adresse_en_ligne, publie_le').eq('siren', s).order('cree_le', { ascending: true }).limit(1).maybeSingle());
     },
     async adresses() {
       const site = await this.site();
       if (!site) return [];
       return verifier(await sb.from('adresses').select('hote, genre, principale, etat, motif').eq('site_id', site.id).order('principale', { ascending: false }));
     },
+    async chercherDomaine(nom) { return (await domaines({ action: 'chercher', nom })) as RechercheDomaine; },
+    async acheterDomaine(nom, representant) { return ((await domaines({ action: 'acheter', nom, representant })) as { adresse: Adresse }).adresse; },
+    async brancherDomaine(nom) { return (await domaines({ action: 'brancher', nom })) as Branchement; },
+    async verifierDomaine(hote) { return ((await domaines({ action: 'verifier', nom: hote })) as { adresse: Adresse }).adresse; },
     async abonnement() {
       const s = await siren();
       return verifier(await sb.from('abonnements').select('formule, etat, fin_periode, resiliation_prevue').eq('siren', s).maybeSingle());

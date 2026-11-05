@@ -1,8 +1,9 @@
 #!/usr/bin/env node
-// Essai des deux clients de domaines (T19) contre leurs faux : Gandi v5
-// (`atelier/gandi.mjs`, faux : `faux-gandi.mjs`) et Cloudflare for SaaS
-// (`atelier/cloudflare-saas.mjs`, faux : `faux-cloudflare-saas.mjs`).
-// Aucun réseau, aucune clé.
+// Essai des domaines contre des faux : les deux clients (T19), Gandi v5
+// (`supabase/functions/_shared/gandi.mjs`, faux : `faux-gandi.mjs`) et
+// Cloudflare for SaaS (`_shared/cloudflare-saas.mjs`, faux :
+// `faux-cloudflare-saas.mjs`), et ce que demande l'écran Mon adresse (T20,
+// `_shared/domaines.mjs`, avec un faux dépôt `adresses`). Aucun réseau, aucune clé.
 //
 // Ce qu'il mesure, sur l'état des faux (jamais sur ce que le client dit) :
 //   Gandi : un nom libre se dit libre avec son prix, un nom pris non ; un
@@ -19,6 +20,12 @@
 //   identifiant ; un hostname déjà présent est repris, pas doublé ; un échec
 //   de validation donne `echec` avec son motif ; une adresse retirée n'est
 //   pas touchée.
+//   Mon adresse : une extension hors .fr/.com n'est pas cherchée ; sans
+//   abonnement en cours, rien n'est acheté ; un achat écrit la ligne avant de
+//   payer, pointe www, redirige le domaine nu, crée le hostname et range
+//   l'échéance ; un refus du registre laisse la ligne en échec, sans hostname ;
+//   un second domaine est refusé ; un domaine pris ailleurs n'est pas branché ;
+//   brancher donne le CNAME ; vérifier passe l'adresse active.
 //
 //   node scripts/essai-domaines.mjs
 //   node scripts/essai-domaines.mjs --contre-essai   (copies cassées des deux
@@ -37,7 +44,7 @@ const ARTISAN = {
   telephone: '06 12 34 56 78',
 };
 
-async function scenario(gandiMod, saasMod) {
+async function scenario(gandiMod, saasMod, domMod) {
   let fautes = 0, essais = 0;
   const ok = (cond, quoi, detail = '') => { essais++; if (cond) console.log(`  ok    ${quoi}`); else { fautes++; console.log(`  FAUTE ${quoi}${detail ? ` — ${detail}` : ''}`); } return cond; };
   const refuse = async (f) => { try { await f(); return null; } catch (e) { return e; } };
@@ -144,21 +151,88 @@ async function scenario(gandiMod, saasMod) {
   const e2 = await refuse(() => saasMod.clientSaas({ zone: 'autre-zone', jeton: fc.jeton, fetch: fc.fetch, api: 'http://faux-cloudflare/client/v4' }).creer('www.x.fr'));
   ok(Boolean(e2), 'une autre zone est refusée', e2?.message);
 
+  // ---------------------------------------------------------- Mon adresse
+  console.log('Mon adresse (domaines.mjs)');
+  const fg2 = fauxGandi({ pris: ['deja-pris.fr'] });
+  const fc2 = fauxCloudflareSaas();
+  const g2 = gandiMod.clientGandi({ jeton: fg2.jeton, bacASable: false, fetch: fg2.fetch, api: 'http://faux-gandi/v5' });
+  const s2 = saasMod.clientSaas({ zone: fc2.zone, jeton: fc2.jeton, fetch: fc2.fetch, api: 'http://faux-cloudflare/client/v4' });
+  const lignes = [{ site_id: 'site-autre', hote: 'www.chez-voisin.fr', genre: 'existante', principale: false, etat: 'active' }];
+  const depot = {
+    async adresses(id) { return lignes.filter((l) => l.site_id === id).map((l) => ({ ...l })); },
+    async hoteAilleurs(h, id) { return lignes.some((l) => l.hote === h && l.site_id !== id && l.etat !== 'retiree'); },
+    async ajouter(l) { if (lignes.some((x) => x.hote === l.hote)) throw new Error('doublon'); lignes.push({ ...l }); },
+    async maj(id, h, c) { Object.assign(lignes.find((l) => l.site_id === id && l.hote === h), c); },
+  };
+  const ctx = (etat) => ({ userId: 'u-1', courriel: 'jeanne@essai.fr', site: { id: 'site-1' }, abonnement: { etat },
+    entreprise: { siren: '480423623', denomination: 'FAÇADES ESSAI', forme_juridique: '5710', adresse: '10 rue du Test', code_postal: '13001', commune: 'Marseille' },
+    profil: { telephone: '0612345678', courriel: 'contact@facades-essai.fr' } });
+  const T = (action, nom, extra = {}) => domMod.traiter({ action, nom, ctx: ctx('actif'), depot, gandi: g2, saas: s2, reglages: { cible: 'sites.sito-essai.fr' }, ...extra });
+  const REP = { prenom: 'Jeanne', nom: 'Essai' };
+
+  const ext = await T('chercher', 'facades-essai.de');
+  ok(ext.ok && ext.disponible === false && /\.fr ou \.com/.test(ext.motif) && !fg2.appels.length, 'une extension hors .fr/.com : refusée sans appeler Gandi', JSON.stringify(ext));
+  const lib = await T('chercher', 'https://www.Facades-Essai.fr/');
+  ok(lib.ok && lib.hote === 'facades-essai.fr' && lib.disponible === true, 'chercher : le nom tapé est lu, libre', JSON.stringify(lib));
+  ok((await T('chercher', 'deja-pris.fr')).disponible === false, 'chercher : un nom pris');
+  ok((await T('chercher', 'pas un nom')).ok === false, 'un nom illisible : une phrase, pas un appel');
+
+  const sansAbo = await domMod.traiter({ action: 'acheter', nom: 'facades-essai.fr', representant: REP, ctx: ctx('essai'), depot, gandi: g2, saas: s2, reglages: { cible: 'sites.sito-essai.fr' } });
+  ok(!sansAbo.ok && sansAbo.statut === 402 && !fg2.registre.has('facades-essai.fr') && !lignes.some((l) => l.site_id === 'site-1'),
+    'sans abonnement en cours : rien n est acheté ni écrit', JSON.stringify(sansAbo));
+  ok((await T('acheter', 'facades-essai.fr', { representant: { prenom: 'Jeanne', nom: '' } })).ok === false, 'sans représentant : refusé');
+
+  const achat = await T('acheter', 'facades-essai.fr', { representant: REP });
+  const dom = fg2.registre.get('facades-essai.fr');
+  const ligne = lignes.find((l) => l.hote === 'www.facades-essai.fr');
+  ok(achat.ok && dom?.owner?.orgname === 'FAÇADES ESSAI' && dom?.owner?.given === 'Jeanne' && dom?.owner?.email === 'contact@facades-essai.fr',
+    'acheté au nom de l entreprise, représentée par la personne indiquée', JSON.stringify(dom?.owner));
+  ok(JSON.stringify(dom?.dns?.['www/CNAME']) === JSON.stringify(['sites.sito-essai.fr.']), 'www pointe vers la cible de Sitô (nom absolu)', JSON.stringify(dom?.dns));
+  ok(fg2.redirections.get('facades-essai.fr')?.get('facades-essai.fr')?.url === 'www.facades-essai.fr', 'le domaine nu redirigé vers www');
+  ok(ligne?.genre === 'achetee' && ligne?.etat === 'en_attente' && fc2.hotes.has(ligne?.cloudflare_id) && ligne?.echeance === dom?.fin && ligne?.motif === null,
+    'ligne écrite : achetée, en attente, hostname et échéance rangés', JSON.stringify(ligne));
+  const ordre = fg2.appels.findIndex((a) => a.methode === 'POST' && a.chemin === '/v5/domain/domains' && !a.essai);
+  ok(ordre > -1 && achat.adresse?.hote === 'www.facades-essai.fr', 'l app reçoit l adresse www');
+  ok((await T('acheter', 'second-domaine.fr', { representant: REP })).statut === 409, 'un second domaine pour le même site : refusé');
+
+  // un refus du registre après l'écriture de la ligne
+  const fg3 = fauxGandi({ pris: [] });
+  const lignes3 = [];
+  const depot3 = { ...depot, async adresses(id) { return lignes3.filter((l) => l.site_id === id); }, async hoteAilleurs() { return false; },
+    async ajouter(l) { lignes3.push({ ...l }); }, async maj(id, h, c) { Object.assign(lignes3.find((l) => l.hote === h), c); } };
+  const g3 = gandiMod.clientGandi({ jeton: fg3.jeton, bacASable: false, fetch: async (u, i) => (i?.method === 'POST' && String(u).endsWith('/domain/domains')
+    ? new Response(JSON.stringify({ code: 400, message: 'Registry error', errors: [] }), { status: 400 }) : fg3.fetch(u, i)), api: 'http://faux-gandi/v5' });
+  const fc3 = fauxCloudflareSaas();
+  const s3 = saasMod.clientSaas({ zone: fc3.zone, jeton: fc3.jeton, fetch: fc3.fetch, api: 'http://faux-cloudflare/client/v4' });
+  const refus = await domMod.traiter({ action: 'acheter', nom: 'refuse-par-registre.fr', representant: REP, ctx: ctx('actif'), depot: depot3, gandi: g3, saas: s3, reglages: { cible: 'sites.sito-essai.fr' } });
+  ok(!refus.ok && lignes3[0]?.etat === 'echec' && /registre/.test(lignes3[0]?.motif || '') && fc3.hotes.size === 0,
+    'refus du registre : la ligne passe en échec avec le motif, aucun hostname', JSON.stringify(lignes3[0]));
+
+  ok((await T('brancher', 'chez-voisin.fr')).statut === 409, 'un domaine déjà branché sur un autre site : refusé');
+  const br = await T('brancher', 'mon-ancien-site.com');
+  ok(br.ok && br.cname?.nom === 'www' && br.cname?.valeur === 'sites.sito-essai.fr' && fc2.hotes.has(lignes.find((l) => l.hote === 'www.mon-ancien-site.com')?.cloudflare_id),
+    'brancher : hostname créé, CNAME à poser rendu', JSON.stringify(br));
+  fc2.valider('www.mon-ancien-site.com');
+  const ve = await T('verifier', 'www.mon-ancien-site.com');
+  ok(ve.ok && ve.adresse?.etat === 'active' && lignes.find((l) => l.hote === 'www.mon-ancien-site.com')?.etat === 'active', 'vérifier : l adresse passe active, en base aussi', JSON.stringify(ve));
+  ok((await T('verifier', 'www.inconnu.fr')).statut === 404, 'vérifier une adresse qui n est pas à nous : refusé');
+
   return { fautes, essais };
 }
 
 // Une copie cassée peut lever en plein milieu : c'est une faute, pas un arrêt.
-async function essayer(g, c) {
-  try { return await scenario(g, c); } catch (e) { console.log(`  FAUTE l essai s arrête : ${e.message}`); return { fautes: 1, essais: 1 }; }
+async function essayer(g, c, m) {
+  try { return await scenario(g, c, m); } catch (e) { console.log(`  FAUTE l essai s arrête : ${e.message}`); return { fautes: 1, essais: 1 }; }
 }
 
-const mod = (f) => pathToFileURL(join(RACINE, 'atelier', f)).href;
+const DOSSIER = join(RACINE, 'supabase', 'functions', '_shared');
+const mod = (f) => pathToFileURL(join(DOSSIER, f)).href;
 if (!process.argv.includes('--contre-essai')) {
-  const { fautes, essais } = await essayer(await import(mod('gandi.mjs')), await import(mod('cloudflare-saas.mjs')));
+  const { fautes, essais } = await essayer(await import(mod('gandi.mjs')), await import(mod('cloudflare-saas.mjs')), await import(mod('domaines.mjs')));
   console.log(`\n${essais} contrôles, ${fautes} faute(s).`);
   process.exitCode = fautes ? 1 : 0;
 } else {
-  const lire = (f) => readFileSync(join(RACINE, 'atelier', f), 'utf8');
+  const lire = (f) => readFileSync(join(DOSSIER, f), 'utf8').replace(/from '\.\/([^']+)'/g, (_, r) => `from '${mod(r)}'`);
   const casses = [
     ['gandi.mjs', 'l achat à blanc oublie Dry-Run', (s) => s.replace("if (essai) entetes['Dry-Run'] = '1';", '')],
     ['gandi.mjs', 'l achat réel part sans confirmation', (s) => s.replace('if (!bacASable && !essai && !confirmation)', 'if (false)')],
@@ -167,6 +241,10 @@ if (!process.argv.includes('--contre-essai')) {
     ['cloudflare-saas.mjs', 'un hostname effacé n est pas recréé', (s) => s.replace("ch = await client.trouver(adresse.hote) || await client.creer(adresse.hote);\n        motif = 'recréé", "ch = { id: adresse.cloudflare_id, etat: 'en_attente', erreurs: [] };\n        motif = 'recréé")],
     ['cloudflare-saas.mjs', 'actif sans certificat', (s) => s.replace("if (s === 'active' && ssl === 'active') return 'active';", "if (s === 'active') return 'active';")],
     ['cloudflare-saas.mjs', 'un hostname présent est doublé', (s) => s.replace("} else if (!ch) {\n        ch = await client.trouver(adresse.hote) || await client.creer(adresse.hote);", "} else if (!ch) {\n        ch = await client.creer(adresse.hote);")],
+    ['domaines.mjs', 'achat sans abonnement en cours', (s) => s.replace("if (ctx.abonnement?.etat !== 'actif')", 'if (false)')],
+    ['domaines.mjs', 'la ligne n est pas écrite avant l achat', (s) => s.replace("registrar: 'gandi', motif: 'Achat en cours.' };\n  await depot.ajouter(ligne);", "registrar: 'gandi', motif: 'Achat en cours.' };")],
+    ['domaines.mjs', 'toutes les extensions passent', (s) => s.replace("if (!EXTENSIONS_INCLUSES.includes(extension(nom)))\n      return", "if (false)\n      return")],
+    ['domaines.mjs', 'un domaine d un autre site est branché', (s) => s.replace("&& !meme && await depot.hoteAilleurs(hote, ctx.site.id))", "&& false)")],
   ];
   const d = mkdtempSync(join(tmpdir(), 'sito-domaines-casse-'));
   let justes = 0;
@@ -177,9 +255,8 @@ if (!process.argv.includes('--contre-essai')) {
       const f = join(d, `casse-${i}-${fichier}`);
       writeFileSync(f, cassee);
       console.log(`\n--- copie cassée (${fichier}) : ${quoi}`);
-      const g = fichier === 'gandi.mjs' ? await import(pathToFileURL(f).href) : await import(mod('gandi.mjs'));
-      const c = fichier === 'cloudflare-saas.mjs' ? await import(pathToFileURL(f).href) : await import(mod('cloudflare-saas.mjs'));
-      const { fautes } = await essayer(g, c);
+      const pick = async (nom) => (fichier === nom ? import(pathToFileURL(f).href) : import(mod(nom)));
+      const { fautes } = await essayer(await pick('gandi.mjs'), await pick('cloudflare-saas.mjs'), await pick('domaines.mjs'));
       console.log(fautes ? '  => rouge, juste' : '  => VERT : l essai n attrape pas cette cassure');
       if (fautes) justes++;
     }

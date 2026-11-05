@@ -436,7 +436,7 @@ doit offrir pour que l'app soit complète. Les noms sont proposés.
 | Recevoir une demande | POST du formulaire du site | — | `demandes`, `statistiques` |
 | Statistiques | chaque nuit (heure de Paris) | Umami | `statistiques` |
 | Stripe | webhook | — | `evenements_stripe`, `abonnements` |
-| Domaines (clients écrits, T19 : `atelier/gandi.mjs`, `atelier/cloudflare-saas.mjs` ; reste à les appeler depuis la demande de l'artisan, T20) | demande de l'artisan | Gandi, Cloudflare | `adresses` (`cloudflare_id`, `etat`, `motif`, `echeance`) |
+| Domaines : fonction Edge `domaines` (T20 ; logique `_shared/domaines.mjs`, clients `_shared/gandi.mjs` et `_shared/cloudflare-saas.mjs`, T19). Écrite, pas encore déployée (secrets : F8, F6, F5) | écran Mon adresse : chercher, acheter (abonnement `actif`, .fr ou .com : Q9), brancher, vérifier | `sites`, `abonnements`, `entreprises`, `profils`, `adresses` ; Gandi, Cloudflare | `adresses` (ligne écrite avant l'achat ; `cloudflare_id`, `etat`, `motif`, `echeance`, `registrar`) |
 | Google | après consentement, puis périodiquement | API GBP | `connexions_google`, `prive.jetons_google`, `avis` |
 | Publier une réponse validée | `avis.valide_le` posé, `reponse` vide | — | Google, `avis.reponse/repondu_le` |
 | Supprimer un compte | `suppressions.effective_le` atteinte, non annulée | tout | efface tout, résilie, retire le site |
