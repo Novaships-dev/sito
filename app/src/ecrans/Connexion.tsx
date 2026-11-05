@@ -17,7 +17,7 @@ export function Connexion() {
   return (
     <main className="connexion" id="contenu" tabIndex={-1}>
       <img src="icone.svg" alt="" width="72" height="72" />
-      <h1>Sitô</h1>
+      <h1>MonSiteArtisan</h1>
       <p className="discret">Votre site, vos chantiers, vos demandes et vos avis.</p>
       {donnees.demo && <p className="bandeau-demo">Démonstration : aucune donnée réelle. Adresse {COMPTE_DEMO.courriel}, mot de passe {COMPTE_DEMO.motDePasse}.</p>}
 
@@ -37,10 +37,11 @@ export function Connexion() {
       </form>
       <button type="button" className="lien" aria-expanded={oubli} onClick={() => setOubli(!oubli)}>Mot de passe oublié ?</button>
       {oubli && (
-        <p className="aide">Demandez-en un nouveau à Sitô : vous le recevez par SMS. Vos chantiers et votre site ne bougent pas.</p>
+        <p className="aide">Demandez-en un nouveau à MonSiteArtisan : vous le recevez par SMS. Vos chantiers et votre site ne bougent pas.</p>
       )}
-      <p className="aide">Pas encore de compte ? Sitô vous donne votre identifiant et votre mot de passe.</p>
+      <p className="aide">Pas encore de compte ? MonSiteArtisan vous donne votre identifiant et votre mot de passe.</p>
       <p className="pied"><a href="#/installer">Installer l’app sur mon téléphone</a></p>
+      <p className="pied"><a href="#/">Découvrir MonSiteArtisan</a></p>
     </main>
   );
 }

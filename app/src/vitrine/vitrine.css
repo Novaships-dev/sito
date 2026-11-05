@@ -1,0 +1,231 @@
+/* La page de MonSiteArtisan. Une seule idée forte : le panneau de chantier du haut.
+   Le reste est calme : texte, devis, étapes, questions.
+   Couleurs (contrastes mesurés, formule WCAG) :
+     encre #1d1d1b sur panneau #fbfbf8 : 16,6 ; sur béton #c9c7c1 : 10,4
+     gris #4a4945 sur béton : 5,0 ; sur panneau : 8,9
+     blanc #f1f3ef et #d9dfd9 sur palissade #1f2a24 / #24302a : 13,9 et 11,2 au moins
+     encre sur jaune #f2c200 : 11,2 ; blanc sur vert #1f2a24 : 14,8 */
+.v {
+  --beton: #c9c7c1;
+  --beton-fonce: #b4b1aa;
+  --panneau: #fbfbf8;
+  --encre: #1d1d1b;
+  --gris: #4a4945;
+  --jaune: #f2c200;
+  --vert: #1f2a24;
+  --focus: #1a5fb4;
+  font-family: 'Archivo Variable', system-ui, sans-serif;
+  font-variation-settings: 'wdth' 100;
+  color: var(--encre);
+  background: var(--panneau);
+  line-height: 1.55;
+  font-size: 1.0625rem;
+}
+.v *, .v *::before, .v *::after { box-sizing: border-box; }
+.v :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.v h1, .v h2, .v h3 { line-height: 1.05; margin: 0; }
+.v p { margin: 0; }
+.v-aller { position: absolute; left: -999px; top: 0; }
+.v-aller:focus { left: 1rem; top: 1rem; z-index: 10; background: var(--panneau); padding: .6rem 1rem; }
+
+/* ---------- barre */
+.v-barre {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: .9rem clamp(1rem, 4vw, 3rem);
+  background: var(--beton);
+}
+.v-marque {
+  font-weight: 900; font-variation-settings: 'wdth' 88; font-size: clamp(1.15rem, 3.6vw, 1.5rem);
+  color: var(--encre); text-decoration: none; letter-spacing: -.01em;
+}
+.v-marque span { font-weight: 600; color: var(--gris); }
+.v-chantier .v-bouton--plein { box-shadow: 4px 4px 0 #000; border-color: #000; }
+.v-barre nav { display: flex; align-items: center; gap: 1.4rem; }
+.v-barre nav a { color: var(--encre); text-decoration: none; font-weight: 600; min-height: 44px; min-width: 44px; justify-content: center; display: inline-flex; align-items: center; }
+.v-barre nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.v-barre nav a.v-espace { border: 2px solid var(--encre); padding: 0 .9rem; white-space: nowrap; }
+@media (max-width: 420px) { .v-barre { padding-inline: .8rem; gap: .6rem; } .v-barre nav a.v-espace { padding: 0 .6rem; font-size: .95rem; } }
+@media (max-width: 720px) { .v-barre nav a:not(.v-espace) { display: none; } }
+
+/* ---------- le chantier : une palissade aux couleurs de MonSiteArtisan, le panneau vissé dessus */
+.v-chantier {
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  /* des planches de 92 px : un joint sombre, un reflet, deux tons de vert qui alternent */
+  background:
+    var(--grain),
+    repeating-linear-gradient(90deg, #121915 0 3px, #2b3a31 3px 5px, #1f2a24 5px 92px, #121915 92px 95px, #2b3a31 95px 97px, #24302a 97px 184px);
+  color: #f1f3ef;
+  display: grid; gap: clamp(2rem, 5vw, 4.5rem); align-items: center;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  padding: clamp(1.4rem, 4vw, 3.5rem) clamp(1rem, 4vw, 3rem) clamp(2.5rem, 6vw, 5rem);
+  position: relative;
+}
+/* la lisse horizontale qui tient les planches, derrière le panneau */
+.v-chantier::before { content: ''; position: absolute; left: 0; right: 0; top: 46%; height: 26px; background: #18211c; box-shadow: 0 2px 0 #2e3d34 inset, 0 -1px 0 #0d120f; pointer-events: none; }
+.v-chantier > * { position: relative; }
+@media (max-width: 880px) { .v-chantier { grid-template-columns: 1fr; } .v-chantier::before { top: 22%; } }
+
+.v-panneau {
+  position: relative; background: var(--panneau); color: var(--encre);
+  padding: clamp(1.4rem, 4vw, 2.6rem) clamp(1.3rem, 4vw, 2.6rem) clamp(1.6rem, 4vw, 2.6rem);
+  box-shadow: 0 1px 0 #fff inset, 0 18px 30px -18px rgba(40, 38, 33, .55), 0 2px 4px rgba(40, 38, 33, .25);
+  border: 1px solid #e3e1da;
+  animation: v-pose .7s cubic-bezier(.2, .9, .3, 1.2) both;
+  transform-origin: 50% 0;
+}
+@keyframes v-pose { from { transform: translateY(-14px) rotate(-1.4deg); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .v-panneau { animation: none; } }
+.v-ruban {
+  height: 14px; margin: calc(-1 * clamp(1.4rem, 4vw, 2.6rem)) calc(-1 * clamp(1.3rem, 4vw, 2.6rem)) 1.4rem;
+  background: repeating-linear-gradient(-45deg, var(--jaune) 0 16px, var(--encre) 16px 32px);
+}
+.v-panneau-tete { font-weight: 800; font-variation-settings: 'wdth' 125; font-size: 1rem; color: var(--gris); }
+.v-panneau h1 {
+  font-weight: 900; font-variation-settings: 'wdth' 62;
+  font-size: clamp(2.9rem, min(9vw, 10.5vh), 5.6rem); letter-spacing: -.01em; line-height: .92;
+  margin: .35rem 0 1.4rem; text-wrap: balance;
+}
+.v-rubriques { margin: 0; border-top: 3px solid var(--encre); }
+.v-rubriques > div {
+  display: grid; grid-template-columns: 11rem 1fr; gap: .2rem 1rem;
+  padding: .6rem 0; border-bottom: 1px solid #cfccc4;
+}
+.v-rubriques dt { font-weight: 700; color: var(--gris); font-variation-settings: 'wdth' 85; }
+.v-rubriques dd { margin: 0; font-weight: 600; }
+.v-montant dd { font-weight: 900; font-variation-settings: 'wdth' 75; font-size: clamp(1.6rem, 4.5vw, 2.2rem); line-height: 1.1; }
+.v-montant dd span { display: block; font-size: 1rem; font-weight: 600; font-variation-settings: 'wdth' 100; color: var(--gris); margin-top: .2rem; }
+@media (max-width: 520px) {
+  .v-rubriques > div { grid-template-columns: 6.6rem 1fr; padding: .5rem 0; font-size: .95rem; }
+  .v-panneau h1 { margin-bottom: 1rem; }
+  .v-montant dd { font-size: 1.5rem; }
+}
+.v-panneau-action { margin-top: 1.4rem; }
+.v-panneau-action .v-bouton { box-shadow: 4px 4px 0 var(--encre); border-color: var(--encre); }
+@media (max-width: 520px) { .v-panneau-action .v-bouton { width: 100%; justify-content: center; } .v-panneau h1 { font-size: 2.7rem; } .v-panneau-tete { font-size: .9rem; } }
+.v-vis {
+  position: absolute; width: 11px; height: 11px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #f4f3ef 0 20%, #8d8a83 60%, #5b5953 100%);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .35);
+}
+.v-vis::after { content: ''; position: absolute; left: 2px; right: 2px; top: 5px; height: 1px; background: #4a4843; transform: rotate(35deg); }
+.v-vis--1 { top: 24px; left: 10px; } .v-vis--2 { top: 24px; right: 10px; }
+.v-vis--3 { bottom: 10px; left: 10px; } .v-vis--4 { bottom: 10px; right: 10px; }
+
+.v-accroche { max-width: 34rem; display: grid; gap: 1.1rem; }
+.v-intro { font-weight: 800; font-variation-settings: 'wdth' 80; font-size: clamp(1.7rem, 3.6vw, 2.4rem); line-height: 1.12; text-wrap: balance; }
+.v-accroche > p:not(.v-intro) { color: #d9dfd9; }
+.v-intro { color: #fff; }
+.v-chantier .v-lien { color: #fff; }
+.v-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.4rem; margin-top: .4rem; }
+
+/* ---------- boutons */
+.v-bouton {
+  display: inline-flex; align-items: center; gap: .6rem; min-height: 52px;
+  padding: .75rem 1.3rem; font-weight: 800; font-size: 1.05rem; text-decoration: none;
+  border: 2px solid var(--encre);
+}
+.v-bouton--plein { background: var(--jaune); color: var(--encre); box-shadow: 4px 4px 0 var(--encre); }
+.v-bouton--plein:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--encre); }
+.v-bouton--plein:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--encre); }
+.v-bouton--clair { background: var(--panneau); color: var(--encre); }
+.v-bouton--clair:hover { background: #fff; }
+.v-bouton--sombre { background: var(--vert); color: #fff; border-color: var(--vert); }
+.v-bouton--sombre:hover { background: #2e3f35; }
+.v-lien { color: var(--encre); font-weight: 700; text-underline-offset: 4px; min-height: 44px; display: inline-flex; align-items: center; }
+@media (prefers-reduced-motion: reduce) { .v-bouton { transition: none; transform: none !important; } }
+
+/* ---------- sections */
+.v-section { padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 4vw, 3rem); max-width: 72rem; margin: 0 auto; }
+.v-section h2 { font-weight: 900; font-variation-settings: 'wdth' 70; font-size: clamp(2.2rem, 6vw, 3.6rem); letter-spacing: -.01em; text-wrap: balance; }
+.v-chapeau { color: var(--gris); max-width: 38rem; margin-top: .8rem; font-size: 1.15rem; }
+
+/* ---------- le devis */
+.v-feuilles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem; margin-top: 2.2rem; }
+@media (max-width: 760px) { .v-feuilles { grid-template-columns: 1fr; } }
+.v-feuille { background: #fff; border: 1px solid #d6d3cb; padding: clamp(1.2rem, 3vw, 2rem); }
+.v-feuille--mois { border-top: 6px solid var(--jaune); }
+.v-feuille--an { border-top: 6px solid var(--vert); }
+.v-feuille h3 { font-weight: 900; font-variation-settings: 'wdth' 80; font-size: 1.6rem; margin-bottom: 1rem; }
+.v-lignes { list-style: none; margin: 0; padding: 0; }
+.v-lignes li { display: flex; align-items: baseline; gap: .5rem; padding: .45rem 0; }
+.v-lignes li span:first-child { flex: 0 1 auto; }
+.v-lignes li::after { content: ''; order: 1; flex: 1 1 1.5rem; border-bottom: 2px dotted #aeaba3; transform: translateY(-.3em); min-width: 1.5rem; }
+.v-compris { order: 2; color: var(--gris); font-weight: 600; font-variation-settings: 'wdth' 85; white-space: nowrap; }
+.v-total { display: flex; align-items: baseline; flex-wrap: wrap; gap: .4rem .8rem; margin-top: 1rem; padding-top: 1rem; border-top: 3px solid var(--encre); }
+.v-total strong { font-size: clamp(2.6rem, 7vw, 3.4rem); font-weight: 900; font-variation-settings: 'wdth' 70; line-height: 1; }
+.v-total > span:first-child { font-weight: 800; }
+.v-unite { color: var(--gris); font-weight: 600; }
+.v-notes { margin: .9rem 0 0; padding-left: 1.1rem; color: var(--gris); }
+.v-notes li { padding: .1rem 0; }
+
+.v-vitrines {
+  margin-top: 1.6rem; padding: clamp(1.2rem, 3vw, 2rem);
+  background: var(--jaune); color: var(--encre);
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .6rem 2rem; align-items: center;
+}
+.v-vitrines h3 { font-weight: 900; font-variation-settings: 'wdth' 80; font-size: 1.5rem; }
+.v-vitrines p { grid-column: 1; max-width: 40rem; }
+.v-vitrines .v-bouton { grid-column: 2; grid-row: 1 / span 2; }
+@media (max-width: 760px) { .v-vitrines { grid-template-columns: 1fr; } .v-vitrines .v-bouton { grid-column: 1; grid-row: auto; justify-self: start; } }
+
+/* ---------- étapes : une vraie suite, donc numérotée */
+.v-etapes ol { list-style: none; counter-reset: etape; margin: 2.4rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.6rem; }
+@media (max-width: 900px) { .v-etapes ol { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .v-etapes ol { grid-template-columns: 1fr; } }
+.v-etapes li { counter-increment: etape; border-top: 3px solid var(--encre); padding-top: 1rem; }
+.v-etapes li::before {
+  content: counter(etape); display: block; font-weight: 900; font-variation-settings: 'wdth' 62;
+  font-size: 3.4rem; line-height: 1; color: var(--encre); margin-bottom: .6rem;
+  text-shadow: 3px 3px 0 var(--jaune);
+}
+.v-etapes h3 { font-weight: 800; font-size: 1.25rem; margin-bottom: .4rem; }
+.v-etapes p { color: var(--gris); }
+
+/* ---------- l'app */
+.v-app { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+@media (max-width: 820px) { .v-app { grid-template-columns: 1fr; } }
+.v-app-texte { display: grid; gap: 1rem; max-width: 36rem; }
+.v-telephone {
+  justify-self: center; width: min(280px, 78vw); aspect-ratio: 9 / 18.5;
+  background: #2a2a28; border-radius: 42px; padding: 12px;
+  box-shadow: 0 30px 50px -25px rgba(30, 28, 24, .6);
+  transform: rotate(3deg);
+}
+.v-ecran { height: 100%; border-radius: 32px; background: #f6f4ef; padding: 2.6rem 1rem 1rem; display: flex; flex-direction: column; gap: .8rem; }
+.v-ecran-titre { font-weight: 800; font-size: 1.05rem; }
+.v-tuiles { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+.v-tuile { aspect-ratio: 3 / 4; position: relative; border-radius: 6px; overflow: hidden; }
+.v-tuile span { position: absolute; left: .4rem; bottom: .4rem; background: rgba(255, 255, 255, .92); font-size: .75rem; font-weight: 700; padding: .1rem .4rem; border-radius: 3px; }
+.v-tuile--avant { background: repeating-linear-gradient(0deg, #9a958b 0 9px, #8f8a80 9px 10px), #9a958b; }
+.v-tuile--avant::before { content: ''; position: absolute; inset: 22% 15% 30% 20%; background: radial-gradient(ellipse at 30% 40%, #6f6a60 0 30%, transparent 60%), radial-gradient(ellipse at 70% 70%, #7a7469 0 25%, transparent 55%); }
+.v-tuile--apres { background: repeating-linear-gradient(0deg, #ecdcc0 0 9px, #e2d1b3 9px 10px); }
+.v-tuile--apres::before { content: ''; position: absolute; left: 30%; top: 30%; width: 22%; height: 26%; background: #6b8a8a; box-shadow: 34px 0 0 #6b8a8a; }
+.v-envoi { display: grid; gap: .35rem; font-size: .8rem; font-weight: 600; color: #545a56; }
+.v-barre-envoi { height: 8px; background: #e2ded5; border-radius: 4px; overflow: hidden; }
+.v-barre-envoi span { display: block; width: 100%; height: 100%; background: var(--jaune); }
+.v-ecran-ok { margin-top: auto; align-self: start; background: #dff0e3; color: #1d5a2e; font-weight: 700; font-size: .85rem; padding: .25rem .7rem; border-radius: 999px; }
+
+/* ---------- questions */
+.v-faq { margin-top: 2rem; border-top: 3px solid var(--encre); max-width: 52rem; }
+.v-faq details { border-bottom: 1px solid #cfccc4; }
+.v-faq summary {
+  cursor: pointer; list-style: none; padding: 1.1rem 2.5rem 1.1rem 0; position: relative;
+  font-weight: 700; font-size: 1.15rem; min-height: 44px;
+}
+.v-faq summary::-webkit-details-marker { display: none; }
+.v-faq summary::after { content: '+'; position: absolute; right: .3rem; top: .7rem; font-size: 1.8rem; font-weight: 400; line-height: 1; }
+.v-faq details[open] summary::after { content: '−'; }
+.v-faq details p { padding: 0 0 1.2rem; color: var(--gris); max-width: 44rem; }
+
+/* ---------- fin */
+.v-fin { background: var(--vert); color: #fff; padding: clamp(3rem, 8vw, 5.5rem) clamp(1rem, 4vw, 3rem); display: grid; gap: 1.1rem; justify-items: start; }
+.v-fin h2 { font-weight: 900; font-variation-settings: 'wdth' 70; font-size: clamp(2.2rem, 6vw, 3.6rem); max-width: 18ch; }
+.v-fin p { max-width: 36rem; color: #e9ede9; }
+.v-fin .v-bouton--plein { box-shadow: 4px 4px 0 #000; border-color: #000; }
+.v-bientot { font-weight: 700; border-left: 4px solid var(--jaune); padding-left: .8rem; }
+
+/* ---------- pied */
+.v-pied { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.6rem; padding: 1.6rem clamp(1rem, 4vw, 3rem); background: var(--beton); }
+.v-pied a { color: var(--encre); font-weight: 600; min-height: 44px; display: inline-flex; align-items: center; }
+.v-pied .v-marque { font-size: 1.2rem; }
+.v-pied > span:last-child { margin-left: auto; color: var(--gris); }

@@ -95,7 +95,7 @@ function Export() {
   return (
     <section className="carte" aria-labelledby="t-export">
       <h2 id="t-export">Mes données</h2>
-      <p className="aide">Un fichier avec tout ce que Sitô garde sur vous : entreprise, réglages, tarifs, chantiers, demandes, avis, statistiques. Les photos restent consultables dans « Mes chantiers ».</p>
+      <p className="aide">Un fichier avec tout ce que MonSiteArtisan garde sur vous : entreprise, réglages, tarifs, chantiers, demandes, avis, statistiques. Les photos restent consultables dans « Mes chantiers ».</p>
       <button className="bouton secondaire" disabled={a.occupe} onClick={() => void a.lancer(async () => {
         const chantiers = await donnees.chantiers();
         const tout = {

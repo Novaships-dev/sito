@@ -28,7 +28,7 @@ export function donneesSupabase(url: string, cle: string): Donnees {
   async function siren(): Promise<string> {
     if (sirenMemo) return sirenMemo;
     const lignes = verifier(await sb.from('membres').select('siren').limit(1));
-    if (!lignes.length) throw new Error("Ce compte n'est relié à aucune entreprise. Contactez Sitô.");
+    if (!lignes.length) throw new Error("Ce compte n'est relié à aucune entreprise. Contactez MonSiteArtisan.");
     sirenMemo = lignes[0].siren as string;
     return sirenMemo;
   }

@@ -74,7 +74,7 @@ function MonDomaine({ apres }: { apres: () => void }) {
   return (
     <section className="carte" aria-labelledby="t-domaine">
       <h2 id="t-domaine">Je veux mon propre nom de domaine</h2>
-      <p>Par exemple <span className="hote">facades-martin.fr</span>. Il est compris dans l’abonnement, enregistré <strong>à votre nom</strong> : il vous appartient, même si vous quittez Sitô.</p>
+      <p>Par exemple <span className="hote">facades-martin.fr</span>. Il est compris dans l’abonnement, enregistré <strong>à votre nom</strong> : il vous appartient, même si vous quittez MonSiteArtisan.</p>
       <form onSubmit={async (e) => {
         e.preventDefault(); setTrouve(null); reserve.effacer();
         await cherche.lancer(async () => setTrouve(await donnees.chercherDomaine(nom)));

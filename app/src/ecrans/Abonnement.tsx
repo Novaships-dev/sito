@@ -71,7 +71,7 @@ export function Abonnement() {
                 <button className="bouton" disabled={occupe} onClick={() => ouvrir('paiement', 'mensuel')}>S’abonner au mois</button>
                 <button className="bouton secondaire" disabled={occupe} onClick={() => ouvrir('paiement', 'annuel')}>S’abonner à l’année</button>
               </p>}
-          <p className="aide">Paiement sécurisé par Stripe. Sitô ne voit jamais votre carte.</p>
+          <p className="aide">Paiement sécurisé par Stripe. MonSiteArtisan ne voit jamais votre carte.</p>
           {erreur && <p className="erreur" role="alert">{erreur}</p>}
         </section>
       )}

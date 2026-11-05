@@ -1,6 +1,6 @@
 // La coquille de l'app : connexion, navigation, file d'envoi.
 // Adresses en #/… : l'app se sert depuis n'importe quel dossier, sans réglage serveur.
-import { useEffect, useMemo, useState } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import { Ctx, useApp, type Contexte } from './ui';
 import { creerFile, type Etat } from './attente';
 import type { Donnees } from './types';
@@ -13,7 +13,12 @@ import { Avis } from './ecrans/Avis';
 import { Google } from './ecrans/Google';
 import { Abonnement } from './ecrans/Abonnement';
 import { Compte } from './ecrans/Compte';
-import { Installer } from './ecrans/Installer';
+import { Installer, estInstallee } from './ecrans/Installer';
+
+// La page de MonSiteArtisan (offre, maquette, WhatsApp) : chargée à part, l'espace
+// artisan n'en porte pas le poids. Sur l'écran d'accueil (app installée),
+// on va droit à la connexion.
+const Vitrine = lazy(() => import('./vitrine/Vitrine'));
 
 function useRoute(): string[] {
   // Ce qui suit « ? » dans le # (retour de Stripe : « #/abonnement?paiement=ok »)
@@ -62,6 +67,7 @@ export function App({ donnees }: { donnees: Donnees }) {
   let page;
   if (connecte === null) page = <main className="ecran" id="contenu" tabIndex={-1}><p className="discret">Chargement…</p></main>;
   else if (route[0] === 'installer') page = <Installer />;
+  else if (!connecte && !route[0] && !estInstallee()) return <Suspense fallback={null}><Vitrine /></Suspense>;
   else if (!connecte) page = <Connexion />;
   else page = <Page route={route} />;
 
@@ -80,7 +86,7 @@ export function App({ donnees }: { donnees: Donnees }) {
 
 function Page({ route }: { route: string[] }) {
   switch (route[0] || '') {
-    case '': return <Accueil />;
+    case '': case 'connexion': return <Accueil />;
     case 'chantiers': return route[1] ? <Chantier id={decodeURIComponent(route[1])} /> : <Chantiers />;
     case 'site': return <MonSite />;
     case 'adresse': return <Adresse />;
@@ -94,7 +100,7 @@ function Page({ route }: { route: string[] }) {
 }
 
 function Plus() {
-  useEffect(() => { document.title = 'Plus, Sitô'; }, []);
+  useEffect(() => { document.title = 'Plus, MonSiteArtisan'; }, []);
   return (
     <main className="ecran" id="contenu" tabIndex={-1}>
       <h1>Plus</h1>

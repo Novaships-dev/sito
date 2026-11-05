@@ -2347,3 +2347,27 @@ juste), puis remis.
 Offre de Fabrice reçue pendant ce travail (22 h 56) : écrite mot pour mot
 dans `memoire/decisions.md` ; étapes 4 et 5 (vitrine, paiement) à faire.
 TRACAGE : atelier/comptes.mjs, atelier/supabase.mjs, scripts/essai-comptes.mjs, scripts/faux-supabase.mjs, scripts/faux-recherche-entreprises.mjs, scripts/essais.mjs, scripts/essai-app.mjs, scripts/essai-inscription.mjs, lanceurs/COMPTE_ARTISAN.bat, .github/workflows/essais.yml, .env.example, app/src/App.tsx, app/src/types.ts, app/src/donnees/demo.ts, app/src/donnees/supabase.ts, app/src/ecrans/Connexion.tsx, app/src/ecrans/Inscription.tsx, app/README.md, supabase/functions/inscription/index.ts, supabase/functions/inscription/logique.ts, supabase/essais/invitations.sql, supabase/brouillons/retrait_invitations.sql, supabase/README.md, SECURITY.md, app/specs/01-PRD.md, app/specs/02-TRD.md, app/specs/03-APPFLOW.md, app/specs/05-SCHEMA-BACKEND.md, app/specs/06-PLAN-IMPLEMENTATION.md, docs/SOURCE-UNIQUE.md, docs/CONTEXT.md, docs/CONSTRAINTS.md, docs/prospection-script.md, memoire/comptes-essai.md, memoire/questions.md, memoire/actions-fabrice.md, memoire/maintenant.md, memoire/decisions.md, memoire/de-cowork.md, CHANGELOG.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 6 nov. 2026 — Page de MonSiteArtisan.com (étape 4 du nettoyage), par Cowork
+
+Plan : une page qui vend l'offre décidée le 5 nov., à l'adresse de l'app ;
+l'espace artisan derrière « Espace artisan » ; nom MonSiteArtisan.com partout
+où l'artisan le voit.
+
+Fait : `app/src/vitrine/` (`Vitrine.tsx`, `vitrine.css`, `offre.ts`, seule
+source des prix dans le code), chargée à part (10 ko de JS, 12 ko de CSS) ;
+police Archivo (OFL, `@fontsource-variable/archivo`) servie par le site.
+Idée : un panneau de chantier vissé sur une palissade aux couleurs de la
+marque, les prix en devis. `App.tsx` : non connecté sur `#/` → page ;
+installée (écran d'accueil) → connexion ; `#/connexion` → connexion.
+Numéro WhatsApp et mention de TVA attendus de Fabrice : sans numéro, les
+boutons mènent à « Contact », qui le dit ; aucun numéro inventé. Aucun délai
+de livraison promis (pas décidé). Nom : « Sitô » → « MonSiteArtisan » dans
+`app/src`, le manifeste, `index.html` et la note ML11 des mentions des sites.
+Preuve : `essai-app` : 169 contrôles, 0 faute ; un passage de la suite complète a eu 1 faute passagère, non reproduite en trois passages : l essai attend maintenant la police avant de mesurer (page sur 3 appareils : rendu,
+prix, mois offerts, pas d'ancien prix, bouton visible sans défiler, lien
+WhatsApp, police locale, « Espace artisan », app installée → connexion) ;
+copie cassée (prix à 39 €) : 6 fautes, rouge juste. `essai-mentions` : 62, 0.
+Aperçu privé publié pour Fabrice (claude.ai, artifact « MonSiteArtisan.com,
+aperçu de la page »).
+TRACAGE : app/src/vitrine/Vitrine.tsx, app/src/vitrine/vitrine.css, app/src/vitrine/offre.ts, app/src/App.tsx, app/src/ui.tsx, app/src/donnees/supabase.ts, app/src/ecrans/Connexion.tsx, app/src/ecrans/Installer.tsx, app/src/ecrans/Abonnement.tsx, app/src/ecrans/Adresse.tsx, app/src/ecrans/Compte.tsx, app/src/ecrans/Google.tsx, app/vite.config.ts, app/index.html, app/package.json, app/package-lock.json, generateur/sections/mentions.mjs, scripts/essai-app.mjs, docs/SOURCE-UNIQUE.md, memoire/decisions.md, memoire/de-cowork.md, CHANGELOG.md, memoire/journal.md, docs/audit/CARTE.md

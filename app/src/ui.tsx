@@ -67,7 +67,7 @@ export function Message({ erreur, fait }: { erreur: string | null; fait?: string
 }
 
 export function Ecran({ titre, children, retour }: { titre: string; children: ReactNode; retour?: { lien: string; texte: string } }) {
-  useEffect(() => { document.title = `${titre}, Sitô`; }, [titre]);
+  useEffect(() => { document.title = `${titre}, MonSiteArtisan`; }, [titre]);
   return (
     <main className="ecran" id="contenu" tabIndex={-1}>
       {retour && <a className="retour" href={retour.lien}>← {retour.texte}</a>}

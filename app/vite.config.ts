@@ -1,4 +1,4 @@
-// L'app de l'artisan Sitô : un site installable sur l'écran d'accueil du
+// L'app de l'artisan MonSiteArtisan : un site installable sur l'écran d'accueil du
 // téléphone (iPhone, Android) ou de l'ordinateur. Pas d'app sur le Play Store
 // (décision du 5 nov. 2026).
 import { defineConfig } from 'vite';
@@ -12,9 +12,10 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icone.svg', 'apple-touch-icon.png'],
       manifest: {
-        name: 'Sitô, mon site',
-        short_name: 'Sitô',
-        description: 'Votre site, vos photos de chantier, vos demandes et vos avis.',
+        name: 'MonSiteArtisan.com',
+        // Sous l'icône de l'iPhone, 12 caractères au plus avant d'être coupé.
+        short_name: 'Mon site',
+        description: 'Le site internet des artisans du bâtiment : vos photos de chantier, votre site à jour.',
         lang: 'fr',
         start_url: './',
         scope: './',

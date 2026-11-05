@@ -208,7 +208,7 @@ async function nouvellePage(appareil, extra = '') {
   const erreurs = [];
   page.on('pageerror', (e) => erreurs.push(e.message));
   page.on('console', (m) => { if (m.type() === 'error') erreurs.push(m.text()); });
-  await page.goto(`${BASE}?demo${extra}#/`);
+  await page.goto(`${BASE}?demo${extra}#/connexion`);
   return { ctx, page, erreurs };
 }
 // Compte de démonstration (app/src/donnees/demo.ts, COMPTE_DEMO).
@@ -380,19 +380,55 @@ try {
   ok(await page.getByLabel('Votre adresse e-mail').waitFor({ state: 'visible', timeout: 3000 }).then(() => true, () => false), 'déconnexion : retour à l’écran de connexion');
   await ctx.close();
 
+  // ------------------------------------------------ page de Sitô (offre du 5 nov. 2026)
+  for (const appareil of appareils) {
+    console.log(`\nPage de Sitô (${appareil.nom})`);
+    const { ctx: c, page: p, erreurs: errs } = await nouvellePage(appareil);
+    await p.goto(`${BASE}?demo#/`);
+    ok(await visible(p.getByRole('heading', { level: 1, name: 'Votre site internet d’artisan' }), 8000), 'la page de Sitô s ouvre à l adresse de l app');
+    // la police change la hauteur des blocs : on mesure une fois chargée (machine occupée : 6 nov.)
+    await p.evaluate(() => document.fonts.ready);
+    const r = await mesurerRendu(p);
+    ok(renduBon(r), 'rendu de la page', JSON.stringify(r));
+    const texte = await p.locator('body').innerText();
+    ok(/80\s€ par mois/.test(texte) && /720\s€/.test(texte) && /60\s€ par mois/.test(texte), 'les prix de l offre : 80 € par mois, 720 € l année (60 € par mois)');
+    ok(/1 mois offert/.test(texte) && /Engagement 12 mois/.test(texte) && /3 mois offerts/.test(texte), 'mois offert, engagement, artisans vitrines');
+    ok(!/39\s€/.test(texte), 'plus aucun ancien prix (39 €)');
+    const bouton = p.getByRole('link', { name: 'Recevoir ma maquette gratuite' }).first();
+    const vu = await bouton.boundingBox();
+    ok(vu && vu.y + vu.height <= appareil.viewport.height, 'le bouton de la maquette est visible sans faire défiler', JSON.stringify(vu));
+    const href = await bouton.getAttribute('href');
+    ok(href === '#contact' || /^https:\/\/wa\.me\/\d{8,15}\?text=/.test(href), 'le bouton mène à WhatsApp (ou à Contact tant que le numéro manque)', href);
+    const polices = await p.evaluate(() => performance.getEntriesByType('resource').map((e) => e.name).filter((n) => /font|woff/.test(n)));
+    ok(polices.length > 0 && polices.every((n) => n.startsWith(new URL(BASE).origin)), 'la police est servie par le site, rien chez Google', polices.join(' '));
+    await p.getByRole('link', { name: 'Espace artisan' }).first().click();
+    ok(await visible(p.getByLabel('Votre adresse e-mail')), '« Espace artisan » ouvre la connexion');
+    ok(errs.length === 0, 'aucune erreur dans la console', errs.join(' | '));
+    await c.close();
+  }
+  {
+    // installée sur l'écran d'accueil : droit à la connexion, sans la page de Sitô
+    const ctx = await navigateur.newContext({ ...appareils[0], locale: 'fr-FR', serviceWorkers: 'block' });
+    await ctx.addInitScript(() => { Object.defineProperty(navigator, 'standalone', { get: () => true }); });
+    const p = await ctx.newPage();
+    await p.goto(`${BASE}?demo#/`);
+    ok(await visible(p.getByLabel('Votre adresse e-mail'), 8000) && !(await p.getByRole('heading', { name: 'Votre site internet d’artisan' }).count()), 'app installée : elle s ouvre sur la connexion');
+    await ctx.close();
+  }
+
   // ------------------------------------------------ compte donné par Sitô (décision du 5 nov. 2026)
   console.log('\nCompte donné par Sitô (iPhone 390)');
   {
     const { ctx: c, page: p, erreurs: errs } = await nouvellePage(appareils[0]);
     await p.locator('h1').first().waitFor();
-    ok(await visible(p.getByText('Sitô vous donne votre identifiant et votre mot de passe')), 'la connexion dit d où vient le compte');
+    ok(await visible(p.getByText('MonSiteArtisan vous donne votre identifiant et votre mot de passe')), 'la connexion dit d où vient le compte');
     ok(!(await p.getByText(/inscription|lien d.inscription/i).count()), 'aucune inscription proposée');
     await p.getByRole('button', { name: 'Mot de passe oublié ?' }).click();
-    ok(await visible(p.getByText('Demandez-en un nouveau à Sitô')), 'mot de passe oublié : la marche à suivre est dite');
+    ok(await visible(p.getByText('Demandez-en un nouveau à MonSiteArtisan')), 'mot de passe oublié : la marche à suivre est dite');
     // un ancien lien d'inscription n'ouvre plus rien d'autre que la connexion
     await p.goto(`${BASE}?demo#/inscription/demo-inscription`); await p.reload();
     ok(await visible(p.getByLabel('Votre adresse e-mail')) && !(await p.getByRole('heading', { name: 'Créer votre compte' }).count()), 'un ancien lien d inscription ouvre la connexion');
-    await p.goto(`${BASE}?demo#/`);
+    await p.goto(`${BASE}?demo#/connexion`);
     ok(await connecter(p), 'connexion avec l identifiant et le mot de passe donnés ; un faux mot de passe est refusé');
     await p.close();
     const p2 = await c.newPage();

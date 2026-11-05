@@ -1,5 +1,5 @@
 // Installer l'app : ajoutée à l'écran d'accueil du téléphone depuis le site
-// Sitô (décision du 5 nov. 2026 : pas d'app Android sur le Play Store).
+// MonSiteArtisan (décision du 5 nov. 2026 : pas d'app Android sur le Play Store).
 import { useEffect, useState } from 'react';
 import { Ecran } from '../ui';
 
@@ -28,7 +28,7 @@ export function Installer() {
 
   return (
     <Ecran titre="Installer l’app" retour={{ lien: '#/', texte: 'Retour' }}>
-      <p>Une fois installée, Sitô s’ouvre depuis l’écran d’accueil, en plein écran, comme une app.</p>
+      <p>Une fois installée, MonSiteArtisan s’ouvre depuis l’écran d’accueil, en plein écran, comme une app.</p>
 
       {quoi === 'iphone' && (
         <section className="carte" aria-labelledby="t-iphone">
@@ -46,9 +46,9 @@ export function Installer() {
         <section className="carte" aria-labelledby="t-autre">
           <h2 id="t-autre">{quoi === 'android' ? 'Sur Android' : 'Sur cet ordinateur'}</h2>
           {invite ? (
-            <button className="bouton" onClick={async () => { const i = invite; if (!i) return; await i.prompt(); await i.userChoice; invite = null; rafraichir((n) => n + 1); }}>Installer Sitô</button>
+            <button className="bouton" onClick={async () => { const i = invite; if (!i) return; await i.prompt(); await i.userChoice; invite = null; rafraichir((n) => n + 1); }}>Installer MonSiteArtisan</button>
           ) : (
-            <p>Ouvrez le menu du navigateur (⋮), puis <strong>{quoi === 'android' ? 'Ajouter à l’écran d’accueil' : 'Installer Sitô'}</strong>.</p>
+            <p>Ouvrez le menu du navigateur (⋮), puis <strong>{quoi === 'android' ? 'Ajouter à l’écran d’accueil' : 'Installer MonSiteArtisan'}</strong>.</p>
           )}
         </section>
       )}

@@ -38,8 +38,8 @@ export function Google() {
           {c.valeur?.motif && <p className="erreur">{c.valeur.motif}</p>}
           {c.valeur?.etat !== 'connectee' && (
             <>
-              <p>Une fois votre fiche reliée, Sitô récupère vos avis, vous prépare les réponses et vérifie que la fiche dit la même chose que votre site (nom, adresse, téléphone).</p>
-              <p className="aide">Google vous demandera votre accord pour que Sitô lise vos avis et publie les réponses que vous validez. Rien ne part sans votre validation.</p>
+              <p>Une fois votre fiche reliée, MonSiteArtisan récupère vos avis, vous prépare les réponses et vérifie que la fiche dit la même chose que votre site (nom, adresse, téléphone).</p>
+              <p className="aide">Google vous demandera votre accord pour que MonSiteArtisan lise vos avis et publie les réponses que vous validez. Rien ne part sans votre validation.</p>
               <button className="bouton" disabled={relier.occupe}
                 onClick={() => void relier.lancer(async () => { location.href = await donnees.lienGoogle(); void c.recharger(); })}>
                 {c.valeur?.etat === 'revoquee' || c.valeur?.etat === 'erreur' ? 'Relier à nouveau ma fiche Google' : 'Relier ma fiche Google'}

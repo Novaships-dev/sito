@@ -12,9 +12,12 @@ recopiée (liste « Recopiée dans »). Une valeur sans source n'entre pas.
 
 | Valeur | Chiffre | Source | Recopiée dans |
 |---|---|---|---|
-| Abonnement mensuel | 39 € HT par mois, sans engagement | `memoire/decisions.md`, 9 oct. 2026 | `app/specs/01-PRD.md` §7, écran Abonnement, `docs/prospection-script.md` |
-| Abonnement annuel | 390 € HT par an, sert d'engagement | `memoire/decisions.md`, 9 oct. 2026 | idem |
-| Essai gratuit | 14 jours | `memoire/decisions.md`, 9 oct. 2026 | idem, `memoire/questions.md` Q2 |
+| Nom | MonSiteArtisan.com (remplace « Sitô » ; le dépôt et le code gardent `sito`) | `memoire/decisions.md`, 6 nov. 2026 | page, app, mentions des sites |
+| Au mois | 80 € par mois, site complet, engagement 12 mois (lié au domaine payé à l'année) | `memoire/decisions.md`, 5 nov. 2026 | `app/src/vitrine/offre.ts` (seule source du code) |
+| À l'année | 720 € par an, payé une fois, renouvelé chaque année | idem, réponses du 5 nov. | idem |
+| Mois offerts | 1 au mois (pas à l'année) ; 3 pour les 3 artisans vitrines, puis 12 mois d'engagement | idem | idem |
+| TVA sur les prix | pas encore dite (question à Fabrice, 5 nov.) : `MENTION_TVA` vide | — | idem |
+| Ancienne offre | 39 € HT par mois, 390 € HT par an, 14 jours d'essai (9 oct.) : remplacée ; l'écran Abonnement l'affiche encore jusqu'à l'étape 5 du nettoyage | `memoire/decisions.md`, 9 oct. 2026 | `app/src/ecrans/Abonnement.tsx` (à retirer) |
 | Séance photo, formule au mois | 90 € HT la visite | `memoire/decisions.md`, 24 oct. 2026 | `docs/prospection-script.md` |
 | Séance photo, formule à l'année | offerte | `memoire/decisions.md`, 23 oct. 2026 | idem |
 | Domaine propre | inclus dans l'abonnement, au nom de l'artisan | `memoire/decisions.md`, 5 oct. 2026 | `app/PLAN-APP.md` §4 |
