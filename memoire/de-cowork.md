@@ -35,3 +35,5 @@ section 2, « Deux sessions ».
 | 4 nov. 2026 | `memoire/decisions.md` (Q6 mot pour mot), `memoire/questions.md` (Q6 répondue), `memoire/actions-fabrice.md` (F20), `.github/workflows/essais.yml` (rendu et Safari la nuit si dépôt privé) | réponse de Fabrice à Q6 : « Le repo github Sito sera privé donc sur Sito github » |
 | 5 nov. 2026 | `memoire/decisions.md` (3 lignes du 5 nov. : simplification, paiement et domaines, concurrent et prix, mot pour mot) | décisions de Fabrice dans la conversation Cowork du 5 nov. au soir |
 | 5 nov. 2026 | `memoire/decisions.md` (l'offre du 5 nov., mot pour mot) | message de Fabrice dans la conversation Cowork du 5 nov., 22 h 56 |
+| 5 nov. 2026 | `memoire/decisions.md` (réponses de Fabrice sur l'offre, 23 h 51, mot pour mot) | conversation Cowork du 5 nov. |
+| 6 nov. 2026 | `memoire/decisions.md` (nom MonSiteArtisan.com, mot pour mot) | message de Fabrice du 5 nov., 23 h 59 |
