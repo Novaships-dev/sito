@@ -32,7 +32,8 @@ async function fichiersDe(dossier) {
       if (e.isDirectory()) await parcourir(p);
       else if (e.isFile()) {
         const rel = relative(dossier, p).split(sep).join('/');
-        if (!EXCLUS.some(re => re.test(rel))) out.push(rel);
+        // Fichiers cachés exclus, sauf la preuve de l'app Android (T28), que le Worker sert.
+        if (rel === '.well-known/assetlinks.json' || !EXCLUS.some(re => re.test(rel))) out.push(rel);
       }
     }
   }

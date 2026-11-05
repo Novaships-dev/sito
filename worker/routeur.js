@@ -36,11 +36,16 @@ const page = (statut, titre, texte) => new Response(
   + `<h1 style="font-size:1.4rem">${titre}</h1><p>${texte}</p></body></html>`,
   { status: statut, headers: { 'content-type': TYPES.html, 'cache-control': 'no-store', ...SECURITE } });
 
+const ASSETLINKS = '/.well-known/assetlinks.json';
+
 // Chemin demandé -> clé R2, ou null si le chemin est refusé.
 export function cleFichier(site, version, chemin) {
   let p;
   try { p = decodeURIComponent(chemin); } catch { return null; }
   if (p.includes('\0') || p.includes('\\')) return null;
+  // La seule exception aux fichiers cachés : la preuve que l'app Android est
+  // celle de Sitô (Digital Asset Links, T28). Ce chemin exact, rien d'autre.
+  if (p === ASSETLINKS) return `sites/${site}/${version}${ASSETLINKS}`;
   const morceaux = p.split('/').filter(Boolean);
   if (morceaux.some(m => m === '..' || m === '.' || m.startsWith('.'))) return null;
   if (!morceaux.length || p.endsWith('/')) morceaux.push('index.html');
@@ -89,7 +94,10 @@ export default {
       'content-type': TYPES[ext] || 'application/octet-stream',
       // Les fichiers d'une version ne changent jamais ; le HTML se relit vite
       // pour qu'une nouvelle version arrive en une minute au plus.
-      'cache-control': html ? 'public, max-age=60' : 'public, max-age=31536000, immutable',
+      // assetlinks.json : une heure, pour qu'un changement de clé de
+      // signature soit vu sans attendre un an.
+      'cache-control': html ? 'public, max-age=60'
+        : cle.endsWith(ASSETLINKS) ? 'public, max-age=3600' : 'public, max-age=31536000, immutable',
       etag: objet.httpEtag || objet.etag || '',
       'x-sito-version': String(entree.version),
       ...SECURITE,

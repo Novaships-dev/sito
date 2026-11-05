@@ -161,7 +161,7 @@ implémentations, puis à l'essai.
 | Umami (hébergé) | visites, clics « Appeler » | CNIL : un site par artisan, 13 mois / 25 mois | À faire |
 | Stripe | Checkout, portail client | 1,5 % + 0,25 € par carte, + 0,7 % abonnements | À faire |
 | Plateforme de facture électronique (ex. Billit) | émission conforme | obligation PME au 1er sept. 2027 | À faire |
-| Google Play | app Android en TWA (Bubblewrap), `assetlinks.json` | compte personnel : 12 testeurs pendant 14 jours ; organisation : D-U-N-S | À faire |
+| Google Play | app Android en TWA (Bubblewrap), `assetlinks.json` (`scripts/android.mjs`, T28 : les deux fichiers, servis par le Worker) | compte personnel : 12 testeurs pendant 14 jours ; organisation : D-U-N-S | Fichiers prêts et essayés (`essai-android`) ; manquent l'adresse de l'app (F6, T27), le nom du paquet (Q8) et l'empreinte de la clé (F12) |
 
 ## 8. Variables d'environnement
 

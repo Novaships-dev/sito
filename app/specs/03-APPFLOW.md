@@ -233,7 +233,7 @@ active le mode Play Store (mémorisé sur l'appareil).
 
 | Appareil | Parcours | État |
 |---|---|---|
-| Android | Play Store (app TWA qui ouvre l'app avec `?source=android`) | **À faire** (compte Google Play) |
+| Android | Play Store (app TWA qui ouvre l'app avec `?source=android`) | fichiers prêts (T28, `scripts/android.mjs`) ; construction et publication : T29 (compte Google Play, F12) |
 | iPhone | depuis le site Sitô : Partager → Sur l'écran d'accueil | Page faite ; non essayé sur iPhone |
 | Ordinateur | bouton d'installation du navigateur | Fait |
 

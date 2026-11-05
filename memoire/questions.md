@@ -155,3 +155,13 @@ l'adaptant : depuis T45, les sites d'abonnés sont sur Cloudflare Pages, sans
 Worker. Le formulaire appelle donc directement la fonction de la base
 `deposer_demande` avec la clé publique ; mêmes contrôles (champ piège, 10 par
 adresse IP, 50 par site), 0 €, aucune clé secrète dans une page. T10 faite.
+
+## Q8 (ouverte), 5 novembre 2026
+
+Le nom du paquet de l'app Android (par exemple `fr.sito.app`). Il ne change
+plus une fois l'app publiée sur Google Play : une autre valeur, c'est une
+autre app, avec ses avis et ses installations repartis de zéro.
+
+**Réponse recommandée** : `fr.<nom de Sitô>.app`, décidé en même temps que le
+nom et le domaine (F6). Rien n'est publié avant : T28 est faite avec un nom
+d'essai, `scripts/android.mjs --paquet` prendra le vrai (T29).

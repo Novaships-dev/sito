@@ -2198,3 +2198,21 @@ redirection, droit du jeton Cloudflare sur les custom hostnames. Dette D-17.
 Règle tenue : hors bac à sable, un achat ou un renouvellement sans
 confirmation de l'artisan est refusé avant tout appel.
 TRACAGE : atelier/gandi.mjs, atelier/cloudflare-saas.mjs, scripts/faux-gandi.mjs, scripts/faux-cloudflare-saas.mjs, scripts/essai-domaines.mjs, scripts/essais.mjs, .github/workflows/essais.yml, app/specs/02-TRD.md, app/specs/05-SCHEMA-BACKEND.md, app/specs/07-TACHES.md, docs/DETTE.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 5 nov. 2026 — T28, Android (TWA et assetlinks.json), par Cowork
+
+Plan : 1. `scripts/android.mjs` qui écrit `twa-manifest.json` et
+`assetlinks.json` d'après Bubblewrap (types et texte de `@bubblewrap/core`
+1.27.0, paquet npm lu le 5 nov.) ; 2. le Worker et la publication laissent
+passer ce seul fichier caché ; 3. essai, contre-essai, branchement.
+
+Résultat : `node scripts/essai-android.mjs` : 26 contrôles, 0 faute ;
+`--contre-essai` : 5 cassures sur 5 attrapées. Trouvé en écrivant l'essai :
+`atelier/publier.mjs` excluait tous les chemins commençant par un point, la
+preuve ne serait jamais partie ; exception faite pour ce seul fichier, et
+`essai-publication` reste vert. La preuve est gardée une heure (pas un an
+comme les autres fichiers d'une version), pour qu'un changement de clé soit
+vu. Valeurs réelles absentes et non devinées : adresse de l'app (F6, T27),
+nom du paquet (Q8, ouverte), empreinte de la clé (F12). À vérifier à T27 :
+que Vite recopie bien `app/public/.well-known/` dans `dist`.
+TRACAGE : scripts/android.mjs, scripts/essai-android.mjs, worker/routeur.js, atelier/publier.mjs, scripts/essais.mjs, .github/workflows/essais.yml, app/specs/02-TRD.md, app/specs/03-APPFLOW.md, app/specs/07-TACHES.md, memoire/questions.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

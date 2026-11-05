@@ -133,7 +133,7 @@ Rien de payant : ni ordinateur loué, ni serveur d'e-mail, ni carte bancaire
 | N° | Tâche | État | Preuve | Dépend | Bloqué par |
 |---|---|---|---|---|---|
 | T27 | Hébergement de l'app (PWA) sur l'infrastructure Cloudflare de Sitô | bloqué | l'app s'ouvre depuis Internet et s'installe | T14 | F5, F6 |
-| T28 | Android : configuration TWA (Bubblewrap), `assetlinks.json`, `?source=android` | à faire | fichiers prêts, essai de `assetlinks.json` servi par le Worker | | |
+| T28 | Android : configuration TWA (Bubblewrap), `assetlinks.json`, `?source=android` | fait | fichiers prêts, essai de `assetlinks.json` servi par le Worker : `node scripts/essai-android.mjs`, 26 contrôles, 0 faute ; `--contre-essai` : 5 cassures sur 5 attrapées. Valeurs réelles : adresse de l'app (F6, T27), nom du paquet (Q8), empreinte de la clé (F12) | | |
 | T29 | Android : construction et publication Play Store | bloqué | app installée depuis le Play Store, sans prix | T28, T27 | F12 |
 | T30 | Essais sur vrais appareils : iPhone (Safari, HEIC, ProRAW, Live Photo, zones sûres, envoi coupé puis repris) et Android | bloqué | fichiers du plan 5.4 passés depuis chaque appareil | T04 | F14 |
 
