@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 5 nov. | T32 (11 sur 13) : textes du parquet et des sols souples (`generateur/metiers/parquet.json`) ; prix nationaux sourcés ; 100 sites différents dans un département. |
 | 5 nov. | T32 (10 sur 13) : textes de l'étanchéité des toitures-terrasses (`generateur/metiers/etancheite.json`) ; prix nationaux sourcés ; 100 sites différents dans un département. |
 | 5 nov. | T32 (9 sur 13) : textes du terrassement et des VRD (`generateur/metiers/terrassement.json`) ; prix nationaux sourcés ; 100 sites différents dans un département. |
 | 5 nov. | T32 (8 sur 13) : textes de la métallerie, serrurerie et portails (`generateur/metiers/metallerie.json`) ; prix nationaux sourcés ; 100 sites différents dans un département. |

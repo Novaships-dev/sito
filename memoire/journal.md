@@ -2127,3 +2127,16 @@ publication : une phrase disait que relevés et évacuations font « le tiers du
 prix », sans source. Les deux sources ne s'accordent pas sur l'EPDM (55 à 80
 contre 80 à 130 €/m²) : la page donne la première et cite l'écart.
 TRACAGE : generateur/metiers/etancheite.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 5 nov. 2026 — T32, parquet (11 sur 13), par Cowork
+
+Plan : 1. `generateur/metiers/parquet.json` sur le plan d'images (mesure,
+support et ragréage, pose flottante, collée et en motifs, sols souples,
+ponçage, finitions, plinthes et seuils) ; 2. prix relevés le 5 nov. (La
+Maison Saint-Gobain, Habitatpresto) ; 3. capacité et fabrication.
+
+Résultat : 102 titres, 100 sites sans défaut. Deux sites fabriqués (APE
+43.33Z) : `verifier-site` 0 bloquant, `verifier-mobile` 0. Retirés avant
+publication : « la préparation fait la moitié du travail » et « le chêne, bois
+le plus posé », sans source.
+TRACAGE : generateur/metiers/parquet.json, docs/specs/METIERS.md, app/specs/07-TACHES.md, CHANGELOG.md, memoire/maintenant.md, memoire/journal.md, docs/audit/CARTE.md

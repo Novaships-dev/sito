@@ -1,0 +1,873 @@
+{
+  "nom": "Parquet",
+  "libelle": "parquet et sols souples",
+  "schemaType": "HomeAndConstructionBusiness",
+  "legendesPhotos": {
+    "geste": "Deux lames emboîtées, tassées au maillet et à la cale, sans un jour.",
+    "chantier": "Le parquet à moitié poncé : d’un côté le bois gris, de l’autre le bois clair.",
+    "detail": "Un chêne huilé à dix centimètres : le veinage chaud, le joint fin entre deux lames."
+  },
+  "codesApe": [
+    "43.33Z"
+  ],
+  "titres": [
+    "Un parquet se juge à ses joints, et à ce qu’il ne grince pas.",
+    "Les lames s’acclimatent dans la pièce avant d’être posées.",
+    "Le bois bouge avec l’air de la maison. Le poseur lui laisse du jeu.",
+    "Un parquet posé contre le mur gonfle et se soulève.",
+    "Le jeu de dilatation se cache sous la plinthe.",
+    "Un sol se pose sur un support plan, sec et propre.",
+    "Le ragréage rattrape les creux d’une chape, pas un sol qui bouge.",
+    "Une chape trop humide fait gonfler le plus beau parquet.",
+    "L’humidité d’une chape se mesure avant de poser.",
+    "Un vieux parquet gris redevient clair sous la ponceuse.",
+    "Un parquet massif se ponce plusieurs fois dans sa vie.",
+    "Un contrecollé se ponce selon l’épaisseur de sa couche d’usure.",
+    "Un stratifié ne se ponce pas.",
+    "Le ponçage se fait en trois grains, du plus gros au plus fin.",
+    "La ponceuse suit le sens du bois.",
+    "Les bords se poncent à la bordureuse, là où la grande machine ne va pas.",
+    "La poussière de ponçage se ramasse avant la finition, entièrement.",
+    "Un vitrificateur protège le bois sous une couche dure.",
+    "Une huile nourrit le bois et laisse son toucher.",
+    "Un parquet huilé se répare par endroits. Un vitrifié, par pièce entière.",
+    "La première couche d’huile fait foncer le bois, et révèle le veinage.",
+    "Les lames disjointes se resserrent, ou se remplacent.",
+    "Une lame tachée d’eau se change, elle ne se ponce pas toujours.",
+    "Un parquet qui grince a une lame qui bouge sur son support.",
+    "Les lames se décalent d’un rang à l’autre, comme des briques.",
+    "Une coupe en bout de rang sert à commencer le rang suivant.",
+    "La première rangée se pose droite. Toutes les autres la suivent.",
+    "Un cordeau tendu vaut mieux qu’un mur pris pour référence.",
+    "Les murs ne sont jamais droits. Le parquet, si.",
+    "Une barre de seuil raccorde deux sols sans marche.",
+    "Un seuil mal raccordé fait trébucher à chaque passage.",
+    "La sous-couche d’un parquet flottant amortit les bruits de pas.",
+    "Un parquet flottant se clipse, un parquet collé se colle, un massif se cloue.",
+    "Un parquet collé tient mieux et résonne moins.",
+    "Le bâton rompu se pose à partir d’une ligne tracée au centre de la pièce.",
+    "Un point de Hongrie se trace avant la première lame.",
+    "La colle se peigne sur le support, pas sur la lame.",
+    "Un sol souple se découpe au cutter, le long d’une règle.",
+    "Un vinyle se pose sur un support parfaitement lisse : il montre tout.",
+    "Une bosse sous un sol souple finit par trouer le revêtement.",
+    "Un lino ancien se dépose avec sa colle, avant de poser le neuf.",
+    "Une moquette retirée découvre parfois un parquet à sauver.",
+    "Un escalier moquetté cache souvent des marches en bon bois.",
+    "Une marche d’escalier se ponce à la main dans ses angles.",
+    "Le nez de marche s’use le premier.",
+    "Une plinthe se pose une fois le sol posé, pas avant.",
+    "Les plinthes se fixent au mur, jamais au parquet.",
+    "Les portes se recoupent par le bas quand le sol monte.",
+    "Le chêne est choisi pour sa dureté.",
+    "Un bois exotique se choisit avec son origine.",
+    "Le parquet se pose après les plâtres et la peinture des plafonds.",
+    "Un parquet neuf se protège des autres corps de métier.",
+    "Un meuble se pose avec des patins sous ses pieds.",
+    "Le sable sous les chaussures raye plus qu’on ne croit.",
+    "Un parquet s’entretient avec peu d’eau.",
+    "Une serpillière trempée fait gonfler les joints.",
+    "Le soleil fait foncer le chêne, et blanchir certains vernis.",
+    "Un tapis laissé des années laisse son ombre sur le bois.",
+    "Un parquet chauffant se pose avec un bois adapté et une colle souple.",
+    "Le chauffage au sol se coupe avant la pose, et se rallume doucement.",
+    "La teinte d’un parquet se fait sur un échantillon du même bois.",
+    "Une teinte se voit autrement sur une lame qu’en pot.",
+    "Un vernis jauni se ponce jusqu’au bois sain.",
+    "Les clous apparents d’un vieux plancher se chassent avant de poncer.",
+    "Un clou qui dépasse déchire la bande de la ponceuse.",
+    "Un trou de clou se rebouche avec une pâte de la teinte du bois.",
+    "Les fentes larges se comblent avec des baguettes de bois.",
+    "Un vieux parquet se refixe avant d’être poncé.",
+    "Une lambourde pourrie se remplace avant le parquet qu’elle porte.",
+    "Un vide sanitaire humide fait travailler le parquet du dessus.",
+    "Le bois se pose quand le chantier est sec.",
+    "Les lames se mélangent de plusieurs paquets pour éviter les zones.",
+    "Le dernier rang se recoupe à la largeur exacte, moins le jeu.",
+    "Une lame se tasse à la cale, jamais au marteau direct.",
+    "Le tire-lame ferme le dernier joint contre le mur.",
+    "Une coupe propre autour d’un tuyau se fait au gabarit.",
+    "Une huisserie se recoupe pour que la lame passe dessous.",
+    "Le parquet passe sous les portes, pas autour.",
+    "Un sol souple se soude à chaud dans les pièces humides.",
+    "Une cuisine se pose avec un sol qui supporte l’eau.",
+    "Une salle de bain se pose en vinyle ou en parquet prévu pour elle.",
+    "Le ragréage se coule, se lisse, puis sèche.",
+    "Un ragréage se laisse sécher le temps indiqué, pas moins.",
+    "Le primaire d’accrochage se pose avant le ragréage.",
+    "Une chape fissurée se reprend avant le ragréage.",
+    "Le poseur vérifie la planéité à la règle de deux mètres.",
+    "Un creux de quelques millimètres se sent sous un parquet flottant.",
+    "Le parquet se livre par temps sec, et se stocke à plat.",
+    "Un carton de lames ouvert trop tôt dans une pièce humide se gâte.",
+    "Les chutes de parquet servent aux petites coupes.",
+    "La finition se pose dans une pièce sans poussière.",
+    "Une couche de vitrificateur sèche avant la suivante.",
+    "On marche en chaussettes sur un parquet fraîchement vitrifié.",
+    "Les meubles reviennent quand la finition est sèche à cœur.",
+    "Une huile neuve se laisse durcir avant le premier lavage.",
+    "Un parquet bien posé se fait oublier, sauf quand on y marche pieds nus.",
+    "La fin d’un chantier de parquet, c’est un sol plat, silencieux, sans un jour.",
+    "Un devis de parquet compte les plinthes, les seuils et la préparation.",
+    "Un parquet se pose bien sur un carrelage sain et plan.",
+    "Les seuils de porte se règlent avant les plinthes.",
+    "Un parquet ancien se garde quand son bois est encore épais.",
+    "Le poseur rend le chantier aspiré, plinthes posées, seuils fixés."
+  ],
+  "chapos": {
+    "etapes": [
+      [
+        "visite et mesure de la pièce",
+        "mesure de l’humidité du support",
+        "contrôle de la planéité"
+      ],
+      [
+        "dépose de l’ancien revêtement",
+        "retrait des colles",
+        "primaire et ragréage",
+        "refixation du vieux parquet"
+      ],
+      [
+        "lames acclimatées dans la pièce",
+        "sous-couche déroulée",
+        "première rangée tirée au cordeau"
+      ],
+      [
+        "parquet flottant clipsé",
+        "parquet collé",
+        "parquet massif cloué",
+        "sol souple découpé à la règle",
+        "bâton rompu tracé au centre"
+      ],
+      [
+        "ponçage en trois grains",
+        "bords à la bordureuse",
+        "vitrificateur en couches fines",
+        "huile qui révèle le veinage"
+      ],
+      [
+        "plinthes posées",
+        "seuils raccordés",
+        "portes recoupées",
+        "jeu de dilatation caché"
+      ],
+      [
+        "poussière aspirée",
+        "chutes évacuées",
+        "sol rendu propre"
+      ]
+    ],
+    "nombre": [
+      4,
+      5
+    ],
+    "toujours": [
+      3
+    ]
+  },
+  "gestes": [
+    {
+      "terme": "Visite et mesure",
+      "textes": {
+        "combiner": [
+          [
+            "La pièce est mesurée, recoins compris.",
+            "L’humidité de la chape est mesurée à l’humidimètre.",
+            "La planéité est contrôlée à la règle de deux mètres.",
+            "Le support existant est sondé : carrelage, chape, plancher.",
+            "La hauteur disponible sous les portes est relevée.",
+            "Le sens de pose est choisi avec la lumière de la pièce.",
+            "Le bois et sa finition sont choisis sur échantillon.",
+            "Le chauffage au sol éventuel est signalé.",
+            "Les seuils avec les pièces voisines sont repérés.",
+            "Le devis compte les plinthes, les seuils et la préparation."
+          ],
+          [
+            "Une surface mal mesurée fait manquer un carton.",
+            "Une chape humide fait gonfler le parquet en quelques semaines.",
+            "Un creux sous un flottant se sent à chaque pas.",
+            "Un carrelage qui sonne creux ne porte pas un parquet.",
+            "Une porte qui frotte oblige à la recouper après coup.",
+            "Des lames dans le sens de la lumière cachent leurs joints.",
+            "Une teinte vue en magasin change sous la lumière de la maison.",
+            "Un sol chauffant demande une colle et un bois adaptés.",
+            "Un seuil oublié fait une marche entre deux pièces.",
+            "Un devis sans préparation la découvre en cours de chantier."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Préparation du support",
+      "textes": {
+        "combiner": [
+          [
+            "L’ancien revêtement est déposé.",
+            "Les colles anciennes sont grattées ou poncées.",
+            "Les fissures de la chape sont reprises.",
+            "Un primaire est passé avant le ragréage.",
+            "Le ragréage est coulé, lissé, puis laissé sécher.",
+            "Le vieux plancher est refixé là où il bouge.",
+            "Les lambourdes pourries sont remplacées.",
+            "Les clous apparents sont chassés.",
+            "Le support est aspiré avant la pose.",
+            "Les portes sont recoupées par le bas si besoin."
+          ],
+          [
+            "Un neuf posé sur un vieux sol en reprend les défauts.",
+            "Une ancienne colle empêche la nouvelle de prendre.",
+            "Une fissure de chape finit par fendre ce qui la couvre.",
+            "Sans primaire, le ragréage se décolle.",
+            "Un ragréage mouillé fait cloquer le revêtement.",
+            "Une lame qui bouge grince toute sa vie.",
+            "Une lambourde pourrie fait un creux sous les pas.",
+            "Un clou qui dépasse déchire la ponceuse et la lame.",
+            "Un grain de sable sous un vinyle finit par le percer.",
+            "Une porte recoupée après la pose raye le sol neuf."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Pose du parquet",
+      "textes": {
+        "combiner": [
+          [
+            "Les lames sont acclimatées dans la pièce plusieurs jours.",
+            "Les paquets sont mélangés pour répartir les nuances.",
+            "La première rangée est tirée au cordeau.",
+            "Un jeu de dilatation est laissé contre chaque mur.",
+            "Les lames sont décalées d’un rang à l’autre.",
+            "Elles sont tassées à la cale et au maillet.",
+            "Le dernier rang est recoupé à la largeur exacte.",
+            "Le tire-lame ferme le dernier joint.",
+            "Les coupes autour des tuyaux sont faites au gabarit.",
+            "Les huisseries sont recoupées pour que la lame passe dessous."
+          ],
+          [
+            "Une lame froide posée dans une pièce chaude bouge ensuite.",
+            "Un seul paquet fait une zone plus claire au milieu de la pièce.",
+            "Un premier rang de travers se retrouve dans tous les autres.",
+            "Sans jeu, le parquet gonfle et se soulève.",
+            "Des joints alignés affaiblissent le parquet et se voient.",
+            "Un coup de marteau direct casse la languette.",
+            "Un dernier rang trop large pousse contre le mur.",
+            "Un joint ouvert au dernier rang se voit sous la plinthe.",
+            "Une coupe large autour d’un tuyau laisse un trou.",
+            "Une plinthe qui contourne une huisserie fait bricolage."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Pose collée et motifs",
+      "textes": {
+        "combiner": [
+          [
+            "La colle est peignée sur le support à la spatule crantée.",
+            "Les lames sont posées dans la colle fraîche.",
+            "Le bâton rompu part d’une ligne tracée au centre de la pièce.",
+            "Le point de Hongrie est tracé avant la première lame.",
+            "Les lames massives sont clouées sur lambourdes quand le sol le demande.",
+            "Les bavures de colle sont retirées tout de suite.",
+            "La pièce est fermée le temps de la prise.",
+            "Les motifs sont encadrés d’une frise quand c’est prévu.",
+            "Le chauffage au sol reçoit une colle souple.",
+            "Les poids sont posés sur les zones qui se soulèvent."
+          ],
+          [
+            "Une colle étalée sans peigne laisse des vides sous la lame.",
+            "Une colle qui a fait sa peau ne colle plus.",
+            "Un bâton rompu commencé contre un mur part de travers.",
+            "Un point de Hongrie mal tracé ne retombe pas juste.",
+            "Un massif cloué garde la souplesse d’un plancher.",
+            "Une colle sèche sur le bois ne part plus qu’à la ponceuse.",
+            "Un courant d’air pendant la prise fait travailler le bois.",
+            "Une frise bien posée cadre toute la pièce.",
+            "Une colle rigide sur un sol chauffant se fissure.",
+            "Une lame qui se soulève pendant la prise reste soulevée."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Sols souples",
+      "textes": {
+        "combiner": [
+          [
+            "Le support est ragréé parfaitement lisse.",
+            "Le sol souple est déroulé et laissé se détendre.",
+            "Il est découpé au cutter le long d’une règle.",
+            "Les lés sont arasés bord à bord au double tranchant.",
+            "La colle est étalée à la spatule adaptée.",
+            "Le revêtement est marouflé du centre vers les bords.",
+            "Les joints sont soudés à chaud dans les pièces humides.",
+            "Les lames vinyle clipsables sont posées comme un flottant.",
+            "Les remontées en plinthe sont faites dans les pièces d’eau.",
+            "Les seuils sont raccordés par une barre."
+          ],
+          [
+            "Un vinyle montre tout ce qu’il y a dessous.",
+            "Un rouleau posé tout de suite garde la forme du rouleau.",
+            "Une coupe à main levée ne suit jamais le mur.",
+            "Deux lés coupés séparément ne se rejoignent pas.",
+            "Une mauvaise spatule laisse trop ou trop peu de colle.",
+            "Une bulle sous un sol souple se voit au premier soleil.",
+            "Un joint non soudé laisse passer l’eau sous le revêtement.",
+            "Un vinyle clipsable demande la même planéité qu’un parquet.",
+            "Une remontée en plinthe garde l’eau loin des murs.",
+            "Un seuil sans barre se décolle par le bord."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Ponçage",
+      "textes": {
+        "combiner": [
+          [
+            "Les meubles et les plinthes fragiles sont protégés ou déposés.",
+            "Le vieux parquet est refixé et ses clous chassés.",
+            "Un premier passage au gros grain retire le vernis et le gris.",
+            "Un deuxième grain efface les traces du premier.",
+            "Un grain fin prépare la finition.",
+            "La ponceuse suit le sens du bois.",
+            "Les bords et les angles sont faits à la bordureuse.",
+            "Les marches d’escalier sont poncées à la main dans leurs angles.",
+            "Les fentes larges sont comblées de baguettes de bois.",
+            "La poussière est aspirée entièrement avant la finition."
+          ],
+          [
+            "Une poussière de ponçage va partout si rien n’est protégé.",
+            "Un clou qui dépasse arrache la bande et marque le bois.",
+            "Un seul passage laisse des zones encore grises.",
+            "Sauter un grain laisse des rayures sous la finition.",
+            "Un grain trop gros en dernier se voit à la lumière rasante.",
+            "Une ponceuse en travers du bois creuse des vagues.",
+            "La grosse machine ne va pas jusqu’au mur.",
+            "Les angles d’une marche ne se poncent pas à la machine.",
+            "Une fente laissée ouverte garde la saleté.",
+            "Un grain de poussière sous le vernis y reste pour toujours."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Finitions du bois",
+      "textes": {
+        "combiner": [
+          [
+            "La teinte est essayée sur une lame du même bois.",
+            "Le vitrificateur est posé en couches fines, croisées.",
+            "Chaque couche sèche avant la suivante.",
+            "Un égrenage léger se fait entre deux couches.",
+            "L’huile est appliquée au pinceau puis lustrée.",
+            "La première couche d’huile révèle le veinage.",
+            "Le surplus d’huile est essuyé avant qu’il ne durcisse.",
+            "La cire est passée et lustrée sur les parquets anciens.",
+            "La pièce est fermée à la poussière pendant le séchage.",
+            "Le parquet est protégé jusqu’au retour des meubles."
+          ],
+          [
+            "Une teinte sur un autre bois ne donne pas la même couleur.",
+            "Une couche épaisse de vitrificateur coule et blanchit.",
+            "Une couche sur une couche fraîche reste molle.",
+            "Sans égrenage, la couche suivante accroche mal.",
+            "Une huile laissée en surplus devient collante.",
+            "Un bois huilé garde son toucher, un vitrifié devient lisse.",
+            "Un surplus durci se voit comme une tache brillante.",
+            "Une cire mal lustrée garde les traces de pas.",
+            "Une mouche dans le vernis reste dans le vernis.",
+            "Un meuble posé trop tôt marque une finition encore tendre."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    },
+    {
+      "terme": "Plinthes, seuils et fin de chantier",
+      "textes": {
+        "combiner": [
+          [
+            "Les plinthes sont posées une fois le sol fini.",
+            "Elles sont fixées au mur, jamais au parquet.",
+            "Les seuils de porte sont raccordés sans marche.",
+            "Les barres de seuil sont fixées à la bonne hauteur.",
+            "Le jeu de dilatation disparaît sous la plinthe.",
+            "Les chutes sont triées et les grandes laissées au client.",
+            "Le chantier est aspiré.",
+            "L’entretien est expliqué : peu d’eau, patins sous les meubles.",
+            "La référence du bois et de la finition est notée.",
+            "Le sol est parcouru ensemble, pieds nus si on veut."
+          ],
+          [
+            "Une plinthe posée avant le sol laisse un jour.",
+            "Une plinthe clouée au parquet l’empêche de bouger.",
+            "Une marche entre deux pièces fait trébucher.",
+            "Une barre mal réglée se soulève au passage.",
+            "Un jeu visible fait un sol mal fini.",
+            "Une chute gardée sert à réparer une lame dans dix ans.",
+            "Un chantier aspiré, c’est un sol qu’on voit vraiment.",
+            "Une serpillière trempée abîme le plus beau parquet.",
+            "Une référence notée se retrouve pour une réparation.",
+            "Un sol se juge sous les pieds, pas seulement à l’œil."
+          ]
+        ],
+        "joints": [
+          " "
+        ]
+      }
+    }
+  ],
+  "coupure": {
+    "avant": {
+      "etapes": [
+        [
+          "parquet rayé",
+          "lames disjointes",
+          "bois grisé",
+          "vernis jauni",
+          "parquet taché d’eau"
+        ],
+        [
+          "moquette tachée",
+          "lino déchiré",
+          "sol souple décollé",
+          "dalles plastiques",
+          "carrelage froid"
+        ],
+        [
+          "lames soulevées",
+          "parquet qui grince",
+          "escalier moquetté",
+          "seuil mal raccordé"
+        ],
+        [
+          "chape à nu",
+          "colle ancienne",
+          "nez de marche usés"
+        ]
+      ],
+      "nombre": [
+        3,
+        3
+      ]
+    },
+    "apres": {
+      "etapes": [
+        [
+          "ancien sol déposé",
+          "chape ragréée",
+          "lames refixées",
+          "lames acclimatées"
+        ],
+        [
+          "parquet posé",
+          "parquet poncé",
+          "sol vinyle neuf",
+          "marches remises à nu",
+          "lames remplacées",
+          "bâton rompu posé"
+        ],
+        [
+          "vitrifié",
+          "huilé naturel",
+          "ciré",
+          "teinte essayée"
+        ],
+        [
+          "plinthes posées",
+          "seuil raccordé",
+          "jeu de dilatation caché",
+          "portes recoupées"
+        ],
+        [
+          "chantier aspiré",
+          "sol rendu",
+          "meubles sur patins"
+        ]
+      ],
+      "nombre": [
+        3,
+        4
+      ],
+      "toujours": [
+        1
+      ]
+    }
+  },
+  "legendes": {
+    "comparateurs": {
+      "combiner": [
+        [
+          "Salon",
+          "Chambre",
+          "Couloir",
+          "Escalier",
+          "Séjour",
+          "Bureau",
+          "Cuisine",
+          "Entrée",
+          "Salle à manger",
+          "Palier",
+          "Mezzanine",
+          "Seuil"
+        ],
+        [
+          "ancien sol déposé",
+          "chape ragréée",
+          "lames refixées",
+          "clous chassés",
+          "ponçage en trois grains",
+          "bords poncés",
+          "fentes comblées",
+          "lames remplacées",
+          "cordeau tiré",
+          "jeu laissé"
+        ],
+        [
+          "parquet neuf",
+          "parquet huilé",
+          "parquet vitrifié",
+          "sol vinyle posé",
+          "marches en bois",
+          "plinthes posées",
+          "seuil raccordé",
+          "bâton rompu"
+        ]
+      ],
+      "joints": [
+        ", ",
+        ", "
+      ],
+      "fin": "."
+    },
+    "invitation": {
+      "combiner": [
+        [
+          "Faites glisser la couture",
+          "Déplacez la séparation",
+          "Touchez la photo",
+          "Glissez le trait",
+          "Attrapez la couture",
+          "Faites glisser le curseur",
+          "Déplacez le trait",
+          "Passez le doigt sur la photo"
+        ],
+        [
+          "pour comparer l’avant et l’après.",
+          "pour voir le sol avant les travaux.",
+          "pour passer d’un état à l’autre.",
+          "pour voir ce que le chantier a changé.",
+          "pour retrouver le sol d’origine.",
+          "pour voir le bois avant le ponçage.",
+          "pour comparer les deux états.",
+          "pour voir la pièce avant et après.",
+          "pour mesurer le travail fait.",
+          "pour voir la différence."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    },
+    "precision": {
+      "combiner": [
+        [
+          "Même point de vue, même cadrage.",
+          "Les deux photos sont prises du même endroit.",
+          "Même angle, même distance.",
+          "Les deux images ont le même cadrage.",
+          "Même endroit, même objectif.",
+          "Le point de vue ne bouge pas d’une photo à l’autre.",
+          "Photographié deux fois, depuis le même pas de porte.",
+          "Même place, même hauteur d’objectif.",
+          "Le photographe n’a pas bougé entre les deux."
+        ],
+        [
+          "Seul le sol change.",
+          "La différence vient du chantier.",
+          "Rien d’autre ne change que le bois.",
+          "Ce qui change, c’est le travail fait.",
+          "Les murs sont les mêmes, le sol non.",
+          "Seul le sol a été repris.",
+          "Ce qui diffère, ce sont les lames et leur finition.",
+          "Entre les deux, il y a la ponceuse et l’huile.",
+          "L’écart, c’est le travail du parqueteur."
+        ]
+      ],
+      "joints": [
+        " "
+      ]
+    }
+  },
+  "rubriques": {
+    "gestes": [
+      "Le détail des postes.",
+      "Ce que recouvre un chantier de parquet.",
+      "Ce qui se fait sous les lames.",
+      "Les étapes, dans l’ordre.",
+      "Étape par étape.",
+      "De la chape à l’huile.",
+      "Comment se pose un parquet.",
+      "Les postes du chantier.",
+      "Ce que fait le parqueteur.",
+      "Du support à la plinthe.",
+      "Le travail, poste par poste.",
+      "Ce qui se fait, et pourquoi.",
+      "Les gestes du métier.",
+      "Dans l’ordre du chantier.",
+      "Ce que le devis détaille."
+    ],
+    "chantier": [
+      "Le chantier.",
+      "Dans la pièce.",
+      "En cours de travaux.",
+      "Pendant les travaux.",
+      "Sur place.",
+      "Au ras du sol.",
+      "Le chantier en cours.",
+      "Les travaux, en images.",
+      "Ce que montre le chantier.",
+      "Sur le chantier.",
+      "Pendant le ponçage.",
+      "Le sol en travaux.",
+      "Ce qui se voit en cours.",
+      "Au milieu du chantier.",
+      "La pose en cours."
+    ],
+    "verifiable": [
+      "Ce qui se vérifie.",
+      "Les faits publics.",
+      "Ce que disent les registres.",
+      "Ce qui est public.",
+      "Les registres officiels.",
+      "Ce que chacun peut vérifier.",
+      "L’entreprise, dans les registres.",
+      "Les données publiques.",
+      "Les sources officielles.",
+      "Ce que disent les sources publiques.",
+      "Vérifiable par tous.",
+      "Les faits, sans commentaire.",
+      "Ce que l’État publie.",
+      "Dans les bases publiques.",
+      "Les informations légales."
+    ],
+    "contact": [
+      "Parler du chantier.",
+      "Prendre contact.",
+      "Faire venir quelqu’un.",
+      "Demander une visite.",
+      "Montrer le sol.",
+      "Parler de votre parquet.",
+      "Faire voir les lames.",
+      "Appeler l’entreprise.",
+      "Demander un passage.",
+      "Faire mesurer.",
+      "Prendre rendez-vous.",
+      "Une question sur un sol ?",
+      "Faire constater.",
+      "Parler du projet.",
+      "Joindre l’entreprise."
+    ],
+    "prix": [
+      "Ce que ça coûte.",
+      "Les tarifs, poste par poste.",
+      "Avant de demander un devis.",
+      "Combien ça coûte.",
+      "Les prix, poste par poste.",
+      "Les ordres de grandeur.",
+      "Les tarifs pratiqués.",
+      "Ce que coûte un parquet.",
+      "Le prix des travaux.",
+      "Avant le devis.",
+      "Les prix du métier.",
+      "Ce qui fait le prix.",
+      "Les tarifs, sans détour.",
+      "Les fourchettes de prix.",
+      "Ce que dit le devis."
+    ]
+  },
+  "mot": "Parquet",
+  "matiere": [
+    "À dix centimètres, le chêne huilé montre un veinage chaud et des maillures claires.",
+    "Une lame poncée garde une arête vive, sans un éclat.",
+    "Le joint entre deux lames fait un trait fin et régulier.",
+    "Un sol souple à motif bois répète ses nœuds tous les quelques mètres.",
+    "La plinthe recouvre la cale de dilatation sans la laisser voir.",
+    "Le ragréage lissé sèche en une surface mate et grise.",
+    "Le seuil entre deux revêtements fait une ligne nette sous la porte.",
+    "Un vieux parquet avant ponçage est gris, rayé, marqué par les pas.",
+    "La première couche d’huile fait foncer le bois d’un coup.",
+    "Un vitrificateur sec renvoie la lumière de la fenêtre.",
+    "Le grain fin laisse le bois doux comme une feuille de papier.",
+    "Un bâton rompu dessine des chevrons qui changent avec la lumière.",
+    "Le point de Hongrie aligne ses pointes sur toute la longueur.",
+    "Une lame massive sonne plein sous le talon.",
+    "Le contrecollé montre sa couche noble sur la tranche.",
+    "La poussière de ponçage est fine, blonde, et sent le bois frais.",
+    "Un nez de marche poncé retrouve son arrondi.",
+    "Une cire lustrée garde un éclat doux, jamais brillant.",
+    "Les nœuds d’un chêne rustique font des taches sombres et rondes.",
+    "Un parquet ancien garde les traces de ses clous, alignées.",
+    "Un vinyle neuf ne montre aucune bosse à la lumière rasante.",
+    "La languette entre dans la rainure avec un bruit sourd.",
+    "Une baguette de bois comble une fente sans qu’on la voie.",
+    "La sous-couche déroulée couvre la chape d’une peau fine.",
+    "L’huile fraîche fait briller le veinage, puis se mate en séchant.",
+    "Une lame tachée d’eau garde un cerne noir.",
+    "Le chêne au soleil prend une teinte de miel.",
+    "Les rangs décalés font un dessin sans motif répété.",
+    "Une coupe au gabarit épouse le tuyau à un millimètre près.",
+    "Un sol fini ne craque nulle part sous les pieds nus."
+  ],
+  "prix": {
+    "note": "Ordres de grandeur nationaux, relevés le 5 novembre 2026. Ce ne sont pas les prix de l'entreprise et ce n'est pas un devis.",
+    "sources": [
+      {
+        "nom": "La Maison Saint-Gobain, prix de pose d’un parquet",
+        "url": "https://www.lamaisonsaintgobain.fr/guides-travaux/amenagement-interieur/prix-pose-parquet"
+      },
+      {
+        "nom": "Habitatpresto, prix de la rénovation d’un parquet",
+        "url": "https://www.habitatpresto.com/mag/revetement/sol/prix-renovation-parquet"
+      }
+    ],
+    "postes": [
+      {
+        "poste": "Parquet fourni et posé",
+        "bas": 70,
+        "haut": 210,
+        "unite": "€/m²",
+        "note": "Selon le bois, le support et le motif de pose."
+      },
+      {
+        "poste": "Ponçage seul",
+        "bas": 18,
+        "haut": 25,
+        "unite": "€/m²",
+        "note": "Sans finition."
+      },
+      {
+        "poste": "Ponçage et vitrification",
+        "bas": 35,
+        "haut": 45,
+        "unite": "€/m²",
+        "note": "Fournitures comprises."
+      },
+      {
+        "poste": "Ponçage et huilage",
+        "bas": 38,
+        "haut": 48,
+        "unite": "€/m²",
+        "note": "Fournitures comprises."
+      }
+    ],
+    "exemple": {
+      "titre": "Un séjour de 25 m², parquet poncé et huilé",
+      "bas": 950,
+      "haut": 1200,
+      "note": "Calculé avec le dernier poste ci-dessus (38 à 48 €/m²). Le remplacement de lames abîmées s’ajoute."
+    }
+  },
+  "nuancierEtiquette": "Voir le parquet dans une autre teinte",
+  "teintes": [
+    {
+      "nom": "D’origine",
+      "voile": "",
+      "pastille": "#A57E55"
+    },
+    {
+      "nom": "Chêne naturel",
+      "voile": "34 40% 62% / .28",
+      "pastille": "#C79F6E"
+    },
+    {
+      "nom": "Chêne blanchi",
+      "voile": "38 22% 82% / .30",
+      "pastille": "#DDD2BF"
+    },
+    {
+      "nom": "Chêne fumé",
+      "voile": "28 30% 32% / .32",
+      "pastille": "#6A5039"
+    },
+    {
+      "nom": "Miel",
+      "voile": "32 56% 52% / .30",
+      "pastille": "#C68B45"
+    },
+    {
+      "nom": "Noyer",
+      "voile": "24 34% 28% / .32",
+      "pastille": "#5E4330"
+    },
+    {
+      "nom": "Gris cendré",
+      "voile": "30 6% 58% / .30",
+      "pastille": "#9A948C"
+    },
+    {
+      "nom": "Wengé",
+      "voile": "20 20% 18% / .34",
+      "pastille": "#3A2F28"
+    },
+    {
+      "nom": "Vieux chêne",
+      "voile": "30 36% 40% / .30",
+      "pastille": "#8A6A45"
+    },
+    {
+      "nom": "Blanc nordique",
+      "voile": "40 18% 90% / .30",
+      "pastille": "#EEE8DC"
+    }
+  ],
+  "alt": {
+    "avant": "parquet ancien rayé avant travaux, lames disjointes et grises",
+    "apres": "le même parquet poncé et huilé",
+    "invitation": "Comparer le sol avant et après les travaux",
+    "avant2": "un autre sol avant la reprise du parquet",
+    "apres2": "le même sol une fois le parquet fini",
+    "hero": "pièce dont une moitié garde l’ancien sol et l’autre le parquet neuf",
+    "invitation2": "Comparer un second chantier avant et après",
+    "ouverture": "geste du métier sur un chantier de parquet",
+    "chantier": "lames empilées en acclimatation, cales de dilatation",
+    "chantierBis": "ponceuse à bande en pause sur un parquet à moitié poncé",
+    "detail": "gros plan sur un chêne huilé",
+    "detailBis": "gros plan sur le joint entre deux lames",
+    "geste": "mains qui emboîtent deux lames"
+  },
+  "estimateur": {
+    "titre": "Vos pièces",
+    "mesure": {
+      "etiquette": "Surface de sol",
+      "unite": "m²",
+      "min": 5,
+      "max": 300,
+      "pas": 5,
+      "defaut": 30,
+      "aria": "Surface de sol en mètres carrés"
+    }
+  }
+}
