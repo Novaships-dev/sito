@@ -2422,3 +2422,13 @@ Preuve : `essai-app` : 169 contrôles, 0 faute ; un premier passage a
 rougi juste (bouton sous le pli sur Android 360 × 740), corrigé en
 réduisant la photo et le titre sur petit écran. Aperçu republié (version 3).
 TRACAGE : app/src/vitrine/Vitrine.tsx, app/src/vitrine/vitrine.css, scripts/essai-app.mjs, CHANGELOG.md, memoire/journal.md, memoire/decisions.md, memoire/de-cowork.md
+
+## 6 nov. 2026 — Tâches du nettoyage ajoutées, par Cowork
+
+Page validée par Fabrice (« On est bon »). Les étapes restantes du nettoyage
+deviennent des tâches pour Claude Code, en tête de `07-TACHES.md` : T61
+(espace artisan réduit), T62 (paiement par liens Stripe), T63 (domaines par
+une commande), T64 (avis Google sur le site seulement), T65 (ménage des
+documents), T66 (numéro WhatsApp, bloquée par F24), T67 (mise en ligne de la
+page, bloquée par F25 : micro-entreprise et domaine).
+TRACAGE : app/specs/07-TACHES.md, memoire/actions-fabrice.md, memoire/maintenant.md, memoire/journal.md
