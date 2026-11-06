@@ -41,3 +41,4 @@ section 2, « Deux sessions ».
 | 6 nov. 2026 | `memoire/decisions.md` (avis sur la page v2, 1 h 38, mot pour mot) | conversation Cowork du 6 nov. |
 | 6 nov. 2026 | `memoire/decisions.md` (page v3 validée, mot pour mot) | message de Fabrice, 1 h 46 |
 | 6 nov. 2026 | `memoire/decisions.md` (réponse à Q10, mot pour mot) | message de Fabrice, 2 h 16 |
+| 6 nov. 2026 | `memoire/decisions.md` (Gandi gardé, page provisoire possible, Stripe et micro cette semaine, mot pour mot) | messages de Fabrice, 4 h 10 et 4 h 19 |
