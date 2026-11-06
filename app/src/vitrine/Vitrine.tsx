@@ -157,29 +157,51 @@ export function Vitrine() {
       </header>
 
       <main id="m-contenu" tabIndex={-1}>
-        {/* ---------------------------------------------------- haut de page */}
+        {/* ---------------------------------------------------- haut de page : la photo en grand, rien dessus */}
         <section className="m-une" aria-labelledby="m-titre">
           <div className="m-une-texte">
-            <h1 id="m-titre">Un beau site internet qui vous ramène des chantiers</h1>
-            <p className="m-une-chapeau">On crée le site de votre entreprise, à votre nom, avec vos photos de chantier. Vous le voyez avant de payer. Ensuite, {euros(OFFRE.prixMois)} par mois, nom de domaine compris.</p>
+            <h1 id="m-titre">Vos clients vous cherchent sur internet<span className="m-pt">.</span> Soyez là<span className="m-pt">.</span></h1>
+            <p className="m-une-chapeau">Un site pro à votre nom, avec vos chantiers en photos, fait pour que les clients du coin vous appellent. Vous voyez la maquette avant de payer.</p>
             <div className="m-une-actions" ref={haut}>
               <BoutonMaquette />
               <a className="m-lien" href="#prix">Voir les prix</a>
             </div>
             <ul className="m-une-preuves">
-              <li><Icone d={I.coche} taille={18} />Site prêt à voir avant de payer</li>
-              <li><Icone d={I.coche} taille={18} />Nom de domaine compris</li>
-              <li><Icone d={I.coche} taille={18} />Photos ajoutées depuis le téléphone</li>
+              <li><strong>{euros(OFFRE.prixMois)}</strong><span>par mois, tout compris</span></li>
+              <li><strong>0 €</strong><span>pour voir votre maquette</span></li>
+              <li><strong>.fr</strong><span>nom de domaine à vous</span></li>
             </ul>
           </div>
           <div className="m-une-visuel">
-            <Photo src={PHOTOS.facadier} alt="Un façadier regarde son téléphone devant la façade qu’il vient de refaire" className="m-une-photo" cadre="22% 50%" />
-            <Telephone className="m-une-tel"><MiniSite e={EXEMPLES[0]} format="telephone" /></Telephone>
+            <Photo src={PHOTOS.facadier} alt="Un façadier regarde son téléphone devant la façade qu’il vient de refaire" className="m-une-photo" cadre="24% 45%" />
             <div className="m-notif" aria-hidden="true">
               <span className="m-notif-icone"><Icone d={I.tel} taille={18} /></span>
               <span><strong>Nouvelle demande de devis</strong>Ravalement 120 m², Aubagne</span>
             </div>
-            <div className="m-note" aria-hidden="true"><Etoiles /><span>Avis Google sur votre site</span></div>
+          </div>
+        </section>
+
+        {/* ---------------------------------------------------- ce que voit le client qui cherche */}
+        <section className="m-section m-recherche" aria-labelledby="m-t-recherche">
+          <div className="m-recherche-texte">
+            <h2 id="m-t-recherche">Un client cherche un façadier<span className="m-pt">.</span> Il tombe sur vous<span className="m-pt">.</span></h2>
+            <p>Avant d’appeler un artisan, un client regarde sur internet. Il compare les photos, les avis, et il appelle celui qui lui inspire confiance.</p>
+            <p>Votre site est écrit avec votre métier et votre ville, pour que ce client-là trouve votre numéro.</p>
+          </div>
+          <div className="m-moteur" aria-hidden="true">
+            <div className="m-moteur-barre"><Icone d={I.loupe} taille={18} /><span>façadier Aubagne</span></div>
+            <div className="m-resultat m-resultat--vous">
+              <span className="m-resultat-adresse">www.votre-entreprise.fr</span>
+              <span className="m-resultat-titre">Votre entreprise : ravalement de façade à Aubagne</span>
+              <span className="m-resultat-note"><Etoiles />Avis Google</span>
+              <span className="m-resultat-texte">Façades refaites, enduits, peinture extérieure. Devis gratuit, chantiers en photos.</span>
+              <span className="m-resultat-photos">
+                <Photo src={PHOTOS.avant} alt="" /><Photo src={PHOTOS.apres} alt="" /><Photo src={PHOTOS.facadier} alt="" cadre="24% 45%" />
+              </span>
+              <span className="m-resultat-actions"><span className="m-resultat-appel"><Icone d={I.tel} taille={14} />Appeler</span><span>Demander un devis</span></span>
+            </div>
+            <div className="m-resultat m-resultat--gris"><i /><i /><i /></div>
+            <div className="m-resultat m-resultat--gris"><i /><i /><i /></div>
           </div>
         </section>
 

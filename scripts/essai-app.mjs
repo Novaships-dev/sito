@@ -385,7 +385,7 @@ try {
     console.log(`\nPage de Sitô (${appareil.nom})`);
     const { ctx: c, page: p, erreurs: errs } = await nouvellePage(appareil);
     await p.goto(`${BASE}?demo#/`);
-    ok(await visible(p.getByRole('heading', { level: 1, name: 'Un beau site internet qui vous ramène des chantiers' }), 8000), 'la page de Sitô s ouvre à l adresse de l app');
+    ok(await visible(p.getByRole('heading', { level: 1, name: 'Vos clients vous cherchent sur internet. Soyez là.' }), 8000), 'la page de Sitô s ouvre à l adresse de l app');
     // la police change la hauteur des blocs : on mesure une fois chargée (machine occupée : 6 nov.)
     await p.evaluate(() => document.fonts.ready);
     const r = await mesurerRendu(p);
@@ -412,7 +412,7 @@ try {
     await ctx.addInitScript(() => { Object.defineProperty(navigator, 'standalone', { get: () => true }); });
     const p = await ctx.newPage();
     await p.goto(`${BASE}?demo#/`);
-    ok(await visible(p.getByLabel('Votre adresse e-mail'), 8000) && !(await p.getByRole('heading', { name: 'Un beau site internet qui vous ramène des chantiers' }).count()), 'app installée : elle s ouvre sur la connexion');
+    ok(await visible(p.getByLabel('Votre adresse e-mail'), 8000) && !(await p.getByRole('heading', { name: 'Vos clients vous cherchent sur internet. Soyez là.' }).count()), 'app installée : elle s ouvre sur la connexion');
     await ctx.close();
   }
 

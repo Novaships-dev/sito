@@ -2405,3 +2405,20 @@ aucune photo d'un vrai artisan : elles vont dans le dépôt public.
 Preuve : `essai-app` : 169 contrôles, 0 faute ; captures 1366 et 390 relues
 après défilement (toutes les photos chargées). Aperçu republié (version 2).
 TRACAGE : app/public/vitrine/1.webp, app/public/vitrine/2.webp, app/public/vitrine/3.webp, app/public/vitrine/4.webp, app/public/vitrine/5.webp, app/public/vitrine/6.webp, app/src/vitrine/Vitrine.tsx, app/src/vitrine/vitrine.css, app/src/vitrine/offre.ts, app/package.json, app/package-lock.json, scripts/essai-app.mjs, CHANGELOG.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 6 nov. 2026 — Page, version 3, par Cowork
+
+Avis de Fabrice (capture d'iPhone) : plus de couleur, plus d'accroche, on voit
+mal l'image, « pro du digital », pas « vibecoder ». Sur téléphone, le
+téléphone dessiné et la notification cachaient l'artisan.
+Fait : haut de page en deux parts (texte sur vert #0e241a, photo pleine
+hauteur jusqu'au bord ; sur téléphone la photo en haut, le texte dessous),
+plus de téléphone dessiné dans le haut, une seule carte (la demande de
+devis) loin du visage ; trois chiffres clés ; section « recherche » : un
+résultat avec le site de l'artisan (adresse votre-entreprise.fr, aucun nom
+réel, aucun logo de moteur, aucune note chiffrée inventée) ; point des
+grands titres rapproché (`.m-pt`, approche large du point de la police).
+Preuve : `essai-app` : 169 contrôles, 0 faute ; un premier passage a
+rougi juste (bouton sous le pli sur Android 360 × 740), corrigé en
+réduisant la photo et le titre sur petit écran. Aperçu republié (version 3).
+TRACAGE : app/src/vitrine/Vitrine.tsx, app/src/vitrine/vitrine.css, scripts/essai-app.mjs, CHANGELOG.md, memoire/journal.md, memoire/decisions.md, memoire/de-cowork.md

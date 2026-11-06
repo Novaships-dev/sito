@@ -31,6 +31,8 @@
 .m :where(h1, h2, h3, p, figure) { margin: 0; }
 .m :where(ul, ol) { margin: 0; padding: 0; list-style: none; }
 .m :where(a) { color: inherit; }
+/* Le point de Plus Jakarta Sans a une large approche : dans les grands titres, on le rapproche. */
+.m-pt { margin-left: -.09em; }
 .m-aller { position: absolute; left: -999px; }
 .m-aller:focus { left: 1rem; top: 1rem; z-index: 20; background: #fff; padding: .6rem 1rem; }
 
@@ -77,52 +79,89 @@
 .m-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .m-photo--absente { background: linear-gradient(135deg, #ece7dc 0%, #ddd5c4 55%, #cfc6b2 100%); }
 
-/* ---------------------------------------------------------------- haut de page */
+/* ---------------------------------------------------------------- haut de page
+   Ordinateur : le texte sur un vert profond à gauche, la photo pleine hauteur
+   à droite jusqu'au bord, l'artisan bien visible. Téléphone : la photo en
+   haut, le texte dessous. Rien ne couvre le visage. */
 .m-une {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center;
-  padding: clamp(2rem, 6vw, 4.5rem) var(--bord) clamp(3rem, 7vw, 5.5rem);
-  min-height: calc(100svh - 66px);
-  background: radial-gradient(1100px 520px at 85% 10%, #fff6dc 0%, rgba(255, 246, 220, 0) 60%), var(--blanc);
+  --nuit: #0e241a;
+  position: relative; display: grid; grid-template-columns: minmax(0, 46fr) minmax(0, 54fr);
+  min-height: calc(100svh - 66px); max-height: 900px;
+  background: var(--nuit); color: #fff; overflow: hidden;
 }
-.m-une h1 { font-size: clamp(2.3rem, 5.4vw, 4.4rem); line-height: 1.04; letter-spacing: -.03em; font-weight: 800; text-wrap: balance; max-width: 13ch; }
-.m-une-chapeau { margin-top: 1.6rem; font-size: clamp(1.08rem, 1.6vw, 1.25rem); color: var(--texte); max-width: 34rem; }
+.m-une-texte {
+  position: relative; z-index: 1; align-self: center;
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3.5rem) clamp(2.5rem, 6vw, 5rem) var(--bord);
+}
+.m-une h1 { font-size: clamp(2.4rem, 4.8vw, 4.3rem); line-height: 1.03; letter-spacing: -.035em; font-weight: 800; text-wrap: balance; }
+.m-une-chapeau { margin-top: 1.4rem; font-size: clamp(1.08rem, 1.5vw, 1.24rem); color: #cfdcd4; max-width: 33rem; }
 .m-une-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.6rem; margin-top: 2rem; }
-.m-une-preuves { margin-top: 2.2rem; display: grid; gap: .55rem; }
-.m-une-preuves li { display: flex; align-items: center; gap: .6rem; font-weight: 600; color: var(--encre); }
-.m-une-preuves svg, .m-carte li svg { color: var(--vert); flex: none; }
-.m-une-visuel { position: relative; aspect-ratio: 5 / 4.4; }
-.m-une-photo { position: absolute; inset: 0 0 0 8%; border-radius: 28px; box-shadow: var(--ombre); }
-.m-une-tel { position: absolute; left: -2%; bottom: -6%; width: 34%; }
+.m-une .m-lien { color: #fff; }
+.m-une-preuves { margin-top: 2.6rem; display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 1.6rem; padding-top: 1.6rem; border-top: 1px solid rgba(255, 255, 255, .14); }
+.m-une-preuves li { display: grid; gap: .1rem; }
+.m-une-preuves strong { font-size: 1.6rem; font-weight: 800; letter-spacing: -.02em; color: var(--jaune); line-height: 1.1; }
+.m-une-preuves span { font-size: .9rem; color: #b9c9bf; }
+.m-une-visuel { position: relative; min-height: 100%; }
+.m-une-photo { position: absolute; inset: 0; }
+/* le raccord entre le vert et la photo, à gauche seulement, loin du visage */
+.m-une-visuel::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 18%; z-index: 1; background: linear-gradient(90deg, var(--nuit), rgba(14, 36, 26, 0)); }
 .m-notif {
-  position: absolute; right: -2%; top: 8%; display: flex; align-items: center; gap: .7rem;
-  background: #fff; border-radius: 16px; padding: .75rem 1rem .75rem .75rem; box-shadow: var(--ombre);
-  font-size: .88rem; line-height: 1.3; max-width: 64%;
-  animation: m-arrive .6s .5s cubic-bezier(.2, .9, .3, 1) both;
+  position: absolute; z-index: 2; right: clamp(1rem, 3vw, 2.5rem); bottom: clamp(1.5rem, 5vw, 3rem);
+  display: flex; align-items: center; gap: .75rem;
+  background: #fff; color: var(--encre); border-radius: 16px; padding: .8rem 1.1rem .8rem .8rem;
+  box-shadow: 0 20px 40px -16px rgba(0, 0, 0, .55); font-size: .9rem; line-height: 1.3;
+  animation: m-arrive .6s .6s cubic-bezier(.2, .9, .3, 1) both;
 }
-.m-notif strong { display: block; font-size: .92rem; }
-.m-notif-icone { display: grid; place-items: center; flex: none; width: 38px; height: 38px; border-radius: 12px; background: #e3f3e8; color: #1d6b3d; }
-.m-note { position: absolute; right: 6%; bottom: 7%; display: flex; align-items: center; gap: .5rem; background: #fff; border-radius: 999px; padding: .5rem .9rem; box-shadow: var(--ombre); font-weight: 700; font-size: .85rem; }
+.m-notif strong { display: block; font-size: .95rem; }
+.m-notif-icone { display: grid; place-items: center; flex: none; width: 40px; height: 40px; border-radius: 12px; background: #1fa45a; color: #fff; }
 .m-etoiles { display: inline-flex; gap: 1px; color: #f2a516; }
-@keyframes m-arrive { from { opacity: 0; transform: translateY(-10px) scale(.97); } to { opacity: 1; transform: none; } }
+@keyframes m-arrive { from { opacity: 0; transform: translateY(12px) scale(.97); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .m-notif { animation: none; } }
 @media (max-width: 900px) {
-  .m-une { grid-template-columns: 1fr; min-height: 0; padding-top: 1.8rem; }
-  .m-une-visuel { margin: 1rem 0 2rem; }
-  .m-une-photo { inset: 0; }
-  .m-une-tel { left: 4%; width: 36%; bottom: -8%; }
-  .m-notif { right: 4%; top: 5%; }
+  .m-une { grid-template-columns: 1fr; max-height: none; min-height: 0; }
+  .m-une-visuel { order: -1; min-height: 0; aspect-ratio: 4 / 3.1; }
+  .m-une-visuel::before { inset: auto 0 0 0; width: auto; height: 22%; background: linear-gradient(0deg, var(--nuit), rgba(14, 36, 26, 0)); }
+  .m-une-texte { padding-top: 1.6rem; }
+  .m-notif { right: .8rem; bottom: 1.4rem; font-size: .78rem; padding: .55rem .8rem .55rem .55rem; gap: .55rem; }
+  .m-notif strong { font-size: .82rem; }
+  .m-notif-icone { width: 32px; height: 32px; border-radius: 10px; }
 }
 @media (max-width: 520px) {
-  .m-une-preuves { display: none; }
-  .m-une-chapeau { font-size: 1.05rem; margin-top: 1.1rem; }
-  .m-une-actions { margin-top: 1.4rem; }
-  .m-une .m-bouton { width: 100%; }
-  .m-une-actions { gap: .4rem 1.2rem; }
-  .m-notif { font-size: .76rem; max-width: 66%; padding: .55rem .75rem .55rem .55rem; gap: .5rem; }
-  .m-notif strong { font-size: .8rem; }
-  .m-notif-icone { width: 30px; height: 30px; border-radius: 9px; }
-  .m-note { display: none; }
+  .m-une-visuel { aspect-ratio: 16 / 11; }
+  .m-une h1 { font-size: clamp(2rem, 9vw, 2.4rem); }
+  .m-une-chapeau { font-size: 1rem; margin-top: 1rem; }
+  .m-une-texte { padding-top: 1.2rem; }
+  .m-une .m-bouton { width: 100%; font-size: .95rem; padding-inline: 1rem; white-space: nowrap; }
+  .m-une-actions { gap: .4rem 1.2rem; margin-top: 1.5rem; }
+  .m-une-preuves { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; margin-top: 1.8rem; }
+  .m-une-preuves strong { font-size: 1.25rem; }
+  .m-une-preuves span { font-size: .78rem; }
 }
+
+/* ---------------------------------------------------------------- ce que voit le client qui cherche */
+.m-recherche { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+@media (max-width: 860px) { .m-recherche { grid-template-columns: 1fr; } }
+.m-recherche-texte { display: grid; gap: 1.1rem; max-width: 32rem; }
+.m-recherche-texte p { color: var(--texte); font-size: 1.12rem; }
+.m-moteur { background: #fff; border-radius: 24px; padding: clamp(1rem, 2.5vw, 1.6rem); box-shadow: 0 30px 70px -30px rgba(19, 32, 26, .45), 0 0 0 1px rgba(19, 32, 26, .06); display: grid; gap: 1rem; }
+.m-moteur-barre { display: flex; align-items: center; gap: .7rem; border-radius: 999px; padding: .8rem 1.2rem; background: #f1f3f2; font-weight: 600; color: var(--encre); }
+.m-moteur-barre svg { color: var(--texte); }
+.m-resultat { display: grid; gap: .35rem; border-radius: 16px; padding: 1rem 1.1rem; }
+.m-resultat--vous { background: #fffbef; box-shadow: 0 0 0 2px var(--jaune); }
+.m-resultat-adresse { font-size: .82rem; color: #1d6b3d; }
+.m-resultat-titre { font-size: 1.12rem; font-weight: 800; color: #1a3ea8; line-height: 1.25; }
+.m-resultat-note { display: inline-flex; align-items: center; gap: .4rem; font-size: .85rem; color: var(--texte); }
+.m-resultat-texte { font-size: .92rem; color: var(--texte); }
+.m-resultat-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: .4rem; margin-top: .3rem; }
+.m-resultat-photos .m-photo { aspect-ratio: 4 / 3; border-radius: 10px; }
+.m-resultat-actions { display: flex; gap: .5rem; margin-top: .4rem; font-size: .85rem; font-weight: 700; }
+.m-resultat-actions > span { border-radius: 999px; padding: .4rem .9rem; background: #eef2ef; }
+.m-resultat-actions .m-resultat-appel { display: inline-flex; align-items: center; gap: .35rem; background: var(--encre); color: #fff; }
+.m-resultat--gris { gap: .5rem; opacity: .55; }
+.m-resultat--gris i { display: block; height: 10px; border-radius: 6px; background: #e6e9e7; }
+.m-resultat--gris i:nth-child(1) { width: 34%; height: 8px; }
+.m-resultat--gris i:nth-child(2) { width: 72%; height: 14px; }
+.m-resultat--gris i:nth-child(3) { width: 90%; }
 
 /* ---------------------------------------------------------------- sections */
 .m-section { padding: clamp(4rem, 9vw, 7.5rem) var(--bord); }
@@ -132,7 +171,7 @@
 .m-discret { color: var(--texte); }
 
 /* avant / après */
-.m-chantiers { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; background: var(--pierre); }
+.m-chantiers { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; background: #f6efe1; }
 .m-chantiers-texte { display: grid; gap: 1.1rem; max-width: 30rem; }
 .m-chantiers-texte p:first-of-type { font-size: 1.15rem; }
 @media (max-width: 860px) { .m-chantiers { grid-template-columns: 1fr; } }
