@@ -39,3 +39,4 @@ section 2, « Deux sessions ».
 | 6 nov. 2026 | `memoire/decisions.md` (nom MonSiteArtisan.com, mot pour mot) | message de Fabrice du 5 nov., 23 h 59 |
 | 6 nov. 2026 | `memoire/decisions.md` (avis de Fabrice sur la page et réponses, 0 h 31, mot pour mot) | conversation Cowork du 6 nov. |
 | 6 nov. 2026 | `memoire/decisions.md` (avis sur la page v2, 1 h 38, mot pour mot) | conversation Cowork du 6 nov. |
+| 6 nov. 2026 | `memoire/decisions.md` (page v3 validée, mot pour mot) | message de Fabrice, 1 h 46 |
