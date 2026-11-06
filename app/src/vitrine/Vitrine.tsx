@@ -12,12 +12,12 @@ import './vitrine.css';
 import { OFFRE, MENTION_TVA, WHATSAPP, PHOTOS, lienWhatsApp, euros } from './offre';
 
 // ------------------------------------------------------------------ petites pièces
-function Photo({ src, alt, className = '' }: { src: string | null; alt: string; className?: string }) {
+function Photo({ src, alt, className = '', cadre }: { src: string | null; alt: string; className?: string; cadre?: string }) {
   const [echec, setEchec] = useState(false);
   const absente = !src || echec;
   return (
     <div className={`m-photo ${absente ? 'm-photo--absente' : ''} ${className}`}>
-      {!absente && <img src={src} alt={alt} loading="lazy" decoding="async" onError={() => setEchec(true)} />}
+      {!absente && <img src={src} alt={alt} loading="lazy" decoding="async" style={cadre ? { objectPosition: cadre } : undefined} onError={() => setEchec(true)} />}
     </div>
   );
 }
@@ -54,11 +54,11 @@ function BoutonMaquette({ texte = 'Recevoir ma maquette gratuite', variante = 'j
 }
 
 // Un site d'artisan en miniature, dessiné en HTML : ce que l'artisan aura.
-type Exemple = { nom: string; metier: string; ville: string; photo: string | null; style: CSSProperties; accroche: string };
+type Exemple = { nom: string; metier: string; ville: string; photo: string | null; cadre: string; style: CSSProperties; accroche: string };
 const EXEMPLES: Exemple[] = [
-  { nom: 'Façades Morel', metier: 'Ravalement de façade', ville: 'Aubagne', photo: PHOTOS.facadier, accroche: 'Des façades refaites pour vingt ans', style: { '--fond': '#f4efe6', '--encre': '#2a2420', '--marque': '#9a4a2c' } as CSSProperties },
-  { nom: 'Toitures du Garlaban', metier: 'Couverture et zinguerie', ville: 'Marseille', photo: PHOTOS.couvreur, accroche: 'Votre toit, tuile par tuile', style: { '--fond': '#0f1d2b', '--encre': '#f2f4f7', '--marque': '#e8a33c' } as CSSProperties },
-  { nom: 'Atelier Blanc Lumière', metier: 'Peinture intérieure', ville: 'Aix-en-Provence', photo: PHOTOS.peintre, accroche: 'Des pièces qui respirent', style: { '--fond': '#fbfaf7', '--encre': '#1d2b26', '--marque': '#3f7d6a' } as CSSProperties },
+  { nom: 'Façades Morel', metier: 'Ravalement de façade', ville: 'Aubagne', photo: PHOTOS.apres, cadre: '50% 50%', accroche: 'Des façades refaites pour vingt ans', style: { '--fond': '#f4efe6', '--encre': '#2a2420', '--marque': '#9a4a2c' } as CSSProperties },
+  { nom: 'Toitures du Garlaban', metier: 'Couverture et zinguerie', ville: 'Marseille', photo: PHOTOS.couvreur, cadre: '28% 40%', accroche: 'Votre toit, tuile par tuile', style: { '--fond': '#0f1d2b', '--encre': '#f2f4f7', '--marque': '#e8a33c' } as CSSProperties },
+  { nom: 'Atelier Blanc Lumière', metier: 'Peinture intérieure', ville: 'Aix-en-Provence', photo: PHOTOS.peintre, cadre: '50% 50%', accroche: 'Des pièces qui respirent', style: { '--fond': '#fbfaf7', '--encre': '#1d2b26', '--marque': '#3f7d6a' } as CSSProperties },
 ];
 
 function MiniSite({ e, format }: { e: Exemple; format: 'ordinateur' | 'telephone' }) {
@@ -66,7 +66,7 @@ function MiniSite({ e, format }: { e: Exemple; format: 'ordinateur' | 'telephone
     <div className={`m-mini m-mini--${format}`} style={e.style}>
       <div className="m-mini-barre"><strong>{e.nom}</strong><span className="m-mini-appel">Appeler</span></div>
       <div className="m-mini-une">
-        <Photo src={e.photo} alt="" />
+        <Photo src={e.photo} alt="" cadre={e.cadre} />
         <div className="m-mini-texte">
           <span className="m-mini-metier">{e.metier} à {e.ville}</span>
           <span className="m-mini-titre">{e.accroche}</span>
@@ -160,7 +160,7 @@ export function Vitrine() {
         {/* ---------------------------------------------------- haut de page */}
         <section className="m-une" aria-labelledby="m-titre">
           <div className="m-une-texte">
-            <h1 id="m-titre">Un beau site internet qui vous ramène des chantiers.</h1>
+            <h1 id="m-titre">Un beau site internet qui vous ramène des chantiers</h1>
             <p className="m-une-chapeau">On crée le site de votre entreprise, à votre nom, avec vos photos de chantier. Vous le voyez avant de payer. Ensuite, {euros(OFFRE.prixMois)} par mois, nom de domaine compris.</p>
             <div className="m-une-actions" ref={haut}>
               <BoutonMaquette />
@@ -173,7 +173,7 @@ export function Vitrine() {
             </ul>
           </div>
           <div className="m-une-visuel">
-            <Photo src={PHOTOS.facadier} alt="Un façadier regarde son téléphone devant la façade qu’il vient de refaire" className="m-une-photo" />
+            <Photo src={PHOTOS.facadier} alt="Un façadier regarde son téléphone devant la façade qu’il vient de refaire" className="m-une-photo" cadre="22% 50%" />
             <Telephone className="m-une-tel"><MiniSite e={EXEMPLES[0]} format="telephone" /></Telephone>
             <div className="m-notif" aria-hidden="true">
               <span className="m-notif-icone"><Icone d={I.tel} taille={18} /></span>

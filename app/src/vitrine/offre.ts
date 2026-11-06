@@ -29,14 +29,15 @@ export function lienWhatsApp(message = MESSAGE_MAQUETTE): string {
 export const euros = (n: number) => `${n.toLocaleString('fr-FR')}\u00a0€`;
 
 // Les photos de la page (docs/vitrine-images.md), dans app/public/vitrine/.
-// null tant que le fichier n'est pas livré : son cadre garde un fond sobre et
+// Livrées par Fabrice le 6 nov. 2026 (ChatGPT), réduites en WebP sans
+// métadonnées. null tant qu'un fichier n'est pas livré : son cadre garde un fond sobre et
 // le navigateur ne demande rien (pas d'image cassée). Le jour où la photo
 // arrive, on met son chemin ici ('vitrine/1.webp').
 export const PHOTOS: Record<'facadier' | 'telephone' | 'avant' | 'apres' | 'couvreur' | 'peintre', string | null> = {
-  facadier: null,
-  telephone: null,
-  avant: null,
-  apres: null,
-  couvreur: null,
-  peintre: null,
+  facadier: 'vitrine/1.webp',
+  telephone: 'vitrine/2.webp',
+  avant: 'vitrine/3.webp',
+  apres: 'vitrine/4.webp',
+  couvreur: 'vitrine/5.webp',
+  peintre: 'vitrine/6.webp',
 };

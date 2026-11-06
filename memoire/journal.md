@@ -2393,3 +2393,15 @@ Unsplash et Wikimedia ; commande à ChatGPT écrite dans
 Preuve : `essai-app` : 169 contrôles, 0 faute. L'aperçu n'est pas republié :
 sans les photos, il redonnerait l'impression « pas d'image ».
 TRACAGE : app/src/vitrine/Vitrine.tsx, app/src/vitrine/vitrine.css, app/src/vitrine/offre.ts, app/package.json, app/package-lock.json, scripts/essai-app.mjs, docs/vitrine-images.md, CHANGELOG.md, memoire/journal.md, memoire/decisions.md, memoire/de-cowork.md, docs/audit/CARTE.md
+
+## 6 nov. 2026 — Photos de la page posées, par Cowork
+
+Fabrice a envoyé les 6 images commandées (ChatGPT). Réduites avec sharp en
+WebP qualité 74, sans métadonnées (`app/public/vitrine/1.webp` à `6.webp`,
+85 à 204 ko), cadrées par `object-position`. Le téléphone du haut montre la
+façade terminée (pas la même photo que la grande). Titre sans point final.
+Police Archivo retirée des dépendances (plus utilisée). Images générées,
+aucune photo d'un vrai artisan : elles vont dans le dépôt public.
+Preuve : `essai-app` : 169 contrôles, 0 faute ; captures 1366 et 390 relues
+après défilement (toutes les photos chargées). Aperçu republié (version 2).
+TRACAGE : app/public/vitrine/1.webp, app/public/vitrine/2.webp, app/public/vitrine/3.webp, app/public/vitrine/4.webp, app/public/vitrine/5.webp, app/public/vitrine/6.webp, app/src/vitrine/Vitrine.tsx, app/src/vitrine/vitrine.css, app/src/vitrine/offre.ts, app/package.json, app/package-lock.json, scripts/essai-app.mjs, CHANGELOG.md, memoire/journal.md, docs/audit/CARTE.md

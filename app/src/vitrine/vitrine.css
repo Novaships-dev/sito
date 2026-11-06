@@ -118,7 +118,9 @@
   .m-une-actions { margin-top: 1.4rem; }
   .m-une .m-bouton { width: 100%; }
   .m-une-actions { gap: .4rem 1.2rem; }
-  .m-notif { font-size: .8rem; max-width: 74%; }
+  .m-notif { font-size: .76rem; max-width: 66%; padding: .55rem .75rem .55rem .55rem; gap: .5rem; }
+  .m-notif strong { font-size: .8rem; }
+  .m-notif-icone { width: 30px; height: 30px; border-radius: 9px; }
   .m-note { display: none; }
 }
 
@@ -214,7 +216,7 @@
 
 /* étapes : une vraie suite, reliée par un trait */
 .m-etapes { counter-reset: etape; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; position: relative; }
-.m-etapes::before { content: ''; position: absolute; top: 23px; left: 24px; right: 24px; height: 2px; background: repeating-linear-gradient(90deg, var(--trait) 0 8px, transparent 8px 14px); }
+.m-etapes::before { content: ''; position: absolute; top: 23px; left: 24px; right: 25%; height: 2px; background: repeating-linear-gradient(90deg, var(--trait) 0 8px, transparent 8px 14px); }
 .m-etapes li { counter-increment: etape; position: relative; }
 .m-etapes li::before { content: counter(etape); display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--encre); color: #fff; font-weight: 800; font-size: 1.1rem; margin-bottom: 1.2rem; box-shadow: 0 0 0 8px #fff; }
 .m-etapes li:first-child::before { background: var(--jaune); color: var(--encre); }
