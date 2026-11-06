@@ -6,18 +6,18 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**419 fichiers suivis, dont 152 .md ; 104218 lignes de texte.** Hors zone : 0.
+**419 fichiers suivis, dont 152 .md ; 104299 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
 | Z01 Pilotage de l agent | 27 | 2142 | 0 |
-| Z02 Mémoire du projet | 11 | 3183 | 0 |
+| Z02 Mémoire du projet | 11 | 3202 | 0 |
 | Z03 Spécifications | 11 | 2288 | 0 |
-| Z04 Documentation de travail | 25 | 3389 | 0 |
+| Z04 Documentation de travail | 25 | 3390 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
 | Z06 Générateur de sites | 49 | 20291 | 4 |
 | Z07 Règles | 15 | 1147 | 0 |
-| Z08 App de l artisan | 44 | 9917 | 10 |
+| Z08 App de l artisan | 44 | 9978 | 10 |
 | Z09 Service atelier et Worker | 16 | 1988 | 0 |
 | Z10 Base Supabase | 32 | 2709 | 0 |
 | Z11 Essais et vérificateurs | 52 | 10258 | 0 |
@@ -66,12 +66,12 @@ Un audit qui ne couvre pas toutes les zones le dit.
 |---|---|
 | `memoire/actions-fabrice.md` | 37 |
 | `memoire/comptes-essai.md` | 18 |
-| `memoire/de-cowork.md` | 40 |
-| `memoire/decisions.md` | 140 |
+| `memoire/de-cowork.md` | 41 |
+| `memoire/decisions.md` | 141 |
 | `memoire/essais/audit.txt` | 44 |
 | `memoire/essais/derniers.txt` | 24 |
 | `memoire/essais/disque.txt` | 61 |
-| `memoire/journal.md` | 2407 |
+| `memoire/journal.md` | 2424 |
 | `memoire/maintenant.md` | 112 |
 | `memoire/pieges.md` | 121 |
 | `memoire/questions.md` | 179 |
@@ -96,7 +96,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `CHANGELOG.md` | 97 |
+| `CHANGELOG.md` | 98 |
 | `SECURITY.md` | 55 |
 | `docs/00-INDEX.md` | 113 |
 | `docs/CONSTRAINTS.md` | 58 |
@@ -308,9 +308,9 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `app/src/types.ts` | 108 |
 | `app/src/ui.tsx` | 86 |
 | `app/src/video.ts` | 88 |
-| `app/src/vitrine/Vitrine.tsx` | 326 |
+| `app/src/vitrine/Vitrine.tsx` | 348 |
 | `app/src/vitrine/offre.ts` | 43 |
-| `app/src/vitrine/vitrine.css` | 284 |
+| `app/src/vitrine/vitrine.css` | 323 |
 | `app/tsconfig.json` | 14 |
 | `app/vite.config.ts` | 37 |
 
