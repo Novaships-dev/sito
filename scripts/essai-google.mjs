@@ -4,17 +4,16 @@
 // `faux-google.mjs`, liaison et passage de la nuit (`_shared/avis-google.mjs`,
 // dépôt `atelier/avis.mjs`) contre le faux Supabase.
 //
-// Ce qu'il mesure (la preuve de T24 : « avis importés, réponse validée
-// publiée, jeton jamais en clair ») :
+// Ce qu'il mesure (T24, puis T64 : avis sur le site seulement, rien publié) :
 //   - le jeton rangé en base n'est jamais le jeton en clair, ni en base64 ; il
 //     ne se déchiffre pas avec une autre clé ni pour une autre entreprise ;
 //   - l'état du consentement est signé, expire, et ne se falsifie pas ;
-//   - la liaison range compte et fiche, l'écran dit « Reliée » ;
+//   - la liaison range compte et fiche ;
 //   - tous les avis sont importés, toutes pages lues ; notes et réponses
-//     existantes sont lues ; un second passage ne double rien et n'écrase pas
-//     le brouillon de l'artisan ;
-//   - une réponse validée est publiée chez Google puis marquée publiée ; une
-//     réponse préparée mais non validée ne part pas ;
+//     existantes sont lues ; un second passage ne double rien ;
+//   - rien n'est publié chez Google, même une réponse validée autrefois ;
+//   - le lien envoyé par Fabrice (`atelier/lien-google.mjs`) porte le SIREN
+//     signé et vaut trois jours ;
 //   - un accès retiré chez Google : la fiche passe « Accès retiré », le jeton
 //     est oublié.
 //
@@ -35,7 +34,7 @@ const CLE_SB = 'cle-de-test-google';
 const SIREN = '480423623';
 const ETOILES = ['ONE', 'TWO', 'THREE', 'FOUR', 'FIVE'];
 
-async function scenario({ chiffre, google: gMod, avisGoogle, avisNode }) {
+async function scenario({ chiffre, google: gMod, avisGoogle, avisNode, lienG }) {
   let fautes = 0, essais = 0;
   const ok = (cond, quoi, detail = '') => { essais++; if (cond) console.log(`  ok    ${quoi}`); else { fautes++; console.log(`  FAUTE ${quoi}${detail ? ` — ${detail}` : ''}`); } return cond; };
   const refuse = async (f) => { try { await f(); return false; } catch { return true; } };
@@ -88,17 +87,12 @@ async function scenario({ chiffre, google: gMod, avisGoogle, avisNode }) {
     const a1 = base.avis.find((x) => x.ref_externe === 'r1'), a2 = base.avis.find((x) => x.ref_externe === 'r2'), a3 = base.avis.find((x) => x.ref_externe === 'r3');
     ok(a1?.note === 1 && base.avis.find((x) => x.ref_externe === 'r5')?.note === 5 && a2?.auteur === 'Anonyme', 'notes et auteurs lus (un avis anonyme reste anonyme)');
     ok(a3?.reponse === 'Merci, déjà répondu', 'une réponse déjà publiée chez Google est lue');
-    // L'artisan prépare deux réponses, n'en valide qu'une.
+    // T64 : plus aucune réponse publiée, même si une ancienne ligne porte une validation.
     Object.assign(base.avis.find((x) => x.ref_externe === 'r4'), { brouillon: 'Merci Client 4 !', valide_le: '2026-11-05T09:00:00Z', valide_par: 'u-1' });
-    Object.assign(base.avis.find((x) => x.ref_externe === 'r5'), { brouillon: 'Brouillon pas encore validé' });
     const s2 = await avisGoogle.synchroniser({ siren: SIREN, depot, google: g, cle: CLE });
-    const g4 = fg.reviews.find((x) => x.reviewId === 'r4'), g5 = fg.reviews.find((x) => x.reviewId === 'r5');
-    ok(s2.publiees === 1 && g4.reviewReply?.comment === 'Merci Client 4 !', 'la réponse validée est publiée chez Google', JSON.stringify(s2));
-    ok(base.avis.find((x) => x.ref_externe === 'r4')?.reponse === 'Merci Client 4 !', 'puis marquée publiée dans l app');
-    ok(!g5.reviewReply, 'une réponse préparée mais non validée ne part pas');
-    ok(base.avis.length === 60 && base.avis.find((x) => x.ref_externe === 'r5')?.brouillon === 'Brouillon pas encore validé', 'un nouveau passage ne double rien et garde le brouillon');
-    const s3 = await avisGoogle.synchroniser({ siren: SIREN, depot, google: g, cle: CLE });
-    ok(s3.publiees === 0, 'une réponse publiée ne repart pas');
+    const g4 = fg.reviews.find((x) => x.reviewId === 'r4');
+    ok(s2.etat === 'connectee' && !g4.reviewReply && !('publiees' in s2), 'rien n est publié chez Google, même une réponse validée autrefois (T64)', JSON.stringify(s2));
+    ok(base.avis.length === 60, 'un nouveau passage ne double rien');
     ok(base.connexions_google.find((x) => x.siren === SIREN)?.derniere_synchro, 'la dernière mise à jour est datée');
 
     fg.retirer();
@@ -107,6 +101,15 @@ async function scenario({ chiffre, google: gMod, avisGoogle, avisNode }) {
       'accès retiré chez Google : « Accès retiré », et le jeton est oublié', JSON.stringify(s4));
     const s5 = await avisGoogle.synchroniser({ siren: '849891528', depot, google: g, cle: CLE });
     ok(s5.etat === 'a_connecter', 'une entreprise sans fiche reliée : rien à faire');
+
+    console.log('Lien envoyé par Fabrice (atelier/lien-google.mjs)');
+    const T0 = 1_800_000_000_000;
+    const url = new URL(await lienG.lienGoogle({ siren: '480 423 623', clientId: 'client-essai', cle: CLE, redirection: 'https://sb.essai/functions/v1/google-retour', maintenant: T0 }));
+    ok(url.searchParams.get('client_id') === 'client-essai' && url.searchParams.get('redirect_uri') === 'https://sb.essai/functions/v1/google-retour', 'le lien porte le client et l adresse de retour');
+    const lu = await chiffre.lireSigne(url.searchParams.get('state'), CLE, { maintenant: T0 + 2 * 24 * 3600_000 });
+    ok(lu?.siren === SIREN, 'l état signé porte le SIREN, et vaut encore deux jours plus tard (un SMS lu le lendemain)', JSON.stringify(lu));
+    ok(await chiffre.lireSigne(url.searchParams.get('state'), CLE, { maintenant: T0 + 4 * 24 * 3600_000 }) === null, 'il expire au bout de trois jours');
+    ok(await refuse(() => lienG.lienGoogle({ siren: '1234', clientId: 'c', cle: CLE, redirection: 'r' })) && await refuse(() => lienG.lienGoogle({ siren: SIREN, clientId: '', cle: CLE, redirection: 'r' })), 'SIREN mal formé ou réglage manquant : refusé');
   } finally { fs.arreter(); }
   return { fautes, essais };
 }
@@ -121,6 +124,7 @@ const modules = async (r = {}) => ({
   google: r.google || await import(href(...PART, 'google.mjs')),
   avisGoogle: r.avisGoogle || await import(href(...PART, 'avis-google.mjs')),
   avisNode: r.avisNode || await import(href('atelier', 'avis.mjs')),
+  lienG: r.lienG || await import(href('atelier', 'lien-google.mjs')),
 });
 
 if (!process.argv.includes('--contre-essai')) {
@@ -134,7 +138,8 @@ if (!process.argv.includes('--contre-essai')) {
     ['supabase/functions/_shared/google.mjs', 'google', 'seule la première page d avis est lue', (s) => s.replace("        if (!j.nextPageToken) break;\n", '        break;\n')],
     ['supabase/functions/_shared/avis-google.mjs', 'avisGoogle', 'le jeton est rangé en clair', (s) => s.replace('await chiffrer(secret, cle, siren)', 'btoa(secret)')],
     ['supabase/functions/_shared/avis-google.mjs', 'avisGoogle', 'un accès retiré garde son jeton', (s) => s.replace('      await depot.oublierJeton(siren);\n', '')],
-    ['atelier/avis.mjs', 'avisNode', 'une réponse non validée est publiée', (s) => s.replace(" valide_le: ['not.is', 'null'],", '')],
+    ['atelier/lien-google.mjs', 'lienG', 'le lien expire en 15 minutes', (s) => s.replace('export const VALIDITE_S = 3 * 24 * 3600;', 'export const VALIDITE_S = 900;')],
+    ['atelier/lien-google.mjs', 'lienG', 'le SIREN n est pas dans l état', (s) => s.replace('await signer({ siren: s }, cle,', 'await signer({}, cle,')],
   ];
   const d = mkdtempSync(join(tmpdir(), 'sito-google-casse-'));
   let justes = 0;

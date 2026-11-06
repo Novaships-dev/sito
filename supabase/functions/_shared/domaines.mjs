@@ -1,5 +1,6 @@
-// Le domaine propre d'un artisan, côté service (T20) : ce que demande l'écran
-// Mon adresse, et rien d'autre. Appelé par la fonction Edge `domaines`, et
+// Le domaine propre d'un artisan, côté service (T20, T63) : chercher, acheter,
+// brancher, vérifier. Appelé par la commande de Fabrice `atelier/domaine.mjs`
+// (plus d'écran ni de fonction Edge depuis le 6 nov. 2026), et
 // essayé dans Node par `scripts/essai-domaines.mjs` (dépôt, Gandi et
 // Cloudflare remplacés par des faux). Les deux cas du plan (APPFLOW §3.6) :
 //

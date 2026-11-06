@@ -37,6 +37,8 @@ import { pathToFileURL } from 'node:url';
 import { RACINE } from './env.mjs';
 import { fauxGandi } from './faux-gandi.mjs';
 import { fauxCloudflareSaas } from './faux-cloudflare-saas.mjs';
+import { fauxSupabase } from './faux-supabase.mjs';
+import { supabase } from '../atelier/supabase.mjs';
 
 const ARTISAN = {
   raisonSociale: 'Façades Essai', siren: '480 423 623', prenom: 'Jeanne', nom: 'Essai',
@@ -227,8 +229,66 @@ async function essayer(g, c, m) {
 
 const DOSSIER = join(RACINE, 'supabase', 'functions', '_shared');
 const mod = (f) => pathToFileURL(join(DOSSIER, f)).href;
+// La commande de Fabrice (T63, atelier/domaine.mjs) : lit l'entreprise dans
+// la base, écrit `adresses`, avec les mêmes règles que le service.
+async function commande(chemin = pathToFileURL(join(RACINE, 'atelier', 'domaine.mjs')).href) {
+  let fautes = 0, essais = 0;
+  const ok = (cond, quoi, detail = '') => { essais++; if (cond) console.log(`  ok    ${quoi}`); else { fautes++; console.log(`  FAUTE ${quoi}${detail ? ` — ${detail}` : ''}`); } return cond; };
+  console.log('\nCommande de Fabrice (atelier/domaine.mjs)');
+  const cmd = await import(chemin);
+  const CLE = 'cle-essai-domaine';
+  const fs = await fauxSupabase({
+    cle: CLE,
+    base: {
+      entreprises: [{ siren: '480423623', denomination: 'FAÇADES ESSAI', forme_juridique: '5710', adresse: '10 rue du Test', code_postal: '13001', commune: 'Marseille' }],
+      profils: [{ siren: '480423623', telephone: '0612345678', courriel: 'contact@facades-essai.fr' }],
+      membres: [{ user_id: 'u-1', siren: '480423623' }],
+      sites: [{ id: 'site-1', siren: '480423623', cree_le: '2026-11-01T00:00:00Z' }],
+      abonnements: [{ siren: '480423623', etat: 'essai' }],
+      adresses: [{ id: 'a0', site_id: 'site-autre', hote: 'www.chez-voisin.fr', genre: 'existante', principale: false, etat: 'active' }],
+    },
+    cles: { adresses: ['site_id', 'hote'] },
+  });
+  try {
+    const sb = supabase({ url: fs.url, cle: CLE });
+    const fg = fauxGandi({ pris: ['deja-pris.fr'] }), fc = fauxCloudflareSaas();
+    const outils = {
+      gandi: (await import(mod('gandi.mjs'))).clientGandi({ jeton: fg.jeton, bacASable: false, fetch: fg.fetch, api: 'http://faux-gandi/v5' }),
+      saas: (await import(mod('cloudflare-saas.mjs'))).clientSaas({ zone: fc.zone, jeton: fc.jeton, fetch: fc.fetch, api: 'http://faux-cloudflare/client/v4' }),
+      cible: 'sites.sito-essai.fr',
+    };
+    const L = (action, nom, extra = {}) => cmd.lancer({ sb, siren: '480423623', action, nom, representant: { prenom: 'Jeanne', nom: 'Martin' }, ...outils, ...extra });
+    const c = await L('chercher', 'facades-essai.fr');
+    ok(c.ok && c.disponible && cmd.dire('chercher', c) === 'facades-essai.fr est libre.', 'chercher : libre, dit en clair', cmd.dire('chercher', c));
+    const avant = await L('acheter', 'facades-essai.fr');
+    ok(!avant.ok && avant.statut === 402 && fs.base.adresses.length === 1, 'pendant les mois offerts (essai) : achat refusé, rien d écrit', JSON.stringify(avant));
+    fs.base.abonnements[0].etat = 'actif';
+    const a = await L('acheter', 'facades-essai.fr');
+    const ligne = fs.base.adresses.find((x) => x.hote === 'www.facades-essai.fr');
+    ok(a.ok && ligne?.site_id === 'site-1' && ligne.genre === 'achetee' && ligne.registrar === 'gandi' && ligne.cloudflare_id, 'abonnement payé : acheté, ligne adresses écrite dans la base avec son certificat', JSON.stringify(ligne));
+    ok(fg.domaines?.get?.('facades-essai.fr')?.owner?.siren === '480423623' || JSON.stringify(fg.appels).includes('480423623'), 'acheté au nom de l entreprise (SIREN du titulaire)');
+    const deux = await L('acheter', 'autre-essai.fr');
+    ok(!deux.ok && /déjà réservé/.test(deux.erreur), 'un second achat pour le même site : refusé', deux.erreur);
+    const voisin = await L('brancher', 'chez-voisin.fr');
+    ok(!voisin.ok && /autre site/.test(voisin.erreur), 'un domaine déjà branché ailleurs : refusé (lu dans la base)', voisin.erreur);
+    const b = await L('brancher', 'mon-ancien-site.com');
+    ok(b.ok && /CNAME « www » vers « sites\.sito-essai\.fr »/.test(cmd.dire('brancher', b)), 'brancher : le CNAME à poser est dit à Fabrice', cmd.dire('brancher', b));
+    fc.valider('www.mon-ancien-site.com');
+    const v = await L('verifier', 'mon-ancien-site.com');
+    ok(v.ok && fs.base.adresses.find((x) => x.hote === 'www.mon-ancien-site.com')?.etat === 'active', 'vérifier : active, en base aussi');
+    let refus = null;
+    try { await cmd.lancer({ sb, siren: '999999999', action: 'chercher', nom: 'x.fr', ...outils }); } catch (e) { refus = e.message; }
+    ok(/absente de la base/.test(refus || ''), 'entreprise inconnue : refusée, avec quoi faire', refus);
+    ok(fs.vues.every((x) => x.entetes.apikey === CLE && !x.entetes.authorization), 'la clé de service part dans apikey, jamais en Bearer');
+  } catch (e) { fautes++; console.log(`  FAUTE l essai s arrête : ${e.message}`); }
+  finally { fs.arreter(); }
+  return { fautes, essais };
+}
+
 if (!process.argv.includes('--contre-essai')) {
-  const { fautes, essais } = await essayer(await import(mod('gandi.mjs')), await import(mod('cloudflare-saas.mjs')), await import(mod('domaines.mjs')));
+  const a = await essayer(await import(mod('gandi.mjs')), await import(mod('cloudflare-saas.mjs')), await import(mod('domaines.mjs')));
+  const b = await commande();
+  const fautes = a.fautes + b.fautes, essais = a.essais + b.essais;
   console.log(`\n${essais} contrôles, ${fautes} faute(s).`);
   process.exitCode = fautes ? 1 : 0;
 } else {
@@ -260,7 +320,19 @@ if (!process.argv.includes('--contre-essai')) {
       console.log(fautes ? '  => rouge, juste' : '  => VERT : l essai n attrape pas cette cassure');
       if (fautes) justes++;
     }
+    // La commande de Fabrice : ne lit pas les adresses des autres sites.
+    const src = readFileSync(join(RACINE, 'atelier', 'domaine.mjs'), 'utf8').replace(/from '\.\.\/([^']+)'/g, (_, r) => `from '${pathToFileURL(join(RACINE, r)).href}'`);
+    const cassee = src.replace("site_id: ['neq', siteId], etat: ['neq', 'retiree'] }, limite: 1 });\n      return l.length > 0;", "site_id: ['neq', siteId], etat: ['neq', 'retiree'] }, limite: 1 });\n      return false;");
+    if (cassee === src) console.log('  FAUTE la cassure de la commande ne s applique pas');
+    else {
+      const f = join(d, 'casse-domaine.mjs');
+      writeFileSync(f, cassee);
+      console.log('\n--- copie cassée (atelier/domaine.mjs) : les domaines des autres sites ne sont pas lus');
+      const { fautes } = await commande(pathToFileURL(f).href);
+      console.log(fautes ? '  => rouge, juste' : '  => VERT : l essai n attrape pas cette cassure');
+      if (fautes) justes++;
+    }
   } finally { rmSync(d, { recursive: true, force: true }); }
-  console.log(`\nContre-essai : ${justes} cassure(s) sur ${casses.length} attrapée(s).`);
-  process.exitCode = justes === casses.length ? 0 : 1;
+  console.log(`\nContre-essai : ${justes} cassure(s) sur ${casses.length + 1} attrapée(s).`);
+  process.exitCode = justes === casses.length + 1 ? 0 : 1;
 }

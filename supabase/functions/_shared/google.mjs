@@ -105,13 +105,5 @@ export function clientGoogle({ clientId, secret, fetch: aller = globalThis.fetch
       }
       return tous;
     },
-    async repondre(acces, nomAvis, texte) {
-      if (!/^accounts\/[^/]+\/locations\/[^/]+\/reviews\/[^/]+$/.test(nomAvis)) throw new Error(`avis Google invalide : ${nomAvis}`);
-      if (!texte || !texte.trim()) throw new Error('réponse vide');
-      return lire(await aller(`${bases.avis}/${nomAvis}/reply`, {
-        method: 'PUT', headers: { Authorization: `Bearer ${acces}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ comment: texte }),
-      }), 'la réponse à un avis');
-    },
   };
 }

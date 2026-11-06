@@ -2499,3 +2499,35 @@ résilie.
 Preuve : `essai-stripe` : 30 contrôles, 0 faute ; contre-essai : 4 sur 4
 (nouvelle cassure : le SIREN de la session n'est pas écrit).
 TRACAGE : supabase/functions/_shared/stripe.ts, supabase/functions/stripe-webhook/index.ts, supabase/functions/stripe-session/index.ts, atelier/lien-paiement.mjs, scripts/essai-stripe.mjs, .env.example, app/specs/02-TRD.md, app/specs/03-APPFLOW.md, app/specs/07-TACHES.md, memoire/actions-fabrice.md, memoire/maintenant.md, CHANGELOG.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 6 nov. 2026 — T63, domaines par une commande, par Cowork
+
+Plan : une commande sur le PC de Fabrice qui lit l'entreprise dans la base et
+appelle la logique existante (`_shared/domaines.mjs`) ; retirer la fonction
+Edge ; essayer contre les faux.
+
+Fait : `atelier/domaine.mjs` (nouveau) : `--chercher`, `--acheter` (avec
+`--prenom`, `--nom` du représentant), `--brancher`, `--verifier` ; dépôt sur
+la table `adresses` par l'adaptateur `atelier/supabase.mjs` ; contexte lu dans
+`sites`, `abonnements`, `entreprises`, `profils`, `membres` ; réponse dite en
+clair (CNAME à poser). Fonction Edge `domaines` supprimée. F8 réécrite.
+Preuve : `essai-domaines` : 60 contrôles, 0 faute ; contre-essai : 12 sur 12.
+TRACAGE : atelier/domaine.mjs, supabase/functions/_shared/domaines.mjs, supabase/functions/domaines/index.ts, scripts/essai-domaines.mjs, app/specs/02-TRD.md, app/specs/05-SCHEMA-BACKEND.md, app/specs/07-TACHES.md, memoire/actions-fabrice.md, memoire/maintenant.md, CHANGELOG.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 6 nov. 2026 — T64, avis Google sur le site seulement, par Cowork
+
+Plan : garder l'import des avis et leur affichage sur les sites ; retirer la
+publication des réponses et la liaison depuis l'app ; donner à Fabrice un
+lien à envoyer pour relier une fiche.
+
+Fait : `avis-google.mjs` : `synchroniser` importe les avis, ne publie plus
+rien ; `google.mjs` : `repondre` retiré ; `atelier/avis.mjs` : plus de
+`avisAPublier` ni `marquerPubliee` ; fonction Edge `google-lien` supprimée ;
+`atelier/lien-google.mjs` (nouveau) : lien de consentement avec l'état signé
+(SIREN seul, valable trois jours, un SMS se lit le lendemain) ;
+`google-retour` : une page dit « reliée » ou « pas abouti » (plus de retour
+dans l'app). Les colonnes `avis.brouillon`, `valide_par`, `valide_le` restent
+en base, plus écrites ni lues : sans effet.
+Preuve : `essai-google` : 24 contrôles, 0 faute ; contre-essai : 7 sur 7 ;
+`essai-avis` : 18, 0.
+TRACAGE : supabase/functions/_shared/avis-google.mjs, supabase/functions/_shared/google.mjs, supabase/functions/google-retour/index.ts, supabase/functions/google-lien/index.ts, atelier/avis.mjs, atelier/lien-google.mjs, scripts/essai-google.mjs, app/specs/02-TRD.md, app/specs/07-TACHES.md, memoire/actions-fabrice.md, memoire/maintenant.md, CHANGELOG.md, memoire/journal.md, docs/audit/CARTE.md

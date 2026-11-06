@@ -1,19 +1,17 @@
-// Les avis Google d'un artisan, côté service (T24) : relier sa fiche (retour
-// du consentement), puis, à chaque passage, récupérer les avis et publier les
-// réponses qu'il a validées. Décision du 5 octobre : « réponses aux avis
-// préparées et validées par l'artisan » — jamais publiées sans `valide_le`.
+// Les avis Google d'un artisan, côté service (T24, T64) : relier sa fiche
+// (retour du consentement), puis, à chaque passage, récupérer les avis, que
+// le site affiche. Décision du 5 nov. 2026 : avis affichés sur le site de
+// l'artisan seulement, plus d'écran dans l'app ; plus aucune réponse n'est
+// publiée chez Google (T64).
 //
 // Ce qui est gardé chiffré (`chiffre.mjs`, le SIREN en donnée associée) : le
 // jeton de rafraîchissement, avec le compte et la fiche choisis. Le jeton
 // d'accès ne vit que le temps d'un passage, en mémoire.
 //
 // depot : { lireJeton(siren) → { jeton, portee } | null, poserJeton(siren, chiffre, portee),
-//           oublierJeton(siren), connexion(siren, colonnes), poserAvis(lignes),
-//           avisAPublier(siren) → [{ id, ref_externe, brouillon }], marquerPubliee(id, texte, quand) }
+//           oublierJeton(siren), connexion(siren, colonnes), poserAvis(lignes) }
 import { chiffrer, dechiffrer } from './chiffre.mjs';
 import { versAvis } from './google.mjs';
-
-const court = (e) => String(e?.message || e).slice(0, 200);
 
 // Le retour de Google : le code devient un jeton, rangé chiffré.
 export async function relier({ siren, code, redirection, depot, google, cle }) {
@@ -38,10 +36,10 @@ export async function relier({ siren, code, redirection, depot, google, cle }) {
   return { ok: true };
 }
 
-// Un passage : avis récupérés, réponses validées publiées.
+// Un passage : avis récupérés, rien n'est écrit chez Google.
 export async function synchroniser({ siren, depot, google, cle, maintenant = () => new Date().toISOString() }) {
   const j = await depot.lireJeton(siren);
-  if (!j) return { siren, etat: 'a_connecter', avis: 0, publiees: 0 };
+  if (!j) return { siren, etat: 'a_connecter', avis: 0 };
   const secret = JSON.parse(await dechiffrer(j.jeton, cle, siren));
   let acces;
   try {
@@ -50,8 +48,8 @@ export async function synchroniser({ siren, depot, google, cle, maintenant = () 
     if (e.revoque) {
       // L'artisan a retiré l'accès chez Google : on oublie le jeton, et on le dit.
       await depot.oublierJeton(siren);
-      await depot.connexion(siren, { etat: 'revoquee', motif: 'L’accès a été retiré chez Google. Reliez à nouveau votre fiche pour retrouver vos avis.' });
-      return { siren, etat: 'revoquee', avis: 0, publiees: 0 };
+      await depot.connexion(siren, { etat: 'revoquee', motif: 'L’accès a été retiré chez Google. Demandez un nouveau lien à MonSiteArtisan pour relier la fiche.' });
+      return { siren, etat: 'revoquee', avis: 0 };
     }
     throw e;
   }
@@ -59,16 +57,6 @@ export async function synchroniser({ siren, depot, google, cle, maintenant = () 
   const lignes = (await google.avis(acces, secret.compte, secret.fiche)).map((r) => versAvis(r, siren, quand)).filter((l) => l.ref_externe);
   if (lignes.length) await depot.poserAvis(lignes);
 
-  let publiees = 0;
-  const fautes = [];
-  for (const a of await depot.avisAPublier(siren)) {
-    try {
-      await google.repondre(acces, `${secret.compte}/${secret.fiche}/reviews/${a.ref_externe}`, a.brouillon);
-      await depot.marquerPubliee(a.id, a.brouillon, maintenant());
-      publiees++;
-    } catch (e) { fautes.push(`${a.ref_externe} : ${court(e)}`); }
-  }
-  await depot.connexion(siren, { etat: 'connectee', derniere_synchro: quand,
-    motif: fautes.length ? `${fautes.length} réponse(s) pas encore publiée(s) ; nouvel essai au prochain passage.` : null });
-  return { siren, etat: 'connectee', avis: lignes.length, publiees, fautes };
+  await depot.connexion(siren, { etat: 'connectee', derniere_synchro: quand, motif: null });
+  return { siren, etat: 'connectee', avis: lignes.length };
 }
