@@ -1,106 +1,96 @@
-# État au 3 novembre 2026
-
-Place libre du disque : **1519,4 Mo** (audit du 3 novembre 2026 à 01:16).
+# État au 6 novembre 2026
 
 À lire en premier, à chaque séance. **Réécrit, pas complété** : quand l'état
 change, la phrase fausse disparaît et la juste la remplace
-(`docs/REGLE-TRACABILITE.md`). Réécrit le 3 novembre 2026 par Cowork après
-l'audit du dépôt (`docs/audit/REGISTRE.md`, 24 constats), à partir de l'état
-écrit par Claude Code après T44 (commit `0dd3776`), puis après le lot 2
-(produit) de Cowork, puis après T47, T48, T50, T51, T49 (Cowork, même jour) et T54 (4 nov.). Les
-chiffres viennent de
-`docs/SOURCE-UNIQUE.md`.
+(`docs/REGLE-TRACABILITE.md`). Réécrit le 6 novembre 2026 par Cowork à la fin
+du nettoyage décidé par Fabrice le 5 nov. Les chiffres viennent de
+`docs/SOURCE-UNIQUE.md` ; les décisions, mot pour mot, de `memoire/decisions.md`.
 
 ## En une phrase
 
-Le générateur de sites, la base, la connexion, la préparation des photos dans
-l'app, la publication par versions et la prospection marchent et sont prouvés
-par des essais ; **aucun site d'abonné n'est encore vendable** : le formulaire de
-demande pas encore en ligne (F21), les images de 13 métiers sur 16, pas d'adresse publique posée avant la première
-fabrication (D-14), rien d'essayé sur un vrai iPhone (F14). Mentions légales
-(T50), référencement (T51) et Safari dans la CI (T49) faits.
+Sitô s'appelle maintenant **MonSiteArtisan.com** : une page de vente validée
+par Fabrice, un générateur de sites d'artisans prouvé par les essais, une app
+réduite à l'essentiel (photos des chantiers et compte), des comptes créés par
+Fabrice, un paiement par liens Stripe, des domaines et des avis Google par
+commande ; **rien n'est encore en ligne pour un client** : il manque la
+micro-entreprise et le domaine (F25), le numéro WhatsApp (F24), les comptes
+Stripe, Gandi et Google (F7, F8, F13), la clé de service Supabase (F1) et les
+images de 13 métiers sur 16 (F15, F18).
 
 ## Les tâches
 
-69 tâches : **49 faites, 18 bloquées, 2 à faire, 0 en cours** (`app/specs/07-TACHES.md`).
-T47 à T56 viennent de l'audit du 3 novembre.
+69 tâches : **50 faites, 18 bloquées, 1 à faire, 0 en cours** (`app/specs/07-TACHES.md`).
+Plus aucune tâche « à faire » ouverte que Claude puisse mener seul : T04 attend
+T03 (donc F1) ; T66 et T67 attendent F24 et F25.
 
-**Ordre décidé par Fabrice le 3 nov. (« oui Q5 ») : les tâches de l'audit
-d'abord.** T47 (garde de l'essai de l'app), T48 (échappement), T50
-(mentions légales), T51 (référencement), T49 (Safari), T54, T55, T56, T46, T52
-et T53 sont faites. Le 4 nov. aussi : T10 (formulaire, côté base), T12
-(suppression des comptes, contre des faux, pas encore lancée chaque nuit :
-D-16), T16 et T17 (Stripe écrit et relié, rien de déployé : F7), T31 (codes
-APE), la maçonnerie, la menuiserie, le carrelage, la plomberie et (le 5) l’électricité, la plâtrerie, l’isolation, la métallerie, le terrassement, l’étanchéité, le parquet, la piscine et le paysagiste : T32 est faite, les 16 métiers ont leurs textes. T19 aussi (domaines, contre des faux serveurs ; réel : F8, F6, F5), T20 (écran Mon adresse sur la démonstration ; fonction Edge `domaines` écrite, à déployer avec F8), T22 (statistiques Umami, contre un faux ; réel : F9) et T24 (Google : jeton chiffré, avis, réponses validées, contre un faux ; réel : F13). Le 5 nov., Fabrice a simplifié Sitô : pas d'app Android (T28, T29 abandonnées), comptes créés par lui, espace de l'artisan réduit aux photos, chantiers et compte ; nettoyage en 8 étapes, les étapes 1 (Android) et 2 (comptes créés par Fabrice) sont faites, l'offre et la page vitrine attendent sa description. T45 est faite contre des faux, bloquée sur
-F21 pour le réel ; T13 est sans objet (Q7).
-T11 (formulaire dans les pages) faite aussi : la clé publique est dans le
-dépôt ; en ligne avec la refabrication automatique (F21). T61 faite le 6 nov. (espace artisan : Mes chantiers et Mon compte). T62 faite (paiement par liens Stripe : `node atelier/lien-paiement.mjs --siren … --formule mensuel`). T63 faite (domaines : `node atelier/domaine.mjs --siren … --chercher …`). T64 faite (avis Google sur le site seulement ; relier une fiche : `node atelier/lien-google.mjs --siren …`). Tâche à faire : T65, le nettoyage du 5 nov. (espace artisan réduit, paiement par liens, domaines par commande, avis sur le site, ménage) ; T04 attend T03, donc F1.
-Q10 répondue le 6 nov. : plus de formulaire sur les sites (T68 faite). Le reste attend une action de Fabrice : F1, F5, F6, F7, F8, F9, F13, F15, F20, F21, F23.
-Depuis T50, un
-site fabriqué depuis la base est un site d'abonné (`--publication`) : sans
-adresse électronique ni directeur de la publication dans `profils`, il n'est
-pas fabriqué (l'écran « Compte » de l'app le dit à l'artisan).
+Le nettoyage du 5 et 6 novembre, fait :
 
-## Modèles de prospection (décision du 4 nov.)
+| Étape | Ce qui a changé | Tâche |
+|---|---|---|
+| 1 | plus d'app Android : l'app s'installe sur l'écran d'accueil depuis la page | T28, T29 abandonnées |
+| 2 | comptes créés par Fabrice (`lanceurs\COMPTE_ARTISAN.bat`), plus d'inscription par lien | — |
+| 3 | app : deux onglets, Mes chantiers et Mon compte | T61 |
+| 4 | page de vente MonSiteArtisan.com (offre, exemples, avant / après, prix), validée le 6 nov. | — |
+| 5 | paiement : trois liens Stripe, `node atelier/lien-paiement.mjs` | T62 |
+| 6 | domaines : `node atelier/domaine.mjs` | T63 |
+| 7 | avis Google sur le site seulement, `node atelier/lien-google.mjs` pour relier une fiche | T64 |
+| 8 | ménage des documents | T65 |
+| — | plus de formulaire sur les sites : le client appelle (Q10) | T68 |
 
-T57 à T59 faites : 10 modèles par métier (ravalement, couverture, peinture,
-`prospection/modeles/`) ; le lot du soir remplit un modèle libre avec chaque
-artisan ; quand Fabrice touche « Essai lancé » ou « Abonné » dans la page
-d'appels, la préparation suivante réserve ce modèle à l'artisan et en tire un
-nouveau. À la main : `node scripts/prospection/accepter.mjs --siren <SIREN>`.
-T60 faite : les photos reçues par mail ou WhatsApp deviennent le site d'abonné (`docs/PROCEDURE-PHOTOS.md`). Elles vont dans `clients/<SIREN>/`, seulement une fois le dépôt privé (F20, à faire par Fabrice).
+## L'offre (décidée le 5 nov., `app/src/vitrine/offre.ts`)
+
+Site complet : **80 € par mois** (engagement 12 mois, 1 mois offert) ou
+**720 € par an** (renouvelé, sans mois offert). Les 3 premiers artisans
+« vitrines » : 3 mois offerts. Nom de domaine .fr ou .com compris, acheté au
+nom de l'artisan au premier paiement, il le garde s'il part. Prix sans TVA :
+« TVA non applicable, art. 293 B du CGI » (franchise en base), à revoir avec
+le comptable si le chiffre d'affaires approche 37 500 € par an.
+
+## Ce que Fabrice fait avec une commande
+
+| Pour | Commande ou lanceur |
+|---|---|
+| créer le compte d'un artisan, ou lui donner un nouveau mot de passe | `lanceurs\COMPTE_ARTISAN.bat` (sur le PC, jamais par GitHub : le dépôt est public) |
+| le faire payer | `node atelier/lien-paiement.mjs --siren <SIREN> --formule mensuel` (ou `vitrine`, `annuel`), puis envoyer le lien |
+| acheter ou brancher son domaine | `node atelier/domaine.mjs --siren <SIREN> --chercher <nom.fr>`, puis `--acheter … --prenom … --nom …`, puis `--verifier …` |
+| relier sa fiche Google | `node atelier/lien-google.mjs --siren <SIREN>`, puis envoyer le lien (trois jours) |
+| ajouter ses photos reçues par mail ou WhatsApp | `docs/PROCEDURE-PHOTOS.md` (une fois le dépôt privé, F20) |
 
 ## Ce qui marche, avec sa preuve
 
 | Partie | Ce qui est fait | Preuve |
 |---|---|---|
-| Générateur | un site complet depuis un SIREN, un métier et des photos, en 1 min 30 environ ; 4 archétypes ; bouton « Appeler » ; prix et estimateur seulement sur les tarifs de l'artisan ; un seul échappement (T48) ; mentions légales sur un site d'abonné (T50) ; référencement (T51) | `essai-echappement.mjs` (101), `essai-mentions.mjs` (56), `essai-referencement.mjs` (94) ; les cinq vérificateurs à 0 sur les trois sites de démonstration (`node scripts/fabriquer-demo.mjs`, machine avec images) |
-| Unicité | 100 sites d'un même métier tous différents dans un département, pour ravalement, couverture et peinture | `node scripts/capacite-unicite.mjs --photos plan` (projection avec les 54 images prévues par métier) |
-| Base Supabase | projet `sito`, Paris, gratuit ; droits par ligne sur toutes les tables, droits par colonne ; 9 migrations (la dernière : mentions légales, 3 nov.) | `droits-app.sql` rejoué le 3 nov. après la migration de T50, aucune faute ; `droits.sql` le 29 oct. (T05) |
-| Comptes (5 nov.) | Fabrice crée le compte (e-mail + SIREN, entreprise lue dans l'annuaire public) et donne le mot de passe tiré au sort ; l'artisan se connecte et reste connecté | `essai-comptes.mjs` (25 contrôles, 7 cassures sur 7), contre des faux ; réel : F1 |
-| Photos dans l'app (T44) | sur le téléphone, avant l'envoi : version réduite redressée, original nettoyé (sans GPS ni appareil, mêmes pixels), aperçu des RAW ; ce qui est illisible est dit à l'artisan et n'est pas envoyé | `node scripts/essai-app.mjs` : 132 contrôles, 0 faute ; 3 copies cassées attrapées |
-| App de l'artisan | React, installable ; tous les écrans en démonstration | `essai-app.mjs` sur iPhone 390, Android 360, ordinateur 1 280, sous Chromium et WebKit (Safari, CI) |
-| Service atelier | photos reçues préparées (T07) ; site fabriqué depuis la base (T08) ; boucle qui refait, vérifie et publie par version (T09) | `essai-preparation.mjs` (77), `essai-fabrication-base.mjs` (12), `essai-boucle.mjs` (23) |
-| Prospection | artisans réels du 13 trouvés et notés ; lot du jour fabriqué, publié en privé ; page d'appels | `essai-prospection.mjs` (122), `essai-publication-prospection.mjs` (68), `essai-appels.mjs` (79), `essai-preparer-appels.mjs` (49) |
-| Suite d'essais | 23 étapes ; toutes vertes le 3 nov. à 01:42 sur le PC (commit `85bba53`, 20 étapes alors) ; sur la machine de Cowork, sans exiftool, les 3 étapes qui en ont besoin disent « NON LANCÉ » (T47) | `memoire/essais/derniers.txt` ; CI GitHub |
+| Page de vente | photo de l'artisan en grand, recherche « façadier Aubagne », avant / après à glisser, trois sites d'exemple, prix, questions ; bouton de maquette visible sans défiler | `essai-app.mjs` (page sur 3 appareils) ; aperçu privé validé par Fabrice |
+| App de l'artisan | Mes chantiers (photos préparées sur le téléphone : redressées, sans GPS, originaux à part) et Mon compte (site, téléphone, prix, mentions légales, export, suppression) | `essai-app.mjs` : 135 contrôles, 0 faute (Chromium ; WebKit dans la CI) |
+| Comptes | créés par Fabrice, entreprise lue dans l'annuaire public, mot de passe tiré au sort affiché une fois | `essai-comptes.mjs` : 25, 0 ; 7 cassures sur 7 |
+| Générateur | un site complet depuis un SIREN, un métier et des photos ; 4 archétypes ; bouton « Appeler » ; aucun formulaire (R-FORM) ; mentions légales ; référencement | `essai-mentions.mjs`, `essai-referencement.mjs`, `essai-fabrication-base.mjs` |
+| Paiement | liens Stripe avec le SIREN ; webhook qui rattache l'abonnement | `essai-stripe.mjs` : 30, 0 ; 4 cassures sur 4 |
+| Domaines | chercher, acheter (après le premier paiement), brancher, vérifier | `essai-domaines.mjs` : 60, 0 ; 12 cassures sur 12 |
+| Avis Google | import chaque nuit pour le site, jeton chiffré, rien publié | `essai-google.mjs` : 24, 0 ; 7 cassures sur 7 |
+| Prospection | artisans réels du 13, modèles de sites, lot du soir, page d'appels | `essai-prospection.mjs`, `essai-appels.mjs`, `essai-preparer-appels.mjs` |
+| Suite d'essais | toutes les étapes vertes le 6 nov. (machine de Cowork, avec exiftool) | `memoire/essais/derniers.txt` ; CI GitHub |
 
-## Pour Fabrice : créer le compte d'un artisan
-
-Sur le PC, double-clic sur `lanceurs\COMPTE_ARTISAN.bat` : choisir 1, taper
-l'e-mail de l'artisan et son SIREN. La fenêtre affiche son identifiant et son
-mot de passe, une seule fois : les lui envoyer par SMS. Mot de passe oublié :
-même lanceur, choix 2. Il faut la clé de service dans `.env` (F1) et
-`SITO_ADRESSE_APP` quand l'app sera en ligne. Jamais par GitHub : le dépôt est
-public.
+Tout ce qui parle à Stripe, Gandi, Cloudflare et Google n'a tourné que
+contre des faux serveurs : le réel attend les comptes de Fabrice.
 
 ## Ce qui est en ligne
 
-6 sites de façadiers du 13 et la page d'appels, sur `sito-demo.pages.dev`
-(Cloudflare Pages gratuit), invisibles sur Google : `verifier-en-ligne.mjs`,
-50 contrôles, 0 faute, le 29 oct. Ils portent encore l'ancienne écriture des
-communes (« Marseille 13eme ») : les refaire est la suite de T41, bloquée.
-Aucun site d'abonné n'est en ligne ; aucun domaine n'est acheté.
+6 sites de façadiers du 13 et la page d'appels sur `sito-demo.pages.dev`
+(invisibles sur Google), du 29 oct. Aucun site d'abonné, aucun domaine, la
+page de vente n'existe qu'en aperçu privé.
 
-## Ce qui bloque, et qui doit agir
+## Ce qui attend Fabrice (`memoire/actions-fabrice.md`)
 
-| Blocage | Qui | Action |
-|---|---|---|
-| Disque du PC : 1,52 Go libres le 3 nov. ; sous 1 Go, plus de fabrication | Fabrice | F19 (`memoire/actions-fabrice.md`) : Windows Update à vider (environ 4,9 Go) d'abord |
-| Images de couverture et de peinture (30 liens du lot) | Fabrice | F18 |
-| 22 images du ravalement | Fabrice | F15 |
-| Clé secrète Supabase (compte d'essai, essais contre la vraie base) | Fabrice | F1 |
-| Vrais appareils (iPhone, Android) pour les essais | Fabrice | F14 |
-| Domaine, Cloudflare payant, Stripe | repoussés jusqu'à ce que l'app fonctionne | décision du 29 oct. |
-
-## Ce qui manque, par ordre d'importance
-
-Le détail, avec la preuve de chaque constat, est dans `docs/audit/REGISTRE.md`.
-
-1. **Adresse publique** d'un abonné jamais posée avant sa première fabrication (D-14) ; horaires, prix et redirection du sous-domaine absents du référencement (D-13).
-2. **Vrais appareils** : rien d'essayé sur un vrai iPhone ou Android, ni les gestes au doigt sous Safari (F14) ; WebKit tourne dans la CI depuis T49.
-3. **Formulaire de demande** : fait (T10, T11) ; en ligne quand la refabrication automatique tourne (F21).
-4. **Images de 13 métiers sur 16** (F15) ; les textes des 16 sont faits (S-013 clos, T32, 4 et 5 nov.).
-5. **Documents** encore à écrire : technique, qualité, juridique, exploitation, commerce (lots 3 à 7, `docs/00-INDEX.md`, dernière section). Lots 1 et 2 faits le 3 nov.
+| Action | Pour |
+|---|---|
+| F25 : créer la micro-entreprise, puis acheter monsiteartisan.com | mettre la page en ligne (T67), mentions légales, TVA |
+| F24 : le nouveau numéro WhatsApp | les boutons de la page (T66) |
+| F7 : compte Stripe et trois liens de paiement (pas à pas dans l'action) | encaisser |
+| F1 : clé de service Supabase dans `.env` | créer les comptes pour de vrai, essais contre la vraie base |
+| F8, F13 : comptes Gandi et Google | domaines, avis |
+| F15, F18 : images des métiers | sites des autres métiers que le ravalement |
+| F20, F21 : dépôt privé, refabrication automatique | photos des artisans, sites mis à jour seuls |
+| F23 : retirer l'ancienne table d'inscription | ménage de la base (rien ne presse) |
 
 ## Ne pas refaire
 
@@ -108,5 +98,5 @@ Le détail, avec la preuve de chaque constat, est dans `docs/audit/REGISTRE.md`.
 - Laisser du travail vivre seulement dans l'espace de Claude.
 - Construire sans avoir lu `memoire/`, `rules/web/` et `docs/CONSTRAINTS.md`.
 - Déclarer un contrôle bon sans l'avoir vu attraper une copie cassée exprès.
-- Conclure sur trois sites de démonstration : mesurer à l'échelle du produit.
+- Montrer à Fabrice une page sans images : il juge sur son téléphone, sur le rendu.
 - Laisser une phrase fausse dans ce fichier en ajoutant la juste en dessous.

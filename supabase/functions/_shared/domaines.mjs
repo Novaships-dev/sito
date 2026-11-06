@@ -76,7 +76,7 @@ export async function traiter({ action, nom: brut, representant, ctx, depot, gan
   // `adresses.hote` est unique dans toute la base : un domaine déjà branché
   // sur un autre site se dit tout de suite, pas en erreur de la base.
   if ((action === 'brancher' || action === 'acheter') && !meme && await depot.hoteAilleurs(hote, ctx.site.id))
-    return erreur('Ce domaine est déjà utilisé par un autre site Sitô.', 409);
+    return erreur('Ce domaine est déjà utilisé par un autre site MonSiteArtisan.', 409);
 
   if (action === 'brancher') {
     if (meme) return erreur('Ce domaine est déjà branché sur votre site.', 409);

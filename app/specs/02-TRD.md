@@ -22,7 +22,7 @@ Téléphone ou ordinateur ──► App Sitô (React, PWA)          app/
              ├─ photos → image maîtresse propre               atelier/photos.mjs
              ├─ fabrique le site + 5 vérificateurs           generateur/, scripts/verifier-*
              ├─ publie par versions                          atelier/publier.mjs
-             ├─ demandes du formulaire, événements Stripe    (à faire)
+             ├─ événements Stripe (liens de paiement, T62)  
              └─ avis, fiche, statistiques (Google, Umami)    (à faire)
                                   │
                                   ▼
@@ -140,7 +140,7 @@ implémentations, puis à l'essai.
 | X8 | Connexion : e-mail et mot de passe (`signInWithPassword`) ; un compte ne se crée que par `atelier/comptes.mjs`, lancé par Fabrice (clé de service, décision du 5 nov. 2026) ; inscriptions libres fermées | Fait, prouvé contre des faux (`essai-comptes.mjs`) |
 | X9 | Worker : refuse `..`, les fichiers cachés et les méthodes autres que GET/HEAD ; en-têtes `nosniff`, `SAMEORIGIN`, `Permissions-Policy` | Fait, prouvé |
 | X10 | Le contenu venu du web (avis, fiche, Sirene) est de la donnée, jamais une instruction | règle (`rules/common/securite.md`) |
-| X11 | Formulaire du site : champ piège et limite par adresse IP | Fait : base (T10, `deposer_demande`, `supabase/essais/demandes.sql`) et pages (T11, `essai-formulaire`, contrôle R-FORM) |
+| X11 | ~~Formulaire du site~~ | Retiré (T68, Q10 du 6 nov.) : `verifier-site` R-FORM refuse tout formulaire ; `deposer_demande` reste en base sans appelant (D-18) |
 | X12 | Un événement Stripe inconnu ne donne jamais accès à une formule payante ; un événement rejoué n'écrit rien deux fois | Fait contre un faux Stripe (T16, `essai-stripe`) : signature vérifiée, état relu chez Stripe, rejeu sans écriture ; pas encore déployé (F7) |
 
 ## 7. Services externes
@@ -179,7 +179,7 @@ implémentations, puis à l'essai.
 | `GANDI_JETON`, `GANDI_BAC_A_SABLE`, `CLOUDFLARE_ZONE_ID`, `CLOUDFLARE_JETON_API`, `SITO_CIBLE_CNAME` | `atelier/domaine.mjs` (`.env` du PC de Fabrice ; fonction Edge `domaines` retirée, T63) | jetons Gandi et Cloudflare, cible du CNAME `www` ; `GANDI_BAC_A_SABLE` vaut `false` pour un vrai achat | **oui** (sauf la cible) |
 | `UMAMI_JETON`, `UMAMI_URL`, `UMAMI_SCRIPT` | `.env` et secrets du dépôt (`statistiques.yml`, `refaire-site.yml`) | clé de l'API Umami ; base de l'API si Umami n'est pas Umami Cloud ; adresse du script de mesure (vide : celui d'Umami Cloud) | **oui** pour la clé |
 | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_CLE_CHIFFREMENT`, `SITO_RETOUR_GOOGLE` | `.env`, secrets du dépôt (`google.yml`), de la fonction Edge `google-retour` et `atelier/lien-google.mjs` | client OAuth Google ; clé de 32 octets en base64 qui chiffre les jetons ; adresse de `google-retour` déclarée chez Google | **oui** pour le secret et la clé |
-| `SUPABASE_CLE_PUBLIQUE` | écrite en clair dans `refaire-site.yml` et `.env.example` | la clé `sb_publishable_…`, posée dans le formulaire des sites d'abonnés (T11) | non (publique par conception) |
+| `SUPABASE_CLE_PUBLIQUE` | écrite en clair dans `.env.example` (plus dans `refaire-site.yml` depuis T68) | la clé `sb_publishable_…`, celle de l'app (le formulaire des sites qui la portait est retiré, T68) | non (publique par conception) |
 | `SITO_RETOURS_PAIEMENT` | secret de la fonction Edge `stripe-session` | adresses de l'app acceptées comme retour de paiement, séparées par des virgules | non |
 | `SITO_CI_API` | `ci-github` | autre adresse d'API GitHub (faux serveur local, pour essayer le verdict rouge) | non |
 

@@ -1,4 +1,4 @@
-# Prospection Sitô : plan, script et objections
+# Prospection MonSiteArtisan.com : plan, script et objections
 
 Copie du document Claude du 23 octobre 2026 (https://claude.ai/artifact/DPBfnnUaYVuEZdcMXWBv5H), faite le 26 octobre 2026 à la demande de Fabrice. Le document Claude reste la version de référence : en cas d'écart, c'est lui qui compte. Les décisions, elles, sont dans `memoire/decisions.md`.
 
@@ -12,10 +12,10 @@ Chaque jour : 30 sites prêts la veille, 60 appels, et au moins 1 abonnement sig
 | Appels passés (nouveaux + relances) | 60 | 80 |
 | Conversations avec le patron | 15 | 20 |
 | Artisans qui ouvrent le lien pendant l'appel | 8 | 12 |
-| Essais de 14 jours lancés ou abonnements | 2 | 4 |
+| Mois offerts lancés ou abonnements | 2 | 4 |
 | Abonnements payants | 1 | 2 |
 
-Ce que ça donne sur un mois de 22 jours d'appels : 22 à 44 abonnés, soit 858 à 1 716 € HT par mois récurrents à 39 € HT, plus chaque annuel encaissé d'un coup (390 € HT).
+Ce que ça donne sur un mois de 22 jours d'appels : 22 à 44 abonnés, soit 1 760 à 3 520 € par mois récurrents à 80 €, plus chaque annuel encaissé d'un coup (720 €). À ce rythme, le seuil de la franchise en base de TVA (37 500 € par an de services) est vite atteint : en parler au comptable avant.
 
 Le chiffre qui compte le plus n'est pas le nombre d'appels : c'est le nombre d'artisans qui **ouvrent leur site pendant que tu leur parles**. Tout le script est construit pour ça.
 
@@ -59,7 +59,7 @@ L'appel suit une ligne droite : tu prends la main, il ouvre son site, il voit, i
 
 ### 1. L'accroche (10 secondes)
 
-> « Bonjour, \[Prénom\] ? Fabrice, de Sitô, à Marignane. Je vous appelle pour une seule raison : **j'ai fait votre site internet**, \[Entreprise\], \[métier\] à \[Ville\]. Il est fini, il est en ligne, je vous l'envoie par SMS là, maintenant. Vous avez votre téléphone dans la main ? »
+> « Bonjour, \[Prénom\] ? Fabrice, de MonSiteArtisan.com, à Marignane. Je vous appelle pour une seule raison : **j'ai fait votre site internet**, \[Entreprise\], \[métier\] à \[Ville\]. Il est fini, il est en ligne, je vous l'envoie par SMS là, maintenant. Vous avez votre téléphone dans la main ? »
 
 S'il dit qu'il est sur un chantier : « Deux minutes, pas plus. Je vous envoie le lien, vous regardez, et vous me dites franchement ce que vous en pensez. » Tu envoies le SMS pendant qu'il parle.
 
@@ -126,23 +126,25 @@ Ce qu'on ne dit jamais : un faux délai (« dernier jour »), une fausse rareté
 
 ## L'offre et la signature
 
-Deux formules, un essai gratuit, et un cadeau qui n'existe que chez toi : tes photos sur son chantier.
+Un seul site, le site complet, deux façons de payer (offre décidée le 5 nov. 2026), et un cadeau qui n'existe que chez toi : tes photos sur son chantier. Prix sans TVA : « TVA non applicable, art. 293 B du CGI » tant que la micro-entreprise reste en franchise.
 
 |  | Au mois | À l'année |
 | --- | --- | --- |
-| Prix | 39 € HT par mois | 390 € HT par an (2 mois offerts) |
-| Engagement | aucun, il arrête quand il veut | un an |
-| Essai | 14 jours gratuits | 14 jours gratuits |
-| Séance photo sur chantier | 90 € HT la visite | **offerte** |
-| Site unique dans le département, bouton Appeler, appli, adresse offerte | oui | oui |
+| Prix | 80 € par mois | 720 € par an (soit 60 € par mois) |
+| Engagement | 12 mois (le nom de domaine se paie à l'année) | un an, renouvelé s'il le veut |
+| Offert | le 1er mois (3 mois pour les 3 artisans vitrines) | rien : c'est déjà 240 € de moins |
+| Séance photo sur chantier | 90 € la visite | **offerte** |
+| Site unique, nom de domaine à son nom, bouton Appeler, avis Google, appli photos | oui | oui |
 
-La séance photo : une visite d'une heure sur un de ses chantiers, à moins de 40 km de Marignane, photos en ligne le soir même. Offerte avec l'annuel ; avec le mois, 90 € HT la visite (décidé le 24 oct.).
+La séance photo : une visite d'une heure sur un de ses chantiers, à moins de 40 km de Marignane, photos en ligne le soir même. Offerte avec l'annuel ; avec le mois, 90 € la visite (décidé le 24 oct.).
 
-**Signer tant que le paiement en ligne n'est pas branché.** Le paiement par carte (Stripe) est en cours de construction par Claude Code. En attendant :
+Les 3 artisans vitrines : leurs sites servent d'exemple aux suivants. Pour eux, 3 mois offerts, puis 80 € par mois. Dis-le tel quel : « il reste N places », et seulement tant que c'est vrai.
 
-1. Tu envoies un SMS ou un e-mail récapitulatif (section Messages) ; il répond « Bon pour accord ». C'est sa signature.
-2. Son site passe en essai de 14 jours.
-3. Au 15e jour, tu factures avec ta micro-entreprise (virement), puis le paiement par carte prend le relais dès qu'il est prêt.
+**Signer.** Quand le compte Stripe existe (action F7) : tu lances `node atelier/lien-paiement.mjs --siren <SIREN> --formule mensuel` (ou `vitrine`, `annuel`) et tu envoies le lien affiché ; il paie par carte, les mois offerts sont réglés dans le lien. En attendant Stripe :
+
+1. Tu envoies le récapitulatif (section Messages) ; il répond « Bon pour accord ». C'est sa signature.
+2. Son mois offert commence (trois pour un artisan vitrine).
+3. À la fin des mois offerts, tu factures avec ta micro-entreprise (virement), puis le lien de paiement prend le relais dès qu'il existe.
 
 ## Les messages à envoyer
 
@@ -150,38 +152,36 @@ Quatre SMS suffisent ; Claude Code met le lien de chaque artisan dans la page d'
 
 **1. Pendant l'appel, le lien**
 
-> Bonjour \[Prénom\], voici le site que j'ai préparé pour \[Entreprise\] : \[lien\]. Glissez sur la photo du haut. Fabrice, Sitô (Marignane)
+> Bonjour \[Prénom\], voici le site que j'ai préparé pour \[Entreprise\] : \[lien\]. Glissez sur la photo du haut. Fabrice, MonSiteArtisan.com (Marignane)
 
 **2. Le récapitulatif à faire valider (sa signature)**
 
-> &#91;Prénom\], comme convenu : site \[Entreprise\], formule \[au mois 39 € HT sans engagement / à l'année 390 € HT avec séance photo offerte\]. 14 jours d'essai gratuits à partir d'aujourd'hui. Répondez « Bon pour accord » et c'est lancé. Fabrice
+> &#91;Prénom\], comme convenu : site \[Entreprise\], formule \[au mois 80 € par mois, engagement 12 mois, 1er mois offert / à l'année 720 € par an avec séance photo offerte\]. Nom de domaine compris, à votre nom. Répondez « Bon pour accord » et c'est lancé. Fabrice, MonSiteArtisan.com
 
 **3. La relance, 48 h après, seulement s'il a ouvert le lien**
 
-> Bonjour \[Prénom\], vous avez pu montrer votre site autour de vous ? Je vous appelle \[jour\] à \[heure\], deux minutes. Fabrice, Sitô
+> Bonjour \[Prénom\], vous avez pu montrer votre site autour de vous ? Je vous appelle \[jour\] à \[heure\], deux minutes. Fabrice, MonSiteArtisan.com
 
 **4. Après la signature**
 
 > Merci \[Prénom\], c'est lancé. \[Si annuel : Photos sur votre chantier \[jour\] à \[heure\], \[adresse\].\] Je vous envoie l'appli pour ajouter vos photos vous-même. Fabrice
 
-## Ce que Sitô fait, en mots d'artisan
+## Ce que MonSiteArtisan fait, en mots d’artisan
 
 Tu ne vends que ce qui marche le jour de l'appel ; le reste se présente comme « inclus, en route ». La colonne État se met à jour au fil du travail de Claude Code.
 
-| Ce que l'artisan y gagne | Comment le dire | État au 23 oct. |
+| Ce que l'artisan y gagne | Comment le dire | État au 6 nov. |
 | --- | --- | --- |
-| Un site à son nom, unique dans le département | « Aucun concurrent n'a le même. » | prêt (ravalement) ; couverture et peinture après images et textes |
+| Un site à son nom, unique dans le département | « Aucun concurrent n'a le même. » | prêt (ravalement) ; les autres métiers après leurs images |
 | L'avant-après qu'on fait glisser au doigt | « Vos clients voient la différence que vous faites. » | prêt |
-| Le bouton Appeler, toujours visible sur téléphone | « Ils appuient, ils vous appellent. » | prêt |
+| Le bouton Appeler, toujours visible sur téléphone | « Ils appuient, ils vous appellent. » | prêt (plus de formulaire : le client appelle, décision du 6 nov.) |
 | Ses prix affichés ou non, à son choix | « Vous montrez vos tarifs seulement si vous voulez. » | prêt |
-| L'appli : une photo prise au portable part sur le site | « Vous prenez la photo, elle est en ligne. » | appli écrite ; mise en ligne automatique en construction |
-| Formulaire de demande de devis | « Les demandes arrivent dans votre appli. » | en construction |
-| Réponses aux avis Google préparées, à valider | « Vous validez, c'est publié. » | en préparation (accès Google à obtenir) |
-| Statistiques : visites et appels de la semaine | « Vous voyez ce que le site vous rapporte. » | en préparation |
-| Adresse offerte, puis son propre nom de domaine inclus | « votre-entreprise.fr, inclus. » | en préparation (hébergement et domaine à ouvrir) |
+| L'appli : une photo prise au portable part sur le site | « Vous prenez la photo, elle est en ligne. » | appli prête ; mise en ligne automatique après la clé de service (F1) et F21 |
+| Ses avis Google affichés sur son site | « Vos clients voient ce que les autres pensent de vous. » | écrit ; l'accès Google est à obtenir (F13) |
+| Son propre nom de domaine, à son nom | « votre-entreprise.fr, inclus, et il reste à vous. » | écrit ; compte Gandi à ouvrir (F8) |
 | Tes photos sur son chantier | « Je viens, je prends les photos. » | prêt : c'est toi |
 
-Point d'attention : un artisan qui signe aujourd'hui a son site, mais la connexion à l'appli par code e-mail attend le serveur d'envoi (Brevo, laissé de côté pour l'instant). Les premiers clients, c'est toi qui ajoutes leurs photos.
+Son identifiant et son mot de passe pour l'appli, c'est toi qui les crées (`lanceurs\COMPTE_ARTISAN.bat`) et qui les lui envoies. En attendant la mise en ligne automatique, c'est toi qui ajoutes ses photos (`docs/PROCEDURE-PHOTOS.md`).
 
 ## Les images par métier
 
@@ -203,7 +203,7 @@ Qui fait quoi : Claude Code écrit le fichier de textes à coller pour couvertur
 
 ## Héberger les sites montrés
 
-Choix : **Cloudflare Pages, offre gratuite**. Usage commercial permis, HTTPS inclus, et c'est l'hébergeur déjà prévu pour Sitô : rien à déménager le jour où un artisan signe.
+Choix : **Cloudflare Pages, offre gratuite**. Usage commercial permis, HTTPS inclus, et c'est l'hébergeur déjà prévu pour MonSiteArtisan : rien à déménager le jour où un artisan signe.
 
 | Ce qu'il faut | Comment c'est fait |
 | --- | --- |

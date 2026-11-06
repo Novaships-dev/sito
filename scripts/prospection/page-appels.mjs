@@ -53,7 +53,7 @@ export const lienFiche = (nom, commune) =>
 // « Prospection Sitô : plan, script et objections » (section Messages),
 // réponse de Fabrice à Q2 (`memoire/questions.md`, 26 octobre) : à mettre tel
 // quel, remplaçable par `--sms` ou par l'appel.
-export const SMS = "Bonjour, voici le site que j'ai préparé pour {nom} : {lien}. Glissez sur la photo du haut. Fabrice, Sitô (Marignane)";
+export const SMS = "Bonjour, voici le site que j'ai préparé pour {nom} : {lien}. Glissez sur la photo du haut. Fabrice, MonSiteArtisan.com (Marignane)";
 export const sms = (fiche, lien, gabarit = SMS) =>
   gabarit.replace('{nom}', fiche.nom || '').replace('{lien}', lien);
 

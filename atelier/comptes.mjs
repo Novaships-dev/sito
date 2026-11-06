@@ -124,7 +124,7 @@ export function aDonner({ courriel, motDePasse: mdp, entreprise }, adresseApp) {
     '',
     entreprise ? `Compte prêt pour ${entreprise}.` : 'Nouveau mot de passe posé.',
     'À donner à l’artisan (par SMS ou de vive voix) :',
-    `  Adresse de l’app : ${adresseApp || '(adresse de l’app Sitô)'}`,
+    `  Adresse de l’app : ${adresseApp || '(adresse de l’app MonSiteArtisan)'}`,
     `  Identifiant      : ${courriel}`,
     `  Mot de passe     : ${mdp}`,
     '',

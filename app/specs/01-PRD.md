@@ -55,6 +55,8 @@ photos de chantier qui enrichissent le site.
 | 24 oct. | Séance photo avec la formule au mois : 90 € HT la visite. |
 | 29 oct. | Ravalement : façadiers seulement. Pas de serveur loué ; inscription par lien, e-mail et mot de passe, sans code. Dépenses repoussées jusqu'à ce que l'app fonctionne. |
 | 3 nov. | « Tout doit être correct niveau fichier et complet, surtout rien ne doit manquer » ; « oui Q5 » : les tâches de l'audit passent avant le reste de l'app. |
+| 5 nov. | Simplification : plus d'app Android ; une page de vente installable ; comptes créés par Fabrice (identifiant = e-mail) ; espace de l'artisan réduit aux photos, chantiers et compte ; sites en ligne depuis GitHub ; domaines gardés « au plus simple » ; avis Google sur le site seulement. **Offre** : site complet à 80 € par mois (engagement 12 mois, 1 mois offert) ou 720 € par an (renouvelé) ; 3 artisans vitrines avec 3 mois offerts. |
+| 6 nov. | Nom : **MonSiteArtisan.com** (remplace Sitô) ; page de vente validée (« On est bon ») ; TVA : franchise en base (« TVA non applicable, art. 293 B du CGI ») ; plus de formulaire sur les sites (Q10 : « 1. »). |
 
 ## 3. Pour qui
 
@@ -196,13 +198,15 @@ Spécification complète : `app/specs/08-PROSPECTION.md`. Script d'appel :
 
 | Élément | Valeur | Source |
 |---|---|---|
-| Abonnement mensuel | 39 € HT par mois, **sans engagement** | 9 oct. |
-| Abonnement annuel | 390 € HT par an : la formule d'engagement | 9 oct. |
-| Période d'essai | **14 jours** | 9 oct. |
+| Au mois | **80 € par mois**, site complet, engagement 12 mois (lié au nom de domaine payé à l'année), 1 mois offert | 5 nov. |
+| À l'année | **720 € par an**, payé une fois, renouvelé chaque année, sans mois offert | 5 nov. |
+| Artisans vitrines | 3 premiers artisans : 3 mois offerts, puis 80 € par mois | 5 nov. |
+| TVA | franchise en base : « TVA non applicable, art. 293 B du CGI » (tant que la micro-entreprise reste sous 37 500 €) | 6 nov. |
+| Ancienne offre | 39 € HT par mois sans engagement, 390 € HT par an, 14 jours d'essai : remplacée le 5 nov. | 9 oct. |
 | Séance photo | offerte avec l'annuel ; 90 € HT la visite avec le mensuel | 23 et 24 oct. |
 | Domaine propre | inclus dans l'abonnement, au nom de l'artisan | 5 oct. |
-| Adresse offerte | sous-domaine de Sitô, par défaut | 5 oct. |
-| Paiement | Stripe Checkout et portail client, sur le web seulement | plan 7.6 |
+| Adresse offerte | sous-domaine de MonSiteArtisan, par défaut | 5 oct. |
+| Paiement | trois liens de paiement Stripe envoyés par Fabrice avec le SIREN (`atelier/lien-paiement.mjs`, T62) ; plus de page de paiement dans l'app | 5 nov. |
 | Facture électronique | plateforme agréée nécessaire (réception obligatoire depuis le 1er sept. 2026, émission PME au 1er sept. 2027) | plan 7.6 ; `docs/DETTE.md` D-12 |
 
 ## 9. Contraintes qui s'imposent

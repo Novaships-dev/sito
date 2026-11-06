@@ -37,7 +37,7 @@ le joindre**.
 | V1 | **Appeler tout de suite** | arrive (Google, fiche, lien) → lit l'enseigne et la commune au premier écran → touche « Appeler » dans la pastille ou la barre du bas → son téléphone compose | T1, T2 (`verifier-site`), O14 (`verifier-ordinateur`), M13 (`verifier-mobile`) | essai sur un vrai iPhone (Safari) ; comptage des appels (T22) |
 | V2 | **Voir le travail avant d'appeler** | glisse la photo avant / après → lit le détail des postes → regarde le chantier → appelle | M7 à M11, O5 (comparateur au doigt et à la souris) | photos réelles de l'artisan à la place des exemples (S08, T45) |
 | V3 | **Savoir combien ça coûte** | lit les tarifs de l'artisan → règle sa surface et coche ses postes dans l'estimateur → lit la fourchette → appelle | calcul vérifié dans un navigateur (`memoire/maintenant.md`, 2 oct.) | seulement si l'artisan affiche ses prix (C06) |
-| V4 | **Laisser une demande** | remplit nom, téléphone, message → envoie → lit une confirmation ; l'artisan la voit dans l'app (A3) | rien : pas de formulaire | T10, T11, Q3 |
+| V4 | ~~Laisser une demande~~ | retiré le 6 nov. 2026 (Q10) : le visiteur appelle avec le bouton « Appeler » ; aucun formulaire sur les sites (`verifier-site` R-FORM) | rien | T68 |
 | V5 | **Vérifier que c'est sérieux** | lit la section « vérifiable » (SIREN, création, RGE) → lit les avis → ouvre les mentions légales | section « vérifiable » | mentions légales (T50, S-004) ; avis réels (S-024, A13, T24) |
 | V6 | **Revenir plus tard** | retrouve le site sur Google par le nom ou « métier + commune » | rien | référencement (T51, S-003) |
 | V7 | **Partager le site** | envoie le lien par message → le destinataire voit un titre et une image | rien | Open Graph (T51, R6) |

@@ -2531,3 +2531,20 @@ en base, plus écrites ni lues : sans effet.
 Preuve : `essai-google` : 24 contrôles, 0 faute ; contre-essai : 7 sur 7 ;
 `essai-avis` : 18, 0.
 TRACAGE : supabase/functions/_shared/avis-google.mjs, supabase/functions/_shared/google.mjs, supabase/functions/google-retour/index.ts, supabase/functions/google-lien/index.ts, atelier/avis.mjs, atelier/lien-google.mjs, scripts/essai-google.mjs, app/specs/02-TRD.md, app/specs/07-TACHES.md, memoire/actions-fabrice.md, memoire/maintenant.md, CHANGELOG.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 6 nov. 2026 : T65, ménage des documents (Cowork)
+
+Plan : relire specs, contraintes, source unique, script de prospection ;
+remplacer l'ancienne offre et le nom là où un client les lit ; réécrire
+`memoire/maintenant.md`.
+Fait : PRD (décisions des 5 et 6 nov., §8 offre, paiement), TRD (X11, clé
+publique), SCHEMA (§3.15, demandes), PLAN étape 10, parcours visiteur V4,
+mentions ML11, `supabase/README.md`, `docs/prospection-script.md` (offre,
+signature par `lien-paiement`, SMS), messages de `domaines.mjs`,
+`comptes.mjs`, `page-appels.mjs` ; contraintes C10 et C12 (les avis ne sont
+plus répondus, décision du 5 nov.) ; source unique (ligne « Sitô provisoire »
+retirée, la ligne Nom du 6 nov. fait foi) ; `maintenant.md` réécrit en entier.
+Le code interne garde `sito` (commentaires, dépôt), comme décidé.
+Preuve : `verifier-depot`, `verifier-textes`, `verifier-tracabilite`,
+`essais.mjs` (résultat ci-dessous, dans le commit).
+TRACAGE : memoire/maintenant.md, docs/CONSTRAINTS.md, docs/SOURCE-UNIQUE.md, app/specs/01-PRD.md, app/specs/02-TRD.md, app/specs/05-SCHEMA-BACKEND.md, app/specs/06-PLAN-IMPLEMENTATION.md, app/specs/07-TACHES.md, docs/prospection-script.md, supabase/README.md, CHANGELOG.md

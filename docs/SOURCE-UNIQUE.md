@@ -1,4 +1,4 @@
-# Source unique : les chiffres et les valeurs de Sitô
+# Source unique : les chiffres et les valeurs de MonSiteArtisan.com (dépôt `sito`)
 
 Écrit par Claude (Cowork) le 3 novembre 2026. Ce n'est pas une décision de
 Fabrice : chaque ligne cite la décision ou le fichier qui la porte. Si un autre
@@ -22,7 +22,6 @@ recopiée (liste « Recopiée dans »). Une valeur sans source n'entre pas.
 | Séance photo, formule à l'année | offerte | `memoire/decisions.md`, 23 oct. 2026 | idem |
 | Domaine propre | inclus dans l'abonnement, au nom de l'artisan | `memoire/decisions.md`, 5 oct. 2026 | `app/PLAN-APP.md` §4 |
 | Adresse offerte par défaut | sous-domaine `nom.<domaine-sito>` | `memoire/decisions.md`, 5 oct. 2026 | idem |
-| Nom du produit | « Sitô », provisoire ; domaine non choisi | `memoire/decisions.md`, sept. et 5 oct. 2026 | `docs/noms-2026-10-05.md` |
 | Éditeur | la micro-entreprise de Fabrice | `memoire/decisions.md`, 5 oct. 2026 | |
 
 ## Sites et unicité

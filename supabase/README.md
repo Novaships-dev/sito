@@ -40,7 +40,7 @@ Pour l'app (plan : `app/PLAN-APP.md`, section 7.5) :
 |---|---|---|
 | `abonnements` | la seule source de la formule et de l'état du paiement | lit le sien |
 | `evenements_stripe` | les événements Stripe déjà traités | rien |
-| `demandes` | les messages du formulaire du site | lit, marque lu (`lue_le` seulement) |
+| `demandes` | les messages de l'ancien formulaire des sites (retiré le 6 nov., T68) | lit, marque lu (`lue_le` seulement) |
 | `adresses` | sous-domaine offert, domaine acheté, domaine existant | lit |
 | `versions_site` | versions publiées, une seule en ligne | lit |
 | `videos` | vidéos de chantier gardées | lit, ajoute, supprime |

@@ -6,13 +6,13 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**412 fichiers suivis, dont 152 .md ; 103559 lignes de texte.** Hors zone : 0.
+**412 fichiers suivis, dont 152 .md ; 103570 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
 | Z01 Pilotage de l agent | 27 | 2142 | 0 |
-| Z02 Mémoire du projet | 11 | 3337 | 0 |
-| Z03 Spécifications | 11 | 2304 | 0 |
+| Z02 Mémoire du projet | 11 | 3344 | 0 |
+| Z03 Spécifications | 11 | 2308 | 0 |
 | Z04 Documentation de travail | 25 | 3396 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
 | Z06 Générateur de sites | 48 | 20190 | 4 |
@@ -71,8 +71,8 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `memoire/essais/audit.txt` | 44 |
 | `memoire/essais/derniers.txt` | 24 |
 | `memoire/essais/disque.txt` | 61 |
-| `memoire/journal.md` | 2533 |
-| `memoire/maintenant.md` | 112 |
+| `memoire/journal.md` | 2550 |
+| `memoire/maintenant.md` | 102 |
 | `memoire/pieges.md` | 121 |
 | `memoire/questions.md` | 199 |
 
@@ -82,7 +82,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 |---|---|
 | `app/PLAN-APP.md` | 489 |
 | `app/README.md` | 150 |
-| `app/specs/01-PRD.md` | 236 |
+| `app/specs/01-PRD.md` | 240 |
 | `app/specs/02-TRD.md` | 217 |
 | `app/specs/03-APPFLOW.md` | 151 |
 | `app/specs/04-DESIGN-SYSTEM.md` | 180 |
@@ -96,7 +96,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `CHANGELOG.md` | 103 |
+| `CHANGELOG.md` | 104 |
 | `SECURITY.md` | 55 |
 | `docs/00-INDEX.md` | 113 |
 | `docs/CONSTRAINTS.md` | 58 |
@@ -105,7 +105,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `docs/PROCEDURE-PHOTOS.md` | 43 |
 | `docs/REGLE-ESSAIS.md` | 46 |
 | `docs/REGLE-TRACABILITE.md` | 75 |
-| `docs/SOURCE-UNIQUE.md` | 85 |
+| `docs/SOURCE-UNIQUE.md` | 84 |
 | `docs/TROUBLESHOOTING.md` | 45 |
 | `docs/audit-2026-09-23.md` | 146 |
 | `docs/audit/REGISTRE.md` | 51 |
