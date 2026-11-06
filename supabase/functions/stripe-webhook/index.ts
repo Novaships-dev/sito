@@ -1,4 +1,5 @@
-// Fonction Edge « stripe-webhook » (T16) : Stripe y envoie ses événements.
+// Fonction Edge « stripe-webhook » (T16, T62) : Stripe y envoie ses événements,
+// dont le paiement d'un lien (le SIREN arrive dans `client_reference_id`).
 // Déployée sans contrôle de jeton de session (`verify_jwt` faux) : c'est la
 // signature Stripe qui authentifie (logique dans ../_shared/stripe.ts).
 // Secrets de la fonction (posés par Fabrice, action F7) : STRIPE_CLE_SECRETE,

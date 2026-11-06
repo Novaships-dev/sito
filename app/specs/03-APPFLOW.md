@@ -112,7 +112,7 @@ Paramètre d'adresse : `?demo` force la démonstration.
 | B. Acheté | l'artisan tape le nom → disponibilité et prix (Gandi `check`) → confirme → achat au nom de l'artisan → CNAME `www`, redirection `https://domaine.fr → www`, renouvellement auto → custom hostname Cloudflare → état « Active » | **À faire** |
 | C. Existant | l'app donne la valeur du CNAME `www` → l'artisan l'ajoute chez son registrar → le service vérifie, recrée si non validé à 7 jours → « Active » | **À faire** |
 
-### 4.7 S'abonner et payer (écran retiré (T61) ; paiement par liens (T62))
+### 4.7 S'abonner et payer (écran retiré, T61 ; depuis T62 : Fabrice envoie un lien de paiement Stripe avec le SIREN, `atelier/lien-paiement.mjs` ; le tableau ci-dessous est l'historique)
 
 | # | Où | Ce qui se passe | État |
 |---|---|---|---|

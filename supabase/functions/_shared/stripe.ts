@@ -1,7 +1,15 @@
 // Stripe pour Sitô (T16) : la logique, sans Deno ni réseau, pour que
 // `scripts/essai-stripe.mjs` l'essaie sous Node contre un faux Stripe.
-// Branchée par deux fonctions Edge : `stripe-webhook` (Stripe nous écrit) et
-// `stripe-session` (l'artisan connecté ouvre le paiement ou son portail).
+// Branchée par la fonction Edge `stripe-webhook` (Stripe nous écrit).
+//
+// Paiement simple (T62, décision de Fabrice du 5 nov. 2026 : « trouver un
+// moyen simple pour encaisser des one shot ou du mensuel ») : trois liens de
+// paiement Stripe, faits une fois dans le tableau de bord (80 € par mois avec
+// 30 jours offerts ; le même avec 90 jours pour les artisans vitrines ; 720 €
+// par an). Fabrice envoie à l'artisan le lien suivi de son SIREN
+// (`atelier/lien-paiement.mjs`) : Stripe le rend dans `client_reference_id`,
+// et ce code l'écrit dans l'abonnement, où les événements suivants le lisent.
+// Plus de page de paiement ni de portail dans l'app.
 //
 // Décision de Fabrice du 29 oct. 2026 : « Stripe on va attendre qu'elle
 // fonctionne ». Ce code n'ouvre aucun compte : il attend les clés de test
@@ -114,7 +122,7 @@ export function ligneDepuis(abonnement: any, prix: Record<Formule, string>): Lig
 
 // Les événements qui disent qu'un abonnement a pu changer, et où lire son id.
 const ABONNEMENT_DE: Record<string, (o: any) => string | undefined> = {
-  'checkout.session.completed': (o) => (o.mode === 'subscription' ? o.subscription : undefined),
+  'checkout.session.completed': (o) => (o.mode === 'subscription' ? (typeof o.subscription === 'string' ? o.subscription : o.subscription?.id) : undefined),
   'customer.subscription.created': (o) => o.id,
   'customer.subscription.updated': (o) => o.id,
   'customer.subscription.deleted': (o) => o.id,
@@ -138,8 +146,16 @@ export async function webhook({ corps, signature, reglages, depot, maintenantS }
   const idAbonnement = lire ? lire(ev.data?.object || {}) : undefined;
   let dit = 'ignoré';
   if (idAbonnement) {
+    const stripe = client(reglages);
+    const chemin = `/v1/subscriptions/${encodeURIComponent(idAbonnement)}`;
     // Relu chez Stripe : l'événement ne fait que prévenir.
-    const abonnement = await client(reglages).appel('GET', `/v1/subscriptions/${encodeURIComponent(idAbonnement)}`);
+    let abonnement = await stripe.appel('GET', chemin);
+    // Un lien de paiement ne sait pas à quelle entreprise il sert : le SIREN
+    // arrive dans `client_reference_id` de la session payée. On l'écrit dans
+    // l'abonnement (une fois), pour que les événements suivants le lisent.
+    const ref = ev.type === 'checkout.session.completed' ? ev.data?.object?.client_reference_id : undefined;
+    if (/^\d{9}$/.test(ref || '') && !abonnement?.metadata?.siren)
+      abonnement = await stripe.appel('POST', chemin, { 'metadata[siren]': ref });
     const ligne = ligneDepuis(abonnement, reglages.prix);
     if (ligne) await depot.ecrireAbonnement(ligne);
     dit = ligne ? `abonnement ${ligne.etat}` : 'statut sans effet';
@@ -148,38 +164,6 @@ export async function webhook({ corps, signature, reglages, depot, maintenantS }
   // qui sera alors traité ; une fois noté, il n'écrit plus rien.
   await depot.noterEvenement(ev.id, ev.type);
   return { statut: 200, corps: dit };
-}
-
-// ------------------------------------------------------------------ sessions
-// L'artisan (membre de l'entreprise, vérifié par la fonction Edge) ouvre le
-// paiement ou son portail. Rend l'adresse vers laquelle l'envoyer.
-export async function ouvrirPaiement({ siren, formule, courriel, retour, reglages }:
-  { siren: string; formule: Formule; courriel?: string; retour: string; reglages: Reglages }): Promise<string> {
-  if (!/^\d{9}$/.test(siren)) throw new Error('SIREN invalide');
-  const prix = reglages.prix[formule];
-  if (!prix) throw new Error(`formule inconnue : ${formule}`);
-  const champs: Record<string, string> = {
-    mode: 'subscription',
-    client_reference_id: siren,
-    'line_items[0][price]': prix,
-    'line_items[0][quantity]': '1',
-    'subscription_data[metadata][siren]': siren,
-    success_url: `${retour}?paiement=ok`,
-    cancel_url: `${retour}?paiement=annule`,
-    locale: 'fr',
-  };
-  if (courriel) champs.customer_email = courriel;
-  const s = await client(reglages).appel('POST', '/v1/checkout/sessions', champs);
-  if (!s?.url) throw new Error('Stripe n a pas rendu d adresse de paiement');
-  return s.url;
-}
-
-export async function ouvrirPortail({ stripeClient, retour, reglages }:
-  { stripeClient: string | null; retour: string; reglages: Reglages }): Promise<string> {
-  if (!stripeClient) throw new Error('aucun abonnement Stripe pour cette entreprise');
-  const s = await client(reglages).appel('POST', '/v1/billing_portal/sessions', { customer: stripeClient, return_url: retour });
-  if (!s?.url) throw new Error('Stripe n a pas rendu d adresse de portail');
-  return s.url;
 }
 
 // Résilier (suppression d'un compte, T12) : fin immédiate.

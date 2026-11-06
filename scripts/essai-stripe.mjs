@@ -13,7 +13,10 @@
 //     l'ordre d'arrivée des événements ;
 //   - une panne de la base à l'écriture : l'événement n'est pas noté, le
 //     renvoi de Stripe l'écrit ;
-//   - l'ouverture du paiement et du portail envoie ce qu'il faut à Stripe.
+//   - lien de paiement (T62) : le SIREN arrive dans `client_reference_id` de
+//     la session payée ; il est écrit dans l'abonnement chez Stripe, et
+//     l'abonnement est rattaché à cette entreprise ; un SIREN mal formé ne
+//     rattache rien ; `atelier/lien-paiement.mjs` fabrique le lien à envoyer.
 //
 //   node scripts/essai-stripe.mjs
 //   node scripts/essai-stripe.mjs --contre-essai   (trois copies cassées)
@@ -40,8 +43,11 @@ function fauxStripe() {
     const m = u.pathname.match(/^\/v1\/subscriptions\/(.+)$/);
     if (m && method === 'GET') return abonnements.has(m[1]) ? rep(200, abonnements.get(m[1])) : rep(404, { error: { message: 'No such subscription' } });
     if (m && method === 'DELETE') { const a = abonnements.get(m[1]); if (!a) return rep(404, {}); a.status = 'canceled'; return rep(200, a); }
-    if (u.pathname === '/v1/checkout/sessions' && method === 'POST') return rep(200, { id: 'cs_1', url: 'https://checkout.stripe.com/c/cs_1' });
-    if (u.pathname === '/v1/billing_portal/sessions' && method === 'POST') return rep(200, { id: 'bps_1', url: 'https://billing.stripe.com/p/bps_1' });
+    if (m && method === 'POST') {
+      const a = abonnements.get(m[1]); if (!a) return rep(404, { error: { message: 'No such subscription' } });
+      for (const [k, v] of new URLSearchParams(body)) { const mm = k.match(/^metadata\[(.+)\]$/); if (mm) a.metadata = { ...(a.metadata || {}), [mm[1]]: v }; }
+      return rep(200, a);
+    }
     return rep(404, { error: { message: 'route inconnue' } });
   };
   return { fetch: f, abonnements, appels };
@@ -128,19 +134,20 @@ async function scenario(mod) {
     await envoyer(reprise);
     ok(depot.evenements.has('evt_9') && depot.abonnements.get('111111111')?.etat === 'actif', 'renvoi de Stripe : écrit');
 
-    // Ouverture du paiement et du portail.
-    const url = await mod.ouvrirPaiement({ siren: '333333333', formule: 'annuel', courriel: 'a@b.fr', retour: 'https://app.sito.example/abonnement', reglages });
-    const s = st.appels.find((x) => x.chemin === '/v1/checkout/sessions')?.champs || {};
-    ok(url.startsWith('https://checkout.stripe.com/') && s.mode === 'subscription' && s['line_items[0][price]'] === PRIX.annuel
-      && s['subscription_data[metadata][siren]'] === '333333333' && s.client_reference_id === '333333333', 'paiement ouvert : formule, SIREN dans l abonnement', JSON.stringify(s));
-    let refus = false;
-    try { await mod.ouvrirPaiement({ siren: '333333333', formule: 'gratuit', retour: 'x', reglages }); } catch { refus = true; }
-    ok(refus, 'formule inconnue : refusée');
-    const portail = await mod.ouvrirPortail({ stripeClient: 'cus_1', retour: 'https://app.sito.example/abonnement', reglages });
-    ok(portail.startsWith('https://billing.stripe.com/'), 'portail ouvert');
-    refus = false;
-    try { await mod.ouvrirPortail({ stripeClient: null, retour: 'x', reglages }); } catch { refus = true; }
-    ok(refus, 'portail sans abonnement : refusé');
+    // Lien de paiement (T62) : l'abonnement naît sans SIREN, il arrive par la session.
+    st.abonnements.set('sub_4', { id: 'sub_4', status: 'trialing', customer: 'cus_4', metadata: {}, current_period_end: MAINTENANT + 90 * 86400, items: { data: [{ price: { id: PRIX.mensuel } }] } });
+    await envoyer(evenement('evt_10', 'checkout.session.completed', { mode: 'subscription', subscription: 'sub_4', client_reference_id: '444444444' }));
+    const c = depot.abonnements.get('444444444');
+    ok(c?.etat === 'essai' && c.formule === 'mensuel' && c.stripe_abonnement === 'sub_4', 'lien de paiement : rattaché à l entreprise du client_reference_id, en période offerte', JSON.stringify(c));
+    ok(st.abonnements.get('sub_4').metadata?.siren === '444444444', 'le SIREN est écrit dans l abonnement chez Stripe (les événements suivants le lisent)');
+    st.abonnements.get('sub_4').status = 'active';
+    await envoyer(evenement('evt_11', 'invoice.paid', { subscription: 'sub_4' }));
+    ok(depot.abonnements.get('444444444')?.etat === 'actif', 'premier paiement après les jours offerts : actif, sans client_reference_id');
+    st.abonnements.set('sub_5', { id: 'sub_5', status: 'active', customer: 'cus_5', metadata: {}, items: { data: [{ price: { id: PRIX.annuel } }] } });
+    const avant = depot.ecritures;
+    await envoyer(evenement('evt_12', 'checkout.session.completed', { mode: 'subscription', subscription: 'sub_5', client_reference_id: '12345' }));
+    ok(depot.ecritures === avant && !st.abonnements.get('sub_5').metadata?.siren, 'SIREN mal formé : rien n est rattaché');
+
     await mod.resilier('sub_1', reglages);
     ok(st.abonnements.get('sub_1').status === 'canceled', 'résilier (suppression d un compte) : l abonnement est arrêté chez Stripe');
     ok(st.appels.every((x) => x.auth === 'Bearer sk_test_essai'), 'chaque appel à Stripe porte la clé');
@@ -150,8 +157,31 @@ async function scenario(mod) {
   return { fautes, essais };
 }
 
+// Le lien à envoyer à l'artisan (T62, atelier/lien-paiement.mjs).
+async function liens() {
+  let fautes = 0, essais = 0;
+  const ok = (cond, quoi, detail = '') => { essais++; if (cond) console.log(`  ok    ${quoi}`); else { fautes++; console.log(`  FAUTE ${quoi}${detail ? ` — ${detail}` : ''}`); } return cond; };
+  const { lien } = await import(pathToFileURL(join(RACINE, 'atelier', 'lien-paiement.mjs')).href);
+  const env = { STRIPE_LIEN_MENSUEL: 'https://buy.stripe.com/test_mois', STRIPE_LIEN_VITRINE: 'https://buy.stripe.com/test_vitrine', STRIPE_LIEN_ANNUEL: 'https://buy.stripe.com/test_an' };
+  const refus = (args) => { try { lien({ env, ...args }); return null; } catch (e) { return e.message; } };
+  console.log('\nLien de paiement');
+  const m = lien({ siren: '480 423 623', formule: 'mensuel', courriel: ' Artisan@Exemple.FR ', env });
+  const u = new URL(m.url);
+  ok(u.origin + u.pathname === env.STRIPE_LIEN_MENSUEL && u.searchParams.get('client_reference_id') === '480423623', 'le SIREN (espaces retirés) part dans client_reference_id', m.url);
+  ok(u.searchParams.get('prefilled_email') === 'artisan@exemple.fr', 'l adresse de l artisan est préremplie, en minuscules');
+  ok(/80\s€ par mois/.test(m.dit) && /1 mois offert/.test(m.dit) && /12 mois/.test(m.dit), 'ce qui est dit vient de l offre (80 €, 1 mois offert, 12 mois)', m.dit);
+  ok(/3 mois offerts/.test(lien({ siren: '480423623', formule: 'vitrine', env }).dit) && /720\s€ par an/.test(lien({ siren: '480423623', formule: 'annuel', env }).dit), 'vitrine : 3 mois offerts ; annuel : 720 € par an');
+  ok(/neuf chiffres/.test(refus({ siren: '1234', formule: 'mensuel' }) || ''), 'SIREN mal formé : refusé');
+  ok(/inconnue/.test(refus({ siren: '480423623', formule: 'gratuit' }) || ''), 'formule inconnue : refusée');
+  ok(/manque dans \.env/.test(refus({ siren: '480423623', formule: 'mensuel', env: {} }) || '') , 'lien pas encore fait chez Stripe : dit, avec l action F7');
+  ok(/pas un lien de paiement Stripe/.test(refus({ siren: '480423623', formule: 'mensuel', env: { STRIPE_LIEN_MENSUEL: 'https://exemple.fr/payer' } }) || ''), 'adresse qui n est pas un lien Stripe : refusée');
+  return { fautes, essais };
+}
+
 if (!process.argv.includes('--contre-essai')) {
-  const { fautes, essais } = await scenario(await import(pathToFileURL(SOURCE).href));
+  const a = await scenario(await import(pathToFileURL(SOURCE).href));
+  const b = await liens();
+  const fautes = a.fautes + b.fautes, essais = a.essais + b.essais;
   console.log(`\n${essais} contrôles, ${fautes} faute(s).`);
   process.exitCode = fautes ? 1 : 0;
 } else {
@@ -159,6 +189,7 @@ if (!process.argv.includes('--contre-essai')) {
   const casses = [
     ['la signature n est pas vérifiée', (s) => s.replace("return { statut: 400, corps: 'signature refusée' };", '{ /* casse */ }')],
     ['un rejeu réécrit', (s) => s.replace("if (await depot.dejaRecu(ev.id)) return { statut: 200, corps: 'déjà reçu' };", '')],
+    ['le SIREN de la session n est pas écrit dans l abonnement', (s) => s.replace("abonnement = await stripe.appel('POST', chemin, { 'metadata[siren]': ref });", '{ /* casse */ }')],
     ['un statut inachevé donne actif', (s) => s.replace("trialing: 'essai', active: 'actif',", "trialing: 'essai', active: 'actif', incomplete: 'actif',")],
   ];
   const d = mkdtempSync(join(tmpdir(), 'sito-stripe-casse-'));

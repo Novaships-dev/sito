@@ -2477,3 +2477,25 @@ Preuve : `essai-fabrication-base` : 17, 0 ; `essai-mentions` : 62, 0 ;
 R-FORM essayé sur une page avec `<form>` : bloquant, rouge juste ;
 `essai-app` : 135, 0.
 TRACAGE : generateur/composer.mjs, generateur/sections/mentions.mjs, generateur/sections/formulaire.mjs, atelier/fabriquer.mjs, atelier/statistiques.mjs, scripts/verifier-site.mjs, scripts/essai-fabrication-base.mjs, scripts/essai-formulaire.mjs, scripts/essais.mjs, .github/workflows/essais.yml, .github/workflows/refaire-site.yml, app/src/vitrine/Vitrine.tsx, app/specs/01-PRD.md, app/specs/03-APPFLOW.md, app/specs/07-TACHES.md, docs/DETTE.md, memoire/questions.md, memoire/maintenant.md, memoire/decisions.md, memoire/de-cowork.md, CHANGELOG.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 6 nov. 2026 — T62, paiement par liens Stripe, par Cowork
+
+Plan : remplacer la session de paiement et le portail par trois liens de
+paiement faits une fois chez Stripe ; rattacher l'abonnement à l'entreprise
+par le SIREN passé dans le lien ; essayer contre le faux Stripe.
+
+Fait : `stripe.ts` : à la session payée (`checkout.session.completed`), le
+`client_reference_id` (SIREN à 9 chiffres) est écrit dans les métadonnées de
+l'abonnement chez Stripe, une fois, puis l'abonnement relu est écrit ;
+`ouvrirPaiement` et `ouvrirPortail` retirés, `resilier` gardé (suppression
+des comptes). Fonction Edge `stripe-session` supprimée.
+`atelier/lien-paiement.mjs` (nouveau) : lien + `client_reference_id` +
+`prefilled_email` + `locale=fr`, textes lus dans `app/src/vitrine/offre.ts`.
+`.env.example` : `STRIPE_LIEN_MENSUEL`, `STRIPE_LIEN_VITRINE`,
+`STRIPE_LIEN_ANNUEL`. F7 réécrite pas à pas (produit, deux prix, trois liens
+avec 30 jours, 90 jours, sans essai). L'engagement de 12 mois ne se règle pas
+chez Stripe : il tient dans les conditions de vente, et c'est Fabrice qui
+résilie.
+Preuve : `essai-stripe` : 30 contrôles, 0 faute ; contre-essai : 4 sur 4
+(nouvelle cassure : le SIREN de la session n'est pas écrit).
+TRACAGE : supabase/functions/_shared/stripe.ts, supabase/functions/stripe-webhook/index.ts, supabase/functions/stripe-session/index.ts, atelier/lien-paiement.mjs, scripts/essai-stripe.mjs, .env.example, app/specs/02-TRD.md, app/specs/03-APPFLOW.md, app/specs/07-TACHES.md, memoire/actions-fabrice.md, memoire/maintenant.md, CHANGELOG.md, memoire/journal.md, docs/audit/CARTE.md
