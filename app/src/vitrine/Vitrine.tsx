@@ -70,7 +70,7 @@ function MiniSite({ e, format }: { e: Exemple; format: 'ordinateur' | 'telephone
         <div className="m-mini-texte">
           <span className="m-mini-metier">{e.metier} à {e.ville}</span>
           <span className="m-mini-titre">{e.accroche}</span>
-          <span className="m-mini-cta">Demander un devis</span>
+          <span className="m-mini-cta">Appeler pour un devis</span>
         </div>
       </div>
       <div className="m-mini-bas"><span><Etoiles />Avis Google</span><span>Chantiers récents</span></div>
@@ -106,7 +106,7 @@ const INCLUS = [
   { i: I.globe, t: 'Votre nom de domaine', d: 'En .fr ou .com, acheté à votre nom. Il est à vous, même si vous partez.' },
   { i: I.photo, t: 'Vos chantiers en photos', d: 'Avant, après : vous les ajoutez depuis votre téléphone, le site se met à jour.' },
   { i: I.etoile, t: 'Vos avis Google affichés', d: 'Les clients voient ce que les autres pensent de votre travail.' },
-  { i: I.tel, t: 'Des clients qui vous appellent', d: 'Un bouton pour appeler, un formulaire de devis, sur téléphone comme sur ordinateur.' },
+  { i: I.tel, t: 'Des clients qui vous appellent', d: 'Un bouton pour vous appeler, toujours à portée du pouce, sur téléphone comme sur ordinateur.' },
   { i: I.loupe, t: 'Fait pour Google', d: 'Votre métier et votre ville, écrits pour que les clients du coin vous trouvent.' },
 ];
 
@@ -198,7 +198,7 @@ export function Vitrine() {
               <span className="m-resultat-photos">
                 <Photo src={PHOTOS.avant} alt="" /><Photo src={PHOTOS.apres} alt="" /><Photo src={PHOTOS.facadier} alt="" cadre="24% 45%" />
               </span>
-              <span className="m-resultat-actions"><span className="m-resultat-appel"><Icone d={I.tel} taille={14} />Appeler</span><span>Demander un devis</span></span>
+              <span className="m-resultat-actions"><span className="m-resultat-appel"><Icone d={I.tel} taille={14} />Appeler</span><span>Voir les chantiers</span></span>
             </div>
             <div className="m-resultat m-resultat--gris"><i /><i /><i /></div>
             <div className="m-resultat m-resultat--gris"><i /><i /><i /></div>

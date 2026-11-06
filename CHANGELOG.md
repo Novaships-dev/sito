@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 6 nov. | T68 : plus de formulaire de demande sur les sites des artisans (réponse de Fabrice à Q10) ; le client appelle avec le bouton « Appeler ». `verifier-site` refuse tout formulaire. |
 | 6 nov. | T61 : l'espace artisan se réduit à deux onglets, Mes chantiers (photos) et Mon compte (site, téléphone, prix, mentions légales, export, suppression). Écrans Accueil, Avis, Fiche Google, Mon adresse et Abonnement retirés de l'app. Question Q10 : comment les demandes du formulaire arrivent à l'artisan. |
 | 6 nov. 2026 | Page, version 3 (avis de Fabrice sur téléphone) : photo de l'artisan en grand sans rien dessus, texte sur vert profond, titre « Vos clients vous cherchent sur internet. Soyez là. », chiffres clés (80 €, 0 €, .fr), nouvelle section « Un client cherche un façadier. Il tombe sur vous. » (résultat de recherche avec le site de l'artisan). |
 | 6 nov. 2026 | Les 6 photos de Fabrice posées dans la page (réduites en WebP, sans métadonnées, 775 ko en tout) : haut de page, avant / après, trois sites d'exemple, l'app, la fin. Aperçu republié. |

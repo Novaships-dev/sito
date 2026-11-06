@@ -2456,3 +2456,24 @@ traitent. Constat : le formulaire des sites range les demandes, plus aucun
 Preuve : `npm run build` : 0 ; `essai-app` : 135 contrôles, 0 faute ; copie
 cassée (onglet Avis remis) : 1 faute, rouge juste.
 TRACAGE : app/src/App.tsx, app/src/types.ts, app/src/donnees/demo.ts, app/src/donnees/supabase.ts, app/src/ecrans/Compte.tsx, app/src/ecrans/MonSite.tsx, app/src/ecrans/Accueil.tsx, app/src/ecrans/Avis.tsx, app/src/ecrans/Google.tsx, app/src/ecrans/Adresse.tsx, app/src/ecrans/Abonnement.tsx, scripts/essai-app.mjs, app/specs/03-APPFLOW.md, app/specs/01-PRD.md, app/specs/07-TACHES.md, memoire/questions.md, memoire/maintenant.md, CHANGELOG.md, memoire/journal.md, docs/audit/CARTE.md
+
+## 6 nov. 2026 — T68, formulaire retiré des sites, par Cowork
+
+Plan : Fabrice a répondu « 1. » à Q10 : retirer le formulaire, garder
+« Appeler ». Supprimer la section du générateur et son essai, changer R-FORM,
+ne plus passer la clé publique à la fabrication, corriger la page de vente.
+
+Fait : `generateur/sections/formulaire.mjs` et `scripts/essai-formulaire.mjs`
+supprimés (et de `essais.mjs`, de la CI) ; `composer.mjs` sans formulaire ;
+mentions : ML11 dit toujours « ni formulaire ni compte » ; `fabriquer.mjs`
+ne passe plus `--formulaire-url` ni `--formulaire-cle` ;
+`refaire-site.yml` sans la clé publique ; R-FORM : tout `<form>` est
+bloquant, et toujours aucune clé secrète ; page de vente : « un bouton pour
+vous appeler », plus de « Demander un devis ». `deposer_demande` reste en
+base sans appelant : D-18 (retrait avec l'accord de Fabrice). Les documents
+écrits par Claude qui parlent encore du formulaire (S-PARCOURS-VISITEUR,
+S-MENTIONS, TRD, SCHEMA, PLAN) sont pour T65.
+Preuve : `essai-fabrication-base` : 17, 0 ; `essai-mentions` : 62, 0 ;
+R-FORM essayé sur une page avec `<form>` : bloquant, rouge juste ;
+`essai-app` : 135, 0.
+TRACAGE : generateur/composer.mjs, generateur/sections/mentions.mjs, generateur/sections/formulaire.mjs, atelier/fabriquer.mjs, atelier/statistiques.mjs, scripts/verifier-site.mjs, scripts/essai-fabrication-base.mjs, scripts/essai-formulaire.mjs, scripts/essais.mjs, .github/workflows/essais.yml, .github/workflows/refaire-site.yml, app/src/vitrine/Vitrine.tsx, app/specs/01-PRD.md, app/specs/03-APPFLOW.md, app/specs/07-TACHES.md, docs/DETTE.md, memoire/questions.md, memoire/maintenant.md, memoire/decisions.md, memoire/de-cowork.md, CHANGELOG.md, memoire/journal.md, docs/audit/CARTE.md

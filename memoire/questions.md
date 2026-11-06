@@ -178,7 +178,7 @@ branche à tout moment : il ne coûte rien. Pour changer : la constante
 `EXTENSIONS_INCLUSES` et la condition sur `abonnements.etat` de
 `supabase/functions/_shared/domaines.mjs`.
 
-## Q10 (ouverte), 6 novembre 2026
+## Q10 (répondue : « 1. », appliquée), 6 novembre 2026
 
 **Comment une demande de devis laissée sur le site arrive-t-elle à
 l'artisan ?** Le formulaire des sites (T10) range chaque demande dans la base.
@@ -194,3 +194,6 @@ Autre choix : garder le formulaire et envoyer chaque demande par SMS ou
 e-mail à l'artisan (un service d'envoi à brancher : quelques centimes par SMS,
 ou un serveur d'e-mail). Pas appliqué : le formulaire reste en place tant que
 Fabrice n'a pas tranché (rien n'est supprimé sans lui).
+
+Réponse de Fabrice, 6 nov. à 2 h 16 : « 1. ». Appliqué dans T68 : formulaire
+retiré du générateur, `verifier-site` refuse tout formulaire (R-FORM).

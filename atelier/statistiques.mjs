@@ -4,7 +4,7 @@
 // page « / », source « tout »).
 //
 // Les demandes du même jour ne sont pas touchées : la base les compte quand
-// elles arrivent (`deposer_demande`, T10), dans la même ligne. L'écriture est
+// elles arrivaient (`deposer_demande`, T10 ; formulaire retiré le 6 nov., Q10), dans la même ligne. L'écriture est
 // un « upsert » sur les seules colonnes visites et appels : rejouer un jour
 // remplace ses chiffres, ne les double pas.
 //

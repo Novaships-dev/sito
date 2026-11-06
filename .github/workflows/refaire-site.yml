@@ -45,9 +45,6 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_CLE_SERVICE: ${{ secrets.SUPABASE_CLE_SERVICE }}
-          # Clé PUBLIQUE de Supabase (celle de l'app) : faite pour être dans une
-          # page, elle porte le formulaire des sites (T11). Pas un secret.
-          SUPABASE_CLE_PUBLIQUE: sb_publishable_Soi-8VlJuoGQCuctPooaOw_0ku20F8b
           CLOUDFLARE_COMPTE_ID: ${{ secrets.CLOUDFLARE_COMPTE_ID }}
           CLOUDFLARE_JETON_API: ${{ secrets.CLOUDFLARE_JETON_API }}
           # Adresse du script de mesure (T22), si Umami n'est pas Umami Cloud.

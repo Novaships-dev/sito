@@ -532,7 +532,7 @@ function referencementSite(chemin) {
       'R-SITE': 'robots.txt et plan du site', 'R-ADRESSE': 'adresse publique', 'R-TITRE': 'titre ou description trop longs',
       'R-EXEMPLE': 'photos de l artisan dites « exemple », ou exemples non dits',
       'R-AVIS': 'emplacement d avis vide sur un site d abonne',
-      'R-FORM': 'formulaire de demande', 'R-MESURE': 'mesure d audience' }[num],
+      'R-FORM': 'aucun formulaire', 'R-MESURE': 'mesure d audience' }[num],
     detail, remede: remede || 'docs/specs/S-REFERENCEMENT.md' });
   let regimeVu = null, adresseVue = null;
   for (const n of pages) {
@@ -563,19 +563,11 @@ function referencementSite(chemin) {
     // ou aucune section d avis, jamais un emplacement vide.
     if (regime === 'abonne' && /Les avis viennent ici|class="carte vide"|À compléter/.test(corps))
       dire('R-AVIS', 'bloquant', n, 'emplacement d avis vide (« Les avis viennent ici »)', 'generateur/sections/avis.mjs');
-    // R-FORM, tache T11 : le formulaire de demande n'existe que sur un site
-    // d'abonne ; il a son champ piege hors clavier, une etiquette par champ, et
-    // jamais une cle secrete (seule la cle publique sb_publishable_ a sa place).
-    const forms = corps.match(/<form\b[^>]*data-formulaire[\s\S]*?<\/form>/g) || [];
-    if (forms.length && regime !== 'abonne') dire('R-FORM', 'bloquant', n, 'formulaire sur un site de prospection', 'generateur/sections/formulaire.mjs');
-    for (const fm of forms) {
-      if (!/<div class="piege" aria-hidden="true">[\s\S]*?name="site_web"[^>]*tabindex="-1"/.test(fm)) dire('R-FORM', 'bloquant', n, 'champ piege absent ou atteignable au clavier', 'generateur/sections/formulaire.mjs');
-      const champs = (fm.match(/<(input|textarea)\b/g) || []).length;
-      const etiquetes = (fm.match(/<label>[^<]*<(input|textarea)\b/g) || []).length;
-      if (champs !== etiquetes) dire('R-FORM', 'bloquant', n, `${champs - etiquetes} champ(s) sans etiquette`, 'generateur/sections/formulaire.mjs');
-    }
-    if (/sb_secret_[A-Za-z0-9_-]{6,}/.test(t)) dire('R-FORM', 'bloquant', n, 'cle secrete Supabase dans la page', 'generateur/sections/formulaire.mjs');
-    if (forms.length && !/formulaire-reglages/.test(corps)) dire('R-FORM', 'bloquant', n, 'formulaire sans ses reglages (adresse et cle publique)', 'generateur/sections/formulaire.mjs');
+    // R-FORM : aucun formulaire sur un site (decision de Fabrice du 6 nov.
+    // 2026, Q10 : le client appelle, rien ne reste dans une base que personne
+    // ne lit), et jamais une cle secrete Supabase dans une page.
+    if (/<form\b/i.test(corps)) dire('R-FORM', 'bloquant', n, 'formulaire dans la page : les sites n en ont plus (Q10, 6 nov.)', 'generateur/composer.mjs');
+    if (/sb_secret_[A-Za-z0-9_-]{6,}/.test(t)) dire('R-FORM', 'bloquant', n, 'cle secrete Supabase dans la page', 'generateur/composer.mjs');
     // R-MESURE, tache T22 : aucun script tiers, sauf la mesure Umami d'un site
     // d'abonne ; quand elle est la, chaque lien d'appel est compte et les
     // mentions legales disent ce qui est mesure (ML12).

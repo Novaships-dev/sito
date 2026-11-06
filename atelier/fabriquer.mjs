@@ -182,12 +182,6 @@ export async function fabriquerDepuisBase({
     const adresse = siteExistant?.id
       ? await sb.lireUne('adresses', { filtres: { site_id: ['eq', siteExistant.id], principale: ['eq', true] } }) : null;
     if (adresse?.hote) args.push('--adresse', `https://${adresse.hote}/`);
-    // Le formulaire de demande (T11) : l'adresse de Supabase et sa clé PUBLIQUE
-    // (faite pour être dans une page). Sans la clé, le site se fabrique sans
-    // formulaire, et c'est dit.
-    if (process.env.SUPABASE_URL && process.env.SUPABASE_CLE_PUBLIQUE)
-      args.push('--formulaire-url', process.env.SUPABASE_URL, '--formulaire-cle', process.env.SUPABASE_CLE_PUBLIQUE);
-    else dire('formulaire de demande absent : SUPABASE_CLE_PUBLIQUE manque (.env ou secret GitHub)');
     // La mesure d'audience (T22) : le site Umami de ce site, posé par le
     // service dans `sites.umami_id`. Sans lui, pas de mesure (rien d'inventé).
     if (siteExistant?.umami_id) {

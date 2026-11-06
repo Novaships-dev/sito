@@ -88,7 +88,7 @@ Paramètre d'adresse : `?demo` force la démonstration.
 | 1 | Mon site → téléphone ou case prix → Enregistrer → `profils` | Fait, prouvé (démonstration) |
 | 2 | Le service voit le changement, refabrique et publie (comme 4.2, étapes 8–9) | **À faire** |
 
-### 4.4 Une demande arrive (écran retiré (T61) ; comment la demande arrive à l'artisan : Q10)
+### 4.4 Une demande arrive (retiré : plus de formulaire sur les sites, Q10 du 6 nov. ; le client appelle)
 
 | # | Ce qui se passe | État |
 |---|---|---|

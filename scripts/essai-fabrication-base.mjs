@@ -145,8 +145,8 @@ try {
   // porte l'URL canonique et le plan du site.
   lignes.adresses.push({ id: 'a1', site_id: site1.id, hote: 'facades-essai.example.fr', genre: 'offerte', principale: true, etat: 'active' });
   dossier2 = mkdtempSync(join(tmpdir(), 'sito-site2-'));
-  ok(!readFileSync(join(dossier1, 'index.html'), 'utf8').includes('data-formulaire'), 'sans clé publique : pas de formulaire de demande (T11)');
-  // Deuxième fabrication avec l'adresse et la clé publique : le formulaire.
+  ok(!/<form\b/.test(readFileSync(join(dossier1, 'index.html'), 'utf8')), 'pas de formulaire de demande (décision du 6 nov., Q10)');
+  // Deuxième fabrication, même avec l'adresse et la clé publique de Supabase : toujours pas de formulaire.
   process.env.SUPABASE_URL = 'https://essai.supabase.co';
   process.env.SUPABASE_CLE_PUBLIQUE = 'sb_publishable_essai';
   const r2 = await fabriquerDepuisBase({ sb, siren: SIREN, metier: 'ravalement', sortie: dossier2, registre });
@@ -160,7 +160,7 @@ try {
   ok(readFileSync(join(dossier2, 'index.html'), 'utf8').includes('<link rel="canonical" href="https://facades-essai.example.fr/">')
     && existsSync(join(dossier2, 'sitemap.xml')), 'deuxième fabrication : URL canonique et plan du site depuis l adresse principale (T51)');
   const v2 = spawnSync(process.execPath, [join(RACINE, 'scripts', 'verifier-site.mjs'), dossier2], { encoding: 'utf8' });
-  ok(readFileSync(join(dossier2, 'index.html'), 'utf8').includes('data-formulaire'), 'avec SUPABASE_URL et SUPABASE_CLE_PUBLIQUE : le formulaire de demande est là (T11)');
+  ok(!/<form\b/.test(readFileSync(join(dossier2, 'index.html'), 'utf8')), 'même avec SUPABASE_URL et SUPABASE_CLE_PUBLIQUE : aucun formulaire (Q10)');
   ok(v2.status === 0, 'le site de la deuxième fabrication passe aussi verifier-site', (v2.stdout || v2.stderr || '').trim().split('\n').slice(-3).join(' | '));
 
   console.log('\nSans aucune photo prête');
