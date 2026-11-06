@@ -1,8 +1,10 @@
-// Compte : mentions légales du site, export des données, suppression, déconnexion.
+// Mon compte : le site (téléphone, prix, tarifs), les mentions légales, l'export
+// des données, la suppression, la déconnexion (T61, décision du 5 nov. 2026).
 import { useEffect, useState } from 'react';
 import { useApp, useCharge, Chargement, Ecran, useAction, Message } from '../ui';
 import { dateLisible } from '../jour';
 import type { Profil } from '../types';
+import { MonSite } from './MonSite';
 
 export function Compte() {
   const { donnees } = useApp();
@@ -12,7 +14,7 @@ export function Compte() {
   const sortie = useAction();
 
   return (
-    <Ecran titre="Compte">
+    <Ecran titre="Mon compte">
       <section className="carte">
         <Chargement {...ent} />
         {ent.valeur && <p><strong>{ent.valeur.nom_affiche}</strong><br /><span className="discret">SIREN {ent.valeur.siren.replace(/(\d{3})(?=\d)/g, '$1 ')}{ent.valeur.commune ? `, ${ent.valeur.commune}` : ''}</span></p>}
@@ -21,10 +23,12 @@ export function Compte() {
         <Message erreur={sortie.erreur} />
       </section>
 
+      <MonSite />
       <Chargement {...profil} />
       {profil.valeur && <Mentions profil={profil.valeur} apres={profil.recharger} />}
       <Export />
       <Suppression />
+      <section className="carte"><a className="bouton secondaire" href="#/installer">Installer l’app sur mon téléphone</a></section>
     </Ecran>
   );
 }

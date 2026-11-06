@@ -31,17 +31,13 @@ gauche. « Installer l'app » est aussi joignable sans être connecté.
 
 | Route | Écran | Fichier | Connexion requise | État |
 |---|---|---|---|---|
-| `#/` | Accueil | `Accueil.tsx` | oui | Fait, prouvé |
+| `#/` | non connecté : la page de MonSiteArtisan.com (offre) ; connecté : Mes chantiers ; app installée : la connexion | `vitrine/Vitrine.tsx`, `Chantiers.tsx` | non | Fait, prouvé |
+| `#/connexion` | Connexion | `Connexion.tsx` | non | Fait, prouvé |
 | `#/chantiers` | Mes chantiers | `Chantiers.tsx` | oui | Fait, prouvé |
 | `#/chantiers/<id>` | Un chantier | `Chantiers.tsx` | oui | Fait, prouvé |
-| `#/site` | Mon site | `MonSite.tsx` | oui | Fait, prouvé |
-| `#/avis` | Mes avis | `Avis.tsx` | oui | Fait, prouvé |
-| `#/plus` | Plus (téléphone) | `App.tsx` | oui | Fait, prouvé |
-| `#/adresse` | Mon adresse | `Adresse.tsx` | oui | Fait, prouvé (affichage) |
-| `#/google` | Ma fiche Google | `Google.tsx` | oui | Fait, prouvé (affichage) |
-| `#/abonnement` | Abonnement | `Abonnement.tsx` | oui | Fait : affichage prouvé ; boutons Stripe reliés (T17), prouvés en démonstration |
-| `#/compte` | Compte | `Compte.tsx` | oui | Fait, prouvé |
+| `#/compte` | Mon compte : mon site (téléphone, prix, tarifs), mentions légales, export, suppression | `Compte.tsx`, `MonSite.tsx` | oui | Fait, prouvé |
 | `#/installer` | Installer l'app | `Installer.tsx` | non | Fait, prouvé (rendu) |
+| `#/site`, `#/avis`, `#/plus`, `#/adresse`, `#/google`, `#/abonnement` | Page introuvable : écrans retiré de l'app (T61, décision du 5 nov. 2026) | — | — | Prouvé (`essai-app`) |
 | autre | Page introuvable | `App.tsx` | oui | Fait |
 
 Paramètre d'adresse : `?demo` force la démonstration.
@@ -92,7 +88,7 @@ Paramètre d'adresse : `?demo` force la démonstration.
 | 1 | Mon site → téléphone ou case prix → Enregistrer → `profils` | Fait, prouvé (démonstration) |
 | 2 | Le service voit le changement, refabrique et publie (comme 4.2, étapes 8–9) | **À faire** |
 
-### 4.4 Une demande arrive
+### 4.4 Une demande arrive (écran retiré (T61) ; comment la demande arrive à l'artisan : Q10)
 
 | # | Ce qui se passe | État |
 |---|---|---|
@@ -100,7 +96,7 @@ Paramètre d'adresse : `?demo` force la démonstration.
 | 2 | Le service filtre (champ piège, limite par IP) et écrit `demandes`, compte `statistiques.demandes` du jour de Paris | **À faire** |
 | 3 | L'accueil la montre en haut, « nouvelle » ; l'artisan appelle ou répond, marque comme lue | Fait, prouvé |
 
-### 4.5 Répondre à un avis
+### 4.5 Répondre à un avis (retiré (T61, T64 : avis affichés sur le site seulement))
 
 | # | Ce qui se passe | État |
 |---|---|---|
@@ -108,7 +104,7 @@ Paramètre d'adresse : `?demo` force la démonstration.
 | 2 | L'artisan relit, corrige, valide → `brouillon`, `valide_par = lui`, `valide_le` | Fait, prouvé |
 | 3 | Le service publie (`updateReply`), écrit `reponse` et `repondu_le` | **À faire** |
 
-### 4.6 Avoir son propre domaine
+### 4.6 Avoir son propre domaine (écran retiré (T61) ; domaines par une commande de Fabrice (T63))
 
 | Cas | Étapes | État |
 |---|---|---|
@@ -116,7 +112,7 @@ Paramètre d'adresse : `?demo` force la démonstration.
 | B. Acheté | l'artisan tape le nom → disponibilité et prix (Gandi `check`) → confirme → achat au nom de l'artisan → CNAME `www`, redirection `https://domaine.fr → www`, renouvellement auto → custom hostname Cloudflare → état « Active » | **À faire** |
 | C. Existant | l'app donne la valeur du CNAME `www` → l'artisan l'ajoute chez son registrar → le service vérifie, recrée si non validé à 7 jours → « Active » | **À faire** |
 
-### 4.7 S'abonner et payer
+### 4.7 S'abonner et payer (écran retiré (T61) ; paiement par liens (T62))
 
 | # | Où | Ce qui se passe | État |
 |---|---|---|---|

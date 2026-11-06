@@ -2432,3 +2432,27 @@ une commande), T64 (avis Google sur le site seulement), T65 (ménage des
 documents), T66 (numéro WhatsApp, bloquée par F24), T67 (mise en ligne de la
 page, bloquée par F25 : micro-entreprise et domaine).
 TRACAGE : app/specs/07-TACHES.md, memoire/actions-fabrice.md, memoire/maintenant.md, memoire/journal.md
+
+## 6 nov. 2026 — T61, espace artisan réduit, par Cowork
+
+Plan : garder Connexion, Chantiers, Compte, Installer ; retirer les autres
+écrans, leurs méthodes de `Donnees` et leurs essais ; arriver sur les
+chantiers une fois connecté. Fabrice n'a que son téléphone : le travail se
+fait dans cette session, rien sur son PC.
+
+Fait : `Accueil.tsx`, `Avis.tsx`, `Google.tsx`, `Adresse.tsx`,
+`Abonnement.tsx` supprimés ; `MonSite.tsx` devient une partie de « Mon
+compte » (état du site, téléphone, prix, tarifs) ; `App.tsx` : deux onglets,
+Mes chantiers et Mon compte, plus de page « Plus » ; `#/`, `#/connexion` et
+`#/chantiers` mènent aux chantiers. `Donnees` : retirés `marquerLue`,
+`validerReponse`, `chercherDomaine`, `acheterDomaine`, `brancherDomaine`,
+`verifierDomaine`, `ouvrirPaiement`, `connexionGoogle`, `lienGoogle` (types,
+démonstration, Supabase) ; gardés en lecture `demandes`, `avis`,
+`statistiques`, `site`, `adresses`, `abonnement` pour l'export complet (A17).
+Les fonctions Edge (domaines, Google, Stripe) restent : T62 à T64 les
+traitent. Constat : le formulaire des sites range les demandes, plus aucun
+écran ne les montre : Q10, recommandation (retirer le formulaire, garder
+« Appeler ») non appliquée, car elle supprime une fonction des sites.
+Preuve : `npm run build` : 0 ; `essai-app` : 135 contrôles, 0 faute ; copie
+cassée (onglet Avis remis) : 1 faute, rouge juste.
+TRACAGE : app/src/App.tsx, app/src/types.ts, app/src/donnees/demo.ts, app/src/donnees/supabase.ts, app/src/ecrans/Compte.tsx, app/src/ecrans/MonSite.tsx, app/src/ecrans/Accueil.tsx, app/src/ecrans/Avis.tsx, app/src/ecrans/Google.tsx, app/src/ecrans/Adresse.tsx, app/src/ecrans/Abonnement.tsx, scripts/essai-app.mjs, app/specs/03-APPFLOW.md, app/specs/01-PRD.md, app/specs/07-TACHES.md, memoire/questions.md, memoire/maintenant.md, CHANGELOG.md, memoire/journal.md, docs/audit/CARTE.md

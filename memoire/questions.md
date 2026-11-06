@@ -177,3 +177,20 @@ Gandi), et il reste à l'artisan s'il part.
 branche à tout moment : il ne coûte rien. Pour changer : la constante
 `EXTENSIONS_INCLUSES` et la condition sur `abonnements.etat` de
 `supabase/functions/_shared/domaines.mjs`.
+
+## Q10 (ouverte), 6 novembre 2026
+
+**Comment une demande de devis laissée sur le site arrive-t-elle à
+l'artisan ?** Le formulaire des sites (T10) range chaque demande dans la base.
+Jusqu'ici, l'artisan la lisait sur l'écran Accueil de l'app ; cet écran est
+retiré (T61, décision du 5 nov. : l'espace se réduit aux chantiers et au
+compte). Sans autre chemin, une demande reste dans la base et personne ne la
+voit : c'est un client perdu.
+
+**Réponse recommandée** : retirer le formulaire des sites et garder le seul
+bouton « Appeler » (et le lien WhatsApp de l'artisan s'il en a un) : le client
+joint l'artisan directement, rien ne se perd, 0 €, rien à surveiller.
+Autre choix : garder le formulaire et envoyer chaque demande par SMS ou
+e-mail à l'artisan (un service d'envoi à brancher : quelques centimes par SMS,
+ou un serveur d'e-mail). Pas appliqué : le formulaire reste en place tant que
+Fabrice n'a pas tranché (rien n'est supprimé sans lui).

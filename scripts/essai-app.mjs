@@ -200,7 +200,9 @@ const appareils = [
   { nom: 'Android 360', viewport: { width: 360, height: 740 }, isMobile: true, hasTouch: true, deviceScaleFactor: 3 },
   { nom: 'ordinateur 1280', viewport: { width: 1280, height: 800 }, isMobile: false, hasTouch: false, deviceScaleFactor: 1 },
 ];
-const ECRANS = ['', 'chantiers', 'site', 'avis', 'plus', 'adresse', 'google', 'abonnement', 'compte', 'installer'];
+// T61 (décision du 5 nov. 2026) : deux onglets, les chantiers et le compte.
+const ECRANS = ['', 'chantiers', 'compte', 'installer'];
+const RETIRES = ['site', 'avis', 'plus', 'adresse', 'google', 'abonnement'];
 
 async function nouvellePage(appareil, extra = '') {
   const ctx = await navigateur.newContext({ ...appareil, locale: 'fr-FR', timezoneId: 'Europe/Paris', serviceWorkers: 'block', acceptDownloads: true });
@@ -249,24 +251,16 @@ try {
   console.log('\nParcours (iPhone 390)');
   const { ctx, page, erreurs } = await nouvellePage(appareils[0]);
   ok(await connecter(page), 'un mauvais mot de passe est refusé avec un message');
-  ok(await page.getByRole('heading', { level: 1 }).textContent() === 'Façades Exemple', 'connecté : accueil au nom de l’entreprise');
+  ok(await page.getByRole('heading', { level: 1 }).textContent() === 'Mes chantiers', 'connecté : l’artisan arrive sur ses chantiers');
+  const onglets = await page.getByRole('navigation', { name: 'Navigation principale' }).getByRole('link').allTextContents();
+  ok(onglets.length === 2 && /Mes chantiers/.test(onglets[0]) && /Mon compte/.test(onglets[1]), 'deux onglets seulement : Mes chantiers, Mon compte', onglets.join(' | '));
+  for (const r of RETIRES) {
+    await page.goto(`${BASE}?demo#/${r}`); await page.waitForTimeout(150);
+    ok(await page.getByRole('heading', { name: 'Page introuvable' }).isVisible(), `#/${r} n’existe plus`);
+  }
 
-  // chiffres de la semaine = somme des 7 jours les plus récents du tableau affiché
-  await page.getByText('Voir les chiffres').click();
-  const lignes = await page.locator('.courbe tbody tr').evaluateAll((trs) => trs.map((tr) => [...tr.querySelectorAll('td')].map((td) => Number(td.textContent))));
-  const somme = (k) => lignes.slice(0, 7).reduce((s, l) => s + l[k], 0);
-  const affiche = async (m) => Number(await page.locator(`[data-mesure="${m}"]`).textContent());
-  ok(lignes.length === 28, '28 jours dans le tableau', String(lignes.length));
-  ok(await affiche('visites') === somme(0) && await affiche('appels') === somme(1) && await affiche('demandes') === somme(2), 'les chiffres de la semaine égalent le tableau affiché');
-
-  const avantLue = await page.locator('.non-lue').count();
-  await page.getByRole('button', { name: 'Marquer comme lue' }).first().click();
-  await page.waitForTimeout(200);
-  ok(await page.locator('.non-lue').count() === avantLue - 1, 'marquer une demande comme lue', `${avantLue} → ${await page.locator('.non-lue').count()}`);
-  ok(await page.locator('a[href^="tel:"]').first().getAttribute('href') === 'tel:0612345678', 'bouton « Appeler » avec le bon numéro');
-
-  // Mon site : téléphone, prix, tarifs
-  await page.goto(`${BASE}?demo#/site`);
+  // Mon compte : le site (téléphone, prix, tarifs)
+  await page.goto(`${BASE}?demo#/compte`);
   await page.getByLabel('Téléphone affiché sur le site').fill('12 34');
   ok(await page.getByText('Numéro invalide').isVisible(), 'téléphone invalide : message près du champ');
   ok(await page.getByRole('button', { name: 'Enregistrer' }).first().isDisabled(), 'téléphone invalide : enregistrement bloqué');
@@ -347,14 +341,6 @@ try {
     ok(e.genre === 'video' && !aGps(m) && !e.buf.includes('43.2965'), `${nom} : partie sans position (exiftool)`, Object.keys(m).filter((k) => /GPS|Location/i.test(k)).join(', '));
     ok(e.buf.length === (await readFile(F(nom))).length && spawnSync('ffprobe', ['-v', 'error', F('recu-' + nom)]).status === 0, `${nom} : même taille, se lit encore (ffprobe)`);
   }
-
-  // Avis : la réponse préparée n'est publiée qu'après validation
-  await page.goto(`${BASE}?demo#/avis`);
-  const zone = page.getByLabel('Votre réponse').first();
-  ok((await zone.inputValue()).startsWith('Merci Jean-Pierre'), 'la réponse préparée est proposée, modifiable');
-  await zone.fill('Merci beaucoup Jean-Pierre, à bientôt.');
-  await page.getByRole('button', { name: 'Valider et publier' }).click();
-  ok(await page.getByText('Validée, en cours de publication').waitFor({ state: 'visible', timeout: 3000 }).then(() => true, () => false), 'réponse validée par l’artisan');
 
   // Compte : export et suppression
   await page.goto(`${BASE}?demo#/compte`);
@@ -458,7 +444,7 @@ try {
     ok(renduBon(rc), '#/chantiers/demo-c1', JSON.stringify(rc));
     const nav = await p.getByRole('navigation', { name: 'Navigation principale' }).boundingBox();
     if (appareil.isMobile) ok(nav && nav.y + nav.height >= appareil.viewport.height - 1 && nav.width === appareil.viewport.width, 'navigation en bas de l’écran, pleine largeur', JSON.stringify(nav));
-    else ok(nav && nav.x === 0 && nav.height >= appareil.viewport.height - 1 && await p.getByRole('link', { name: 'Abonnement' }).isVisible(), 'navigation à gauche, tous les écrans visibles', JSON.stringify(nav));
+    else ok(nav && nav.x === 0 && nav.height >= appareil.viewport.height - 1 && await p.getByRole('link', { name: 'Mon compte' }).isVisible(), 'navigation à gauche, les deux onglets visibles', JSON.stringify(nav));
     if (!appareil.isMobile) {
       // page rechargée : le premier Tab d'une visite, pas celui d'après une navigation
       await p.goto(`${BASE}?demo#/`); await p.reload(); await p.locator('h1').first().waitFor(); await p.waitForTimeout(300);
@@ -470,76 +456,6 @@ try {
     await c.close();
   }
 
-  // ------------------------------------------------ Mon adresse (T20) : chercher, réserver, brancher, vérifier
-  console.log('\nMon adresse (T20)');
-  {
-    const { ctx: c, page: p, erreurs: errsA } = await nouvellePage(appareils[0]);
-    await connecter(p);
-    await p.goto(`${BASE}?demo#/adresse`); await p.getByLabel('Le nom voulu').waitFor();
-    const chercher = async (nom) => {
-      await p.getByLabel('Le nom voulu').fill(nom);
-      await p.getByRole('button', { name: 'Vérifier s’il est libre' }).click();
-      await p.waitForTimeout(450);
-      return p.locator('section[aria-labelledby="t-domaine"]').textContent();
-    };
-    ok(/finit en \.fr ou \.com/.test(await chercher('facades-martin.de')), 'une autre extension : refusée, avec la raison');
-    ok(/déjà pris/.test(await chercher('deja-pris.fr')), 'un nom pris : dit pris');
-    const libre = await chercher('https://www.Facades-Martin.fr/');
-    ok(/facades-martin\.fr est libre/.test(libre), 'une adresse tapée avec https et www est lue comme le nom de domaine', libre.slice(0, 160));
-    ok(!/€/.test(libre), 'aucun prix : le domaine est compris dans l abonnement');
-    await p.getByLabel('Prénom').fill('Jeanne');
-    await p.getByLabel('Nom', { exact: true }).fill('Martin');
-    await p.getByRole('button', { name: 'Réserver facades-martin.fr' }).click(); await p.waitForTimeout(600);
-    const apres = await p.locator('main').textContent();
-    ok(/réservé à votre nom/.test(apres) && /www\.facades-martin\.fr/.test(apres) && /Mon domaine,\s*En cours de mise en place/.test(apres),
-      'réservé : l adresse www apparaît, en cours de mise en place', apres.slice(0, 300));
-    await chercher('un-second.fr');
-    await p.getByLabel('Prénom').fill('Jeanne'); await p.getByLabel('Nom', { exact: true }).fill('Martin');
-    await p.getByRole('button', { name: 'Réserver un-second.fr' }).click(); await p.waitForTimeout(500);
-    ok(/déjà réservé/.test(await p.locator('main').textContent()), 'un second domaine est refusé');
-
-    await p.getByLabel('Votre nom de domaine').fill('mon-ancien-site.com');
-    await p.getByRole('button', { name: 'Brancher mon domaine' }).click(); await p.waitForTimeout(600);
-    const dns = await p.locator('table.dns').textContent().catch(() => '');
-    ok(/CNAME/.test(dns) && /www/.test(dns) && /sites\.domaine-sito\.fr/.test(dns), 'domaine existant : le CNAME à poser est donné (type, nom, valeur)', dns);
-    const carte = p.locator('li.carte', { hasText: 'www.mon-ancien-site.com' });
-    ok(/En cours de mise en place/.test(await carte.textContent()), 'le domaine branché apparaît, en attente');
-    await carte.getByRole('button', { name: 'Vérifier maintenant' }).click(); await p.waitForTimeout(600);
-    ok(/Active/.test(await p.locator('li.carte', { hasText: 'www.mon-ancien-site.com' }).textContent()), 'vérifié : l adresse passe active');
-    ok(errsA.length === 0, 'Mon adresse : aucune erreur dans la console', errsA.join(' | '));
-    await c.close();
-  }
-
-  // ------------------------------------------------ Ma fiche Google (T24) : relier
-  console.log('\nMa fiche Google (T24)');
-  {
-    const { ctx: c, page: p, erreurs: errsG } = await nouvellePage(appareils[0]);
-    await connecter(p);
-    await p.goto(`${BASE}?demo#/google`); await p.getByRole('button', { name: 'Relier ma fiche Google' }).waitFor();
-    ok(/Pas encore reliée/.test(await p.locator('main').textContent()), 'avant : pas encore reliée, avec le bouton pour relier');
-    await p.getByRole('button', { name: 'Relier ma fiche Google' }).click(); await p.waitForTimeout(600);
-    const t = await p.locator('main').textContent();
-    ok(/Reliée/.test(t) && /Façades Exemple/.test(t) && /Démonstration/.test(t) && /#\/google/.test(p.url()), 'relier : retour sur l écran, fiche reliée et nommée', t.slice(0, 200));
-    ok(await p.getByRole('button', { name: /Relier/ }).count() === 0, 'une fiche reliée n affiche plus le bouton');
-    ok(errsG.length === 0, 'Ma fiche Google : aucune erreur dans la console', errsG.join(' | '));
-    await c.close();
-  }
-
-  // ------------------------------------------------ Abonnement sur le web (T17)
-  console.log('\nAbonnement');
-  {
-    const { ctx: c2, page: p2 } = await nouvellePage(appareils[0]);
-    await connecter(p2);
-    await p2.goto(`${BASE}?demo#/abonnement`); await p2.waitForTimeout(400);
-    ok(/39\s€ HT par mois/.test(await p2.locator('main').textContent()), 'sur le web, le prix est affiché');
-    // T17 : sur le web, l'abonnement en cours ouvre le portail Stripe ; en
-    // démonstration, on revient sur l'écran avec le signe du portail.
-    const portail = p2.getByRole('button', { name: /Carte, factures, formule, résiliation/ });
-    ok(await portail.isVisible(), 'sur le web, le bouton du portail Stripe est là (abonnement en cours)');
-    await portail.click(); await p2.waitForTimeout(600);
-    ok(/portail Stripe/.test(await p2.locator('main').textContent()) && /#\/abonnement/.test(p2.url()), 'le bouton ouvre l adresse rendue par les données (démonstration : retour avec le signe)', p2.url());
-    await c2.close();
-  }
 } catch (e) {
   // Une erreur au milieu du parcours est une faute comme une autre : elle se
   // compte et se nomme, sinon le résumé de scripts/essais.mjs n'affiche qu'un

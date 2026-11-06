@@ -6,21 +6,21 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**419 fichiers suivis, dont 152 .md ; 104299 lignes de texte.** Hors zone : 0.
+**414 fichiers suivis, dont 152 .md ; 103692 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
 | Z01 Pilotage de l agent | 27 | 2142 | 0 |
-| Z02 Mémoire du projet | 11 | 3202 | 0 |
-| Z03 Spécifications | 11 | 2288 | 0 |
-| Z04 Documentation de travail | 25 | 3390 | 0 |
+| Z02 Mémoire du projet | 11 | 3257 | 0 |
+| Z03 Spécifications | 11 | 2302 | 0 |
+| Z04 Documentation de travail | 25 | 3391 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
 | Z06 Générateur de sites | 49 | 20291 | 4 |
 | Z07 Règles | 15 | 1147 | 0 |
-| Z08 App de l artisan | 44 | 9978 | 10 |
+| Z08 App de l artisan | 39 | 9385 | 10 |
 | Z09 Service atelier et Worker | 16 | 1988 | 0 |
 | Z10 Base Supabase | 32 | 2709 | 0 |
-| Z11 Essais et vérificateurs | 52 | 10258 | 0 |
+| Z11 Essais et vérificateurs | 52 | 10174 | 0 |
 | Z12 Prospection | 24 | 24280 | 0 |
 | Z13 Autres scripts | 14 | 1458 | 0 |
 | Z14 Banque d images | 8 | 3419 | 0 |
@@ -64,17 +64,17 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `memoire/actions-fabrice.md` | 37 |
+| `memoire/actions-fabrice.md` | 39 |
 | `memoire/comptes-essai.md` | 18 |
-| `memoire/de-cowork.md` | 41 |
-| `memoire/decisions.md` | 141 |
+| `memoire/de-cowork.md` | 42 |
+| `memoire/decisions.md` | 142 |
 | `memoire/essais/audit.txt` | 44 |
 | `memoire/essais/derniers.txt` | 24 |
 | `memoire/essais/disque.txt` | 61 |
-| `memoire/journal.md` | 2424 |
+| `memoire/journal.md` | 2458 |
 | `memoire/maintenant.md` | 112 |
 | `memoire/pieges.md` | 121 |
-| `memoire/questions.md` | 179 |
+| `memoire/questions.md` | 196 |
 
 ## Z03 Spécifications
 
@@ -84,11 +84,11 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `app/README.md` | 150 |
 | `app/specs/01-PRD.md` | 236 |
 | `app/specs/02-TRD.md` | 216 |
-| `app/specs/03-APPFLOW.md` | 155 |
+| `app/specs/03-APPFLOW.md` | 151 |
 | `app/specs/04-DESIGN-SYSTEM.md` | 180 |
 | `app/specs/05-SCHEMA-BACKEND.md` | 458 |
 | `app/specs/06-PLAN-IMPLEMENTATION.md` | 93 |
-| `app/specs/07-TACHES.md` | 146 |
+| `app/specs/07-TACHES.md` | 164 |
 | `app/specs/08-PROSPECTION.md` | 144 |
 | `app/specs/README.md` | 21 |
 
@@ -96,7 +96,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `CHANGELOG.md` | 98 |
+| `CHANGELOG.md` | 99 |
 | `SECURITY.md` | 55 |
 | `docs/00-INDEX.md` | 113 |
 | `docs/CONSTRAINTS.md` | 58 |
@@ -284,28 +284,23 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `app/public/vitrine/4.webp` | binaire |
 | `app/public/vitrine/5.webp` | binaire |
 | `app/public/vitrine/6.webp` | binaire |
-| `app/src/App.tsx` | 154 |
+| `app/src/App.tsx` | 115 |
 | `app/src/apercu-brut.ts` | 61 |
 | `app/src/attente.ts` | 123 |
-| `app/src/donnees/demo.ts` | 217 |
+| `app/src/donnees/demo.ts` | 154 |
 | `app/src/donnees/index.ts` | 14 |
-| `app/src/donnees/supabase.ts` | 242 |
-| `app/src/ecrans/Abonnement.tsx` | 80 |
-| `app/src/ecrans/Accueil.tsx` | 84 |
-| `app/src/ecrans/Adresse.tsx` | 151 |
-| `app/src/ecrans/Avis.tsx` | 62 |
+| `app/src/donnees/supabase.ts` | 196 |
 | `app/src/ecrans/Chantiers.tsx` | 168 |
-| `app/src/ecrans/Compte.tsx` | 147 |
+| `app/src/ecrans/Compte.tsx` | 151 |
 | `app/src/ecrans/Connexion.tsx` | 47 |
-| `app/src/ecrans/Google.tsx` | 55 |
 | `app/src/ecrans/Installer.tsx` | 57 |
-| `app/src/ecrans/MonSite.tsx` | 148 |
+| `app/src/ecrans/MonSite.tsx` | 150 |
 | `app/src/jour.ts` | 46 |
 | `app/src/main.tsx` | 15 |
 | `app/src/nettoyer.ts` | 113 |
 | `app/src/photo.ts` | 193 |
 | `app/src/style.css` | 180 |
-| `app/src/types.ts` | 108 |
+| `app/src/types.ts` | 89 |
 | `app/src/ui.tsx` | 86 |
 | `app/src/video.ts` | 88 |
 | `app/src/vitrine/Vitrine.tsx` | 348 |
@@ -380,7 +375,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `scripts/contraste-rendu.mjs` | 120 |
 | `scripts/essai-accepter.mjs` | 102 |
 | `scripts/essai-alt.mjs` | 110 |
-| `scripts/essai-app.mjs` | 556 |
+| `scripts/essai-app.mjs` | 472 |
 | `scripts/essai-appels.mjs` | 419 |
 | `scripts/essai-avis.mjs` | 104 |
 | `scripts/essai-boucle.mjs` | 209 |

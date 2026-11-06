@@ -156,8 +156,8 @@ Spécification complète : `app/specs/08-PROSPECTION.md`. Script d'appel :
 | N° | Exigence | Source | État et preuve |
 |---|---|---|---|
 | A1 | Se connecter avec l'identifiant (son e-mail) et le mot de passe que Fabrice lui donne, puis rester connecté sur son téléphone ; mot de passe oublié : Fabrice en pose un nouveau | 29 oct., 5 nov. | Fait, prouvé : `essai-app` (connexion), `essai-comptes` (création, nouveau mot de passe, contre des faux) ; réel : clé de service (F1) |
-| A2 | Voir les visites, appels et demandes de la semaine, et la courbe de 28 jours, comptés au jour de Paris | 23 sept. ; plan 7.4 | Partiel : affichage prouvé (`essai-app`) ; mesure Umami à faire (T22) |
-| A3 | Lire les demandes laissées sur le site, appeler ou répondre d'un geste, marquer comme lue | plan 7.1 | Partiel : écran prouvé (`essai-app`) ; formulaire du site à faire (S21) |
+| A2 | ~~Voir ses chiffres de la semaine~~ | retiré de l'app (T61, décision du 5 nov. 2026) | Retiré : écran supprimé, données gardées pour l'export (A17) |
+| A3 | ~~Lire les demandes laissées sur le site dans l'app~~ | retiré de l'app (T61, décision du 5 nov. 2026) | Retiré : écran supprimé, données gardées pour l'export (A17) |
 | A4 | Créer un chantier, ajouter des paires avant / après et d'autres photos | 23 sept. | Fait, prouvé : `essai-app` (démonstration) |
 | A5 | Accepter **toute** photo de tout appareil ; ce que le téléphone ne sait pas lire est dit à l'artisan et reste sur son téléphone ; refuser ce qui n'est pas une photo avec une phrase claire | 3 oct. | Fait, prouvé (T44) : `essai-app` (132 contrôles) |
 | A6 | Ne jamais envoyer la position GPS ni l'appareil ; redresser la photo ; préparer sur le téléphone, avant l'envoi | plan 5.2 ; 29 oct. | Fait, prouvé pour les photos (T44) ; **vidéos : GPS encore dedans** (T46) |
@@ -165,12 +165,12 @@ Spécification complète : `app/specs/08-PROSPECTION.md`. Script d'appel :
 | A7 | Ne perdre aucune photo si le réseau coupe ou si l'iPhone met l'app en veille | plan 5.3 | Fait, non prouvé : file IndexedDB, envoi TUS ; jamais sur vrai réseau (D-07) |
 | A8 | Accepter et garder les vidéos, sans les montrer pour l'instant | 5 oct. | Fait, prouvé : `essai-app` |
 | A9 | Le site se refabrique et se republie avec les nouvelles photos, sans jamais casser la version en ligne | 23 sept. ; plan 3.3 | voir S08 et S29 (exigence déplacée dans la partie site, numéro gardé) |
-| A10 | Donner son téléphone, cocher « afficher mes prix », saisir ses tarifs | 2 oct. | Fait, prouvé : `essai-app` |
+| A10 | Donner son téléphone, cocher « afficher mes prix », saisir ses tarifs (dans « Mon compte » depuis T61) | 2 oct. | Fait, prouvé : `essai-app` |
 | A11 | Remplir ce que les mentions légales du site demandent (TVA, décennale, médiateur ; capital et adresse du médiateur à ajouter) | `docs/specs/S-MENTIONS.md` | Partiel : saisie prouvée (`essai-app`) ; champs manquants et affichage sur le site à faire (T50) |
-| A12 | Voir son adresse (sous-domaine offert) ; demander son propre domaine ; brancher un domaine existant | 5 oct. ; plan 4 | Partiel : affichage fait ; Gandi et branchement à faire (T19, T20) |
-| A13 | Lire ses avis Google ; relire, corriger et valider une réponse préparée ; rien n'est publié sans lui | 5 oct. | Partiel : écran prouvé (`essai-app`) ; Google à faire (T24, T25, F13) |
-| A14 | Voir l'état de sa fiche Google ; un lien direct vers la fiche en attendant ; ce qui contredit le site est montré | plan 6.4 ; `docs/specs/S-REFERENCEMENT.md` §5 | Partiel : état et lien faits ; comparaison à faire |
-| A15 | Voir sa formule, son état et son échéance ; payer et gérer en ligne sur le web | 5 et 9 oct. | Partiel : affichage fait ; Stripe écrit et essayé contre un faux (T16), pas de compte ni de déploiement (F7, repoussé le 29 oct.) ; boutons reliés (T17), essayés en démonstration |
+| A12 | ~~Gérer son adresse et son domaine dans l'app~~ | retiré de l'app (T61, décision du 5 nov. 2026) | Retiré : écran supprimé, données gardées pour l'export (A17) |
+| A13 | ~~Répondre aux avis Google dans l'app~~ | retiré de l'app (T61, décision du 5 nov. 2026) | Retiré : écran supprimé, données gardées pour l'export (A17) |
+| A14 | ~~Voir sa fiche Google dans l'app~~ | retiré de l'app (T61, décision du 5 nov. 2026) | Retiré : écran supprimé, données gardées pour l'export (A17) |
+| A15 | ~~Gérer son abonnement dans l'app~~ | retiré de l'app (T61, décision du 5 nov. 2026) | Retiré : écran supprimé, données gardées pour l'export (A17) |
 | A16 | ~~App Android sur le Play Store, sans prix~~ | abandonné, décision du 5 nov. 2026 | Retiré : pas d'app Android |
 | A17 | Télécharger toutes ses données | plan 7.5 (RGPD) | Fait, prouvé : `essai-app` |
 | A18 | Supprimer son compte, avec 30 jours pour changer d'avis | plan 7.5 | Partiel : demande et annulation prouvées (`essai-app`) ; suppression effective écrite et essayée contre des faux (T12, `essai-suppressions`) ; pas encore lancée chaque nuit, résiliation Stripe réelle à T16 (D-16) |

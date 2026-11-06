@@ -22,7 +22,7 @@ fabrication (D-14), rien d'essayé sur un vrai iPhone (F14). Mentions légales
 
 ## Les tâches
 
-68 tâches : **44 faites, 18 bloquées, 6 à faire, 0 en cours** (`app/specs/07-TACHES.md`).
+68 tâches : **45 faites, 18 bloquées, 5 à faire, 0 en cours** (`app/specs/07-TACHES.md`).
 T47 à T56 viennent de l'audit du 3 novembre.
 
 **Ordre décidé par Fabrice le 3 nov. (« oui Q5 ») : les tâches de l'audit
@@ -34,8 +34,8 @@ D-16), T16 et T17 (Stripe écrit et relié, rien de déployé : F7), T31 (codes
 APE), la maçonnerie, la menuiserie, le carrelage, la plomberie et (le 5) l’électricité, la plâtrerie, l’isolation, la métallerie, le terrassement, l’étanchéité, le parquet, la piscine et le paysagiste : T32 est faite, les 16 métiers ont leurs textes. T19 aussi (domaines, contre des faux serveurs ; réel : F8, F6, F5), T20 (écran Mon adresse sur la démonstration ; fonction Edge `domaines` écrite, à déployer avec F8), T22 (statistiques Umami, contre un faux ; réel : F9) et T24 (Google : jeton chiffré, avis, réponses validées, contre un faux ; réel : F13). Le 5 nov., Fabrice a simplifié Sitô : pas d'app Android (T28, T29 abandonnées), comptes créés par lui, espace de l'artisan réduit aux photos, chantiers et compte ; nettoyage en 8 étapes, les étapes 1 (Android) et 2 (comptes créés par Fabrice) sont faites, l'offre et la page vitrine attendent sa description. T45 est faite contre des faux, bloquée sur
 F21 pour le réel ; T13 est sans objet (Q7).
 T11 (formulaire dans les pages) faite aussi : la clé publique est dans le
-dépôt ; en ligne avec la refabrication automatique (F21). Tâches à faire : T61 à T65, le nettoyage du 5 nov. (espace artisan réduit, paiement par liens, domaines par commande, avis sur le site, ménage) ; T04 attend T03, donc F1.
-Le reste attend une action de Fabrice : F1, F5, F6, F7, F8, F9, F13, F15, F20, F21, F23.
+dépôt ; en ligne avec la refabrication automatique (F21). T61 faite le 6 nov. (espace artisan : Mes chantiers et Mon compte). Tâches à faire : T62 à T65, le nettoyage du 5 nov. (espace artisan réduit, paiement par liens, domaines par commande, avis sur le site, ménage) ; T04 attend T03, donc F1.
+Question ouverte pour Fabrice : Q10 (les demandes du formulaire des sites n'ont plus d'écran). Le reste attend une action de Fabrice : F1, F5, F6, F7, F8, F9, F13, F15, F20, F21, F23.
 Depuis T50, un
 site fabriqué depuis la base est un site d'abonné (`--publication`) : sans
 adresse électronique ni directeur de la publication dans `profils`, il n'est

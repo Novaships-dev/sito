@@ -1,8 +1,10 @@
-// Mon site : l'état du site, le téléphone, la case « afficher mes prix » et les tarifs.
+// Mon site, dans « Mon compte » (T61, décision du 5 nov. 2026 : l'espace
+// artisan se réduit aux chantiers et au compte) : l'état du site, le
+// téléphone, la case « afficher mes prix » et les tarifs.
 // Décision du 2 octobre : « c'est l'artisan qui coche une case pour activer ça
 // ou pas, et ensuite ajouter ses tarifs ».
 import { useEffect, useState } from 'react';
-import { useApp, useCharge, Chargement, Ecran, useAction, Message, Pastille, euros } from '../ui';
+import { useApp, useCharge, Chargement, useAction, Message, Pastille, euros } from '../ui';
 import { dateLisible } from '../jour';
 import type { Profil, Tarif } from '../types';
 
@@ -22,9 +24,9 @@ export function MonSite() {
   const statut = s ? STATUTS[s.statut] || { texte: s.statut, ton: 'neutre' as const } : null;
 
   return (
-    <Ecran titre="Mon site">
+    <>
       <section className="carte" aria-labelledby="t-etat">
-        <h2 id="t-etat">État</h2>
+        <h2 id="t-etat">Mon site</h2>
         <Chargement {...site} />
         {site.valeur === null && <p>Votre site n’est pas encore créé.</p>}
         {s && statut && (
@@ -50,7 +52,7 @@ export function MonSite() {
           <LigneTarif rang={(tarifs.valeur || []).length} apres={tarifs.recharger} />
         </section>
       )}
-    </Ecran>
+    </>
   );
 }
 

@@ -5,13 +5,7 @@ import { Ctx, useApp, type Contexte } from './ui';
 import { creerFile, type Etat } from './attente';
 import type { Donnees } from './types';
 import { Connexion } from './ecrans/Connexion';
-import { Accueil } from './ecrans/Accueil';
 import { Chantiers, Chantier } from './ecrans/Chantiers';
-import { MonSite } from './ecrans/MonSite';
-import { Adresse } from './ecrans/Adresse';
-import { Avis } from './ecrans/Avis';
-import { Google } from './ecrans/Google';
-import { Abonnement } from './ecrans/Abonnement';
 import { Compte } from './ecrans/Compte';
 import { Installer, estInstallee } from './ecrans/Installer';
 
@@ -21,8 +15,7 @@ import { Installer, estInstallee } from './ecrans/Installer';
 const Vitrine = lazy(() => import('./vitrine/Vitrine'));
 
 function useRoute(): string[] {
-  // Ce qui suit « ? » dans le # (retour de Stripe : « #/abonnement?paiement=ok »)
-  // n'est pas une route : l'écran le lit lui-même.
+  // Ce qui suit « ? » dans le # n'est pas une route : l'écran le lit lui-même.
   const lire = () => location.hash.replace(/^#\/?/, '').split('?')[0].split('/').filter(Boolean);
   const [r, setR] = useState(lire);
   useEffect(() => {
@@ -36,19 +29,11 @@ function useRoute(): string[] {
   return r;
 }
 
+// Deux onglets (T61, décision du 5 nov. 2026 : « le reste sa sers a rien ») :
+// les chantiers, où partent les photos, et le compte.
 const ONGLETS = [
-  { lien: '', texte: 'Accueil', icone: 'M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z' },
-  { lien: 'chantiers', texte: 'Chantiers', icone: 'M4 7h3l2-3h6l2 3h3a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1zm8 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8z' },
-  { lien: 'site', texte: 'Mon site', icone: 'M3 5h18v14H3zM3 9h18' },
-  { lien: 'avis', texte: 'Avis', icone: 'M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z' },
-  { lien: 'plus', texte: 'Plus', icone: 'M5 12h.01M12 12h.01M19 12h.01' },
-];
-const PLUS = [
-  { lien: 'adresse', texte: 'Mon adresse' },
-  { lien: 'google', texte: 'Ma fiche Google' },
-  { lien: 'abonnement', texte: 'Abonnement' },
-  { lien: 'compte', texte: 'Compte et mentions légales' },
-  { lien: 'installer', texte: 'Installer l’app' },
+  { lien: 'chantiers', texte: 'Mes chantiers', icone: 'M4 7h3l2-3h6l2 3h3a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1zm8 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8z' },
+  { lien: 'compte', texte: 'Mon compte', icone: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm-8 9a8 8 0 0 1 16 0' },
 ];
 
 export function App({ donnees }: { donnees: Donnees }) {
@@ -86,48 +71,24 @@ export function App({ donnees }: { donnees: Donnees }) {
 
 function Page({ route }: { route: string[] }) {
   switch (route[0] || '') {
-    case '': case 'connexion': return <Accueil />;
-    case 'chantiers': return route[1] ? <Chantier id={decodeURIComponent(route[1])} /> : <Chantiers />;
-    case 'site': return <MonSite />;
-    case 'adresse': return <Adresse />;
-    case 'avis': return <Avis />;
-    case 'google': return <Google />;
-    case 'abonnement': return <Abonnement />;
+    // une fois connecté, l'artisan arrive sur ses chantiers
+    case '': case 'connexion': case 'chantiers': return route[1] ? <Chantier id={decodeURIComponent(route[1])} /> : <Chantiers />;
     case 'compte': return <Compte />;
-    case 'plus': return <Plus />;
-    default: return <main className="ecran" id="contenu" tabIndex={-1}><h1>Page introuvable</h1><a href="#/">Retour à l’accueil</a></main>;
+    default: return <main className="ecran" id="contenu" tabIndex={-1}><h1>Page introuvable</h1><a href="#/chantiers">Retour à mes chantiers</a></main>;
   }
 }
 
-function Plus() {
-  useEffect(() => { document.title = 'Plus, MonSiteArtisan'; }, []);
-  return (
-    <main className="ecran" id="contenu" tabIndex={-1}>
-      <h1>Plus</h1>
-      <ul className="liste">{PLUS.map((p) => <li key={p.lien}><a className="carte lien-carte" href={`#/${p.lien}`}>{p.texte}</a></li>)}</ul>
-    </main>
-  );
-}
-
 function Navigation({ actif }: { actif: string }) {
-  const dansPlus = PLUS.some((p) => p.lien === actif);
+  const courant = actif === 'compte' ? 'compte' : 'chantiers';
   return (
     <nav className="navigation" aria-label="Navigation principale">
       <ul>
-        {ONGLETS.map((o) => {
-          const courant = o.lien === actif || (o.lien === 'plus' && dansPlus);
-          return (
-            <li key={o.lien} className={o.lien === 'plus' ? 'seulement-telephone' : ''}>
-              <a href={`#/${o.lien}`} aria-current={courant ? 'page' : undefined}>
-                <svg viewBox="0 0 24 24" aria-hidden="true" width="24" height="24"><path d={o.icone} /></svg>
-                <span>{o.texte}</span>
-              </a>
-            </li>
-          );
-        })}
-        {PLUS.map((p) => (
-          <li key={p.lien} className="seulement-ordinateur">
-            <a href={`#/${p.lien}`} aria-current={p.lien === actif ? 'page' : undefined}><span>{p.texte}</span></a>
+        {ONGLETS.map((o) => (
+          <li key={o.lien}>
+            <a href={`#/${o.lien}`} aria-current={o.lien === courant ? 'page' : undefined}>
+              <svg viewBox="0 0 24 24" aria-hidden="true" width="24" height="24"><path d={o.icone} /></svg>
+              <span>{o.texte}</span>
+            </a>
           </li>
         ))}
       </ul>

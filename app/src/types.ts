@@ -42,11 +42,7 @@ export type Avis = { id: string; auteur: string | null; note: number | null; tex
 
 export type Site = { id: string; statut: string; adresse_en_ligne: string | null; publie_le: string | null };
 export type Adresse = { hote: string; genre: 'offerte' | 'achetee' | 'existante'; principale: boolean; etat: 'en_attente' | 'active' | 'echec' | 'retiree'; motif: string | null };
-// Mon adresse, cas B et C (T20) : la réponse du service des domaines.
-export type RechercheDomaine = { hote: string; disponible: boolean; motif: string | null };
-export type Branchement = { adresse: Adresse; cname: { nom: string; valeur: string } };
 export type Abonnement = { formule: 'mensuel' | 'annuel'; etat: 'essai' | 'actif' | 'impaye' | 'resilie'; fin_periode: string | null; resiliation_prevue: boolean };
-export type ConnexionGoogle = { etat: 'a_connecter' | 'connectee' | 'revoquee' | 'erreur'; fiche: string | null; derniere_synchro: string | null; motif: string | null };
 export type Suppression = { demandee_le: string; effective_le: string; annulee_le: string | null };
 
 // Ce que l'app envoie : le fichier préparé sur l'appareil (voir photo.ts).
@@ -79,29 +75,14 @@ export interface Donnees {
   envoyerPhoto(e: EnvoiPhoto, progression?: (part: number) => void): Promise<void>;
   envoyerOriginal(e: EnvoiOriginal, progression?: (part: number) => void): Promise<void>;
   envoyerVideo(e: { fichier: Blob; nom: string; format: string; chantierId: string }, progression?: (part: number) => void): Promise<void>;
-  // ce qui revient du site
+  // ce qui revient du site : plus d'écran (T61), lu pour l'export des données
   demandes(): Promise<Demande[]>;
-  marquerLue(id: string): Promise<void>;
   statistiques(jours: number): Promise<JourStat[]>;
   avis(): Promise<Avis[]>;
-  validerReponse(id: string, texte: string): Promise<void>;
-  // site, adresse, abonnement, Google, compte
+  // site, adresse, abonnement (lus pour « Mon site » et l'export), compte
   site(): Promise<Site | null>;
   adresses(): Promise<Adresse[]>;
-  // Mon adresse (T20) : chercher et réserver un domaine (cas B), brancher le
-  // sien (cas C), en demander l'état. Passe par le service (fonction Edge
-  // `domaines`) : Gandi et Cloudflare ont des clés que l'app n'a pas.
-  chercherDomaine(nom: string): Promise<RechercheDomaine>;
-  acheterDomaine(nom: string, representant: { prenom: string; nom: string }): Promise<Adresse>;
-  brancherDomaine(nom: string): Promise<Branchement>;
-  verifierDomaine(hote: string): Promise<Adresse>;
   abonnement(): Promise<Abonnement | null>;
-  // Web seulement (T17) : l'adresse du paiement Stripe ou du portail, à ouvrir.
-  ouvrirPaiement(action: 'paiement' | 'portail', formule?: 'mensuel' | 'annuel'): Promise<string>;
-  connexionGoogle(): Promise<ConnexionGoogle | null>;
-  // T24 : l'adresse du consentement Google (fonction Edge `google-lien`) ;
-  // Google ramène ensuite sur l'écran Ma fiche Google avec « google=ok ».
-  lienGoogle(): Promise<string>;
   suppression(): Promise<Suppression | null>;
   demanderSuppression(): Promise<void>;
   annulerSuppression(): Promise<void>;
