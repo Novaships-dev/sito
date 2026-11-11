@@ -2548,3 +2548,17 @@ Le code interne garde `sito` (commentaires, dépôt), comme décidé.
 Preuve : `verifier-depot`, `verifier-textes`, `verifier-tracabilite`,
 `essais.mjs` (résultat ci-dessous, dans le commit).
 TRACAGE : memoire/maintenant.md, docs/CONSTRAINTS.md, docs/SOURCE-UNIQUE.md, app/specs/01-PRD.md, app/specs/02-TRD.md, app/specs/05-SCHEMA-BACKEND.md, app/specs/06-PLAN-IMPLEMENTATION.md, app/specs/07-TACHES.md, docs/prospection-script.md, supabase/README.md, CHANGELOG.md
+
+## 12 nov. 2026 : T03, compte d'essai dans la vraie base (Cowork)
+
+Plan : Fabrice a lancé `lanceurs\CLE_SUPABASE.bat` (F1) ; vérifier sans voir
+la clé ; passer T03 « fait » si la preuve tient.
+Preuve : journaux de Supabase (outil MCP `query_logs`), 11 nov. 23 h 43 à
+23 h 44 UTC : deux suites `GET /auth/v1/admin/users` puis `entreprises`,
+`profils`, `membres`, toutes en 200 (création puis `--verifier`). L'appel
+d'administration n'aboutit qu'avec la clé secrète. En base : entreprise,
+profil et membre du SIREN 000000000 présents. Le code de sortie de
+`compte-essai.mjs --verifier` n'a pas été vu (il tourne sur le PC) ; les
+réponses 200 de la seconde suite en tiennent lieu.
+T04 se débloque, mais ne peut tourner que sur le PC (la clé n'existe pas ici).
+TRACAGE : app/specs/07-TACHES.md, memoire/actions-fabrice.md, memoire/maintenant.md, CHANGELOG.md

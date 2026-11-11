@@ -14,14 +14,13 @@ réduite à l'essentiel (photos des chantiers et compte), des comptes créés pa
 Fabrice, un paiement par liens Stripe, des domaines et des avis Google par
 commande ; **rien n'est encore en ligne pour un client** : il manque la
 micro-entreprise et le domaine (F25), le numéro WhatsApp (F24), les comptes
-Stripe, Gandi et Google (F7, F8, F13), la clé de service Supabase (F1) et les
+Stripe, Gandi et Google (F7, F8, F13), et les
 images de 13 métiers sur 16 (F15, F18).
 
 ## Les tâches
 
-69 tâches : **50 faites, 18 bloquées, 1 à faire, 0 en cours** (`app/specs/07-TACHES.md`).
-Plus aucune tâche « à faire » ouverte que Claude puisse mener seul : T04 attend
-T03 (donc F1) ; T66 et T67 attendent F24 et F25.
+69 tâches : **51 faites, 17 bloquées, 1 à faire, 0 en cours** (`app/specs/07-TACHES.md`).
+Plus aucune tâche « à faire » ouverte que Claude puisse mener seul : T04 (essai contre la vraie base) peut maintenant tourner, mais seulement sur le PC de Fabrice, où vit la clé ; T66 et T67 attendent F24 et F25.
 
 Le nettoyage du 5 et 6 novembre, fait :
 
@@ -86,7 +85,6 @@ page de vente n'existe qu'en aperçu privé.
 | F25 : créer la micro-entreprise, puis acheter monsiteartisan.com | mettre la page en ligne (T67), mentions légales, TVA |
 | F24 : le nouveau numéro WhatsApp | les boutons de la page (T66) |
 | F7 : compte Stripe et trois liens de paiement (pas à pas dans l'action) | encaisser |
-| F1 : clé de service Supabase dans `.env` | créer les comptes pour de vrai, essais contre la vraie base |
 | F8, F13 : comptes Gandi et Google | domaines, avis |
 | F15, F18 : images des métiers | sites des autres métiers que le ravalement |
 | F20, F21 : dépôt privé, refabrication automatique | photos des artisans, sites mis à jour seuls |

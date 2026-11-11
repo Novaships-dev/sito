@@ -6,14 +6,14 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**412 fichiers suivis, dont 152 .md ; 103570 lignes de texte.** Hors zone : 0.
+**412 fichiers suivis, dont 152 .md ; 103585 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
 | Z01 Pilotage de l agent | 27 | 2142 | 0 |
-| Z02 Mémoire du projet | 11 | 3344 | 0 |
+| Z02 Mémoire du projet | 11 | 3358 | 0 |
 | Z03 Spécifications | 11 | 2308 | 0 |
-| Z04 Documentation de travail | 25 | 3396 | 0 |
+| Z04 Documentation de travail | 25 | 3397 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
 | Z06 Générateur de sites | 48 | 20190 | 4 |
 | Z07 Règles | 15 | 1147 | 0 |
@@ -66,13 +66,13 @@ Un audit qui ne couvre pas toutes les zones le dit.
 |---|---|
 | `memoire/actions-fabrice.md` | 39 |
 | `memoire/comptes-essai.md` | 18 |
-| `memoire/de-cowork.md` | 43 |
-| `memoire/decisions.md` | 143 |
+| `memoire/de-cowork.md` | 44 |
+| `memoire/decisions.md` | 144 |
 | `memoire/essais/audit.txt` | 44 |
 | `memoire/essais/derniers.txt` | 24 |
 | `memoire/essais/disque.txt` | 61 |
-| `memoire/journal.md` | 2550 |
-| `memoire/maintenant.md` | 102 |
+| `memoire/journal.md` | 2564 |
+| `memoire/maintenant.md` | 100 |
 | `memoire/pieges.md` | 121 |
 | `memoire/questions.md` | 199 |
 
@@ -96,7 +96,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `CHANGELOG.md` | 104 |
+| `CHANGELOG.md` | 105 |
 | `SECURITY.md` | 55 |
 | `docs/00-INDEX.md` | 113 |
 | `docs/CONSTRAINTS.md` | 58 |
