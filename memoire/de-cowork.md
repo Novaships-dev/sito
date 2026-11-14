@@ -44,3 +44,4 @@ section 2, « Deux sessions ».
 | 6 nov. 2026 | `memoire/decisions.md` (Gandi gardé, page provisoire possible, Stripe et micro cette semaine, mot pour mot) | messages de Fabrice, 4 h 10 et 4 h 19 |
 | 14 nov. 2026 | `memoire/decisions.md` (sites e-commerce plus tard, site de la société FG HORIZON, mot pour mot) | message de Fabrice, 1 h 47 |
 | 14 nov. 2026 | `memoire/decisions.md` (nom commercial FG HORIZON, mot pour mot) | message de Fabrice, 1 h 48 |
+| 14 nov. 2026 | `memoire/decisions.md` (site FG HORIZON orienté vente, numéro 06 01 53 25 82 pour MonSiteArtisan et FG HORIZON, mot pour mot) | message de Fabrice, 2 h 04 |
