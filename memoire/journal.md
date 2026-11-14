@@ -2562,3 +2562,24 @@ profil et membre du SIREN 000000000 présents. Le code de sortie de
 réponses 200 de la seconde suite en tiennent lieu.
 T04 se débloque, mais ne peut tourner que sur le PC (la clé n'existe pas ici).
 TRACAGE : app/specs/07-TACHES.md, memoire/actions-fabrice.md, memoire/maintenant.md, CHANGELOG.md
+
+## 14 nov. 2026 : T66 et T69, page de MonSiteArtisan.com refaite (Cowork)
+
+Plan : brancher le numéro donné par Fabrice dans `offre.ts` ; refaire la
+page au niveau du site FG HORIZON (3D, verre, défilement) sans casser les
+contrôles d'`essai-app` ; vérifier en images sur trois écrans.
+Fait : `Univers.tsx` (maison en fil jaune qui se construit, grille, poussière
+d'or, étoiles ; caméra liée au défilement ; sans WebGL, un dégradé CSS) ;
+`Vitrine.tsx` et `vitrine.css` réécrits ; dépendances three, gsap, lenis,
+@fontsource/instrument-serif. Treize photos (les six d'avant et sept livrées
+par Fabrice le 14 nov., `app/public/vitrine/7.webp` à `13.webp`), chacune
+une seule fois : la cliente qui cherche derrière le moteur, une mosaïque
+« Ce que ça change », le façadier à la tablette chez les artisans vitrines.
+Pannes : la photo de la promesse ne remplissait pas son cadre (règle
+`.m-photo` plus bas dans la feuille) ; scènes épinglées décalées par les
+photos chargées tard (recalcul sur ResizeObserver, polices et `load`) ;
+questions illisibles (couleur de `summary` reprise de `style.css`).
+Preuve : `essai-app` 135 contrôles, 0 faute ; planches 1440×900, 1280×640,
+390×844 : 0 débord, 0 erreur. Le bloc de la page pèse 636 ko (three.js),
+chargé à part de l'espace artisan.
+TRACAGE : app/public/vitrine/7.webp à 13.webp, app/src/vitrine/Univers.tsx, app/src/vitrine/Vitrine.tsx, app/src/vitrine/vitrine.css, app/src/vitrine/offre.ts, app/package.json, app/package-lock.json, app/specs/07-TACHES.md, memoire/actions-fabrice.md, CHANGELOG.md, docs/audit/CARTE.md

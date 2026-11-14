@@ -18,7 +18,10 @@ export const MENTION_TVA = 'TVA non applicable, art. 293 B du CGI';
 
 // Numéro WhatsApp de MonSiteArtisan, au format international sans « + » ni espace
 // (33612345678). Vide : les boutons mènent à la section « Contact », qui le dit.
-export const WHATSAPP = '';
+// Donné par Fabrice le 14 nov. 2026 (T66) : 06 01 53 25 82, aussi pour les appels.
+export const WHATSAPP = '33601532582';
+export const TELEPHONE = '+33601532582';
+export const TELEPHONE_LISIBLE = '06\u00a001\u00a053\u00a025\u00a082';
 
 export const MESSAGE_MAQUETTE = 'Bonjour, je suis artisan et je voudrais la maquette gratuite de mon site.';
 
@@ -33,11 +36,19 @@ export const euros = (n: number) => `${n.toLocaleString('fr-FR')}\u00a0€`;
 // métadonnées. null tant qu'un fichier n'est pas livré : son cadre garde un fond sobre et
 // le navigateur ne demande rien (pas d'image cassée). Le jour où la photo
 // arrive, on met son chemin ici ('vitrine/1.webp').
-export const PHOTOS: Record<'facadier' | 'telephone' | 'avant' | 'apres' | 'couvreur' | 'peintre', string | null> = {
+export const PHOTOS = {
   facadier: 'vitrine/1.webp',
   telephone: 'vitrine/2.webp',
   avant: 'vitrine/3.webp',
   apres: 'vitrine/4.webp',
   couvreur: 'vitrine/5.webp',
   peintre: 'vitrine/6.webp',
-};
+  // Livrées le 14 nov. 2026 pour la page refaite (T69), une place chacune.
+  tablette: 'vitrine/7.webp',      // façadier qui regarde sa tablette au camion
+  google: 'vitrine/8.webp',        // main d'artisan, recherche Google à l'écran
+  cliente: 'vitrine/9.webp',       // propriétaire qui cherche, façade fissurée
+  clienteRavie: 'vitrine/10.webp', // la même, maison refaite
+  equipe: 'vitrine/11.webp',       // peintre et apprenti, poignée de main
+  couvreurPouce: 'vitrine/12.webp',// couvreur sur le toit, pouce levé
+  appel: 'vitrine/13.webp',        // téléphone qui sonne sur l'établi
+} satisfies Record<string, string | null>;

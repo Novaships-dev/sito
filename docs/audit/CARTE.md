@@ -6,18 +6,18 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**412 fichiers suivis, dont 152 .md ; 103585 lignes de texte.** Hors zone : 0.
+**420 fichiers suivis, dont 152 .md ; 104315 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
 | Z01 Pilotage de l agent | 27 | 2142 | 0 |
-| Z02 Mémoire du projet | 11 | 3358 | 0 |
-| Z03 Spécifications | 11 | 2308 | 0 |
-| Z04 Documentation de travail | 25 | 3397 | 0 |
+| Z02 Mémoire du projet | 11 | 3402 | 0 |
+| Z03 Spécifications | 11 | 2309 | 0 |
+| Z04 Documentation de travail | 25 | 3399 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
 | Z06 Générateur de sites | 48 | 20190 | 4 |
 | Z07 Règles | 15 | 1147 | 0 |
-| Z08 App de l artisan | 39 | 9385 | 10 |
+| Z08 App de l artisan | 47 | 10068 | 17 |
 | Z09 Service atelier et Worker | 19 | 2169 | 0 |
 | Z10 Base Supabase | 29 | 2498 | 0 |
 | Z11 Essais et vérificateurs | 51 | 10083 | 0 |
@@ -66,12 +66,12 @@ Un audit qui ne couvre pas toutes les zones le dit.
 |---|---|
 | `memoire/actions-fabrice.md` | 39 |
 | `memoire/comptes-essai.md` | 18 |
-| `memoire/de-cowork.md` | 44 |
-| `memoire/decisions.md` | 144 |
+| `memoire/de-cowork.md` | 47 |
+| `memoire/decisions.md` | 147 |
 | `memoire/essais/audit.txt` | 44 |
-| `memoire/essais/derniers.txt` | 24 |
+| `memoire/essais/derniers.txt` | 41 |
 | `memoire/essais/disque.txt` | 61 |
-| `memoire/journal.md` | 2564 |
+| `memoire/journal.md` | 2585 |
 | `memoire/maintenant.md` | 100 |
 | `memoire/pieges.md` | 121 |
 | `memoire/questions.md` | 199 |
@@ -88,7 +88,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `app/specs/04-DESIGN-SYSTEM.md` | 180 |
 | `app/specs/05-SCHEMA-BACKEND.md` | 458 |
 | `app/specs/06-PLAN-IMPLEMENTATION.md` | 93 |
-| `app/specs/07-TACHES.md` | 165 |
+| `app/specs/07-TACHES.md` | 166 |
 | `app/specs/08-PROSPECTION.md` | 144 |
 | `app/specs/README.md` | 21 |
 
@@ -96,7 +96,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `CHANGELOG.md` | 105 |
+| `CHANGELOG.md` | 107 |
 | `SECURITY.md` | 55 |
 | `docs/00-INDEX.md` | 113 |
 | `docs/CONSTRAINTS.md` | 58 |
@@ -270,19 +270,26 @@ Un audit qui ne couvre pas toutes les zones le dit.
 |---|---|
 | `app/.env.example` | 4 |
 | `app/index.html` | 19 |
-| `app/package-lock.json` | 6524 |
-| `app/package.json` | 26 |
+| `app/package-lock.json` | 6639 |
+| `app/package.json` | 31 |
 | `app/public/apple-touch-icon.png` | binaire |
 | `app/public/icone-192.png` | binaire |
 | `app/public/icone-512.png` | binaire |
 | `app/public/icone-masque-512.png` | binaire |
 | `app/public/icone.svg` | 1 |
 | `app/public/vitrine/1.webp` | binaire |
+| `app/public/vitrine/10.webp` | binaire |
+| `app/public/vitrine/11.webp` | binaire |
+| `app/public/vitrine/12.webp` | binaire |
+| `app/public/vitrine/13.webp` | binaire |
 | `app/public/vitrine/2.webp` | binaire |
 | `app/public/vitrine/3.webp` | binaire |
 | `app/public/vitrine/4.webp` | binaire |
 | `app/public/vitrine/5.webp` | binaire |
 | `app/public/vitrine/6.webp` | binaire |
+| `app/public/vitrine/7.webp` | binaire |
+| `app/public/vitrine/8.webp` | binaire |
+| `app/public/vitrine/9.webp` | binaire |
 | `app/src/App.tsx` | 115 |
 | `app/src/apercu-brut.ts` | 61 |
 | `app/src/attente.ts` | 123 |
@@ -302,9 +309,10 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `app/src/types.ts` | 89 |
 | `app/src/ui.tsx` | 86 |
 | `app/src/video.ts` | 88 |
-| `app/src/vitrine/Vitrine.tsx` | 348 |
-| `app/src/vitrine/offre.ts` | 43 |
-| `app/src/vitrine/vitrine.css` | 323 |
+| `app/src/vitrine/Univers.tsx` | 149 |
+| `app/src/vitrine/Vitrine.tsx` | 611 |
+| `app/src/vitrine/offre.ts` | 54 |
+| `app/src/vitrine/vitrine.css` | 463 |
 | `app/tsconfig.json` | 14 |
 | `app/vite.config.ts` | 37 |
 
