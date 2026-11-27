@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 27 nov. | T70 : espace de prospection dans l'app : appels du jour, fiche avec diagnostic web et angle d'appel, résultat en un toucher, pipeline, bilan ; numéros gardés le jour de l'appel seulement. |
 | 14 nov. | T69 : la page de MonSiteArtisan.com refaite au niveau du site FG HORIZON : univers 3D, verre, scènes au défilement, recherche Google animée, simulateur de rentabilité ; aucune photo deux fois. |
 | 14 nov. | T66 : le numéro 06 01 53 25 82 est sur la page ; les boutons ouvrent WhatsApp avec le message de maquette, et un bouton appelle. |
 | 12 nov. | T03 : la clé secrète Supabase est sur le PC de Fabrice (F1) ; le compte d'essai répond dans la vraie base. |

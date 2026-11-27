@@ -3,7 +3,8 @@
 // permet, quoi qu'elle demande. Essais : supabase/essais/droits*.sql.
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import * as tus from 'tus-js-client';
-import type { Donnees, Profil, Tarif, Photo, EnvoiPhoto, EnvoiOriginal, JourStat } from '../types';
+import type { Donnees, Profil, Tarif, Photo, EnvoiPhoto, EnvoiOriginal, JourStat, Prospect } from '../types';
+import { appliquerResultat } from '../prospection/logique';
 import { jourParis, decalerJour, sommeParJour } from '../jour';
 
 const ESPACE = 'photos-chantiers';
@@ -191,6 +192,43 @@ export function donneesSupabase(url: string, cle: string): Donnees {
     async annulerSuppression() {
       const { data } = await sb.auth.getUser();
       verifier(await sb.from('suppressions').update({ annulee_le: new Date().toISOString() }).eq('user_id', data.user?.id || ''));
+    },
+
+    // ---------------------------------------------------------- prospection
+    // La base refuse tout à un compte qui n'est pas prospecteur (sécurité par
+    // ligne, migration 20261127…_prospection) : ces appels ne font que demander.
+    async estProspecteur() {
+      const { data } = await sb.auth.getUser();
+      if (!data.user) return false;
+      const r = await sb.from('prospecteurs').select('user_id').eq('user_id', data.user.id).limit(1);
+      return !r.error && (r.data || []).length > 0;
+    },
+    async prospects() {
+      return verifier<Prospect[]>(await sb.from('prospects').select('*').order('maj_le', { ascending: false }).limit(2000))
+        .map((p) => ({ ...p, note_google: p.note_google == null ? null : Number(p.note_google) }));
+    },
+    async appelsProspect(id) {
+      return verifier(await sb.from('appels_prospection').select('id,prospect_id,statut,note,fait_le').eq('prospect_id', id).order('fait_le', { ascending: false }));
+    },
+    async appelsRecents(jours) {
+      const depuis = new Date(Date.now() - jours * 864e5).toISOString();
+      return verifier(await sb.from('appels_prospection').select('id,prospect_id,statut,note,fait_le').gte('fait_le', depuis).order('fait_le', { ascending: false }).limit(5000));
+    },
+    async enregistrerResultat(id, r) {
+      const p = verifier<Prospect>(await sb.from('prospects').select('*').eq('id', id).single());
+      const suite: Partial<Prospect> = appliquerResultat(p, r, jourParis());
+      if (r.note?.trim()) suite.notes = [p.notes, r.note.trim()].filter(Boolean).join('\n');
+      verifier(await sb.from('prospects').update(suite).eq('id', id));
+      verifier(await sb.from('appels_prospection').insert({ prospect_id: id, statut: r.statut, note: r.note?.trim() || null }));
+    },
+    async enregistrerNotes(id, notes) { verifier(await sb.from('prospects').update({ notes: notes.trim() || null }).eq('id', id)); },
+    async ajouterProspect(np) {
+      if (!np.nom.trim()) throw new Error('Le nom de l’entreprise est obligatoire.');
+      if (np.telephone && np.telephone.replace(/\D/g, '').length < 10) throw new Error('Numéro incomplet : dix chiffres.');
+      return verifier<Prospect>(await sb.from('prospects').insert({
+        nom: np.nom.trim(), metier: np.metier.trim() || 'Autre', commune: np.commune?.trim() || null,
+        telephone: np.telephone?.trim() || null, a_appeler_le: np.a_appeler_le, notes: np.notes?.trim() || null, source: 'manuel',
+      }).select('*').single());
     },
   };
 }

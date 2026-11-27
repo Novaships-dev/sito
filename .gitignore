@@ -45,3 +45,6 @@ installation.log
 # depot temporaire de l outillage avant installation (lanceurs/INSTALLER_OUTILLAGE.bat)
 _installation/
 clients/*/.travail/
+
+# app/.env.production : adresse et clé PUBLIQUE de Supabase pour la construction sur Vercel (T70). Jamais de clé de service.
+!app/.env.production

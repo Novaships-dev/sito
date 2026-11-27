@@ -4,6 +4,7 @@
 // par l'app, pas une variable que l'app aurait remplie pour l'essai).
 import type { Donnees, Profil, Tarif, Chantier, Photo, Demande, Avis, Adresse, Abonnement, Suppression, JourStat, EnvoiPhoto } from '../types';
 import { jourParis, decalerJour } from '../jour';
+import { prospectionDemo } from './demo-prospection';
 
 export type EnvoiDemo = { genre: 'photo' | 'video' | 'original'; nom: string; format: string; type: string; octets: number; fichier: Blob; role?: string; paire?: number | null; chantierId: string; cle?: string };
 
@@ -150,5 +151,6 @@ export function donneesDemo(): Donnees {
     async suppression() { exiger(); return suppression && !suppression.annulee_le ? { ...suppression } : null; },
     async demanderSuppression() { exiger(); suppression = { demandee_le: maintenant(), effective_le: ilYa(-30), annulee_le: null }; },
     async annulerSuppression() { exiger(); if (suppression) suppression.annulee_le = maintenant(); },
+    ...prospectionDemo(exiger),
   };
 }

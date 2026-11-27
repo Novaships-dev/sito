@@ -53,6 +53,42 @@ export type EnvoiPhoto = { fichier: Blob; nom: string; format: string; role: Rol
 // (décision du 9 octobre, migration 20261009005808_photo_source).
 export type EnvoiOriginal = { fichier: Blob; nom: string; format: string; chantierId: string; cle: string };
 
+// ---------------------------------------------------------------- prospection
+// L'espace de prospection de Fabrice (T70, demande du 27 nov. 2026) : les
+// artisans à appeler, leur diagnostic web, le résultat de chaque appel.
+// Migration 20261127_prospection. Le numéro n'est gardé que pour le jour de
+// l'appel (« aucun numero stocker juste ceux du jour a appeler ») : la base
+// l'efface chaque nuit pour toute fiche qui n'est pas à appeler ce jour-là.
+export type StatutProspect =
+  | 'a-appeler' | 'pas-de-reponse' | 'a-rappeler' | 'interesse' | 'maquette-envoyee'
+  | 'essai-lance' | 'abonne' | 'refuse' | 'ne-plus-appeler';
+export type Constat = { sujet: string; texte: string };
+export type Prospect = {
+  id: string;
+  siren: string | null;
+  nom: string;
+  metier: string;
+  commune: string | null;
+  telephone: string | null;   // seulement le jour de l'appel
+  statut: StatutProspect;
+  a_appeler_le: string | null; // AAAA-MM-JJ : le jour où il figure dans la liste
+  rappel_heure: string | null; // HH:MM, pour un rappel
+  points_forts: Constat[];
+  points_faibles: Constat[];
+  angle: string | null;        // la phrase d'accroche de l'appel
+  lien_maquette: string | null;
+  note_google: number | null;
+  avis_google: number | null;
+  site_actuel: string | null;
+  notes: string | null;
+  raison_refus: string | null;
+  source: 'soiree' | 'manuel';
+  cree_le: string;
+  maj_le: string;
+};
+export type AppelProspect = { id: string; prospect_id: string; statut: StatutProspect; note: string | null; fait_le: string };
+export type ResultatAppel = { statut: StatutProspect; rappel_le?: string | null; rappel_heure?: string | null; note?: string | null; raison_refus?: string | null };
+export type NouveauProspect = { nom: string; metier: string; commune: string | null; telephone: string | null; a_appeler_le: string; notes: string | null };
 
 export interface Donnees {
   readonly demo: boolean;
@@ -86,4 +122,12 @@ export interface Donnees {
   suppression(): Promise<Suppression | null>;
   demanderSuppression(): Promise<void>;
   annulerSuppression(): Promise<void>;
+  // prospection (réservée aux comptes prospecteurs : Fabrice)
+  estProspecteur(): Promise<boolean>;
+  prospects(): Promise<Prospect[]>;
+  appelsProspect(prospectId: string): Promise<AppelProspect[]>;
+  appelsRecents(jours: number): Promise<AppelProspect[]>;
+  enregistrerResultat(prospectId: string, r: ResultatAppel): Promise<void>;
+  enregistrerNotes(prospectId: string, notes: string): Promise<void>;
+  ajouterProspect(p: NouveauProspect): Promise<Prospect>;
 }

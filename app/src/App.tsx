@@ -13,6 +13,9 @@ import { Installer, estInstallee } from './ecrans/Installer';
 // artisan n'en porte pas le poids. Sur l'écran d'accueil (app installée),
 // on va droit à la connexion.
 const Vitrine = lazy(() => import('./vitrine/Vitrine'));
+// L'espace de prospection de Fabrice (T70) : chargé à part, aucun artisan n'en
+// porte le poids. Plein écran, sans la navigation de l'artisan.
+const Prospection = lazy(() => import('./prospection/Prospection'));
 
 function useRoute(): string[] {
   // Ce qui suit « ? » dans le # n'est pas une route : l'écran le lit lui-même.
@@ -48,12 +51,28 @@ export function App({ donnees }: { donnees: Donnees }) {
     return donnees.surChangementSession(verifier);
   }, [donnees]);
   useEffect(() => { if (connecte) void file.reprendre(); }, [connecte, file]);
+  // Un compte prospecteur arrive droit sur la prospection.
+  const [prospecteur, setProspecteur] = useState(false);
+  useEffect(() => {
+    if (!connecte) { setProspecteur(false); return; }
+    void donnees.estProspecteur().then(setProspecteur).catch(() => setProspecteur(false));
+  }, [connecte, donnees]);
+  useEffect(() => {
+    if (prospecteur && !donnees.demo && (!route[0] || route[0] === 'connexion')) location.hash = '#/prospection';
+  }, [prospecteur, route, donnees.demo]);
 
   let page;
   if (connecte === null) page = <main className="ecran" id="contenu" tabIndex={-1}><p className="discret">Chargement…</p></main>;
   else if (route[0] === 'installer') page = <Installer />;
   else if (!connecte && !route[0] && !estInstallee()) return <Suspense fallback={null}><Vitrine /></Suspense>;
   else if (!connecte) page = <Connexion />;
+  else if (route[0] === 'prospection') {
+    return (
+      <Ctx.Provider value={ctx}>
+        <Suspense fallback={<main className="ecran" id="contenu" tabIndex={-1}><p className="discret">Chargement…</p></main>}><Prospection route={route} /></Suspense>
+      </Ctx.Provider>
+    );
+  }
   else page = <Page route={route} />;
 
   return (
