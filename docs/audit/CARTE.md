@@ -6,12 +6,12 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**428 fichiers suivis, dont 152 .md ; 105507 lignes de texte.** Hors zone : 0.
+**428 fichiers suivis, dont 152 .md ; 105523 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
 | Z01 Pilotage de l agent | 27 | 2142 | 0 |
-| Z02 Mémoire du projet | 11 | 3424 | 0 |
+| Z02 Mémoire du projet | 11 | 3432 | 0 |
 | Z03 Spécifications | 11 | 2310 | 0 |
 | Z04 Documentation de travail | 25 | 3400 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
@@ -19,7 +19,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | Z07 Règles | 15 | 1147 | 0 |
 | Z08 App de l artisan | 52 | 10854 | 17 |
 | Z09 Service atelier et Worker | 19 | 2169 | 0 |
-| Z10 Base Supabase | 31 | 2689 | 0 |
+| Z10 Base Supabase | 31 | 2697 | 0 |
 | Z11 Essais et vérificateurs | 52 | 10271 | 0 |
 | Z12 Prospection | 24 | 24280 | 0 |
 | Z13 Autres scripts | 14 | 1458 | 0 |
@@ -71,7 +71,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `memoire/essais/audit.txt` | 44 |
 | `memoire/essais/derniers.txt` | 41 |
 | `memoire/essais/disque.txt` | 61 |
-| `memoire/journal.md` | 2603 |
+| `memoire/journal.md` | 2611 |
 | `memoire/maintenant.md` | 100 |
 | `memoire/pieges.md` | 121 |
 | `memoire/questions.md` | 199 |
@@ -379,7 +379,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `supabase/migrations/20261104174705_deposer_demande.sql` | 96 |
 | `supabase/migrations/20261105143953_umami.sql` | 15 |
 | `supabase/migrations/20261105155854_jetons_google.sql` | 32 |
-| `supabase/migrations/20261127010000_prospection.sql` | 121 |
+| `supabase/migrations/20261127002326_prospection.sql` | 129 |
 
 ## Z11 Essais et vérificateurs
 

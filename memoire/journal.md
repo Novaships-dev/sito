@@ -2592,7 +2592,7 @@ Supabase et l'essai ; la base garde le numéro le jour de l'appel seulement.
 Fait : écran (liste du jour, fiche, résultat, notes, historique, pipeline,
 bilan, ajout), démonstration avec des entreprises inventées et des numéros de
 la tranche fiction de l'ARCEP (06 39 98), implémentation Supabase, migration
-`20261127010000_prospection.sql` et son essai `supabase/essais/prospection.sql`
+`20261127002326_prospection.sql` et son essai `supabase/essais/prospection.sql`
 (écrits, pas encore appliqués : base en veille, connexion refusée par délai),
 `scripts/essai-prospection-app.mjs` dans `essais.mjs`.
 Mise en ligne : Vercel refuse à Claude la création de projet (403) ; Fabrice
@@ -2600,4 +2600,12 @@ l'a créé. `app/.env.production` porte l'adresse et la clé publique de la base
 (faite pour être servie ; ajoutée en exception à `.gitignore`).
 Preuve : `essai-prospection-app` 76 contrôles, 0 faute ; contre-essai (le
 numéro n'est jamais effacé) rouge, juste.
-TRACAGE : app/src/prospection/Prospection.tsx, app/src/prospection/logique.ts, app/src/prospection/prospection.css, app/src/donnees/demo-prospection.ts, app/src/donnees/demo.ts, app/src/donnees/supabase.ts, app/src/types.ts, app/src/App.tsx, app/.env.production, .gitignore, supabase/migrations/20261127010000_prospection.sql, supabase/essais/prospection.sql, scripts/essai-prospection-app.mjs, scripts/essais.mjs, app/specs/07-TACHES.md, CHANGELOG.md, docs/audit/CARTE.md
+TRACAGE : app/src/prospection/Prospection.tsx, app/src/prospection/logique.ts, app/src/prospection/prospection.css, app/src/donnees/demo-prospection.ts, app/src/donnees/demo.ts, app/src/donnees/supabase.ts, app/src/types.ts, app/src/App.tsx, app/.env.production, .gitignore, supabase/migrations/20261127002326_prospection.sql, supabase/essais/prospection.sql, scripts/essai-prospection-app.mjs, scripts/essais.mjs, app/specs/07-TACHES.md, CHANGELOG.md, docs/audit/CARTE.md
+
+Suite T70 (27 nov., 1 h 25) : la base répond. `prospects` existait (campagnes,
+2 oct.) : les fiches d'appel deviennent `fiches_prospection` (migration jamais
+appliquée avant, corrigée avant application). Essai des droits rouge avant
+(table absente), puis 16 cas sans faute. Version Supabase 20261127002326, fichier
+renommé. pg_cron installé, purge des numéros à 2 h 05 UTC. Compte de Fabrice
+déclaré prospecteur (son adresse, donnée par lui).
+TRACAGE : supabase/migrations/20261127002326_prospection.sql, supabase/essais/prospection.sql, app/src/donnees/supabase.ts, app/specs/07-TACHES.md

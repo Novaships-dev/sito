@@ -8,10 +8,13 @@
 -- du jour a appeler ». Statuts : « Oui nickel pour l'instant ». Ajout à la main :
 -- « Oui parfait ».
 --
+-- La table public.prospects existe déjà (campagnes d'envoi, schéma du 2 oct.,
+-- sans droit hors service) : les fiches d'appel ont leur propre table.
+--
 -- Trois tables :
 --   prospecteurs : les comptes qui ont droit à l'espace (Fabrice). Remplie par
 --                  Fabrice ou par la clé de service, jamais par l'app.
---   prospects    : un artisan à appeler, son diagnostic web, son statut, le jour
+--   fiches_prospection : un artisan à appeler, son diagnostic web, son statut, le jour
 --                  où il figure dans la liste. `telephone` n'est gardé que pour
 --                  ce jour-là : prive.purger_numeros_prospection() l'efface
 --                  pour toute fiche qui n'est pas à appeler aujourd'hui ou plus
@@ -40,7 +43,7 @@ as $$ select exists (select 1 from public.prospecteurs p where p.user_id = auth.
 revoke all on function prive.est_prospecteur() from public, anon;
 grant execute on function prive.est_prospecteur() to authenticated;
 
-create table public.prospects (
+create table public.fiches_prospection (
   id             uuid primary key default gen_random_uuid(),
   siren          text check (siren is null or siren ~ '^[0-9]{9}$'),
   nom            text not null check (length(nom) between 1 and 160),
@@ -65,22 +68,22 @@ create table public.prospects (
   cree_le        timestamptz not null default now(),
   maj_le         timestamptz not null default now(),
   -- un « ne plus appeler » ou un refus ne revient jamais dans la liste du jour
-  constraint prospects_hors_liste check (statut not in ('refuse', 'ne-plus-appeler', 'abonne', 'essai-lance') or a_appeler_le is null),
-  constraint prospects_rappel_date check (statut <> 'a-rappeler' or a_appeler_le is not null)
+  constraint fiches_prospection_hors_liste check (statut not in ('refuse', 'ne-plus-appeler', 'abonne', 'essai-lance') or a_appeler_le is null),
+  constraint fiches_prospection_rappel_date check (statut <> 'a-rappeler' or a_appeler_le is not null)
 );
-create unique index prospects_siren_unique on public.prospects (siren) where siren is not null;
-create index prospects_jour on public.prospects (a_appeler_le) where a_appeler_le is not null;
-alter table public.prospects enable row level security;
-revoke all on public.prospects from public, anon, authenticated;
-grant select, insert, update on public.prospects to authenticated;
-create policy prospects_lire on public.prospects for select to authenticated using ((select prive.est_prospecteur()));
-create policy prospects_ajouter on public.prospects for insert to authenticated with check ((select prive.est_prospecteur()));
-create policy prospects_modifier on public.prospects for update to authenticated
+create unique index fiches_prospection_siren_unique on public.fiches_prospection (siren) where siren is not null;
+create index fiches_prospection_jour on public.fiches_prospection (a_appeler_le) where a_appeler_le is not null;
+alter table public.fiches_prospection enable row level security;
+revoke all on public.fiches_prospection from public, anon, authenticated;
+grant select, insert, update on public.fiches_prospection to authenticated;
+create policy fiches_prospection_lire on public.fiches_prospection for select to authenticated using ((select prive.est_prospecteur()));
+create policy fiches_prospection_ajouter on public.fiches_prospection for insert to authenticated with check ((select prive.est_prospecteur()));
+create policy fiches_prospection_modifier on public.fiches_prospection for update to authenticated
   using ((select prive.est_prospecteur())) with check ((select prive.est_prospecteur()));
 
 create table public.appels_prospection (
   id          uuid primary key default gen_random_uuid(),
-  prospect_id uuid not null references public.prospects (id) on delete cascade,
+  prospect_id uuid not null references public.fiches_prospection (id) on delete cascade,
   statut      text not null check (statut in (
                 'a-appeler', 'pas-de-reponse', 'a-rappeler', 'interesse', 'maquette-envoyee',
                 'essai-lance', 'abonne', 'refuse', 'ne-plus-appeler')),
@@ -97,9 +100,9 @@ create policy appels_prospection_lire on public.appels_prospection for select to
 create policy appels_prospection_ajouter on public.appels_prospection for insert to authenticated with check ((select prive.est_prospecteur()));
 
 -- maj_le suit chaque modification
-create function prive.prospects_maj() returns trigger language plpgsql set search_path = '' as $$
+create function prive.fiches_prospection_maj() returns trigger language plpgsql set search_path = '' as $$
 begin new.maj_le := now(); return new; end $$;
-create trigger prospects_maj before update on public.prospects for each row execute function prive.prospects_maj();
+create trigger fiches_prospection_maj before update on public.fiches_prospection for each row execute function prive.fiches_prospection_maj();
 
 -- Les numéros ne vivent que le jour de l'appel.
 create function prive.purger_numeros_prospection()
@@ -110,7 +113,7 @@ set search_path = ''
 as $$
 declare v_n integer;
 begin
-  update public.prospects
+  update public.fiches_prospection
      set telephone = null
    where telephone is not null
      and (a_appeler_le is null or a_appeler_le < prive.jour_paris(now()));
@@ -119,3 +122,8 @@ begin
 end $$;
 revoke all on function prive.purger_numeros_prospection() from public, anon, authenticated;
 grant execute on function prive.purger_numeros_prospection() to service_role;
+
+-- Chaque nuit à 3 h 05 de Paris en hiver (2 h 05 UTC), les numéros qui ne sont
+-- plus du jour partent. pg_cron est gratuit, inclus dans Supabase.
+create extension if not exists pg_cron;
+select cron.schedule('purger-numeros-prospection', '5 2 * * *', $$select prive.purger_numeros_prospection()$$);

@@ -204,7 +204,7 @@ export function donneesSupabase(url: string, cle: string): Donnees {
       return !r.error && (r.data || []).length > 0;
     },
     async prospects() {
-      return verifier<Prospect[]>(await sb.from('prospects').select('*').order('maj_le', { ascending: false }).limit(2000))
+      return verifier<Prospect[]>(await sb.from('fiches_prospection').select('*').order('maj_le', { ascending: false }).limit(2000))
         .map((p) => ({ ...p, note_google: p.note_google == null ? null : Number(p.note_google) }));
     },
     async appelsProspect(id) {
@@ -215,17 +215,17 @@ export function donneesSupabase(url: string, cle: string): Donnees {
       return verifier(await sb.from('appels_prospection').select('id,prospect_id,statut,note,fait_le').gte('fait_le', depuis).order('fait_le', { ascending: false }).limit(5000));
     },
     async enregistrerResultat(id, r) {
-      const p = verifier<Prospect>(await sb.from('prospects').select('*').eq('id', id).single());
+      const p = verifier<Prospect>(await sb.from('fiches_prospection').select('*').eq('id', id).single());
       const suite: Partial<Prospect> = appliquerResultat(p, r, jourParis());
       if (r.note?.trim()) suite.notes = [p.notes, r.note.trim()].filter(Boolean).join('\n');
-      verifier(await sb.from('prospects').update(suite).eq('id', id));
+      verifier(await sb.from('fiches_prospection').update(suite).eq('id', id));
       verifier(await sb.from('appels_prospection').insert({ prospect_id: id, statut: r.statut, note: r.note?.trim() || null }));
     },
-    async enregistrerNotes(id, notes) { verifier(await sb.from('prospects').update({ notes: notes.trim() || null }).eq('id', id)); },
+    async enregistrerNotes(id, notes) { verifier(await sb.from('fiches_prospection').update({ notes: notes.trim() || null }).eq('id', id)); },
     async ajouterProspect(np) {
       if (!np.nom.trim()) throw new Error('Le nom de l’entreprise est obligatoire.');
       if (np.telephone && np.telephone.replace(/\D/g, '').length < 10) throw new Error('Numéro incomplet : dix chiffres.');
-      return verifier<Prospect>(await sb.from('prospects').insert({
+      return verifier<Prospect>(await sb.from('fiches_prospection').insert({
         nom: np.nom.trim(), metier: np.metier.trim() || 'Autre', commune: np.commune?.trim() || null,
         telephone: np.telephone?.trim() || null, a_appeler_le: np.a_appeler_le, notes: np.notes?.trim() || null, source: 'manuel',
       }).select('*').single());
