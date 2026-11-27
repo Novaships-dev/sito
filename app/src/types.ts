@@ -63,6 +63,17 @@ export type StatutProspect =
   | 'a-appeler' | 'pas-de-reponse' | 'a-rappeler' | 'interesse' | 'maquette-envoyee'
   | 'essai-lance' | 'abonne' | 'refuse' | 'ne-plus-appeler';
 export type Constat = { sujet: string; texte: string };
+// L'analyse de l'artisan avant l'appel (T73, migration 20261127010834) :
+// « Il faut surtout que en plus des numero j'ai une vrais analyse de l'artisan ».
+export type Diagnostic = {
+  resume?: string;
+  presence?: { canal: string; etat: 'bon' | 'moyen' | 'absent'; detail: string }[];
+  clients?: string;
+  concurrents?: string;
+  questions?: string[];
+  objections?: { objection: string; reponse: string }[];
+  proposition?: string;
+};
 export type Prospect = {
   id: string;
   siren: string | null;
@@ -75,6 +86,7 @@ export type Prospect = {
   rappel_heure: string | null; // HH:MM, pour un rappel
   points_forts: Constat[];
   points_faibles: Constat[];
+  diagnostic: Diagnostic;
   angle: string | null;        // la phrase d'accroche de l'appel
   lien_maquette: string | null;
   note_google: number | null;

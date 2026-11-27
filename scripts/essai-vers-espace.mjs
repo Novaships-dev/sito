@@ -49,6 +49,10 @@ async function essai() {
   ok(!!nettoyer(entree('123456789', { note_google: 7 })).erreur, 'une note Google hors de 0 à 5 écarte la fiche');
   ok(nettoyer(entree('123456789', { points_forts: [{ sujet: 'a' }, 'x', { sujet: 'b', texte: 'c' }] })).fiche.points_forts.length === 1, 'un constat mal formé est retiré');
   ok(jourOuvreSuivant('2026-11-27') === '2026-11-30', 'le jour ouvré après un vendredi est le lundi');
+  const dg = nettoyer(entree('123456789', { diagnostic: { resume: 'Créée en 2014', presence: [{ canal: 'Site', etat: 'absent', detail: 'aucun' }, { canal: 'X', etat: 'super' }],
+    questions: ['Qui fait vos devis ?', 4], objections: [{ objection: 'Trop cher', reponse: '80 € par mois' }, { objection: 'sans réponse' }], pirate: 'x' } })).fiche.diagnostic;
+  ok(dg.resume === 'Créée en 2014' && dg.presence.length === 1 && dg.questions.length === 1 && dg.objections.length === 1 && !('pirate' in dg),
+    'l’analyse ne garde que les champs connus et bien formés', JSON.stringify(dg));
 
   // verser
   const b = fausseBase([

@@ -116,6 +116,17 @@ try {
     ok((await p.textContent('.p-objectif strong')) === '0', 'compteur du jour à 0 au départ');
     await rendu(p, 'liste');
 
+    // l'analyse avant l'appel
+    await p.click('.p-carte:has-text("Façades du Garlaban")');
+    await p.waitForSelector('.p-analyse');
+    ok((await p.$$('.p-presence li')).length === 5, 'l’analyse montre la présence canal par canal (5)');
+    ok((await p.$$('.p-analyse ol li')).length === 3, 'l’analyse donne 3 questions à poser');
+    ok(/32 avis/.test(await p.textContent('.p-analyse-prop')), 'l’analyse dit ce qu’on lui propose');
+    await p.click('.p-objection summary >> nth=0');
+    ok(await p.isVisible('.p-objection[open] p'), 'une objection s’ouvre sur sa réponse');
+    await rendu(p, 'analyse');
+    await p.evaluate(() => { location.hash = '#/prospection'; });
+
     // une fiche nouvelle : appel, angle, diagnostic
     await p.click('.p-carte:has-text("Toitures Provence Azur")');
     await p.waitForSelector('.p-fiche');

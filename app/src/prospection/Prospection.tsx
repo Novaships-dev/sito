@@ -5,7 +5,7 @@
 import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { useApp, useAction, useCharge, Chargement, Message } from '../ui';
 import { jourParis, decalerJour } from '../jour';
-import type { AppelProspect, Prospect, StatutProspect } from '../types';
+import type { AppelProspect, Diagnostic, Prospect, StatutProspect } from '../types';
 import {
   STATUTS, COLONNES, OBJECTIF_JOUR, listeDuJour, appelesAujourdhui, bilan, messageMaquette,
   numeroAppel, numeroLisible, numeroWhatsApp, jourOuvreSuivant,
@@ -217,6 +217,7 @@ function Fiche({ p, aujourdhui, apres }: { p: Prospect; aujourdhui: string; apre
       </div>
 
       {p.angle && <div className="p-angle"><span>Angle d’appel</span><p>{p.angle}</p></div>}
+      <Analyse d={p.diagnostic || {}} />
 
       <div className="p-diag">
         <div className="p-diag-col p-diag-col--fort">
@@ -281,6 +282,37 @@ function Fiche({ p, aujourdhui, apres }: { p: Prospect; aujourdhui: string; apre
         </ol>
       </div>
     </section>
+  );
+}
+
+// L'analyse de l'artisan, préparée le soir (T73) : qui il est, où il en est
+// sur internet canal par canal, ce que disent ses clients, ses concurrents,
+// quoi lui demander, quoi répondre à ses objections, quoi lui proposer.
+const ETAT_PRESENCE = { bon: 'Bon', moyen: 'Moyen', absent: 'Absent' } as const;
+function Analyse({ d }: { d: Diagnostic }) {
+  const vide = !d.resume && !d.presence?.length && !d.clients && !d.concurrents && !d.questions?.length && !d.objections?.length && !d.proposition;
+  if (vide) return null;
+  return (
+    <div className="p-analyse">
+      <h3>Analyse avant l’appel</h3>
+      {d.resume && <p className="p-analyse-resume">{d.resume}</p>}
+      {d.proposition && <div className="p-analyse-bloc p-analyse-prop"><span>Ce qu’on lui propose</span><p>{d.proposition}</p></div>}
+      {!!d.presence?.length && (
+        <ul className="p-presence">
+          {d.presence.map((c, i) => (
+            <li key={i}><span className={`p-etat p-etat--${c.etat}`}>{ETAT_PRESENCE[c.etat] || c.etat}</span><strong>{c.canal}</strong><small>{c.detail}</small></li>
+          ))}
+        </ul>
+      )}
+      {d.clients && <div className="p-analyse-bloc"><span>Ce que disent ses clients</span><p>{d.clients}</p></div>}
+      {d.concurrents && <div className="p-analyse-bloc"><span>Ses concurrents</span><p>{d.concurrents}</p></div>}
+      {!!d.questions?.length && <div className="p-analyse-bloc"><span>Questions à lui poser</span><ol>{d.questions.map((q, i) => <li key={i}>{q}</li>)}</ol></div>}
+      {!!d.objections?.length && (
+        <div className="p-analyse-bloc"><span>S’il dit…</span>
+          {d.objections.map((o, i) => <details key={i} className="p-objection"><summary>« {o.objection} »</summary><p>{o.reponse}</p></details>)}
+        </div>
+      )}
+    </div>
   );
 }
 

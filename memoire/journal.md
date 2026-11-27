@@ -2627,3 +2627,16 @@ lus le 27 nov.).
 Preuve : `essai-vers-espace` 20 contrôles, 0 faute, 3 cassures rouges ;
 `essai-prospection-app` 104 contrôles, 0 faute, 3 cassures rouges.
 TRACAGE : scripts/prospection/vers-espace.mjs, scripts/essai-vers-espace.mjs, .claude/skills/preparer-appels/SKILL.md, .gitignore, app/specs/08-PROSPECTION.md, supabase/migrations/20261127002902_chiffres.sql, supabase/essais/chiffres.sql, app/src/prospection/chiffres.ts, app/src/prospection/Chiffres.tsx, app/src/prospection/Prospection.tsx, app/src/prospection/prospection.css, app/src/donnees/demo-prospection.ts, app/src/donnees/supabase.ts, app/src/types.ts, scripts/essai-prospection-app.mjs, scripts/essais.mjs, app/specs/07-TACHES.md, CHANGELOG.md, docs/audit/CARTE.md
+
+## 27 nov. 2026 : T73, analyse de l'artisan et préparation du soir dans le cloud (Cowork)
+
+Plan : une colonne d'analyse lue telle quelle par l'app ; une fonction de la
+base pour verser sans le `.env` (la tâche du cloud passe par le connecteur
+Supabase) ; un skill autonome ; la tâche programmée.
+Fait : migration `20261127010834_analyse_prospection` (« analyse » est un mot
+réservé de PostgreSQL : la colonne s'appelle `diagnostic`), essai rouge avant,
+7 cas sans faute après ; section « Analyse avant l'appel » de la fiche ;
+`vers-espace.mjs` lit l'analyse ; skill `remplir-espace` ; réglages
+`prospection/espace-reglages.json` (façadiers seulement pour commencer).
+Preuve : `essai-prospection-app` 118, 0 ; `essai-vers-espace` 21, 0.
+TRACAGE : supabase/migrations/20261127010834_analyse_prospection.sql, supabase/essais/verser-fiches.sql, app/src/types.ts, app/src/prospection/Prospection.tsx, app/src/prospection/prospection.css, app/src/donnees/demo-prospection.ts, scripts/prospection/vers-espace.mjs, scripts/essai-vers-espace.mjs, scripts/essai-prospection-app.mjs, .claude/skills/remplir-espace/SKILL.md, prospection/espace-reglages.json, app/specs/07-TACHES.md, CHANGELOG.md, docs/audit/CARTE.md

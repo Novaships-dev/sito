@@ -13,6 +13,7 @@ datées de `memoire/journal.md` et des tâches « fait » de
 
 | Date | Changement |
 |---|---|
+| 27 nov. | T73 : chaque fiche porte une vraie analyse de l'artisan (présence web canal par canal, avis, concurrents, questions, objections) ; une tâche de Claude prépare la liste du lendemain chaque soir à 21 h. |
 | 27 nov. | T72 : onglet Chiffres : chiffre d'affaires encaissé en courbe façon bourse, abonnements et sites à l'année, revenu mensuel, ce qui reste après cotisations, encaissements à saisir. |
 | 27 nov. | T71 : la soirée de prospection remplit l'espace de Fabrice (numéro public du jour, diagnostic web, angle d'appel) sans écraser ses statuts ni ses notes. |
 | 27 nov. | T70 : espace de prospection dans l'app : appels du jour, fiche avec diagnostic web et angle d'appel, résultat en un toucher, pipeline, bilan ; numéros gardés le jour de l'appel seulement. |

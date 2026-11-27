@@ -6,22 +6,22 @@ Générée par `node scripts/carte-depot.mjs --ecrire`. **Ne pas modifier à la 
 Elle compte et classe, elle ne juge rien. Le jugement vit dans `docs/audit/REGISTRE.md`.
 Un audit qui ne couvre pas toutes les zones le dit.
 
-**434 fichiers suivis, dont 152 .md ; 106476 lignes de texte.** Hors zone : 0.
+**438 fichiers suivis, dont 153 .md ; 106860 lignes de texte.** Hors zone : 0.
 
 | Zone | Fichiers | Lignes de texte | Fichiers binaires |
 |---|---|---|---|
-| Z01 Pilotage de l agent | 27 | 2183 | 0 |
-| Z02 Mémoire du projet | 11 | 3454 | 0 |
-| Z03 Spécifications | 11 | 2316 | 0 |
-| Z04 Documentation de travail | 25 | 3402 | 0 |
+| Z01 Pilotage de l agent | 28 | 2294 | 0 |
+| Z02 Mémoire du projet | 11 | 3469 | 0 |
+| Z03 Spécifications | 11 | 2317 | 0 |
+| Z04 Documentation de travail | 25 | 3403 | 0 |
 | Z05 Archives (ne pas lire pour une tâche) | 64 | 16361 | 0 |
 | Z06 Générateur de sites | 48 | 20190 | 4 |
 | Z07 Règles | 15 | 1147 | 0 |
-| Z08 App de l artisan | 54 | 11304 | 17 |
+| Z08 App de l artisan | 54 | 11398 | 17 |
 | Z09 Service atelier et Worker | 19 | 2169 | 0 |
-| Z10 Base Supabase | 33 | 2803 | 0 |
-| Z11 Essais et vérificateurs | 53 | 10452 | 0 |
-| Z12 Prospection | 25 | 24422 | 0 |
+| Z10 Base Supabase | 35 | 2921 | 0 |
+| Z11 Essais et vérificateurs | 53 | 10467 | 0 |
+| Z12 Prospection | 26 | 24451 | 0 |
 | Z13 Autres scripts | 14 | 1458 | 0 |
 | Z14 Banque d images | 8 | 3419 | 0 |
 | Z15 Données de démonstration | 3 | 3 | 0 |
@@ -50,6 +50,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `.claude/skills/preparer-appels/SKILL.md` | 153 |
 | `.claude/skills/prospection-sirene/SKILL.md` | 130 |
 | `.claude/skills/redaction-fr/SKILL.md` | 107 |
+| `.claude/skills/remplir-espace/SKILL.md` | 111 |
 | `.claude/skills/sito-app/SKILL.md` | 45 |
 | `.claude/skills/sito-base/SKILL.md` | 38 |
 | `.claude/skills/sito-service/SKILL.md` | 37 |
@@ -66,12 +67,12 @@ Un audit qui ne couvre pas toutes les zones le dit.
 |---|---|
 | `memoire/actions-fabrice.md` | 39 |
 | `memoire/comptes-essai.md` | 18 |
-| `memoire/de-cowork.md` | 49 |
-| `memoire/decisions.md` | 151 |
+| `memoire/de-cowork.md` | 50 |
+| `memoire/decisions.md` | 152 |
 | `memoire/essais/audit.txt` | 44 |
 | `memoire/essais/derniers.txt` | 43 |
 | `memoire/essais/disque.txt` | 61 |
-| `memoire/journal.md` | 2629 |
+| `memoire/journal.md` | 2642 |
 | `memoire/maintenant.md` | 100 |
 | `memoire/pieges.md` | 121 |
 | `memoire/questions.md` | 199 |
@@ -88,7 +89,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `app/specs/04-DESIGN-SYSTEM.md` | 180 |
 | `app/specs/05-SCHEMA-BACKEND.md` | 458 |
 | `app/specs/06-PLAN-IMPLEMENTATION.md` | 93 |
-| `app/specs/07-TACHES.md` | 169 |
+| `app/specs/07-TACHES.md` | 170 |
 | `app/specs/08-PROSPECTION.md` | 148 |
 | `app/specs/README.md` | 21 |
 
@@ -96,7 +97,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 
 | Fichier | Lignes |
 |---|---|
-| `CHANGELOG.md` | 110 |
+| `CHANGELOG.md` | 111 |
 | `SECURITY.md` | 55 |
 | `docs/00-INDEX.md` | 113 |
 | `docs/CONSTRAINTS.md` | 58 |
@@ -294,7 +295,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `app/src/App.tsx` | 134 |
 | `app/src/apercu-brut.ts` | 61 |
 | `app/src/attente.ts` | 123 |
-| `app/src/donnees/demo-prospection.ts` | 175 |
+| `app/src/donnees/demo-prospection.ts` | 205 |
 | `app/src/donnees/demo.ts` | 156 |
 | `app/src/donnees/index.ts` | 14 |
 | `app/src/donnees/supabase.ts` | 253 |
@@ -308,12 +309,12 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `app/src/nettoyer.ts` | 113 |
 | `app/src/photo.ts` | 193 |
 | `app/src/prospection/Chiffres.tsx` | 193 |
-| `app/src/prospection/Prospection.tsx` | 326 |
+| `app/src/prospection/Prospection.tsx` | 358 |
 | `app/src/prospection/chiffres.ts` | 106 |
 | `app/src/prospection/logique.ts` | 105 |
-| `app/src/prospection/prospection.css` | 188 |
+| `app/src/prospection/prospection.css` | 208 |
 | `app/src/style.css` | 180 |
-| `app/src/types.ts` | 148 |
+| `app/src/types.ts` | 160 |
 | `app/src/ui.tsx` | 86 |
 | `app/src/video.ts` | 88 |
 | `app/src/vitrine/Univers.tsx` | 149 |
@@ -359,6 +360,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `supabase/essais/droits.sql` | 58 |
 | `supabase/essais/prevenir.sql` | 39 |
 | `supabase/essais/prospection.sql` | 70 |
+| `supabase/essais/verser-fiches.sql` | 37 |
 | `supabase/functions/_shared/avis-google.mjs` | 62 |
 | `supabase/functions/_shared/chiffre.mjs` | 77 |
 | `supabase/functions/_shared/cloudflare-saas.mjs` | 122 |
@@ -384,6 +386,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `supabase/migrations/20261105155854_jetons_google.sql` | 32 |
 | `supabase/migrations/20261127002326_prospection.sql` | 129 |
 | `supabase/migrations/20261127002902_chiffres.sql` | 59 |
+| `supabase/migrations/20261127010834_analyse_prospection.sql` | 81 |
 
 ## Z11 Essais et vérificateurs
 
@@ -411,7 +414,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `scripts/essai-photos.mjs` | 153 |
 | `scripts/essai-preparation.mjs` | 354 |
 | `scripts/essai-preparer-appels.mjs` | 278 |
-| `scripts/essai-prospection-app.mjs` | 249 |
+| `scripts/essai-prospection-app.mjs` | 260 |
 | `scripts/essai-prospection.mjs` | 440 |
 | `scripts/essai-publication-prospection.mjs` | 348 |
 | `scripts/essai-publication.mjs` | 104 |
@@ -421,7 +424,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `scripts/essai-statistiques.mjs` | 221 |
 | `scripts/essai-stripe.mjs` | 211 |
 | `scripts/essai-suppressions.mjs` | 160 |
-| `scripts/essai-vers-espace.mjs` | 116 |
+| `scripts/essai-vers-espace.mjs` | 120 |
 | `scripts/essai-video-gps.mjs` | 84 |
 | `scripts/essais.mjs` | 184 |
 | `scripts/faux-cloudflare-saas.mjs` | 75 |
@@ -450,6 +453,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `prospection/appels.json` | 3 |
 | `prospection/communes-13.json` | 865 |
 | `prospection/en-ligne.json` | 471 |
+| `prospection/espace-reglages.json` | 9 |
 | `prospection/essais/recherche-entreprises.json` | 15352 |
 | `prospection/metiers.json` | 31 |
 | `prospection/modeles/couverture.json` | 1389 |
@@ -471,7 +475,7 @@ Un audit qui ne couvre pas toutes les zones le dit.
 | `scripts/prospection/registre.mjs` | 129 |
 | `scripts/prospection/reglages-cloudflare.mjs` | 70 |
 | `scripts/prospection/verifier-en-ligne.mjs` | 95 |
-| `scripts/prospection/vers-espace.mjs` | 142 |
+| `scripts/prospection/vers-espace.mjs` | 162 |
 
 ## Z13 Autres scripts
 

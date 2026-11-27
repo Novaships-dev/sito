@@ -36,6 +36,25 @@ const texte = (v, max) => (typeof v === 'string' && v.trim() ? v.trim().slice(0,
 const constats = (v) => (Array.isArray(v) ? v.filter((c) => c && typeof c.sujet === 'string' && typeof c.texte === 'string')
   .slice(0, 8).map((c) => ({ sujet: c.sujet.trim().slice(0, 40), texte: c.texte.trim().slice(0, 200) })) : []);
 
+// L'analyse de l'artisan (T73) : seulement les champs connus, bornés.
+export function diagnostic(d) {
+  if (!d || typeof d !== 'object' || Array.isArray(d)) return {};
+  const sortie = {};
+  for (const k of ['resume', 'clients', 'concurrents', 'proposition']) { const v = texte(d[k], 600); if (v) sortie[k] = v; }
+  if (Array.isArray(d.presence)) {
+    const p = d.presence.filter((c) => c && typeof c.canal === 'string' && ['bon', 'moyen', 'absent'].includes(c.etat))
+      .slice(0, 8).map((c) => ({ canal: c.canal.trim().slice(0, 40), etat: c.etat, detail: texte(c.detail, 200) || '' }));
+    if (p.length) sortie.presence = p;
+  }
+  if (Array.isArray(d.questions)) { const q = d.questions.map((x) => texte(x, 200)).filter(Boolean).slice(0, 6); if (q.length) sortie.questions = q; }
+  if (Array.isArray(d.objections)) {
+    const o = d.objections.filter((x) => x && texte(x.objection, 200) && texte(x.reponse, 400)).slice(0, 6)
+      .map((x) => ({ objection: texte(x.objection, 200), reponse: texte(x.reponse, 400) }));
+    if (o.length) sortie.objections = o;
+  }
+  return sortie;
+}
+
 // Une fiche lue du fichier du soir : propre, ou une raison de l'écarter.
 export function nettoyer(f) {
   if (!f || typeof f !== 'object') return { erreur: 'fiche illisible' };
@@ -59,6 +78,7 @@ export function nettoyer(f) {
     fiche: {
       siren, nom, metier: texte(f.metier, 60) || 'Autre', commune: texte(f.commune, 80), telephone,
       points_forts: constats(f.points_forts), points_faibles: constats(f.points_faibles),
+      diagnostic: diagnostic(f.diagnostic),
       angle: texte(f.angle, 400), lien_maquette: lien, note_google: note == null ? null : Math.round(note * 10) / 10,
       avis_google: avis, site_actuel: texte(f.site_actuel, 200),
     },
@@ -100,7 +120,7 @@ export async function verserFiches(appel, entrees, jour, { sec = false } = {}) {
     if (deja) {
       // Le diagnostic se met à jour ; le statut, la date prévue et les notes de Fabrice restent.
       const appeleCeJour = deja.a_appeler_le !== null && deja.a_appeler_le <= jour;
-      const champs = { points_forts: p.points_forts, points_faibles: p.points_faibles, angle: p.angle, note_google: p.note_google,
+      const champs = { points_forts: p.points_forts, points_faibles: p.points_faibles, diagnostic: p.diagnostic, angle: p.angle, note_google: p.note_google,
         avis_google: p.avis_google, site_actuel: p.site_actuel, ...(p.lien_maquette ? { lien_maquette: p.lien_maquette } : {}),
         ...(appeleCeJour && p.telephone ? { telephone: p.telephone } : {}) };
       if (appeleCeJour && p.telephone) bilan.numeros++;

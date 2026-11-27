@@ -13,7 +13,7 @@ const CLE = 'sito-demo-prospection-v2';
 function fiche(id: string, f: Partial<Prospect> & Pick<Prospect, 'nom' | 'metier' | 'commune'>, jour: string): Prospect {
   return {
     id, siren: null, telephone: null, statut: 'a-appeler', a_appeler_le: jour, rappel_heure: null,
-    points_forts: [], points_faibles: [], angle: null, lien_maquette: null, note_google: null, avis_google: null,
+    points_forts: [], points_faibles: [], diagnostic: {}, angle: null, lien_maquette: null, note_google: null, avis_google: null,
     site_actuel: null, notes: null, raison_refus: null, source: 'soiree', cree_le: `${jour}T06:00:00.000Z`, maj_le: `${jour}T06:00:00.000Z`,
     ...f,
   };
@@ -52,6 +52,24 @@ function depart(jour: string): { prospects: Prospect[]; appels: AppelProspect[] 
       points_faibles: [{ sujet: 'Site', texte: 'Aucun site internet' }, { sujet: 'Réseaux', texte: 'Pas de page Facebook ni Instagram' }],
       angle: '4,8 sur 32 avis mais aucun site : les clients qui cherchent un façadier à Aubagne ne voient pas ses chantiers.',
       notes: 'Rappeler après 10 h, il est sur un chantier le matin.',
+      diagnostic: {
+        resume: 'Façadier à Aubagne depuis 2011, deux à trois ouvriers, enduits à la chaux et ravalement de maisons de village, intervient de La Ciotat à Marseille Est.',
+        presence: [
+          { canal: 'Fiche Google', etat: 'bon', detail: '4,8 sur 32 avis, 18 photos, horaires à jour' },
+          { canal: 'Site internet', etat: 'absent', detail: 'Aucun site trouvé' },
+          { canal: 'Facebook', etat: 'absent', detail: 'Aucune page' },
+          { canal: 'Instagram', etat: 'absent', detail: 'Aucun compte' },
+          { canal: 'PagesJaunes', etat: 'moyen', detail: 'Fiche gratuite sans photo' },
+        ],
+        clients: 'Les avis citent la propreté du chantier, le respect des délais et les conseils sur les couleurs. Un seul avis moyen, sur un devis long à arriver.',
+        concurrents: 'Sur « façadier Aubagne », deux concurrents avec site sortent devant lui, dont un à 3,9 sur 5.',
+        questions: ['Comment vos clients vous trouvent-ils aujourd’hui ?', 'Vous avez des photos de vos derniers chantiers ?', 'Combien de devis faites-vous par mois ?'],
+        objections: [
+          { objection: 'J’ai assez de travail, le bouche-à-oreille suffit.', reponse: 'Le site sert aussi à choisir vos chantiers : plus de demandes, vous gardez les meilleurs et vous montez vos prix.' },
+          { objection: 'C’est trop cher.', reponse: '80 € par mois : un seul ravalement trouvé grâce au site paie plusieurs années.' },
+        ],
+        proposition: 'Un site qui met en avant ses 32 avis et ses photos avant/après, pour passer devant les deux concurrents qui ont un site moins bien noté.',
+      },
     }, jour),
     fiche('dp2', {
       nom: 'Toitures Provence Azur', metier: 'Couverture', commune: 'Marseille', telephone: '06 39 98 00 02',
@@ -59,6 +77,18 @@ function depart(jour: string): { prospects: Prospect[]; appels: AppelProspect[] 
       points_forts: [{ sujet: 'Site', texte: 'A un site, signe qu’il croit à internet' }],
       points_faibles: [{ sujet: 'Site', texte: 'Site de 2017, illisible sur téléphone, sans https' }, { sujet: 'Avis Google', texte: 'Seulement 9 avis' }, { sujet: 'Réseaux', texte: 'Facebook sans publication depuis 2022' }],
       angle: 'Son site date de 2017 et s’affiche mal sur téléphone : 7 clients sur 10 cherchent un couvreur depuis leur portable.',
+      diagnostic: {
+        resume: 'Couvreur zingueur à Marseille 13e, créé en 2009, travaux de toiture et urgences fuites.',
+        presence: [
+          { canal: 'Site internet', etat: 'moyen', detail: 'Site de 2017, pas adapté au téléphone, sans https' },
+          { canal: 'Fiche Google', etat: 'moyen', detail: '4,2 sur 9 avis, peu de photos' },
+          { canal: 'Facebook', etat: 'moyen', detail: 'Dernière publication en 2022' },
+        ],
+        clients: 'Réactif sur les urgences, prix jugés corrects.',
+        questions: ['Qui a fait votre site, et il vous rapporte des appels ?', 'Vous faites beaucoup d’urgences ?'],
+        objections: [{ objection: 'J’ai déjà un site.', reponse: 'Il ne s’affiche pas bien sur téléphone, là où vos clients en urgence vous cherchent. Je vous montre la différence en 30 secondes.' }],
+        proposition: 'Remplacer son site de 2017 par un site rapide sur téléphone, avec un bouton d’appel pour les urgences.',
+      },
     }, jour),
     fiche('dp3', {
       nom: 'Atelier Couleurs Sud', metier: 'Peinture', commune: 'Aix-en-Provence', telephone: '06 39 98 00 03',

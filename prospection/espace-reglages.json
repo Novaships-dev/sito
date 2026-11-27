@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "quoi": "Réglages de la préparation du soir de l'espace de prospection (skill remplir-espace, T73).",
+  "decision": "27 nov. 2026 : « facadier en premier puis ensuite il y'aura un mix tout les jour de différente branche ».",
+  "par_jour": 30,
+  "metiers": ["ravalement"],
+  "metiers_plus_tard": ["ravalement", "couverture", "peinture"],
+  "departement": "13"
+}
