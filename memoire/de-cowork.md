@@ -46,3 +46,4 @@ section 2, « Deux sessions ».
 | 14 nov. 2026 | `memoire/decisions.md` (nom commercial FG HORIZON, mot pour mot) | message de Fabrice, 1 h 48 |
 | 14 nov. 2026 | `memoire/decisions.md` (site FG HORIZON orienté vente, numéro 06 01 53 25 82 pour MonSiteArtisan et FG HORIZON, mot pour mot) | message de Fabrice, 2 h 04 |
 | 27 nov. 2026 | `memoire/decisions.md` (espace de prospection, numéros du jour seulement, 30 par jour, mise en ligne sur vercel.app, mot pour mot) | messages de Fabrice, 0 h 45 à 1 h 02 |
+| 27 nov. 2026 | `memoire/decisions.md` (espace chiffres, 720 € par an = le one shot, courbe façon bourse, remplissage du soir, mot pour mot) | messages de Fabrice, 1 h 21 et 1 h 27 |
