@@ -12,8 +12,10 @@ import {
 } from './logique';
 import '@fontsource-variable/plus-jakarta-sans/wght.css';
 import './prospection.css';
+import { Chiffres } from './Chiffres';
+import { PRIX, eurosPrecis } from './chiffres';
 
-type Vue = 'jour' | 'pipeline' | 'bilan';
+type Vue = 'jour' | 'pipeline' | 'bilan' | 'chiffres';
 const jourDe = (iso: string) => jourParis(new Date(iso));
 const dateLisible = (j: string) => new Intl.DateTimeFormat('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' }).format(new Date(`${j}T12:00:00Z`));
 const heureLisible = (iso: string) => new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris' }).format(new Date(iso));
@@ -57,7 +59,7 @@ export function Prospection({ route }: { route: string[] }) {
       <header className="p-tete">
         <div>
           <p className="p-surtitre">Prospection</p>
-          <h1>{vue === 'jour' ? `Appels du ${dateLisible(aujourdhui)}` : vue === 'pipeline' ? 'Pipeline' : 'Bilan de la semaine'}</h1>
+          <h1>{vue === 'jour' ? `Appels du ${dateLisible(aujourdhui)}` : vue === 'pipeline' ? 'Pipeline' : vue === 'chiffres' ? 'Chiffres' : 'Bilan de la semaine'}</h1>
         </div>
         <div className="p-objectif" role="img" aria-label={`${faits} artisans appelés sur un objectif de ${OBJECTIF_JOUR}`}>
           <strong>{faits}</strong><span>/ {OBJECTIF_JOUR}</span>
@@ -66,7 +68,7 @@ export function Prospection({ route }: { route: string[] }) {
       </header>
 
       <nav className="p-onglets" aria-label="Vues de la prospection">
-        {([['jour', `Aujourd’hui (${jour.length})`], ['pipeline', 'Pipeline'], ['bilan', 'Bilan']] as [Vue, string][]).map(([v, t]) => (
+        {([['jour', `Aujourd’hui (${jour.length})`], ['pipeline', 'Pipeline'], ['bilan', 'Bilan'], ['chiffres', 'Chiffres']] as [Vue, string][]).map(([v, t]) => (
           <button key={v} type="button" aria-pressed={vue === v} onClick={() => { setVue(v); location.hash = '#/prospection'; }}>{t}</button>
         ))}
         <button type="button" className="p-onglets-ajout" onClick={() => setAjout(true)}>+ Ajouter</button>
@@ -74,6 +76,7 @@ export function Prospection({ route }: { route: string[] }) {
 
       <Chargement erreur={liste.erreur} charge={liste.charge && !liste.valeur} recharger={liste.recharger} />
 
+      {vue === 'chiffres' ? <Chiffres /> : (
       <div className="p-corps">
         <section className="p-colonne" aria-label="Liste">
           {vue === 'jour' && <ListeJour liste={jour} actif={ouvert} />}
@@ -85,6 +88,7 @@ export function Prospection({ route }: { route: string[] }) {
           <section className="p-fiche"><p>Cette fiche n’existe plus.</p><a className="p-bouton p-bouton--verre" href="#/prospection">Retour à la liste</a></section>
         )}
       </div>
+      )}
 
       {ajout && <Ajout aujourdhui={aujourdhui} fermer={() => setAjout(false)} apres={(id) => { setAjout(false); recharger(); location.hash = `#/prospection/${encodeURIComponent(id)}`; }} />}
       {donnees.demo && <p className="p-demo">Démonstration : entreprises et numéros inventés.</p>}
@@ -169,6 +173,8 @@ function Fiche({ p, aujourdhui, apres }: { p: Prospect; aujourdhui: string; apre
   const [rappelHeure, setRappelHeure] = useState('');
   const [raison, setRaison] = useState('');
   const [note, setNote] = useState('');
+  const [formule, setFormule] = useState<'mensuel' | 'annuel'>('annuel');
+  const [encaisse, setEncaisse] = useState(true);
   const [notes, setNotes] = useState(p.notes || '');
   const notesAction = useAction();
   const besoinDate = choix === 'a-rappeler' || choix === 'interesse' || choix === 'maquette-envoyee';
@@ -178,10 +184,14 @@ function Fiche({ p, aujourdhui, apres }: { p: Prospect; aujourdhui: string; apre
   const valider = async (e: FormEvent) => {
     e.preventDefault();
     if (!choix) return;
-    const ok = await action.lancer(() => donnees.enregistrerResultat(p.id, {
-      statut: choix, rappel_le: besoinDate ? rappelLe : null, rappel_heure: besoinDate && rappelHeure ? rappelHeure : null,
-      raison_refus: choix === 'refuse' ? raison : null, note,
-    }), 'Enregistré.');
+    const ok = await action.lancer(async () => {
+      await donnees.enregistrerResultat(p.id, {
+        statut: choix, rappel_le: besoinDate ? rappelLe : null, rappel_heure: besoinDate && rappelHeure ? rappelHeure : null,
+        raison_refus: choix === 'refuse' ? raison : null, note,
+      });
+      // Un artisan qui signe devient une vente ; son premier paiement entre dans les chiffres.
+      if (choix === 'abonne') await donnees.creerVente({ fiche_id: p.id, nom: p.nom, formule, encaisse_aujourdhui: encaisse });
+    }, choix === 'abonne' ? (encaisse ? `Enregistré : ${eurosPrecis(PRIX[formule])} ajoutés aux chiffres.` : 'Enregistré : abonné ajouté aux chiffres.') : 'Enregistré.');
     if (ok) { setChoix(null); setNote(''); apres(); }
   };
 
@@ -239,6 +249,16 @@ function Fiche({ p, aujourdhui, apres }: { p: Prospect; aujourdhui: string; apre
           </div>
         )}
         {choix === 'refuse' && <><label htmlFor="p-raison">Raison du refus</label><input id="p-raison" value={raison} onChange={(e) => setRaison(e.target.value)} placeholder="Déjà un site, trop cher, pas le temps…" maxLength={300} /></>}
+        {choix === 'abonne' && (
+          <div className="p-signe">
+            <div className="p-choix p-choix--2" role="group" aria-label="Formule choisie">
+              <button type="button" className="p-choix-btn p-choix-btn--ok" aria-pressed={formule === 'mensuel'} onClick={() => { setFormule('mensuel'); setEncaisse(false); }}>Au mois, {eurosPrecis(PRIX.mensuel)}</button>
+              <button type="button" className="p-choix-btn p-choix-btn--ok" aria-pressed={formule === 'annuel'} onClick={() => { setFormule('annuel'); setEncaisse(true); }}>À l’année, {eurosPrecis(PRIX.annuel)}</button>
+            </div>
+            <label className="c-acre" htmlFor="p-encaisse"><input id="p-encaisse" type="checkbox" checked={encaisse} onChange={(e) => setEncaisse(e.target.checked)} /> Premier paiement de {eurosPrecis(PRIX[formule])} encaissé aujourd’hui</label>
+            {formule === 'mensuel' && <p className="p-discret">Au mois, le premier mois est offert : il apparaîtra dans « À encaisser » le mois prochain.</p>}
+          </div>
+        )}
         {choix === 'ne-plus-appeler' && <p className="p-alerte">Il sort de la liste pour de bon et son numéro est effacé. Sa maquette est retirée le soir même.</p>}
         {choix && <><label htmlFor="p-note">Note sur l’appel (facultatif)</label><textarea id="p-note" value={note} onChange={(e) => setNote(e.target.value)} rows={2} maxLength={2000} /></>}
         <button className="p-bouton p-bouton--jaune" type="submit" disabled={!choix || action.occupe} aria-busy={action.occupe}>Enregistrer le résultat</button>

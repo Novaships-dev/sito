@@ -2609,3 +2609,21 @@ appliquée avant, corrigée avant application). Essai des droits rouge avant
 renommé. pg_cron installé, purge des numéros à 2 h 05 UTC. Compte de Fabrice
 déclaré prospecteur (son adresse, donnée par lui).
 TRACAGE : supabase/migrations/20261127002326_prospection.sql, supabase/essais/prospection.sql, app/src/donnees/supabase.ts, app/specs/07-TACHES.md
+
+## 27 nov. 2026 : T71 et T72, remplissage du soir et espace Chiffres (Cowork)
+
+Plan : un script qui verse les fiches du soir dans `fiches_prospection` sans
+écraser ce que Fabrice a fait ; un onglet Chiffres sur deux tables nouvelles ;
+les taux de 2026 vérifiés sur le web avant de les écrire.
+Fait : `scripts/prospection/vers-espace.mjs` et son essai sur une fausse base
+PostgREST, étape 3 bis du skill `preparer-appels`, `.gitignore` du fichier du
+soir, spec 08 mise à jour (numéro gardé le jour de l'appel seulement).
+Migration `20261127002902_chiffres` (essai rouge avant, 9 cas sans faute
+après), `app/src/prospection/chiffres.ts` (calculs), `Chiffres.tsx` (courbe en
+SVG, réticule au doigt et à la souris), la fiche « Abonné » demande la formule
+et crée la vente. Taux : cotisations 21,2 % (10,6 % avec l'ACRE), formation
+0,1 %, versement libératoire 1,7 % (economie.gouv.fr, bpifrance-creation.fr,
+lus le 27 nov.).
+Preuve : `essai-vers-espace` 20 contrôles, 0 faute, 3 cassures rouges ;
+`essai-prospection-app` 104 contrôles, 0 faute, 3 cassures rouges.
+TRACAGE : scripts/prospection/vers-espace.mjs, scripts/essai-vers-espace.mjs, .claude/skills/preparer-appels/SKILL.md, .gitignore, app/specs/08-PROSPECTION.md, supabase/migrations/20261127002902_chiffres.sql, supabase/essais/chiffres.sql, app/src/prospection/chiffres.ts, app/src/prospection/Chiffres.tsx, app/src/prospection/Prospection.tsx, app/src/prospection/prospection.css, app/src/donnees/demo-prospection.ts, app/src/donnees/supabase.ts, app/src/types.ts, scripts/essai-prospection-app.mjs, scripts/essais.mjs, app/specs/07-TACHES.md, CHANGELOG.md, docs/audit/CARTE.md

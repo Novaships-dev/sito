@@ -117,8 +117,12 @@ l'API : l'extraction le signale (`bilan.plafonds`).
 
 ## Cadre légal (rappel, non négociable)
 
-Numéro appelé = celui de la fiche publique de l'entreprise, ouvert par Fabrice
-depuis la page d'appels ; aucun numéro stocké. Sites montrés privés, invisibles
+Numéro appelé = celui de la fiche publique de l'entreprise. Page d'appels
+(T39) : ouvert par Fabrice depuis la fiche, aucun numéro stocké. Espace de
+prospection (T70, T71, décision du 27 nov. : « aucun numero stocker juste ceux
+du jour a appeler ») : le numéro public est relevé le soir et gardé dans la
+base privée **le jour de l'appel seulement**, effacé chaque nuit ensuite ;
+jamais dans Git. Sites montrés privés, invisibles
 sur Google, sans photo de l'artisan prise ailleurs. « Ne plus appeler » =
 retrait du site le jour même.
 

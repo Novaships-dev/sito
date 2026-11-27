@@ -140,3 +140,49 @@
 }
 @media (prefers-reduced-motion: reduce) { .p-ecran * { transition: none !important; } }
 html:has(.p-ecran), body:has(.p-ecran) { background: #07130e; }
+
+/* ---------- abonné : formule */
+.p-signe { display: grid; gap: 6px; margin-top: 6px; }
+.p-choix--2 { grid-template-columns: 1fr 1fr !important; }
+
+/* ---------- chiffres */
+.c-chiffres { display: grid; gap: 14px; max-width: 980px; }
+.c-bourse { margin: 0; padding: 16px 16px 10px; border-radius: 20px; background: linear-gradient(160deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02)); border: 1px solid var(--p-bord); }
+.c-bourse figcaption { display: grid; gap: 2px; margin-bottom: 8px; }
+.c-bourse-titre { color: var(--p-texte); font-size: .85rem; }
+.c-bourse-valeur { font-size: clamp(2.2rem, 8vw, 3.4rem); font-weight: 800; letter-spacing: -.03em; font-variant-numeric: tabular-nums; line-height: 1.05; }
+.c-bourse-sous { font-size: .9rem; color: var(--p-texte); min-height: 1.4em; }
+.c-hausse { color: var(--p-vert); font-weight: 700; }
+.c-baisse { color: var(--p-rouge); font-weight: 700; }
+.c-bourse svg { display: block; width: 100%; height: 220px; touch-action: pan-y; cursor: crosshair; }
+.c-grille { stroke: rgba(255, 255, 255, .06); }
+.c-depart { stroke: rgba(255, 255, 255, .22); stroke-dasharray: 4 5; }
+.c-ligne-courbe { fill: none; stroke: #8fa197; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+.c-bourse--monte .c-ligne-courbe { stroke: var(--p-vert); filter: drop-shadow(0 0 6px rgba(60, 207, 134, .5)); }
+.c-reticule { stroke: rgba(255, 255, 255, .5); stroke-dasharray: 3 4; }
+.c-point { fill: #fff; stroke: var(--p-vert); stroke-width: 2.5; }
+.c-point--fin { animation: c-pulse 1.8s ease-in-out infinite; }
+@keyframes c-pulse { 50% { stroke-width: 7; stroke-opacity: .4; } }
+.c-axe { display: flex; justify-content: space-between; font-size: .75rem; color: var(--p-texte); padding-top: 4px; }
+.c-periodes { display: flex; gap: 6px; flex-wrap: wrap; }
+.c-periodes button { flex: 1 1 0; min-width: 0; padding: 0 4px; font-size: .9rem; min-height: 44px; border-radius: 12px; border: 1px solid var(--p-bord); background: var(--p-carte); color: var(--p-texte); font: inherit; font-weight: 700; cursor: pointer; }
+.c-periodes button[aria-pressed="true"] { background: var(--p-vert); border-color: var(--p-vert); color: #052615; }
+.c-tuiles dd { font-size: 1.25rem; }
+.c-net { padding: 12px 14px; border-radius: 16px; background: rgba(255, 197, 61, .07); border: 1px solid rgba(255, 197, 61, .3); }
+.c-net p { margin: 0 0 6px; color: var(--p-blanc); font-size: .92rem; }
+.c-acre { display: flex; align-items: center; gap: 10px; min-height: 44px; font-weight: 600 !important; font-size: .9rem !important; margin: 0 !important; cursor: pointer; }
+.c-acre input { width: 22px !important; height: 22px; min-height: 0 !important; accent-color: var(--p-jaune); flex: none; }
+.c-du { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 0; border-top: 1px solid var(--p-bord); }
+.c-du span { display: grid; }
+.c-du small, .c-ligne small { color: var(--p-texte); font-size: .8rem; }
+.c-liste-tete { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.c-liste { list-style: none; margin: 0; padding: 0; }
+.c-ligne { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 4px 12px; padding: 10px 0; border-top: 1px solid var(--p-bord); }
+.c-ligne-date { color: var(--p-texte); font-size: .82rem; min-width: 52px; }
+.c-ligne-nom { display: grid; min-width: 0; }
+.c-ligne-nom strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.c-ligne-montant { color: var(--p-vert); font-weight: 800; font-variant-numeric: tabular-nums; }
+.c-retirer { grid-column: 2 / 4; justify-self: end; min-height: 44px; padding: 6px 12px; font-size: .85rem; }
+.c-formules { grid-template-columns: repeat(3, 1fr) !important; }
+@media (min-width: 900px) { .c-tuiles { grid-template-columns: repeat(6, 1fr); } .c-retirer { grid-column: auto; } .c-ligne { grid-template-columns: auto 1fr auto auto; } }
+@media (max-width: 420px) { .c-periodes { gap: 4px; } .c-periodes button { font-size: .8rem; } }

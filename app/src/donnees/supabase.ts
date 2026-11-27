@@ -3,7 +3,8 @@
 // permet, quoi qu'elle demande. Essais : supabase/essais/droits*.sql.
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import * as tus from 'tus-js-client';
-import type { Donnees, Profil, Tarif, Photo, EnvoiPhoto, EnvoiOriginal, JourStat, Prospect } from '../types';
+import type { Donnees, Profil, Tarif, Photo, EnvoiPhoto, EnvoiOriginal, JourStat, Prospect, Vente, Encaissement } from '../types';
+import { PRIX } from '../prospection/chiffres';
 import { appliquerResultat } from '../prospection/logique';
 import { jourParis, decalerJour, sommeParJour } from '../jour';
 
@@ -230,5 +231,23 @@ export function donneesSupabase(url: string, cle: string): Donnees {
         telephone: np.telephone?.trim() || null, a_appeler_le: np.a_appeler_le, notes: np.notes?.trim() || null, source: 'manuel',
       }).select('*').single());
     },
+    // ---------------------------------------------------------- chiffres
+    async ventes() { return verifier<Vente[]>(await sb.from('ventes').select('*').order('cree_le', { ascending: false }).limit(5000)); },
+    async encaissements() {
+      return verifier<Encaissement[]>(await sb.from('encaissements').select('*').order('encaisse_le', { ascending: false }).limit(20000))
+        .map((e) => ({ ...e, montant: Number(e.montant) }));
+    },
+    async creerVente(nv) {
+      if (!nv.nom.trim()) throw new Error('Le nom du client est obligatoire.');
+      const v = verifier<Vente>(await sb.from('ventes').insert({ fiche_id: nv.fiche_id, nom: nv.nom.trim(), formule: nv.formule }).select('*').single());
+      if (nv.encaisse_aujourdhui) verifier(await sb.from('encaissements').insert({ vente_id: v.id, nom: v.nom, formule: v.formule, montant: PRIX[v.formule] }));
+      return v;
+    },
+    async ajouterEncaissement(e) {
+      if (!e.nom.trim()) throw new Error('Le nom du client est obligatoire.');
+      if (!(e.montant > 0)) throw new Error('Le montant doit être positif.');
+      verifier(await sb.from('encaissements').insert({ vente_id: e.vente_id, nom: e.nom.trim(), formule: e.formule, montant: e.montant, encaisse_le: e.encaisse_le, note: e.note?.trim() || null }));
+    },
+    async retirerEncaissement(id) { verifier(await sb.from('encaissements').delete().eq('id', id)); },
   };
 }

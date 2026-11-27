@@ -90,6 +90,15 @@ export type AppelProspect = { id: string; prospect_id: string; statut: StatutPro
 export type ResultatAppel = { statut: StatutProspect; rappel_le?: string | null; rappel_heure?: string | null; note?: string | null; raison_refus?: string | null };
 export type NouveauProspect = { nom: string; metier: string; commune: string | null; telephone: string | null; a_appeler_le: string; notes: string | null };
 
+// ---------------------------------------------------------------- chiffres
+// Ce que MonSiteArtisan encaisse (T72, migration 20261127002902_chiffres).
+// « L'offre 720€/ ans c'est le "one shot" » (27 nov.).
+export type Formule = 'mensuel' | 'annuel';
+export type Vente = { id: string; fiche_id: string | null; nom: string; formule: Formule; debut_le: string; etat: 'active' | 'terminee'; cree_le: string };
+export type Encaissement = { id: string; vente_id: string | null; nom: string; formule: Formule | 'autre'; montant: number; encaisse_le: string; note: string | null; source: 'manuel' | 'stripe'; cree_le: string };
+export type NouvelleVente = { fiche_id: string | null; nom: string; formule: Formule; encaisse_aujourdhui: boolean };
+export type NouvelEncaissement = { vente_id: string | null; nom: string; formule: Formule | 'autre'; montant: number; encaisse_le: string; note: string | null };
+
 export interface Donnees {
   readonly demo: boolean;
   // connexion
@@ -130,4 +139,10 @@ export interface Donnees {
   enregistrerResultat(prospectId: string, r: ResultatAppel): Promise<void>;
   enregistrerNotes(prospectId: string, notes: string): Promise<void>;
   ajouterProspect(p: NouveauProspect): Promise<Prospect>;
+  // chiffres (mêmes droits que la prospection)
+  ventes(): Promise<Vente[]>;
+  encaissements(): Promise<Encaissement[]>;
+  creerVente(v: NouvelleVente): Promise<Vente>;
+  ajouterEncaissement(e: NouvelEncaissement): Promise<void>;
+  retirerEncaissement(id: string): Promise<void>;
 }

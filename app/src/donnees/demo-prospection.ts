@@ -1,13 +1,14 @@
 // La prospection en démonstration : des entreprises inventées, des numéros de la
 // tranche réservée à la fiction par l'ARCEP (06 39 98 xx xx), tout en mémoire
 // du navigateur. Sert à essayer l'écran et aux essais automatiques.
-import type { AppelProspect, Donnees, NouveauProspect, Prospect } from '../types';
-import { jourParis } from '../jour';
+import type { AppelProspect, Donnees, Encaissement, NouveauProspect, Prospect, Vente } from '../types';
+import { jourParis, decalerJour } from '../jour';
+import { PRIX } from '../prospection/chiffres';
 import { appliquerResultat } from '../prospection/logique';
 
-type Methodes = Pick<Donnees, 'estProspecteur' | 'prospects' | 'appelsProspect' | 'appelsRecents' | 'enregistrerResultat' | 'enregistrerNotes' | 'ajouterProspect'>;
+type Methodes = Pick<Donnees, 'estProspecteur' | 'prospects' | 'appelsProspect' | 'appelsRecents' | 'enregistrerResultat' | 'enregistrerNotes' | 'ajouterProspect' | 'ventes' | 'encaissements' | 'creerVente' | 'ajouterEncaissement' | 'retirerEncaissement'>;
 
-const CLE = 'sito-demo-prospection-v1';
+const CLE = 'sito-demo-prospection-v2';
 
 function fiche(id: string, f: Partial<Prospect> & Pick<Prospect, 'nom' | 'metier' | 'commune'>, jour: string): Prospect {
   return {
@@ -16,6 +17,30 @@ function fiche(id: string, f: Partial<Prospect> & Pick<Prospect, 'nom' | 'metier
     site_actuel: null, notes: null, raison_refus: null, source: 'soiree', cree_le: `${jour}T06:00:00.000Z`, maj_le: `${jour}T06:00:00.000Z`,
     ...f,
   };
+}
+
+// Des ventes et encaissements inventés sur les deux derniers mois, pour voir la courbe vivre.
+function chiffresDepart(jour: string): { ventes: Vente[]; encaissements: Encaissement[] } {
+  const ventes: Vente[] = [];
+  const encaissements: Encaissement[] = [];
+  const ajout = (i: number, nom: string, formule: 'mensuel' | 'annuel', ilYa: number, payes: number[]) => {
+    const debut = decalerJour(jour, -ilYa);
+    const v: Vente = { id: `dv${i}`, fiche_id: null, nom, formule, debut_le: debut, etat: 'active', cree_le: `${debut}T09:00:00.000Z` };
+    ventes.push(v);
+    payes.forEach((d, k) => {
+      const le = decalerJour(jour, -d);
+      encaissements.push({ id: `de${i}-${k}`, vente_id: v.id, nom, formule, montant: PRIX[formule], encaisse_le: le, note: null, source: 'manuel', cree_le: `${le}T${String(9 + ((i + k) % 8)).padStart(2, '0')}:15:00.000Z` });
+    });
+  };
+  ajout(1, 'Façades Exemple Sud', 'annuel', 58, [58]);
+  ajout(2, 'Toits du Vieux Port', 'mensuel', 55, [25]);
+  ajout(3, 'Peintures Calanques', 'annuel', 40, [40]);
+  ajout(4, 'Rénov Étoile', 'mensuel', 45, [14]);
+  ajout(5, 'Couvreurs de l’Huveaune', 'annuel', 21, [21]);
+  ajout(6, 'Enduits Sainte-Victoire', 'annuel', 9, [9]);
+  ajout(7, 'Atelier Façade Bleue', 'mensuel', 33, [2]);
+  ajout(8, 'Pierre et Chaux 13', 'annuel', 0, [0]);
+  return { ventes, encaissements };
 }
 
 function depart(jour: string): { prospects: Prospect[]; appels: AppelProspect[] } {
@@ -76,11 +101,11 @@ function depart(jour: string): { prospects: Prospect[]; appels: AppelProspect[] 
 
 export function prospectionDemo(exiger: () => void): Methodes {
   const jour = jourParis();
-  let etat: { jour: string; prospects: Prospect[]; appels: AppelProspect[] };
+  let etat: { jour: string; prospects: Prospect[]; appels: AppelProspect[]; ventes: Vente[]; encaissements: Encaissement[] };
   try { etat = JSON.parse(localStorage.getItem(CLE) || 'null'); } catch { etat = null as never; }
-  if (!etat || !Array.isArray(etat.prospects)) etat = { jour, ...depart(jour) };
+  if (!etat || !Array.isArray(etat.prospects) || !Array.isArray(etat.encaissements)) etat = { jour, ...depart(jour), ...chiffresDepart(jour) };
   // Un nouveau jour en démonstration : la liste repart du jour, comme le soir le ferait.
-  if (etat.jour !== jour) etat = { jour, ...depart(jour) };
+  if (etat.jour !== jour) etat = { jour, ...depart(jour), ...chiffresDepart(jour) };
   const garder = () => { try { localStorage.setItem(CLE, JSON.stringify(etat)); } catch { /* navigation privée */ } };
   let n = 1000;
   const copie = <T,>(x: T): T => JSON.parse(JSON.stringify(x));
@@ -119,6 +144,32 @@ export function prospectionDemo(exiger: () => void): Methodes {
       etat.prospects.push(p);
       garder();
       return copie(p);
+    },
+    async ventes() { exiger(); return copie(etat.ventes); },
+    async encaissements() { exiger(); return copie(etat.encaissements); },
+    async creerVente(nv) {
+      exiger();
+      if (!nv.nom.trim()) throw new Error('Le nom du client est obligatoire.');
+      const maintenant = new Date().toISOString();
+      const v: Vente = { id: `dv${++n}`, fiche_id: nv.fiche_id, nom: nv.nom.trim(), formule: nv.formule, debut_le: jourParis(), etat: 'active', cree_le: maintenant };
+      etat.ventes.push(v);
+      if (nv.encaisse_aujourdhui) etat.encaissements.push({ id: `de${++n}`, vente_id: v.id, nom: v.nom, formule: v.formule, montant: PRIX[v.formule], encaisse_le: jourParis(), note: null, source: 'manuel', cree_le: maintenant });
+      garder();
+      return copie(v);
+    },
+    async ajouterEncaissement(e) {
+      exiger();
+      if (!e.nom.trim()) throw new Error('Le nom du client est obligatoire.');
+      if (!(e.montant > 0)) throw new Error('Le montant doit être positif.');
+      etat.encaissements.push({ id: `de${++n}`, vente_id: e.vente_id, nom: e.nom.trim(), formule: e.formule, montant: Math.round(e.montant * 100) / 100, encaisse_le: e.encaisse_le, note: e.note?.trim() || null, source: 'manuel', cree_le: new Date().toISOString() });
+      garder();
+    },
+    async retirerEncaissement(id) {
+      exiger();
+      const i = etat.encaissements.findIndex((e) => e.id === id && e.source === 'manuel');
+      if (i < 0) throw new Error('Encaissement introuvable.');
+      etat.encaissements.splice(i, 1);
+      garder();
     },
   };
 }

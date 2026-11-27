@@ -84,6 +84,47 @@ Sans compte Cloudflare (action **F5** de `memoire/actions-fabrice.md`), ajouter
 `--sec` : tout se calcule, rien ne part en ligne. Tant que F5 n'est pas faite,
 c'est le seul mode possible.
 
+## 3 bis. Remplir l'espace de prospection de Fabrice (T71)
+
+Depuis le 27 nov., Fabrice appelle depuis son espace dans l'app
+(`#/prospection`). Décision : « aucun numero stocker juste ceux du jour a
+appeler ». Chaque soir, pour le **jour ouvré suivant** :
+
+1. `node scripts/prospection/vers-espace.mjs --rappels` : les fiches déjà dans
+   l'espace à appeler ce jour-là (rappels, relances, pas de réponse). Leur
+   numéro est à relever comme celui des nouveaux.
+2. Pour chaque artisan du lot (les 30) et chaque rappel : une recherche web
+   (`"<nom>" "<commune>"`), comme à l'étape 2, et relever **seulement ce qui
+   est public** :
+   - le **numéro** affiché sur sa fiche Google, son site ou un annuaire
+     professionnel (jamais un numéro trouvé ailleurs, jamais deviné) ;
+   - la **note Google** et le nombre d'avis s'ils sont visibles ;
+   - le **site actuel** (aucun, Facebook seulement, ancien et l'année, récent) ;
+   - **points forts** et **points faibles** sur le web et les réseaux, en
+     constats courts et vérifiables (« 4,8 sur 32 avis », « aucun site »,
+     « Facebook sans publication depuis 2023 ») ; rien d'inventé : un point non
+     vu ne s'écrit pas ;
+   - l'**angle d'appel** : une phrase qui relie un point fort à un point faible
+     et à ce que le site lui apporte (règles de `redaction-fr`).
+3. Écrire `prospection/fiches-du-jour.json` (hors de Git, il porte des
+   numéros), une liste :
+
+```json
+[{ "siren": "123456789", "nom": "Façades Exemple", "metier": "Ravalement", "commune": "Aubagne",
+   "telephone": "06 12 34 56 78", "note_google": 4.8, "avis_google": 32, "site_actuel": "aucun",
+   "points_forts": [{ "sujet": "Avis Google", "texte": "4,8 sur 32 avis" }],
+   "points_faibles": [{ "sujet": "Site", "texte": "Aucun site internet" }],
+   "angle": "4,8 sur 32 avis mais aucun site : ses clients ne voient pas ses chantiers.",
+   "lien_maquette": "https://…" }]
+```
+
+4. `node scripts/prospection/vers-espace.mjs --fiches prospection/fiches-du-jour.json --sec`
+   pour relire, puis sans `--sec` pour écrire. Un refusé, un « ne plus
+   appeler », un abonné ne reviennent jamais ; le statut et les notes de
+   Fabrice ne sont jamais écrasés. La base efface chaque nuit les numéros qui ne
+   sont plus du jour (pg_cron, migration `20261127002326_prospection`).
+5. Supprimer `prospection/fiches-du-jour.json` une fois versé.
+
 ## 4. Les réglages Cloudflare (une fois, pas tous les soirs)
 
 - **F5** : le compte Cloudflare (`lanceurs\CLE_CLOUDFLARE.bat`), fait le 27 oct.

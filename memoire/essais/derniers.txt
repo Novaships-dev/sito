@@ -1,25 +1,25 @@
-Essais du samedi 14 novembre 2026 à 03:38 (heure de Paris), linux, commit 6e5462a
+Essais du vendredi 27 novembre 2026 à 01:48 (heure de Paris), linux, commit c5e7c34
 
-OK         dépôt complet (0 s) Depot complet. 455 fichiers, aucune piece manquante.
+OK         dépôt complet (0 s) Depot complet. 472 fichiers, aucune piece manquante.
 OK         règles de rédaction (sites et app) (0 s) Aucune signature textuelle detectee.
 OK         carte du dépôt à jour (0 s) 
 OK         traçabilité des tâches faites (0 s) 
 OK         aucun secret (0 s) Aucun secret trouvé.
 OK         outillage de Claude Code (8 s) 92 contrôles, 0 faute(s).
-OK         app : types et construction (7 s) [plugin builtin:vite-reporter]
+OK         app : types et construction (8 s) [plugin builtin:vite-reporter]
 OK         app : parcours et rendu (navigateur) (22 s) 135 contrôles, 0 faute(s).
 OK         photos (service) (6 s) 18 fichiers, 0 faute(s). Dossier effacé.
-OK         app : vidéos sans position GPS (1 s) 17 contrôles, 0 faute(s).
+OK         app : vidéos sans position GPS (2 s) 17 contrôles, 0 faute(s).
 OK         service : adaptateur Supabase (0 s) 28 contrôles, 0 faute(s).
 OK         comptes des artisans (créés par Fabrice) (0 s) 25 contrôles, 0 faute(s).
 OK         service : préparation des photos reçues (3 s) 77 contrôles, 0 faute(s). Dossier effacé.
-OK         service : fabrication depuis la base (20 s) 17 contrôles, 0 faute(s).
-OK         générateur : échappement des textes de l artisan (navigateur) (99 s) 116 contrôles, 0 faute(s).
-OK         générateur : mentions légales d un site d abonné (77 s) 62 contrôles, 0 faute(s).
-OK         générateur : référencement (régimes, Open Graph, JSON-LD, plan du site) (50 s) 102 contrôles, 0 faute(s).
-OK         générateur : textes alternatifs et légendes du métier (173 s) 52 contrôles, 0 faute(s).
-OK         générateur : avis réels seulement sur un site d abonné (58 s) 18 contrôles, 0 faute(s).
-OK         service : boucle (refaire, vérifier, publier par version) (35 s) 23 contrôles, 0 faute(s).
+OK         service : fabrication depuis la base (19 s) 17 contrôles, 0 faute(s).
+OK         générateur : échappement des textes de l artisan (navigateur) (94 s) 116 contrôles, 0 faute(s).
+OK         générateur : mentions légales d un site d abonné (76 s) 62 contrôles, 0 faute(s).
+OK         générateur : référencement (régimes, Open Graph, JSON-LD, plan du site) (53 s) 102 contrôles, 0 faute(s).
+OK         générateur : textes alternatifs et légendes du métier (168 s) 52 contrôles, 0 faute(s).
+OK         générateur : avis réels seulement sur un site d abonné (55 s) 18 contrôles, 0 faute(s).
+OK         service : boucle (refaire, vérifier, publier par version) (32 s) 23 contrôles, 0 faute(s).
 OK         service : comptes supprimés à l échéance (0 s) 19 contrôles, 0 faute(s).
 OK         Stripe : webhook signé, rejeu, paiement et portail (faux Stripe) (0 s) 30 contrôles, 0 faute(s).
 OK         domaines : Gandi, Cloudflare for SaaS et Mon adresse (faux serveurs) (0 s) 60 contrôles, 0 faute(s).
@@ -27,15 +27,17 @@ OK         statistiques : Umami, import de la nuit, mesure dans les pages (faux 
 OK         Google : jeton chiffré, avis importés, réponses validées publiées (faux Google) (0 s) 24 contrôles, 0 faute(s).
 OK         service : refaire et publier par GitHub Actions (Cloudflare Pages) (19 s) 15 contrôles, 0 faute(s).
 OK         prospection : extraction, note, registre (0 s) 122 contrôles, 0 faute(s).
-OK         prospection : modèles (10 par métier, tous différents) (34 s) 18 contrôles, 0 faute(s).
-OK         prospection : fabrication du lot (33 s) La fabrication réelle de deux sites s essaie avec --complet (demande les images du ravalement).
+OK         prospection : modèles (10 par métier, tous différents) (30 s) 18 contrôles, 0 faute(s).
+OK         prospection : fabrication du lot (30 s) La fabrication réelle de deux sites s essaie avec --complet (demande les images du ravalement).
 OK         prospection : acceptation d un site (le modèle devient le sien) (0 s) 13 contrôles, 0 faute(s).
-OK         prospection : photos reçues par mail ou WhatsApp, site de l abonné (11 s) 12 contrôles, 0 faute(s).
+OK         prospection : photos reçues par mail ou WhatsApp, site de l abonné (9 s) 12 contrôles, 0 faute(s).
 OK         prospection : publication privée (0 s) 68 contrôles, 0 faute(s).
 OK         prospection : page d appels du jour (1 s) 79 contrôles, 0 faute(s).
+OK         prospection : remplissage de l espace (fiches du jour) (0 s) 20 contrôles, 0 faute(s).
+OK         prospection : espace de Fabrice dans l app (navigateur) (10 s) 104 contrôles, 0 faute(s).
 OK         prospection : préparation de la soirée, de bout en bout (0 s) 49 contrôles, 0 faute(s).
 OK         feuilles de prompts contre le plan d images (0 s) 3 feuille(s) de prompts (couverture, peinture, ravalement), 0 faute(s).
 OK         publication par versions et Worker (0 s) 0 faute(s). Dossier effacé.
-OK         audit du dépôt (sur un clone cassé exprès) (9 s) 18 contrôles, 0 faute(s). Dossier effacé.
+OK         audit du dépôt (sur un clone cassé exprès) (10 s) 18 contrôles, 0 faute(s). Dossier effacé.
 
 Verdict : TOUT EST VERT

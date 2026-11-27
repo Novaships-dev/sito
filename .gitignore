@@ -48,3 +48,6 @@ clients/*/.travail/
 
 # app/.env.production : adresse et clé PUBLIQUE de Supabase pour la construction sur Vercel (T70). Jamais de clé de service.
 !app/.env.production
+
+# Fichier du soir de l'espace de prospection (T71) : il porte les numéros du jour, jamais dans Git.
+prospection/fiches-du-jour.json

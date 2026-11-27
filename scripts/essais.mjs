@@ -86,6 +86,7 @@ const ETAPES = [
   // La page d'appels : le Worker avec un faux KV, et la page au doigt sur
   // 390 px dans un vrai navigateur.
   { nom: 'prospection : page d appels du jour', cmd: ['node', 'scripts/essai-appels.mjs'] },
+  { nom: 'prospection : remplissage de l espace (fiches du jour)', cmd: ['node', 'scripts/essai-vers-espace.mjs'] },
   { nom: 'prospection : espace de Fabrice dans l app (navigateur)', cmd: ['node', 'scripts/essai-prospection-app.mjs'], manque: outilsApp },
   // La soirée de bout en bout : lister, qualifier avec le web, fabriquer,
   // publier, produire la page — sur un faux Cloudflare, sans aucune image.
@@ -139,6 +140,7 @@ if (COMPLET) {
     { nom: 'contre-essai : fabrication du lot', cmd: ['node', 'scripts/essai-lot.mjs', '--contre-essai'] },
     { nom: 'contre-essai : publication privée', cmd: ['node', 'scripts/essai-publication-prospection.mjs', '--contre-essai'] },
     { nom: 'contre-essai : page d appels', cmd: ['node', 'scripts/essai-appels.mjs', '--contre-essai'] },
+    { nom: 'contre-essai : remplissage de l espace', cmd: ['node', 'scripts/essai-vers-espace.mjs', '--contre-essai'] },
     { nom: 'contre-essai : espace de prospection', cmd: ['node', 'scripts/essai-prospection-app.mjs', '--contre-essai'], manque: outilsApp },
     { nom: 'contre-essai : préparation de la soirée', cmd: ['node', 'scripts/essai-preparer-appels.mjs', '--contre-essai'] },
     { nom: 'contre-essai : feuilles de prompts', cmd: ['node', 'scripts/verifier-images.mjs', '--contre-essai-prompts'] },

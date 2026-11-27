@@ -27,22 +27,31 @@ const DIST0 = process.env.SITO_APP_DIST || join(RACINE, 'app', 'dist');
 if (!existsSync(join(DIST0, 'index.html'))) { console.error('app/dist absent : lancer « npm run build » dans app/ avant.'); process.exit(2); }
 
 if (CONTRE) {
-  // Une copie où appliquerResultat garde toujours le numéro : l'essai doit trouver la faute.
-  const copie = await mkdtemp(join(tmpdir(), 'sito-pros-casse-'));
-  await cp(DIST0, copie, { recursive: true });
-  let casse = 0;
-  for (const f of await readdir(join(copie, 'assets'))) {
-    if (!f.endsWith('.js')) continue;
-    const chemin = join(copie, 'assets', f);
-    const t = await readFile(chemin, 'utf8');
-    const u = t.replace(/\.telephone=null/g, '.__numero_garde=null');
-    if (u !== t) { await writeFile(chemin, u); casse++; }
+  // Des copies cassées une par une : l'essai doit rougir sur chacune.
+  const CASSES = [
+    { nom: 'le numéro n’est jamais effacé', motif: /\.telephone=null/g, par: '.__numero_garde=null' },
+    { nom: 'le taux de cotisations est faux', motif: /cotisations:\.212/g, par: 'cotisations:.112' },
+    { nom: 'une vente n’entre pas dans les chiffres', motif: /encaisse_aujourdhui&&/g, par: 'encaisse_aujourdhui&&!1&&' },
+  ];
+  let bon = 0;
+  for (const c of CASSES) {
+    const copie = await mkdtemp(join(tmpdir(), 'sito-pros-casse-'));
+    await cp(DIST0, copie, { recursive: true });
+    let casse = 0;
+    for (const f of await readdir(join(copie, 'assets'))) {
+      if (!f.endsWith('.js')) continue;
+      const chemin = join(copie, 'assets', f);
+      const t = await readFile(chemin, 'utf8');
+      const u = t.replace(c.motif, c.par);
+      if (u !== t) { await writeFile(chemin, u); casse++; }
+    }
+    const r = spawnSync(process.execPath, [process.argv[1]], { env: { ...process.env, SITO_APP_DIST: copie }, encoding: 'utf8' });
+    await rm(copie, { recursive: true, force: true });
+    const rouge = r.status !== 0 && /FAUTE/.test(r.stdout);
+    if (casse && rouge) bon++;
+    console.log(`contre-essai « ${c.nom} » : ${casse} fichier(s) cassé(s), l'essai ${rouge ? 'rougit (juste)' : 'reste vert (FAUTE)'}`);
   }
-  const r = spawnSync(process.execPath, [process.argv[1]], { env: { ...process.env, SITO_APP_DIST: copie }, encoding: 'utf8' });
-  await rm(copie, { recursive: true, force: true });
-  const rouge = r.status !== 0 && /FAUTE/.test(r.stdout);
-  console.log(`contre-essai : ${casse} fichier(s) cassé(s), l'essai ${rouge ? 'rougit (juste)' : 'reste vert (FAUTE)'}`);
-  process.exit(casse && rouge ? 0 : 1);
+  process.exit(bon === CASSES.length ? 0 : 1);
 }
 
 let fautes = 0, essais = 0;
@@ -168,9 +177,63 @@ try {
     ok(/Atelier Couleurs Sud/.test(rappeler || ''), 'le rappel est dans la colonne « À rappeler »');
     await rendu(p, 'pipeline');
     await p.click('.p-onglets button:has-text("Bilan")');
-    const appels = await p.textContent('.p-tuiles div:first-child dd');
+    const appels = await p.textContent('.p-bilan .p-tuiles div:first-child dd');
     ok(appels === '2', 'le bilan compte les 2 appels enregistrés', appels);
     await rendu(p, 'bilan');
+
+    // chiffres : total = somme des encaissements, une vente l'augmente, la courbe répond
+    const euros = (t) => Number(String(t).replace(/[^\d,]/g, '').replace(',', '.'));
+    await p.click('.p-onglets button:has-text("Chiffres")');
+    await p.waitForSelector('.c-bourse');
+    await p.click('.c-periodes button:has-text("Tout")');
+    const totalAvant = euros(await p.textContent('.c-bourse-valeur'));
+    const lignes = await p.$$eval('.c-ligne-montant', (e) => e.map((x) => x.textContent));
+    const sommeLignes = lignes.reduce((t, x) => t + euros(x), 0);
+    ok(totalAvant > 0 && Math.abs(totalAvant - sommeLignes) < 0.01, 'le total « Tout » est la somme des encaissements listés', `${totalAvant} contre ${sommeLignes}`);
+    ok(!!(await p.$('.c-ligne-courbe')), 'la courbe est dessinée');
+    const boite = await p.$('.c-bourse svg').then((b) => b.boundingBox());
+    await p.mouse.move(boite.x + boite.width * 0.1, boite.y + boite.height / 2);
+    const auSurvol = euros(await p.textContent('.c-bourse-valeur'));
+    ok(auSurvol <= totalAvant, 'sous la souris, la valeur suit la courbe (cumul plus petit au début)', `${auSurvol}`);
+    await p.mouse.move(0, 0);
+    await rendu(p, 'chiffres');
+    // une signature à l'année depuis une fiche
+    await p.click('.p-onglets button:has-text("Aujourd")');
+    await p.click('.p-carte:has-text("Enduits et Pierres du Pays")');
+    await p.click('.p-choix-btn:has-text("Abonné")');
+    ok(/720/.test(await p.textContent('.p-signe')), 'un abonné propose la formule à l’année à 720 €');
+    await p.click('button:has-text("Enregistrer le résultat")');
+    await p.waitForSelector('.succes');
+    ok(/720/.test(await p.textContent('.succes')), 'la fiche dit que 720 € sont ajoutés aux chiffres');
+    await p.evaluate(() => { location.hash = '#/prospection'; });
+    await p.click('.p-onglets button:has-text("Chiffres")');
+    await p.click('.c-periodes button:has-text("Tout")');
+    await p.waitForTimeout(200);
+    const totalApres = euros(await p.textContent('.c-bourse-valeur'));
+    ok(Math.abs(totalApres - totalAvant - 720) < 0.01, 'le chiffre d’affaires monte de 720 €', `${totalAvant} puis ${totalApres}`);
+    await p.click('.c-periodes button:has-text("Jour")');
+    ok(euros(await p.textContent('.c-bourse-valeur')) >= 720, 'la vente compte dans le jour');
+    const net = euros(await p.textContent('.c-tuiles div:last-child dd'));
+    const brut = euros(await p.textContent('.c-bourse-valeur'));
+    ok(Math.abs(net - brut * 0.77) < 0.02, 'il reste 77 % sans ACRE (21,2 + 0,1 + 1,7 %)', `${net} pour ${brut}`);
+    await p.check('.c-net input[type=checkbox]');
+    const netAcre = euros(await p.textContent('.c-tuiles div:last-child dd'));
+    ok(Math.abs(netAcre - brut * 0.876) < 0.02, 'avec l’ACRE, il reste 87,6 %', `${netAcre}`);
+    await p.uncheck('.c-net input[type=checkbox]');
+    // un encaissement saisi puis retiré
+    await p.click('.c-periodes button:has-text("Tout")');
+    const t0 = euros(await p.textContent('.c-bourse-valeur'));
+    await p.click('button:has-text("+ Encaissement")');
+    await p.fill('#ce-nom', 'Client Essai');
+    await p.click('.c-formules button:has-text("Autre")');
+    await p.fill('#ce-montant', '150,50');
+    await p.click('.p-ajout button:has-text("Enregistrer")');
+    await p.waitForSelector('.c-ligne:has-text("Client Essai")');
+    ok(Math.abs(euros(await p.textContent('.c-bourse-valeur')) - t0 - 150.5) < 0.01, 'un encaissement saisi (150,50 €) entre dans le total');
+    await p.click('.c-ligne:has-text("Client Essai") button:has-text("Retirer")');
+    await p.click('.c-ligne:has-text("Client Essai") button:has-text("Confirmer")');
+    await p.waitForTimeout(300);
+    ok(!(await p.$('.c-ligne:has-text("Client Essai")')) && Math.abs(euros(await p.textContent('.c-bourse-valeur')) - t0) < 0.01, 'un encaissement retiré sort du total');
 
     ok(errs.length === 0, 'aucune erreur dans la console', errs.join(' | '));
     await c.close();
